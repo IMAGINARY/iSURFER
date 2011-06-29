@@ -12,6 +12,19 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		8B68A37E13B8031200EC98B5 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B68A37D13B8031200EC98B5 /* MainMenuViewController.m */; };
+		8B891C8213BA95AC00EE4BC7 /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B891C8113BA95AC00EE4BC7 /* MainMenuViewController.xib */; };
+		8B891CA713BA982700EE4BC7 /* Button1_off.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B891C9D13BA982700EE4BC7 /* Button1_off.jpg */; };
+		8B891CA813BA982700EE4BC7 /* Button1_on.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B891C9E13BA982700EE4BC7 /* Button1_on.jpg */; };
+		8B891CA913BA982700EE4BC7 /* Button2_off.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B891C9F13BA982700EE4BC7 /* Button2_off.jpg */; };
+		8B891CAA13BA982700EE4BC7 /* Button2_on.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B891CA013BA982700EE4BC7 /* Button2_on.jpg */; };
+		8B891CAB13BA982700EE4BC7 /* Button3_off.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B891CA113BA982700EE4BC7 /* Button3_off.jpg */; };
+		8B891CAC13BA982700EE4BC7 /* Button3_on.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B891CA213BA982700EE4BC7 /* Button3_on.jpg */; };
+		8B891CAD13BA982700EE4BC7 /* Button4_off.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B891CA313BA982700EE4BC7 /* Button4_off.jpg */; };
+		8B891CAE13BA982700EE4BC7 /* Button4_on.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B891CA413BA982700EE4BC7 /* Button4_on.jpg */; };
+		8B891CAF13BA982700EE4BC7 /* Button5_off.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B891CA513BA982700EE4BC7 /* Button5_off.jpg */; };
+		8B891CB013BA982700EE4BC7 /* Button5_on.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B891CA613BA982700EE4BC7 /* Button5_on.jpg */; };
+		8B891CB313BA992B00EE4BC7 /* Imaginary lemon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B891CB213BA992B00EE4BC7 /* Imaginary lemon.jpg */; };
 		8BC02C6113B29199003E41AC /* iSurferAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC02C6013B29199003E41AC /* iSurferAppDelegate.m */; };
 		8BC02C6513B291C3003E41AC /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC02C6413B291C3003E41AC /* AppController.m */; };
 		8BC02C9C13B2938C003E41AC /* SpashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BC02C9913B2938C003E41AC /* SpashScreenViewController.xib */; };
@@ -27,6 +40,21 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* iSurfer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSurfer_Prefix.pch; sourceTree = "<group>"; };
+		8B68A37C13B8031200EC98B5 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		8B68A37D13B8031200EC98B5 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		8B891C8113BA95AC00EE4BC7 /* MainMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenuViewController.xib; sourceTree = "<group>"; };
+		8B891C9D13BA982700EE4BC7 /* Button1_off.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Button1_off.jpg; sourceTree = "<group>"; };
+		8B891C9E13BA982700EE4BC7 /* Button1_on.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Button1_on.jpg; sourceTree = "<group>"; };
+		8B891C9F13BA982700EE4BC7 /* Button2_off.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Button2_off.jpg; sourceTree = "<group>"; };
+		8B891CA013BA982700EE4BC7 /* Button2_on.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Button2_on.jpg; sourceTree = "<group>"; };
+		8B891CA113BA982700EE4BC7 /* Button3_off.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Button3_off.jpg; sourceTree = "<group>"; };
+		8B891CA213BA982700EE4BC7 /* Button3_on.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Button3_on.jpg; sourceTree = "<group>"; };
+		8B891CA313BA982700EE4BC7 /* Button4_off.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Button4_off.jpg; sourceTree = "<group>"; };
+		8B891CA413BA982700EE4BC7 /* Button4_on.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Button4_on.jpg; sourceTree = "<group>"; };
+		8B891CA513BA982700EE4BC7 /* Button5_off.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Button5_off.jpg; sourceTree = "<group>"; };
+		8B891CA613BA982700EE4BC7 /* Button5_on.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Button5_on.jpg; sourceTree = "<group>"; };
+		8B891CB213BA992B00EE4BC7 /* Imaginary lemon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Imaginary lemon.jpg"; sourceTree = "<group>"; };
+		8B891CBC13BABC5600EE4BC7 /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
 		8BC02C5F13B29199003E41AC /* iSurferAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSurferAppDelegate.h; sourceTree = "<group>"; };
 		8BC02C6013B29199003E41AC /* iSurferAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSurferAppDelegate.m; sourceTree = "<group>"; };
 		8BC02C6313B291C3003E41AC /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
@@ -59,6 +87,7 @@
 				8BC02C7A13B292B3003E41AC /* viewControllers */,
 				8BC02C6213B291A4003E41AC /* appController */,
 				8BC02C5E13B29199003E41AC /* appDelegate */,
+				8B891CBC13BABC5600EE4BC7 /* AppConfig.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -95,6 +124,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8B891CB113BA990B00EE4BC7 /* images */,
+				8B891C9C13BA982700EE4BC7 /* buttons */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* iSurfer-Info.plist */,
 			);
@@ -109,6 +140,43 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8B68A37B13B802FA00EC98B5 /* mainMenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8B68A37C13B8031200EC98B5 /* MainMenuViewController.h */,
+				8B68A37D13B8031200EC98B5 /* MainMenuViewController.m */,
+				8B891C8113BA95AC00EE4BC7 /* MainMenuViewController.xib */,
+			);
+			path = mainMenuViewController;
+			sourceTree = "<group>";
+		};
+		8B891C9C13BA982700EE4BC7 /* buttons */ = {
+			isa = PBXGroup;
+			children = (
+				8B891C9D13BA982700EE4BC7 /* Button1_off.jpg */,
+				8B891C9E13BA982700EE4BC7 /* Button1_on.jpg */,
+				8B891C9F13BA982700EE4BC7 /* Button2_off.jpg */,
+				8B891CA013BA982700EE4BC7 /* Button2_on.jpg */,
+				8B891CA113BA982700EE4BC7 /* Button3_off.jpg */,
+				8B891CA213BA982700EE4BC7 /* Button3_on.jpg */,
+				8B891CA313BA982700EE4BC7 /* Button4_off.jpg */,
+				8B891CA413BA982700EE4BC7 /* Button4_on.jpg */,
+				8B891CA513BA982700EE4BC7 /* Button5_off.jpg */,
+				8B891CA613BA982700EE4BC7 /* Button5_on.jpg */,
+			);
+			name = buttons;
+			path = resources/buttons;
+			sourceTree = "<group>";
+		};
+		8B891CB113BA990B00EE4BC7 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				8B891CB213BA992B00EE4BC7 /* Imaginary lemon.jpg */,
+			);
+			name = images;
+			path = resources/images;
 			sourceTree = "<group>";
 		};
 		8BC02C5E13B29199003E41AC /* appDelegate */ = {
@@ -132,6 +200,7 @@
 		8BC02C7A13B292B3003E41AC /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8B68A37B13B802FA00EC98B5 /* mainMenuViewController */,
 				8BC02D0413B29C00003E41AC /* BaseViewController.h */,
 				8BC02D0513B29C00003E41AC /* BaseViewController.m */,
 				8BC02C9813B2938C003E41AC /* splashScreenViewController */,
@@ -200,6 +269,18 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				8BC02C9C13B2938C003E41AC /* SpashScreenViewController.xib in Resources */,
+				8B891C8213BA95AC00EE4BC7 /* MainMenuViewController.xib in Resources */,
+				8B891CA713BA982700EE4BC7 /* Button1_off.jpg in Resources */,
+				8B891CA813BA982700EE4BC7 /* Button1_on.jpg in Resources */,
+				8B891CA913BA982700EE4BC7 /* Button2_off.jpg in Resources */,
+				8B891CAA13BA982700EE4BC7 /* Button2_on.jpg in Resources */,
+				8B891CAB13BA982700EE4BC7 /* Button3_off.jpg in Resources */,
+				8B891CAC13BA982700EE4BC7 /* Button3_on.jpg in Resources */,
+				8B891CAD13BA982700EE4BC7 /* Button4_off.jpg in Resources */,
+				8B891CAE13BA982700EE4BC7 /* Button4_on.jpg in Resources */,
+				8B891CAF13BA982700EE4BC7 /* Button5_off.jpg in Resources */,
+				8B891CB013BA982700EE4BC7 /* Button5_on.jpg in Resources */,
+				8B891CB313BA992B00EE4BC7 /* Imaginary lemon.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +296,7 @@
 				8BC02C6513B291C3003E41AC /* AppController.m in Sources */,
 				8BC02C9D13B2938C003E41AC /* SplashScreenViewController.m in Sources */,
 				8BC02D0613B29C00003E41AC /* BaseViewController.m in Sources */,
+				8B68A37E13B8031200EC98B5 /* MainMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

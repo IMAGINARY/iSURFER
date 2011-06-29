@@ -7,15 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
-
-
+@class MainMenuViewController;
+//-------------------------------------------------------------------------------------------------------
 @interface AppController : NSObject {
+	UINavigationController* navcontroller;
 	
+	MainMenuViewController * mainMenuViewController;
 	
 
 }
+//--------------------------------------------------------------------------------------------------------
+@property(nonatomic, retain)	UINavigationController* navcontroller;
+
+@property(nonatomic, retain)	MainMenuViewController * mainMenuViewController;
+//--------------------------------------------------------------------------------------------------------
+
 
 -(id)initWithNavController:(UINavigationController*)aNavController;
 
+//--------------------------------------------------------------------------------------------------------
 
 @end
