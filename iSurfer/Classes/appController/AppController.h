@@ -8,22 +8,35 @@
 
 #import <Foundation/Foundation.h>
 @class MainMenuViewController;
+@class GoiSurferViewController;
+@class MyGalleriesViewController;
+@class HelpViewController;
 //-------------------------------------------------------------------------------------------------------
 @interface AppController : NSObject {
 	UINavigationController* navcontroller;
 	
 	MainMenuViewController * mainMenuViewController;
-	
+	GoiSurferViewController* goiSurferViewController;
+	MyGalleriesViewController* myGalleriesViewController;
+	HelpViewController* helpViewController;
 
 }
 //--------------------------------------------------------------------------------------------------------
 @property(nonatomic, retain)	UINavigationController* navcontroller;
 
+@property(nonatomic, retain)	MyGalleriesViewController* myGalleriesViewController;
 @property(nonatomic, retain)	MainMenuViewController * mainMenuViewController;
+@property(nonatomic, retain)	GoiSurferViewController* goiSurferViewController;
+@property(nonatomic, retain)	HelpViewController* helpViewController;
+
+
+
 //--------------------------------------------------------------------------------------------------------
 
 
 -(id)initWithNavController:(UINavigationController*)aNavController;
+
+- (void)pushViewControllerWithName:(NSString*)vcName;
 
 //--------------------------------------------------------------------------------------------------------
 

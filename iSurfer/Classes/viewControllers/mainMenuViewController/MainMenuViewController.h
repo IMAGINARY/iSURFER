@@ -8,17 +8,21 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseViewController.h"
-#import "AppController.h"
 //--------------------------------------------------------------------------------------------------------
 
 @interface MainMenuViewController : BaseViewController {
-	AppController* appcontroller;
+	
+	IBOutlet UIView* buttonsView;
 
 }
 //--------------------------------------------------------------------------------------------------------
 
-@property(nonatomic, retain)	AppController* appcontroller;
+@property(nonatomic, retain)	IBOutlet UIView* buttonsView;
+
 //--------------------------------------------------------------------------------------------------------
 -(id) initWithAppController:(AppController*)anappCtrl;
+
+-(IBAction)buttonPressed:(id)sender;
+
 
 @end

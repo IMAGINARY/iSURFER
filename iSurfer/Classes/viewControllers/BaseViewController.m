@@ -11,7 +11,9 @@
 
 
 @implementation BaseViewController
+//---------------------------------------------------------------------------------------------
 
+@synthesize appcontroller;
 //---------------------------------------------------------------------------------------------
 
 - (void) scrollViewTo:(UIView*)theView movePixels:(int)pixels{	
@@ -91,6 +93,12 @@
 -(void)viewDidDisappear:(BOOL)animated{
 	[super viewDidDisappear:animated];
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+//---------------------------------------------------------------------------------------------
+
+-(void)dealloc{
+	[super dealloc];
+	[appcontroller release];
 }
 //---------------------------------------------------------------------------------------------
 

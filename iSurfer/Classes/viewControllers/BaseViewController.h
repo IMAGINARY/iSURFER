@@ -7,11 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AppController.h"
+//---------------------------------------------------------------------------------------------
 
 
 @interface BaseViewController : UIViewController {
 
+	AppController* appcontroller;
+
 }
+//---------------------------------------------------------------------------------------------
+
+@property(nonatomic, assign)	AppController* appcontroller;
+//---------------------------------------------------------------------------------------------
+
 
 - (void) scrollViewTo:(UIView*)theView movePixels:(int)pixels;
 
