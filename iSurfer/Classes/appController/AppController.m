@@ -10,6 +10,8 @@
 #import "MainMenuViewController.h"
 #import "GoiSurferViewController.h"
 #import "MyGalleriesViewController.h"
+#import "HelpViewController.h"
+#import "SplashScreenViewController.h"
 //--------------------------------------------------------------------------------------------------------
 
 
@@ -43,6 +45,10 @@
 		[self setGoiSurferViewController:tmpgosurfer];
 		[tmpgosurfer release];
 		
+		HelpViewController* tmphelp = [[HelpViewController alloc]initWithAppController:self];
+		[self setHelpViewController:tmphelp];
+		[tmphelp release];
+		
 		[self performSelector:@selector(showMainMenu) withObject:nil afterDelay:SPLASH_DELAY];
 				
 	}	
@@ -68,7 +74,7 @@
 //--------------------------------------------------------------------------------------------------------
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
-	if( viewController == mainMenuViewController || viewController == goiSurferViewController ){
+	if( viewController == mainMenuViewController || viewController == goiSurferViewController || [viewController isKindOfClass:[SplashScreenViewController class]]  ){
 		[navigationController setNavigationBarHidden:YES animated:YES];
 	}else {
 		[navigationController setNavigationBarHidden:NO animated:YES];

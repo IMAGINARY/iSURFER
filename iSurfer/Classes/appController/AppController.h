@@ -12,7 +12,7 @@
 @class MyGalleriesViewController;
 @class HelpViewController;
 //-------------------------------------------------------------------------------------------------------
-@interface AppController : NSObject {
+@interface AppController : NSObject <UINavigationControllerDelegate> {
 	UINavigationController* navcontroller;
 	
 	MainMenuViewController * mainMenuViewController;
