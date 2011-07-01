@@ -10,8 +10,12 @@
 #import "BaseViewController.h"
 
 
-@interface GoiSurferViewController : BaseViewController {
-
+@interface GoiSurferViewController : BaseViewController <UITextFieldDelegate>{
+	
+	IBOutlet UITextField* equationTextField;
 }
+
+@property(nonatomic, retain)	IBOutlet UITextField* equationTextField;
+
 
 @end

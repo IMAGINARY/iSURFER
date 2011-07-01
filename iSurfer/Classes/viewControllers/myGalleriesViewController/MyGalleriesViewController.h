@@ -11,6 +11,11 @@
 
 @interface MyGalleriesViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource>{
 
+	IBOutlet UITableView* galleriesTable;
 }
+
+
+@property(nonatomic, retain)	IBOutlet UITableView* galleriesTable;
+
 
 @end

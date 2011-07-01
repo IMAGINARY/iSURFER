@@ -14,3 +14,5 @@
 #define MY_GALLERIES_BUTTON 2
 #define HELP_BUTTON			3
 #define OTHER_BUTTON		4
+
+#define GALLERY_ROW_HEIGHT	60

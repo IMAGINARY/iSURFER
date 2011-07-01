@@ -18,6 +18,10 @@
 		8B3080FC13BBECB700EA792E /* MyGalleriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3080FB13BBECB700EA792E /* MyGalleriesViewController.xib */; };
 		8B30820413BC185C00EA792E /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B30820213BC185C00EA792E /* HelpViewController.m */; };
 		8B30820513BC185C00EA792E /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B30820313BC185C00EA792E /* HelpViewController.xib */; };
+		8B30823B13BD270400EA792E /* MyGalleryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B30823A13BD270400EA792E /* MyGalleryTableViewCell.m */; };
+		8B30823D13BD271300EA792E /* MyGalleryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B30823C13BD271300EA792E /* MyGalleryTableViewCell.xib */; };
+		8B3083B513BD505F00EA792E /* donedown.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B3083B313BD505F00EA792E /* donedown.png */; };
+		8B3083B613BD505F00EA792E /* doneup.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B3083B413BD505F00EA792E /* doneup.png */; };
 		8B68A37E13B8031200EC98B5 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B68A37D13B8031200EC98B5 /* MainMenuViewController.m */; };
 		8B891C8213BA95AC00EE4BC7 /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B891C8113BA95AC00EE4BC7 /* MainMenuViewController.xib */; };
 		8B891CA713BA982700EE4BC7 /* Button1_off.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B891C9D13BA982700EE4BC7 /* Button1_off.jpg */; };
@@ -55,6 +59,11 @@
 		8B30820113BC185C00EA792E /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
 		8B30820213BC185C00EA792E /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 		8B30820313BC185C00EA792E /* HelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
+		8B30823913BD270400EA792E /* MyGalleryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGalleryTableViewCell.h; sourceTree = "<group>"; };
+		8B30823A13BD270400EA792E /* MyGalleryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGalleryTableViewCell.m; sourceTree = "<group>"; };
+		8B30823C13BD271300EA792E /* MyGalleryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyGalleryTableViewCell.xib; sourceTree = "<group>"; };
+		8B3083B313BD505F00EA792E /* donedown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donedown.png; sourceTree = "<group>"; };
+		8B3083B413BD505F00EA792E /* doneup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doneup.png; sourceTree = "<group>"; };
 		8B68A37C13B8031200EC98B5 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		8B68A37D13B8031200EC98B5 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		8B891C8113BA95AC00EE4BC7 /* MainMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenuViewController.xib; sourceTree = "<group>"; };
@@ -181,6 +190,9 @@
 		8B3081B313BC015700EA792E /* myGalleryTableCellView */ = {
 			isa = PBXGroup;
 			children = (
+				8B30823913BD270400EA792E /* MyGalleryTableViewCell.h */,
+				8B30823A13BD270400EA792E /* MyGalleryTableViewCell.m */,
+				8B30823C13BD271300EA792E /* MyGalleryTableViewCell.xib */,
 			);
 			path = myGalleryTableCellView;
 			sourceTree = "<group>";
@@ -208,6 +220,8 @@
 		8B891C9C13BA982700EE4BC7 /* buttons */ = {
 			isa = PBXGroup;
 			children = (
+				8B3083B313BD505F00EA792E /* donedown.png */,
+				8B3083B413BD505F00EA792E /* doneup.png */,
 				8B891C9D13BA982700EE4BC7 /* Button1_off.jpg */,
 				8B891C9E13BA982700EE4BC7 /* Button1_on.jpg */,
 				8B891C9F13BA982700EE4BC7 /* Button2_off.jpg */,
@@ -340,6 +354,9 @@
 				8B3080FA13BBECA900EA792E /* GoiSurferViewController.xib in Resources */,
 				8B3080FC13BBECB700EA792E /* MyGalleriesViewController.xib in Resources */,
 				8B30820513BC185C00EA792E /* HelpViewController.xib in Resources */,
+				8B30823D13BD271300EA792E /* MyGalleryTableViewCell.xib in Resources */,
+				8B3083B513BD505F00EA792E /* donedown.png in Resources */,
+				8B3083B613BD505F00EA792E /* doneup.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +376,7 @@
 				8B3080F513BBEC6900EA792E /* GoiSurferViewController.m in Sources */,
 				8B3080F813BBEC7D00EA792E /* MyGalleriesViewController.m in Sources */,
 				8B30820413BC185C00EA792E /* HelpViewController.m in Sources */,
+				8B30823B13BD270400EA792E /* MyGalleryTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

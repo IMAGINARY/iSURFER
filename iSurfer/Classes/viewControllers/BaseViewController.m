@@ -65,16 +65,19 @@
 //---------------------------------------------------------------------------------------------
 
 -(void)viewWillAppear:(BOOL)animated{
-	[[NSNotificationCenter defaultCenter]
-	 addObserver:self
-	 selector:@selector(keyboardWillHide:)
-	 name:UIKeyboardWillHideNotification
-	 object:nil];
-	[[NSNotificationCenter defaultCenter]
-	 addObserver:self
-	 selector:@selector(keyboardWillShow:)
-	 name:UIKeyboardWillShowNotification
-	 object:nil];	
+	[[NSNotificationCenter defaultCenter]	 addObserver:self
+											  selector:@selector(keyboardWillHide:)
+												  name:UIKeyboardWillHideNotification
+												object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(keyboardWillShow:)
+												 name:UIKeyboardWillShowNotification
+											   object:nil];	
+
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(keyboardDidShow:) 
+                                                     name:UIKeyboardDidShowNotification 
+                                                   object:nil];
 }
 
 
@@ -84,7 +87,10 @@
 	[self scrollViewTo:nil movePixels:0];
 }
 //---------------------------------------------------------------------------------------------
+- (void) keyboardDidShow: (NSNotification *) notification {	
 
+}
+//---------------------------------------------------------------------------------------------
 
 - (void) keyboardWillShow: (NSNotification *) notification {	
 }
