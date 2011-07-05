@@ -23,6 +23,8 @@
 		8B3083B513BD505F00EA792E /* donedown.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B3083B313BD505F00EA792E /* donedown.png */; };
 		8B3083B613BD505F00EA792E /* doneup.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B3083B413BD505F00EA792E /* doneup.png */; };
 		8B68A37E13B8031200EC98B5 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B68A37D13B8031200EC98B5 /* MainMenuViewController.m */; };
+		8B7F61B313C27DFE0098948F /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F61B213C27DFE0098948F /* VideoViewController.m */; };
+		8B7F61F113C27E990098948F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7F61F013C27E990098948F /* MediaPlayer.framework */; };
 		8B891C8213BA95AC00EE4BC7 /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B891C8113BA95AC00EE4BC7 /* MainMenuViewController.xib */; };
 		8B891CA713BA982700EE4BC7 /* Button1_off.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B891C9D13BA982700EE4BC7 /* Button1_off.jpg */; };
 		8B891CA813BA982700EE4BC7 /* Button1_on.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B891C9E13BA982700EE4BC7 /* Button1_on.jpg */; };
@@ -66,6 +68,9 @@
 		8B3083B413BD505F00EA792E /* doneup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doneup.png; sourceTree = "<group>"; };
 		8B68A37C13B8031200EC98B5 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		8B68A37D13B8031200EC98B5 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		8B7F61B113C27DFE0098948F /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
+		8B7F61B213C27DFE0098948F /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		8B7F61F013C27E990098948F /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		8B891C8113BA95AC00EE4BC7 /* MainMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenuViewController.xib; sourceTree = "<group>"; };
 		8B891C9D13BA982700EE4BC7 /* Button1_off.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Button1_off.jpg; sourceTree = "<group>"; };
 		8B891C9E13BA982700EE4BC7 /* Button1_on.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Button1_on.jpg; sourceTree = "<group>"; };
@@ -99,6 +104,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+				8B7F61F113C27E990098948F /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +168,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+				8B7F61F013C27E990098948F /* MediaPlayer.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -272,6 +279,8 @@
 				8B3080EA13BBEBDD00EA792E /* goiSurferViewController */,
 				8B68A37B13B802FA00EC98B5 /* mainMenuViewController */,
 				8BC02D0413B29C00003E41AC /* BaseViewController.h */,
+				8B7F61B113C27DFE0098948F /* VideoViewController.h */,
+				8B7F61B213C27DFE0098948F /* VideoViewController.m */,
 				8BC02D0513B29C00003E41AC /* BaseViewController.m */,
 				8BC02C9813B2938C003E41AC /* splashScreenViewController */,
 			);
@@ -377,6 +386,7 @@
 				8B3080F813BBEC7D00EA792E /* MyGalleriesViewController.m in Sources */,
 				8B30820413BC185C00EA792E /* HelpViewController.m in Sources */,
 				8B30823B13BD270400EA792E /* MyGalleryTableViewCell.m in Sources */,
+				8B7F61B313C27DFE0098948F /* VideoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

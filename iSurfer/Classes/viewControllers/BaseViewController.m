@@ -13,7 +13,7 @@
 @implementation BaseViewController
 //---------------------------------------------------------------------------------------------
 
-@synthesize appcontroller;
+@synthesize appcontroller, opaqueView;
 //---------------------------------------------------------------------------------------------
 
 - (void) scrollViewTo:(UIView*)theView movePixels:(int)pixels{	
@@ -102,9 +102,53 @@
 }
 //---------------------------------------------------------------------------------------------
 
+
+-(void)popUpView:(UIView*) theView{
+	
+	UIView *tmpView = [[UIView alloc] initWithFrame:[self.view frame]];
+	[self setOpaqueView:tmpView];
+	[tmpView release];
+	
+	[opaqueView setBackgroundColor:[UIColor blackColor]];
+	[opaqueView setAlpha:0];
+	[opaqueView setHidden:NO];
+	[theView setAlpha:0];
+	[theView setHidden:NO];
+	
+	
+	[self.view addSubview:opaqueView];
+	[self.view bringSubviewToFront:opaqueView];
+	[self.view bringSubviewToFront:theView];
+	
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+	[self.opaqueView setAlpha:0.4];
+	
+	[theView setAlpha:1];
+	
+	[UIView commitAnimations];
+	
+}
+//------------------------------------------------------------------------------
+
+-(void)popDownView:(UIView*)theView{
+	NSLog(@"popdown");
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+	[self.opaqueView setAlpha:0];
+	[theView setAlpha:0];
+	
+	[UIView commitAnimations];
+	[self.opaqueView removeFromSuperview];
+	
+}
+//---------------------------------------------------------------------------------------------
+
+
 -(void)dealloc{
-	[super dealloc];
 	[appcontroller release];
+	[opaqueView release];
+	[super dealloc];
 }
 //---------------------------------------------------------------------------------------------
 

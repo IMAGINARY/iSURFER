@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BaseViewController.h"
+#import "VideoViewController.h"
 
-@interface HelpViewController : BaseViewController {
+@interface HelpViewController : VideoViewController {
 
 }
+-(IBAction)playVideo2;
 
 @end
