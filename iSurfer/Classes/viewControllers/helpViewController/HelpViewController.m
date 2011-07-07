@@ -46,7 +46,7 @@
 
 -(IBAction)playVideo2{
 	if( self.movie == NULL ){
-		[self loadMovieFromWebURL:@"http://temp.imaginary2008.de//Video-Surfer-DVPAL-16-9.mp4"];	
+		[self loadMovieFromWebURL:SURFER_VIDEO_URL];	
 	}else {
 		[self playVideo];
 	}

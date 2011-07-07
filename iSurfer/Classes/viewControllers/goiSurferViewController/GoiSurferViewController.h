@@ -11,11 +11,15 @@
 
 
 @interface GoiSurferViewController : BaseViewController <UITextFieldDelegate>{
-	
+	IBOutlet UIView* baseView;
 	IBOutlet UITextField* equationTextField;
+	IBOutlet UIView* keyboardExtensionBar;
 }
-
+@property(nonatomic, retain)	IBOutlet UIView* baseView;
 @property(nonatomic, retain)	IBOutlet UITextField* equationTextField;
+@property(nonatomic, retain)	IBOutlet UIView* keyboardExtensionBar;
+
+-(IBAction)keyboardBarButtonPressed:(id)sender;
 
 
 @end

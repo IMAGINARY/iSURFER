@@ -22,13 +22,15 @@
 //---------------------------------------------------------------------------------------------
 
 
-- (void) scrollViewTo:(UIView*)theView movePixels:(int)pixels;
+- (void) scrollViewTo:(UIView*)theView movePixels:(int)pixels baseView:(UIView*)baseview;
 
 - (UIImage *)captureView:(UIView *)theView;
 
 -(void)popDownView:(UIView*)theView;
 
 -(void)popUpView:(UIView*) theView;
+
+- (void) keyboardWillHide: (NSNotification *) notification;
 
 
 @end

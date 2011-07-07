@@ -16,3 +16,9 @@
 #define OTHER_BUTTON		4
 
 #define GALLERY_ROW_HEIGHT	60
+
+#define KEYBOARD_VIEW_SHOW_HEIGHT	110
+#define KEYBOARD_VIEW_HIDE_HEIGHT	320
+
+
+#define	SURFER_VIDEO_URL	@"http://temp.imaginary2008.de//Video-Surfer-DVPAL-16-9.mp4"

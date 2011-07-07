@@ -16,12 +16,14 @@
 @synthesize appcontroller, opaqueView;
 //---------------------------------------------------------------------------------------------
 
-- (void) scrollViewTo:(UIView*)theView movePixels:(int)pixels{	
-	
+- (void) scrollViewTo:(UIView*)theView movePixels:(int)pixels baseView:(UIView*)baseview{	
+	NSLog(@"scrollview");
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
 	
-	CGRect thisViewFrame = [self.view frame];
+	CGRect thisViewFrame = [baseview frame];
+	NSLog(@"x: %f  y: %f  width: %f  height: %f", self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+
 	
 	if (theView) {
 		
@@ -32,7 +34,7 @@
 		thisViewFrame.origin.y = 0;
 	}
 	
-	[self.view setFrame:thisViewFrame];
+	[baseview setFrame:thisViewFrame];
 	[UIView commitAnimations];
 	
 }

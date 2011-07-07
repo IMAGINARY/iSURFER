@@ -11,7 +11,8 @@
 //--------------------------------------------------------------------------------------------------------
 @implementation GoiSurferViewController
 //--------------------------------------------------------------------------------------------------------
-@synthesize equationTextField;
+@synthesize equationTextField, keyboardExtensionBar, baseView;
+//--------------------------------------------------------------------------------------------------------
 
 -(id) initWithAppController:(AppController*)anappCtrl{
 	
@@ -21,15 +22,16 @@
 	return self;
 }
 //--------------------------------------------------------------------------------------------------------
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-	return YES;
+-(void)viewWillAppear:(BOOL)animated{
+	[super viewWillAppear:animated];
+	[self.view setFrame:CGRectMake(0, 0, 480, 370)];
 }
-//--------------------------------------------------------------------------------------------------------
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-	[equationTextField resignFirstResponder];
-	return YES;
+//--------------------------------------------------------------------------------------------------------
+-(IBAction)keyboardBarButtonPressed:(id)sender{
+	UIButton* button = (UIButton*)sender;
+	NSLog(@"%@", button.titleLabel.text);
+	self.equationTextField.text = [equationTextField.text stringByAppendingString:button.titleLabel.text];
 }
 //--------------------------------------------------------------------------------------------------------
 
@@ -37,6 +39,30 @@
 	[equationTextField resignFirstResponder];
 	//aca habria que hacer todo el parseo y validarlo
  }
+#pragma mark Keyboard methods
+
+//--------------------------------------------------------------------------------------------------------
+-(void)showExtKeyboard:(BOOL)yesOrNo {
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+	CGRect r=[keyboardExtensionBar frame];
+	if(yesOrNo){
+		r.origin.y=  KEYBOARD_VIEW_SHOW_HEIGHT;
+	}else{
+		r.origin.y= KEYBOARD_VIEW_HIDE_HEIGHT;
+	}
+	[keyboardExtensionBar setFrame:r];
+	[UIView commitAnimations];
+}
+//--------------------------------------------------------------------------------------------------------
+- (void) keyboardWillHide: (NSNotification *) notification {
+	[self scrollViewTo:nil movePixels:0 baseView:self.baseView];
+	[self showExtKeyboard:NO];
+}
+//---------------------------------------------------------------------------------------------
+- (void) keyboardWillShow: (NSNotification *) notification {	
+	[self showExtKeyboard:YES];
+}
 //--------------------------------------------------------------------------------------------------------
 
 - (void) keyboardDidShow: (NSNotification *) notification {	
@@ -57,27 +83,36 @@
 	UIWindow *keyboardWindow = [allWindows objectAtIndex:topWindow];
 	for (UIView *subView in keyboardWindow.subviews) {
         if ([[subView description] hasPrefix:keyboardPrefix]) {
+			NSLog(@"x: %f  y: %f  width: %f  height: %f", subView.frame.origin.x, subView.frame.origin.y, subView.frame.size.width, subView.frame.size.height);
             [subView addSubview:doneButton];
 			[subView bringSubviewToFront:doneButton];
             break;
         }
     }
 }
+#pragma mark UITextfield delegate
 //--------------------------------------------------------------------------------------------------------
-
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-	[self scrollViewTo:equationTextField movePixels:80];
+	[self scrollViewTo:equationTextField movePixels:55 baseView:self.baseView];
   	return YES;
 }
-
-
 //--------------------------------------------------------------------------------------------------------
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+	[equationTextField resignFirstResponder];
+	return YES;
+}
+//--------------------------------------------------------------------------------------------------------
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+	return YES;
+}
+//--------------------------------------------------------------------------------------------------------
+#pragma mark dealloc
+
 -(void)dealloc{
 	[super dealloc];
 	[equationTextField release];
+	[keyboardExtensionBar release];
+	[baseView release];
 }
-
-//--------------------------------------------------------------------------------------------------------
-
-
+//---------------------------------------------------------------------------------------------
 @end
