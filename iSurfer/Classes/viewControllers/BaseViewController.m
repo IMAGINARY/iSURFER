@@ -23,8 +23,6 @@
 	
 	CGRect thisViewFrame = [baseview frame];
 	NSLog(@"x: %f  y: %f  width: %f  height: %f", self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-
-	
 	if (theView) {
 		
 		CGRect targetViewFrame = [theView frame];
@@ -36,7 +34,6 @@
 	
 	[baseview setFrame:thisViewFrame];
 	[UIView commitAnimations];
-	
 }
 
 //---------------------------------------------------------------------------------------------
@@ -86,7 +83,7 @@
 //---------------------------------------------------------------------------------------------
 
 - (void) keyboardWillHide: (NSNotification *) notification {	
-	[self scrollViewTo:nil movePixels:0];
+	[self scrollViewTo:nil movePixels:0 baseView:self.view];
 }
 //---------------------------------------------------------------------------------------------
 - (void) keyboardDidShow: (NSNotification *) notification {	
@@ -143,6 +140,11 @@
 	[UIView commitAnimations];
 	[self.opaqueView removeFromSuperview];
 	
+}
+//---------------------------------------------------------------------------------------------
+
+-(IBAction)goBack{
+	[self.appcontroller goBack];
 }
 //---------------------------------------------------------------------------------------------
 

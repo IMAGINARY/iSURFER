@@ -37,6 +37,7 @@
 -(id)initWithNavController:(UINavigationController*)aNavController;
 
 - (void)pushViewControllerWithName:(NSString*)vcName;
+-(void)goBack;
 
 //--------------------------------------------------------------------------------------------------------
 

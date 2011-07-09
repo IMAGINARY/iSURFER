@@ -58,18 +58,18 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self
 												selector:@selector(movieFinishedCallback:)
 												name:MPMoviePlayerPlaybackDidFinishNotification
-											   object:player];
+											   object:nil];
 	
 	// Register to receive a notification when the movie is in memory and ready to play.
     [[NSNotificationCenter defaultCenter] addObserver:self 
 											 selector:@selector(moviePreloadDidFinish:) 
 												 name:MPMoviePlayerContentPreloadDidFinishNotification 
-											   object:player];
+											   object:nil];
 	 
 	[[NSNotificationCenter defaultCenter] addObserver:self 
 											 selector:@selector(moviePlayerLoadStateChanged:) 
 												 name:MPMoviePlayerLoadStateDidChangeNotification 
-											   object:player];
+											   object:nil];
 }
 //------------------------------------------------------------------------------
 
@@ -86,7 +86,6 @@
 }
 //------------------------------------------------------------------------------
 -(void)playVideo{
-	NSLog(@"playing");
 	[[self movieView] addSubview:movie.view];
 	[player play];
 }
@@ -128,7 +127,6 @@
 
 - (void) movieFinishedCallback:(NSNotification*) aNotification {
 	NSLog(@"movieFinishedCallback");
-	player = [aNotification object];
     [player stop];
 	[self.movie.view removeFromSuperview];
 }
@@ -146,11 +144,10 @@
 }
 //------------------------------------------------------------------------------
 -(void)viewWillDisappear:(BOOL)animated{
-	[[NSNotificationCenter defaultCenter] 
-	 removeObserver:self
-	 name:MPMoviePlayerPlaybackDidFinishNotification
-	 object:player];
-	
+	[[NSNotificationCenter defaultCenter]  removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
+	[[NSNotificationCenter defaultCenter]  removeObserver:self name:MPMoviePlayerContentPreloadDidFinishNotification object:player];
+	[[NSNotificationCenter defaultCenter]  removeObserver:self name:MPMoviePlayerLoadStateDidChangeNotification object:player];
+
 	[self stopVideo];
 	self.movie = NULL;
 }

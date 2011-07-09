@@ -24,10 +24,10 @@
 
 
 -(void)dealloc{
-	[super dealloc];
 	[galleryImage release];
 	[galleryDetailLabel release];
 	[galleryTitleLabel release];
+	[super dealloc];
 }
 
 @end
