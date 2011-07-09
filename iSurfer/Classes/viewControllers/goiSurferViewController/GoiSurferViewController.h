@@ -13,19 +13,32 @@
 @interface GoiSurferViewController : BaseViewController <UITextFieldDelegate>{
 	NSMutableArray* optionsViews;
 	
+	//main view
 	IBOutlet UIView* baseView;
+	//equation Textfield
 	IBOutlet UITextField* equationTextField;
+	IBOutlet UIView* equationTextfieldView;
 	IBOutlet UIView* keyboardExtensionBar;
 	
+	// share view outlets
 	IBOutlet UIView* shareView;
 	
+	//Color palette view outlets
 	IBOutlet UIView* colorPaletteView;
 	IBOutlet UIView* colorTestView;
 	IBOutlet UISlider* greenColorSlider;
 	IBOutlet UISlider* blueColorSlider;
 	IBOutlet UISlider* redColorSlider;
+	
+	IBOutlet UIView* algebraicSurfaceView;
 
 }
+@property(nonatomic, retain)	IBOutlet UIView* equationTextfieldView;
+
+
+
+@property(nonatomic, retain)	IBOutlet UIView* algebraicSurfaceView;
+
 
 @property(nonatomic, retain)	IBOutlet UISlider* greenColorSlider;
 

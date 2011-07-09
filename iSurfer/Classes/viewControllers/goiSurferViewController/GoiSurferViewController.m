@@ -7,6 +7,8 @@
 //
 
 #import "GoiSurferViewController.h"
+#import <QuartzCore/QuartzCore.h>
+
 //--------------------------------------------------------------------------------------------------------
 @interface GoiSurferViewController(PrivateMethods)
 -(void)showOptionsViewWrapper:(BOOL)yes view:(UIView*)showingView;
@@ -15,6 +17,7 @@
 @implementation GoiSurferViewController
 //--------------------------------------------------------------------------------------------------------
 @synthesize equationTextField, keyboardExtensionBar, baseView, colorPaletteView, shareView, optionsViews, colorTestView, greenColorSlider, redColorSlider, blueColorSlider;
+@synthesize algebraicSurfaceView, equationTextfieldView;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) initWithAppController:(AppController*)anappCtrl{
@@ -35,14 +38,19 @@
 	[self.colorPaletteView setHidden:YES];
 	self.greenColorSlider.minimumValue = 0;
 	self.greenColorSlider.maximumValue = 255;
-
 	self.redColorSlider.minimumValue = 0;
 	self.redColorSlider.maximumValue = 255;
-
 	self.blueColorSlider.minimumValue = 0;
 	self.blueColorSlider.maximumValue = 255;
 	UIColor* color = [UIColor colorWithRed:self.redColorSlider.value green:self.greenColorSlider.value blue:self.blueColorSlider.value alpha:1.0];
 	[self.colorTestView setBackgroundColor:color];
+	CALayer * layer = [algebraicSurfaceView layer];
+	layer.cornerRadius = 8;
+	CALayer * layer2 = [shareView layer];
+	layer2.cornerRadius = 8;
+	CALayer * layer3 = [colorPaletteView layer];
+	layer3.cornerRadius = 8;
+
 }
 //--------------------------------------------------------------------------------------------------------
 -(void)viewWillAppear:(BOOL)animated{
@@ -115,13 +123,19 @@
 -(void)showExtKeyboard:(BOOL)yesOrNo {
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
-	CGRect r=[keyboardExtensionBar frame];
+	CGRect r=[self.keyboardExtensionBar frame];
+	CGRect eqtxtfldFrame = self.equationTextfieldView.frame;
 	if(yesOrNo){
+		[self.algebraicSurfaceView setAlpha:0.0];
+		eqtxtfldFrame.origin.y = EQUATION_TEXTFIELD_EDITING_HEIGHT;
 		r.origin.y=  KEYBOARD_VIEW_SHOW_HEIGHT;
 	}else{
+		[self.algebraicSurfaceView setAlpha:1.0];
+		eqtxtfldFrame.origin.y = EQUATION_TEXTFIELD_IDLE_HEIGHT;
 		r.origin.y= KEYBOARD_VIEW_HIDE_HEIGHT;
 	}
-	[keyboardExtensionBar setFrame:r];
+	[self.equationTextfieldView setFrame:eqtxtfldFrame];
+	[self.keyboardExtensionBar setFrame:r];
 	[UIView commitAnimations];
 }
 //--------------------------------------------------------------------------------------------------------
@@ -162,13 +176,14 @@
 //--------------------------------------------------------------------------------------------------------
 
 - (void) keyboardDidShow: (NSNotification *) notification {	
+	
 	NSLog(@"keyboarddidshow");
 	UIButton *doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	doneButton.frame = CGRectMake(0, 123, 158,39); 
 
     doneButton.adjustsImageWhenHighlighted = NO;
-    [doneButton setImage:[UIImage imageNamed:@"doneup.png"] forState:UIControlStateNormal];
-    [doneButton setImage:[UIImage imageNamed:@"donedown.png"] forState:UIControlStateHighlighted];
+    [doneButton setImage:[UIImage imageNamed:@"done_up.png"] forState:UIControlStateNormal];
+    [doneButton setImage:[UIImage imageNamed:@"done_down.png"] forState:UIControlStateHighlighted];
     [doneButton addTarget:self action:@selector(doneButtonPressed) forControlEvents:UIControlEventTouchUpInside];
 	
 	NSString *keyboardPrefix = [[[UIDevice currentDevice] systemVersion] floatValue] >= 3.2 ? @"<UIPeripheralHost" : @"<UIKeyboard";
@@ -183,11 +198,12 @@
             break;
         }
     }
+	 
 }
 #pragma mark UITextfield delegate
 //--------------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-	[self scrollViewTo:equationTextField movePixels:55 baseView:self.baseView];
+	[self scrollViewTo:equationTextfieldView movePixels:70 baseView:self.baseView];
   	return YES;
 }
 //--------------------------------------------------------------------------------------------------------
@@ -213,6 +229,8 @@
 	[greenColorSlider release];
 	[blueColorSlider release];
 	[redColorSlider release];
+	[equationTextfieldView release];
+	[algebraicSurfaceView release];
 	[super dealloc];
 }
 //---------------------------------------------------------------------------------------------
