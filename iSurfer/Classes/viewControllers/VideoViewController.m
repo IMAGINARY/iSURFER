@@ -15,11 +15,9 @@
 //------------------------------------------------------------------------------
 @implementation VideoViewController
 //------------------------------------------------------------------------------
-
 @synthesize movieView;
 @synthesize movie;
 @synthesize player;
-
 //------------------------------------------------------------------------------
 
 -(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -44,6 +42,8 @@
 //------------------------------------------------------------------------------
 
 -(void)loadVideo:(NSURL*)url{
+	[self setLoadingScreenVisible:YES];
+
 	MPMoviePlayerViewController *tmpplayerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
 	[self setMovie:tmpplayerViewController];
 	[tmpplayerViewController release];
@@ -86,6 +86,8 @@
 }
 //------------------------------------------------------------------------------
 -(void)playVideo{
+	[self setLoadingScreenVisible:NO];
+
 	[[self movieView] addSubview:movie.view];
 	[player play];
 }
@@ -167,5 +169,4 @@
     [super dealloc];
 }
 //------------------------------------------------------------------------------
-
 @end

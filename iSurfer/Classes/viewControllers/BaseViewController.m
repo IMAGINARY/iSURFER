@@ -9,11 +9,10 @@
 #import "BaseViewController.h"
 #include <QuartzCore/QuartzCore.h>
 
-
+//---------------------------------------------------------------------------------------------
 @implementation BaseViewController
 //---------------------------------------------------------------------------------------------
-
-@synthesize appcontroller, opaqueView;
+@synthesize appcontroller, opaqueView, activityView;
 //---------------------------------------------------------------------------------------------
 
 - (void) scrollViewTo:(UIView*)theView movePixels:(int)pixels baseView:(UIView*)baseview{	
@@ -35,7 +34,6 @@
 	[baseview setFrame:thisViewFrame];
 	[UIView commitAnimations];
 }
-
 //---------------------------------------------------------------------------------------------
 
 // Override to allow orientations other than the default portrait orientation.
@@ -78,8 +76,6 @@
                                                      name:UIKeyboardDidShowNotification 
                                                    object:nil];
 }
-
-
 //---------------------------------------------------------------------------------------------
 
 - (void) keyboardWillHide: (NSNotification *) notification {	
@@ -101,59 +97,59 @@
 }
 //---------------------------------------------------------------------------------------------
 
+-(void)setLoadingScreenVisible:(BOOL)yes{
+	
+	if( yes ){
+		UIView *tmpView = [[UIView alloc] initWithFrame:[self.view frame]];
+		[self setOpaqueView:tmpView];
+		[tmpView release];
+		UIActivityIndicatorView * loadingView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];	
+		[self setActivityView:loadingView];
+		[loadingView release];
+		
+		[opaqueView setBackgroundColor:[UIColor blackColor]];
+		[opaqueView setAlpha:0];
+		[UIView beginAnimations:nil context:NULL];
+		[UIView setAnimationDuration:0.3];
+		[self.opaqueView setAlpha:0.4];
 
--(void)popUpView:(UIView*) theView{
-	
-	UIView *tmpView = [[UIView alloc] initWithFrame:[self.view frame]];
-	[self setOpaqueView:tmpView];
-	[tmpView release];
-	
-	[opaqueView setBackgroundColor:[UIColor blackColor]];
-	[opaqueView setAlpha:0];
-	[opaqueView setHidden:NO];
-	[theView setAlpha:0];
-	[theView setHidden:NO];
-	
-	
-	[self.view addSubview:opaqueView];
-	[self.view bringSubviewToFront:opaqueView];
-	[self.view bringSubviewToFront:theView];
-	
-	[UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:0.3];
-	[self.opaqueView setAlpha:0.4];
-	
-	[theView setAlpha:1];
+		[self.view addSubview:opaqueView];
+		[self.opaqueView addSubview:activityView];
+		[self.view bringSubviewToFront:opaqueView];
+		[self.opaqueView bringSubviewToFront:activityView];
+		[self.activityView startAnimating];
+		CGRect fv = [self.view frame];
+		CGRect fa = [activityView frame];
+		fa.origin.x = (fv.size.width - fa.size.width) / 2;
+		fa.origin.y = (fv.size.height - fa.size.height) / 2;
+		[activityView setFrame:fa];
+	}else{
+		[UIView beginAnimations:nil context:NULL];
+		[UIView setAnimationDuration:0.3];
+		[self.activityView stopAnimating];
+		[opaqueView setAlpha:0];
+	}
 	
 	[UIView commitAnimations];
 	
+	if( !yes && opaqueView && activityView){
+		[self.activityView removeFromSuperview];
+		[self.opaqueView removeFromSuperview];
+		self.opaqueView = nil;
+		self.activityView = nil;
+	}
 }
 //------------------------------------------------------------------------------
-
--(void)popDownView:(UIView*)theView{
-	NSLog(@"popdown");
-	[UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:0.3];
-	[self.opaqueView setAlpha:0];
-	[theView setAlpha:0];
-	
-	[UIView commitAnimations];
-	[self.opaqueView removeFromSuperview];
-	
-}
-//---------------------------------------------------------------------------------------------
 
 -(IBAction)goBack{
 	[self.appcontroller goBack];
 }
 //---------------------------------------------------------------------------------------------
 
-
 -(void)dealloc{
-	[appcontroller release];
 	[opaqueView release];
+	[activityView release];
 	[super dealloc];
 }
 //---------------------------------------------------------------------------------------------
-
 @end

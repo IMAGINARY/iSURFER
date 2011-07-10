@@ -15,9 +15,12 @@
 
 	AppController* appcontroller;
 	UIView* opaqueView;
+	UIActivityIndicatorView* activityView;
 }
 //---------------------------------------------------------------------------------------------
-@property (nonatomic, retain) UIView* opaqueView;
+@property(nonatomic, retain)	UIActivityIndicatorView* activityView;
+
+@property(nonatomic, retain)	UIView* opaqueView;
 @property(nonatomic, assign)	AppController* appcontroller;
 //---------------------------------------------------------------------------------------------
 
@@ -26,9 +29,7 @@
 
 - (UIImage *)captureView:(UIView *)theView;
 
--(void)popDownView:(UIView*)theView;
-
--(void)popUpView:(UIView*) theView;
+-(void)setLoadingScreenVisible:(BOOL)yes;
 
 - (void) keyboardWillHide: (NSNotification *) notification;
 
