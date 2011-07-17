@@ -18,14 +18,7 @@
 @synthesize movieView;
 @synthesize movie;
 @synthesize player;
-//------------------------------------------------------------------------------
 
--(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-	if(self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]){
-		
-	}
-	return self;
-}
 //------------------------------------------------------------------------------
 
 -(void)loadVideoWithName:(NSString*)name ofType:(NSString*)type{
@@ -114,7 +107,6 @@
 		NSLog(@"Playthrough %d",  state & MPMovieLoadStatePlaythroughOK );
 
 		if( ( state & MPMovieLoadStatePlaythroughOK ) || ( state & MPMovieLoadStatePlayable )) {
-			NSLog(@"State is Playthrough OK");
 			[self.movieView setHidden:NO];
 			[self playVideo];
 		}

@@ -9,10 +9,20 @@
 #import <Foundation/Foundation.h>
 #import "BaseViewController.h"
 
-@interface MyGalleriesViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource>{
+@interface MyGalleriesViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate>{
 
 	IBOutlet UITableView* galleriesTable;
+	edditingOption eddition;
+	BOOL tableIsEdditing;
+	UIBarButtonItem* toolbar;
+	NSMutableArray* galleriesArray;
 }
+
+@property(nonatomic, retain)	NSMutableArray* galleriesArray;
+
+
+
+@property(nonatomic, retain)	UIBarButtonItem* toolbar;
 
 
 @property(nonatomic, retain)	IBOutlet UITableView* galleriesTable;

@@ -152,4 +152,15 @@
 	[super dealloc];
 }
 //---------------------------------------------------------------------------------------------
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+	[self scrollViewTo:textField movePixels:70 baseView:self.view];
+  	return YES;
+}
+//--------------------------------------------------------------------------------------------------------
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+	[textField resignFirstResponder];
+	return YES;
+}
+//--------------------------------------------------------------------------------------------------------
+
 @end

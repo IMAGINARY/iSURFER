@@ -19,26 +19,20 @@
 	GoiSurferViewController* goiSurferViewController;
 	MyGalleriesViewController* myGalleriesViewController;
 	HelpViewController* helpViewController;
-
 }
 //--------------------------------------------------------------------------------------------------------
 @property(nonatomic, retain)	UINavigationController* navcontroller;
-
 @property(nonatomic, retain)	MyGalleriesViewController* myGalleriesViewController;
 @property(nonatomic, retain)	MainMenuViewController * mainMenuViewController;
 @property(nonatomic, retain)	GoiSurferViewController* goiSurferViewController;
 @property(nonatomic, retain)	HelpViewController* helpViewController;
-
-
-
 //--------------------------------------------------------------------------------------------------------
-
 
 -(id)initWithNavController:(UINavigationController*)aNavController;
 
 - (void)pushViewControllerWithName:(NSString*)vcName;
+
 -(void)goBack;
 
 //--------------------------------------------------------------------------------------------------------
-
 @end

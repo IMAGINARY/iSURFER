@@ -9,14 +9,10 @@
 #import "iSurferAppDelegate.h"
 #import "SplashScreenViewController.h"
 //--------------------------------------------------------------------------------------------------------
-
 @implementation iSurferAppDelegate
 //--------------------------------------------------------------------------------------------------------
-
 @synthesize window, appController, navcontroller;
-
 //--------------------------------------------------------------------------------------------------------
-
 #pragma mark -
 #pragma mark Application lifecycle
 //--------------------------------------------------------------------------------------------------------
@@ -36,16 +32,13 @@
 	
 	SplashScreenViewController* tmpSplash = [[[SplashScreenViewController alloc]init]autorelease];
 	[self.navcontroller pushViewController:tmpSplash animated:NO];
-
 		
     [self.window addSubview:navcontroller.view];
     [self.window makeKeyAndVisible];
 
-	
     return YES;
 }
 //--------------------------------------------------------------------------------------------------------
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*
@@ -55,7 +48,6 @@
 }
 //--------------------------------------------------------------------------------------------------------
 
-
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     /*
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
@@ -64,14 +56,12 @@
 }
 //--------------------------------------------------------------------------------------------------------
 
-
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
 }
 //--------------------------------------------------------------------------------------------------------
-
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     /*
@@ -80,7 +70,6 @@
 }
 //--------------------------------------------------------------------------------------------------------
 
-
 - (void)applicationWillTerminate:(UIApplication *)application {
     /*
      Called when the application is about to terminate.
@@ -88,8 +77,6 @@
      */
 }
 //--------------------------------------------------------------------------------------------------------
-
-
 #pragma mark -
 #pragma mark Memory management
 
@@ -100,7 +87,6 @@
 }
 //--------------------------------------------------------------------------------------------------------
 
-
 - (void)dealloc {
 	[appController release];
 	[navcontroller release];
@@ -108,6 +94,4 @@
     [super dealloc];
 }
 //--------------------------------------------------------------------------------------------------------
-
-
 @end

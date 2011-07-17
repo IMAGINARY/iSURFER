@@ -26,5 +26,18 @@
 #define EQUATION_TEXTFIELD_IDLE_HEIGHT	275
 #define EQUATION_TEXTFIELD_EDITING_HEIGHT 255
 
+typedef enum {
+	MOVE = 0,
+	DELETE,
+	ADD,
+}edditingOption;
+
+typedef enum {
+	MOVE_BUTTON = 10,
+	DELETE_BUTTON,
+	ADD_BUTTON,
+}edittingButtons;
+
+
 
 #define	SURFER_VIDEO_URL	@"http://temp.imaginary2008.de//Video-Surfer-DVPAL-16-9.mp4"

@@ -13,13 +13,10 @@
 #import "HelpViewController.h"
 #import "SplashScreenViewController.h"
 //--------------------------------------------------------------------------------------------------------
-
-
 @implementation AppController
-
+//--------------------------------------------------------------------------------------------------------
 @synthesize mainMenuViewController, navcontroller, goiSurferViewController, myGalleriesViewController, helpViewController;
 //--------------------------------------------------------------------------------------------------------
-
 
 -(id)initWithNavController:(UINavigationController*)aNavController{
 	if (self = [self init]) {

@@ -31,11 +31,15 @@
 	IBOutlet UISlider* redColorSlider;
 	
 	IBOutlet UIView* algebraicSurfaceView;
+	
+	IBOutlet UIImageView* rotateimage;
 
 }
+@property(nonatomic, retain)	IBOutlet UIImageView* rotateimage;
+
+
+
 @property(nonatomic, retain)	IBOutlet UIView* equationTextfieldView;
-
-
 
 @property(nonatomic, retain)	IBOutlet UIView* algebraicSurfaceView;
 

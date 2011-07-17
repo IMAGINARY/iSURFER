@@ -17,7 +17,7 @@
 @implementation GoiSurferViewController
 //--------------------------------------------------------------------------------------------------------
 @synthesize equationTextField, keyboardExtensionBar, baseView, colorPaletteView, shareView, optionsViews, colorTestView, greenColorSlider, redColorSlider, blueColorSlider;
-@synthesize algebraicSurfaceView, equationTextfieldView;
+@synthesize algebraicSurfaceView, equationTextfieldView,rotateimage ;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) initWithAppController:(AppController*)anappCtrl{
@@ -231,6 +231,7 @@
 	[redColorSlider release];
 	[equationTextfieldView release];
 	[algebraicSurfaceView release];
+	[rotateimage release];
 	[super dealloc];
 }
 //---------------------------------------------------------------------------------------------
