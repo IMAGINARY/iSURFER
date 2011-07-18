@@ -15,7 +15,7 @@
 //--------------------------------------------------------------------------------------------------------
 @implementation AppController
 //--------------------------------------------------------------------------------------------------------
-@synthesize mainMenuViewController, navcontroller, goiSurferViewController, myGalleriesViewController, helpViewController;
+@synthesize mainMenuViewController, navcontroller, goiSurferViewController, myGalleriesViewController, helpViewController, galleriesArray;
 //--------------------------------------------------------------------------------------------------------
 
 -(id)initWithNavController:(UINavigationController*)aNavController{
@@ -46,6 +46,31 @@
 		[self setHelpViewController:tmphelp];
 		[tmphelp release];
 		
+		NSMutableArray* tmparray = [[NSMutableArray alloc]init];
+		[self setGalleriesArray:tmparray];
+		[tmparray release];
+		
+		Gallery* gal1 = [[Gallery alloc]init];
+		gal1.galleryName = @"galery1";
+		gal1.galleryDescription = @"description1";
+		
+		Gallery* gal2 = [[Gallery alloc]init];
+		gal2.galleryName = @"galery2";
+		gal2.galleryDescription = @"description2";
+
+		Gallery* gal3 = [[Gallery alloc]init];
+		gal3.galleryName = @"galery3";
+		gal3.galleryDescription = @"description3";
+
+		Gallery* gal4 = [[Gallery alloc]init];
+		gal4.galleryName = @"galery4";
+		gal4.galleryDescription = @"description4";
+		
+		[self.galleriesArray addObject:gal1];
+		[self.galleriesArray addObject: gal2];
+		[self.galleriesArray addObject:gal3];
+		[self.galleriesArray addObject:gal4];
+
 		[self performSelector:@selector(showMainMenu) withObject:nil afterDelay:SPLASH_DELAY];
 				
 	}	
@@ -92,16 +117,34 @@
 
 #pragma mark dealloc
 -(void)dealloc{
-	[super dealloc];
 	[navcontroller release];
 	[mainMenuViewController release];
 	[goiSurferViewController release];
 	[myGalleriesViewController release];
 	[helpViewController release];
+	[galleriesArray release];
+	[super dealloc];
 }
 
 //--------------------------------------------------------------------------------------------------------
 
+-(void)addGallery:(Gallery*)gallery atIndex:(int) index{
+	if( index == 0 ){
+		[self.galleriesArray addObject:gallery];
+	}else{
+		[self.galleriesArray insertObject:gallery atIndex:index];
+	}
+}
+//--------------------------------------------------------------------------------------------------------
 
+-(void)removeGalleryAtRow:(int)row{
+	[self.galleriesArray removeObjectAtIndex:row];
+}
+//--------------------------------------------------------------------------------------------------------
+
+-(NSMutableArray*)getGalleries{
+	return self.galleriesArray;
+}
+//--------------------------------------------------------------------------------------------------------
 
 @end

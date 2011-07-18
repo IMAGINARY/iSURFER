@@ -7,20 +7,33 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Gallery.h"
 @class MainMenuViewController;
 @class GoiSurferViewController;
 @class MyGalleriesViewController;
 @class HelpViewController;
+
+@protocol GalleryProtocol
+
+-(void)addGallery:(Gallery*)gallery atIndex:(int) index;
+-(void)removeGalleryAtRow:(int)row;
+
+@end
+
+
 //-------------------------------------------------------------------------------------------------------
-@interface AppController : NSObject <UINavigationControllerDelegate> {
+@interface AppController : NSObject <UINavigationControllerDelegate, GalleryProtocol> {
 	UINavigationController* navcontroller;
 	
 	MainMenuViewController * mainMenuViewController;
 	GoiSurferViewController* goiSurferViewController;
 	MyGalleriesViewController* myGalleriesViewController;
 	HelpViewController* helpViewController;
+	
+	NSMutableArray* galleriesArray;
 }
 //--------------------------------------------------------------------------------------------------------
+@property(nonatomic, retain)	NSMutableArray* galleriesArray;
 @property(nonatomic, retain)	UINavigationController* navcontroller;
 @property(nonatomic, retain)	MyGalleriesViewController* myGalleriesViewController;
 @property(nonatomic, retain)	MainMenuViewController * mainMenuViewController;
@@ -33,6 +46,8 @@
 - (void)pushViewControllerWithName:(NSString*)vcName;
 
 -(void)goBack;
+
+-(NSMutableArray*)getGalleries;
 
 //--------------------------------------------------------------------------------------------------------
 @end

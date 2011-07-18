@@ -12,7 +12,7 @@
 //--------------------------------------------------------------------------------------------------------
 @implementation MyGalleriesViewController
 //--------------------------------------------------------------------------------------------------------
-@synthesize galleriesTable, toolbar, galleriesArray;
+@synthesize galleriesTable, toolbar;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) initWithAppController:(AppController*)anappCtrl{
@@ -20,32 +20,33 @@
 	if (self = [super initWithNibName:@"MyGalleriesViewController" bundle:[NSBundle mainBundle]]) {
 		
 		[self setAppcontroller:anappCtrl];
-		NSMutableArray* tmparray = [[NSMutableArray alloc]init];
-		[self setGalleriesArray:tmparray];
-		[tmparray release];
-		
+			
 	}
 	return self;
 }
 //--------------------------------------------------------------------------------------------------------
 -(void)viewWillAppear:(BOOL)animated{
+	NSLog(@"viewWillAppear");
+	[galleriesTable reloadData];
 	tableIsEdditing = NO;
 	[super viewWillAppear:animated];
+}
+//--------------------------------------------------------------------------------------------------------
+-(void)viewWillDisappear:(BOOL)animated{
+	[self stopEditting];
+	[super viewWillDisappear:animated];
 }
 //--------------------------------------------------------------------------------------------------------
 
 -(void)viewDidLoad{
 	[super viewDidLoad];
 	self.title = @"Galleries";
-	
+	galleries = [appcontroller getGalleries];
 	UIImage* img = [UIImage imageNamed:@"icon_sort_order"];
 	if( img == NULL)
 		NSLog(@"iamge null");
 	
-	[self.galleriesArray addObject:@"gallery1"];
-	[self.galleriesArray addObject: @"gallery2"];
-	[self.galleriesArray addObject:@"gallery3"];
-
+	
 	//UIButton *moveButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_sort_order"] style:UIBarButtonItemStylePlain target:nil action:nil];
 	/*
 	UIButton *somebutton = [[UIButton alloc] initWithFrame:CGRectMake(0, 3, 30, 30)];
@@ -139,7 +140,9 @@
 			}
 		}
 	}
-	[cell.galleryTitleLabel setText:[NSString stringWithFormat:@"label %d", indexPath.row]];
+	Gallery* gallery = [galleries objectAtIndex:[indexPath row]];
+	[cell.galleryTitleLabel setText:gallery.galleryName];
+	[cell.galleryDetailLabel setText:gallery.galleryDescription];
 	//	 cell.showsReorderControl = YES;
 	
 	return cell;
@@ -147,7 +150,7 @@
 //--------------------------------------------------------------------------------------------------------
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-	return [galleriesArray count];
+	return [[appcontroller getGalleries] count];
 }
 //--------------------------------------------------------------------------------------------------------
 
@@ -188,16 +191,16 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath{
 	NSUInteger fromRow = [fromIndexPath row];
 	NSUInteger toRow = [toIndexPath row];
-	//id object = [[list objectAtIndex:fromRow] retain];
-//	[list removeObjectAtIndex:fromRow];
-//	[list insertObject:object atIndex:toRow];
-//	[object release];
+	Gallery* gal = [[galleries objectAtIndex:fromRow] retain];
+	[appcontroller  removeGalleryAtRow:fromRow];
+	[appcontroller   addGallery:gal atIndex:toRow];
+	[gal release];
 }
 //--------------------------------------------------------------------------------------------------------
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSUInteger row = [indexPath row];
-	[self.galleriesArray removeObjectAtIndex:row];
+	[self.appcontroller removeGalleryAtRow:row];
 	[self.galleriesTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 //--------------------------------------------------------------------------------------------------------
@@ -205,7 +208,6 @@
 -(void)dealloc{
 	[galleriesTable release];
 	[toolbar release];
-	[galleriesArray release];
 	[super dealloc];
 }
 //--------------------------------------------------------------------------------------------------------

@@ -1,0 +1,21 @@
+//
+//  Gallery.h
+//  iSurfer
+//
+//  Created by Damian Modernell on 7/17/11.
+//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+
+@interface Gallery : NSObject {
+	NSString* galleryName;
+	NSString* galleryDescription;
+}
+
+@property(nonatomic, retain)	NSString* galleryName;
+@property(nonatomic, retain)	NSString* galleryDescription;
+
+
+@end

@@ -11,12 +11,18 @@
 
 @interface AddNewGalleryViewController : BaseViewController {
 	IBOutlet UIView* textfieldsView;
-
+	IBOutlet UITextField* galleryName;
+	IBOutlet UITextField* galleryDescription;
+//	id<GalleryProtocol> galleryController;
 }
 
 @property(nonatomic, retain)	IBOutlet UIView* textfieldsView;
+@property(nonatomic, retain)	IBOutlet UITextField* galleryName;
+@property(nonatomic, retain)	IBOutlet UITextField* galleryDescription;
+
 
 -(id) initWithAppController:(AppController*)anappCtrl;
 -(IBAction)cancelSave;
+-(IBAction)addGallery;
 
 @end
