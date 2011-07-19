@@ -12,8 +12,10 @@
 @interface Gallery : NSObject {
 	NSString* galleryName;
 	NSString* galleryDescription;
+	NSMutableArray* surfacesArray;
 }
 
+@property(nonatomic, retain)	NSMutableArray* surfacesArray;
 @property(nonatomic, retain)	NSString* galleryName;
 @property(nonatomic, retain)	NSString* galleryDescription;
 

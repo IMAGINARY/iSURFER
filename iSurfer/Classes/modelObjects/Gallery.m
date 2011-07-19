@@ -11,12 +11,13 @@
 
 @implementation Gallery
 
-@synthesize galleryName, galleryDescription;
+@synthesize galleryName, galleryDescription, surfacesArray;
 
 -(id) init{	
 	if (self = [super init]) {
 		self.galleryName = @"";
 		self.galleryDescription = @"";
+		surfacesArray = [[NSMutableArray alloc]init];
 	}
 	return self;
 }
@@ -24,6 +25,7 @@
 -(void)dealloc{
 	[galleryName release];
 	[galleryDescription release];
+	[surfacesArray release];
 	[super dealloc];
 }
 

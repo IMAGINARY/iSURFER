@@ -112,7 +112,7 @@
 //--------------------------------------------------------------------------------------------------------
 #pragma mark tableView methods
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
-	
+	[appcontroller accesGallery:[indexPath row]];
 }
 //--------------------------------------------------------------------------------------------------------
 

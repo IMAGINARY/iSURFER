@@ -12,6 +12,10 @@
 #import "MyGalleriesViewController.h"
 #import "HelpViewController.h"
 #import "SplashScreenViewController.h"
+#import "GalleryViewController.h"
+
+//Despues sacar este import
+#import "AlgebraicSurface.h"
 //--------------------------------------------------------------------------------------------------------
 @implementation AppController
 //--------------------------------------------------------------------------------------------------------
@@ -53,6 +57,27 @@
 		Gallery* gal1 = [[Gallery alloc]init];
 		gal1.galleryName = @"galery1";
 		gal1.galleryDescription = @"description1";
+		
+		AlgebraicSurface* surface = [[AlgebraicSurface alloc]init];
+		[surface setThumbNailImage:[UIImage imageNamed:@"facebook_icon.png"]];
+		AlgebraicSurface* surface2 = [[AlgebraicSurface alloc]init];
+		[surface2 setThumbNailImage:[UIImage imageNamed:@"Logo-twitter.png"]];
+		AlgebraicSurface* surface3 = [[AlgebraicSurface alloc]init];
+		[surface3 setThumbNailImage:[UIImage imageNamed:@"Imaginary lemon.jpg"]];
+		AlgebraicSurface* surface4 = [[AlgebraicSurface alloc]init];
+		[surface4 setThumbNailImage:[UIImage imageNamed:@"facebook_icon.png"]];
+		AlgebraicSurface* surface5 = [[AlgebraicSurface alloc]init];
+		[surface5 setThumbNailImage:[UIImage imageNamed:@"facebook_icon.png"]];
+		AlgebraicSurface* surface6 = [[AlgebraicSurface alloc]init];
+		[surface6 setThumbNailImage:[UIImage imageNamed:@"facebook_icon.png"]];
+		[gal1.surfacesArray addObject:surface];
+		[gal1.surfacesArray addObject:surface2];
+		[gal1.surfacesArray addObject:surface3];
+		[gal1.surfacesArray addObject:surface4];
+		[gal1.surfacesArray addObject:surface5];
+		[gal1.surfacesArray addObject:surface6];
+
+	
 		
 		Gallery* gal2 = [[Gallery alloc]init];
 		gal2.galleryName = @"galery2";
@@ -105,10 +130,7 @@
 //--------------------------------------------------------------------------------------------------------
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
-	
 }
-
-
 //--------------------------------------------------------------------------------------------------------
 -(void)goBack{
 	[self.navcontroller popViewControllerAnimated:YES];
@@ -144,6 +166,12 @@
 
 -(NSMutableArray*)getGalleries{
 	return self.galleriesArray;
+}
+//--------------------------------------------------------------------------------------------------------
+
+-(void)accesGallery:(int)row{
+	GalleryViewController* gallery = [[GalleryViewController alloc]initWithAppController:self andGallery:[self.galleriesArray objectAtIndex:row]];
+	[self.navcontroller pushViewController:gallery animated:YES];
 }
 //--------------------------------------------------------------------------------------------------------
 
