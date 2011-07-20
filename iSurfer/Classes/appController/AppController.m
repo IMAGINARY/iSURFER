@@ -13,6 +13,7 @@
 #import "HelpViewController.h"
 #import "SplashScreenViewController.h"
 #import "GalleryViewController.h"
+#import "SaveAlgebraicSurfaceViewController.h"
 
 //Despues sacar este import
 #import "AlgebraicSurface.h"
@@ -136,6 +137,14 @@
 	[self.navcontroller popViewControllerAnimated:YES];
 }
 //--------------------------------------------------------------------------------------------------------
+/*
+-(void)goToSaveImage{
+	SaveAlgebraicSurfaceViewController* saveimg = [[SaveAlgebraicSurfaceViewController alloc]initWithAppController:self];
+	[self.navcontroller pushViewController:saveimg animated:YES];
+	[saveimg release];
+}
+ */
+//--------------------------------------------------------------------------------------------------------
 
 #pragma mark dealloc
 -(void)dealloc{
@@ -172,6 +181,20 @@
 -(void)accesGallery:(int)row{
 	GalleryViewController* gallery = [[GalleryViewController alloc]initWithAppController:self andGallery:[self.galleriesArray objectAtIndex:row]];
 	[self.navcontroller pushViewController:gallery animated:YES];
+}
+//--------------------------------------------------------------------------------------------------------
+-(Gallery*)getGallery:(int)index{
+	return [self.galleriesArray objectAtIndex:index];
+}
+//--------------------------------------------------------------------------------------------------------
+-(int)getGalleriesCount{
+	return [self.galleriesArray count];
+}
+//--------------------------------------------------------------------------------------------------------
+
+-(void)addAlgebraicSurface:(AlgebraicSurface*)surface atGalleryIndex:(int)index{
+	Gallery* g = [self.galleriesArray objectAtIndex:index];
+	[g addAlgebraicSurface:surface];
 }
 //--------------------------------------------------------------------------------------------------------
 

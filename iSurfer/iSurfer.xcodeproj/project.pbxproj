@@ -20,6 +20,9 @@
 		8B29FAB213D4F30C00EDB516 /* AlgebraicSurface.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B29FAB113D4F30C00EDB516 /* AlgebraicSurface.m */; };
 		8B29FB4513D4FF9B00EDB516 /* SurfaceCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B29FB4413D4FF9B00EDB516 /* SurfaceCellView.m */; };
 		8B29FB4713D4FFA600EDB516 /* SurfaceCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B29FB4613D4FFA600EDB516 /* SurfaceCellView.xib */; };
+		8B29FCFD13D654DC00EDB516 /* SaveAlgebraicSurfaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B29FCFC13D654DC00EDB516 /* SaveAlgebraicSurfaceViewController.m */; };
+		8B29FCFF13D654EC00EDB516 /* SaveAlgebraicSurfaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B29FCFE13D654EC00EDB516 /* SaveAlgebraicSurfaceViewController.xib */; };
+		8B29FD0813D6685600EDB516 /* Black Line.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B29FD0713D6685600EDB516 /* Black Line.png */; };
 		8B3080F513BBEC6900EA792E /* GoiSurferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3080F413BBEC6900EA792E /* GoiSurferViewController.m */; };
 		8B3080F813BBEC7D00EA792E /* MyGalleriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3080F713BBEC7D00EA792E /* MyGalleriesViewController.m */; };
 		8B3080FA13BBECA900EA792E /* GoiSurferViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3080F913BBECA900EA792E /* GoiSurferViewController.xib */; };
@@ -77,6 +80,10 @@
 		8B29FB4313D4FF9B00EDB516 /* SurfaceCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurfaceCellView.h; sourceTree = "<group>"; };
 		8B29FB4413D4FF9B00EDB516 /* SurfaceCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurfaceCellView.m; sourceTree = "<group>"; };
 		8B29FB4613D4FFA600EDB516 /* SurfaceCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurfaceCellView.xib; sourceTree = "<group>"; };
+		8B29FCFB13D654DC00EDB516 /* SaveAlgebraicSurfaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveAlgebraicSurfaceViewController.h; sourceTree = "<group>"; };
+		8B29FCFC13D654DC00EDB516 /* SaveAlgebraicSurfaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveAlgebraicSurfaceViewController.m; sourceTree = "<group>"; };
+		8B29FCFE13D654EC00EDB516 /* SaveAlgebraicSurfaceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveAlgebraicSurfaceViewController.xib; sourceTree = "<group>"; };
+		8B29FD0713D6685600EDB516 /* Black Line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black Line.png"; sourceTree = "<group>"; };
 		8B3080F313BBEC6900EA792E /* GoiSurferViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoiSurferViewController.h; sourceTree = "<group>"; };
 		8B3080F413BBEC6900EA792E /* GoiSurferViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoiSurferViewController.m; sourceTree = "<group>"; };
 		8B3080F613BBEC7D00EA792E /* MyGalleriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGalleriesViewController.h; sourceTree = "<group>"; };
@@ -245,6 +252,16 @@
 			path = surfaceCellView;
 			sourceTree = "<group>";
 		};
+		8B29FCFA13D654C900EDB516 /* saveAlgebraicSurfaceViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8B29FCFB13D654DC00EDB516 /* SaveAlgebraicSurfaceViewController.h */,
+				8B29FCFC13D654DC00EDB516 /* SaveAlgebraicSurfaceViewController.m */,
+				8B29FCFE13D654EC00EDB516 /* SaveAlgebraicSurfaceViewController.xib */,
+			);
+			path = saveAlgebraicSurfaceViewController;
+			sourceTree = "<group>";
+		};
 		8B3080EA13BBEBDD00EA792E /* goiSurferViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +333,7 @@
 		8B891CB113BA990B00EE4BC7 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				8B29FD0713D6685600EDB516 /* Black Line.png */,
 				8B43078313C903B3004812EE /* goSurfer_background.png */,
 				8B43078413C903B3004812EE /* green wallpaper.JPG */,
 				8B43078513C903B3004812EE /* iPhone-Wallpapers-4-parquet (1).jpg */,
@@ -351,6 +369,7 @@
 		8BC02C7A13B292B3003E41AC /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8B29FCFA13D654C900EDB516 /* saveAlgebraicSurfaceViewController */,
 				8B29FA4213D4E97700EDB516 /* galleryViewController */,
 				8B30820013BC185C00EA792E /* helpViewController */,
 				8B3080EB13BBEBFA00EA792E /* myGalleriesViewController */,
@@ -451,6 +470,8 @@
 				8B29F94B13D3A20E00EDB516 /* AddNewGalleryViewController.xib in Resources */,
 				8B29FA4713D4E99700EDB516 /* GalleryViewController.xib in Resources */,
 				8B29FB4713D4FFA600EDB516 /* SurfaceCellView.xib in Resources */,
+				8B29FCFF13D654EC00EDB516 /* SaveAlgebraicSurfaceViewController.xib in Resources */,
+				8B29FD0813D6685600EDB516 /* Black Line.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +498,7 @@
 				8B29FA4513D4E98800EDB516 /* GalleryViewController.m in Sources */,
 				8B29FAB213D4F30C00EDB516 /* AlgebraicSurface.m in Sources */,
 				8B29FB4513D4FF9B00EDB516 /* SurfaceCellView.m in Sources */,
+				8B29FCFD13D654DC00EDB516 /* SaveAlgebraicSurfaceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

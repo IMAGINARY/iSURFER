@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "AlgebraicSurface.h"
 
 @interface Gallery : NSObject {
 	NSString* galleryName;
@@ -19,5 +19,6 @@
 @property(nonatomic, retain)	NSString* galleryName;
 @property(nonatomic, retain)	NSString* galleryDescription;
 
+-(void)addAlgebraicSurface:(AlgebraicSurface*)surface;
 
 @end

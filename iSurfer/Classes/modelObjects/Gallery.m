@@ -29,4 +29,8 @@
 	[super dealloc];
 }
 
+-(void)addAlgebraicSurface:(AlgebraicSurface*)surface{
+	[self.surfacesArray addObject:surface];
+}
+
 @end

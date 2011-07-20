@@ -36,27 +36,15 @@
 
 }
 @property(nonatomic, retain)	IBOutlet UIImageView* rotateimage;
-
-
-
 @property(nonatomic, retain)	IBOutlet UIView* equationTextfieldView;
-
 @property(nonatomic, retain)	IBOutlet UIView* algebraicSurfaceView;
-
-
 @property(nonatomic, retain)	IBOutlet UISlider* greenColorSlider;
-
 @property(nonatomic, retain)	IBOutlet UISlider* blueColorSlider;
 @property(nonatomic, retain)	IBOutlet UISlider* redColorSlider;
-
-
 @property(nonatomic, retain)	IBOutlet UIView* colorTestView;
 @property(nonatomic, retain)	NSMutableArray* optionsViews;
-
-
 @property(nonatomic, retain)	IBOutlet UIView* colorPaletteView;
 @property(nonatomic, retain)	IBOutlet UIView* shareView;
-
 @property(nonatomic, retain)	IBOutlet UIView* baseView;
 @property(nonatomic, retain)	IBOutlet UITextField* equationTextField;
 @property(nonatomic, retain)	IBOutlet UIView* keyboardExtensionBar;
@@ -66,5 +54,8 @@
 -(IBAction)hideOptions:(id)sender;
 
 - (IBAction)sliderChanged:(id)sender;
+
+-(IBAction)saveImage;
+
 
 @end

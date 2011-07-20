@@ -21,7 +21,6 @@
 	[UIView setAnimationDuration:0.3];
 	
 	CGRect thisViewFrame = [baseview frame];
-	NSLog(@"x: %f  y: %f  width: %f  height: %f", self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
 	if (theView) {
 		
 		CGRect targetViewFrame = [theView frame];
@@ -33,6 +32,8 @@
 	
 	[baseview setFrame:thisViewFrame];
 	[UIView commitAnimations];
+	NSLog(@"x: %f  y: %f  width: %f  height: %f", baseview.frame.origin.x, baseview.frame.origin.y, baseview.frame.size.width, baseview.frame.size.height);
+
 }
 //---------------------------------------------------------------------------------------------
 

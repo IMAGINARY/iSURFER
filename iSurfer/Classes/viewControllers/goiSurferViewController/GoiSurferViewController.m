@@ -7,6 +7,7 @@
 //
 
 #import "GoiSurferViewController.h"
+#import "SaveAlgebraicSurfaceViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 //--------------------------------------------------------------------------------------------------------
@@ -217,6 +218,14 @@
 }
 //--------------------------------------------------------------------------------------------------------
 #pragma mark dealloc
+
+-(IBAction)saveImage{
+	SaveAlgebraicSurfaceViewController* saveimg = [[SaveAlgebraicSurfaceViewController alloc]initWithAppController:self.appcontroller];
+	[self presentModalViewController:saveimg animated:YES];
+	[saveimg release];
+	//[appcontroller goToSaveImage];
+}
+//--------------------------------------------------------------------------------------------------------
 
 -(void)dealloc{
 	[equationTextField release];
