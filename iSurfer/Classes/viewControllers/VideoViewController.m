@@ -18,7 +18,6 @@
 @synthesize movieView;
 @synthesize movie;
 @synthesize player;
-
 //------------------------------------------------------------------------------
 
 -(void)loadVideoWithName:(NSString*)name ofType:(NSString*)type{
@@ -141,9 +140,10 @@
 	[[NSNotificationCenter defaultCenter]  removeObserver:self name:MPMoviePlayerPlaybackDidFinishNotification object:player];
 	[[NSNotificationCenter defaultCenter]  removeObserver:self name:MPMoviePlayerContentPreloadDidFinishNotification object:player];
 	[[NSNotificationCenter defaultCenter]  removeObserver:self name:MPMoviePlayerLoadStateDidChangeNotification object:player];
-
+	[self setLoadingScreenVisible:NO];
 	[self stopVideo];
 	self.movie = NULL;
+	[super viewWillDisappear:animated];
 }
 //------------------------------------------------------------------------------
 - (void)didReceiveMemoryWarning {
