@@ -33,8 +33,13 @@
 	IBOutlet UIView* algebraicSurfaceView;
 	
 	IBOutlet UIImageView* rotateimage;
+	
+	IBOutlet UIButton* saveButton;
 
 }
+@property(nonatomic, retain)	IBOutlet UIButton* saveButton;
+
+
 @property(nonatomic, retain)	IBOutlet UIImageView* rotateimage;
 @property(nonatomic, retain)	IBOutlet UIView* equationTextfieldView;
 @property(nonatomic, retain)	IBOutlet UIView* algebraicSurfaceView;

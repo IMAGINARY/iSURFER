@@ -55,7 +55,7 @@
 
 -(int)getGalleriesCount;
 
--(void)goToSaveImage;
+//-(void)goToSaveImage;
 
 -(void)addAlgebraicSurface:(AlgebraicSurface*)surface atGalleryIndex:(int)index;
 

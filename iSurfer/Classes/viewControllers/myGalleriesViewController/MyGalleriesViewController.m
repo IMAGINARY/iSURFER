@@ -32,6 +32,29 @@
 	[super viewWillAppear:animated];
 }
 //--------------------------------------------------------------------------------------------------------
+
+-(void)stopEditting{
+	tableIsEdditing = NO;
+	[self.galleriesTable setEditing:NO animated:YES];
+	self.navigationItem.rightBarButtonItem = self.toolbar;
+}
+//--------------------------------------------------------------------------------------------------------
+
+-(void)startEditting{
+	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(stopEditting)];
+	self.navigationItem.rightBarButtonItem = doneButton;
+	[doneButton release];
+	
+	[self.galleriesTable setEditing:YES animated:YES];
+	
+	/*
+	 UIActionSheet* edditingOptions = [[UIActionSheet alloc]initWithTitle:@"Edit galleries" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Change galleries order", @"Delete galleries", @"Add gallery",nil ];
+	 [edditingOptions showInView:self.view];
+	 [edditingOptions release];
+	 */
+}
+
+//--------------------------------------------------------------------------------------------------------
 -(void)viewWillDisappear:(BOOL)animated{
 	[self stopEditting];
 	[super viewWillDisappear:animated];
@@ -42,20 +65,7 @@
 	[super viewDidLoad];
 	self.title = @"Galleries";
 	galleries = [appcontroller getGalleries];
-	UIImage* img = [UIImage imageNamed:@"icon_sort_order"];
-	if( img == NULL)
-		NSLog(@"iamge null");
 	
-	
-	//UIButton *moveButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_sort_order"] style:UIBarButtonItemStylePlain target:nil action:nil];
-	/*
-	UIButton *somebutton = [[UIButton alloc] initWithFrame:CGRectMake(0, 3, 30, 30)];
-	[somebutton setBackgroundImage:img forState:UIControlStateNormal];
-	[somebutton addTarget:self action:@selector(sendmail)
-		 forControlEvents:UIControlEventTouchUpInside];
-	[somebutton setShowsTouchWhenHighlighted:YES];
-	*/
-//	UIBarButtonItem *moveButton =[[UIBarButtonItem alloc] initWithCustomView:somebutton];
 	UIBarButtonItem *moveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(moveGalleries)];
 	moveButton.tag = 1;
 	UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteGalleries)];
@@ -80,6 +90,8 @@
 	[moveButton release];
 	[spaceBetweenButtons release];
 	[deleteButton release];
+	[addButton release];
+	[tmptoolbarItems release];
 }
 //--------------------------------------------------------------------------------------------------------
 -(void)moveGalleries{
@@ -209,28 +221,6 @@
 	[galleriesTable release];
 	[toolbar release];
 	[super dealloc];
-}
-//--------------------------------------------------------------------------------------------------------
-
--(void)stopEditting{
-	tableIsEdditing = NO;
-	[self.galleriesTable setEditing:NO animated:YES];
-	self.navigationItem.rightBarButtonItem = self.toolbar;
-}
-//--------------------------------------------------------------------------------------------------------
-
--(void)startEditting{
-	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(stopEditting)];
-	self.navigationItem.rightBarButtonItem = doneButton;
-	[doneButton release];
-
-	[self.galleriesTable setEditing:YES animated:YES];
-
-	/*
-		UIActionSheet* edditingOptions = [[UIActionSheet alloc]initWithTitle:@"Edit galleries" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Change galleries order", @"Delete galleries", @"Add gallery",nil ];
-		[edditingOptions showInView:self.view];
-		[edditingOptions release];
-	 */
 }
 /*
 //--------------------------------------------------------------------------------------------------------

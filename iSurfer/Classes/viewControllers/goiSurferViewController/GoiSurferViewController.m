@@ -18,7 +18,7 @@
 @implementation GoiSurferViewController
 //--------------------------------------------------------------------------------------------------------
 @synthesize equationTextField, keyboardExtensionBar, baseView, colorPaletteView, shareView, optionsViews, colorTestView, greenColorSlider, redColorSlider, blueColorSlider;
-@synthesize algebraicSurfaceView, equationTextfieldView,rotateimage ;
+@synthesize algebraicSurfaceView, equationTextfieldView,rotateimage, saveButton ;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) initWithAppController:(AppController*)anappCtrl{
@@ -128,9 +128,11 @@
 	CGRect eqtxtfldFrame = self.equationTextfieldView.frame;
 	if(yesOrNo){
 		[self.algebraicSurfaceView setAlpha:0.0];
-		eqtxtfldFrame.origin.y = EQUATION_TEXTFIELD_EDITING_HEIGHT;
+		self.saveButton.alpha = 0.0;
+		 eqtxtfldFrame.origin.y = EQUATION_TEXTFIELD_EDITING_HEIGHT;
 		r.origin.y=  KEYBOARD_VIEW_SHOW_HEIGHT;
 	}else{
+		self.saveButton.alpha = 1.0;
 		[self.algebraicSurfaceView setAlpha:1.0];
 		eqtxtfldFrame.origin.y = EQUATION_TEXTFIELD_IDLE_HEIGHT;
 		r.origin.y= KEYBOARD_VIEW_HIDE_HEIGHT;
@@ -241,6 +243,7 @@
 	[equationTextfieldView release];
 	[algebraicSurfaceView release];
 	[rotateimage release];
+	[saveButton release];
 	[super dealloc];
 }
 //---------------------------------------------------------------------------------------------
