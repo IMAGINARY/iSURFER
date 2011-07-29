@@ -13,9 +13,12 @@
 	IBOutlet UIView* textfieldsView;
 	IBOutlet UITextField* galleryName;
 	IBOutlet UITextField* galleryDescription;
-//	id<GalleryProtocol> galleryController;
+	IBOutlet UINavigationItem* navBar;
+	IBOutlet UIBarButtonItem* saveButton;
 }
 
+@property(nonatomic, retain)	IBOutlet UINavigationItem* navBar;
+@property(nonatomic, retain)	IBOutlet UIBarButtonItem* saveButton;
 @property(nonatomic, retain)	IBOutlet UIView* textfieldsView;
 @property(nonatomic, retain)	IBOutlet UITextField* galleryName;
 @property(nonatomic, retain)	IBOutlet UITextField* galleryDescription;

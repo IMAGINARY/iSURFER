@@ -13,9 +13,22 @@
 	Gallery* gallery;
 	IBOutlet UIScrollView* surfacesScrollView;
 	IBOutlet UIImageView* surfaceImage;
-	
+	IBOutlet UILabel* surfaceEquation;
+
 	IBOutlet UITableView* surfacesTable;
+	
+	UIBarButtonItem* toolbar;
+	
+	edditingOption eddition;
+
+
 }
+@property(nonatomic, retain)	IBOutlet UILabel* surfaceEquation;
+
+
+
+@property(nonatomic, retain)	UIBarButtonItem* toolbar;
+
 
 @property(nonatomic, retain)	Gallery* gallery;
 @property(nonatomic, retain)	IBOutlet UIScrollView* surfacesScrollView;

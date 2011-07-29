@@ -10,17 +10,20 @@
 
 
 @implementation Gallery
-
-@synthesize galleryName, galleryDescription, surfacesArray;
+//--------------------------------------------------------------------------------------------------------
+@synthesize galleryName, galleryDescription, surfacesArray, editable;
+//--------------------------------------------------------------------------------------------------------
 
 -(id) init{	
 	if (self = [super init]) {
 		self.galleryName = @"";
 		self.galleryDescription = @"";
 		surfacesArray = [[NSMutableArray alloc]init];
+		editable = YES;
 	}
 	return self;
 }
+//--------------------------------------------------------------------------------------------------------
 
 -(void)dealloc{
 	[galleryName release];
@@ -28,9 +31,19 @@
 	[surfacesArray release];
 	[super dealloc];
 }
+//--------------------------------------------------------------------------------------------------------
 
 -(void)addAlgebraicSurface:(AlgebraicSurface*)surface{
 	[self.surfacesArray addObject:surface];
 }
+//--------------------------------------------------------------------------------------------------------
+-(void)removeSurfaceAtIndex:(int)index{
+	[self.surfacesArray removeObjectAtIndex:index];
+}
+//--------------------------------------------------------------------------------------------------------
 
+-(AlgebraicSurface*)getSurfaceAtIndex:(int)index{
+	return [self.surfacesArray objectAtIndex:index];
+}
+//--------------------------------------------------------------------------------------------------------
 @end

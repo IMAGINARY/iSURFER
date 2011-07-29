@@ -30,7 +30,8 @@
 #define HIDE_GALLERIES_PICKER	320
 
 typedef enum {
-	MOVE = 0,
+	NONE = 0,
+	MOVE,
 	DELETE,
 	ADD,
 }edditingOption;

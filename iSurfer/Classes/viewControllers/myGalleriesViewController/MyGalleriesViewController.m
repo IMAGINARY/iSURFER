@@ -28,13 +28,14 @@
 -(void)viewWillAppear:(BOOL)animated{
 	NSLog(@"viewWillAppear");
 	[galleriesTable reloadData];
-	tableIsEdditing = NO;
+//	tableIsEdditing = NO;
 	[super viewWillAppear:animated];
 }
 //--------------------------------------------------------------------------------------------------------
 
 -(void)stopEditting{
-	tableIsEdditing = NO;
+//	tableIsEdditing = NO;
+	eddition = NONE;
 	[self.galleriesTable setEditing:NO animated:YES];
 	self.navigationItem.rightBarButtonItem = self.toolbar;
 }
@@ -124,7 +125,6 @@
 //--------------------------------------------------------------------------------------------------------
 #pragma mark tableView methods
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
-	[appcontroller accesGallery:[indexPath row]];
 }
 //--------------------------------------------------------------------------------------------------------
 
@@ -134,7 +134,6 @@
 	}
 	return NO;
 }
-
 //--------------------------------------------------------------------------------------------------------
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -183,9 +182,15 @@
 }
 //--------------------------------------------------------------------------------------------------------
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
-	NSLog(@"editingStyleForRowAtIndexPath:");
+-(BOOL)tableView:(UITableView*)tableView canEditRowAtIndexPath:(NSIndexPath*)indexPath {
+	if( ![[appcontroller getGallery:[indexPath row]]editable] && eddition == DELETE) {
+		return NO;
+	}
+	return YES;
+}
+//--------------------------------------------------------------------------------------------------------
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
 	switch (eddition) {
 		case MOVE:
 			return UITableViewCellEditingStyleNone;
@@ -217,6 +222,11 @@
 }
 //--------------------------------------------------------------------------------------------------------
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	[appcontroller accesGallery:[indexPath row]];
+}
+
+//--------------------------------------------------------------------------------------------------------
 -(void)dealloc{
 	[galleriesTable release];
 	[toolbar release];

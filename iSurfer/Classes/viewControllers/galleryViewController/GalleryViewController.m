@@ -10,11 +10,11 @@
 #import "AlgebraicSurface.h"
 #import "SurfaceCellView.h"
 
-#define BUTTON_SPACE 7
+#define BUTTON_SPACE 25.0
 
 @implementation GalleryViewController
 //--------------------------------------------------------------------------------------------------------
-@synthesize gallery, surfacesScrollView, surfaceImage, surfacesTable;
+@synthesize gallery, surfacesScrollView, surfaceImage, surfacesTable, toolbar, surfaceEquation;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) initWithAppController:(AppController*)anappCtrl andGallery:(Gallery*)aGallery{
@@ -28,11 +28,41 @@
 //--------------------------------------------------------------------------------------------------------
 
 -(void)viewDidLoad{
+	
+	if( [gallery editable] ){
+		
+		UIBarButtonItem *moveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(moveSurfaces)];
+		moveButton.tag = 1;
+		UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteSurfaces)];
+		deleteButton.tag = 2;
+		// Create a spacer.
+		UIBarButtonItem* spaceBetweenButtons = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+		spaceBetweenButtons.width = BUTTON_SPACE;
+		
+		UIToolbar* tmptoolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(30.0f, 0.0f, 130.0f, 33.01f)];
+		tmptoolbar.barStyle = -1; // clear background
+		
+		NSArray* buttons = [NSArray arrayWithObjects:moveButton, spaceBetweenButtons, deleteButton, nil];
+		[tmptoolbar setItems:buttons animated:NO];
+		UIBarButtonItem * tmptoolbarItems = [[UIBarButtonItem alloc] initWithCustomView:tmptoolbar];
+		
+		[self setToolbar:tmptoolbarItems];
+		
+		self.navigationItem.rightBarButtonItem = self.toolbar;
+		[tmptoolbar release];
+		[moveButton release];
+		[spaceBetweenButtons release];
+		[deleteButton release];
+		[tmptoolbarItems release];
+	}
+	
+	/*
 	CGAffineTransform transform = CGAffineTransformMakeRotation(-1.5707963);    
 	self.surfacesTable.transform = transform;  
 	self.surfacesTable.frame = CGRectMake(30, 220, 400, 90);
 //	self.surfacesTable.separatorStyle = UITableViewCellSeparatorStyleSingleLine;   
 	self.surfacesTable.rowHeight = 90;   
+	 */
 /*
 	surfacesScrollView.showsHorizontalScrollIndicator =TRUE;
 	surfacesScrollView.showsVerticalScrollIndicator = FALSE;
@@ -64,6 +94,46 @@
 	[surfacesScrollView setContentSize:CGSizeMake(totalButtonWidth, 70)];
  */
 }
+//--------------------------------------------------------------------------------------------------------
+-(void)stopEditting{
+	eddition = NONE;
+	CGRect thisViewFrame = surfacesTable.frame;
+
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+	self.surfacesTable.frame = CGRectMake(thisViewFrame.origin.x, thisViewFrame.origin.y, thisViewFrame.size.width - 30, thisViewFrame.size.height);
+	[UIView commitAnimations];
+	
+	[self.surfacesTable setEditing:NO animated:YES];
+	self.navigationItem.rightBarButtonItem = self.toolbar;
+}
+//--------------------------------------------------------------------------------------------------------
+
+-(void)startEditting{
+	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(stopEditting)];
+	self.navigationItem.rightBarButtonItem = doneButton;
+	[doneButton release];
+	
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+	CGRect thisViewFrame = surfacesTable.frame;
+	self.surfacesTable.frame = CGRectMake(thisViewFrame.origin.x, thisViewFrame.origin.y, thisViewFrame.size.width + 30, thisViewFrame.size.height);
+	[UIView commitAnimations];
+	
+	[self.surfacesTable setEditing:YES animated:YES];
+}
+//--------------------------------------------------------------------------------------------------------
+
+-(void)moveSurfaces{
+	eddition = MOVE;
+	[self startEditting];
+}
+//--------------------------------------------------------------------------------------------------------
+-(void)deleteSurfaces{
+	eddition = DELETE;
+	[self startEditting];
+}
+//--------------------------------------------------------------------------------------------------------
 
 /*
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -94,16 +164,13 @@
 	UIButton* button = (UIButton*)sender;
 	[self.surfaceImage setImage:[[gallery.surfacesArray objectAtIndex:button.tag]thumbNailImage]];
 }
-
-//--------------------------------------------------------------------------------------------------------
-
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
- */
+*/
 //--------------------------------------------------------------------------------------------------------
 - (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath{
-	return NO;
+	if( eddition == DELETE){
+		return YES;
+	}
+	return NO;	
 }
 
 //--------------------------------------------------------------------------------------------------------
@@ -139,18 +206,37 @@
 }
 //--------------------------------------------------------------------------------------------------------
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-	return 80;
+	return 70;
 }
 //--------------------------------------------------------------------------------------------------------
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
+	if( eddition == MOVE){
+		return YES;
+	}
+	return NO;
+}
+//--------------------------------------------------------------------------------------------------------
+-(BOOL)tableView:(UITableView*)tableView canEditRowAtIndexPath:(NSIndexPath*)indexPath {
+	if( ![ gallery editable] && eddition == DELETE){
+		return NO;
+	}
 	return YES;
 }
+
 //--------------------------------------------------------------------------------------------------------
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
-	NSLog(@"editingStyleForRowAtIndexPath:");
-	return UITableViewCellEditingStyleNone;
-}
+	switch (eddition) {
+		case MOVE:
+			return UITableViewCellEditingStyleNone;
+			break;
+		case DELETE:
+			return UITableViewCellEditingStyleDelete;
+			break;
+		default:
+			break;
+	}
+	return UITableViewCellEditingStyleNone;}
 //--------------------------------------------------------------------------------------------------------
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath{
@@ -164,19 +250,16 @@
 //--------------------------------------------------------------------------------------------------------
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSUInteger row = [indexPath row];
-	[self.appcontroller removeGalleryAtRow:row];
+	[self.gallery removeSurfaceAtIndex:[indexPath row]];
 	[self.surfacesTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-}
-//--------------------------------------------------------------------------------------------------------
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-	CGAffineTransform transform = CGAffineTransformMakeRotation(1.5707963);
-	cell.transform = transform;
 }
 //--------------------------------------------------------------------------------------------------------
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-	[self.surfaceImage setImage:[[gallery.surfacesArray objectAtIndex:[indexPath row]]thumbNailImage]];
+	AlgebraicSurface* surface = [gallery getSurfaceAtIndex:[indexPath row]];
+	[self.surfaceImage setImage:[surface thumbNailImage]];
+	[self.surfaceEquation setText:[surface equation]];
+	[tableView scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:UITableViewScrollPositionMiddle	animated:YES];
 }
 //--------------------------------------------------------------------------------------------------------
 -(void)dealloc{
@@ -184,6 +267,8 @@
 	[surfacesScrollView release];
 	[surfaceImage release];
 	[surfacesTable release];
+	[toolbar release];
+	[surfaceEquation release];
 	[super dealloc];
 }
 //--------------------------------------------------------------------------------------------------------

@@ -369,6 +369,7 @@
 		8BC02C7A13B292B3003E41AC /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8BC02C9813B2938C003E41AC /* splashScreenViewController */,
 				8B29FCFA13D654C900EDB516 /* saveAlgebraicSurfaceViewController */,
 				8B29FA4213D4E97700EDB516 /* galleryViewController */,
 				8B30820013BC185C00EA792E /* helpViewController */,
@@ -379,7 +380,6 @@
 				8B7F61B213C27DFE0098948F /* VideoViewController.m */,
 				8BC02D0413B29C00003E41AC /* BaseViewController.h */,
 				8BC02D0513B29C00003E41AC /* BaseViewController.m */,
-				8BC02C9813B2938C003E41AC /* splashScreenViewController */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -536,12 +536,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Damian Modernell (U8CX6D8PSW)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.2;
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "77E6B217-4D3F-4837-A3C0-183BF566DC46";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;

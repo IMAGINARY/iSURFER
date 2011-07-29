@@ -41,12 +41,7 @@
 	[tmpplayerViewController release];
 		
 	self.player = [movie moviePlayer];
-	
-	//[player respondsToSelector:@selector(loadState)];
-//	[player prepareToPlay];
-
-//	[player setFullscreen:YES];
-	
+		
 	[[NSNotificationCenter defaultCenter] addObserver:self
 												selector:@selector(movieFinishedCallback:)
 												name:MPMoviePlayerPlaybackDidFinishNotification
@@ -79,7 +74,6 @@
 //------------------------------------------------------------------------------
 -(void)playVideo{
 	[self setLoadingScreenVisible:NO];
-
 	[[self movieView] addSubview:movie.view];
 	[player play];
 }

@@ -58,9 +58,12 @@
 		Gallery* gal1 = [[Gallery alloc]init];
 		gal1.galleryName = @"galery1";
 		gal1.galleryDescription = @"description1";
+		gal1.editable = NO;
 		
 		AlgebraicSurface* surface = [[AlgebraicSurface alloc]init];
 		[surface setThumbNailImage:[UIImage imageNamed:@"facebook_icon.png"]];
+		[surface setEquation:@"x^2 + y^2 + z^2 = 1"];
+		
 		AlgebraicSurface* surface2 = [[AlgebraicSurface alloc]init];
 		[surface2 setThumbNailImage:[UIImage imageNamed:@"Logo-twitter.png"]];
 		AlgebraicSurface* surface3 = [[AlgebraicSurface alloc]init];

@@ -13,8 +13,10 @@
 	UIImage* thumbNailImage;
 	NSString* surfaceName;
 	NSString* surfaceDescription;
+	NSString* equation;
 }
 
+@property(nonatomic, retain) NSString* equation;
 @property(nonatomic, retain) UIImage* thumbNailImage;
 @property(nonatomic, retain) NSString* surfaceName;
 @property(nonatomic, retain) NSString* surfaceDescription;

@@ -65,9 +65,9 @@
 		AlgebraicSurface* newSurface = [[AlgebraicSurface alloc] init];
 		[newSurface setSurfaceName:self.galleryNameLabel.text];
 		[newSurface setSurfaceDescription:self.surfaceDescriptionTextView.text];
-		
 		[appcontroller addAlgebraicSurface:newSurface atGalleryIndex:galleryIndex];
 		[newSurface release];
+		
 		[self dismissModalViewControllerAnimated:YES];
 	}
 }

@@ -50,13 +50,13 @@
 							<object class="IBUIImageView" id="701504101">
 								<reference key="NSNextResponder" ref="1043095914"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{3, 0}, {74, 60}}</string>
+								<string key="NSFrame">{{3, 5}, {74, 60}}</string>
 								<reference key="NSSuperview" ref="1043095914"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 						</object>
-						<string key="NSFrameSize">{80, 60}</string>
+						<string key="NSFrameSize">{80, 70}</string>
 						<reference key="NSSuperview" ref="531271689"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -69,7 +69,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</object>
-				<string key="NSFrameSize">{80, 60}</string>
+				<string key="NSFrameSize">{80, 70}</string>
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
@@ -144,7 +144,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>UIResponder</string>
 					<string>SurfaceCellView</string>
-					<string>{{612, 424}, {80, 60}}</string>
+					<string>{{612, 414}, {80, 70}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">

@@ -10,7 +10,7 @@
 #import "BaseViewController.h"
 
 
-@interface GoiSurferViewController : BaseViewController <UITextFieldDelegate>{
+@interface GoiSurferViewController : BaseViewController <UITextFieldDelegate, UIGestureRecognizerDelegate>{
 	NSMutableArray* optionsViews;
 	
 	//main view
@@ -35,8 +35,18 @@
 	IBOutlet UIImageView* rotateimage;
 	
 	IBOutlet UIButton* saveButton;
+	
+	IBOutlet UISlider* zoomSlider;
+	
+	BOOL fullScreen;
+	BOOL showZoomSlider;
+	float previousScale;
 
 }
+@property(nonatomic, retain)	IBOutlet UISlider* zoomSlider;
+
+
+
 @property(nonatomic, retain)	IBOutlet UIButton* saveButton;
 
 

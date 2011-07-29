@@ -18,7 +18,7 @@
 @implementation GoiSurferViewController
 //--------------------------------------------------------------------------------------------------------
 @synthesize equationTextField, keyboardExtensionBar, baseView, colorPaletteView, shareView, optionsViews, colorTestView, greenColorSlider, redColorSlider, blueColorSlider;
-@synthesize algebraicSurfaceView, equationTextfieldView,rotateimage, saveButton ;
+@synthesize algebraicSurfaceView, equationTextfieldView,rotateimage, saveButton, zoomSlider;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) initWithAppController:(AppController*)anappCtrl{
@@ -33,6 +33,7 @@
 
 -(void)viewDidLoad{
 	[super viewDidLoad];
+	//Color sliders conf
 	[optionsViews addObject:self.shareView];
 	[optionsViews addObject:self.colorPaletteView];
 	[self.shareView setHidden:YES];
@@ -51,7 +52,103 @@
 	layer2.cornerRadius = 8;
 	CALayer * layer3 = [colorPaletteView layer];
 	layer3.cornerRadius = 8;
+	
+	//Zoom slider
+	UISlider* tmpzoomSlider = [[UISlider alloc]init];
+	tmpzoomSlider.minimumValue = 0;
+	tmpzoomSlider.maximumValue = 10;
+	[tmpzoomSlider setUserInteractionEnabled:NO];
+	CGAffineTransform trans = CGAffineTransformMakeRotation(M_PI * 0.5);
+    tmpzoomSlider.transform = trans;
+	[self.algebraicSurfaceView addSubview:tmpzoomSlider];
+	CGRect frame = tmpzoomSlider.frame;
+	frame.origin.x = algebraicSurfaceView.frame.origin.x + 230;
+	frame.origin.y = algebraicSurfaceView.frame.origin.y + 45;;
+	frame.size.height = 150;
+	[tmpzoomSlider setFrame:frame];
+	[self setZoomSlider:tmpzoomSlider];
+	[tmpzoomSlider release];
+	
+	//Gestures handler
+	UIPinchGestureRecognizer* pinchGesture = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(handlePinchGesture:)];
+	UITapGestureRecognizer* doubleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleDoubleTap:)];
+	UILongPressGestureRecognizer* doubleTouch = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(handleDTwoFingerTouch:)];
 
+	[pinchGesture setDelegate:self];
+	[doubleTouch setDelegate:self];
+	
+	[doubleTouch setNumberOfTouchesRequired:2];
+	[doubleTouch setMinimumPressDuration:0.0];
+	
+	[doubleTap setNumberOfTapsRequired:2];
+	
+	[self.algebraicSurfaceView addGestureRecognizer:pinchGesture];
+	[self.algebraicSurfaceView addGestureRecognizer:doubleTap];
+	[self.algebraicSurfaceView addGestureRecognizer:doubleTouch];
+
+	[doubleTouch release];
+	[pinchGesture release];
+	[doubleTap release];
+	[self.zoomSlider setAlpha:0.0];
+}
+//--------------------------------------------------------------------------------------------------------
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+	if([gestureRecognizer isKindOfClass:[UIPinchGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]] ){
+		return YES;
+	}
+	return NO;
+}
+
+//--------------------------------------------------------------------------------------------------------
+-(void)handleDTwoFingerTouch:(UIGestureRecognizer*)doubleFingerGesture{
+	switch (doubleFingerGesture.state) {
+		case UIGestureRecognizerStateBegan:
+			showZoomSlider = YES;		
+			break;
+		case UIGestureRecognizerStateChanged:
+			break;
+		case UIGestureRecognizerStateEnded:
+			showZoomSlider = NO;		
+			break;
+		default:
+			break;
+	}
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+	if(showZoomSlider){
+		[self.zoomSlider setAlpha:1.0];
+	}else{
+		[self.zoomSlider setAlpha:0.0];
+	}
+	[UIView commitAnimations];
+}
+//--------------------------------------------------------------------------------------------------------
+-(void)handlePinchGesture:(UIPinchGestureRecognizer*)pinchGesture{
+	if( pinchGesture.state == UIGestureRecognizerStateBegan ){
+		previousScale = pinchGesture.scale;
+	}else if( pinchGesture.state == UIGestureRecognizerStateChanged ){
+		if( previousScale > pinchGesture.scale ){
+			self.zoomSlider.value -= 0.1;
+		}else {
+			self.zoomSlider.value += 0.1;
+		}
+	}
+	previousScale = pinchGesture.scale;	
+}
+
+//--------------------------------------------------------------------------------------------------------
+
+-(void)handleDoubleTap:(UIGestureRecognizer*)doubleTapGesture{	
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+	if(fullScreen){
+		fullScreen = NO;
+		[self.algebraicSurfaceView setFrame:CGRectMake(109, 7, 364, 258)];
+	}else{
+		fullScreen = YES;
+		[self.algebraicSurfaceView setFrame:CGRectMake(0, 0, 480, 320)];
+	}
+	[UIView commitAnimations];
 }
 //--------------------------------------------------------------------------------------------------------
 -(void)viewWillAppear:(BOOL)animated{
@@ -83,7 +180,6 @@
 		default:
 			break;
 	}
-	NSLog(@"red: %d  green : %f  blue: %f", redColorSlider.value, greenColorSlider.value, blueColorSlider.value );
 	UIColor* color = [UIColor colorWithRed:(int)self.redColorSlider.value/255.0 green:(int)self.greenColorSlider.value /255.0 blue:(int)self.blueColorSlider.value/255.0 alpha:1.0];
 	[self.colorTestView setBackgroundColor:color];
 }
@@ -244,6 +340,7 @@
 	[algebraicSurfaceView release];
 	[rotateimage release];
 	[saveButton release];
+	[zoomSlider release];
 	[super dealloc];
 }
 //---------------------------------------------------------------------------------------------
