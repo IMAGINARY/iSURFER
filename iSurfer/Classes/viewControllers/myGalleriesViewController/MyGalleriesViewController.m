@@ -48,11 +48,6 @@
 	
 	[self.galleriesTable setEditing:YES animated:YES];
 	
-	/*
-	 UIActionSheet* edditingOptions = [[UIActionSheet alloc]initWithTitle:@"Edit galleries" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Change galleries order", @"Delete galleries", @"Add gallery",nil ];
-	 [edditingOptions showInView:self.view];
-	 [edditingOptions release];
-	 */
 }
 
 //--------------------------------------------------------------------------------------------------------
@@ -75,9 +70,9 @@
 	moveButton.tag = 3;
 	// Create a spacer.
 	UIBarButtonItem* spaceBetweenButtons = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-	spaceBetweenButtons.width = 20.0f;
+	spaceBetweenButtons.width = 25.0f;
 	
-	UIToolbar* tmptoolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(10.0f, 0.0f, 130.0f, 33.01f)];
+	UIToolbar* tmptoolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(20.0f, 0.0f, 130.0f, 33.01f)];
 	tmptoolbar.barStyle = -1; // clear background
 
 	NSArray* buttons = [NSArray arrayWithObjects:moveButton, spaceBetweenButtons, deleteButton, spaceBetweenButtons, addButton, nil];
@@ -154,8 +149,12 @@
 	Gallery* gallery = [galleries objectAtIndex:[indexPath row]];
 	[cell.galleryTitleLabel setText:gallery.galleryName];
 	[cell.galleryDetailLabel setText:gallery.galleryDescription];
-	//	 cell.showsReorderControl = YES;
-	
+	if( [gallery isEmpty] ){
+		[cell.galleryImage setImage:[UIImage imageNamed:@"Imaginary lemon.jpg"]];
+	}else {
+		[cell.galleryImage setImage:[[gallery getSurfaceAtIndex:0]thumbNailImage]];
+	}
+	//	 cell.showsReorderControl = YES
 	return cell;
 }
 //--------------------------------------------------------------------------------------------------------

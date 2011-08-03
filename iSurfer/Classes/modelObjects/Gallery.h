@@ -23,5 +23,6 @@
 -(void)addAlgebraicSurface:(AlgebraicSurface*)surface;
 -(void)removeSurfaceAtIndex:(int)index;
 -(AlgebraicSurface*)getSurfaceAtIndex:(int)index;
+-(BOOL)isEmpty;
 
 @end

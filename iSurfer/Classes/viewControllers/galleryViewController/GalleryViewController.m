@@ -29,70 +29,76 @@
 
 -(void)viewDidLoad{
 	
+	UIToolbar* tmptoolbar = [[UIToolbar alloc] init];
+	tmptoolbar.barStyle = -1; // clear background
+	NSMutableArray* items = [[NSMutableArray alloc]init];
+	
+	UIBarButtonItem* spaceBetweenButtons = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+	spaceBetweenButtons.width = BUTTON_SPACE;
+
 	if( [gallery editable] ){
 		
 		UIBarButtonItem *moveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(moveSurfaces)];
 		moveButton.tag = 1;
 		UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteSurfaces)];
 		deleteButton.tag = 2;
-		// Create a spacer.
-		UIBarButtonItem* spaceBetweenButtons = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-		spaceBetweenButtons.width = BUTTON_SPACE;
+			
+		[items addObjectsFromArray:[NSArray arrayWithObjects:moveButton, spaceBetweenButtons, deleteButton, nil]];
 		
-		UIToolbar* tmptoolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(30.0f, 0.0f, 130.0f, 33.01f)];
-		tmptoolbar.barStyle = -1; // clear background
-		
-		NSArray* buttons = [NSArray arrayWithObjects:moveButton, spaceBetweenButtons, deleteButton, nil];
-		[tmptoolbar setItems:buttons animated:NO];
-		UIBarButtonItem * tmptoolbarItems = [[UIBarButtonItem alloc] initWithCustomView:tmptoolbar];
-		
-		[self setToolbar:tmptoolbarItems];
-		
-		self.navigationItem.rightBarButtonItem = self.toolbar;
-		[tmptoolbar release];
 		[moveButton release];
-		[spaceBetweenButtons release];
 		[deleteButton release];
-		[tmptoolbarItems release];
 	}
 	
-	/*
-	CGAffineTransform transform = CGAffineTransformMakeRotation(-1.5707963);    
-	self.surfacesTable.transform = transform;  
-	self.surfacesTable.frame = CGRectMake(30, 220, 400, 90);
-//	self.surfacesTable.separatorStyle = UITableViewCellSeparatorStyleSingleLine;   
-	self.surfacesTable.rowHeight = 90;   
-	 */
-/*
-	surfacesScrollView.showsHorizontalScrollIndicator =TRUE;
-	surfacesScrollView.showsVerticalScrollIndicator = FALSE;
-	surfacesScrollView.scrollEnabled = YES;
-	surfacesScrollView.bounces = TRUE;
-	surfacesScrollView.delegate = self;
-	float totalButtonWidth = 0.0f;
+	UIBarButtonItem *actionSheetButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showActionSheet)];
+	[items addObject:spaceBetweenButtons];
+	[items addObject:actionSheetButton];
+	[tmptoolbar setItems:items];
+	[tmptoolbar setFrame:CGRectMake(0.0, 0.0, 28.0 * [items count], 33.0)];
+	UIBarButtonItem * tmptoolbarItems = [[UIBarButtonItem alloc] initWithCustomView:tmptoolbar];
 
-	for( AlgebraicSurface* surface in gallery.surfacesArray ){
-		
-		UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 5, 70,60 )];
-		
-		// Move the buttons position in the x-demension (horizontal).
-		[btn setBackgroundImage:surface.thumbNailImage forState:UIControlStateNormal];
-		CGRect btnRect = btn.frame;
-		btnRect.origin.x = totalButtonWidth;
-		[btn setFrame:btnRect];
-		
-		// Add the button to the scrollview
-		[surfacesScrollView addSubview:btn];
-		
-		// Add the width of the button to the total width.
-		totalButtonWidth += btn.frame.size.width + BUTTON_SPACE;
+	[self setToolbar:tmptoolbarItems];
+	self.navigationItem.rightBarButtonItem = self.toolbar;
+	self.navigationItem.title = self.gallery.galleryName;
+
+	[actionSheetButton release];
+	[spaceBetweenButtons release];
+	[tmptoolbar release];
+	[tmptoolbarItems release];
+	[items release];
+
+}
+//--------------------------------------------------------------------------------------------------------
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+	NSLog(@"clickedButtonAtIndex:");
+	NSLog(@"buttonIndes: %d", buttonIndex);
+	switch (buttonIndex) {
+		case 0:
+			//Edit description
+			break;
+		case 1:
+			//go to isurfer with this surface
+			break;
+		default:
+			break;
 	}
-	
-	// Update the scrollview content rect, which is the combined width of the buttons
-	//CGSize scrollableSize = CGSizeMake(320, myScrollableHeight);
+}
 
-	[surfacesScrollView setContentSize:CGSizeMake(totalButtonWidth, 70)];
- */
+//--------------------------------------------------------------------------------------------------------
+-(void)showActionSheet{
+	 UIActionSheet* edditingOptions = [[UIActionSheet alloc]initWithTitle:@"Edit Surface" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Edit description", @"iSurf image", nil ];
+	 [edditingOptions showInView:self.view];
+	 [edditingOptions release];
+}
+
+//--------------------------------------------------------------------------------------------------------
+-(void)viewWillAppear:(BOOL)animated{
+	if( ![gallery isEmpty]){
+		AlgebraicSurface* surface = [gallery getSurfaceAtIndex:0];
+		[self.surfaceImage setImage:[surface thumbNailImage]];
+		[self.surfaceEquation setText:[surface equation]];	
+		[super viewWillAppear:animated];
+	}
 }
 //--------------------------------------------------------------------------------------------------------
 -(void)stopEditting{
@@ -134,38 +140,6 @@
 	[self startEditting];
 }
 //--------------------------------------------------------------------------------------------------------
-
-/*
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-	// if the offset is less than 3, the content is scrolled to the far left. This would be the time to show/hide
-	// an arrow that indicates that you can scroll to the right. The 3 is to give it some "padding".
-	if(scrollView.contentOffset.x <= 3)
-	{
-		NSLog(@"Scroll is as far left as possible");
-	}
-	// The offset is always calculated from the bottom left corner, which means when the scroll is as far
-	// right as possible it will not give an offset that is equal to the entire width of the content. Example:
-	// The content has a width of 500, the scroll view has the width of 200. Then the content offset for far right
-	// would be 300 (500-200). Then I remove 3 to give it some "padding"
-	else if(scrollView.contentOffset.x >= (scrollView.contentSize.width - scrollView.frame.size.width)-3)
-	{
-		NSLog(@"Scroll is as far right as possible");
-	}
-	else
-	{
-		// The scoll is somewhere in between left and right. This is the place to indicate that the 
-		// use can scroll both left and right
-	}
-	
-}
-
--(IBAction)selectSurface:(id)sender{
-	UIButton* button = (UIButton*)sender;
-	[self.surfaceImage setImage:[[gallery.surfacesArray objectAtIndex:button.tag]thumbNailImage]];
-}
-*/
-//--------------------------------------------------------------------------------------------------------
 - (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath{
 	if( eddition == DELETE){
 		return YES;
@@ -174,7 +148,6 @@
 }
 
 //--------------------------------------------------------------------------------------------------------
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	static NSString *CellIdentifier = @"SurfaceCellView";
 	
@@ -272,5 +245,4 @@
 	[super dealloc];
 }
 //--------------------------------------------------------------------------------------------------------
-
 @end

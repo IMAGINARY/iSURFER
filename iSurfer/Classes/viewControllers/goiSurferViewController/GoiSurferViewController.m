@@ -18,13 +18,16 @@
 @implementation GoiSurferViewController
 //--------------------------------------------------------------------------------------------------------
 @synthesize equationTextField, keyboardExtensionBar, baseView, colorPaletteView, shareView, optionsViews, colorTestView, greenColorSlider, redColorSlider, blueColorSlider;
-@synthesize algebraicSurfaceView, equationTextfieldView,rotateimage, saveButton, zoomSlider;
+@synthesize algebraicSurfaceView, equationTextfieldView,rotateimage, saveButton, zoomSlider, zoomView, algebraicSurface;
 //--------------------------------------------------------------------------------------------------------
 
--(id) initWithAppController:(AppController*)anappCtrl{
+-(id) initWithAppController:(AppController*)anappCtrl andAlgebraicSurface:(AlgebraicSurface*)surface{
 	
 	if (self = [super initWithNibName:@"GoiSurferViewController" bundle:[NSBundle mainBundle]]) {
 		[self setAppcontroller:anappCtrl];
+		if (surface) {
+			self.algebraicSurface = surface;
+		}
 		optionsViews = [[NSMutableArray alloc]init];
 	}
 	return self;
@@ -58,12 +61,12 @@
 	tmpzoomSlider.minimumValue = 0;
 	tmpzoomSlider.maximumValue = 10;
 	[tmpzoomSlider setUserInteractionEnabled:NO];
-	CGAffineTransform trans = CGAffineTransformMakeRotation(M_PI * 0.5);
+	CGAffineTransform trans = CGAffineTransformMakeRotation(-M_PI * 0.5);
     tmpzoomSlider.transform = trans;
-	[self.algebraicSurfaceView addSubview:tmpzoomSlider];
+	[self.zoomView addSubview:tmpzoomSlider];
 	CGRect frame = tmpzoomSlider.frame;
-	frame.origin.x = algebraicSurfaceView.frame.origin.x + 230;
-	frame.origin.y = algebraicSurfaceView.frame.origin.y + 45;;
+	frame.origin.x = 5;
+	frame.origin.y = 30;;
 	frame.size.height = 150;
 	[tmpzoomSlider setFrame:frame];
 	[self setZoomSlider:tmpzoomSlider];
@@ -72,7 +75,7 @@
 	//Gestures handler
 	UIPinchGestureRecognizer* pinchGesture = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(handlePinchGesture:)];
 	UITapGestureRecognizer* doubleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleDoubleTap:)];
-	UILongPressGestureRecognizer* doubleTouch = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(handleDTwoFingerTouch:)];
+	UILongPressGestureRecognizer* doubleTouch = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(handleTwoFingerTouch:)];
 
 	[pinchGesture setDelegate:self];
 	[doubleTouch setDelegate:self];
@@ -89,7 +92,7 @@
 	[doubleTouch release];
 	[pinchGesture release];
 	[doubleTap release];
-	[self.zoomSlider setAlpha:0.0];
+	[self.zoomView setAlpha:0.0];
 }
 //--------------------------------------------------------------------------------------------------------
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
@@ -100,7 +103,7 @@
 }
 
 //--------------------------------------------------------------------------------------------------------
--(void)handleDTwoFingerTouch:(UIGestureRecognizer*)doubleFingerGesture{
+-(void)handleTwoFingerTouch:(UIGestureRecognizer*)doubleFingerGesture{
 	switch (doubleFingerGesture.state) {
 		case UIGestureRecognizerStateBegan:
 			showZoomSlider = YES;		
@@ -116,9 +119,9 @@
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
 	if(showZoomSlider){
-		[self.zoomSlider setAlpha:1.0];
+		[self.zoomView setAlpha:1.0];
 	}else{
-		[self.zoomSlider setAlpha:0.0];
+		[self.zoomView setAlpha:0.0];
 	}
 	[UIView commitAnimations];
 }
@@ -141,17 +144,28 @@
 -(void)handleDoubleTap:(UIGestureRecognizer*)doubleTapGesture{	
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
+	CGRect zoomframe = self.zoomView.frame;
+	CALayer * layer = [algebraicSurfaceView layer];
+
 	if(fullScreen){
 		fullScreen = NO;
+		layer.cornerRadius = 8;
 		[self.algebraicSurfaceView setFrame:CGRectMake(109, 7, 364, 258)];
+		zoomframe.origin.x = 323;
+		zoomframe.origin.y = 27;
 	}else{
 		fullScreen = YES;
+		layer.cornerRadius = 0;
 		[self.algebraicSurfaceView setFrame:CGRectMake(0, 0, 480, 320)];
+		zoomframe.origin.x =  algebraicSurfaceView.frame.origin.x + 440;
+		zoomframe.origin.y = algebraicSurfaceView.frame.origin.y + 55;
 	}
+	[self.zoomView setFrame:zoomframe];
 	[UIView commitAnimations];
 }
 //--------------------------------------------------------------------------------------------------------
 -(void)viewWillAppear:(BOOL)animated{
+	//Generar superficie si es que viene de la galeria
 	[super viewWillAppear:animated];
 }
 //--------------------------------------------------------------------------------------------------------
@@ -206,7 +220,6 @@
 //--------------------------------------------------------------------------------------------------------
 -(IBAction)keyboardBarButtonPressed:(id)sender{
 	UIButton* button = (UIButton*)sender;
-	NSLog(@"%@", button.titleLabel.text);
 	self.equationTextField.text = [equationTextField.text stringByAppendingString:button.titleLabel.text];
 }
 
@@ -321,7 +334,6 @@
 	SaveAlgebraicSurfaceViewController* saveimg = [[SaveAlgebraicSurfaceViewController alloc]initWithAppController:self.appcontroller];
 	[self presentModalViewController:saveimg animated:YES];
 	[saveimg release];
-	//[appcontroller goToSaveImage];
 }
 //--------------------------------------------------------------------------------------------------------
 
@@ -341,6 +353,8 @@
 	[rotateimage release];
 	[saveButton release];
 	[zoomSlider release];
+	[zoomView release];
+	[algebraicSurface release];
 	[super dealloc];
 }
 //---------------------------------------------------------------------------------------------

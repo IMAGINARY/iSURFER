@@ -36,20 +36,25 @@
 	
 	IBOutlet UIButton* saveButton;
 	
-	IBOutlet UISlider* zoomSlider;
+	//Zoom view
+	IBOutlet UIView* zoomView;
+	UISlider* zoomSlider;
+	
 	
 	BOOL fullScreen;
 	BOOL showZoomSlider;
 	float previousScale;
+	
+	AlgebraicSurface* algebraicSurface;
 
 }
-@property(nonatomic, retain)	IBOutlet UISlider* zoomSlider;
+
+@property(nonatomic, retain)	AlgebraicSurface* algebraicSurface;
 
 
-
+@property(nonatomic, retain)	IBOutlet UIView* zoomView;
+@property(nonatomic, retain)	 UISlider* zoomSlider;
 @property(nonatomic, retain)	IBOutlet UIButton* saveButton;
-
-
 @property(nonatomic, retain)	IBOutlet UIImageView* rotateimage;
 @property(nonatomic, retain)	IBOutlet UIView* equationTextfieldView;
 @property(nonatomic, retain)	IBOutlet UIView* algebraicSurfaceView;
@@ -71,6 +76,9 @@
 - (IBAction)sliderChanged:(id)sender;
 
 -(IBAction)saveImage;
+
+-(id) initWithAppController:(AppController*)anappCtrl andAlgebraicSurface:(AlgebraicSurface*)surface;
+
 
 
 @end

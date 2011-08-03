@@ -1,9 +1,9 @@
 //
 //  SplashScreenViewController.m
-//  dolarHoy
+//  iSurfer
 //
-//  Created by Bruno Carlucci on 3/5/11.
-//  Copyright 2011 Zempit. All rights reserved.
+//  Created by Damian Modernell on 3/5/11.
+//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "SplashScreenViewController.h"

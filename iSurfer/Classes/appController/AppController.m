@@ -43,7 +43,7 @@
 		[self setMainMenuViewController:tmpmenu];
 		[tmpmenu release];
 		
-		GoiSurferViewController* tmpgosurfer = [[GoiSurferViewController alloc]initWithAppController:self];
+		GoiSurferViewController* tmpgosurfer = [[GoiSurferViewController alloc]initWithAppController:self andAlgebraicSurface:nil];
 		[self setGoiSurferViewController:tmpgosurfer];
 		[tmpgosurfer release];
 		
@@ -86,15 +86,17 @@
 		Gallery* gal2 = [[Gallery alloc]init];
 		gal2.galleryName = @"galery2";
 		gal2.galleryDescription = @"description2";
-
+		gal2.editable = YES;
 		Gallery* gal3 = [[Gallery alloc]init];
 		gal3.galleryName = @"galery3";
 		gal3.galleryDescription = @"description3";
+		gal3.editable = YES;
 
 		Gallery* gal4 = [[Gallery alloc]init];
 		gal4.galleryName = @"galery4";
 		gal4.galleryDescription = @"description4";
-		
+		gal4.editable = YES;
+
 		[self.galleriesArray addObject:gal1];
 		[self.galleriesArray addObject: gal2];
 		[self.galleriesArray addObject:gal3];

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BaseViewController.h"
 
-@interface GalleryViewController : BaseViewController<UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource> {
+@interface GalleryViewController : BaseViewController<UIActionSheetDelegate, UITableViewDelegate, UITableViewDataSource> {
 	Gallery* gallery;
 	IBOutlet UIScrollView* surfacesScrollView;
 	IBOutlet UIImageView* surfaceImage;
