@@ -20,7 +20,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
     // Override point for customization after application launch.
-    [application setStatusBarHidden:YES];
 	UINavigationController* tmpnav = [[UINavigationController alloc]init];
 	[self setNavcontroller:tmpnav];
 	[tmpnav release];

@@ -160,12 +160,12 @@
 }
 //--------------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-	[self scrollViewTo:textField movePixels:103 baseView:self.dataWrapperView];
+	[self scrollViewTo:textField movePixels:85 baseView:self.dataWrapperView];
   	return YES;
 }
 //--------------------------------------------------------------------------------------------------------
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
-	[self scrollViewTo:textView movePixels:57 baseView:self.dataWrapperView];
+	[self scrollViewTo:textView movePixels:47 baseView:self.dataWrapperView];
 	return YES;
 }
 //--------------------------------------------------------------------------------------------------------

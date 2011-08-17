@@ -32,8 +32,6 @@
 	
 	[baseview setFrame:thisViewFrame];
 	[UIView commitAnimations];
-	NSLog(@"x: %f  y: %f  width: %f  height: %f", baseview.frame.origin.x, baseview.frame.origin.y, baseview.frame.size.width, baseview.frame.size.height);
-
 }
 //---------------------------------------------------------------------------------------------
 

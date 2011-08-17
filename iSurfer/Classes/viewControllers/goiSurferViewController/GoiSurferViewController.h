@@ -6,9 +6,8 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "BaseViewController.h"
-
+#import <QuartzCore/QuartzCore.h>
 
 @interface GoiSurferViewController : BaseViewController <UITextFieldDelegate, UIGestureRecognizerDelegate>{
 	NSMutableArray* optionsViews;
@@ -42,10 +41,15 @@
 	
 	
 	BOOL fullScreen;
+	CGRect algebraicsurfaceViewFrame;
 	BOOL showZoomSlider;
 	float previousScale;
 	
 	AlgebraicSurface* algebraicSurface;
+	
+	IBOutlet UILabel* xpos;
+	IBOutlet UILabel* ypos;
+
 
 }
 

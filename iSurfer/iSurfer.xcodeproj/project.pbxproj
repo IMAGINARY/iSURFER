@@ -41,6 +41,7 @@
 		8B43078B13C903B3004812EE /* iPhone-Wallpapers-4-parquet.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B43078613C903B3004812EE /* iPhone-Wallpapers-4-parquet.jpg */; };
 		8B43078C13C903B3004812EE /* lit_12203IS153043143.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B43078713C903B3004812EE /* lit_12203IS153043143.jpg */; };
 		8B68A37E13B8031200EC98B5 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B68A37D13B8031200EC98B5 /* MainMenuViewController.m */; };
+		8B78325513E9F85B00CE30A8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B78325413E9F85B00CE30A8 /* QuartzCore.framework */; };
 		8B7F61B313C27DFE0098948F /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F61B213C27DFE0098948F /* VideoViewController.m */; };
 		8B7F61F113C27E990098948F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7F61F013C27E990098948F /* MediaPlayer.framework */; };
 		8B7F64C913C55C840098948F /* black_bar2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7F64C813C55C840098948F /* black_bar2.png */; };
@@ -107,6 +108,7 @@
 		8B43078713C903B3004812EE /* lit_12203IS153043143.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lit_12203IS153043143.jpg; sourceTree = "<group>"; };
 		8B68A37C13B8031200EC98B5 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		8B68A37D13B8031200EC98B5 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		8B78325413E9F85B00CE30A8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8B7F61B113C27DFE0098948F /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
 		8B7F61B213C27DFE0098948F /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
 		8B7F61F013C27E990098948F /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -141,6 +143,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				8B7F61F113C27E990098948F /* MediaPlayer.framework in Frameworks */,
+				8B78325513E9F85B00CE30A8 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +209,7 @@
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				8B7F61F013C27E990098948F /* MediaPlayer.framework */,
+				8B78325413E9F85B00CE30A8 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

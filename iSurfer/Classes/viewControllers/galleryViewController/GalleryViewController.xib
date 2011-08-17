@@ -45,7 +45,7 @@
 					<object class="IBUIImageView" id="235478652">
 						<reference key="NSNextResponder" ref="256141055"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{200, 12}, {226, 178}}</string>
+						<string key="NSFrame">{{200, 12}, {226, 158}}</string>
 						<reference key="NSSuperview" ref="256141055"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -53,7 +53,7 @@
 					<object class="IBUITableView" id="619109917">
 						<reference key="NSNextResponder" ref="256141055"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{13, 20}, {85, 236}}</string>
+						<string key="NSFrame">{{13, 12}, {85, 224}}</string>
 						<reference key="NSSuperview" ref="256141055"/>
 						<object class="NSColor" key="IBUIBackgroundColor" id="1049636075">
 							<int key="NSColorSpace">3</int>
@@ -72,7 +72,7 @@
 					<object class="IBUILabel" id="837950475">
 						<reference key="NSNextResponder" ref="256141055"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{156, 205}, {314, 51}}</string>
+						<string key="NSFrame">{{156, 185}, {314, 51}}</string>
 						<reference key="NSSuperview" ref="256141055"/>
 						<reference key="IBUIBackgroundColor" ref="1049636075"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -97,9 +97,10 @@
 						<int key="IBUITextAlignment">1</int>
 					</object>
 				</object>
-				<string key="NSFrameSize">{480, 276}</string>
+				<string key="NSFrameSize">{480, 256}</string>
 				<reference key="NSSuperview"/>
 				<reference key="IBUIBackgroundColor" ref="1049636075"/>
+				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 				<object class="IBUISimulatedNavigationBarMetrics" key="IBUISimulatedTopBarMetrics">
 					<bool key="IBUIPrompted">NO</bool>
 				</object>
@@ -230,7 +231,7 @@
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDHAAAw34AAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABDHAAAw3IAAA</bytes>
 					</object>
 					<string>{{972, 538}, {480, 320}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -409,6 +410,20 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">Foundation.framework/Headers/NSURLConnection.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">QuartzCore.framework/Headers/CAAnimation.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">QuartzCore.framework/Headers/CALayer.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

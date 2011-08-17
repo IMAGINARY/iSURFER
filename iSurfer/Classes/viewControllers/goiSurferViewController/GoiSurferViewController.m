@@ -8,7 +8,6 @@
 
 #import "GoiSurferViewController.h"
 #import "SaveAlgebraicSurfaceViewController.h"
-#import <QuartzCore/QuartzCore.h>
 
 //--------------------------------------------------------------------------------------------------------
 @interface GoiSurferViewController(PrivateMethods)
@@ -73,35 +72,92 @@
 	[tmpzoomSlider release];
 	
 	//Gestures handler
+	UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePanGesture:)];
 	UIPinchGestureRecognizer* pinchGesture = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(handlePinchGesture:)];
 	UITapGestureRecognizer* doubleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleDoubleTap:)];
 	UILongPressGestureRecognizer* doubleTouch = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(handleTwoFingerTouch:)];
+	UILongPressGestureRecognizer* singleLongPressTouch = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(handleSingleLongPressTouch:)];
 
 	[pinchGesture setDelegate:self];
-	[doubleTouch setDelegate:self];
 	
+	[singleLongPressTouch setMinimumPressDuration:0.08];
+	
+	[doubleTouch setDelegate:self];
 	[doubleTouch setNumberOfTouchesRequired:2];
 	[doubleTouch setMinimumPressDuration:0.0];
 	
 	[doubleTap setNumberOfTapsRequired:2];
+	[doubleTap setDelegate:self];
 	
+	[panGesture setDelegate:self];
+		
 	[self.algebraicSurfaceView addGestureRecognizer:pinchGesture];
-	[self.algebraicSurfaceView addGestureRecognizer:doubleTap];
 	[self.algebraicSurfaceView addGestureRecognizer:doubleTouch];
+	[self.algebraicSurfaceView addGestureRecognizer:singleLongPressTouch];
+	[self.algebraicSurfaceView addGestureRecognizer:doubleTap];
+	[self.algebraicSurfaceView addGestureRecognizer:panGesture];
 
+	[singleLongPressTouch release];
+	[panGesture release];
 	[doubleTouch release];
 	[pinchGesture release];
 	[doubleTap release];
 	[self.zoomView setAlpha:0.0];
+	
+	[xpos setHidden:YES];
+	[ypos setHidden:YES];
+	algebraicsurfaceViewFrame = algebraicSurfaceView.frame;
 }
 //--------------------------------------------------------------------------------------------------------
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
-	if([gestureRecognizer isKindOfClass:[UIPinchGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]] ){
+	if([gestureRecognizer isKindOfClass:[UIPinchGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]] ||
+	   [gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]] ){
 		return YES;
 	}
-	return NO;
+	return YES;
+	
 }
+//--------------------------------------------------------------------------------------------------------
+-(void)handleSingleLongPressTouch:(UILongPressGestureRecognizer*)singleLongPressGesture{
+	NSLog(@"handleSingleLongPressTouch");
+	switch (singleLongPressGesture.state) {
+		case UIGestureRecognizerStateBegan:
+			[xpos setHidden:NO];
+			[ypos setHidden:NO];
+			xpos.text = @"x: 0";
+			ypos.text = @"x: 0";
+			break;
+		case UIGestureRecognizerStateChanged:
+			break;
+		case UIGestureRecognizerStateEnded:
+			[xpos setHidden:YES];
+			[ypos setHidden:YES];
+			break;
+		default:
+			break;
+	}
+}
+//--------------------------------------------------------------------------------------------------------
 
+-(void)handlePanGesture:(UIPanGestureRecognizer*)gestureRecognizer{
+	NSLog(@"handlePanGesture");
+
+	CGPoint p;
+	p = [gestureRecognizer translationInView:gestureRecognizer.view];
+
+	switch (gestureRecognizer.state) {
+		case UIGestureRecognizerStateBegan:
+			break;
+		case UIGestureRecognizerStateChanged:
+			xpos.text = [NSString stringWithFormat:@"x: %.2f", p.x];
+			ypos.text = [NSString stringWithFormat:@"y: %.2f", p.y];
+			break;
+		case UIGestureRecognizerStateEnded:
+			break;
+		default:
+			break;
+	}
+}
 //--------------------------------------------------------------------------------------------------------
 -(void)handleTwoFingerTouch:(UIGestureRecognizer*)doubleFingerGesture{
 	switch (doubleFingerGesture.state) {
@@ -149,12 +205,15 @@
 
 	if(fullScreen){
 		fullScreen = NO;
+		[[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 		layer.cornerRadius = 8;
-		[self.algebraicSurfaceView setFrame:CGRectMake(109, 7, 364, 258)];
+		[algebraicSurfaceView setFrame:algebraicsurfaceViewFrame];
+	//	[self.algebraicSurfaceView setFrame:CGRectMake(109, 7, 364, 258)];
 		zoomframe.origin.x = 323;
 		zoomframe.origin.y = 27;
 	}else{
 		fullScreen = YES;
+		[[UIApplication sharedApplication]setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 		layer.cornerRadius = 0;
 		[self.algebraicSurfaceView setFrame:CGRectMake(0, 0, 480, 320)];
 		zoomframe.origin.x =  algebraicSurfaceView.frame.origin.x + 440;
@@ -166,6 +225,10 @@
 //--------------------------------------------------------------------------------------------------------
 -(void)viewWillAppear:(BOOL)animated{
 	//Generar superficie si es que viene de la galeria
+	
+	if( algebraicSurface ){
+		[self.rotateimage setImage:self.algebraicSurface.thumbNailImage];
+	}
 	[super viewWillAppear:animated];
 }
 //--------------------------------------------------------------------------------------------------------
@@ -277,7 +340,12 @@
 }
 //--------------------------------------------------------------------------------------------------------
 - (void) keyboardWillHide: (NSNotification *) notification {
-	[self scrollViewTo:nil movePixels:0 baseView:self.baseView];
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+	CGRect thisViewFrame = [baseView frame];	
+	thisViewFrame.origin.y = -20;
+	[baseView setFrame:thisViewFrame];
+	[UIView commitAnimations];
 	[self showExtKeyboard:NO];
 }
 //---------------------------------------------------------------------------------------------
