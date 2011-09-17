@@ -9,6 +9,8 @@
 #import "BaseViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
+@class iSurferViewController;
+@class EAGLView;
 @interface GoiSurferViewController : BaseViewController <UITextFieldDelegate, UIGestureRecognizerDelegate>{
 	NSMutableArray* optionsViews;
 	
@@ -29,7 +31,7 @@
 	IBOutlet UISlider* blueColorSlider;
 	IBOutlet UISlider* redColorSlider;
 	
-	IBOutlet UIView* algebraicSurfaceView;
+	IBOutlet EAGLView* algebraicSurfaceView;
 	
 	IBOutlet UIImageView* rotateimage;
 	
@@ -49,6 +51,8 @@
 	
 	IBOutlet UILabel* xpos;
 	IBOutlet UILabel* ypos;
+	
+	iSurferViewController* openglController;
 
 
 }

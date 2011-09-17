@@ -52,6 +52,22 @@
 		8BC02C9C13B2938C003E41AC /* SpashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BC02C9913B2938C003E41AC /* SpashScreenViewController.xib */; };
 		8BC02C9D13B2938C003E41AC /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC02C9B13B2938C003E41AC /* SplashScreenViewController.m */; };
 		8BC02D0613B29C00003E41AC /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC02D0513B29C00003E41AC /* BaseViewController.m */; };
+		8BDD0A51142427450043741C /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A49142427450043741C /* matrix.cpp */; };
+		8BDD0A52142427450043741C /* iSurferDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A4B142427450043741C /* iSurferDelegate.cpp */; };
+		8BDD0A53142427450043741C /* EAGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A4E142427450043741C /* EAGLView.mm */; };
+		8BDD0A54142427450043741C /* iSurferViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A50142427450043741C /* iSurferViewController.mm */; };
+		8BDD0A721424281B0043741C /* exception.c in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A631424281B0043741C /* exception.c */; };
+		8BDD0A731424281B0043741C /* exp.c in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A651424281B0043741C /* exp.c */; };
+		8BDD0A741424281B0043741C /* genlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A681424281B0043741C /* genlib.c */; };
+		8BDD0A751424281B0043741C /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A6A1424281B0043741C /* parser.c */; };
+		8BDD0A761424281B0043741C /* scanadt.c in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A6C1424281B0043741C /* scanadt.c */; };
+		8BDD0A771424281B0043741C /* simpio.c in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A6E1424281B0043741C /* simpio.c */; };
+		8BDD0A781424281B0043741C /* strlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A701424281B0043741C /* strlib.c */; };
+		8BDD0A861424283E0043741C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BDD0A851424283E0043741C /* OpenGLES.framework */; };
+		8BDD0B3F142431D50043741C /* fs1.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD0B3B142431D50043741C /* fs1.glsl */; };
+		8BDD0B40142431D50043741C /* fs2.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD0B3C142431D50043741C /* fs2.glsl */; };
+		8BDD0B41142431D50043741C /* vs1.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD0B3D142431D50043741C /* vs1.glsl */; };
+		8BDD0B42142431D50043741C /* vs2.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD0B3E142431D50043741C /* vs2.glsl */; };
 		B59EB95F13D0908100AD9F7C /* Button1_off.png in Resources */ = {isa = PBXBuildFile; fileRef = B59EB95913D0908100AD9F7C /* Button1_off.png */; };
 		B59EB96013D0908100AD9F7C /* Button1_on.png in Resources */ = {isa = PBXBuildFile; fileRef = B59EB95A13D0908100AD9F7C /* Button1_on.png */; };
 		B59EB96113D0908100AD9F7C /* Button2_off.png in Resources */ = {isa = PBXBuildFile; fileRef = B59EB95B13D0908100AD9F7C /* Button2_off.png */; };
@@ -125,6 +141,34 @@
 		8BC02C9B13B2938C003E41AC /* SplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenViewController.m; sourceTree = "<group>"; };
 		8BC02D0413B29C00003E41AC /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		8BC02D0513B29C00003E41AC /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		8BDD0A49142427450043741C /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
+		8BDD0A4A142427450043741C /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix.h; sourceTree = "<group>"; };
+		8BDD0A4B142427450043741C /* iSurferDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = iSurferDelegate.cpp; sourceTree = "<group>"; };
+		8BDD0A4C142427450043741C /* iSurferDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSurferDelegate.h; sourceTree = "<group>"; };
+		8BDD0A4D142427450043741C /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
+		8BDD0A4E142427450043741C /* EAGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EAGLView.mm; sourceTree = "<group>"; };
+		8BDD0A4F142427450043741C /* iSurferViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSurferViewController.h; sourceTree = "<group>"; };
+		8BDD0A50142427450043741C /* iSurferViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iSurferViewController.mm; sourceTree = "<group>"; };
+		8BDD0A631424281B0043741C /* exception.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = exception.c; sourceTree = "<group>"; };
+		8BDD0A641424281B0043741C /* exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exception.h; sourceTree = "<group>"; };
+		8BDD0A651424281B0043741C /* exp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = exp.c; sourceTree = "<group>"; };
+		8BDD0A661424281B0043741C /* exp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exp.h; sourceTree = "<group>"; };
+		8BDD0A671424281B0043741C /* gcalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gcalloc.h; sourceTree = "<group>"; };
+		8BDD0A681424281B0043741C /* genlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = genlib.c; sourceTree = "<group>"; };
+		8BDD0A691424281B0043741C /* genlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = genlib.h; sourceTree = "<group>"; };
+		8BDD0A6A1424281B0043741C /* parser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parser.c; sourceTree = "<group>"; };
+		8BDD0A6B1424281B0043741C /* parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parser.h; sourceTree = "<group>"; };
+		8BDD0A6C1424281B0043741C /* scanadt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = scanadt.c; sourceTree = "<group>"; };
+		8BDD0A6D1424281B0043741C /* scanadt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanadt.h; sourceTree = "<group>"; };
+		8BDD0A6E1424281B0043741C /* simpio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = simpio.c; sourceTree = "<group>"; };
+		8BDD0A6F1424281B0043741C /* simpio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simpio.h; sourceTree = "<group>"; };
+		8BDD0A701424281B0043741C /* strlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = strlib.c; sourceTree = "<group>"; };
+		8BDD0A711424281B0043741C /* strlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strlib.h; sourceTree = "<group>"; };
+		8BDD0A851424283E0043741C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		8BDD0B3B142431D50043741C /* fs1.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fs1.glsl; sourceTree = "<group>"; };
+		8BDD0B3C142431D50043741C /* fs2.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fs2.glsl; sourceTree = "<group>"; };
+		8BDD0B3D142431D50043741C /* vs1.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vs1.glsl; sourceTree = "<group>"; };
+		8BDD0B3E142431D50043741C /* vs2.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vs2.glsl; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* iSurfer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iSurfer-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		B59EB95913D0908100AD9F7C /* Button1_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button1_off.png; path = ../Arte/Button1_off.png; sourceTree = SOURCE_ROOT; };
 		B59EB95A13D0908100AD9F7C /* Button1_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button1_on.png; path = ../Arte/Button1_on.png; sourceTree = SOURCE_ROOT; };
@@ -144,6 +188,7 @@
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				8B7F61F113C27E990098948F /* MediaPlayer.framework in Frameworks */,
 				8B78325513E9F85B00CE30A8 /* QuartzCore.framework in Frameworks */,
+				8BDD0A861424283E0043741C /* OpenGLES.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +239,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8BDD0B36142431C40043741C /* shaders */,
 				8B891CB113BA990B00EE4BC7 /* images */,
 				8B891C9C13BA982700EE4BC7 /* buttons */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
@@ -210,6 +256,7 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				8B7F61F013C27E990098948F /* MediaPlayer.framework */,
 				8B78325413E9F85B00CE30A8 /* QuartzCore.framework */,
+				8BDD0A851424283E0043741C /* OpenGLES.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -269,6 +316,8 @@
 		8B3080EA13BBEBDD00EA792E /* goiSurferViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8BDD0A601424280B0043741C /* parser */,
+				8BDD0A45142426FF0043741C /* openGLController */,
 				8B3080F313BBEC6900EA792E /* GoiSurferViewController.h */,
 				8B3080F413BBEC6900EA792E /* GoiSurferViewController.m */,
 				8B3080F913BBECA900EA792E /* GoiSurferViewController.xib */,
@@ -398,6 +447,55 @@
 			path = splashScreenViewController;
 			sourceTree = "<group>";
 		};
+		8BDD0A45142426FF0043741C /* openGLController */ = {
+			isa = PBXGroup;
+			children = (
+				8BDD0A49142427450043741C /* matrix.cpp */,
+				8BDD0A4A142427450043741C /* matrix.h */,
+				8BDD0A4B142427450043741C /* iSurferDelegate.cpp */,
+				8BDD0A4C142427450043741C /* iSurferDelegate.h */,
+				8BDD0A4D142427450043741C /* EAGLView.h */,
+				8BDD0A4E142427450043741C /* EAGLView.mm */,
+				8BDD0A4F142427450043741C /* iSurferViewController.h */,
+				8BDD0A50142427450043741C /* iSurferViewController.mm */,
+			);
+			path = openGLController;
+			sourceTree = "<group>";
+		};
+		8BDD0A601424280B0043741C /* parser */ = {
+			isa = PBXGroup;
+			children = (
+				8BDD0A631424281B0043741C /* exception.c */,
+				8BDD0A641424281B0043741C /* exception.h */,
+				8BDD0A651424281B0043741C /* exp.c */,
+				8BDD0A661424281B0043741C /* exp.h */,
+				8BDD0A671424281B0043741C /* gcalloc.h */,
+				8BDD0A681424281B0043741C /* genlib.c */,
+				8BDD0A691424281B0043741C /* genlib.h */,
+				8BDD0A6A1424281B0043741C /* parser.c */,
+				8BDD0A6B1424281B0043741C /* parser.h */,
+				8BDD0A6C1424281B0043741C /* scanadt.c */,
+				8BDD0A6D1424281B0043741C /* scanadt.h */,
+				8BDD0A6E1424281B0043741C /* simpio.c */,
+				8BDD0A6F1424281B0043741C /* simpio.h */,
+				8BDD0A701424281B0043741C /* strlib.c */,
+				8BDD0A711424281B0043741C /* strlib.h */,
+			);
+			path = parser;
+			sourceTree = "<group>";
+		};
+		8BDD0B36142431C40043741C /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				8BDD0B3B142431D50043741C /* fs1.glsl */,
+				8BDD0B3C142431D50043741C /* fs2.glsl */,
+				8BDD0B3D142431D50043741C /* vs1.glsl */,
+				8BDD0B3E142431D50043741C /* vs2.glsl */,
+			);
+			name = shaders;
+			path = resources/shaders;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -476,6 +574,10 @@
 				8B29FB4713D4FFA600EDB516 /* SurfaceCellView.xib in Resources */,
 				8B29FCFF13D654EC00EDB516 /* SaveAlgebraicSurfaceViewController.xib in Resources */,
 				8B29FD0813D6685600EDB516 /* Black Line.png in Resources */,
+				8BDD0B3F142431D50043741C /* fs1.glsl in Resources */,
+				8BDD0B40142431D50043741C /* fs2.glsl in Resources */,
+				8BDD0B41142431D50043741C /* vs1.glsl in Resources */,
+				8BDD0B42142431D50043741C /* vs2.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +605,17 @@
 				8B29FAB213D4F30C00EDB516 /* AlgebraicSurface.m in Sources */,
 				8B29FB4513D4FF9B00EDB516 /* SurfaceCellView.m in Sources */,
 				8B29FCFD13D654DC00EDB516 /* SaveAlgebraicSurfaceViewController.m in Sources */,
+				8BDD0A51142427450043741C /* matrix.cpp in Sources */,
+				8BDD0A52142427450043741C /* iSurferDelegate.cpp in Sources */,
+				8BDD0A53142427450043741C /* EAGLView.mm in Sources */,
+				8BDD0A54142427450043741C /* iSurferViewController.mm in Sources */,
+				8BDD0A721424281B0043741C /* exception.c in Sources */,
+				8BDD0A731424281B0043741C /* exp.c in Sources */,
+				8BDD0A741424281B0043741C /* genlib.c in Sources */,
+				8BDD0A751424281B0043741C /* parser.c in Sources */,
+				8BDD0A761424281B0043741C /* scanadt.c in Sources */,
+				8BDD0A771424281B0043741C /* simpio.c in Sources */,
+				8BDD0A781424281B0043741C /* strlib.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

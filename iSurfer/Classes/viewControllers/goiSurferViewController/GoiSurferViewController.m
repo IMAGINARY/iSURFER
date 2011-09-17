@@ -8,7 +8,8 @@
 
 #import "GoiSurferViewController.h"
 #import "SaveAlgebraicSurfaceViewController.h"
-
+#import "iSurferViewController.h"
+#import "EAGLView.h"
 //--------------------------------------------------------------------------------------------------------
 @interface GoiSurferViewController(PrivateMethods)
 -(void)showOptionsViewWrapper:(BOOL)yes view:(UIView*)showingView;
@@ -107,7 +108,19 @@
 	[xpos setHidden:YES];
 	[ypos setHidden:YES];
 	algebraicsurfaceViewFrame = algebraicSurfaceView.frame;
+	
+//	[self performSelectorInBackground:@selector(doOpenGLMagic) withObject:nil];
 }
+//--------------------------------------------------------------------------------------------------------
+
+-(void)doOpenGLMagic{
+	openglController = [[iSurferViewController alloc]init];
+	openglController.view = algebraicSurfaceView;
+	[openglController setupGLContxt];
+//	[openglController performSelectorInBackground:@selector(startAnimation) withObject:nil];
+	[openglController startAnimation];
+}
+
 //--------------------------------------------------------------------------------------------------------
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
 	if([gestureRecognizer isKindOfClass:[UIPinchGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]] ||
@@ -223,6 +236,15 @@
 	[UIView commitAnimations];
 }
 //--------------------------------------------------------------------------------------------------------
+-(void)viewDidAppear:(BOOL)animated{
+	
+//	[self performSelectorInBackground:@selector(doOpenGLMagic) withObject:nil];
+	[self 	doOpenGLMagic];
+	[super viewDidAppear:animated];
+	
+}
+//--------------------------------------------------------------------------------------------------------
+
 -(void)viewWillAppear:(BOOL)animated{
 	//Generar superficie si es que viene de la galeria
 	
@@ -234,6 +256,8 @@
 //--------------------------------------------------------------------------------------------------------
 
 -(void)viewWillDisappear:(BOOL)animated{
+	[openglController stopAnimation];
+
 	for( UIView* optionView in self.optionsViews ){
 		[optionView setHidden:YES];
 	}
@@ -423,6 +447,7 @@
 	[zoomSlider release];
 	[zoomView release];
 	[algebraicSurface release];
+	[openglController release];
 	[super dealloc];
 }
 //---------------------------------------------------------------------------------------------
