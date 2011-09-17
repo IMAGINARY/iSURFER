@@ -38,5 +38,6 @@
 - (void)startAnimation;
 - (void)stopAnimation;
 -(void)setupGLContxt;
+-(void)rotateX:(float)x Y:(float)y;
 
 @end

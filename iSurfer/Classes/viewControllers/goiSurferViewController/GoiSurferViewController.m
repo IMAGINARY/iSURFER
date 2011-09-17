@@ -10,6 +10,7 @@
 #import "SaveAlgebraicSurfaceViewController.h"
 #import "iSurferViewController.h"
 #import "EAGLView.h"
+
 //--------------------------------------------------------------------------------------------------------
 @interface GoiSurferViewController(PrivateMethods)
 -(void)showOptionsViewWrapper:(BOOL)yes view:(UIView*)showingView;
@@ -164,6 +165,7 @@
 		case UIGestureRecognizerStateChanged:
 			xpos.text = [NSString stringWithFormat:@"x: %.2f", p.x];
 			ypos.text = [NSString stringWithFormat:@"y: %.2f", p.y];
+			[openglController rotateX:p.x Y:p.y];
 			break;
 		case UIGestureRecognizerStateEnded:
 			break;

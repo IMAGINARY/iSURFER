@@ -144,14 +144,12 @@ enum {
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    
     [super viewWillAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self stopAnimation];
-    
     [super viewWillDisappear:animated];
 }
 
@@ -461,6 +459,12 @@ enum {
         glDeleteShader(fragShader);
     
     return TRUE;
+}
+
+-(void)rotateX:(float)x Y:(float)y{
+	iSurferDelegate::rotationX = y * M_PI / 180;
+	iSurferDelegate::rotationY = x * M_PI /180;
+
 }
 
 @end
