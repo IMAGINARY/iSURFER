@@ -462,8 +462,8 @@ enum {
 }
 
 -(void)rotateX:(float)x Y:(float)y{
-	iSurferDelegate::rotationX = y * M_PI / 180;
-	iSurferDelegate::rotationY = x * M_PI /180;
+	iSurferDelegate::rotationX =  y * M_PI / 180;
+	iSurferDelegate::rotationY =  x * M_PI /180;
 
 }
 
