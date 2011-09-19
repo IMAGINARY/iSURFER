@@ -8,6 +8,9 @@
 #include <sstream>
 #include <fstream>
 #include <string>
+#import <OpenGLES/ES1/gl.h>
+#import <OpenGLES/ES1/glext.h>
+
 extern "C" {
 #include <stdio.h>
 #include "genlib.h"
@@ -20,8 +23,56 @@ extern "C" {
 float iSurferDelegate::rotationX = 0.0f;
 float iSurferDelegate::rotationY = 0.0f;
 float iSurferDelegate::rotationZ = 0.0f;
+float iSurferDelegate::zoom = 3.55f;
+float iSurferDelegate::lightIntensity = 1.0f;
+float iSurferDelegate::colorR = 0.5f;
+float iSurferDelegate::colorG = 0.6f;
+float iSurferDelegate::colorB = 0.9f;
+float iSurferDelegate::lposX = 5.0f;
+float iSurferDelegate::lposY = 5.0f;
+float iSurferDelegate::lposZ = 1.0f;
+
+
 GLuint iSurferDelegate::alg_surface_glsl_program = 0u;
 GLuint iSurferDelegate::wireframe_glsl_program = 0u;
+
+struct UniformHandles {
+    GLuint LightPosition;
+    GLint AmbientMaterial;
+    GLint SpecularMaterial;
+    GLint Shininess;
+    GLint DiffuseMaterial;
+
+};
+UniformHandles m_uniforms;
+
+template <typename T>
+struct Vector4 {
+    Vector4() {}
+    Vector4(T x, T y, T z, T w) : x(x), y(y), z(z), w(w) {}
+    T Dot(const Vector4& v) const
+    {
+        return x * v.x + y * v.y + z * v.z + w * v.w;
+    }
+    Vector4 Lerp(float t, const Vector4& v) const
+    {
+        return Vector4(x * (1 - t) + v.x * t,
+                       y * (1 - t) + v.y * t,
+                       z * (1 - t) + v.z * t,
+                       w * (1 - t) + v.w * t);
+    }
+    const T* Pointer() const
+    {
+        return &x;
+    }
+    T x;
+    T y;
+    T z;
+    T w;
+};
+
+typedef Vector4<float> vec4;
+
 
 using namespace std;
 
@@ -74,8 +125,14 @@ void iSurferDelegate::init(const char *vs1, const char *fs1, const char *vs2, co
 	SetScannerString(scanner, (char *)formula);
 	exp= ParseExp(scanner);
 	clearExp();
-	EvalExp(exp);
+	EvalExp(exp, 0);
+    EvalDerivateNoCode(exp);
+    printf("code\n");
 	printf(getCode());
+    printf("\nderivate\n");
+    printf(getCodeDerivate());
+    printf("\nderivate\n");
+    
 //	printf("\n");
 //	printf("Degree %d \n", EvalDegree(exp));
 	
@@ -83,6 +140,7 @@ void iSurferDelegate::init(const char *vs1, const char *fs1, const char *vs2, co
 	//wireframe_glsl_program = init( vs2/*"vs2.glsl"*/, fs2/*"fs2.glsl"*/ );
 
 	checkGLError( AT );
+    
 	set_light_and_material();
 }
 
@@ -118,16 +176,28 @@ GLuint iSurferDelegate::init( const char* vertex_shader_name, const char* fragme
 	const char *fragment_shader_code_c_str = fragment_shader_code.c_str();
 	int codeLen = strlen(getCode());
 	int shaderLen = strlen(fragment_shader_code_c_str);
-	
-	char * shader_code_c_str = (char *) malloc( shaderLen + codeLen + 1) ;
+    int derivLen = strlen(getCodeDerivate()); 
+    
+	char * shader_code_c_str = (char *) malloc( shaderLen + codeLen + derivLen + 2) ;
 	int position = 7 + FindString((char *) "return ", (char * )fragment_shader_code_c_str, 1);
-	memcpy(shader_code_c_str , fragment_shader_code_c_str, position);
+	int positionDerivate = 13 + FindString((char *) "highp vec3 N ", (char * )fragment_shader_code_c_str, 1);
+	int posDer = positionDerivate  - position;
+    
+    memcpy(shader_code_c_str , fragment_shader_code_c_str, position);
 	memcpy(shader_code_c_str + position, getCode(), codeLen);
-	memcpy(shader_code_c_str + position + codeLen, fragment_shader_code_c_str + position + 1, shaderLen - position );
-	shader_code_c_str[codeLen + shaderLen + 1] = '\0';
+	
+    memcpy(shader_code_c_str + position + codeLen, fragment_shader_code_c_str + position + 1, posDer  );
+    
+    
+    memcpy(shader_code_c_str + codeLen + positionDerivate , getCodeDerivate() , derivLen );
+     
+    memcpy(shader_code_c_str + positionDerivate + codeLen + derivLen, fragment_shader_code_c_str + positionDerivate + 2, shaderLen  - positionDerivate );
+    
+    
+	shader_code_c_str[codeLen + shaderLen + derivLen + 1] = '\0';
 	printf("\n\n\n\n\n%s\n\n\n\n\n\n\n", shader_code_c_str);
 	fflush(stdout);
-	//printf("\nhola\n");
+	printf("\nhola\n");
     const char *Frafmentshader_code_c_str = (const char *)shader_code_c_str;
 	glShaderSource( fragment_shader, 1, &Frafmentshader_code_c_str, NULL );
 	glCompileShader( fragment_shader );
@@ -200,19 +270,14 @@ void iSurferDelegate::display()
 
 	// setup matrices
 	Matrix4x4 t, s, rx, ry, rz, modelview, modelview_inv;
-	
 	//Para el zoom parametrizar scale_matrix
 	//Para rotacion setear las variables de rotation_matrix
 	//Traslacion si es necesario usar la matriz
-	scale_matrix( 3.55f, 3.55f, 3.55f, s );
+    scale_matrix( zoom, zoom, zoom, s );
 	translation_matrix( 0.0, 0.0, -7.5, t );
 	rotation_matrix( 1.0f, 0.0f, 0.0f, iSurferDelegate::rotationX, rx );
-
 	rotation_matrix( 0.0f, 1.0f, 0.0f, iSurferDelegate::rotationY, ry );
-
 	rotation_matrix( 0.0f, 0.0f, 1.0f, iSurferDelegate::rotationZ, rz );
-
-
 	mult_matrix( t, s, modelview );
 	mult_matrix( modelview, rx, modelview );
 	mult_matrix( modelview, ry, modelview );
@@ -224,7 +289,6 @@ void iSurferDelegate::display()
 	perspective_projection_matrix( 60.0, 1.0, 3.0, 12.0, projection );
 
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); checkGLError( AT );
-	glClearColor( 1.0, 1.0, 1.0, 1.0 );
 
 	// enable blending
 	glEnable (GL_BLEND);
@@ -263,6 +327,23 @@ void iSurferDelegate::display()
 		GLint u_modelview = glGetUniformLocation( glsl_program, "modelviewMatrix" ); checkGLError( AT );
 		GLint u_modelview_inv = glGetUniformLocation( glsl_program, "modelviewMatrixInverse" ); checkGLError( AT );
 		GLint u_projection = glGetUniformLocation( glsl_program, "projectionMatrix" ); checkGLError( AT );
+
+        m_uniforms.LightPosition = glGetUniformLocation(glsl_program, "LightPosition");
+        m_uniforms.AmbientMaterial = glGetUniformLocation(glsl_program, "AmbientMaterial");
+        m_uniforms.SpecularMaterial = glGetUniformLocation(glsl_program, "SpecularMaterial");
+        m_uniforms.Shininess = glGetUniformLocation(glsl_program, "Shininess"); 
+        m_uniforms.DiffuseMaterial = glGetAttribLocation(glsl_program, "DiffuseMaterial");
+        
+        //Color ambient, sin luz
+        glUniform3f(m_uniforms.AmbientMaterial, 0.04f, 0.04f, 0.04f);
+        //R,G,B, alpha con luz
+        glUniform3f(m_uniforms.SpecularMaterial, 0.5, 0.5, 1);
+        //Power de la luz
+        glUniform1f(m_uniforms.Shininess, lightIntensity);
+        vec4 lightPosition(lposX, lposY, lposZ, 0);
+        glUniform3fv(m_uniforms.LightPosition, 1, lightPosition.Pointer());
+        glUniform4f(m_uniforms.DiffuseMaterial, colorR, colorG, colorB, 1);
+
 
 		glUniformMatrix4fv( u_modelview, 1, GL_FALSE, modelview ); checkGLError( AT );
 		glUniformMatrix4fv( u_modelview_inv, 1, GL_FALSE, modelview_inv ); checkGLError( AT );
@@ -339,7 +420,10 @@ void iSurferDelegate::display2()
 
 void iSurferDelegate::set_light_and_material()
 {
-/*
+    /*
+    glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);     	     
+
 	// Brass
 	GLfloat front_emission_color[ 4 ] = { 0.0f, 0.0f, 0.0f, 1.0f };
 	GLfloat front_ambient_color[ 4 ]  = { 0.329412f, 0.223529f, 0.027451f, 1.0f };
@@ -403,7 +487,8 @@ void iSurferDelegate::set_light_and_material()
 	glLightfv( GL_LIGHT5, GL_AMBIENT, gl_lights_ambient );
 	glLightfv( GL_LIGHT6, GL_AMBIENT, gl_lights_ambient );
 	glLightfv( GL_LIGHT7, GL_AMBIENT, gl_lights_ambient );
-*/
+    */
+
 }
 
 	void PlotSpherePoints(GLfloat radius, GLint stacks, GLint slices, GLfloat *v, GLfloat *n )

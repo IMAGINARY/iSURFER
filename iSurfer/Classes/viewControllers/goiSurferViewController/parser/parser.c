@@ -27,7 +27,7 @@ booleano IsVariable(char * token) {
         return FALSE;
     switch(token[0])
     {
-        case 'x': case 'y': case 'z': case 'a': case 'b':
+        case 'x': case 'y': case 'z':
             return TRUE;
         default:
             return FALSE;

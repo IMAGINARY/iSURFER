@@ -15,4 +15,4 @@ void main( void )
 	// calculate ray in different coordinate systems
 	varying_eye = ( modelviewMatrixInverse * origin ).xyz;
 	varying_dir = pos.xyz - varying_eye;
-}
+} 

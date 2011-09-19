@@ -48,12 +48,14 @@ expressionT SubTree( char* raiz, expressionT left, expressionT right);
  * Evalua un arbol de expresiones aritmeticas
  */
 
-void EvalExp( expressionT exp);
+void EvalExp( expressionT exp, int where);
 char * getCode(void);
 int EvalDegree( expressionT exp);
 int getCodeLeng(void);
 void clearExp(void);
-
+char * getCodeDerivate(void);
+void EvalDerivate( expressionT exp);
+void EvalDerivateNoCode( expressionT exp);
  /* Funcion: libera la informacion
  * Uso: FreeTree( tree );
  * --------------------------------

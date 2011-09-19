@@ -6,6 +6,14 @@
 #define SIZE 3
 #define EPSILON 0.0001
 
+uniform lowp vec3 Diffuse;
+
+uniform highp vec3 LightPosition;
+uniform highp vec3 AmbientMaterial;
+uniform highp vec3 SpecularMaterial;
+uniform highp float Shininess;
+
+
 struct polynomial { highp float a[ SIZE ]; };
 
 polynomial create_poly_0( highp float a0 );
@@ -28,6 +36,8 @@ polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir, in highp vec
 	
 	//return sub( add( add( power( x, 2, 2 ), power( y, 2, 2 ), 2 ), power( z, 2, 2 ), 2 ), create_poly_0( 0.5 ), 2 );
 	}
+
+
 
 highp vec3 mygradient( in highp vec3 point )
 {
@@ -442,6 +452,40 @@ void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float 
 	}
 }
 
+
+void calc_lights( in highp vec3 eye, in highp vec3 dir, in highp vec2 trace_interval , in highp vec3 hit_point)
+{
+//polynomial x = create_poly_1( eye.x, dir.x );
+//polynomial y = create_poly_1( eye.y, dir.y );
+//polynomial z = create_poly_1( eye.z, dir.z );
+
+highp float x = hit_point.x;
+highp float y = hit_point.y;
+highp float z = hit_point.z;
+
+
+highp vec3 N 
+
+//highp vec3 N = eval_p(p_normal, hit_point);
+//highp vec3 N = vec3(eval_p( mult(create_poly_0(2.0),x,1), hit_point.x), eval_p(  mult(mult(create_poly_0(2.0),x,1),create_poly_0(0.0),1), hit_point.x), eval_p(  mult(mult(create_poly_0(2.0),x,1),create_poly_0(0.0),1), hit_point.z));
+
+highp vec3 L = normalize(LightPosition);
+highp vec3 E = vec3(0, 0, 1);
+highp vec3 H = normalize(L + E);
+
+highp float df = max(0.0, dot(N, L));
+highp float sf = max(0.0, dot(N, H));
+sf = pow(sf, Shininess);
+
+lowp vec3 color = AmbientMaterial + df * Diffuse + sf * SpecularMaterial;
+
+gl_FragColor = vec4(color, 1);
+
+
+}
+
+
+
 /**
  * main method, that guides the overall process
  */
@@ -464,6 +508,12 @@ void main( void )
 
 	highp vec3 hit_point = eye + root * dir;
 
-	gl_FragColor = vec4( normalize( mygradient( hit_point ) ), 0.5 );
-//	gl_FragColor = vec4( clamp( dir, 0.0, 1.0 ), 0.5 );
+	//gl_FragColor = vec4( normalize( mygradient( hit_point ) ), 0.5 );
+
+//gl_FragColor = gl_Color;
+ calc_lights( eye, dir, vec2( tmin, tmax ), hit_point );
+//gl_FragColor = vec4( 0.0, 0.0, 1.0 , 0.5 );
+//gl_FragColor = vec4( clamp( dir, 0.0, 1.0 ), 0.5 );
+
+
 }

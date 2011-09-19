@@ -6,7 +6,7 @@
 class iSurferDelegate
 {
 	public:
-		static float rotationX, rotationY, rotationZ;
+		static float rotationX, rotationY, rotationZ, zoom, lightIntensity, colorR, colorG, colorB, lposX, lposY ,lposZ;
 	
 		static void init(const char *vs1, const char *fs1, const char *vs2, const char *fs2, const char * formula);
 		
