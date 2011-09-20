@@ -42,5 +42,6 @@
 -(void)drawFrame;
 -(void)setZoom:(double)zoomvalue;
 -(void)generateSurface:(NSString*)eq;
+-(float)zoom;
 
 @end

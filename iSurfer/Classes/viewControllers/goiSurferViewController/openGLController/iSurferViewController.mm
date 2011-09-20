@@ -494,4 +494,8 @@ enum {
 	
 }
 
+-(float)zoom{
+	return iSurferDelegate::zoom;
+}
+
 @end

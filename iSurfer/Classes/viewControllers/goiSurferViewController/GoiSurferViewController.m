@@ -120,6 +120,7 @@
 	[openglController setupGLContxt];
 //	[openglController performSelectorInBackground:@selector(startAnimation) withObject:nil];
 	[openglController startAnimation];
+
 }
 
 //--------------------------------------------------------------------------------------------------------
@@ -244,6 +245,8 @@
 	
 //	[self performSelectorInBackground:@selector(doOpenGLMagic) withObject:nil];
 	[self 	doOpenGLMagic];
+	self.zoomSlider.value = [openglController zoom];
+
 	[super viewDidAppear:animated];
 	
 }
