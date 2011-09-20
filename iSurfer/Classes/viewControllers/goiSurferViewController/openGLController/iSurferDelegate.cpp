@@ -275,9 +275,11 @@ void iSurferDelegate::display()
 	//Traslacion si es necesario usar la matriz
     scale_matrix( zoom, zoom, zoom, s );
 	translation_matrix( 0.0, 0.0, -7.5, t );
+
 	rotation_matrix( 1.0f, 0.0f, 0.0f, iSurferDelegate::rotationX, rx );
 	rotation_matrix( 0.0f, 1.0f, 0.0f, iSurferDelegate::rotationY, ry );
 	rotation_matrix( 0.0f, 0.0f, 1.0f, iSurferDelegate::rotationZ, rz );
+
 	mult_matrix( t, s, modelview );
 	mult_matrix( modelview, rx, modelview );
 	mult_matrix( modelview, ry, modelview );

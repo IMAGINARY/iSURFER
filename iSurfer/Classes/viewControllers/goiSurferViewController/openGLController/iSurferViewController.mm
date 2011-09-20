@@ -196,7 +196,7 @@ enum {
 {
     if (!animating)
     {
-				animationTimer = [NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)((1.0 / 60.0) * animationFrameInterval) target:self selector:@selector(drawFrame) userInfo:nil repeats:TRUE];
+			//	animationTimer = [NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)((1.0 / 60.0) * animationFrameInterval) target:self selector:@selector(drawFrame) userInfo:nil repeats:TRUE];
         
         animating = TRUE;
     }
@@ -207,6 +207,9 @@ enum {
 	NSString *fs2 = [[NSBundle mainBundle] pathForResource:@"fs2" ofType:@"glsl"];
 	NSString *formula = @"x^2+y^2+z*x+y";
 	iSurferDelegate::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[formula UTF8String]);
+	
+	[self drawFrame];
+
 }
 
 - (void)stopAnimation
@@ -462,9 +465,33 @@ enum {
 }
 
 -(void)rotateX:(float)x Y:(float)y{
-	iSurferDelegate::rotationX =  y * M_PI / 180;
-	iSurferDelegate::rotationY =  x * M_PI /180;
+	NSLog(@"calc x: %.2f  calcy: %.2f", x * M_PI / 180, y * M_PI / 180 );
+	iSurferDelegate::rotationX =  iSurferDelegate::rotationX + (y * M_PI / 180 / 2.0);
+	iSurferDelegate::rotationY =  iSurferDelegate::rotationY +  (x * M_PI /180 /2.0);
+	if( iSurferDelegate::rotationX > 360 ){
+		iSurferDelegate::rotationX -= 360;
+	}
+	if( iSurferDelegate::rotationY > 360 ){
+		iSurferDelegate::rotationY  -= 360;
+	}
+	NSLog(@"x: %.2f    y:%.2f", iSurferDelegate::rotationX , iSurferDelegate::rotationY );
+}
 
+
+-(void)setZoom:(double)zoomvalue{
+	iSurferDelegate::zoom = zoomvalue;
+}
+
+-(void)generateSurface:(NSString*)eq{
+	NSString *vs1 = [[NSBundle mainBundle] pathForResource:@"vs1" ofType:@"glsl"];
+	NSString *fs1 = [[NSBundle mainBundle] pathForResource:@"fs1" ofType:@"glsl"];
+	NSString *vs2 = [[NSBundle mainBundle] pathForResource:@"vs2" ofType:@"glsl"];
+	NSString *fs2 = [[NSBundle mainBundle] pathForResource:@"fs2" ofType:@"glsl"];
+	//NSString *formula = @"x^2+y^2+z*x+y";
+	iSurferDelegate::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[eq UTF8String]);
+	
+	[self drawFrame];
+	
 }
 
 @end

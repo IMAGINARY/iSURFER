@@ -59,8 +59,8 @@
 	
 	//Zoom slider
 	UISlider* tmpzoomSlider = [[UISlider alloc]init];
-	tmpzoomSlider.minimumValue = 0;
-	tmpzoomSlider.maximumValue = 10;
+	tmpzoomSlider.minimumValue = 1;
+	tmpzoomSlider.maximumValue = 4;
 	[tmpzoomSlider setUserInteractionEnabled:NO];
 	CGAffineTransform trans = CGAffineTransformMakeRotation(-M_PI * 0.5);
     tmpzoomSlider.transform = trans;
@@ -133,17 +133,17 @@
 }
 //--------------------------------------------------------------------------------------------------------
 -(void)handleSingleLongPressTouch:(UILongPressGestureRecognizer*)singleLongPressGesture{
-	NSLog(@"handleSingleLongPressTouch");
 	switch (singleLongPressGesture.state) {
 		case UIGestureRecognizerStateBegan:
 			[xpos setHidden:NO];
 			[ypos setHidden:NO];
 			xpos.text = @"x: 0";
-			ypos.text = @"x: 0";
+			ypos.text = @"y: 0";
 			break;
 		case UIGestureRecognizerStateChanged:
 			break;
 		case UIGestureRecognizerStateEnded:
+			[openglController drawFrame];
 			[xpos setHidden:YES];
 			[ypos setHidden:YES];
 			break;
@@ -154,8 +154,6 @@
 //--------------------------------------------------------------------------------------------------------
 
 -(void)handlePanGesture:(UIPanGestureRecognizer*)gestureRecognizer{
-	NSLog(@"handlePanGesture");
-
 	CGPoint p;
 	p = [gestureRecognizer translationInView:gestureRecognizer.view];
 
@@ -165,9 +163,10 @@
 		case UIGestureRecognizerStateChanged:
 			xpos.text = [NSString stringWithFormat:@"x: %.2f", p.x];
 			ypos.text = [NSString stringWithFormat:@"y: %.2f", p.y];
-			[openglController rotateX:p.x Y:p.y];
 			break;
 		case UIGestureRecognizerStateEnded:
+			[openglController rotateX:p.x Y:p.y];
+			[openglController drawFrame];
 			break;
 		default:
 			break;
@@ -206,6 +205,9 @@
 		}else {
 			self.zoomSlider.value += 0.1;
 		}
+		[openglController setZoom:zoomSlider.value];
+	}else if (pinchGesture.state == UIGestureRecognizerStateEnded) {
+		[openglController drawFrame];
 	}
 	previousScale = pinchGesture.scale;	
 }
@@ -315,7 +317,7 @@
 //--------------------------------------------------------------------------------------------------------
 -(void)doneButtonPressed{
 	[equationTextField resignFirstResponder];
-	//aca habria que hacer todo el parseo y validarlo
+	//aca habria que hacer todo el validamiento de la ecuacion 
  }
 #pragma mark Keyboard methods
 //--------------------------------------------------------------------------------------------------------
@@ -374,6 +376,12 @@
 	[UIView commitAnimations];
 	[self showExtKeyboard:NO];
 }
+//--------------------------------------------------------------------------------------------------------
+
+- (void) keyboardDidHide: (NSNotification *) notification {
+	[openglController generateSurface:self.equationTextField.text];
+}
+
 //---------------------------------------------------------------------------------------------
 - (void) keyboardWillShow: (NSNotification *) notification {	
 	[self showOptionsViewWrapper:NO view:nil];
@@ -417,6 +425,12 @@
 	[equationTextField resignFirstResponder];
 	return YES;
 }
+//--------------------------------------------------------------------------------------------------------
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+	
+}
+
 //--------------------------------------------------------------------------------------------------------
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
 	return YES;

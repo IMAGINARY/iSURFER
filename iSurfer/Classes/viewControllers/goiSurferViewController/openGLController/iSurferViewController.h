@@ -39,5 +39,8 @@
 - (void)stopAnimation;
 -(void)setupGLContxt;
 -(void)rotateX:(float)x Y:(float)y;
+-(void)drawFrame;
+-(void)setZoom:(double)zoomvalue;
+-(void)generateSurface:(NSString*)eq;
 
 @end
