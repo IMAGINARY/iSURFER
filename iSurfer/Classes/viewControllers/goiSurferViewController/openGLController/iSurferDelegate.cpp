@@ -23,7 +23,7 @@ extern "C" {
 float iSurferDelegate::rotationX = 0.0f;
 float iSurferDelegate::rotationY = 0.0f;
 float iSurferDelegate::rotationZ = 0.0f;
-float iSurferDelegate::zoom = 3.55f;
+float iSurferDelegate::zoom = 10.0;
 float iSurferDelegate::lightIntensity = 1.0f;
 float iSurferDelegate::colorR = 0.5f;
 float iSurferDelegate::colorG = 0.6f;
@@ -36,7 +36,7 @@ float iSurferDelegate::lposY = 5.0f;
 float iSurferDelegate::lposZ = 1.0f;
 float iSurferDelegate::stacks = 20.0f;
 float iSurferDelegate::slices = 20.0f;
-float iSurferDelegate::radius = 1.0f;
+float iSurferDelegate::radius = 5;
 
 
 GLuint iSurferDelegate::alg_surface_glsl_program = 0u;
@@ -280,7 +280,7 @@ void iSurferDelegate::display()
 	//Para el zoom parametrizar scale_matrix
 	//Para rotacion setear las variables de rotation_matrix
 	//Traslacion si es necesario usar la matriz
-    scale_matrix( zoom, zoom, zoom, s );
+    scale_matrix( 1, 1, 1, s );
 	translation_matrix( 0.0, 0.0, -7.5, t );
 
 	rotation_matrix( 1.0f, 0.0f, 0.0f, iSurferDelegate::rotationX, rx );
@@ -295,7 +295,7 @@ void iSurferDelegate::display()
 	invert_matrix( modelview, modelview_inv );
 
 	Matrix4x4 projection;
-	perspective_projection_matrix( 60.0, 1.0, 3.0, 12.0, projection );
+	perspective_projection_matrix( zoom, 1.5, 1, 12.0, projection );
 
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); checkGLError( AT );
 

@@ -205,7 +205,8 @@ enum {
 	NSString *fs1 = [[NSBundle mainBundle] pathForResource:@"fs1" ofType:@"glsl"];
 	NSString *vs2 = [[NSBundle mainBundle] pathForResource:@"vs2" ofType:@"glsl"];
 	NSString *fs2 = [[NSBundle mainBundle] pathForResource:@"fs2" ofType:@"glsl"];
-	NSString *formula = @"x^2+y^2+z*x+y";
+	//NSString *formula = @"x^2+y^2+z*x+y";
+    NSString *formula = @"x^2+y^2+z^2-.9";
     //NSString *formula = @"x^2-x-x^2*y-y*z^2-z^2";
    iSurferDelegate::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[formula UTF8String]);
 	

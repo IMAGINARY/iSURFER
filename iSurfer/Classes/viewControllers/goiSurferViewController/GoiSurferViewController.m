@@ -60,7 +60,7 @@
 	//Zoom slider
 	UISlider* tmpzoomSlider = [[UISlider alloc]init];
 	tmpzoomSlider.minimumValue = 1;
-	tmpzoomSlider.maximumValue = 4;
+	tmpzoomSlider.maximumValue = 100;
 	[tmpzoomSlider setUserInteractionEnabled:NO];
 	CGAffineTransform trans = CGAffineTransformMakeRotation(-M_PI * 0.5);
     tmpzoomSlider.transform = trans;
@@ -202,9 +202,9 @@
 		previousScale = pinchGesture.scale;
 	}else if( pinchGesture.state == UIGestureRecognizerStateChanged ){
 		if( previousScale > pinchGesture.scale ){
-			self.zoomSlider.value -= 0.1;
+			self.zoomSlider.value -= 0.5;
 		}else {
-			self.zoomSlider.value += 0.1;
+			self.zoomSlider.value += 0.5;
 		}
 		[openglController setZoom:zoomSlider.value];
 	}else if (pinchGesture.state == UIGestureRecognizerStateEnded) {
