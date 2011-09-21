@@ -11,6 +11,8 @@ uniform lowp vec3 Diffuse;
 uniform highp vec3 LightPosition;
 uniform highp vec3 AmbientMaterial;
 uniform highp vec3 SpecularMaterial;
+
+uniform highp vec3 SpecularMaterial2;
 uniform highp float Shininess;
 
 
@@ -469,6 +471,7 @@ highp vec3 N
 //highp vec3 N = eval_p(p_normal, hit_point);
 //highp vec3 N = vec3(eval_p( mult(create_poly_0(2.0),x,1), hit_point.x), eval_p(  mult(mult(create_poly_0(2.0),x,1),create_poly_0(0.0),1), hit_point.x), eval_p(  mult(mult(create_poly_0(2.0),x,1),create_poly_0(0.0),1), hit_point.z));
 
+
 highp vec3 L = normalize(LightPosition);
 highp vec3 E = vec3(0, 0, 1);
 highp vec3 H = normalize(L + E);
@@ -476,8 +479,12 @@ highp vec3 H = normalize(L + E);
 highp float df = max(0.0, dot(N, L));
 highp float sf = max(0.0, dot(N, H));
 sf = pow(sf, Shininess);
+lowp vec3 color;
+if(dot(N, varying_eye) >= 0.0)
 
-lowp vec3 color = AmbientMaterial + df * Diffuse + sf * SpecularMaterial;
+    color = AmbientMaterial + df * Diffuse + sf * SpecularMaterial;
+else
+    color = AmbientMaterial + df * Diffuse + sf * SpecularMaterial2;
 
 gl_FragColor = vec4(color, 1);
 

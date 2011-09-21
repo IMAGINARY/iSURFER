@@ -28,9 +28,15 @@ float iSurferDelegate::lightIntensity = 1.0f;
 float iSurferDelegate::colorR = 0.5f;
 float iSurferDelegate::colorG = 0.6f;
 float iSurferDelegate::colorB = 0.9f;
+float iSurferDelegate::colorR2 = 0.9f;
+float iSurferDelegate::colorG2 = 0.5f;
+float iSurferDelegate::colorB2 = 0.6f;
 float iSurferDelegate::lposX = 5.0f;
 float iSurferDelegate::lposY = 5.0f;
 float iSurferDelegate::lposZ = 1.0f;
+float iSurferDelegate::stacks = 20.0f;
+float iSurferDelegate::slices = 20.0f;
+float iSurferDelegate::radius = 1.0f;
 
 
 GLuint iSurferDelegate::alg_surface_glsl_program = 0u;
@@ -40,6 +46,7 @@ struct UniformHandles {
     GLuint LightPosition;
     GLint AmbientMaterial;
     GLint SpecularMaterial;
+    GLint SpecularMaterial2;
     GLint Shininess;
     GLint DiffuseMaterial;
 
@@ -334,6 +341,7 @@ void iSurferDelegate::display()
         m_uniforms.LightPosition = glGetUniformLocation(glsl_program, "LightPosition");
         m_uniforms.AmbientMaterial = glGetUniformLocation(glsl_program, "AmbientMaterial");
         m_uniforms.SpecularMaterial = glGetUniformLocation(glsl_program, "SpecularMaterial");
+        m_uniforms.SpecularMaterial2 = glGetUniformLocation(glsl_program, "SpecularMaterial2");
         m_uniforms.Shininess = glGetUniformLocation(glsl_program, "Shininess"); 
         m_uniforms.DiffuseMaterial = glGetAttribLocation(glsl_program, "DiffuseMaterial");
         
@@ -341,6 +349,8 @@ void iSurferDelegate::display()
         glUniform3f(m_uniforms.AmbientMaterial, 0.04f, 0.04f, 0.04f);
         //R,G,B, alpha con luz
         glUniform3f(m_uniforms.SpecularMaterial, colorR, colorG, colorB);
+        glUniform3f(m_uniforms.SpecularMaterial2, colorR2, colorG2, colorB2);
+
         //Power de la luz
         glUniform1f(m_uniforms.Shininess, lightIntensity);
         vec4 lightPosition(lposX, lposY, lposZ, 0);
@@ -352,7 +362,7 @@ void iSurferDelegate::display()
 		glUniformMatrix4fv( u_modelview_inv, 1, GL_FALSE, modelview_inv ); checkGLError( AT );
 		glUniformMatrix4fv( u_projection, 1, GL_FALSE, projection ); checkGLError( AT );
 
-		solidSphere( 1.0, 20, 20, attr_pos ); checkGLError( AT );
+		solidSphere( radius, slices, stacks, attr_pos ); checkGLError( AT );
 	}
 	checkGLError( AT );
 }
