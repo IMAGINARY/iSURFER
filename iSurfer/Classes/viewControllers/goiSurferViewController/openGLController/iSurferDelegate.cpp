@@ -299,6 +299,7 @@ void iSurferDelegate::display()
 	// set culling properties
 	glFrontFace( GL_CCW );
 	glCullFace( GL_BACK );
+
 /*
 	// draw wireframe sphere
 	{
@@ -339,7 +340,7 @@ void iSurferDelegate::display()
         //Color ambient, sin luz
         glUniform3f(m_uniforms.AmbientMaterial, 0.04f, 0.04f, 0.04f);
         //R,G,B, alpha con luz
-        glUniform3f(m_uniforms.SpecularMaterial, 0.5, 0.5, 1);
+        glUniform3f(m_uniforms.SpecularMaterial, colorR, colorG, colorB);
         //Power de la luz
         glUniform1f(m_uniforms.Shininess, lightIntensity);
         vec4 lightPosition(lposX, lposY, lposZ, 0);

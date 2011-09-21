@@ -29,6 +29,8 @@
 #define	SHOW_GALLERIES_PICKER	104
 #define HIDE_GALLERIES_PICKER	320
 
+#define ZOOM_VIEW_X_POSITION	10
+
 typedef enum {
 	NONE = 0,
 	MOVE,

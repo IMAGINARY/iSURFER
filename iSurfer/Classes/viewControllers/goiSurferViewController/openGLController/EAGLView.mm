@@ -31,11 +31,10 @@
     self = [super initWithCoder:coder];
 	if (self)
     {
-		NSLog(@"hola");
         CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
 		eaglLayer.cornerRadius = 8;
 
-        eaglLayer.opaque = TRUE;
+        eaglLayer.opaque = NO;
         eaglLayer.drawableProperties = [NSDictionary dictionaryWithObjectsAndKeys:
                                         [NSNumber numberWithBool:FALSE], kEAGLDrawablePropertyRetainedBacking,
                                         kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat,
@@ -92,6 +91,7 @@
         
         if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
             NSLog(@"Failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
+		
     }
 }
 

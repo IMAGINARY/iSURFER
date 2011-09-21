@@ -167,7 +167,7 @@
 			break;
 		case UIGestureRecognizerStateEnded:
 			[openglController rotateX:p.x Y:p.y];
-			[openglController drawFrame];
+		//	[openglController drawFrame];
 			break;
 		default:
 			break;
@@ -219,24 +219,27 @@
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
 	CGRect zoomframe = self.zoomView.frame;
+	CGRect f = colorPaletteView.frame;
+	f.origin.x = -OPTIONS_VIEWS_WIDTH;
+	colorPaletteView.frame = f;
 	CALayer * layer = [algebraicSurfaceView layer];
-
+	
 	if(fullScreen){
 		fullScreen = NO;
 		[[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 		layer.cornerRadius = 8;
 		[algebraicSurfaceView setFrame:algebraicsurfaceViewFrame];
 	//	[self.algebraicSurfaceView setFrame:CGRectMake(109, 7, 364, 258)];
-		zoomframe.origin.x = 323;
 		zoomframe.origin.y = 27;
 	}else{
 		fullScreen = YES;
 		[[UIApplication sharedApplication]setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 		layer.cornerRadius = 0;
 		[self.algebraicSurfaceView setFrame:CGRectMake(0, 0, 480, 320)];
-		zoomframe.origin.x =  algebraicSurfaceView.frame.origin.x + 440;
 		zoomframe.origin.y = algebraicSurfaceView.frame.origin.y + 55;
 	}
+	zoomframe.origin.x =   ZOOM_VIEW_X_POSITION;
+
 	[self.zoomView setFrame:zoomframe];
 	[UIView commitAnimations];
 }
@@ -322,6 +325,12 @@
 	[equationTextField resignFirstResponder];
 	//aca habria que hacer todo el validamiento de la ecuacion 
  }
+//--------------------------------------------------------------------------------------------------------
+
+-(IBAction)setSurfaceColors{
+	[openglController setSurfaceColorRed:redColorSlider.value/255 Green:greenColorSlider.value/255 Blue:blueColorSlider.value/255];
+}
+
 #pragma mark Keyboard methods
 //--------------------------------------------------------------------------------------------------------
 -(void)showExtKeyboard:(BOOL)yesOrNo {
@@ -350,11 +359,18 @@
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
 	CGRect r=[showingView frame];
+	CGRect f=[algebraicSurfaceView frame];
+
 	if(yes){
 		r.origin.x =  0;
+		f.origin.x = f.origin.x + 40;
+		f.size.width = f.size.width - 40;
 	}else{
 		r.origin.x = -OPTIONS_VIEWS_WIDTH;
+		f.origin.x = f.origin.x - 40;
+		f.size.width = f.size.width + 40;
 	}
+	[algebraicSurfaceView setFrame:f];
 	[showingView setFrame:r];
 	[UIView commitAnimations];
 }
@@ -362,7 +378,7 @@
 
 -(void)showOptionsViewWrapper:(BOOL)yes view:(UIView*)showingView{
 	for( UIView* optionsView in self.optionsViews ){
-		[self showOptionsView:NO view:optionsView];
+		//[self showOptionsView:NO view:optionsView];
 	}
 	if( showingView ){
 		[showingView setHidden:NO];

@@ -297,6 +297,8 @@ enum {
     
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 */
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f); 	
+
 	iSurferDelegate::display();
     [(EAGLView *)self.view presentFramebuffer];
 }
@@ -468,13 +470,10 @@ enum {
 	NSLog(@"calc x: %.2f  calcy: %.2f", x * M_PI / 180, y * M_PI / 180 );
 	iSurferDelegate::rotationX =  iSurferDelegate::rotationX + (y * M_PI / 180 / 2.0);
 	iSurferDelegate::rotationY =  iSurferDelegate::rotationY +  (x * M_PI /180 /2.0);
-	if( iSurferDelegate::rotationX > 360 ){
-		iSurferDelegate::rotationX -= 360;
-	}
-	if( iSurferDelegate::rotationY > 360 ){
-		iSurferDelegate::rotationY  -= 360;
-	}
 	NSLog(@"x: %.2f    y:%.2f", iSurferDelegate::rotationX , iSurferDelegate::rotationY );
+	
+	[self drawFrame];
+
 }
 
 
@@ -497,5 +496,15 @@ enum {
 -(float)zoom{
 	return iSurferDelegate::zoom;
 }
+
+-(void)setSurfaceColorRed:(float)red Green:(float)green Blue:(float)blue{
+	NSLog(@"red: %f green: %f  blue: %f", red, green, blue);
+	iSurferDelegate::colorR = red;
+	iSurferDelegate::colorG = green;
+	iSurferDelegate::colorB = blue;
+
+	[self drawFrame];
+}
+
 
 @end

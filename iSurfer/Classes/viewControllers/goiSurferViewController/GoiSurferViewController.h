@@ -77,16 +77,14 @@
 @property(nonatomic, retain)	IBOutlet UITextField* equationTextField;
 @property(nonatomic, retain)	IBOutlet UIView* keyboardExtensionBar;
 
--(IBAction)keyboardBarButtonPressed:(id)sender;
--(IBAction)optionsButtonPressed:(id)sender;
--(IBAction)hideOptions:(id)sender;
-
-- (IBAction)sliderChanged:(id)sender;
-
--(IBAction)saveImage;
-
 -(id) initWithAppController:(AppController*)anappCtrl andAlgebraicSurface:(AlgebraicSurface*)surface;
 
 
+-(IBAction)keyboardBarButtonPressed:(id)sender;
+-(IBAction)optionsButtonPressed:(id)sender;
+-(IBAction)hideOptions:(id)sender;
+-(IBAction)sliderChanged:(id)sender;
+-(IBAction)saveImage;
+-(IBAction)setSurfaceColors;
 
 @end
