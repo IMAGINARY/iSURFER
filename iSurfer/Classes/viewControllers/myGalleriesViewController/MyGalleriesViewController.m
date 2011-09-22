@@ -61,7 +61,7 @@
 	[super viewDidLoad];
 	self.title = @"Galleries";
 	galleries = [appcontroller getGalleries];
-	
+		
 	UIBarButtonItem *moveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(moveGalleries)];
 	moveButton.tag = 1;
 	UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteGalleries)];

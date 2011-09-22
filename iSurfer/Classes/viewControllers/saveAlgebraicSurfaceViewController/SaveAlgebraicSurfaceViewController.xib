@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="27"/>
+			<integer value="39"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -426,6 +426,14 @@
 					</object>
 					<int key="connectionID">42</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">navigationBar</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="1039249117"/>
+					</object>
+					<int key="connectionID">49</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -681,7 +689,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">48</int>
+			<int key="maxID">49</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -763,6 +771,7 @@
 							<string>galleryNameLabel</string>
 							<string>galleryPicker</string>
 							<string>navBar</string>
+							<string>navigationBar</string>
 							<string>pickerWrapperView</string>
 							<string>saveButton</string>
 							<string>surfaceDescriptionTextView</string>
@@ -775,6 +784,7 @@
 							<string>UILabel</string>
 							<string>UIPickerView</string>
 							<string>UINavigationItem</string>
+							<string>UINavigationBar</string>
 							<string>UIView</string>
 							<string>UIBarButtonItem</string>
 							<string>UITextView</string>
@@ -790,6 +800,7 @@
 							<string>galleryNameLabel</string>
 							<string>galleryPicker</string>
 							<string>navBar</string>
+							<string>navigationBar</string>
 							<string>pickerWrapperView</string>
 							<string>saveButton</string>
 							<string>surfaceDescriptionTextView</string>
@@ -816,6 +827,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">navBar</string>
 								<string key="candidateClassName">UINavigationItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">navigationBar</string>
+								<string key="candidateClassName">UINavigationBar</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">pickerWrapperView</string>

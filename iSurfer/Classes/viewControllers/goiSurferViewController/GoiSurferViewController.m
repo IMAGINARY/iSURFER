@@ -130,7 +130,6 @@
 		return YES;
 	}
 	return YES;
-	
 }
 //--------------------------------------------------------------------------------------------------------
 -(void)handleSingleLongPressTouch:(UILongPressGestureRecognizer*)singleLongPressGesture{
@@ -202,13 +201,13 @@
 		previousScale = pinchGesture.scale;
 	}else if( pinchGesture.state == UIGestureRecognizerStateChanged ){
 		if( previousScale > pinchGesture.scale ){
-			self.zoomSlider.value -= 0.5;
+			self.zoomSlider.value -= 1;
 		}else {
-			self.zoomSlider.value += 0.5;
+			self.zoomSlider.value += 1;
 		}
-		[openglController setZoom:zoomSlider.value];
 	}else if (pinchGesture.state == UIGestureRecognizerStateEnded) {
-		[openglController drawFrame];
+		[openglController setZoom:100.0 - zoomSlider.value];
+		//[openglController drawFrame];
 	}
 	previousScale = pinchGesture.scale;	
 }
@@ -420,7 +419,6 @@
     [doneButton addTarget:self action:@selector(doneButtonPressed) forControlEvents:UIControlEventTouchUpInside];
 	
 	NSString *keyboardPrefix = [[[UIDevice currentDevice] systemVersion] floatValue] >= 3.2 ? @"<UIPeripheralHost" : @"<UIKeyboard";
-	NSLog(@"%@", keyboardPrefix);
 	NSArray *allWindows = [[UIApplication sharedApplication] windows];
 	int topWindow = [allWindows count] - 1;
 	UIWindow *keyboardWindow = [allWindows objectAtIndex:topWindow];
@@ -431,7 +429,6 @@
             break;
         }
     }
-	 
 }
 #pragma mark UITextfield delegate
 //--------------------------------------------------------------------------------------------------------

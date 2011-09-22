@@ -20,6 +20,8 @@
 	
 	IBOutlet UIBarButtonItem* saveButton;
 	IBOutlet UINavigationItem* navBar;
+	
+	IBOutlet UINavigationBar* navigationBar;
 	int galleryIndex;
 	
 }

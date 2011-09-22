@@ -59,7 +59,7 @@
 	[self setToolbar:tmptoolbarItems];
 	self.navigationItem.rightBarButtonItem = self.toolbar;
 	self.navigationItem.title = self.gallery.galleryName;
-
+	
 	[actionSheetButton release];
 	[spaceBetweenButtons release];
 	[tmptoolbar release];

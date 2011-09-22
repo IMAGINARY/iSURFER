@@ -15,6 +15,7 @@
 	IBOutlet UITextField* galleryDescription;
 	IBOutlet UINavigationItem* navBar;
 	IBOutlet UIBarButtonItem* saveButton;
+	IBOutlet UINavigationBar* navigationBar;
 }
 
 @property(nonatomic, retain)	IBOutlet UINavigationItem* navBar;

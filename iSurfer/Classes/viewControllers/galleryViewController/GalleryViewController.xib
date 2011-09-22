@@ -45,7 +45,7 @@
 					<object class="IBUIImageView" id="235478652">
 						<reference key="NSNextResponder" ref="256141055"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{200, 12}, {226, 158}}</string>
+						<string key="NSFrame">{{200, 12}, {226, 202}}</string>
 						<reference key="NSSuperview" ref="256141055"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -53,7 +53,7 @@
 					<object class="IBUITableView" id="619109917">
 						<reference key="NSNextResponder" ref="256141055"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{13, 12}, {85, 224}}</string>
+						<string key="NSFrame">{{13, 12}, {85, 268}}</string>
 						<reference key="NSSuperview" ref="256141055"/>
 						<object class="NSColor" key="IBUIBackgroundColor" id="1049636075">
 							<int key="NSColorSpace">3</int>
@@ -97,11 +97,12 @@
 						<int key="IBUITextAlignment">1</int>
 					</object>
 				</object>
-				<string key="NSFrameSize">{480, 256}</string>
+				<string key="NSFrameSize">{480, 300}</string>
 				<reference key="NSSuperview"/>
 				<reference key="IBUIBackgroundColor" ref="1049636075"/>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 				<object class="IBUISimulatedNavigationBarMetrics" key="IBUISimulatedTopBarMetrics">
+					<int key="IBUIBarStyle">2</int>
 					<bool key="IBUIPrompted">NO</bool>
 				</object>
 				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">

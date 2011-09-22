@@ -481,6 +481,7 @@ enum {
 
 -(void)setZoom:(double)zoomvalue{
 	iSurferDelegate::zoom = zoomvalue;
+	[self drawFrame];
 }
 
 -(void)generateSurface:(NSString*)eq{

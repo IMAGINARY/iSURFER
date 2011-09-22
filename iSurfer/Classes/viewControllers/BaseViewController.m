@@ -60,6 +60,12 @@
 }
 //---------------------------------------------------------------------------------------------
 
+-(void)viewDidLoad{
+	self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:167/255.0 green:190/255.0 blue:12/255.0 alpha:1];
+	[super viewDidLoad];
+}
+//---------------------------------------------------------------------------------------------
+
 -(void)viewWillAppear:(BOOL)animated{
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											  selector:@selector(keyboardWillHide:)
@@ -80,6 +86,11 @@
 												object:nil];
 }
 //---------------------------------------------------------------------------------------------
+
+- (void) keyboardDidHide: (NSNotification *) notification {	
+	
+}
+
 
 - (void) keyboardWillHide: (NSNotification *) notification {	
 	[self scrollViewTo:nil movePixels:0 baseView:self.view];
