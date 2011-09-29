@@ -95,6 +95,29 @@ void frustum_matrix( float left, float right, float bottom, float top, float nea
 #undef M
 }
 
+void ortho( float radius, float near, float far, Matrix4x4 result )
+{
+    float x, y, c, left, right, top, bottom;
+    bottom = - radius;
+    left = -radius *1.5;
+    top = radius;
+    right = -left;
+    
+    right = top = radius;
+    x = 2.0 / (right - left);
+    y = 2.0 / (top - bottom);
+    c = -2.0 / (far - near);
+    
+#define M(row,col)  result[col*4+row]
+    M(0,0) = x;     M(0,1) = 0.0F;  M(0,2) = 0;      M(0,3) = -(right + left) / (right - left);
+    M(1,0) = 0.0F;  M(1,1) = y;     M(1,2) = 0;      M(1,3) = -(top + bottom) / (top - bottom);
+    M(2,0) = 0.0F;  M(2,1) = 0.0F;  M(2,2) = c;      M(2,3) = -(far + near) / (far - near);
+    M(3,0) = 0.0F;  M(3,1) = 0.0F;  M(3,2) = 0.0F;  M(3,3) = 1.0F;
+#undef M
+    
+}
+
+
 void mult_matrix( const Matrix4x4 m1, const Matrix4x4 m2, Matrix4x4 result )
 {
     Matrix4x4 R;

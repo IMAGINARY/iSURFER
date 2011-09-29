@@ -23,8 +23,7 @@ extern "C" {
 float iSurferDelegate::rotationX = 0.0f;
 float iSurferDelegate::rotationY = 0.0f;
 float iSurferDelegate::rotationZ = 0.0f;
-float iSurferDelegate::zoom = 10.0;
-float iSurferDelegate::lightIntensity = 1.0f;
+float iSurferDelegate::lightIntensity = 0.50f;
 float iSurferDelegate::colorR = 0.5f;
 float iSurferDelegate::colorG = 0.6f;
 float iSurferDelegate::colorB = 0.9f;
@@ -49,7 +48,7 @@ struct UniformHandles {
     GLint SpecularMaterial2;
     GLint Shininess;
     GLint DiffuseMaterial;
-
+    GLint Radius;
 };
 UniformHandles m_uniforms;
 
@@ -281,7 +280,8 @@ void iSurferDelegate::display()
 	//Para rotacion setear las variables de rotation_matrix
 	//Traslacion si es necesario usar la matriz
     scale_matrix( 1, 1, 1, s );
-	translation_matrix( 0.0, 0.0, -7.5, t );
+    
+	translation_matrix( 0.0, 0.0, -7.5-radius , t );
 
 	rotation_matrix( 1.0f, 0.0f, 0.0f, iSurferDelegate::rotationX, rx );
 	rotation_matrix( 0.0f, 1.0f, 0.0f, iSurferDelegate::rotationY, ry );
@@ -295,8 +295,10 @@ void iSurferDelegate::display()
 	invert_matrix( modelview, modelview_inv );
 
 	Matrix4x4 projection;
-	perspective_projection_matrix( zoom, 1.5, 1, 12.0, projection );
 
+    ortho(radius, 0.1, 10000, projection);
+    printf("radius = %f\n", radius);
+    
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); checkGLError( AT );
 
 	// enable blending
@@ -338,6 +340,7 @@ void iSurferDelegate::display()
 		GLint u_modelview_inv = glGetUniformLocation( glsl_program, "modelviewMatrixInverse" ); checkGLError( AT );
 		GLint u_projection = glGetUniformLocation( glsl_program, "projectionMatrix" ); checkGLError( AT );
 
+        m_uniforms.Radius = glGetUniformLocation(glsl_program, "radius");
         m_uniforms.LightPosition = glGetUniformLocation(glsl_program, "LightPosition");
         m_uniforms.AmbientMaterial = glGetUniformLocation(glsl_program, "AmbientMaterial");
         m_uniforms.SpecularMaterial = glGetUniformLocation(glsl_program, "SpecularMaterial");
@@ -345,6 +348,8 @@ void iSurferDelegate::display()
         m_uniforms.Shininess = glGetUniformLocation(glsl_program, "Shininess"); 
         m_uniforms.DiffuseMaterial = glGetAttribLocation(glsl_program, "DiffuseMaterial");
         
+        glUniform1f(m_uniforms.Radius, radius* radius);
+
         //Color ambient, sin luz
         glUniform3f(m_uniforms.AmbientMaterial, 0.04f, 0.04f, 0.04f);
         //R,G,B, alpha con luz

@@ -11,5 +11,6 @@ void perspective_projection_matrix( float fovy, float aspect, float zNear, float
 void frustum_matrix( float xmin, float xmax, float ymin, float ymax, float zNear, float zFar, Matrix4x4 result );
 void mult_matrix( const Matrix4x4 m1, const Matrix4x4 m2, Matrix4x4 result );
 bool invert_matrix( const Matrix4x4 m, Matrix4x4 result );
+void ortho( float radius, float nearval, float farval, Matrix4x4 result );
 
 #endif

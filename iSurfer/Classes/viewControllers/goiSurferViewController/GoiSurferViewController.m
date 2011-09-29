@@ -201,9 +201,9 @@
 		previousScale = pinchGesture.scale;
 	}else if( pinchGesture.state == UIGestureRecognizerStateChanged ){
 		if( previousScale > pinchGesture.scale ){
-			self.zoomSlider.value -= 1;
-		}else {
 			self.zoomSlider.value += 1;
+		}else {
+			self.zoomSlider.value -= 1;
 		}
 	}else if (pinchGesture.state == UIGestureRecognizerStateEnded) {
 		[openglController setZoom:100.0 - zoomSlider.value];

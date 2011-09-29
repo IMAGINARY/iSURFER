@@ -14,6 +14,7 @@ uniform highp vec3 SpecularMaterial;
 
 uniform highp vec3 SpecularMaterial2;
 uniform highp float Shininess;
+uniform highp float radius;
 
 
 struct polynomial { highp float a[ SIZE ]; };
@@ -419,11 +420,10 @@ varying highp vec3 varying_dir;
 
 void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float tmin, out highp float tmax )
 {
-	highp float r = 1.0;
 	//Compute A, B and C coefficients
 	highp float a = dot(dir, dir);
 	highp float b = 2.0 * dot(dir, eye);
-	highp float c = dot(eye, eye) - (r * r);
+	highp float c = dot(eye, eye) - (radius);
 
 	//Find discriminant
 	highp float disc = b * b - 4.0 * a * c;
@@ -498,6 +498,7 @@ gl_FragColor = vec4(color, 1);
  */
 void main( void )
 {
+
 	// setup ray(s)
 	highp float tmin, tmax;
 	clip_to_unit_sphere( varying_eye, varying_dir, tmin, tmax );
