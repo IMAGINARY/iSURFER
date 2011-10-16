@@ -45,3 +45,5 @@ typedef enum {
 }edittingButtons;
 
 #define	SURFER_VIDEO_URL	@"http://temp.imaginary2008.de//Video-Surfer-DVPAL-16-9.mp4"
+
+#define	DB_FILE_NAME	@"iSurferDB.db"

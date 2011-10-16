@@ -36,6 +36,7 @@
 //--------------------------------------------------------------------------------------------------------
 
 -(void)viewDidLoad{
+
 	[super viewDidLoad];
 	//Color sliders conf
 	[optionsViews addObject:self.shareView];
@@ -129,7 +130,7 @@
 	   [gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]] ){
 		return YES;
 	}
-	return YES;
+	return NO;
 }
 //--------------------------------------------------------------------------------------------------------
 -(void)handleSingleLongPressTouch:(UILongPressGestureRecognizer*)singleLongPressGesture{
@@ -153,20 +154,45 @@
 }
 //--------------------------------------------------------------------------------------------------------
 
+
+
+
 -(void)handlePanGesture:(UIPanGestureRecognizer*)gestureRecognizer{
 	CGPoint p;
 	p = [gestureRecognizer translationInView:gestureRecognizer.view];
-
+	CGRect f;
 	switch (gestureRecognizer.state) {
 		case UIGestureRecognizerStateBegan:
+			NSLog(@"began");
+
+		//	temporalimgView.image = [self captureView:algebraicSurfaceView];
+
+			 f = CGRectMake(110, 24, 90, 70	);
+			algebraicSurfaceView.frame = f;
+
+			temporalimgView.hidden = NO;
 			break;
 		case UIGestureRecognizerStateChanged:
 			xpos.text = [NSString stringWithFormat:@"x: %.2f", p.x];
 			ypos.text = [NSString stringWithFormat:@"y: %.2f", p.y];
+			[openglController rotateX:p.x Y:p.y];
+
+//			temporalimgView.image = [self captureView:algebraicSurfaceView];
+		//	temporalimgView.image = [openglController drawableToCGImage];
+			temporalimgView.image = [algebraicSurfaceView saveImageFromGLView];
+
 			break;
 		case UIGestureRecognizerStateEnded:
+			NSLog(@"release");
 			[openglController rotateX:p.x Y:p.y];
-		//	[openglController drawFrame];
+			temporalimgView.image = [algebraicSurfaceView saveImageFromGLView];
+
+			f = CGRectMake(110, 24, 364, 245	);
+			algebraicSurfaceView.frame = f;
+
+			temporalimgView.hidden = YES;
+			[openglController performSelector:@selector(drawFrame) withObject:nil afterDelay:0.1  ];
+
 			break;
 		default:
 			break;

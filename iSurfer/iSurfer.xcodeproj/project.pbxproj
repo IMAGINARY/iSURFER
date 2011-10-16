@@ -47,6 +47,12 @@
 		8B7F64C913C55C840098948F /* black_bar2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7F64C813C55C840098948F /* black_bar2.png */; };
 		8B891C8213BA95AC00EE4BC7 /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B891C8113BA95AC00EE4BC7 /* MainMenuViewController.xib */; };
 		8B891CB313BA992B00EE4BC7 /* Imaginary lemon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B891CB213BA992B00EE4BC7 /* Imaginary lemon.jpg */; };
+		8B9614E3144B1B040015D292 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9614DD144B1B040015D292 /* FMDatabase.m */; };
+		8B9614E4144B1B040015D292 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9614DF144B1B040015D292 /* FMDatabaseAdditions.m */; };
+		8B9614E6144B1B040015D292 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9614E2144B1B040015D292 /* FMResultSet.m */; };
+		8B9614EE144B1B410015D292 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9614ED144B1B410015D292 /* libsqlite3.0.dylib */; };
+		8B9614F6144B1CFB0015D292 /* DataBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9614F5144B1CFB0015D292 /* DataBaseController.m */; };
+		8B961619144B45670015D292 /* iSurferDB.db in Resources */ = {isa = PBXBuildFile; fileRef = 8B961618144B45670015D292 /* iSurferDB.db */; };
 		8BC02C6113B29199003E41AC /* iSurferAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC02C6013B29199003E41AC /* iSurferAppDelegate.m */; };
 		8BC02C6513B291C3003E41AC /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC02C6413B291C3003E41AC /* AppController.m */; };
 		8BC02C9C13B2938C003E41AC /* SpashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BC02C9913B2938C003E41AC /* SpashScreenViewController.xib */; };
@@ -132,6 +138,16 @@
 		8B891C8113BA95AC00EE4BC7 /* MainMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenuViewController.xib; sourceTree = "<group>"; };
 		8B891CB213BA992B00EE4BC7 /* Imaginary lemon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Imaginary lemon.jpg"; sourceTree = "<group>"; };
 		8B891CBC13BABC5600EE4BC7 /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
+		8B9614DC144B1B040015D292 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		8B9614DD144B1B040015D292 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		8B9614DE144B1B040015D292 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		8B9614DF144B1B040015D292 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		8B9614E1144B1B040015D292 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		8B9614E2144B1B040015D292 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		8B9614ED144B1B410015D292 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		8B9614F4144B1CFB0015D292 /* DataBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseController.h; sourceTree = "<group>"; };
+		8B9614F5144B1CFB0015D292 /* DataBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseController.m; sourceTree = "<group>"; };
+		8B961618144B45670015D292 /* iSurferDB.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = iSurferDB.db; sourceTree = "<group>"; };
 		8BC02C5F13B29199003E41AC /* iSurferAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSurferAppDelegate.h; sourceTree = "<group>"; };
 		8BC02C6013B29199003E41AC /* iSurferAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iSurferAppDelegate.m; sourceTree = "<group>"; };
 		8BC02C6313B291C3003E41AC /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
@@ -189,6 +205,7 @@
 				8B7F61F113C27E990098948F /* MediaPlayer.framework in Frameworks */,
 				8B78325513E9F85B00CE30A8 /* QuartzCore.framework in Frameworks */,
 				8BDD0A861424283E0043741C /* OpenGLES.framework in Frameworks */,
+				8B9614EE144B1B410015D292 /* libsqlite3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +215,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8B9614DA144B1B040015D292 /* dataBase */,
 				8B29F98413D3C6B000EDB516 /* modelObjects */,
 				8BC02C7A13B292B3003E41AC /* viewControllers */,
 				8BC02C6213B291A4003E41AC /* appController */,
@@ -257,6 +275,7 @@
 				8B7F61F013C27E990098948F /* MediaPlayer.framework */,
 				8B78325413E9F85B00CE30A8 /* QuartzCore.framework */,
 				8BDD0A851424283E0043741C /* OpenGLES.framework */,
+				8B9614ED144B1B410015D292 /* libsqlite3.0.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -399,6 +418,30 @@
 			);
 			name = images;
 			path = resources/images;
+			sourceTree = "<group>";
+		};
+		8B9614DA144B1B040015D292 /* dataBase */ = {
+			isa = PBXGroup;
+			children = (
+				8B961618144B45670015D292 /* iSurferDB.db */,
+				8B9614F4144B1CFB0015D292 /* DataBaseController.h */,
+				8B9614F5144B1CFB0015D292 /* DataBaseController.m */,
+				8B9614DB144B1B040015D292 /* FMDB */,
+			);
+			path = dataBase;
+			sourceTree = "<group>";
+		};
+		8B9614DB144B1B040015D292 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				8B9614DC144B1B040015D292 /* FMDatabase.h */,
+				8B9614DD144B1B040015D292 /* FMDatabase.m */,
+				8B9614DE144B1B040015D292 /* FMDatabaseAdditions.h */,
+				8B9614DF144B1B040015D292 /* FMDatabaseAdditions.m */,
+				8B9614E1144B1B040015D292 /* FMResultSet.h */,
+				8B9614E2144B1B040015D292 /* FMResultSet.m */,
+			);
+			path = FMDB;
 			sourceTree = "<group>";
 		};
 		8BC02C5E13B29199003E41AC /* appDelegate */ = {
@@ -581,6 +624,7 @@
 				8BDD0B40142431D50043741C /* fs2.glsl in Resources */,
 				8BDD0B41142431D50043741C /* vs1.glsl in Resources */,
 				8BDD0B42142431D50043741C /* vs2.glsl in Resources */,
+				8B961619144B45670015D292 /* iSurferDB.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,6 +663,10 @@
 				8BDD0A761424281B0043741C /* scanadt.c in Sources */,
 				8BDD0A771424281B0043741C /* simpio.c in Sources */,
 				8BDD0A781424281B0043741C /* strlib.c in Sources */,
+				8B9614E3144B1B040015D292 /* FMDatabase.m in Sources */,
+				8B9614E4144B1B040015D292 /* FMDatabaseAdditions.m in Sources */,
+				8B9614E6144B1B040015D292 /* FMResultSet.m in Sources */,
+				8B9614F6144B1CFB0015D292 /* DataBaseController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

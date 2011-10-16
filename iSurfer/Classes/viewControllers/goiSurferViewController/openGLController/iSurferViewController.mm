@@ -301,7 +301,7 @@ enum {
     
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 */
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f); 	
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f); 	
 
 	iSurferDelegate::display();
     [(EAGLView *)self.view presentFramebuffer];
@@ -471,10 +471,10 @@ enum {
 }
 
 -(void)rotateX:(float)x Y:(float)y{
-	NSLog(@"calc x: %.2f  calcy: %.2f", x * M_PI / 180, y * M_PI / 180 );
+	//NSLog(@"calc x: %.2f  calcy: %.2f", x * M_PI / 180, y * M_PI / 180 );
 	iSurferDelegate::rotationX =  iSurferDelegate::rotationX + (y * M_PI / 180 / 2.0);
 	iSurferDelegate::rotationY =  iSurferDelegate::rotationY +  (x * M_PI /180 /2.0);
-	NSLog(@"x: %.2f    y:%.2f", iSurferDelegate::rotationX , iSurferDelegate::rotationY );
+//	NSLog(@"x: %.2f    y:%.2f", iSurferDelegate::rotationX , iSurferDelegate::rotationY );
 	
 	[self drawFrame];
 
@@ -511,5 +511,23 @@ enum {
 	[self drawFrame];
 }
 
+-(UIImage *) drawableToCGImage {
+	CGRect myRect = CGRectMake(0, 0, 300, 200	);
+	NSInteger myDataLength = myRect.size.width * myRect.size.height * 4;
+	void *buffer = (GLubyte *) malloc(myDataLength);
+	
+	glFinish();
+	glPixelStorei(GL_PACK_ALIGNMENT, 4);
+	
+	glReadPixels(myRect.origin.x, myRect.origin.y, myRect.size.width, myRect.size.height, GL_RGB, GL_UNSIGNED_BYTE, buffer);
+	
+	NSData* myImageData = [NSData dataWithBytesNoCopy:(unsigned char const **)&buffer length:myDataLength freeWhenDone:NO];
+	
+	UIImage *myImage = [UIImage imageWithData:myImageData];
+	if( myImage != nil) { NSLog(@"Save EAGLImage failed to bind data to a IUImage"); }
+	//	free(myGLData); not needed - NSData:dataWithBytesNoCopy: The returned object takes ownership of the bytes pointer and frees it on deallocation. Therefore, bytes must point to a memory block allocated with malloc.
+	
+	return myImage;
+}
 
 @end

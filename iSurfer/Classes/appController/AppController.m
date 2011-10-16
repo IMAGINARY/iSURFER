@@ -14,13 +14,13 @@
 #import "SplashScreenViewController.h"
 #import "GalleryViewController.h"
 #import "SaveAlgebraicSurfaceViewController.h"
-
+#import "DataBaseController.h"
 //Despues sacar este import
 #import "AlgebraicSurface.h"
 //--------------------------------------------------------------------------------------------------------
 @implementation AppController
 //--------------------------------------------------------------------------------------------------------
-@synthesize mainMenuViewController, navcontroller, goiSurferViewController, myGalleriesViewController, helpViewController, galleriesArray;
+@synthesize mainMenuViewController, navcontroller, goiSurferViewController, myGalleriesViewController, helpViewController, galleriesArray, dataBase;
 //--------------------------------------------------------------------------------------------------------
 
 -(id)initWithNavController:(UINavigationController*)aNavController{
@@ -28,13 +28,14 @@
 		
 		[self setNavcontroller:aNavController];
 		[self.navcontroller setDelegate:self];
-		/*
-		DB*tmpdb = [[DB alloc]init];
-		[self setDatabase:tmpdb];
+		
+		DataBaseController* tmpdb = [[DataBaseController alloc]init];
+		self.dataBase = tmpdb;
 		[tmpdb release];
 		
-		[self setSettings:[database getSettings]];
-		 */
+		[dataBase openDB];
+	
+		
 		MyGalleriesViewController* tmpgal = [[MyGalleriesViewController alloc]initWithAppController:self ];
 		[self setMyGalleriesViewController:tmpgal];
 		[tmpgal release];
@@ -87,6 +88,8 @@
 		gal2.galleryName = @"galery2";
 		gal2.galleryDescription = @"description2";
 		gal2.editable = YES;
+		[gal2 setThumbNail:[UIImage imageNamed:@"facebook_icon.png"]];
+
 		Gallery* gal3 = [[Gallery alloc]init];
 		gal3.galleryName = @"galery3";
 		gal3.galleryDescription = @"description3";
@@ -97,11 +100,20 @@
 		gal4.galleryDescription = @"description4";
 		gal4.editable = YES;
 
+	
+/*
 		[self.galleriesArray addObject:gal1];
 		[self.galleriesArray addObject: gal2];
 		[self.galleriesArray addObject:gal3];
 		[self.galleriesArray addObject:gal4];
+*/
 
+		[dataBase insertGallery:gal2];
+		[dataBase insertGallery:gal3];
+		[dataBase insertGallery:gal4];
+		self.galleriesArray = [dataBase getGalleries];
+		
+		
 		[self performSelector:@selector(showMainMenu) withObject:nil afterDelay:SPLASH_DELAY];
 				
 	}	
@@ -159,6 +171,7 @@
 	[myGalleriesViewController release];
 	[helpViewController release];
 	[galleriesArray release];
+	[dataBase release];
 	[super dealloc];
 }
 

@@ -12,6 +12,7 @@
 @class GoiSurferViewController;
 @class MyGalleriesViewController;
 @class HelpViewController;
+@class DataBaseController;
 
 @protocol GalleryProtocol
 
@@ -30,6 +31,8 @@
 	MyGalleriesViewController* myGalleriesViewController;
 	HelpViewController* helpViewController;
 	
+	DataBaseController* dataBase;
+	
 	NSMutableArray* galleriesArray;
 }
 //--------------------------------------------------------------------------------------------------------
@@ -39,6 +42,10 @@
 @property(nonatomic, retain)	MainMenuViewController * mainMenuViewController;
 @property(nonatomic, retain)	GoiSurferViewController* goiSurferViewController;
 @property(nonatomic, retain)	HelpViewController* helpViewController;
+
+@property(nonatomic, retain)	DataBaseController* dataBase;
+
+
 //--------------------------------------------------------------------------------------------------------
 
 -(id)initWithNavController:(UINavigationController*)aNavController;

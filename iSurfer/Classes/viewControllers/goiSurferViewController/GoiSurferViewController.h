@@ -54,6 +54,7 @@
 	
 	iSurferViewController* openglController;
 
+	IBOutlet UIImageView* temporalimgView;
 
 }
 

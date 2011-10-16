@@ -550,6 +550,14 @@
 								<reference key="IBUIBackgroundColor" ref="556339402"/>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
+							<object class="IBUIImageView" id="651026335">
+								<reference key="NSNextResponder" ref="935778272"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{110, 24}, {364, 245}}</string>
+								<reference key="NSSuperview" ref="935778272"/>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							</object>
 						</object>
 						<string key="NSFrame">{{0, -20}, {480, 320}}</string>
 						<reference key="NSSuperview" ref="219194249"/>
@@ -1103,6 +1111,14 @@
 					</object>
 					<int key="connectionID">95</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">temporalimgView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="651026335"/>
+					</object>
+					<int key="connectionID">97</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1149,6 +1165,7 @@
 							<reference ref="147935870"/>
 							<reference ref="850466469"/>
 							<reference ref="945141685"/>
+							<reference ref="651026335"/>
 						</object>
 						<reference key="parent" ref="219194249"/>
 						<string key="objectName">algebraic surface view</string>
@@ -1419,6 +1436,11 @@
 						<reference key="object" ref="906646007"/>
 						<reference key="parent" ref="935778272"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">96</int>
+						<reference key="object" ref="651026335"/>
+						<reference key="parent" ref="935778272"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -1515,6 +1537,8 @@
 					<string>88.IBViewBoundsToFrameTransform</string>
 					<string>9.IBPluginDependency</string>
 					<string>9.IBViewBoundsToFrameTransform</string>
+					<string>96.IBPluginDependency</string>
+					<string>96.IBViewBoundsToFrameTransform</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1692,6 +1716,8 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">AQAAAABDoAAAA</bytes>
 					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform"/>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -1710,7 +1736,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">95</int>
+			<int key="maxID">97</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1822,6 +1848,7 @@
 							<string>rotateimage</string>
 							<string>saveButton</string>
 							<string>shareView</string>
+							<string>temporalimgView</string>
 							<string>xpos</string>
 							<string>ypos</string>
 							<string>zoomView</string>
@@ -1841,6 +1868,7 @@
 							<string>UIImageView</string>
 							<string>UIButton</string>
 							<string>UIView</string>
+							<string>UIImageView</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UIView</string>
@@ -1863,6 +1891,7 @@
 							<string>rotateimage</string>
 							<string>saveButton</string>
 							<string>shareView</string>
+							<string>temporalimgView</string>
 							<string>xpos</string>
 							<string>ypos</string>
 							<string>zoomView</string>
@@ -1920,6 +1949,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">shareView</string>
 								<string key="candidateClassName">UIView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">temporalimgView</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">xpos</string>

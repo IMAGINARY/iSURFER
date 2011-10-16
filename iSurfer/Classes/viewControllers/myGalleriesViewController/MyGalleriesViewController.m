@@ -149,10 +149,10 @@
 	Gallery* gallery = [galleries objectAtIndex:[indexPath row]];
 	[cell.galleryTitleLabel setText:gallery.galleryName];
 	[cell.galleryDetailLabel setText:gallery.galleryDescription];
-	if( [gallery isEmpty] ){
+	if( !gallery.thumbNail  ){
 		[cell.galleryImage setImage:[UIImage imageNamed:@"Imaginary lemon.jpg"]];
 	}else {
-		[cell.galleryImage setImage:[[gallery getSurfaceAtIndex:0]thumbNailImage]];
+		[cell.galleryImage setImage:gallery.thumbNail];
 	}
 	//	 cell.showsReorderControl = YES
 	return cell;

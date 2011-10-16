@@ -11,7 +11,7 @@
 
 @implementation Gallery
 //--------------------------------------------------------------------------------------------------------
-@synthesize galleryName, galleryDescription, surfacesArray, editable;
+@synthesize galleryName, galleryDescription, surfacesArray, editable, galID, thumbNail;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) init{	
@@ -20,6 +20,8 @@
 		self.galleryDescription = @"";
 		surfacesArray = [[NSMutableArray alloc]init];
 		editable = YES;
+		galID = -1;
+		thumbNail = nil;
 	}
 	return self;
 }
@@ -29,6 +31,7 @@
 	[galleryName release];
 	[galleryDescription release];
 	[surfacesArray release];
+	[thumbNail release];
 	[super dealloc];
 }
 //--------------------------------------------------------------------------------------------------------
