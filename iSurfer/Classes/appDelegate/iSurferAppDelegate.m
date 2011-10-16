@@ -29,10 +29,10 @@
 	[tmpapp release];
 	[self.navcontroller setNavigationBarHidden:YES];
 	
-	SplashScreenViewController* tmpSplash = [[[SplashScreenViewController alloc]init]autorelease];
+	SplashScreenViewController* tmpSplash = [[SplashScreenViewController alloc]init];
 	[self.navcontroller pushViewController:tmpSplash animated:NO];
-		
-    [self.window addSubview:navcontroller.view];
+    [tmpSplash release];
+	[self.window addSubview:navcontroller.view];
     [self.window makeKeyAndVisible];
 
     return YES;

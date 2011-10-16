@@ -18,7 +18,7 @@
 	if (self = [super init]) {
 		self.galleryName = @"";
 		self.galleryDescription = @"";
-		surfacesArray = [[NSMutableArray alloc]init];
+		surfacesArray = nil;
 		editable = YES;
 		galID = -1;
 		thumbNail = nil;

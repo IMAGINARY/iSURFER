@@ -284,7 +284,7 @@
 	//Generar superficie si es que viene de la galeria
 	
 	if( algebraicSurface ){
-		[self.rotateimage setImage:self.algebraicSurface.thumbNailImage];
+		[self.rotateimage setImage:self.algebraicSurface.surfaceImage];
 	}
 	[super viewWillAppear:animated];
 }

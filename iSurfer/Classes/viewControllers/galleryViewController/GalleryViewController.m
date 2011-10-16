@@ -95,7 +95,7 @@
 -(void)viewWillAppear:(BOOL)animated{
 	if( ![gallery isEmpty]){
 		AlgebraicSurface* surface = [gallery getSurfaceAtIndex:0];
-		[self.surfaceImage setImage:[surface thumbNailImage]];
+		[self.surfaceImage setImage:[surface surfaceImage]];
 		[self.surfaceEquation setText:[surface equation]];	
 		[super viewWillAppear:animated];
 	}
@@ -164,7 +164,7 @@
 		}
 	}
 	AlgebraicSurface* surface = [gallery.surfacesArray objectAtIndex:[indexPath row]];
-	[cell.surfaceImageView setImage:surface.thumbNailImage];	
+	[cell.surfaceImageView setImage:surface.surfaceImage];	
 	return cell;
 }
 //--------------------------------------------------------------------------------------------------------
@@ -230,7 +230,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	AlgebraicSurface* surface = [gallery getSurfaceAtIndex:[indexPath row]];
-	[self.surfaceImage setImage:[surface thumbNailImage]];
+	[self.surfaceImage setImage:[surface surfaceImage]];
 	[self.surfaceEquation setText:[surface equation]];
 	[tableView scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:UITableViewScrollPositionMiddle	animated:YES];
 }

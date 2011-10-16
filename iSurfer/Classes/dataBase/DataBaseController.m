@@ -65,8 +65,32 @@
 }
 //------------------------------------------------------------------------
 
--(void)insertGallery:(Gallery*)gallery{
-	NSLog(@"insertGallery");
+-(void)saveSurface:(AlgebraicSurface*)surface toGallery:(Gallery*)gal{
+	
+	NSLog(@"saveSurface");
+	[db beginTransaction];
+	NSData* imgdata = UIImagePNGRepresentation(surface.surfaceImage);
+	
+	[db executeUpdate:@"insert into algebraicsurfaces (surfaceName, surfaceDescription, equation, surfaceimage, gallery_id) values (?, ?, ?, ?, ?)",	
+	 surface.surfaceName,
+	 surface.surfaceDescription,
+	 surface.equation,
+	 imgdata,
+	 [NSNumber numberWithInt:gal.galID]];
+	FMDBQuickCheck([db hadError]);
+    
+    if ([db hadError]) {
+        NSLog(@"Err %d: %@", [db lastErrorCode], [db lastErrorMessage]);
+    }
+	
+    [db commit];
+	
+}
+
+//------------------------------------------------------------------------
+
+-(void)saveGallery:(Gallery*)gallery{
+	NSLog(@"saveGallery");
 	[db beginTransaction];
 	NSData* imgdata = UIImagePNGRepresentation(gallery.thumbNail);
 
@@ -97,6 +121,7 @@
 	while ([rs next]) {
 		g = [[Gallery alloc]init];
 	
+		g.galID = [rs intForColumn:@"serial"];
 		g.galleryName = [rs stringForColumn:@"galleryname"];
 		g.galleryDescription =  [rs stringForColumn:@"description"];
 		g.editable = [rs intForColumn:@"editable"];
@@ -127,30 +152,33 @@
 }
 //------------------------------------------------------------------------
 
--(NSMutableArray*)getAlgebraicSurfacesFromGallery:(Gallery*)gallery{
+-(void)populateGallery:(Gallery*)gallery{
 	
-	FMResultSet *rs = [db executeQuery:@"select * algebraicSurfaces WHERE gallery_id = ?", gallery.galID];
-	NSMutableArray* array = [[[NSMutableArray alloc]init] autorelease];
+	FMResultSet *rs = [db executeQuery:@"SELECT  * FROM algebraicsurfaces WHERE gallery_id = ?", [NSNumber numberWithInt:gallery.galID]];
 	AlgebraicSurface* s = nil;
+	NSMutableArray* surfacesArray = [[NSMutableArray alloc]init];
+
+	if( !gallery.surfacesArray ){
+		[gallery setSurfacesArray:surfacesArray];
+	}else {
+		[gallery.surfacesArray removeAllObjects];
+	}
+
 	while ([rs next]) {
 	
 		s = [[AlgebraicSurface alloc]init];
 		
-		// just print out what we've got in a number of formats.
-		/*
-		NSLog(@"%d %@ %@ %d",
-			  [rs intForColumn:@"serial"],
-			  [rs stringForColumn:@"galleryname"],
-			  [rs stringForColumn:@"description"],
-			  [rs intForColumn:@"editable"]);
-		 */
-		[array addObject:s];
+		[gallery.surfacesArray addObject:s];
+		
+		s.surfaceImage = [UIImage imageWithData:[rs dataForColumn:@"surfaceimage"]];
+		s.surfaceDescription =  [rs stringForColumn:@"surfaceDescription"],
+		s.surfaceName =   [rs stringForColumn:@"surfaceName"],
+		s.equation =  [rs stringForColumn:@"equation"],
+
 		[s release];
 	}
-	
-	[rs close];  
-	return array;
-	
+	[surfacesArray release];
+	[rs close];  	
 }
 
 //------------------------------------------------------------------------

@@ -62,25 +62,33 @@
 		gal1.editable = NO;
 		
 		AlgebraicSurface* surface = [[AlgebraicSurface alloc]init];
-		[surface setThumbNailImage:[UIImage imageNamed:@"facebook_icon.png"]];
+		[surface setSurfaceImage:[UIImage imageNamed:@"facebook_icon.png"]];
 		[surface setEquation:@"x^2 + y^2 + z^2 = 1"];
+		[surface setSurfaceDescription:@"surface description"];
+		[surface setSurfaceName:@"surface name 1"];
 		
 		AlgebraicSurface* surface2 = [[AlgebraicSurface alloc]init];
-		[surface2 setThumbNailImage:[UIImage imageNamed:@"Logo-twitter.png"]];
+		[surface2 setSurfaceImage:[UIImage imageNamed:@"Logo-twitter.png"]];
+		[surface2 setEquation:@"x^2 + y^2 + z^2 = 2"];
+		[surface2 setSurfaceDescription:@"surface description 222"];
+		[surface2 setSurfaceName:@"surface name 2"];
+		/*
 		AlgebraicSurface* surface3 = [[AlgebraicSurface alloc]init];
-		[surface3 setThumbNailImage:[UIImage imageNamed:@"Imaginary lemon.jpg"]];
+		[surface3 setSurfaceImage:[UIImage imageNamed:@"Imaginary lemon.jpg"]];
 		AlgebraicSurface* surface4 = [[AlgebraicSurface alloc]init];
-		[surface4 setThumbNailImage:[UIImage imageNamed:@"facebook_icon.png"]];
+		[surface4 setSurfaceImage:[UIImage imageNamed:@"facebook_icon.png"]];
 		AlgebraicSurface* surface5 = [[AlgebraicSurface alloc]init];
-		[surface5 setThumbNailImage:[UIImage imageNamed:@"facebook_icon.png"]];
+		[surface5 setSurfaceImage:[UIImage imageNamed:@"facebook_icon.png"]];
 		AlgebraicSurface* surface6 = [[AlgebraicSurface alloc]init];
-		[surface6 setThumbNailImage:[UIImage imageNamed:@"facebook_icon.png"]];
+		[surface6 setSurfaceImage:[UIImage imageNamed:@"facebook_icon.png"]];
+				
 		[gal1.surfacesArray addObject:surface];
 		[gal1.surfacesArray addObject:surface2];
 		[gal1.surfacesArray addObject:surface3];
 		[gal1.surfacesArray addObject:surface4];
 		[gal1.surfacesArray addObject:surface5];
 		[gal1.surfacesArray addObject:surface6];
+		 */
 
 	
 		
@@ -101,17 +109,20 @@
 		gal4.editable = YES;
 
 	
-/*
-		[self.galleriesArray addObject:gal1];
-		[self.galleriesArray addObject: gal2];
-		[self.galleriesArray addObject:gal3];
-		[self.galleriesArray addObject:gal4];
-*/
-
-		[dataBase insertGallery:gal2];
-		[dataBase insertGallery:gal3];
-		[dataBase insertGallery:gal4];
+		[dataBase saveGallery:gal2];
+		[dataBase saveGallery:gal3];
+		[dataBase saveGallery:gal4];
 		self.galleriesArray = [dataBase getGalleries];
+
+		[dataBase saveSurface:surface toGallery:[self.galleriesArray objectAtIndex:0]];
+		[dataBase saveSurface:surface2 toGallery:[self.galleriesArray objectAtIndex:0]];
+
+		[surface release];
+		[surface2 release];
+		[gal1 release];
+		[gal2 release];
+		[gal3 release];
+		[gal4 release];
 		
 		
 		[self performSelector:@selector(showMainMenu) withObject:nil afterDelay:SPLASH_DELAY];
@@ -197,8 +208,11 @@
 //--------------------------------------------------------------------------------------------------------
 
 -(void)accesGallery:(int)row{
-	GalleryViewController* gallery = [[GalleryViewController alloc]initWithAppController:self andGallery:[self.galleriesArray objectAtIndex:row]];
+	Gallery* g = [self.galleriesArray objectAtIndex:row];
+	[dataBase populateGallery:g];
+	GalleryViewController* gallery = [[GalleryViewController alloc]initWithAppController:self andGallery:g];
 	[self.navcontroller pushViewController:gallery animated:YES];
+	[gallery release];
 }
 //--------------------------------------------------------------------------------------------------------
 -(Gallery*)getGallery:(int)index{

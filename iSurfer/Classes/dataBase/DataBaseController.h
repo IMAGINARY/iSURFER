@@ -19,7 +19,9 @@
 	
 }
 -(BOOL)openDB;
--(void)insertGallery:(Gallery*)gallery;
+-(void)saveGallery:(Gallery*)gallery;
 -(NSMutableArray*)getGalleries;
+-(void)saveSurface:(AlgebraicSurface*)surface toGallery:(Gallery*)gal;
+-(void)populateGallery:(Gallery*)gallery;
 
 @end
