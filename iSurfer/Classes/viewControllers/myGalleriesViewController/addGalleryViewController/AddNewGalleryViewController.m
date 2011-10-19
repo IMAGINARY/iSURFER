@@ -79,6 +79,8 @@
 		Gallery* newGallery = [[Gallery alloc]init];
 		[newGallery setGalleryName:self.galleryName.text];
 		[newGallery setGalleryDescription:self.galleryDescription.text];
+		newGallery.editable = YES;
+		newGallery.thumbNail = NULL;
 		[self.appcontroller addGallery:newGallery atIndex:0];
 		[newGallery release];
 		[self dismissModalViewControllerAnimated:YES];

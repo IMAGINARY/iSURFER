@@ -22,7 +22,7 @@
 		NSString *databasePath = [documentsDir stringByAppendingPathComponent:DB_FILE_NAME];
 		
 		NSFileManager *fileManager = [NSFileManager defaultManager];
-	[fileManager removeItemAtPath:databasePath error:nil];
+//	[fileManager removeItemAtPath:databasePath error:nil];
 
 		BOOL success = [fileManager fileExistsAtPath:databasePath];
 		
@@ -77,7 +77,7 @@
 	 surface.equation,
 	 imgdata,
 	 [NSNumber numberWithInt:gal.galID]];
-	FMDBQuickCheck([db hadError]);
+//	FMDBQuickCheck([db hadError]);
     
     if ([db hadError]) {
         NSLog(@"Err %d: %@", [db lastErrorCode], [db lastErrorMessage]);
@@ -99,7 +99,7 @@
 	 gallery.galleryDescription,
 	 [NSNumber numberWithInt:gallery.editable], 
 	 imgdata];
-	FMDBQuickCheck([db hadError]);
+//	FMDBQuickCheck([db hadError]);
     
     if ([db hadError]) {
         NSLog(@"Err %d: %@", [db lastErrorCode], [db lastErrorMessage]);
@@ -115,7 +115,7 @@
 	
 	//FMResultSet *rs2 =	[db executeQuery:@"SELECT * FROM sqlite_master WHERE type='table'"];
 
-	FMResultSet *rs = [db executeQuery:@"select * from galleries"];
+	FMResultSet *rs = [db executeQuery:@"select serial, description, galleryname, editable, thumbnail from galleries"];
 	Gallery* g = nil;
 	NSMutableArray* array = [[[NSMutableArray alloc]init] autorelease];
 	while ([rs next]) {

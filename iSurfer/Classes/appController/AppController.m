@@ -109,13 +109,13 @@
 		gal4.editable = YES;
 
 	
-		[dataBase saveGallery:gal2];
-		[dataBase saveGallery:gal3];
-		[dataBase saveGallery:gal4];
+		//[dataBase saveGallery:gal2];
+		//[dataBase saveGallery:gal3];
+		//[dataBase saveGallery:gal4];
 		self.galleriesArray = [dataBase getGalleries];
 
-		[dataBase saveSurface:surface toGallery:[self.galleriesArray objectAtIndex:0]];
-		[dataBase saveSurface:surface2 toGallery:[self.galleriesArray objectAtIndex:0]];
+	//	[dataBase saveSurface:surface toGallery:[self.galleriesArray objectAtIndex:0]];
+	//	[dataBase saveSurface:surface2 toGallery:[self.galleriesArray objectAtIndex:0]];
 
 		[surface release];
 		[surface2 release];
@@ -194,6 +194,7 @@
 	}else{
 		[self.galleriesArray insertObject:gallery atIndex:index];
 	}
+	[dataBase saveGallery:gallery];
 }
 //--------------------------------------------------------------------------------------------------------
 
