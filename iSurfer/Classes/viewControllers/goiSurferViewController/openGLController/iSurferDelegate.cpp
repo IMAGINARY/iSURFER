@@ -23,16 +23,17 @@ extern "C" {
 float iSurferDelegate::rotationX = 0.0f;
 float iSurferDelegate::rotationY = 0.0f;
 float iSurferDelegate::rotationZ = 0.0f;
-float iSurferDelegate::lightIntensity = 0.50f;
+float iSurferDelegate::Shininess = 10;
+
 float iSurferDelegate::colorR = 0.5f;
 float iSurferDelegate::colorG = 0.6f;
 float iSurferDelegate::colorB = 0.9f;
 float iSurferDelegate::colorR2 = 0.9f;
 float iSurferDelegate::colorG2 = 0.5f;
 float iSurferDelegate::colorB2 = 0.6f;
-float iSurferDelegate::lposX = 5.0f;
-float iSurferDelegate::lposY = 5.0f;
-float iSurferDelegate::lposZ = 1.0f;
+float iSurferDelegate::lposX = 50.0f;
+float iSurferDelegate::lposY = 50.0f;
+float iSurferDelegate::lposZ = 10.0f;
 float iSurferDelegate::stacks = 20.0f;
 float iSurferDelegate::slices = 20.0f;
 float iSurferDelegate::radius = 5;
@@ -43,6 +44,8 @@ GLuint iSurferDelegate::wireframe_glsl_program = 0u;
 
 struct UniformHandles {
     GLuint LightPosition;
+    GLuint LightPosition2;
+    GLuint LightPosition3;
     GLint AmbientMaterial;
     GLint SpecularMaterial;
     GLint SpecularMaterial2;
@@ -342,25 +345,36 @@ void iSurferDelegate::display()
 
         m_uniforms.Radius = glGetUniformLocation(glsl_program, "radius");
         m_uniforms.LightPosition = glGetUniformLocation(glsl_program, "LightPosition");
+        m_uniforms.LightPosition2 = glGetUniformLocation(glsl_program, "LightPosition2");
+        m_uniforms.LightPosition3 = glGetUniformLocation(glsl_program, "LightPosition3");
         m_uniforms.AmbientMaterial = glGetUniformLocation(glsl_program, "AmbientMaterial");
         m_uniforms.SpecularMaterial = glGetUniformLocation(glsl_program, "SpecularMaterial");
         m_uniforms.SpecularMaterial2 = glGetUniformLocation(glsl_program, "SpecularMaterial2");
         m_uniforms.Shininess = glGetUniformLocation(glsl_program, "Shininess"); 
-        m_uniforms.DiffuseMaterial = glGetAttribLocation(glsl_program, "DiffuseMaterial");
+        m_uniforms.DiffuseMaterial = glGetAttribLocation(glsl_program, "Diffuse");
         
         glUniform1f(m_uniforms.Radius, radius* radius);
 
         //Color ambient, sin luz
-        glUniform3f(m_uniforms.AmbientMaterial, 0.04f, 0.04f, 0.04f);
+        float div = 2.0f;
+        glUniform3f(m_uniforms.AmbientMaterial, colorR / div, colorG /div, colorB / div);
         //R,G,B, alpha con luz
         glUniform3f(m_uniforms.SpecularMaterial, colorR, colorG, colorB);
         glUniform3f(m_uniforms.SpecularMaterial2, colorR2, colorG2, colorB2);
 
         //Power de la luz
-        glUniform1f(m_uniforms.Shininess, lightIntensity);
-        vec4 lightPosition(lposX, lposY, lposZ, 0);
+        glUniform1f(m_uniforms.Shininess, Shininess);
+        vec4 lightPosition(1, 0, 0, 0);
         glUniform3fv(m_uniforms.LightPosition, 1, lightPosition.Pointer());
-        glUniform4f(m_uniforms.DiffuseMaterial, colorR, colorG, colorB, 1);
+        //vec4 lightPosition2(-1, 0, -200, 0);
+        vec4 lightPosition2(-1, 0, 0, 0);
+        
+        glUniform3fv(m_uniforms.LightPosition2, 1, lightPosition2.Pointer());
+
+        vec4 lightPosition3(-radius, -radius, -radius, 0);
+        glUniform3fv(m_uniforms.LightPosition3, 1, lightPosition3.Pointer());
+
+        glUniform3f(m_uniforms.DiffuseMaterial, colorR, colorG, colorB);
 
 
 		glUniformMatrix4fv( u_modelview, 1, GL_FALSE, modelview ); checkGLError( AT );

@@ -7,7 +7,7 @@ class iSurferDelegate
 {
 	public:
         //agregue los colorG2, etc para la segunda cara.
-		static float rotationX, rotationY, rotationZ, lightIntensity, colorR, colorG, colorB, colorR2, colorG2, colorB2, lposX, lposY ,lposZ;
+		static float rotationX, rotationY, rotationZ, Shininess, colorR, colorG, colorB, colorR2, colorG2, colorB2, lposX, lposY ,lposZ;
         //Estos son los parametros de tamaño de esfera, redius para zoom y los otros 2 para bajar la resolucion
         //default radius 1.0, slices y stacks 20;
         static float radius, slices, stacks;

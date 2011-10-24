@@ -3,12 +3,14 @@
 #if EXAMPLE == 1
 // polynomial of degree 2
 #define DEGREE 2
-#define SIZE 3
+#define SIZE 4
 #define EPSILON 0.0001
 
 uniform lowp vec3 Diffuse;
 
 uniform highp vec3 LightPosition;
+uniform highp vec3 LightPosition2;
+uniform highp vec3 LightPosition3;
 uniform highp vec3 AmbientMaterial;
 uniform highp vec3 SpecularMaterial;
 
@@ -395,26 +397,131 @@ highp float first_root_in( in polynomial p, highp float min, highp float max )
 		else
 			discard;
 	}
-	else if( DEGREE > 1 )
-	{
-		// move roots from [min,max] to [0,1]
-		polynomial p01;
-		shiftStretch( p, min, max - min, p01 );
-		
-		// find smallest root in [0,1], if any
-		highp float x0 = first_root_in__descartes( p01, EPSILON * ( max - min ), p );
-		if( x0 >= 0.0 )
-			return (max-min)*x0+min; // move root back to original interval
-		else
-			discard; // no root in [0,1]
-	}
-	else
-	{
-		// error!!
-		discard;
-	}
+else if( DEGREE == 10)
+{
+
+highp float a=p.a[2]/p.a[3];
+highp float b=p.a[1]/p.a[3];
+highp float c=p.a[0]/p.a[3];
+
+highp float pe=b-pow(a,2.0)/3.0;
+
+
+highp float qu=2.0*pow(a,3.0)/27.0-a*b/3.0+c;
+//if(pe <= 0.0 && qu >= 0.0)
+//	gl_FragColor = vec4( 0.0, 0.0, 1.0 , 0.5 );
+
+highp float disc=pow(qu,2.0)+4.0*pow(pe,3.0)/27.0;
+
+if (disc > 0.0)
+{
+
+highp float u=pow(((-qu+pow(disc,0.5))/2.0),1.0/3.0);
+highp float v=pow(((-qu-pow(disc,0.5))/2.0),1.0/3.0);
+highp float z0=u+v;
+highp float x0 = z0-a/3.0;
+return x0;
+}
+else if (disc == 0.0)
+{
+highp float z0=3.0*qu/pe;
+highp float z1=-3.0*qu/(2.0*pe);
+highp float x0 = z0-a/3.0;
+highp float x1 = z1-a/3.0;
+
+if(x0 >=min && x0 < max)
+{
+if(x1 >= min && x1 < max && x1 < x0)
+return x1;
+return x0;	
+}
+else if(x1 >=min && x1 < max)
+return x1;
+else
+discard;
+}
+else if (disc < 0.0)
+{
+highp float pi = 3.14159265358979323846264;
+highp float z0 = 2.0*(pow(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*pow(27.0/pow(-pe,3.0),0.5)));
+highp float z1 = 2.0*(pow(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*pow(27.0/pow(-pe,3.0),0.5))+2.0*pi/3.0);
+highp float z2 = 2.0*(pow(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*pow(27.0/pow(-pe,3.0),0.5))+4.0*pi/3.0);
+highp float x0 = z0- a/3.0;
+highp float x1 = z1- a/3.0;
+highp float x2 = z2- a/3.0;
+
+if(x0 >= min && x0 < max)
+{
+if(x1 >= min && x1 < max)
+{
+if(x2 >= min && x2 < max)
+{
+if(x2 < x1 && x2 < x0)
+return x2;
+else if(x1 < x2 && x1 < x0)
+return x1;
+else if(x0 < x2 && x0 < x1)
+return x0;
+}
+if(x1 < x0)
+return x1;	
+}
+//gl_FragColor = vec4( 0.0, 1.0, 1.0 , 0.5 );
+
+return x0;
+
+}
+else if(x2 >= min && x2 < max)
+{
+if(x1 >= min && x1 < max)
+{
+if(x2 < x1)
+return x2;
+return x1;	
+}
+else if(x0 >= min && x0 < max)
+{
+if(x2 < x0)
+return x2;
+return x0;
+}
+return x2;
+}
+else if(x1 >= min && x1 < max)
+{
+if(x2 >= min && x2 < max)
+{
+if(x2 < x1)
+return x2;
+return x1;	
+}
+return x1;
+}
+else
+discard;
 }
 
+
+}
+else if( DEGREE >= 3 )
+{
+// move roots from [min,max] to [0,1]
+polynomial p01;
+shiftStretch( p, min, max - min, p01 );
+
+// find smallest root in [0,1], if any
+highp float x0 = first_root_in__descartes( p01, EPSILON * ( max - min ), p );
+if( x0 >= 0.0 )
+return (max-min)*x0+min; // move root back to original interval
+else
+discard; // no root in [0,1]
+}
+else
+{
+// error!!
+discard;
+}
+}
 varying highp vec3 varying_eye;
 varying highp vec3 varying_dir;
 
@@ -457,9 +564,6 @@ void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float 
 
 void calc_lights( in highp vec3 eye, in highp vec3 dir, in highp vec2 trace_interval , in highp vec3 hit_point)
 {
-//polynomial x = create_poly_1( eye.x, dir.x );
-//polynomial y = create_poly_1( eye.y, dir.y );
-//polynomial z = create_poly_1( eye.z, dir.z );
 
 highp float x = hit_point.x;
 highp float y = hit_point.y;
@@ -468,8 +572,8 @@ highp float z = hit_point.z;
 
 highp vec3 N 
 
-//highp vec3 N = eval_p(p_normal, hit_point);
-//highp vec3 N = vec3(eval_p( mult(create_poly_0(2.0),x,1), hit_point.x), eval_p(  mult(mult(create_poly_0(2.0),x,1),create_poly_0(0.0),1), hit_point.x), eval_p(  mult(mult(create_poly_0(2.0),x,1),create_poly_0(0.0),1), hit_point.z));
+
+N = normalize(N);
 
 
 highp vec3 L = normalize(LightPosition);
@@ -479,12 +583,39 @@ highp vec3 H = normalize(L + E);
 highp float df = max(0.0, dot(N, L));
 highp float sf = max(0.0, dot(N, H));
 sf = pow(sf, Shininess);
-lowp vec3 color;
-if(dot(N, varying_eye) >= 0.0)
+lowp vec3 color = AmbientMaterial;
+//color += df * Diffuse;
 
-    color = AmbientMaterial + df * Diffuse + sf * SpecularMaterial;
+if(dot(N, varying_eye) >= 0.0)
+    color +=   sf * SpecularMaterial;
 else
-    color = AmbientMaterial + df * Diffuse + sf * SpecularMaterial2;
+    color +=  sf * SpecularMaterial2;
+L = normalize(LightPosition2);
+H = normalize(L + E);
+
+df = max(0.0, dot(N, L));
+sf = max(0.0, dot(N, H));
+sf = pow(sf, Shininess);
+if(dot(N, varying_eye) >= 0.0)
+    color = color +  df * Diffuse + sf * SpecularMaterial;
+else
+    color =  color + df * Diffuse + sf * SpecularMaterial2;
+
+
+L = normalize(LightPosition3);
+H = normalize(L + E);
+
+df = max(0.0, dot(N, L));
+sf = max(0.0, dot(N, H));
+sf = pow(sf, Shininess);
+if(dot(N, varying_eye) >= 0.0)
+color = color +  df * Diffuse + sf * SpecularMaterial;
+else
+color =  color + df * Diffuse + sf * SpecularMaterial2;
+
+
+//color = normalize(color);
+
 
 gl_FragColor = vec4(color, 1);
 
