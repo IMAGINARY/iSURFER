@@ -77,6 +77,8 @@
 @property(nonatomic, retain)	IBOutlet UIView* baseView;
 @property(nonatomic, retain)	IBOutlet UITextField* equationTextField;
 @property(nonatomic, retain)	IBOutlet UIView* keyboardExtensionBar;
+@property(nonatomic, retain)	IBOutlet UIImageView* temporalimgView;
+
 
 -(id) initWithAppController:(AppController*)anappCtrl andAlgebraicSurface:(AlgebraicSurface*)surface;
 
@@ -87,5 +89,6 @@
 -(IBAction)sliderChanged:(id)sender;
 -(IBAction)saveImage;
 -(IBAction)setSurfaceColors;
+-(UIImage*)getSurfaceImage;
 
 @end

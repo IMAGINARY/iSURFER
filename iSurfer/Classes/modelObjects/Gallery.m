@@ -37,6 +37,9 @@
 //--------------------------------------------------------------------------------------------------------
 
 -(void)addAlgebraicSurface:(AlgebraicSurface*)surface{
+    if( !surfacesArray ){
+        surfacesArray = [[NSMutableArray alloc]init ];
+    }
 	[self.surfacesArray addObject:surface];
 }
 //--------------------------------------------------------------------------------------------------------

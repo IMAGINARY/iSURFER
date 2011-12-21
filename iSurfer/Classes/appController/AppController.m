@@ -109,9 +109,9 @@
 		gal4.editable = YES;
 
 	
-		//[dataBase saveGallery:gal2];
-		//[dataBase saveGallery:gal3];
-		//[dataBase saveGallery:gal4];
+	//	[dataBase saveGallery:gal2];
+//		[dataBase saveGallery:gal3];
+//		[dataBase saveGallery:gal4];
 		self.galleriesArray = [dataBase getGalleries];
 
 	//	[dataBase saveSurface:surface toGallery:[self.galleriesArray objectAtIndex:0]];
@@ -228,6 +228,11 @@
 -(void)addAlgebraicSurface:(AlgebraicSurface*)surface atGalleryIndex:(int)index{
 	Gallery* g = [self.galleriesArray objectAtIndex:index];
 	[g addAlgebraicSurface:surface];
+    [dataBase saveSurface:surface toGallery:[self.galleriesArray objectAtIndex:index]];
+
+    for( AlgebraicSurface* s in g.surfacesArray ){
+        NSLog(@"%@", s.surfaceName );
+    }
 }
 //--------------------------------------------------------------------------------------------------------
 

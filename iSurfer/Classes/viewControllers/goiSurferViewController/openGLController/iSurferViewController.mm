@@ -476,11 +476,17 @@ enum {
 }
 
 -(void)rotateX:(float)x Y:(float)y{
-	//NSLog(@"calc x: %.2f  calcy: %.2f", x * M_PI / 180, y * M_PI / 180 );
-	iSurferDelegate::rotationX =  iSurferDelegate::rotationX + (y * M_PI / 180 / 2.0);
-	iSurferDelegate::rotationY =  iSurferDelegate::rotationY +  (x * M_PI /180 /2.0);
-//	NSLog(@"x: %.2f    y:%.2f", iSurferDelegate::rotationX , iSurferDelegate::rotationY );
-	
+    if( iSurferDelegate::rotationX >2 * M_PI || iSurferDelegate::rotationX < -2 * M_PI) 
+        iSurferDelegate::rotationX = 0;
+    else
+        iSurferDelegate::rotationX =  iSurferDelegate::rotationX + (y * M_PI / 180 / 5.0);
+    if( iSurferDelegate::rotationY  > 2 * M_PI  || iSurferDelegate::rotationY  <  -2 * M_PI)
+        iSurferDelegate::rotationY  = 0;
+    else
+        iSurferDelegate::rotationY =  iSurferDelegate::rotationY +  (x * M_PI /180 /5.0);
+	NSLog(@"x: %.2f    y:%.2f", iSurferDelegate::rotationX , iSurferDelegate::rotationY );
+    //NSLog(@"calc x: %.2f  calcy: %.2f", x * M_PI / 180, y * M_PI / 180 );
+
 	[self drawFrame];
 
 }

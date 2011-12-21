@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseViewController.h"
-
+@class GoiSurferViewController;
 @interface SaveAlgebraicSurfaceViewController : BaseViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate>{
 	IBOutlet UIPickerView* galleryPicker;
 	IBOutlet UITextField* surfaceNameTextfield;
@@ -23,12 +23,16 @@
 	
 	IBOutlet UINavigationBar* navigationBar;
 	int galleryIndex;
+    
+    GoiSurferViewController* delegate;
 	
 }
 @property(nonatomic, retain)IBOutlet UINavigationItem* navBar;
 
 
 @property(nonatomic, retain)IBOutlet UIBarButtonItem* saveButton;
+
+@property(nonatomic, assign)IBOutlet     GoiSurferViewController* delegate;
 
 
 @property(nonatomic, retain)IBOutlet UIView* dataWrapperView;

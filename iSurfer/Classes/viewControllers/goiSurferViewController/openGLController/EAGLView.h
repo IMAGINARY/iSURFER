@@ -33,5 +33,6 @@
 
 - (void)setFramebuffer;
 - (BOOL)presentFramebuffer;
+-(UIImage *) saveImageFromGLView;
 
 @end

@@ -19,7 +19,7 @@
 @implementation GoiSurferViewController
 //--------------------------------------------------------------------------------------------------------
 @synthesize equationTextField, keyboardExtensionBar, baseView, colorPaletteView, shareView, optionsViews, colorTestView, greenColorSlider, redColorSlider, blueColorSlider;
-@synthesize algebraicSurfaceView, equationTextfieldView,rotateimage, saveButton, zoomSlider, zoomView, algebraicSurface;
+@synthesize algebraicSurfaceView, equationTextfieldView,rotateimage, saveButton, zoomSlider, zoomView, algebraicSurface, temporalimgView;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) initWithAppController:(AppController*)anappCtrl andAlgebraicSurface:(AlgebraicSurface*)surface{
@@ -197,6 +197,12 @@
 		default:
 			break;
 	}
+}
+
+
+-(UIImage*)getSurfaceImage{
+    
+    return [algebraicSurfaceView saveImageFromGLView];
 }
 //--------------------------------------------------------------------------------------------------------
 -(void)handleTwoFingerTouch:(UIGestureRecognizer*)doubleFingerGesture{
@@ -482,6 +488,7 @@
 
 -(IBAction)saveImage{
 	SaveAlgebraicSurfaceViewController* saveimg = [[SaveAlgebraicSurfaceViewController alloc]initWithAppController:self.appcontroller];
+    saveimg.delegate = self;
 	[self presentModalViewController:saveimg animated:YES];
 	[saveimg release];
 }
@@ -506,6 +513,7 @@
 	[zoomView release];
 	[algebraicSurface release];
 	[openglController release];
+    [temporalimgView release];
 	[super dealloc];
 }
 //---------------------------------------------------------------------------------------------

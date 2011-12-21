@@ -8,10 +8,11 @@
 
 #import "SaveAlgebraicSurfaceViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "GoiSurferViewController.h"
 
 @implementation SaveAlgebraicSurfaceViewController
 //--------------------------------------------------------------------------------------------------------
-@synthesize galleryPicker, surfaceNameTextfield, surfaceDescriptionTextView, galleriesPickerButton, galleryNameLabel, pickerWrapperView, dataWrapperView, saveButton, navBar;
+@synthesize galleryPicker, surfaceNameTextfield, surfaceDescriptionTextView, galleriesPickerButton, galleryNameLabel, pickerWrapperView, dataWrapperView, saveButton, navBar, delegate;
 //--------------------------------------------------------------------------------------------------------
 -(id) initWithAppController:(AppController*)anappCtrl{
 	
@@ -65,6 +66,8 @@
 	}
 	else{
 		AlgebraicSurface* newSurface = [[AlgebraicSurface alloc] init];
+        newSurface.equation = @"x^2";
+        newSurface.surfaceImage = [delegate getSurfaceImage];
 		[newSurface setSurfaceName:self.galleryNameLabel.text];
 		[newSurface setSurfaceDescription:self.surfaceDescriptionTextView.text];
 		[appcontroller addAlgebraicSurface:newSurface atGalleryIndex:galleryIndex];
