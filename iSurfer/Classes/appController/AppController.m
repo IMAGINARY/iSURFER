@@ -229,10 +229,6 @@
 	Gallery* g = [self.galleriesArray objectAtIndex:index];
 	[g addAlgebraicSurface:surface];
     [dataBase saveSurface:surface toGallery:[self.galleriesArray objectAtIndex:index]];
-
-    for( AlgebraicSurface* s in g.surfacesArray ){
-        NSLog(@"%@", s.surfaceName );
-    }
 }
 //--------------------------------------------------------------------------------------------------------
 

@@ -24,6 +24,7 @@
 @property(nonatomic, assign)	AppController* appcontroller;
 //---------------------------------------------------------------------------------------------
 
+-(id) initWithAppController:(AppController*)anappCtrl;
 
 - (void) scrollViewTo:(UIView*)theView movePixels:(int)pixels baseView:(UIView*)baseview;
 

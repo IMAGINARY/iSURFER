@@ -15,6 +15,19 @@
 @synthesize appcontroller, opaqueView, activityView;
 //---------------------------------------------------------------------------------------------
 
+
+
+-(id) initWithAppController:(AppController*)anappCtrl{
+	
+	if (self = [super initWithNibName:@"MyGalleriesViewController" bundle:[NSBundle mainBundle]]) {
+		
+		[self setAppcontroller:anappCtrl];
+        
+	}
+	return self;
+}
+
+
 - (void) scrollViewTo:(UIView*)theView movePixels:(int)pixels baseView:(UIView*)baseview{	
 	NSLog(@"scrollview");
 	[UIView beginAnimations:nil context:NULL];
