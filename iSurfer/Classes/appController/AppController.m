@@ -15,6 +15,7 @@
 #import "GalleryViewController.h"
 #import "SaveAlgebraicSurfaceViewController.h"
 #import "DataBaseController.h"
+#import "Language.h"
 //Despues sacar este import
 #import "AlgebraicSurface.h"
 //--------------------------------------------------------------------------------------------------------
@@ -34,8 +35,8 @@
 		[tmpdb release];
 		
 		[dataBase openDB];
-	
-		
+        [Language initialize];
+
 		MyGalleriesViewController* tmpgal = [[MyGalleriesViewController alloc]initWithAppController:self ];
 		[self setMyGalleriesViewController:tmpgal];
 		[tmpgal release];
@@ -57,47 +58,32 @@
 		[tmparray release];
 		
 		Gallery* gal1 = [[Gallery alloc]init];
-		gal1.galleryName = @"galery1";
+		gal1.galleryName =[Language get:@"gal1Name" alter:nil];
 		gal1.galleryDescription = @"description1";
 		gal1.editable = NO;
-		
+        [gal1 setThumbNail:[UIImage imageNamed:@"lemon.png"]];
+
+        Gallery* gal2 = [[Gallery alloc]init];
+		gal2.galleryName = [Language get:@"gal2Name" alter:nil];
+		gal2.galleryDescription = @"description2";
+		gal2.editable = NO;
+		[gal2 setThumbNail:[UIImage imageNamed:@"nepali.png"]];
+
 		AlgebraicSurface* surface = [[AlgebraicSurface alloc]init];
-		[surface setSurfaceImage:[UIImage imageNamed:@"facebook_icon.png"]];
-		[surface setEquation:@"x^2 + y^2 + z^2 = 1"];
-		[surface setSurfaceDescription:@"surface description"];
-		[surface setSurfaceName:@"surface name 1"];
+		[surface setSurfaceImage:[UIImage imageNamed:@"lemon.png"]];
+		[surface setEquation:@"x^2+z^2 = y^3(1-y)^3"];
+		[surface setSurfaceDescription:[Language get:@"surf1Desc" alter:nil]];
+		[surface setSurfaceName:[Language get:@"surf1Name" alter:nil]];
 		
 		AlgebraicSurface* surface2 = [[AlgebraicSurface alloc]init];
-		[surface2 setSurfaceImage:[UIImage imageNamed:@"Logo-twitter.png"]];
-		[surface2 setEquation:@"x^2 + y^2 + z^2 = 2"];
-		[surface2 setSurfaceDescription:@"surface description 222"];
-		[surface2 setSurfaceName:@"surface name 2"];
-		/*
-		AlgebraicSurface* surface3 = [[AlgebraicSurface alloc]init];
-		[surface3 setSurfaceImage:[UIImage imageNamed:@"Imaginary lemon.jpg"]];
-		AlgebraicSurface* surface4 = [[AlgebraicSurface alloc]init];
-		[surface4 setSurfaceImage:[UIImage imageNamed:@"facebook_icon.png"]];
-		AlgebraicSurface* surface5 = [[AlgebraicSurface alloc]init];
-		[surface5 setSurfaceImage:[UIImage imageNamed:@"facebook_icon.png"]];
-		AlgebraicSurface* surface6 = [[AlgebraicSurface alloc]init];
-		[surface6 setSurfaceImage:[UIImage imageNamed:@"facebook_icon.png"]];
-				
-		[gal1.surfacesArray addObject:surface];
-		[gal1.surfacesArray addObject:surface2];
-		[gal1.surfacesArray addObject:surface3];
-		[gal1.surfacesArray addObject:surface4];
-		[gal1.surfacesArray addObject:surface5];
-		[gal1.surfacesArray addObject:surface6];
-		 */
-
+		[surface2 setSurfaceImage:[UIImage imageNamed:@"nepali.png"]];
+		[surface2 setEquation:@"(xy-z^3-1)^2 =(1-x^2-y^2)^3"];
+		[surface2 setSurfaceDescription:[Language get:@"surf2Desc" alter:nil]];
+		[surface2 setSurfaceName:[Language get:@"surf2Name" alter:nil]];
 	
-		
-		Gallery* gal2 = [[Gallery alloc]init];
-		gal2.galleryName = @"galery2";
-		gal2.galleryDescription = @"description2";
-		gal2.editable = YES;
-		[gal2 setThumbNail:[UIImage imageNamed:@"facebook_icon.png"]];
-
+		[gal1 addAlgebraicSurface:surface];
+		[gal2 addAlgebraicSurface:surface2];
+	
 		Gallery* gal3 = [[Gallery alloc]init];
 		gal3.galleryName = @"galery3";
 		gal3.galleryDescription = @"description3";
@@ -108,23 +94,21 @@
 		gal4.galleryDescription = @"description4";
 		gal4.editable = YES;
 
-	
-	//	[dataBase saveGallery:gal2];
-//		[dataBase saveGallery:gal3];
-//		[dataBase saveGallery:gal4];
-		self.galleriesArray = [dataBase getGalleries];
-
-	//	[dataBase saveSurface:surface toGallery:[self.galleriesArray objectAtIndex:0]];
-	//	[dataBase saveSurface:surface2 toGallery:[self.galleriesArray objectAtIndex:0]];
+        [galleriesArray addObject:gal1];
+        [galleriesArray addObject:gal2];
+        
+        
+        unalterableGalleries = 2;
+        
+        [galleriesArray addObjectsFromArray:[dataBase getGalleries]];
 
 		[surface release];
 		[surface2 release];
 		[gal1 release];
 		[gal2 release];
-		[gal3 release];
-		[gal4 release];
-		
-		
+			
+        NSLog(@"jejeje %@",  [Language get:@"scorekey" alter:nil]);
+
 		[self performSelector:@selector(showMainMenu) withObject:nil afterDelay:SPLASH_DELAY];
 				
 	}	
@@ -210,25 +194,36 @@
 
 -(void)accesGallery:(int)row{
 	Gallery* g = [self.galleriesArray objectAtIndex:row];
-	[dataBase populateGallery:g];
+    if( g.editable ){
+        [dataBase populateGallery:g];
+    }
 	GalleryViewController* gallery = [[GalleryViewController alloc]initWithAppController:self andGallery:g];
 	[self.navcontroller pushViewController:gallery animated:YES];
 	[gallery release];
 }
 //--------------------------------------------------------------------------------------------------------
 -(Gallery*)getGallery:(int)index{
-	return [self.galleriesArray objectAtIndex:index];
+    if( index + unalterableGalleries < [galleriesArray count] ){
+        return [self.galleriesArray objectAtIndex:index + unalterableGalleries];
+    }
+    return NULL;
 }
 //--------------------------------------------------------------------------------------------------------
 -(int)getGalleriesCount{
-	return [self.galleriesArray count];
+    int count = 0;
+    for(Gallery* g in galleriesArray){
+        if( g.editable == YES){
+            count++;
+        }
+    }
+    return count;
 }
 //--------------------------------------------------------------------------------------------------------
 
 -(void)addAlgebraicSurface:(AlgebraicSurface*)surface atGalleryIndex:(int)index{
-	Gallery* g = [self.galleriesArray objectAtIndex:index];
+	Gallery* g = [self.galleriesArray objectAtIndex:index + unalterableGalleries];
 	[g addAlgebraicSurface:surface];
-    [dataBase saveSurface:surface toGallery:[self.galleriesArray objectAtIndex:index]];
+    [dataBase saveSurface:surface toGallery:[self.galleriesArray objectAtIndex:index + unalterableGalleries]];
 }
 //--------------------------------------------------------------------------------------------------------
 

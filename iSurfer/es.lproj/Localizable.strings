@@ -1,0 +1,23 @@
+/* 
+   Localizable.strings
+   cards
+
+   Created by Damian Modernell on 6/25/11.
+   Copyright 2011 __MyCompanyName__. All rights reserved.
+ */
+
+"gal1Name" = "Tutorial";
+"gal2Name" = "Cientificas";
+
+"surf1Name" = "Zitrus";
+"surf1Desc" = "Esta figura es un modelo matemático que nos ayuda a entender mejor las propiedades de la forma que tiene el limón.";
+
+"surf2Name" = "Nepali";
+"surf2Desc" = "¿Podemos encontrar un modo de nombrar las figuras que nunca lleve a confusión? Las matemáticas lo han resuelto al nombrarlas por su ecuación. Las ecuaciones se escriben y se interpretan de la misma forma en todo el mundo porque el lenguaje de las matemáticas es universal, como las partituras musicales.";
+
+
+"surf3Name" = "Zitrus";
+
+
+
+"gal2Desc" = "puto";

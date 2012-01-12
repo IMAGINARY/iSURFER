@@ -33,7 +33,7 @@
 
 -(void)viewDidLoad{
 	navigationBar.tintColor = [UIColor colorWithRed:167/255.0 green:190/255.0 blue:12/255.0 alpha:1];
-
+    
 	[surfaceDescriptionTextView.layer setBackgroundColor: [[UIColor whiteColor] CGColor]];
     [surfaceDescriptionTextView.layer setBorderColor: [[UIColor lightGrayColor] CGColor]];
     [surfaceDescriptionTextView.layer setBorderWidth: 1.0];
@@ -68,7 +68,7 @@
 		AlgebraicSurface* newSurface = [[AlgebraicSurface alloc] init];
         newSurface.equation = @"x^2";
         newSurface.surfaceImage = [delegate getSurfaceImage];
-		[newSurface setSurfaceName:self.galleryNameLabel.text];
+		[newSurface setSurfaceName:self.surfaceNameTextfield.text];
 		[newSurface setSurfaceDescription:self.surfaceDescriptionTextView.text];
 		[appcontroller addAlgebraicSurface:newSurface atGalleryIndex:galleryIndex];
 		[newSurface release];
@@ -90,11 +90,17 @@
 -(IBAction)showGalleriiesPicker:(BOOL)yes{
 	CGRect r=[pickerWrapperView frame];
 	if(yes){
-		r.origin.y =  SHOW_GALLERIES_PICKER;
-		UIBarButtonItem *donePickerButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered  target:self action:@selector(hidePicker)];
-		self.navBar.rightBarButtonItem = donePickerButton;
-		[donePickerButton release];
-		[self scrollViewTo:galleriesPickerButton movePixels:55 baseView:self.dataWrapperView];
+        if( [appcontroller getGalleriesCount] > 0 ){
+            r.origin.y =  SHOW_GALLERIES_PICKER;
+            UIBarButtonItem *donePickerButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered  target:self action:@selector(hidePicker)];
+            self.navBar.rightBarButtonItem = donePickerButton;
+            [donePickerButton release];
+            [self scrollViewTo:galleriesPickerButton movePixels:55 baseView:self.dataWrapperView];
+        }else{
+            UIAlertView* validationAlert = [[UIAlertView alloc] initWithTitle:@"Galleries" message:@"You should create an editable gallery before saving" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [validationAlert show];
+            [validationAlert release];
+        }
 	}else{
 		r.origin.y = HIDE_GALLERIES_PICKER;
 		self.navBar.rightBarButtonItem = saveButton;

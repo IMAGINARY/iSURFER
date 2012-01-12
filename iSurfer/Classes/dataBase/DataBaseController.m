@@ -158,17 +158,12 @@
 	AlgebraicSurface* s = nil;
 	NSMutableArray* surfacesArray = [[NSMutableArray alloc]init];
 
-	if( !gallery.surfacesArray ){
-		[gallery setSurfacesArray:surfacesArray];
-	}else {
-		[gallery.surfacesArray removeAllObjects];
-	}
-
+	[gallery removeAllSurfaces];
 	while ([rs next]) {
 	
 		s = [[AlgebraicSurface alloc]init];
 		
-		[gallery.surfacesArray addObject:s];
+		[gallery addAlgebraicSurface:s];
 		
 		s.surfaceImage = [UIImage imageWithData:[rs dataForColumn:@"surfaceimage"]];
 		s.surfaceDescription =  [rs stringForColumn:@"surfaceDescription"],

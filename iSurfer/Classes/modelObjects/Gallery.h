@@ -18,17 +18,20 @@
 	BOOL editable;
 	
 }
+//--------------------------------------------------------------------------------------------------------
 @property(nonatomic, assign)	BOOL editable;
-@property(nonatomic, retain)	NSMutableArray* surfacesArray;
 @property(nonatomic, retain)	NSString* galleryName;
 @property(nonatomic, retain)	UIImage * thumbNail;
 @property(nonatomic, retain)	NSString* galleryDescription;
 @property(nonatomic, assign)	int galID;
-
-
+//--------------------------------------------------------------------------------------------------------
 -(void)addAlgebraicSurface:(AlgebraicSurface*)surface;
 -(void)removeSurfaceAtIndex:(int)index;
 -(AlgebraicSurface*)getSurfaceAtIndex:(int)index;
 -(BOOL)isEmpty;
+-(int)getSurfacesCount;
+-(void)putSurface:(AlgebraicSurface*)s  AtIndex:(NSUInteger)index;
+-(void)removeAllSurfaces;
+//--------------------------------------------------------------------------------------------------------
 
 @end

@@ -11,7 +11,7 @@
 
 @implementation Gallery
 //--------------------------------------------------------------------------------------------------------
-@synthesize galleryName, galleryDescription, surfacesArray, editable, galID, thumbNail;
+@synthesize galleryName, galleryDescription,  editable, galID, thumbNail;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) init{	
@@ -40,21 +40,39 @@
     if( !surfacesArray ){
         surfacesArray = [[NSMutableArray alloc]init ];
     }
-	[self.surfacesArray addObject:surface];
+	[surfacesArray addObject:surface];
 }
 //--------------------------------------------------------------------------------------------------------
 -(void)removeSurfaceAtIndex:(int)index{
-	[self.surfacesArray removeObjectAtIndex:index];
+	[surfacesArray removeObjectAtIndex:index];
 }
 //--------------------------------------------------------------------------------------------------------
 
 -(AlgebraicSurface*)getSurfaceAtIndex:(int)index{
-	return [self.surfacesArray objectAtIndex:index];
+	return [surfacesArray objectAtIndex:index];
+}
+//--------------------------------------------------------------------------------------------------------
+
+-(void)putSurface:(AlgebraicSurface*)s  AtIndex:(NSUInteger)index{
+    
+    [surfacesArray insertObject:s atIndex:index];
+
+}
+//--------------------------------------------------------------------------------------------------------
+
+-(int)getSurfacesCount{
+    
+    return [surfacesArray count];
 }
 //--------------------------------------------------------------------------------------------------------
 
 -(BOOL)isEmpty{
-	return [surfacesArray count] == 0;
+	return  surfacesArray == NULL || [surfacesArray count] == 0 ;
 }
 //--------------------------------------------------------------------------------------------------------
+
+-(void)removeAllSurfaces{
+    
+    [surfacesArray removeAllObjects];
+}
 @end

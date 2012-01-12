@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  iSurfer
+
+  Created by Damian Modernell on 1/12/12.
+  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+*/
+"scorekey" = "puto";
+
+"gal1Name" = "Tutorial";
+"gal2Name" = "Scientific";
+
+"gal1Desc" = "puto";
+"gal2Desc" = "puto";
+
+
+

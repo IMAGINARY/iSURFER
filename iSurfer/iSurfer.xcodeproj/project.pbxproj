@@ -47,6 +47,11 @@
 		8B7F64C913C55C840098948F /* black_bar2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7F64C813C55C840098948F /* black_bar2.png */; };
 		8B891C8213BA95AC00EE4BC7 /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B891C8113BA95AC00EE4BC7 /* MainMenuViewController.xib */; };
 		8B891CB313BA992B00EE4BC7 /* Imaginary lemon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B891CB213BA992B00EE4BC7 /* Imaginary lemon.jpg */; };
+		8B9114CD14BF849D00BEAF27 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B9114CB14BF849D00BEAF27 /* Localizable.strings */; };
+		8B9114D114BF862600BEAF27 /* Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9114D014BF862600BEAF27 /* Language.m */; };
+		8B9114D314BF87B800BEAF27 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B9114CB14BF849D00BEAF27 /* Localizable.strings */; };
+		8B9114D714BF946C00BEAF27 /* lemon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B9114D514BF946C00BEAF27 /* lemon.png */; };
+		8B9114D814BF946C00BEAF27 /* nepali.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B9114D614BF946C00BEAF27 /* nepali.png */; };
 		8B9614E3144B1B040015D292 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9614DD144B1B040015D292 /* FMDatabase.m */; };
 		8B9614E4144B1B040015D292 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9614DF144B1B040015D292 /* FMDatabaseAdditions.m */; };
 		8B9614E6144B1B040015D292 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9614E2144B1B040015D292 /* FMResultSet.m */; };
@@ -138,6 +143,12 @@
 		8B891C8113BA95AC00EE4BC7 /* MainMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenuViewController.xib; sourceTree = "<group>"; };
 		8B891CB213BA992B00EE4BC7 /* Imaginary lemon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Imaginary lemon.jpg"; sourceTree = "<group>"; };
 		8B891CBC13BABC5600EE4BC7 /* AppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
+		8B9114CC14BF849D00BEAF27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8B9114CF14BF862600BEAF27 /* Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Language.h; sourceTree = "<group>"; };
+		8B9114D014BF862600BEAF27 /* Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Language.m; sourceTree = "<group>"; };
+		8B9114D214BF87B800BEAF27 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8B9114D514BF946C00BEAF27 /* lemon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lemon.png; sourceTree = "<group>"; };
+		8B9114D614BF946C00BEAF27 /* nepali.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nepali.png; sourceTree = "<group>"; };
 		8B9614DC144B1B040015D292 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		8B9614DD144B1B040015D292 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		8B9614DE144B1B040015D292 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -215,6 +226,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8B9114CE14BF861400BEAF27 /* utils */,
 				8B9614DA144B1B040015D292 /* dataBase */,
 				8B29F98413D3C6B000EDB516 /* modelObjects */,
 				8BC02C7A13B292B3003E41AC /* viewControllers */,
@@ -257,11 +269,13 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8B9114D414BF946C00BEAF27 /* staticSurfaces */,
 				8BDD0B36142431C40043741C /* shaders */,
 				8B891CB113BA990B00EE4BC7 /* images */,
 				8B891C9C13BA982700EE4BC7 /* buttons */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* iSurfer-Info.plist */,
+				8B9114CB14BF849D00BEAF27 /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -420,6 +434,25 @@
 			path = resources/images;
 			sourceTree = "<group>";
 		};
+		8B9114CE14BF861400BEAF27 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				8B9114CF14BF862600BEAF27 /* Language.h */,
+				8B9114D014BF862600BEAF27 /* Language.m */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		8B9114D414BF946C00BEAF27 /* staticSurfaces */ = {
+			isa = PBXGroup;
+			children = (
+				8B9114D514BF946C00BEAF27 /* lemon.png */,
+				8B9114D614BF946C00BEAF27 /* nepali.png */,
+			);
+			name = staticSurfaces;
+			path = resources/staticSurfaces;
+			sourceTree = "<group>";
+		};
 		8B9614DA144B1B040015D292 /* dataBase */ = {
 			isa = PBXGroup;
 			children = (
@@ -576,6 +609,8 @@
 				Japanese,
 				French,
 				German,
+				en,
+				es,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -625,6 +660,10 @@
 				8BDD0B41142431D50043741C /* vs1.glsl in Resources */,
 				8BDD0B42142431D50043741C /* vs2.glsl in Resources */,
 				8B961619144B45670015D292 /* iSurferDB.db in Resources */,
+				8B9114CD14BF849D00BEAF27 /* Localizable.strings in Resources */,
+				8B9114D314BF87B800BEAF27 /* Localizable.strings in Resources */,
+				8B9114D714BF946C00BEAF27 /* lemon.png in Resources */,
+				8B9114D814BF946C00BEAF27 /* nepali.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,10 +706,23 @@
 				8B9614E4144B1B040015D292 /* FMDatabaseAdditions.m in Sources */,
 				8B9614E6144B1B040015D292 /* FMResultSet.m in Sources */,
 				8B9614F6144B1CFB0015D292 /* DataBaseController.m in Sources */,
+				8B9114D114BF862600BEAF27 /* Language.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8B9114CB14BF849D00BEAF27 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8B9114CC14BF849D00BEAF27 /* en */,
+				8B9114D214BF87B800BEAF27 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {

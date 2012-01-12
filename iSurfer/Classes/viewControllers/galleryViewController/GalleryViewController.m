@@ -163,14 +163,14 @@
 			}
 		}
 	}
-	AlgebraicSurface* surface = [gallery.surfacesArray objectAtIndex:[indexPath row]];
+	AlgebraicSurface* surface = [gallery getSurfaceAtIndex:[indexPath row]];
 	[cell.surfaceImageView setImage:surface.surfaceImage];	
 	return cell;
 }
 //--------------------------------------------------------------------------------------------------------
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-	return [gallery.surfacesArray count];
+	return [gallery getSurfacesCount];
 }
 //--------------------------------------------------------------------------------------------------------
 
@@ -215,9 +215,9 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath{
 	NSUInteger fromRow = [fromIndexPath row];
 	NSUInteger toRow = [toIndexPath row];
-	AlgebraicSurface* surface = [[gallery.surfacesArray objectAtIndex:fromRow] retain];
-	[gallery.surfacesArray removeObjectAtIndex:fromRow];
-	[gallery.surfacesArray insertObject:surface atIndex:toRow];
+	AlgebraicSurface* surface = [[gallery getSurfaceAtIndex:fromRow] retain];
+	[gallery removeSurfaceAtIndex:fromRow];
+	[gallery putSurface:surface atIndex:toRow];
 	[surface release];
 }
 //--------------------------------------------------------------------------------------------------------
