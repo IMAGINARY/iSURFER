@@ -30,7 +30,7 @@
 -(AlgebraicSurface*)getSurfaceAtIndex:(int)index;
 -(BOOL)isEmpty;
 -(int)getSurfacesCount;
--(void)putSurface:(AlgebraicSurface*)s  AtIndex:(NSUInteger)index;
+-(void)putSurface:(AlgebraicSurface*)s  atIndex:(NSUInteger)index;
 -(void)removeAllSurfaces;
 //--------------------------------------------------------------------------------------------------------
 

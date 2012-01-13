@@ -53,7 +53,7 @@
 }
 //--------------------------------------------------------------------------------------------------------
 
--(void)putSurface:(AlgebraicSurface*)s  AtIndex:(NSUInteger)index{
+-(void)putSurface:(AlgebraicSurface*)s  atIndex:(NSUInteger)index{
     
     [surfacesArray insertObject:s atIndex:index];
 
