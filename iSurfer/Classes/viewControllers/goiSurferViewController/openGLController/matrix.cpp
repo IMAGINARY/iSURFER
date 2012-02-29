@@ -109,9 +109,9 @@ void ortho( float radius, float near, float far, Matrix4x4 result )
     c = -2.0 / (far - near);
     
 #define M(row,col)  result[col*4+row]
-    M(0,0) = x;     M(0,1) = 0.0F;  M(0,2) = 0;      M(0,3) = -(right + left) / (right - left);
-    M(1,0) = 0.0F;  M(1,1) = y;     M(1,2) = 0;      M(1,3) = -(top + bottom) / (top - bottom);
-    M(2,0) = 0.0F;  M(2,1) = 0.0F;  M(2,2) = c;      M(2,3) = -(far + near) / (far - near);
+    M(0,0) = x;     M(0,1) = 0.0F;  M(0,2) = 0;      M(0,3) = -(right + left) / (right - left); // 0
+    M(1,0) = 0.0F;  M(1,1) = y;     M(1,2) = 0;      M(1,3) = -(top + bottom) / (top - bottom); // 0
+    M(2,0) = 0.0F;  M(2,1) = 0.0F;  M(2,2) = c;      M(2,3) = -(far + near) / (far - near);     //0.999
     M(3,0) = 0.0F;  M(3,1) = 0.0F;  M(3,2) = 0.0F;  M(3,3) = 1.0F;
 #undef M
     

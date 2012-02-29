@@ -62,4 +62,11 @@ void EvalDerivateNoCode( expressionT exp);
  * Usarlo una sola vez para libera los nodos
  */
 void FreeTree( expressionT tree);
+
+int ErrorExist(void);
+char * getErrorMsg(void);
+
+void ParseError(char * msg);
+
+
 #endif

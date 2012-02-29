@@ -23,17 +23,16 @@ extern "C" {
 float iSurferDelegate::rotationX = 0.0f;
 float iSurferDelegate::rotationY = 0.0f;
 float iSurferDelegate::rotationZ = 0.0f;
-float iSurferDelegate::Shininess = 10;
-
+float iSurferDelegate::Shininess = 0.20f;
 float iSurferDelegate::colorR = 0.5f;
-float iSurferDelegate::colorG = 0.6f;
-float iSurferDelegate::colorB = 0.9f;
+float iSurferDelegate::colorG = 0.4f;
+float iSurferDelegate::colorB = 0.8f;
 float iSurferDelegate::colorR2 = 0.9f;
 float iSurferDelegate::colorG2 = 0.5f;
 float iSurferDelegate::colorB2 = 0.6f;
-float iSurferDelegate::lposX = 50.0f;
-float iSurferDelegate::lposY = 50.0f;
-float iSurferDelegate::lposZ = 10.0f;
+float iSurferDelegate::lposX = 5.0f;
+float iSurferDelegate::lposY = 5.0f;
+float iSurferDelegate::lposZ = 1.0f;
 float iSurferDelegate::stacks = 20.0f;
 float iSurferDelegate::slices = 20.0f;
 float iSurferDelegate::radius = 5;
@@ -47,6 +46,7 @@ struct UniformHandles {
     GLuint LightPosition2;
     GLuint LightPosition3;
     GLint AmbientMaterial;
+    GLint AmbientMaterial2;
     GLint SpecularMaterial;
     GLint SpecularMaterial2;
     GLint Shininess;
@@ -136,21 +136,25 @@ void iSurferDelegate::init(const char *vs1, const char *fs1, const char *vs2, co
 	clearExp();
 	EvalExp(exp, 0);
     EvalDerivateNoCode(exp);
-    printf("code\n");
-	printf(getCode());
-    printf("\nderivate\n");
-    printf(getCodeDerivate());
-    printf("\nderivate\n");
+    if(ErrorExist()){
+      printf(getErrorMsg());  
+        return getErrorMsg();
+
+    }
+    //printf("code\n");
+	//printf(getCode());
+    //printf("\nderivate\n");
+    //printf(getCodeDerivate());
+    //printf("\nderivate\n");
     
 //	printf("\n");
 //	printf("Degree %d \n", EvalDegree(exp));
 	
 	alg_surface_glsl_program = init( vs1/*"vs1.glsl"*/, fs1/*"fs1.glsl"*/ );
-	//wireframe_glsl_program = init( vs2/*"vs2.glsl"*/, fs2/*"fs2.glsl"*/ );
+	wireframe_glsl_program = initWire( vs2/*"vs2.glsl"*/, fs2/*"fs2.glsl"*/ );
 
 	checkGLError( AT );
     
-	set_light_and_material();
 }
 
 GLuint iSurferDelegate::init( const char* vertex_shader_name, const char* fragment_shader_name )
@@ -204,9 +208,9 @@ GLuint iSurferDelegate::init( const char* vertex_shader_name, const char* fragme
     
     
 	shader_code_c_str[codeLen + shaderLen + derivLen + 1] = '\0';
-	printf("\n\n\n\n\n%s\n\n\n\n\n\n\n", shader_code_c_str);
-	fflush(stdout);
-	printf("\nhola\n");
+	//printf("\n\n\n\n\n%s\n\n\n\n\n\n\n", shader_code_c_str);
+	//fflush(stdout);
+	//printf("\nhola\n");
     const char *Frafmentshader_code_c_str = (const char *)shader_code_c_str;
 	glShaderSource( fragment_shader, 1, &Frafmentshader_code_c_str, NULL );
 	glCompileShader( fragment_shader );
@@ -257,12 +261,97 @@ GLuint iSurferDelegate::init( const char* vertex_shader_name, const char* fragme
 			return 0;
 		}
 	}
-	printf( "\n" );
+//	printf( "\n" );
 
 	glUseProgram( glsl_program );
 
 	return glsl_program;
 }
+
+
+GLuint iSurferDelegate::initWire( const char* vertex_shader_name, const char* fragment_shader_name )
+{
+	GLint error_code;
+    
+	// create, load and compile vertex shader 
+	GLuint vertex_shader = glCreateShader( GL_VERTEX_SHADER );
+	string vertex_shader_code = read_file( vertex_shader_name );
+	const char *vertex_shader_code_c_str = vertex_shader_code.c_str();
+	glShaderSource( vertex_shader, 1, &vertex_shader_code_c_str, NULL );
+	glCompileShader( vertex_shader );
+    
+	{
+		glGetShaderiv( vertex_shader, GL_COMPILE_STATUS, &error_code );
+        
+		if( error_code == GL_FALSE )
+		{
+			printf( "Error during Vertex Shader \"%s\" compilation:\n", vertex_shader_name );
+			printShaderInfoLog( vertex_shader );
+			return 0;
+		}
+		else
+		{
+			printf( "Vertex Shader \"%s\" successfully compiled.\n", vertex_shader_name );
+		}
+	}
+    
+	// create, load and compile fragment shader 
+	GLuint fragment_shader = glCreateShader( GL_FRAGMENT_SHADER );
+	string fragment_shader_code = read_file( fragment_shader_name );
+	const char *fragment_shader_code_c_str = fragment_shader_code.c_str();
+	glShaderSource( fragment_shader, 1, &fragment_shader_code_c_str, NULL );
+	glCompileShader( fragment_shader );
+    
+	{
+		glGetShaderiv( fragment_shader, GL_COMPILE_STATUS, &error_code );
+		if( error_code == GL_FALSE )
+		{
+			printf( "Error during Fragment Shader \"%s\" compilation:\n", fragment_shader_name );
+			printShaderInfoLog( fragment_shader );
+			return 0;
+		}
+		else
+		{
+			printf( "Fragment Shader \"%s\" successfully compiled.\n", fragment_shader_name );
+		}
+	}
+	
+	GLuint glsl_program = glCreateProgram();
+	glAttachShader( glsl_program, vertex_shader );
+	glAttachShader( glsl_program, fragment_shader );
+	glLinkProgram( glsl_program );
+    
+	{
+		glGetProgramiv( glsl_program, GL_LINK_STATUS, &error_code );
+		if( error_code == GL_FALSE )
+		{
+			printf( "Error during GLSL program %i linking.\n", glsl_program );
+			printProgramInfoLog( glsl_program );
+			return 0;
+		}
+		else
+		{
+			printf( "GLSL program %u successfully linked.\n", glsl_program );
+		}
+	}
+    
+	glValidateProgram( glsl_program );
+    
+	{
+		glGetProgramiv( glsl_program, GL_VALIDATE_STATUS, &error_code );
+		if( error_code == GL_FALSE )
+		{
+			printf( "Error during GLSL program %i validation.\n", glsl_program );
+			printProgramInfoLog( glsl_program );
+			return 0;
+		}
+	}
+    
+	glUseProgram( glsl_program );
+    
+	return glsl_program;
+}
+
 
 void iSurferDelegate::resize( int w, int h )
 {
@@ -312,7 +401,7 @@ void iSurferDelegate::display()
 	glFrontFace( GL_CCW );
 	glCullFace( GL_BACK );
 
-/*
+
 	// draw wireframe sphere
 	{
 		glDisable( GL_CULL_FACE );
@@ -328,9 +417,9 @@ void iSurferDelegate::display()
 		glUniformMatrix4fv( u_modelview, 1, GL_FALSE, modelview ); checkGLError( AT );
 		glUniformMatrix4fv( u_projection, 1, GL_FALSE, projection ); checkGLError( AT );
 
-		wireSphere( 1.0, 20, 20, attr_pos ); checkGLError( AT );
+		wireSphere( radius, 20, 20, attr_pos ); checkGLError( AT );
 	}
-*/	// draw solid sphere, which is used for raycasting
+	// draw solid sphere, which is used for raycasting
 	{
 		glEnable( GL_CULL_FACE );
 
@@ -348,6 +437,7 @@ void iSurferDelegate::display()
         m_uniforms.LightPosition2 = glGetUniformLocation(glsl_program, "LightPosition2");
         m_uniforms.LightPosition3 = glGetUniformLocation(glsl_program, "LightPosition3");
         m_uniforms.AmbientMaterial = glGetUniformLocation(glsl_program, "AmbientMaterial");
+        m_uniforms.AmbientMaterial2 = glGetUniformLocation(glsl_program, "AmbientMaterial2");
         m_uniforms.SpecularMaterial = glGetUniformLocation(glsl_program, "SpecularMaterial");
         m_uniforms.SpecularMaterial2 = glGetUniformLocation(glsl_program, "SpecularMaterial2");
         m_uniforms.Shininess = glGetUniformLocation(glsl_program, "Shininess"); 
@@ -356,18 +446,19 @@ void iSurferDelegate::display()
         glUniform1f(m_uniforms.Radius, radius* radius);
 
         //Color ambient, sin luz
-        float div = 2.0f;
+        float div = 4.0f;
         glUniform3f(m_uniforms.AmbientMaterial, colorR / div, colorG /div, colorB / div);
+        glUniform3f(m_uniforms.AmbientMaterial2, colorR2 / div, colorG2 /div, colorB2 / div);
         //R,G,B, alpha con luz
         glUniform3f(m_uniforms.SpecularMaterial, colorR, colorG, colorB);
         glUniform3f(m_uniforms.SpecularMaterial2, colorR2, colorG2, colorB2);
 
         //Power de la luz
         glUniform1f(m_uniforms.Shininess, Shininess);
-        vec4 lightPosition(1, 0, 0, 0);
+        vec4 lightPosition(radius, radius, 0, 0);
         glUniform3fv(m_uniforms.LightPosition, 1, lightPosition.Pointer());
         //vec4 lightPosition2(-1, 0, -200, 0);
-        vec4 lightPosition2(-1, 0, 0, 0);
+        vec4 lightPosition2(0, -radius, radius, 0);
         
         glUniform3fv(m_uniforms.LightPosition2, 1, lightPosition2.Pointer());
 

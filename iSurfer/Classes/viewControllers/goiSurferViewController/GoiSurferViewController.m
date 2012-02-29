@@ -233,12 +233,12 @@
 		previousScale = pinchGesture.scale;
 	}else if( pinchGesture.state == UIGestureRecognizerStateChanged ){
 		if( previousScale > pinchGesture.scale ){
-			self.zoomSlider.value += 1;
-		}else {
 			self.zoomSlider.value -= 1;
+		}else {
+			self.zoomSlider.value += 1;
 		}
 	}else if (pinchGesture.state == UIGestureRecognizerStateEnded) {
-		[openglController setZoom:100.0 - zoomSlider.value];
+		[openglController setZoom:101.0 - zoomSlider.value];
 		//[openglController drawFrame];
 	}
 	previousScale = pinchGesture.scale;	
@@ -279,7 +279,7 @@
 	
 //	[self performSelectorInBackground:@selector(doOpenGLMagic) withObject:nil];
 	[self 	doOpenGLMagic];
-	self.zoomSlider.value = [openglController zoom];
+	self.zoomSlider.value = 101.0 - [openglController zoom];
 
 	[super viewDidAppear:animated];
 	

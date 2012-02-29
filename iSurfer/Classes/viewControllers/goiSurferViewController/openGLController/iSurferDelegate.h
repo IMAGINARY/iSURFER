@@ -21,6 +21,7 @@ class iSurferDelegate
 	private:
 		static void set_light_and_material();
 		static GLuint init( const char* vertex_shader_name, const char* fragment_shader_name );
+        static GLuint initWire( const char* vertex_shader_name, const char* fragment_shader_name );
 
 		static GLuint alg_surface_glsl_program;
 		static GLuint wireframe_glsl_program;

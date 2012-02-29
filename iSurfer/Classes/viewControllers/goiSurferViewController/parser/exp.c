@@ -25,10 +25,11 @@
 
 char code[10000];
 char derivate[10000];
+char errorMsg[1000];
+int errorPointer = 0;
 
 int codePointer = 0;
 int derivatePointer = 0;
-
 
 char * getCode(void){
     return code;
@@ -48,11 +49,31 @@ void clearExp(void){
     for(int i=0;i<codePointer;i++)
         code[i] = 0;
     codePointer= 0;
+
+    for(int i=0;i<errorPointer;i++)
+        errorMsg[i] = 0;
+    errorPointer = 0;
     
     for(int i=0;i<derivatePointer;i++)
         derivate[i] = 0;
     derivatePointer= 0;
     
+}
+
+
+
+int ErrorExist(){
+    return errorPointer != 0;
+}
+void ParseError(char * msg){
+    errorPointer = strlen(msg);
+	memcpy(errorMsg , msg , errorPointer);
+    free(msg);
+}
+
+char * getErrorMsg(void)
+{
+    return errorMsg;
 }
 
 

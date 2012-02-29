@@ -22,7 +22,8 @@
 
 #include "genlib.h"  
 #include "gcalloc.h"  
-#include "exception.h"  
+#include "exception.h"
+#include "exp.h"
 
 /* 
  * Constants: 
@@ -147,6 +148,7 @@ void Error(char * msg, ...)
         RaiseException(&ErrorException, "ErrorException", errmsg);  
     } else {  
         fprintf(stderr, "Error: %s\n", errmsg);  
-        exit(ErrorExitStatus);  
+        ParseError(errmsg);
+        return ;
     }  
 }  

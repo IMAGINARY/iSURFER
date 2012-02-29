@@ -44,8 +44,13 @@ expressionT
 ParseExp( scannerADT scanner) {
     expressionT exp;
     exp= ReadE(scanner, 0);
+    if(exp == NULL)
+        return NULL;
     if (MoreTokensExist(scanner))
+    {   
         Error("ParseExp: %s unexpected", ReadToken(scanner));
+        return NULL;
+    }
     return exp; 
 }
 
@@ -67,6 +72,8 @@ ReadE(scannerADT scanner, int prec)
     char * token;
     int newPrec;
     exp= ReadT(scanner);
+    if(exp == NULL)
+        return NULL;
     while (TRUE)
     {
         token= ReadToken(scanner);
@@ -74,6 +81,8 @@ ReadE(scannerADT scanner, int prec)
         if (newPrec <= prec )
             break;
         rhs= ReadE(scanner, newPrec);
+        if(rhs == NULL)
+            return NULL;
         exp= SubTree(token, exp, rhs);
     }
     SaveToken(scanner, token);
@@ -89,12 +98,21 @@ static expressionT ReadT(scannerADT scanner) {
     {
         exp= ReadE(scanner, 0);
         if (! StringEqual( ReadToken(scanner), ")"))
+        {
             Error("Unbalanced parentheses");
+            return NULL;
+        }
     } else
         if(token[0]=='!'){
             exp= SubTree(token ,NULL, NULL);
             exp->right = ReadE(scanner, 0);
         }
+        if(token[0]=='+' || token[0]=='^' || token[0]=='-' || token[0]=='*' || token[0]=='/'){
+            Error("ParseExp: %s unexpected", token);
+            
+            return NULL;
+
+        }   
         else
         if (EsNumero(token, &nro))
             exp= SubTree(token ,NULL, NULL);
@@ -102,6 +120,9 @@ static expressionT ReadT(scannerADT scanner) {
         if (IsVariable(token))
             exp= SubTree(token ,NULL, NULL);    
         else
+        {
             Error("Illegal term in expression");
+            return NULL;
+        }
     return exp; 
 }

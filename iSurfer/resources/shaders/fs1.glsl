@@ -12,8 +12,8 @@ uniform highp vec3 LightPosition;
 uniform highp vec3 LightPosition2;
 uniform highp vec3 LightPosition3;
 uniform highp vec3 AmbientMaterial;
+uniform highp vec3 AmbientMaterial2;
 uniform highp vec3 SpecularMaterial;
-
 uniform highp vec3 SpecularMaterial2;
 uniform highp float Shininess;
 uniform highp float radius;
@@ -565,59 +565,79 @@ void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float 
 void calc_lights( in highp vec3 eye, in highp vec3 dir, in highp vec2 trace_interval , in highp vec3 hit_point)
 {
 
-highp float x = hit_point.x;
-highp float y = hit_point.y;
-highp float z = hit_point.z;
+        highp float x = hit_point.x;
+        highp float y = hit_point.y;
+        highp float z = hit_point.z;
+
+        highp vec3 N 
 
 
-highp vec3 N 
+        N = normalize(N);
+
+        //highp vec3 N = eval_p(p_normal, hit_point);
+        //highp vec3 N = vec3(eval_p( mult(create_poly_0(2.0),x,1), hit_point.x), eval_p(  mult(mult(create_poly_0(2.0),x,1),create_poly_0(0.0),1), hit_point.x), eval_p(  mult(mult(create_poly_0(2.0),x,1),create_poly_0(0.0),1), hit_point.z));
 
 
-N = normalize(N);
+        highp vec3 L = normalize(LightPosition);
+        highp vec3 E = varying_eye;
+        lowp vec3 color;
+
+        if(dot(N, E) >= 0.0)
+        {
+            highp vec3 H = normalize(L + E);
+
+            highp float df = max(0.0, dot(N, L));
+            highp float sf = max(0.0, dot(N, H));
+            sf = pow(sf, Shininess);
+            color = AmbientMaterial;
+            color +=   sf * SpecularMaterial;
+            L = normalize(LightPosition2);
+            H = normalize(L + E);
+
+            df = max(0.0, dot(N, L));
+            sf = max(0.0, dot(N, H));
+            sf = pow(sf, Shininess);
+            color +=   sf * SpecularMaterial;
+
+          /*  L = normalize(LightPosition3);
+            H = normalize(L + E);
+
+            df = max(0.0, dot(N, L));
+            sf = max(0.0, dot(N, H));
+            sf = pow(sf, Shininess);
+            color +=   sf * SpecularMaterial;
+          */
+
+        }else
+        {
+            E = - E;
+            highp vec3 H = normalize(L - E);
+
+            highp float df = max(0.0, dot(N, L));
+            highp float sf = max(0.0, dot(N, H));
+            sf = pow(sf, Shininess);
+            color = AmbientMaterial2;
+            color +=   sf * SpecularMaterial2;
+            L = normalize(LightPosition2);
+            H = normalize(L + E);
+
+            df = max(0.0, dot(N, L));
+            sf = max(0.0, dot(N, H));
+            sf = pow(sf, Shininess);
+            color +=   sf * SpecularMaterial2;
+
+          /*  L = normalize(LightPosition3);
+            H = normalize(L + E);
+
+            df = max(0.0, dot(N, L));
+            sf = max(0.0, dot(N, H));
+            sf = pow(sf, Shininess);
+            color +=   sf * SpecularMaterial2;
+        */
+        }
 
 
-highp vec3 L = normalize(LightPosition);
-highp vec3 E = vec3(0, 0, 1);
-highp vec3 H = normalize(L + E);
-
-highp float df = max(0.0, dot(N, L));
-highp float sf = max(0.0, dot(N, H));
-sf = pow(sf, Shininess);
-lowp vec3 color = AmbientMaterial;
-//color += df * Diffuse;
-
-if(dot(N, varying_eye) >= 0.0)
-    color +=   sf * SpecularMaterial;
-else
-    color +=  sf * SpecularMaterial2;
-L = normalize(LightPosition2);
-H = normalize(L + E);
-
-df = max(0.0, dot(N, L));
-sf = max(0.0, dot(N, H));
-sf = pow(sf, Shininess);
-if(dot(N, varying_eye) >= 0.0)
-    color = color +  df * Diffuse + sf * SpecularMaterial;
-else
-    color =  color + df * Diffuse + sf * SpecularMaterial2;
-
-
-L = normalize(LightPosition3);
-H = normalize(L + E);
-
-df = max(0.0, dot(N, L));
-sf = max(0.0, dot(N, H));
-sf = pow(sf, Shininess);
-if(dot(N, varying_eye) >= 0.0)
-color = color +  df * Diffuse + sf * SpecularMaterial;
-else
-color =  color + df * Diffuse + sf * SpecularMaterial2;
-
-
-//color = normalize(color);
-
-
-gl_FragColor = vec4(color, 1);
+    gl_FragColor = vec4(color, 1);
 
 
 }
