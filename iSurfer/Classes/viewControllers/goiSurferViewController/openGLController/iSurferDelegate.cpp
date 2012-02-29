@@ -37,7 +37,7 @@ float iSurferDelegate::stacks = 20.0f;
 float iSurferDelegate::slices = 20.0f;
 float iSurferDelegate::radius = 5;
 expressionT expt;
-bool debug = false;
+bool debug = true;
 
 GLuint iSurferDelegate::alg_surface_glsl_program = 0u;
 GLuint iSurferDelegate::wireframe_glsl_program = 0u;
@@ -126,6 +126,7 @@ void checkGLError( const char *location )
 
 void iSurferDelegate::init(const char *vs1, const char *fs1, const char *vs2, const char *fs2, const char *formula)
 {
+    
 	checkGLError( AT );
 	scannerADT scanner;
     scanner= NewScanner();
@@ -141,6 +142,7 @@ void iSurferDelegate::init(const char *vs1, const char *fs1, const char *vs2, co
         return getErrorMsg();
 
     }
+    glDeleteShader(alg_surface_glsl_program);
     //printf("code\n");
 	//printf(getCode());
     //printf("\nderivate\n");
@@ -151,9 +153,10 @@ void iSurferDelegate::init(const char *vs1, const char *fs1, const char *vs2, co
 //	printf("Degree %d \n", EvalDegree(exp));
 	
 	alg_surface_glsl_program = init( vs1/*"vs1.glsl"*/, fs1/*"fs1.glsl"*/ );
-    if(debug)
+    if(debug){
+        glDeleteShader(wireframe_glsl_program);
         wireframe_glsl_program = initWire( vs2/*"vs2.glsl"*/, fs2/*"fs2.glsl"*/ );
-
+    }
 	checkGLError( AT );
     
 }
@@ -227,9 +230,9 @@ GLuint iSurferDelegate::init( const char* vertex_shader_name, const char* fragme
     shader_code_c_str_aux += shaderLen - positionDerivate;
   
 	shader_code_c_str_aux[1] = '\0';
-	printf("\n\n\n\n\n%s\n\n\n\n\n\n\n", shader_code_c_str);
-	fflush(stdout);
-	printf("\nhola\n");
+//	printf("\n\n\n\n\n%s\n\n\n\n\n\n\n", shader_code_c_str);
+//	fflush(stdout);
+//	printf("\nhola\n");
     const char *Frafmentshader_code_c_str = (const char *)shader_code_c_str;
 	glShaderSource( fragment_shader, 1, &Frafmentshader_code_c_str, NULL );
 	glCompileShader( fragment_shader );
