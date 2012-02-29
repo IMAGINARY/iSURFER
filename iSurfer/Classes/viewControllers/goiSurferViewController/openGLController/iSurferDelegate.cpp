@@ -36,6 +36,7 @@ float iSurferDelegate::lposZ = 1.0f;
 float iSurferDelegate::stacks = 20.0f;
 float iSurferDelegate::slices = 20.0f;
 float iSurferDelegate::radius = 5;
+expressionT expt;
 
 
 GLuint iSurferDelegate::alg_surface_glsl_program = 0u;
@@ -127,15 +128,14 @@ void iSurferDelegate::init(const char *vs1, const char *fs1, const char *vs2, co
 {
 	checkGLError( AT );
 	scannerADT scanner;
-    expressionT exp;
     scanner= NewScanner();
     SetScannerSpaceOption(scanner, IgnoreSpaces);
 	
 	SetScannerString(scanner, (char *)formula);
-	exp= ParseExp(scanner);
+	expt= ParseExp(scanner);
 	clearExp();
-	EvalExp(exp, 0);
-    EvalDerivateNoCode(exp);
+	EvalExp(expt, 0);
+    EvalDerivateNoCode(expt);
     if(ErrorExist()){
       printf(getErrorMsg());  
         return getErrorMsg();
@@ -190,27 +190,45 @@ GLuint iSurferDelegate::init( const char* vertex_shader_name, const char* fragme
 	int codeLen = strlen(getCode());
 	int shaderLen = strlen(fragment_shader_code_c_str);
     int derivLen = strlen(getCodeDerivate()); 
-    
-	char * shader_code_c_str = (char *) malloc( shaderLen + codeLen + derivLen + 2) ;
+    char degre[10];
+    sprintf(degre, "%d ", EvalDegree(expt));
+    printf("\n degree %s \n", degre);
+
+    int degreLen = strlen(degre);
+	char * shader_code_c_str = (char *) malloc( shaderLen + codeLen + derivLen + degreLen + 2) ;
+    int degrePosition = 15 + FindString((char *) "#define DEGREE ", (char * )fragment_shader_code_c_str, 1);;
 	int position = 7 + FindString((char *) "return ", (char * )fragment_shader_code_c_str, 1);
 	int positionDerivate = 13 + FindString((char *) "highp vec3 N ", (char * )fragment_shader_code_c_str, 1);
+    memcpy(shader_code_c_str , fragment_shader_code_c_str, degrePosition);
+    char * fragment_shader_code_c_str_aux =  (char *) fragment_shader_code_c_str + degrePosition; 
+    char * shader_code_c_str_aux = shader_code_c_str + degrePosition;
 	int posDer = positionDerivate  - position;
+    position -= degrePosition;
+
+	memcpy(shader_code_c_str_aux, degre, degreLen);
+
+	shader_code_c_str_aux += degreLen;
     
-    memcpy(shader_code_c_str , fragment_shader_code_c_str, position);
-	memcpy(shader_code_c_str + position, getCode(), codeLen);
+    memcpy(shader_code_c_str_aux , fragment_shader_code_c_str_aux, position );
+    shader_code_c_str_aux += position;
+    fragment_shader_code_c_str_aux += position ;
+	memcpy(shader_code_c_str_aux , getCode(), codeLen);
+    shader_code_c_str_aux += codeLen;
+    
+    memcpy(shader_code_c_str_aux, fragment_shader_code_c_str_aux, posDer  );
+    fragment_shader_code_c_str_aux += posDer;
+    shader_code_c_str_aux += posDer;
+    
+    memcpy(shader_code_c_str_aux , getCodeDerivate() , derivLen );
+    shader_code_c_str_aux += derivLen;
 	
-    memcpy(shader_code_c_str + position + codeLen, fragment_shader_code_c_str + position + 1, posDer  );
-    
-    
-    memcpy(shader_code_c_str + codeLen + positionDerivate , getCodeDerivate() , derivLen );
-     
-    memcpy(shader_code_c_str + positionDerivate + codeLen + derivLen, fragment_shader_code_c_str + positionDerivate + 2, shaderLen  - positionDerivate );
-    
-    
-	shader_code_c_str[codeLen + shaderLen + derivLen + 1] = '\0';
-	//printf("\n\n\n\n\n%s\n\n\n\n\n\n\n", shader_code_c_str);
-	//fflush(stdout);
-	//printf("\nhola\n");
+    memcpy(shader_code_c_str_aux, fragment_shader_code_c_str_aux , shaderLen  - positionDerivate );
+    shader_code_c_str_aux += shaderLen - positionDerivate;
+  
+	shader_code_c_str_aux[1] = '\0';
+	printf("\n\n\n\n\n%s\n\n\n\n\n\n\n", shader_code_c_str);
+	fflush(stdout);
+	printf("\nhola\n");
     const char *Frafmentshader_code_c_str = (const char *)shader_code_c_str;
 	glShaderSource( fragment_shader, 1, &Frafmentshader_code_c_str, NULL );
 	glCompileShader( fragment_shader );
