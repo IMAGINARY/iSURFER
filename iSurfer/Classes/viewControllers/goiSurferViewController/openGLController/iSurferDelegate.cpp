@@ -37,7 +37,7 @@ float iSurferDelegate::stacks = 20.0f;
 float iSurferDelegate::slices = 20.0f;
 float iSurferDelegate::radius = 5;
 expressionT expt;
-
+bool debug = false;
 
 GLuint iSurferDelegate::alg_surface_glsl_program = 0u;
 GLuint iSurferDelegate::wireframe_glsl_program = 0u;
@@ -151,7 +151,8 @@ void iSurferDelegate::init(const char *vs1, const char *fs1, const char *vs2, co
 //	printf("Degree %d \n", EvalDegree(exp));
 	
 	alg_surface_glsl_program = init( vs1/*"vs1.glsl"*/, fs1/*"fs1.glsl"*/ );
-	wireframe_glsl_program = initWire( vs2/*"vs2.glsl"*/, fs2/*"fs2.glsl"*/ );
+    if(debug)
+        wireframe_glsl_program = initWire( vs2/*"vs2.glsl"*/, fs2/*"fs2.glsl"*/ );
 
 	checkGLError( AT );
     
@@ -419,7 +420,7 @@ void iSurferDelegate::display()
 	glFrontFace( GL_CCW );
 	glCullFace( GL_BACK );
 
-
+    if(debug)
 	// draw wireframe sphere
 	{
 		glDisable( GL_CULL_FACE );

@@ -1,9 +1,11 @@
-#define EXAMPLE 1
 
-#if EXAMPLE == 1
+#define DEGREE 
+#define SIZE 5
+#define EPSILON 0.0001
+
 // polynomial of degree 2
-#define DEGREE 2
-#define SIZE 4
+//#define DEGREE 2
+//#define SIZE 5
 #define EPSILON 0.0001
 
 uniform lowp vec3 Diffuse;
@@ -57,47 +59,6 @@ highp vec3 mygradient( in highp vec3 point )
 
 	return res;
 }
-#endif
-#if EXAMPLE == 2
-// polynomial of degree 3
-#define DEGREE 3
-#define SIZE 4
-#define EPSILON 0.0001
-
-struct polynomial { highp float a[ SIZE ]; };
-
-polynomial create_poly_0( highp float a0 );
-polynomial create_poly_1( highp float a0, highp float a1 );
-polynomial add( polynomial p1, polynomial p2, int res_degree );
-polynomial sub( polynomial p1, polynomial p2, int res_degree );
-polynomial mult( polynomial p1, polynomial p2, int res_degree );
-polynomial neg( polynomial p, int res_degree );
-polynomial power( polynomial p, int exp, int degree );
-polynomial power_1( polynomial p, int exp );
-highp float power( highp float base, int exp );
-polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir, in highp vec2 trace_interval )
-{
-	polynomial x = create_poly_1( eye.x, dir.x );
-	polynomial y = create_poly_1( eye.y, dir.y );
-	polynomial z = create_poly_1( eye.z, dir.z );
-
-	return sub( add( sub( power( x, 3, 1 ), power( y, 2, 1 ), 2 ), power( z, 2, 1 ), 3 ), create_poly_0( 0.0 ), 3 );
-}
-
-highp vec3 mygradient( in highp vec3 point )
-{
-	highp float x = point.x;
-	highp float y = point.y;
-	highp float z = point.z;
-
-	highp vec3 res;
-	res.x = 3.0*x*x;
-	res.y = -2.0*y;
-	res.z = 2.0*z;
-
-	return res;
-}
-#endif
 polynomial create_poly_0( highp float a0 )
 {
 	polynomial res;
