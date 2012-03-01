@@ -6,7 +6,7 @@
 // polynomial of degree 2
 //#define DEGREE 2
 //#define SIZE 5
-#define EPSILON 0.0001
+//#define EPSILON 0.0001
 
 uniform lowp vec3 Diffuse;
 
@@ -18,7 +18,7 @@ uniform highp vec3 AmbientMaterial2;
 uniform highp vec3 SpecularMaterial;
 uniform highp vec3 SpecularMaterial2;
 uniform highp float Shininess;
-uniform highp float radius;
+uniform highp float radius2;
 
 
 struct polynomial { highp float a[ SIZE ]; };
@@ -488,10 +488,12 @@ varying highp vec3 varying_dir;
 
 void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float tmin, out highp float tmax )
 {
+
+// http://wiki.cgsociety.org/index.php/Ray_Sphere_Intersection
 	//Compute A, B and C coefficients
 	highp float a = dot(dir, dir);
 	highp float b = 2.0 * dot(dir, eye);
-	highp float c = dot(eye, eye) - (radius);
+	highp float c = dot(eye, eye) - (radius2);
 
 	//Find discriminant
 	highp float disc = b * b - 4.0 * a * c;
@@ -625,7 +627,8 @@ void main( void )
 
 	// find intersection of ray and surface
 	highp float root = first_root_in( p_ray, tmin, tmax );
-
+//    if(abs(root - tmax) < 0.1 || abs(root - tmin) < 0.1)
+//        discard;
 	highp vec3 hit_point = eye + root * dir;
 
 	//gl_FragColor = vec4( normalize( mygradient( hit_point ) ), 0.5 );

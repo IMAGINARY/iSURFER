@@ -207,8 +207,8 @@ enum {
 	NSString *fs2 = [[NSBundle mainBundle] pathForResource:@"fs2" ofType:@"glsl"];
 	//NSString *formula = @"x^2+y^2+z*x+y";
     //NSString *formula = @"x^2+y^2+z^2-19";
-    //NSString *formula = @"x^2-x-x^2*y-y*z^2-z^2";
-    NSString *formula = @"x^2+y^2*z-z^2";
+    NSString *formula = @"x^2-x-x^2*y-y*z^2-z^2";
+   // NSString *formula = @"x^2+y^2*z-z^2";
    
     //Grado 3
     //NSString *formula = @"x^2-y^3*z^3";

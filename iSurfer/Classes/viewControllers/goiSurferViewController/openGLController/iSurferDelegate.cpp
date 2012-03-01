@@ -33,8 +33,8 @@ float iSurferDelegate::colorB2 = 0.6f;
 float iSurferDelegate::lposX = 5.0f;
 float iSurferDelegate::lposY = 5.0f;
 float iSurferDelegate::lposZ = 1.0f;
-float iSurferDelegate::stacks = 20.0f;
-float iSurferDelegate::slices = 20.0f;
+float iSurferDelegate::stacks = 40.0f;
+float iSurferDelegate::slices = 40.0f;
 float iSurferDelegate::radius = 5;
 expressionT expt;
 bool debug = true;
@@ -52,7 +52,7 @@ struct UniformHandles {
     GLint SpecularMaterial2;
     GLint Shininess;
     GLint DiffuseMaterial;
-    GLint Radius;
+    GLint Radius2;
 };
 UniformHandles m_uniforms;
 
@@ -138,8 +138,8 @@ void iSurferDelegate::init(const char *vs1, const char *fs1, const char *vs2, co
 	EvalExp(expt, 0);
     EvalDerivateNoCode(expt);
     if(ErrorExist()){
-      printf(getErrorMsg());  
-        return getErrorMsg();
+      printf("%s", getErrorMsg());  
+        return ;
 
     }
     glDeleteShader(alg_surface_glsl_program);
@@ -230,6 +230,9 @@ GLuint iSurferDelegate::init( const char* vertex_shader_name, const char* fragme
     shader_code_c_str_aux += shaderLen - positionDerivate;
   
 	shader_code_c_str_aux[1] = '\0';
+    shader_code_c_str_aux[2] = '\0';
+    shader_code_c_str_aux[0] = '\0';
+
 //	printf("\n\n\n\n\n%s\n\n\n\n\n\n\n", shader_code_c_str);
 //	fflush(stdout);
 //	printf("\nhola\n");
@@ -395,7 +398,7 @@ void iSurferDelegate::display()
 	//Traslacion si es necesario usar la matriz
     scale_matrix( 1, 1, 1, s );
     
-	translation_matrix( 0.0, 0.0, -7.5-radius , t );
+	translation_matrix( 0.0, 0.0, -500 , t );
 
 	rotation_matrix( 1.0f, 0.0f, 0.0f, iSurferDelegate::rotationX, rx );
 	rotation_matrix( 0.0f, 1.0f, 0.0f, iSurferDelegate::rotationY, ry );
@@ -410,7 +413,7 @@ void iSurferDelegate::display()
 
 	Matrix4x4 projection;
 
-    ortho(radius, 0.1, 10000, projection);
+    ortho(radius, 0.1, 1000, projection);
     printf("radius = %f\n", radius);
     
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); checkGLError( AT );
@@ -454,7 +457,7 @@ void iSurferDelegate::display()
 		GLint u_modelview_inv = glGetUniformLocation( glsl_program, "modelviewMatrixInverse" ); checkGLError( AT );
 		GLint u_projection = glGetUniformLocation( glsl_program, "projectionMatrix" ); checkGLError( AT );
 
-        m_uniforms.Radius = glGetUniformLocation(glsl_program, "radius");
+        m_uniforms.Radius2 = glGetUniformLocation(glsl_program, "radius2");
         m_uniforms.LightPosition = glGetUniformLocation(glsl_program, "LightPosition");
         m_uniforms.LightPosition2 = glGetUniformLocation(glsl_program, "LightPosition2");
         m_uniforms.LightPosition3 = glGetUniformLocation(glsl_program, "LightPosition3");
@@ -465,7 +468,7 @@ void iSurferDelegate::display()
         m_uniforms.Shininess = glGetUniformLocation(glsl_program, "Shininess"); 
         m_uniforms.DiffuseMaterial = glGetAttribLocation(glsl_program, "Diffuse");
         
-        glUniform1f(m_uniforms.Radius, radius* radius);
+        glUniform1f(m_uniforms.Radius2, radius* radius);
 
         //Color ambient, sin luz
         float div = 4.0f;
