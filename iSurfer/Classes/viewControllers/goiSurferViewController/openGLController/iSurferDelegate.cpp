@@ -398,7 +398,7 @@ void iSurferDelegate::display()
 	//Traslacion si es necesario usar la matriz
     scale_matrix( 1, 1, 1, s );
     
-	translation_matrix( 0.0, 0.0, -500 , t );
+	translation_matrix( 0.0, 0.0, -1500 , t );
 
 	rotation_matrix( 1.0f, 0.0f, 0.0f, iSurferDelegate::rotationX, rx );
 	rotation_matrix( 0.0f, 1.0f, 0.0f, iSurferDelegate::rotationY, ry );
@@ -413,7 +413,7 @@ void iSurferDelegate::display()
 
 	Matrix4x4 projection;
 
-    ortho(radius, 0.1, 1000, projection);
+    ortho(radius, 0.1, 2000, projection);
     printf("radius = %f\n", radius);
     
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); checkGLError( AT );
