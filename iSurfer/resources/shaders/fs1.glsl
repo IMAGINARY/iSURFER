@@ -166,6 +166,28 @@ highp float power( highp float base, int exp )
 	return res;
 }
 
+highp float mypower(highp float base, highp float exp)
+{
+	int neg = 0;
+	highp float ans;
+	if(base < 0.0)
+	{
+		neg = 1;
+		base = base * -1.0;
+	}
+			
+	ans = pow(base, exp);
+
+	if(exp == 1.0/3.0)
+		ans = ans * -1.0;
+	else if(exp == 0.5)
+		ans = ans;
+	else if(neg == 1  && mod(exp,2.0) != 0.0)
+		ans = ans * -1.0;
+
+	return ans;	
+}
+
 // ===================================================
 
 highp float eval_p( const in polynomial p, highp float x )
@@ -358,7 +380,7 @@ highp float first_root_in( in polynomial p, highp float min, highp float max )
 		else
 			discard;
 	}
-else if( DEGREE == 10)
+/*else if( DEGREE == 10)
 {
 
 highp float a=p.a[2]/p.a[3];
@@ -463,8 +485,183 @@ discard;
 }
 
 
-}
-else if( DEGREE >= 3 )
+}*/
+
+/**********************************************/
+
+else if( DEGREE == 3)
+	{
+		
+		highp float a=p.a[2]/p.a[3];
+		highp float b=p.a[1]/p.a[3];
+		highp float c=p.a[0]/p.a[3];
+				
+		//----Testeo de parametros----
+			
+		//if(a < -1.99 && a > -2.01)	
+		//	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
+
+		//if(b < -4.99 && b > -5.01)	
+		//	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
+
+		//if(c > 5.99 && c < 6.01)	
+		//	gl_FragColor = vec4( 0.0, 0.0, 1.0 , 0.5 );
+
+		//----Parametros correctos----
+				
+		//----Testeo pe y qu----
+				
+		highp float pe=b-power(a,2)/3.0;
+		
+		//if(pe > -6.34 && pe < -6.32)
+		//	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
+		
+		highp float part1qu = 2.0*power(a,3)/27.0;
+		highp float part2qu = a*b/3.0;
+		
+		//if(part1qu > -0.6 && part1qu < -0.58)	
+		//	gl_FragColor = vec4( 0.0, 0.0, 1.0 , 0.5 );
+
+		//if(part2qu > 3.31 && part2qu < 3.34)	
+		//	gl_FragColor = vec4( 0.0, 0.0, 1.0 , 0.5 );
+		
+		highp float qu=part1qu - part2qu + c;
+		
+		//highp float qu=2.0*power(a,3)/27.0-a*b/3.0+c;
+			
+		//if(qu > 1.9 && qu < 2.2)
+		//	gl_FragColor = vec4(0.0, 1.0, 0.0, 0.5);
+		
+		//----pe y qu correctos----
+		
+		//----Testeo discritizante----
+		
+		highp float disc=power(qu,2)+4.0*power(pe,3)/27.0;
+		
+		if(disc > -34.0 && disc < -32.0)
+			gl_FragColor = vec4( 0.0, 0.0, 1.0 , 0.5 );
+			
+		//----Discretizante correcto----	
+
+		if (disc > 0.0 + EPSILON)
+		{
+		
+			highp float u=mypower(((-qu+mypower(disc,0.5))/2.0),1.0/3.0);
+			highp float v=mypower(((-qu-mypower(disc,0.5))/2.0),1.0/3.0);
+			highp float z0=u+v;
+			highp float x0 = z0-a/3.0;
+			return x0;
+		}
+		else if (disc >= 0.0 - EPSILON && disc <= 0.0 + EPSILON)
+		{
+			highp float z0=3.0*qu/pe;
+			highp float z1=-3.0*qu/(2.0*pe);
+			highp float x0 = z0-a/3.0;
+			highp float x1 = z1-a/3.0;
+				
+			if(x0 >=min && x0 < max)
+			{
+				if(x1 >= min && x1 < max && x1 < x0)
+					return x1;
+				return x0;	
+			}
+			else if(x1 >=min && x1 < max)
+				return x1;
+			else
+				discard;
+		}
+		else if (disc < 0.0 - EPSILON)
+		{
+			highp float pi = 3.14159265358979323846264;
+			highp float z0 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/mypower(-pe,3.0),0.5)));
+			highp float z1 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/mypower(-pe,3.0),0.5))+2.0*pi/3.0);
+			highp float z2 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/mypower(-pe,3.0),0.5))+4.0*pi/3.0);
+			highp float x0 = z0- a/3.0;
+			highp float x1 = z1- a/3.0;
+			highp float x2 = z2- a/3.0;
+			
+			//----Testeo raices----
+			
+			//if(x0 > 2.9 && x0 < 3.1)
+			//	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
+			
+			//if(x1 > -2.1 && x1 < -1.9)
+			//	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
+				
+			//if(x2 > 0.9 && x2 < 1.1)
+			//	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
+			
+			//----Raices correctas----
+	
+			if(x0 >= min && x0 < max)
+			{
+				if(x1 >= min && x1 < max)
+				{
+					if(x2 >= min && x2 < max)
+					{
+						if(x2 < x1 && x2 < x0)
+							return x2;
+						else if(x1 < x2 && x1 < x0)
+							return x1;
+						else if(x0 < x2 && x0 < x1)
+							return x0;
+					}
+					else
+					{
+						if(x1 < x0)
+							return x1;
+						else
+							return x0;
+					}			
+				}
+				else if(x2 >= min && x2 < max)
+				{
+					if(x2 < x0)
+						return x2;
+					else
+						return x0;
+				}
+				else
+					return x0;
+			}
+			else if(x2 >= min && x2 < max)
+			{
+				if(x1 >= min && x1 < max)
+				{
+					if(x2 < x1)
+						return x2;
+					return x1;	
+				}
+				else
+					return x2;
+//				else if(x0 >= min && x0 < max)
+//				{
+//					if(x2 < x0)
+//						return x2;
+//					return x0;
+//				}
+//				return x2;
+			}
+			else if(x1 >= min && x1 < max)
+			{
+//				if(x2 >= min && x2 < max)
+//				{
+//					if(x2 < x1)
+//						return x2;
+//					return x1;	
+//				}
+				return x1;
+			}
+			else
+				discard;
+		}
+		
+			    
+	}
+	
+/**********************************************/
+
+else if( DEGREE > 3 )
 {
 // move roots from [min,max] to [0,1]
 polynomial p01;
