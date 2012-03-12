@@ -491,56 +491,24 @@ discard;
 
 else if( DEGREE == 3)
 	{
-		/*
-		highp float a=p.a[2]/p.a[3];
-		highp float b=p.a[1]/p.a[3];
-		highp float c=p.a[0]/p.a[3];
-		*/		
+
 
 		highp float a=p.a[2]/-p.a[3];
 		highp float b=p.a[1]/-p.a[3];
 		highp float c=p.a[0]/-p.a[3];
 
 
-        //----Testeo de parametros----
-			
-		//if(a < -1.99 && a > -2.01)	
-		//	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
-
-		//if(b < -4.99 && b > -5.01)	
-		//	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
-
-		//if(c > 5.99 && c < 6.01)	
-		//	gl_FragColor = vec4( 0.0, 0.0, 1.0 , 0.5 );
-
-		//----Parametros correctos----
-				
-		//----Testeo pe y qu----
 				
 		highp float pe=b-a*a/3.0;
-		
-		//if(pe > -6.34 && pe < -6.32)
-		//	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
+
 		
 		highp float part1qu = 2.0* a*a*a/27.0;
 		highp float part2qu = a*b/3.0;
 		
-		//if(part1qu > -0.6 && part1qu < -0.58)	
-		//	gl_FragColor = vec4( 0.0, 0.0, 1.0 , 0.5 );
 
-		//if(part2qu > 3.31 && part2qu < 3.34)	
-		//	gl_FragColor = vec4( 0.0, 0.0, 1.0 , 0.5 );
 		
 		highp float qu=part1qu - part2qu + c;
 		
-		//highp float qu=2.0*a*a*a/27.0-a*b/3.0+c;
-			
-		//if(qu > 1.9 && qu < 2.2)
-		//	gl_FragColor = vec4(0.0, 1.0, 0.0, 0.5);
-		
-		//----pe y qu correctos----
-		
-		//----Testeo discritizante----
 		
 		highp float disc=qu*qu+4.0*pe*pe*pe/27.0;
 		
@@ -549,16 +517,21 @@ else if( DEGREE == 3)
 			
 		//----Discretizante correcto----	
 
-		if (disc > 0.0 + EPSILON)
+		if (disc > 0.0 )
 		{
 		
 			highp float u=mypower(((-qu+mypower(disc,0.5))/2.0),1.0/3.0);
 			highp float v=mypower(((-qu-mypower(disc,0.5))/2.0),1.0/3.0);
 			highp float z0=u+v;
 			highp float x0 = z0-a/3.0;
-			return x0;
+            if(x0 >= min && x0 < max)
+            {
+                return x0;
+            }else
+            discard;
+
 		}
-		else if (disc >= 0.0 - EPSILON && disc <= 0.0 + EPSILON)
+		/*else if (disc >= 0.0 - EPSILON && disc <= 0.0 + EPSILON)
 		{
 			highp float z0=3.0*qu/pe;
 			highp float z1=-3.0*qu/(2.0*pe);
@@ -567,6 +540,7 @@ else if( DEGREE == 3)
 				
 			if(x0 >=min && x0 < max)
 			{
+             
 				if(x1 >= min && x1 < max && x1 < x0)
 					return x1;
 				return x0;	
@@ -575,8 +549,8 @@ else if( DEGREE == 3)
 				return x1;
 			else
 				discard;
-		}
-		else if (disc < 0.0 - EPSILON)
+		}*/
+		else if (disc < 0.0 )
 		{
 			highp float pi = 3.14159265358979323846264;
 			highp float z0 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/(-pe*pe*pe),0.5)));
@@ -599,70 +573,28 @@ else if( DEGREE == 3)
 			
 			//----Raices correctas----
 	
-			if(x0 >= min && x0 < max)
-			{
-				if(x1 >= min && x1 < max)
-				{
-					if(x2 >= min && x2 < max)
-					{
-						if(x2 < x1 && x2 < x0)
-							return x2;
-						else if(x1 < x2 && x1 < x0)
-							return x1;
-						else if(x0 < x2 && x0 < x1)
-							return x0;
-					}
-					else
-					{
-						if(x1 < x0)
-							return x1;
-						else
-							return x0;
-					}			
-				}
-				else if(x2 >= min && x2 < max)
-				{
-					if(x2 < x0)
-						return x2;
-					else
-						return x0;
-				}
-				else
-					return x0;
-			}
-			else if(x2 >= min && x2 < max)
-			{
-				if(x1 >= min && x1 < max)
-				{
-					if(x2 < x1)
-						return x2;
-					return x1;	
-				}
-				else
-					return x2;
-//				else if(x0 >= min && x0 < max)
-//				{
-//					if(x2 < x0)
-//						return x2;
-//					return x0;
-//				}
-//				return x2;
-			}
-			else if(x1 >= min && x1 < max)
-			{
-//				if(x2 >= min && x2 < max)
-//				{
-//					if(x2 < x1)
-//						return x2;
-//					return x1;	
-//				}
-				return x1;
-			}
-			else
-				discard;
-		}
+            highp float xmin = min(x0, min(x1, x2));
+            if(xmin >= min && xmin < max)
+                return xmin;
+            highp float xmax = max(x0, max(x1,x2));
+            highp float xmid; 
+
+            if(xmin == x0 || xmax== x0 )
+                if(xmin == x1 || xmax == x1)
+                    xmid = x2;
+                else
+                    xmid = x1;
+            else
+                xmid = x0;
+
+            if(xmid >= min && xmid < max)
+                return xmid;
+
+            if(xmax >= min && xmax < max)
+                return xmax;
+            discard;
 		
-			    
+        }
 	}
 	
 /**********************************************/
@@ -827,6 +759,9 @@ void main( void )
 
 	// setup polynomial
 	polynomial p_ray = calc_coefficients( eye, dir, vec2( tmin, tmax ) );
+
+//gl_FragColor = vec4( clamp( dir, 0.0, 1.0 ), 0.5 );
+
 
 	// find intersection of ray and surface
 	highp float root = first_root_in( p_ray, tmin, tmax );
