@@ -491,12 +491,18 @@ discard;
 
 else if( DEGREE == 3)
 	{
-		
+		/*
 		highp float a=p.a[2]/p.a[3];
 		highp float b=p.a[1]/p.a[3];
 		highp float c=p.a[0]/p.a[3];
-				
-		//----Testeo de parametros----
+		*/		
+
+		highp float a=p.a[2]/-p.a[3];
+		highp float b=p.a[1]/-p.a[3];
+		highp float c=p.a[0]/-p.a[3];
+
+
+        //----Testeo de parametros----
 			
 		//if(a < -1.99 && a > -2.01)	
 		//	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
@@ -511,12 +517,12 @@ else if( DEGREE == 3)
 				
 		//----Testeo pe y qu----
 				
-		highp float pe=b-power(a,2)/3.0;
+		highp float pe=b-a*a/3.0;
 		
 		//if(pe > -6.34 && pe < -6.32)
 		//	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
 		
-		highp float part1qu = 2.0*power(a,3)/27.0;
+		highp float part1qu = 2.0* a*a*a/27.0;
 		highp float part2qu = a*b/3.0;
 		
 		//if(part1qu > -0.6 && part1qu < -0.58)	
@@ -527,7 +533,7 @@ else if( DEGREE == 3)
 		
 		highp float qu=part1qu - part2qu + c;
 		
-		//highp float qu=2.0*power(a,3)/27.0-a*b/3.0+c;
+		//highp float qu=2.0*a*a*a/27.0-a*b/3.0+c;
 			
 		//if(qu > 1.9 && qu < 2.2)
 		//	gl_FragColor = vec4(0.0, 1.0, 0.0, 0.5);
@@ -536,7 +542,7 @@ else if( DEGREE == 3)
 		
 		//----Testeo discritizante----
 		
-		highp float disc=power(qu,2)+4.0*power(pe,3)/27.0;
+		highp float disc=qu*qu+4.0*pe*pe*pe/27.0;
 		
 		if(disc > -34.0 && disc < -32.0)
 			gl_FragColor = vec4( 0.0, 0.0, 1.0 , 0.5 );
@@ -573,9 +579,9 @@ else if( DEGREE == 3)
 		else if (disc < 0.0 - EPSILON)
 		{
 			highp float pi = 3.14159265358979323846264;
-			highp float z0 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/mypower(-pe,3.0),0.5)));
-			highp float z1 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/mypower(-pe,3.0),0.5))+2.0*pi/3.0);
-			highp float z2 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/mypower(-pe,3.0),0.5))+4.0*pi/3.0);
+			highp float z0 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/(-pe*pe*pe),0.5)));
+			highp float z1 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/(-pe*pe*pe),0.5))+2.0*pi/3.0);
+			highp float z2 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/(-pe*pe*pe),0.5))+4.0*pi/3.0);
 			highp float x0 = z0- a/3.0;
 			highp float x1 = z1- a/3.0;
 			highp float x2 = z2- a/3.0;

@@ -205,15 +205,52 @@ enum {
 	NSString *fs1 = [[NSBundle mainBundle] pathForResource:@"fs1" ofType:@"glsl"];
 	NSString *vs2 = [[NSBundle mainBundle] pathForResource:@"vs2" ofType:@"glsl"];
 	NSString *fs2 = [[NSBundle mainBundle] pathForResource:@"fs2" ofType:@"glsl"];
-	//NSString *formula = @"x^2+y^2+z*x+y";
-    //NSString *formula = @"x^2+y^2+z^2-19";
-    NSString *formula = @"x^2-x-x^2*y-y*z^2-z^2";
-   // NSString *formula = @"x^2+y^2*z-z^2";
+	
+    //Grado 2
+        //Cylinder
+            //NSString *formula = @"x^2+y^2-5";  //Bien
+        //Dattel (Esfera)
+            //NSString *formula = @"x^2+y^2+z^2-19";  //Bien
+        //Pipe
+            //NSString *formula = @"x^2-z";  //Error de calculo en zoom 1
+        //Gupf
+            //NSString *formula = @"x^2+y^2+z";  //Bien    
+        //Kegel
+            NSString *formula = @"x^2+y^2-z^2";//Error de calculo en zoom 3  
+        //Kreuz
+            //NSString *formula = @"x*y*z";  //Parece mal 50%
+        //Spindel
+            //NSString *formula = @"x^2+y^2-z^2-1"; /Error de calculo en zoom chico
+        //Ufo
+            //NSString *formula = @"z^2-x^2-y^2-10";  //Bien
+        //Calypso 
+            //NSString *formula = @"x^2+y^2*z-z^2"; // colores Raros
+
+        //Cayley Cubic
+            //NSString *formula = @"x^2+y^2+z^2+2*x*y*z-1"; //Maso 
+
+            //NSString *formula = @"x^2+y^2+z*x+y";
+    
+        //Este se ve raro
+            //NSString *formula = @"x^2-x-x^2*y-y*z^2-z^2";
    
     //Grado 3
-    //NSString *formula = @"x^2-y^3*z^3";
-    //NSString *formula = @"x^2+y^2*z^3";
-    //NSString *formula = @"x^2+y^2+z^3-z^2";
+        //DingDong
+            //NSString *formula = @"x^2+y^2+z^3-z^2";
+        //Fanfare 
+            //NSString *formula = @"z^2+y^2-x^3";
+        //Whitney
+            //NSString *formula = @"x^2-y^2*z"; // Este parece andar 80 %
+        //Sattel
+            //NSString *formula = @"x^2+y^2*z+z^3"; 
+    
+    
+    
+            //NSString *formula = @"x^2-y^3*z^3";
+    
+            //NSString *formula = @"x^2+y^2*z^3";
+    
+    
     
    iSurferDelegate::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[formula UTF8String]);
 	
