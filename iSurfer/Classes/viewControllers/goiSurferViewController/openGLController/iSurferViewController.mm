@@ -240,9 +240,9 @@ enum {
         //Fanfare 
             //NSString *formula = @"z^2+y^2-x^3";
         //Whitney
-            //NSString *formula = @"x^2-y^2*z"; // Este parece andar 80 %
+            NSString *formula = @"x^2-y^2*z"; // Este parece andar 80 %
         //Sattel
-            NSString *formula = @"x^2+y^2*z+z^3"; 
+            //NSString *formula = @"x^2+y^2*z+z^3"; 
     
     
     

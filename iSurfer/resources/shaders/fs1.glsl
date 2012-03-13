@@ -512,10 +512,6 @@ else if( DEGREE == 3)
 		
 		highp float disc=qu*qu+4.0*pe*pe*pe/27.0;
 		
-		if(disc > -34.0 && disc < -32.0)
-			gl_FragColor = vec4( 0.0, 0.0, 1.0 , 0.5 );
-			
-		//----Discretizante correcto----	
 
 		if (disc > 0.0 )
 		{
@@ -526,9 +522,12 @@ else if( DEGREE == 3)
 			highp float x0 = z0-a/3.0;
             if(x0 >= min && x0 < max)
             {
+                gl_FragColor = vec4( 1.0, 1.0, 0.0 , 1 );
+                //Este no sirve hace circulos raros.
+                discard;
                 return x0;
             }else
-            discard;
+                discard;
 
 		}
 		/*else if (disc >= 0.0 - EPSILON && disc <= 0.0 + EPSILON)
@@ -575,7 +574,11 @@ else if( DEGREE == 3)
 	
             highp float xmin = min(x0, min(x1, x2));
             if(xmin >= min && xmin < max)
+            {
+                gl_FragColor = vec4( 0.0, 0.0, 1.0 , 1 );
+
                 return xmin;
+            }
             highp float xmax = max(x0, max(x1,x2));
             highp float xmid; 
 
@@ -588,10 +591,15 @@ else if( DEGREE == 3)
                 xmid = x0;
 
             if(xmid >= min && xmid < max)
+            {
+                gl_FragColor = vec4( 1.0, 0.0, 1.0 , 1 );
                 return xmid;
-
+            }
             if(xmax >= min && xmax < max)
+            {
+                gl_FragColor = vec4( 1.0, 0.0, 0.0 , 1 );
                 return xmax;
+            }
             discard;
 		
         }
@@ -760,7 +768,7 @@ void main( void )
 	// setup polynomial
 	polynomial p_ray = calc_coefficients( eye, dir, vec2( tmin, tmax ) );
 
-//gl_FragColor = vec4( clamp( dir, 0.0, 1.0 ), 0.5 );
+    //gl_FragColor = vec4( clamp( dir, 0.0, 1.0 ), 0.5 );
 
 
 	// find intersection of ray and surface
