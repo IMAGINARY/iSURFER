@@ -103,6 +103,7 @@ static expressionT ReadT(scannerADT scanner) {
             return NULL;
         }
     } else
+    {
         if(token[0]=='!'){
             exp= SubTree(token ,NULL, NULL);
             exp->right = ReadE(scanner, 0);
@@ -124,5 +125,6 @@ static expressionT ReadT(scannerADT scanner) {
             Error("Illegal term in expression");
             return NULL;
         }
+    }
     return exp; 
 }

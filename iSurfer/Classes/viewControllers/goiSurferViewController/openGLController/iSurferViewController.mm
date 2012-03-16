@@ -206,6 +206,11 @@ enum {
 	NSString *vs2 = [[NSBundle mainBundle] pathForResource:@"vs2" ofType:@"glsl"];
 	NSString *fs2 = [[NSBundle mainBundle] pathForResource:@"fs2" ofType:@"glsl"];
 	
+    
+    //GRADO 1
+    
+        NSString *formula = @"z*x";  //Mal
+    
     //Grado 2
         //Cylinder
             //NSString *formula = @"x^2+y^2-5";  //Bien
@@ -240,7 +245,7 @@ enum {
         //Fanfare 
             //NSString *formula = @"z^2+y^2-x^3";
         //Whitney
-            NSString *formula = @"x^2-y^2*z"; // Este parece andar 80 %
+            //NSString *formula = @"x^2-y^2*z"; // Este parece andar 80 %
         //Sattel
             //NSString *formula = @"x^2+y^2*z+z^3"; 
     
@@ -250,6 +255,9 @@ enum {
     
             //NSString *formula = @"x^2+y^2*z^3";
     
+    //Grado 4
+        //Calyx
+            //NSString *formula = @"x^2+y^2*z^3-z^4";
     
     
    iSurferDelegate::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[formula UTF8String]);

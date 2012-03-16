@@ -1,11 +1,9 @@
 
 #define DEGREE 
-#define SIZE 5
 #define EPSILON 0.0001
 
 // polynomial of degree 2
 //#define DEGREE 2
-//#define SIZE 5
 //#define EPSILON 0.0001
 
 uniform lowp vec3 Diffuse;
@@ -21,7 +19,7 @@ uniform highp float Shininess;
 uniform highp float radius2;
 
 
-struct polynomial { highp float a[ SIZE ]; };
+struct polynomial { highp float a[ DEGREE + 1 ]; };
 
 polynomial create_poly_0( highp float a0 );
 polynomial create_poly_1( highp float a0, highp float a1 );
@@ -130,8 +128,8 @@ polynomial power_1( polynomial p, int exp )
 	// compute powers of p.a[ 0 ] and p.a[ 1 ]
 	highp float a0 = p.a[ 0 ];
 	highp float a1 = p.a[ 1 ];
-	highp float powers_0[ SIZE ];
-	highp float powers_1[ SIZE ];
+	highp float powers_0[ DEGREE + 1 ];
+	highp float powers_1[ DEGREE + 1 ];
 	powers_0[ 0 ] = 1.0;
 	powers_0[ 1 ] = a0;
 	powers_1[ 0 ] = 1.0;
@@ -192,8 +190,8 @@ highp float mypower(highp float base, highp float exp)
 
 highp float eval_p( const in polynomial p, highp float x )
 {
-	highp float fx = p.a[ SIZE - 1 ];
-	for( int i = SIZE - 2; i >= 0; i-- )
+	highp float fx = p.a[ DEGREE];
+	for( int i = DEGREE - 1; i >= 0; i-- )
 		fx = fx * x + p.a[ i ];
 	return fx;
 }
@@ -204,9 +202,19 @@ highp float bisect( const in polynomial p, highp float epsilon, highp float lowe
 	highp float old_center = upperBound;
 	highp float fl = eval_p( p, lowerBound );
 	highp float fu = eval_p( p, upperBound );
-
+    int depth = 0;
 	while( abs( upperBound - lowerBound ) > epsilon )
 	{
+
+        depth++;
+        if( depth > 2 )
+        {
+            gl_FragColor = vec4( 0.0, 1.0, 1.0 , 1 );
+
+            return 0.0;
+
+        }
+
 		old_center = center;
 		center = 0.5 * ( lowerBound + upperBound );
 		highp float fc = eval_p( p, center );
@@ -238,7 +246,7 @@ int has_sign_changes( const in polynomial p )
 
 	int signChanges = 0;
 	highp float lastNonZeroCoeff = p.a[ 0 ];
-	for( int i = 1; i < SIZE && signChanges < 2; i++ )
+	for( int i = 1; i < DEGREE + 1 && signChanges < 2; i++ )
 	{
 		if( p.a[ i ] != 0.0 )
 		{
@@ -252,30 +260,30 @@ int has_sign_changes( const in polynomial p )
 
 void reverseShift1( const in polynomial p, out polynomial result )
 {
-	for( int i = 0; i < SIZE / 2; i++ ) // in-place reverse (because p and result may be the same arrays)
+	for( int i = 0; i < (DEGREE + 1) / 2; i++ ) // in-place reverse (because p and result may be the same arrays)
 	{
 		highp float tmp = p.a[ i ];
-		result.a[ i ] = p.a[ ( SIZE - 1 ) - i ];
-		result.a[ ( SIZE - 1 ) - i ] = tmp;
+		result.a[ i ] = p.a[ ( DEGREE ) - i ];
+		result.a[ ( DEGREE ) - i ] = tmp;
 	}
-	result.a[ SIZE / 2 ] = p.a[ ( SIZE - 1 ) - SIZE / 2 ];
+	result.a[ (DEGREE + 1) / 2 ] = p.a[ ( DEGREE ) - (DEGREE + 1) / 2 ];
 
-	for( int j = 0; j < SIZE; j++ )
-		for( int i = SIZE - 2; i >= j; i-- )
+	for( int j = 0; j < DEGREE + 1; j++ )
+		for( int i = DEGREE - 1; i >= j; i-- )
 			result.a[ i ] = result.a[ i ] + result.a[ i + 1 ];
 }
 
 void shiftStretch( const in polynomial p, highp float shift, highp float scale, out polynomial result )
 {
-	for( int i = 0; i < SIZE; i++ )
+	for( int i = 0; i < DEGREE + 1; i++ )
 		result.a[ i ] = p.a[ i ];
 	
-	for( int i = 1; i <= SIZE; i++ )
-		for( int j = SIZE - 2; j >= i - 1; j-- )
+	for( int i = 1; i <= DEGREE + 1; i++ )
+		for( int j = DEGREE - 1; j >= i - 1; j-- )
 			result.a[ j ] = result.a[ j ] + shift * result.a[ j + 1 ];    
 	
 	highp float multiplier = scale;
-	for( int i = 1; i < SIZE; i++ )
+	for( int i = 1; i < DEGREE + 1; i++ )
 	{
 		result.a[ i ] = multiplier * result.a[ i ];
 		multiplier *= scale;
@@ -287,10 +295,20 @@ highp float first_root_in__descartes( const in polynomial p, highp float epsilon
 	reverseShift1( p, tmpCoeffs );
 	int sign_changes = has_sign_changes( tmpCoeffs );
 	int id = 0;
-	highp float size = 1.0;
+    int depth = 0;
+    highp float size = 1.0;
 	highp float result = -1.0;
+    gl_FragColor = vec4( 0.0, 0.0, 1.0 , 1 );
+
 	while( true )
 	{
+        depth++;
+        if( depth > 2 )
+        {
+            
+            return 0.0;
+
+        }
 		if( sign_changes > 1 && size > epsilon )
 		{
 			// go deeper on left side
@@ -331,6 +349,28 @@ highp float first_root_in__descartes( const in polynomial p, highp float epsilon
 
 highp float first_root_in( in polynomial p, highp float min, highp float max )
 {
+//min = min -EPSILON;
+//max = max + EPSILON;
+
+if( DEGREE > 3 )
+{
+    //
+    // move roots from [min,max] to [0,1]
+    polynomial p01;
+    //shiftStretch( p, min, max - min, p01 );
+gl_FragColor = vec4( 1.0, 0.0, 0.0 , 1 );
+
+    // find smallest root in [0,1], if any
+    highp float x0 = first_root_in__descartes( p01, EPSILON * ( max - min ), p );
+    return 0.0;
+
+    if( x0 >= 0.0 )
+        return (max-min)*x0+min; // move root back to original interval
+    else    
+        discard; // no root in [0,1]
+    }else
+
+
 	if( DEGREE == 1 )
 	{
 		highp float x0 = -p.a[ 0 ] / p.a[ 1 ];
@@ -339,9 +379,13 @@ highp float first_root_in( in polynomial p, highp float min, highp float max )
 		else
 			discard;
 	}
+
+/**********************************************/
+
+
 	else if( DEGREE == 2 )
 	{
-		highp float a = p.a[ 2 ];
+		highp float a = p.a[ DEGREE ];
 		highp float b = p.a[ 1 ];
 		highp float c = p.a[ 0 ];
 
@@ -351,8 +395,11 @@ highp float first_root_in( in polynomial p, highp float min, highp float max )
 		// if discriminant is negative there are no real roots, so return 
 		// false as ray misses sphere
 		if (disc < 0.0)
-			discard;
-
+        {
+            //gl_FragColor = vec4( 1.0, 0.0, 0.0 , 1.0 );
+            //return 0.0;
+            discard;
+        }
 		// compute q as described above
 		highp float distSqrt = sqrt(disc);
 		highp float q;
@@ -373,119 +420,24 @@ highp float first_root_in( in polynomial p, highp float min, highp float max )
 			x1 = temp;
 		}
 
-		if( x0 >= min && x0 < max )
+		if( x0 >= min  && x0 < max )
 			return x0;
 		else if( x1 >= min && x1 < max )
 			return x1;
 		else
+        {
+            //if( (x0 < min && abs(x0-min) < EPSILON) || (x0 >max && abs(x0-max) < EPSILON ))
+            //    return x0;
+            //if( (x1 < min && abs(x1-min) < EPSILON) || (x1 >max && abs(x1-max) < EPSILON ))
+            //    return x1;
+
+            //gl_FragColor = vec4( 1.0, 1.0, 0.0 , 1.0 );
+
+            //return 0.0;
+
 			discard;
+        }
 	}
-/*else if( DEGREE == 10)
-{
-
-highp float a=p.a[2]/p.a[3];
-highp float b=p.a[1]/p.a[3];
-highp float c=p.a[0]/p.a[3];
-
-highp float pe=b-pow(a,2.0)/3.0;
-
-
-highp float qu=2.0*pow(a,3.0)/27.0-a*b/3.0+c;
-//if(pe <= 0.0 && qu >= 0.0)
-//	gl_FragColor = vec4( 0.0, 0.0, 1.0 , 0.5 );
-
-highp float disc=pow(qu,2.0)+4.0*pow(pe,3.0)/27.0;
-
-if (disc > 0.0)
-{
-
-highp float u=pow(((-qu+pow(disc,0.5))/2.0),1.0/3.0);
-highp float v=pow(((-qu-pow(disc,0.5))/2.0),1.0/3.0);
-highp float z0=u+v;
-highp float x0 = z0-a/3.0;
-return x0;
-}
-else if (disc == 0.0)
-{
-highp float z0=3.0*qu/pe;
-highp float z1=-3.0*qu/(2.0*pe);
-highp float x0 = z0-a/3.0;
-highp float x1 = z1-a/3.0;
-
-if(x0 >=min && x0 < max)
-{
-if(x1 >= min && x1 < max && x1 < x0)
-return x1;
-return x0;	
-}
-else if(x1 >=min && x1 < max)
-return x1;
-else
-discard;
-}
-else if (disc < 0.0)
-{
-highp float pi = 3.14159265358979323846264;
-highp float z0 = 2.0*(pow(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*pow(27.0/pow(-pe,3.0),0.5)));
-highp float z1 = 2.0*(pow(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*pow(27.0/pow(-pe,3.0),0.5))+2.0*pi/3.0);
-highp float z2 = 2.0*(pow(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*pow(27.0/pow(-pe,3.0),0.5))+4.0*pi/3.0);
-highp float x0 = z0- a/3.0;
-highp float x1 = z1- a/3.0;
-highp float x2 = z2- a/3.0;
-
-if(x0 >= min && x0 < max)
-{
-if(x1 >= min && x1 < max)
-{
-if(x2 >= min && x2 < max)
-{
-if(x2 < x1 && x2 < x0)
-return x2;
-else if(x1 < x2 && x1 < x0)
-return x1;
-else if(x0 < x2 && x0 < x1)
-return x0;
-}
-if(x1 < x0)
-return x1;	
-}
-//gl_FragColor = vec4( 0.0, 1.0, 1.0 , 0.5 );
-
-return x0;
-
-}
-else if(x2 >= min && x2 < max)
-{
-if(x1 >= min && x1 < max)
-{
-if(x2 < x1)
-return x2;
-return x1;	
-}
-else if(x0 >= min && x0 < max)
-{
-if(x2 < x0)
-return x2;
-return x0;
-}
-return x2;
-}
-else if(x1 >= min && x1 < max)
-{
-if(x2 >= min && x2 < max)
-{
-if(x2 < x1)
-return x2;
-return x1;	
-}
-return x1;
-}
-else
-discard;
-}
-
-
-}*/
 
 /**********************************************/
 
@@ -493,9 +445,9 @@ else if( DEGREE == 3)
 	{
 
 
-		highp float a=p.a[2]/-p.a[3];
-		highp float b=p.a[1]/-p.a[3];
-		highp float c=p.a[0]/-p.a[3];
+		highp float a=p.a[DEGREE - 1]/-p.a[ DEGREE];
+		highp float b=p.a[1]/-p.a[DEGREE];
+		highp float c=p.a[0]/-p.a[DEGREE];
 
 
 				
@@ -607,25 +559,14 @@ else if( DEGREE == 3)
 	
 /**********************************************/
 
-else if( DEGREE > 3 )
-{
-// move roots from [min,max] to [0,1]
-polynomial p01;
-shiftStretch( p, min, max - min, p01 );
+    else
+    {
+        // error!!
+        discard;
+    }
+}
 
-// find smallest root in [0,1], if any
-highp float x0 = first_root_in__descartes( p01, EPSILON * ( max - min ), p );
-if( x0 >= 0.0 )
-return (max-min)*x0+min; // move root back to original interval
-else
-discard; // no root in [0,1]
-}
-else
-{
-// error!!
-discard;
-}
-}
+
 varying highp vec3 varying_eye;
 varying highp vec3 varying_dir;
 
@@ -755,6 +696,7 @@ void calc_lights( in highp vec3 eye, in highp vec3 dir, in highp vec2 trace_inte
  */
 void main( void )
 {
+    //gl_FragColor = vec4( 0.0, 0.0, 1.0 , 1.0 );
 
 	// setup ray(s)
 	highp float tmin, tmax;
@@ -770,6 +712,7 @@ void main( void )
 
     //gl_FragColor = vec4( clamp( dir, 0.0, 1.0 ), 0.5 );
 
+//gl_FragColor = vec4( 0.0, 0.0, 1.0 , 1.0 );
 
 	// find intersection of ray and surface
 	highp float root = first_root_in( p_ray, tmin, tmax );
@@ -777,10 +720,13 @@ void main( void )
 //        discard;
 	highp vec3 hit_point = eye + root * dir;
 
+
+ calc_lights( eye, dir, vec2( tmin, tmax ), hit_point );
+
+
 	//gl_FragColor = vec4( normalize( mygradient( hit_point ) ), 0.5 );
 
 //gl_FragColor = gl_Color;
- calc_lights( eye, dir, vec2( tmin, tmax ), hit_point );
 //gl_FragColor = vec4( 0.0, 0.0, 1.0 , 0.5 );
 //gl_FragColor = vec4( clamp( dir, 0.0, 1.0 ), 0.5 );
 

@@ -38,6 +38,8 @@ float iSurferDelegate::slices = 40.0f;
 float iSurferDelegate::radius = 5;
 expressionT expt;
 bool debug = true;
+bool box = false;
+
 
 GLuint iSurferDelegate::alg_surface_glsl_program = 0u;
 GLuint iSurferDelegate::wireframe_glsl_program = 0u;
@@ -88,6 +90,7 @@ using namespace std;
 
 void solidSphere( GLfloat radius, GLint slices, GLint stacks, GLuint attr_pos );
 void wireSphere( GLfloat radius, GLint slices, GLint stacks, GLuint attr_pos );
+void wireBox( GLfloat radius, GLuint attr_pos );
 string read_file( string filename );
 void printShaderInfoLog( GLuint obj );
 void printProgramInfoLog( GLuint obj );
@@ -143,11 +146,11 @@ void iSurferDelegate::init(const char *vs1, const char *fs1, const char *vs2, co
 
     }
     glDeleteShader(alg_surface_glsl_program);
-    //printf("code\n");
-	//printf(getCode());
-    //printf("\nderivate\n");
-    //printf(getCodeDerivate());
-    //printf("\nderivate\n");
+//    printf("code\n");
+//	printf(getCode());
+//    printf("\nderivate\n");
+//    printf(getCodeDerivate());
+//    printf("\nderivate\n");
     
 //	printf("\n");
 //	printf("Degree %d \n", EvalDegree(exp));
@@ -398,7 +401,7 @@ void iSurferDelegate::display()
 	//Traslacion si es necesario usar la matriz
     scale_matrix( 1, 1, 1, s );
     
-	translation_matrix( 0.0, 0.0, -1500 , t );
+	translation_matrix( 0.0, 0.0, -500 , t );
 
 	rotation_matrix( 1.0f, 0.0f, 0.0f, iSurferDelegate::rotationX, rx );
 	rotation_matrix( 0.0f, 1.0f, 0.0f, iSurferDelegate::rotationY, ry );
@@ -429,20 +432,27 @@ void iSurferDelegate::display()
     if(debug)
 	// draw wireframe sphere
 	{
-		glDisable( GL_CULL_FACE );
+        glDisable( GL_CULL_FACE );
+        
+        GLuint glsl_program = wireframe_glsl_program;
+        glUseProgram( glsl_program ); checkGLError( AT );
+        
+        GLint attr_pos = glGetAttribLocation( glsl_program, "pos" ); checkGLError( AT );
+        
+        GLint u_modelview = glGetUniformLocation( glsl_program, "modelviewMatrix" ); checkGLError( AT );
+        GLint u_projection = glGetUniformLocation( glsl_program, "projectionMatrix" ); checkGLError( AT );
+        
+        glUniformMatrix4fv( u_modelview, 1, GL_FALSE, modelview ); checkGLError( AT );
+        glUniformMatrix4fv( u_projection, 1, GL_FALSE, projection ); checkGLError( AT );
 
-		GLuint glsl_program = wireframe_glsl_program;
-		glUseProgram( glsl_program ); checkGLError( AT );
-
-		GLint attr_pos = glGetAttribLocation( glsl_program, "pos" ); checkGLError( AT );
-
-		GLint u_modelview = glGetUniformLocation( glsl_program, "modelviewMatrix" ); checkGLError( AT );
-		GLint u_projection = glGetUniformLocation( glsl_program, "projectionMatrix" ); checkGLError( AT );
-
-		glUniformMatrix4fv( u_modelview, 1, GL_FALSE, modelview ); checkGLError( AT );
-		glUniformMatrix4fv( u_projection, 1, GL_FALSE, projection ); checkGLError( AT );
-
-		wireSphere( radius, 20, 20, attr_pos ); checkGLError( AT );
+        if(box) 
+        {
+            wireBox( radius, attr_pos ); checkGLError( AT );
+        }
+        else
+        {
+            wireSphere( radius, 20, 20, attr_pos ); checkGLError( AT );
+        }
 	}
 	// draw solid sphere, which is used for raycasting
 	{
@@ -566,78 +576,6 @@ void iSurferDelegate::display2()
 */
 }
 
-void iSurferDelegate::set_light_and_material()
-{
-    /*
-    glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);     	     
-
-	// Brass
-	GLfloat front_emission_color[ 4 ] = { 0.0f, 0.0f, 0.0f, 1.0f };
-	GLfloat front_ambient_color[ 4 ]  = { 0.329412f, 0.223529f, 0.027451f, 1.0f };
-	GLfloat front_diffuse_color[ 4 ]  = { 0.780392f, 0.568627f, 0.113725f, 1.0f };
-	GLfloat front_specular_color[ 4 ] = { 0.992157f, 0.941176f, 0.807843f, 1.0f };
-	GLfloat front_shininess = 0.21794872f * 128.0f;
-
-	glMaterialfv( GL_FRONT, GL_EMISSION, front_emission_color );
-	glMaterialfv( GL_FRONT, GL_AMBIENT, front_ambient_color );
-	glMaterialfv( GL_FRONT, GL_DIFFUSE, front_diffuse_color );
-	glMaterialfv( GL_FRONT, GL_SPECULAR, front_specular_color );
-	glMaterialf( GL_FRONT, GL_SHININESS, front_shininess );
-
-	// Ruby
-	GLfloat back_emission_color[ 4 ] = { 0.0f, 0.0f, 0.0f, 1.0f };
-	GLfloat back_ambient_color[ 4 ]  = { 0.1745f, 0.01175f, 0.01175f, 1.0f };
-	GLfloat back_diffuse_color[ 4 ]  = { 0.61424f, 0.04136f, 0.04136f, 1.0f };
-	GLfloat back_specular_color[ 4 ] = {0.727811f, 0.626959f, 0.626959f, 1.0f };
-	GLfloat back_shininess = 0.6f * 128.0f;
-
-	glMaterialfv( GL_BACK, GL_EMISSION, back_emission_color );
-	glMaterialfv( GL_BACK, GL_AMBIENT, back_ambient_color );
-	glMaterialfv( GL_BACK, GL_DIFFUSE, back_diffuse_color );
-	glMaterialfv( GL_BACK, GL_SPECULAR, back_specular_color );
-	glMaterialf( GL_BACK, GL_SHININESS, back_shininess );
-
-	GLfloat gl_light0_position[ 4 ] = { 1.0f, 1.0f, 1.0f, 1.0f };
-
-	GLfloat gl_light0_ambient[ 4 ]  = { 1.0f, 1.0f, 1.0f, 1.0f };
-	GLfloat gl_light0_diffuse[ 4 ]  = { 1.0f, 1.0f, 1.0f, 1.0f };
-	GLfloat gl_light0_specular[ 4 ] = { 1.0f, 1.0f, 1.0f, 1.0f };
-
-	GLfloat gl_light0_constant_attenuation = 1.0f;
-	GLfloat gl_light0_linear_attenuation = 0.001f;
-	GLfloat gl_light0_quadratic_attenuation = 0.004f;
-
-	GLfloat gl_light0_spot_direection[ 3 ] = { -1.0f, -1.0f, -6.0f };
-	GLfloat gl_light0_spot_cutoff = 180.0f;
-	GLfloat gl_light0_spot_exponent = 100.0f;
-
-	glLightfv( GL_LIGHT0, GL_POSITION, gl_light0_position );
-
-	glLightfv( GL_LIGHT0, GL_AMBIENT, gl_light0_ambient );
-	glLightfv( GL_LIGHT0, GL_DIFFUSE, gl_light0_diffuse );
-	glLightfv( GL_LIGHT0, GL_SPECULAR, gl_light0_specular );
-
-	glLightf( GL_LIGHT0, GL_CONSTANT_ATTENUATION, gl_light0_constant_attenuation );
-	glLightf( GL_LIGHT0, GL_LINEAR_ATTENUATION, gl_light0_linear_attenuation );
-	glLightf( GL_LIGHT0, GL_QUADRATIC_ATTENUATION, gl_light0_quadratic_attenuation );
-
-    glLightfv( GL_LIGHT0, GL_SPOT_DIRECTION, gl_light0_spot_direection );
-    glLightf( GL_LIGHT0, GL_SPOT_CUTOFF, gl_light0_spot_cutoff );
-    glLightf( GL_LIGHT0, GL_SPOT_EXPONENT, gl_light0_spot_exponent );
-
-	// disable other lights
-	GLfloat gl_lights_ambient[ 4 ]  = { 1.0f, 1.0f, 1.0f, 0.0f };
-	glLightfv( GL_LIGHT1, GL_AMBIENT, gl_lights_ambient );
-	glLightfv( GL_LIGHT2, GL_AMBIENT, gl_lights_ambient );
-	glLightfv( GL_LIGHT3, GL_AMBIENT, gl_lights_ambient );
-	glLightfv( GL_LIGHT4, GL_AMBIENT, gl_lights_ambient );
-	glLightfv( GL_LIGHT5, GL_AMBIENT, gl_lights_ambient );
-	glLightfv( GL_LIGHT6, GL_AMBIENT, gl_lights_ambient );
-	glLightfv( GL_LIGHT7, GL_AMBIENT, gl_lights_ambient );
-    */
-
-}
 
 	void PlotSpherePoints(GLfloat radius, GLint stacks, GLint slices, GLfloat *v, GLfloat *n )
 	{
@@ -704,6 +642,252 @@ void iSurferDelegate::set_light_and_material()
 			}
 		}
 	}
+
+typedef struct {
+    float Position[3];
+} Vertex;
+
+/*const Vertex Vertices[] = {
+ {{1, -1, 0}, {1, 0, 0, 1}},
+ {{1, 1, 0}, {0, 1, 0, 1}},
+ {{-1, 1, 0}, {0, 0, 1, 1}},
+ {{-1, -1, 0}, {0, 0, 0, 1}}
+ };
+ 
+ const GLubyte Indices[] = {
+ 0, 1, 2,
+ 2, 3, 0
+ };*/
+
+
+const GLubyte Indices[] = {
+    // Front
+    0, 1, 2,
+    2, 3, 0,
+    // Back
+    4, 6, 5,
+    4, 7, 6,
+    // Left
+    2, 7, 3,
+    7, 6, 2,
+    // Right
+    0, 4, 1,
+    4, 1, 5,
+    // Top
+    6, 2, 1, 
+    1, 6, 5,
+    // Bottom
+    0, 3, 7,
+    0, 7, 4    
+};
+
+
+void PlotBoxPoints(GLfloat radius,  GLfloat *v )
+{
+    // Front
+    
+    //0
+        *v = radius; v++;
+        *v = -radius; v++;
+        *v = radius; v++;
+    //1
+        *v = radius; v++;
+        *v = radius; v++;
+        *v = radius; v++;
+    //2
+        *v = -radius; v++;
+        *v = radius; v++;
+        *v = radius; v++;
+    //3
+        *v = -radius; v++;
+        *v = -radius; v++;
+        *v = radius; v++;
+
+    //2
+    *v = -radius; v++;
+    *v = radius; v++;
+    *v = radius; v++;
+    //3
+    *v = -radius; v++;
+    *v = -radius; v++;
+    *v = radius; v++;
+
+    //0
+    *v = radius; v++;
+    *v = -radius; v++;
+    *v = radius; v++;
+
+    // Back
+    //4
+        *v = radius; v++;
+        *v = -radius; v++;
+        *v = -radius; v++;
+    //6
+    *v = -radius; v++;
+    *v = radius; v++;
+    *v = -radius; v++;
+    //5
+        *v = radius; v++;
+        *v = radius; v++;
+        *v = -radius; v++;
+
+    //4
+    *v = radius; v++;
+    *v = -radius; v++;
+    *v = -radius; v++;
+    //7
+    *v = -radius; v++;
+    *v = -radius; v++;
+    *v = -radius; v++;
+    //6
+    *v = -radius; v++;
+    *v = radius; v++;
+    *v = -radius; v++;
+    //LEFT
+    //2
+    *v = -radius; v++;
+    *v = radius; v++;
+    *v = radius; v++;
+    //7
+    *v = -radius; v++;
+    *v = -radius; v++;
+    *v = -radius; v++;
+
+    //3
+    *v = -radius; v++;
+    *v = -radius; v++;
+    *v = radius; v++;
+
+    //7
+    *v = -radius; v++;
+    *v = -radius; v++;
+    *v = -radius; v++;
+    //6
+    *v = -radius; v++;
+    *v = radius; v++;
+    *v = -radius; v++;
+    //2
+    *v = -radius; v++;
+    *v = radius; v++;
+    *v = radius; v++;
+
+    // Right
+    //0
+    *v = radius; v++;
+    *v = -radius; v++;
+    *v = radius; v++;
+    //4
+    *v = radius; v++;
+    *v = -radius; v++;
+    *v = -radius; v++;
+
+    //1
+    *v = radius; v++;
+    *v = radius; v++;
+    *v = radius; v++;
+
+    //4
+    *v = radius; v++;
+    *v = -radius; v++;
+    *v = -radius; v++;
+    //1
+    *v = radius; v++;
+    *v = radius; v++;
+    *v = radius; v++;
+
+    //5
+    *v = radius; v++;
+    *v = radius; v++;
+    *v = -radius; v++;
+
+    // Top
+    //6
+    *v = -radius; v++;
+    *v = radius; v++;
+    *v = -radius; v++;
+    
+    //2
+    *v = -radius; v++;
+    *v = radius; v++;
+    *v = radius; v++;
+    //1
+    *v = radius; v++;
+    *v = radius; v++;
+    *v = radius; v++;
+
+    //1
+    *v = radius; v++;
+    *v = radius; v++;
+    *v = radius; v++;
+
+    //6
+    *v = -radius; v++;
+    *v = radius; v++;
+    *v = -radius; v++;
+    //5
+    *v = radius; v++;
+    *v = radius; v++;
+    *v = -radius; v++;
+    
+    // Bottom
+    //0
+    *v = radius; v++;
+    *v = -radius; v++;
+    *v = radius; v++;
+    //3
+    *v = -radius; v++;
+    *v = -radius; v++;
+    *v = radius; v++;
+
+    //7
+    *v = -radius; v++;
+    *v = -radius; v++;
+    *v = -radius; v++;
+
+    
+    //0
+    *v = radius; v++;
+    *v = -radius; v++;
+    *v = radius; v++;
+    //7
+    *v = -radius; v++;
+    *v = -radius; v++;
+    *v = -radius;
+
+    //4
+    *v = radius; v++;
+    *v = -radius; v++;
+    *v = -radius; v++;
+
+
+    }
+
+
+
+    void
+    wireBox(GLfloat radius, GLuint attr_pos ) 
+    {
+        //GLfloat* v = (GLfloat*)malloc(36*3*sizeof *v);
+        GLfloat v[200];
+        PlotBoxPoints(radius, v);
+		glEnableVertexAttribArray(attr_pos);
+
+        glVertexAttribPointer( attr_pos, 3, GL_FLOAT, GL_FALSE, 0, v );
+
+        
+        for ( GLint j = 0; j <= 7; ++j)
+        {
+            printf("j vale = %d\n", j);
+                glDrawArrays(GL_LINE_STRIP, (j)*3, 3);
+        }
+    
+        glDisableVertexAttribArray(attr_pos);
+    
+        //free( v );
+        
+        
+        //glDrawElements(GL_TRIANGLES, 8, GL_UNSIGNED_SHORT, Indices);
+    }
 
 
 	void
