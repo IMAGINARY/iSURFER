@@ -209,7 +209,7 @@ enum {
     
     //GRADO 1
     
-        NSString *formula = @"z*x";  //Mal
+        //NSString *formula = @"z*x";  //Mal
     
     //Grado 2
         //Cylinder
@@ -257,7 +257,7 @@ enum {
     
     //Grado 4
         //Calyx
-            //NSString *formula = @"x^2+y^2*z^3-z^4";
+            NSString *formula = @"x^2+y^2*z^3-z^4";
     
     
    iSurferDelegate::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[formula UTF8String]);

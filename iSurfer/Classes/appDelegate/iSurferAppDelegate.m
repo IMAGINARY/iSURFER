@@ -80,6 +80,7 @@
 #pragma mark Memory management
 
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+    printf("\n\n\n\nHay problemas de memoria lalalalalalala ala ala lal al ala al alla alal alalal\n\n\n");
     /*
      Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
      */

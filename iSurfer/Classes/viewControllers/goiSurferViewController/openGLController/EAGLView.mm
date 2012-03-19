@@ -183,6 +183,8 @@
     // make the cgimage
     CGImageRef imageRef = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
     // then make the uiimage from that
+    free(buffer);
+    //free(buffer2);
     UIImage *myImage = [UIImage imageWithCGImage:imageRef];
     return myImage;
 }

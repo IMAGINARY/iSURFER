@@ -20,6 +20,9 @@ extern "C" {
 #include "scanadt.h"
 #include "parser.h"
 }
+
+#define STACKS 20
+#define SLICES 20
 float iSurferDelegate::rotationX = 0.0f;
 float iSurferDelegate::rotationY = 0.0f;
 float iSurferDelegate::rotationZ = 0.0f;
@@ -33,12 +36,16 @@ float iSurferDelegate::colorB2 = 0.6f;
 float iSurferDelegate::lposX = 5.0f;
 float iSurferDelegate::lposY = 5.0f;
 float iSurferDelegate::lposZ = 1.0f;
-float iSurferDelegate::stacks = 40.0f;
-float iSurferDelegate::slices = 40.0f;
+float iSurferDelegate::stacks = STACKS;
+float iSurferDelegate::slices = SLICES;
 float iSurferDelegate::radius = 5;
 expressionT expt;
 bool debug = true;
 bool box = false;
+
+GLfloat v[STACKS*(SLICES+1)*2*3];
+GLfloat n[STACKS*(SLICES+1)*2*3];
+
 
 
 GLuint iSurferDelegate::alg_surface_glsl_program = 0u;
@@ -143,8 +150,11 @@ void iSurferDelegate::init(const char *vs1, const char *fs1, const char *vs2, co
     if(ErrorExist()){
       printf("%s", getErrorMsg());  
         return ;
-
+        
     }
+    // no se si va    
+    //FreeTree(expt);
+
     glDeleteShader(alg_surface_glsl_program);
 //    printf("code\n");
 //	printf(getCode());
@@ -393,7 +403,7 @@ void iSurferDelegate::resize( int w, int h )
 void iSurferDelegate::display()
 {
 	checkGLError( AT );
-
+    printf("Display empieza \n");
 	// setup matrices
 	Matrix4x4 t, s, rx, ry, rz, modelview, modelview_inv;
 	//Para el zoom parametrizar scale_matrix
@@ -506,10 +516,16 @@ void iSurferDelegate::display()
 		glUniformMatrix4fv( u_modelview, 1, GL_FALSE, modelview ); checkGLError( AT );
 		glUniformMatrix4fv( u_modelview_inv, 1, GL_FALSE, modelview_inv ); checkGLError( AT );
 		glUniformMatrix4fv( u_projection, 1, GL_FALSE, projection ); checkGLError( AT );
-
+        printf("Llego a solidSphere\n");
+        
 		solidSphere( radius, slices, stacks, attr_pos ); checkGLError( AT );
+        printf("Paso a solidSphere\n");
+
 	}
 	checkGLError( AT );
+    
+    printf("Termino Display\n");
+
 }
 
 void iSurferDelegate::display2()
@@ -893,27 +909,31 @@ void PlotBoxPoints(GLfloat radius,  GLfloat *v )
 	void
 	solidSphere(GLfloat radius, GLint slices, GLint stacks, GLuint attr_pos ) 
 	{
-		GLfloat* v = (GLfloat*)malloc(stacks*(slices+1)*2*3*sizeof *v);
-		GLfloat* n = (GLfloat*)malloc(stacks*(slices+1)*2*3*sizeof *n);
+		//GLfloat* v = (GLfloat*)malloc(stacks*(slices+1)*2*3*sizeof *v);
+		//GLfloat* n = (GLfloat*)malloc(stacks*(slices+1)*2*3*sizeof *n);
 		PlotSpherePoints(radius, stacks, slices, v, n);
 
 		glVertexAttribPointer( attr_pos, 3, GL_FLOAT, GL_FALSE, 0, v );
 		glEnableVertexAttribArray(attr_pos);
 		GLint triangles = (slices + 1) * 2;
+        printf("Llego a glDrawArrays\n");
+        
+
 		for( GLint i = 0; i < stacks; i++)
 			glDrawArrays(GL_TRIANGLE_STRIP, i * triangles, triangles);
+        printf("Paso a glDrawArrays\n");
 
 		glDisableVertexAttribArray(attr_pos);
 
-		free( v );
-		free( n );
+		//free( v );
+		//free( n );
 	}
 
 	void
 	wireSphere(GLfloat radius, GLint slices, GLint stacks, GLuint attr_pos ) 
 	{
-		GLfloat* v = (GLfloat*)malloc(stacks*(slices+1)*2*3*sizeof *v);
-		GLfloat* n = (GLfloat*)malloc(stacks*(slices+1)*2*3*sizeof *n);
+		//GLfloat* v = (GLfloat*)malloc(stacks*(slices+1)*2*3*sizeof *v);
+		//GLfloat* n = (GLfloat*)malloc(stacks*(slices+1)*2*3*sizeof *n);
 		PlotSpherePoints(radius, stacks, slices, v, n);
 
 		glVertexAttribPointer( attr_pos, 3, GL_FLOAT, GL_FALSE, 0, v );
@@ -928,8 +948,8 @@ void PlotBoxPoints(GLfloat radius,  GLfloat *v )
 
 		glDisableVertexAttribArray(attr_pos);
 
-		free( v );
-		free( n );
+		//free( v );
+		//free( n );
 	}
 
 	string read_file( string filename )
