@@ -197,7 +197,8 @@ EvalExpNoCode( expressionT exp, int where) {
 
         case '^': 
             EvalExpNoCode(exp->left,where); 
-
+            EsNumero(exp->right->valor, &nro); 
+            
             for (int i=1; i<nro; i++) {
                 printChar('*', where);
                 EvalExpNoCode(exp->left,where); 

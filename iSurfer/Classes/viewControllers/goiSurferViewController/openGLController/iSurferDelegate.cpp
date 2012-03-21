@@ -25,7 +25,7 @@ extern "C" {
 #define SLICES 20
 float iSurferDelegate::rotationX = 0.0f;
 float iSurferDelegate::rotationY = 0.0f;
-float iSurferDelegate::rotationZ = 0.0f;
+float iSurferDelegate::rotationZ = M_PI_2;
 float iSurferDelegate::Shininess = 0.20f;
 float iSurferDelegate::colorR = 0.5f;
 float iSurferDelegate::colorG = 0.4f;
@@ -159,11 +159,11 @@ void iSurferDelegate::init(const char *vs1, const char *fs1, const char *vs2, co
     FreeTree(expt);
 
     glDeleteShader(alg_surface_glsl_program);
-    printf("code\n");
-	printf(getCode());
-    printf("\nderivate\n");
-    printf(getCodeDerivate());
-    printf("\nderivate\n");
+    //printf("code\n");
+	//printf(getCode());
+    //printf("\nderivate\n");
+    //printf(getCodeDerivate());
+    //printf("\nderivate\n");
     
 	//printf("\n");
 	//printf("Degree %d \n", EvalDegree(exp));
@@ -212,7 +212,7 @@ GLuint iSurferDelegate::init( const char* vertex_shader_name, const char* fragme
     int derivLen = strlen(getCodeDerivate()); 
     char degre[10];
     sprintf(degre, "%d ", getDegree());
-    printf("\n degree %s \n", degre);
+    //printf("\n degree %s \n", degre);
 
     int degreLen = strlen(degre);
 	char * shader_code_c_str = (char *) malloc( shaderLen + codeLen + derivLen + degreLen + 2) ;
@@ -247,9 +247,9 @@ GLuint iSurferDelegate::init( const char* vertex_shader_name, const char* fragme
   
     shader_code_c_str_aux[0] = '\0';
 
-	printf("\n\n\n\n\n%s\n\n\n\n\n\n\n", shader_code_c_str);
+	//printf("\n\n\n\n\n%s\n\n\n\n\n\n\n", shader_code_c_str);
 	fflush(stdout);
-	printf("\nhola\n");
+	//printf("\nhola\n");
     const char *Frafmentshader_code_c_str = (const char *)shader_code_c_str;
 	glShaderSource( fragment_shader, 1, &Frafmentshader_code_c_str, NULL );
 	glCompileShader( fragment_shader );
@@ -303,7 +303,6 @@ GLuint iSurferDelegate::init( const char* vertex_shader_name, const char* fragme
 //	printf( "\n" );
 
 	glUseProgram( glsl_program );
-
 	return glsl_program;
 }
 
@@ -404,7 +403,7 @@ void iSurferDelegate::resize( int w, int h )
 void iSurferDelegate::display()
 {
 	checkGLError( AT );
-    printf("Display empieza \n");
+    //printf("Display empieza \n");
 	// setup matrices
 	Matrix4x4 t, s, rx, ry, rz, modelview, modelview_inv;
 	//Para el zoom parametrizar scale_matrix
@@ -429,6 +428,7 @@ void iSurferDelegate::display()
 
     ortho(radius, 0.1, 2000, projection);
     printf("radius = %f\n", radius);
+    printf("Rotaxion x = %f, y=%f, z=%f \n", rotationX, rotationY, rotationZ);
     
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); checkGLError( AT );
 
@@ -517,15 +517,13 @@ void iSurferDelegate::display()
 		glUniformMatrix4fv( u_modelview, 1, GL_FALSE, modelview ); checkGLError( AT );
 		glUniformMatrix4fv( u_modelview_inv, 1, GL_FALSE, modelview_inv ); checkGLError( AT );
 		glUniformMatrix4fv( u_projection, 1, GL_FALSE, projection ); checkGLError( AT );
-        printf("Llego a solidSphere\n");
         
 		solidSphere( radius, slices, stacks, attr_pos ); checkGLError( AT );
-        printf("Paso a solidSphere\n");
 
 	}
 	checkGLError( AT );
     
-    printf("Termino Display\n");
+    //printf("Termino Display\n");
 
 }
 

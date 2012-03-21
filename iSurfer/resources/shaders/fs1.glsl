@@ -653,6 +653,13 @@ else if( DEGREE == 3)
 
 varying highp vec3 varying_eye;
 varying highp vec3 varying_dir;
+/*
+void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float tmin, out highp float tmax )
+{
+    tmin = -radius2;
+    tmax = radius2;
+}
+*/
 
 void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float tmin, out highp float tmax )
 {

@@ -69,7 +69,6 @@ void SetScannerString(scannerADT scanner, char * str)
 
 char * ReadToken(scannerADT scanner)
 {
-    char ch;
     char * token;
     int quote = 0, start, finish;
 
@@ -82,7 +81,6 @@ char * ReadToken(scannerADT scanner)
         return (token);
     }
     if (scanner->spaceOption == IgnoreSpaces) SkipSpaces(scanner);
-    finish = scanner->cp;
     while (scanner->str[scanner->cp] == ' ' || scanner->str[scanner->cp] == '\t') {
 	scanner->cp++;
     }
@@ -92,7 +90,6 @@ char * ReadToken(scannerADT scanner)
     }
     start = scanner->cp;
     if (start >= scanner->len) return (CopyString(""));
-    ch = scanner->str[scanner->cp];
     finish = ScanToEndOfIdentifier(scanner, quote);
     return (SubString(scanner->str, start, finish));
 }

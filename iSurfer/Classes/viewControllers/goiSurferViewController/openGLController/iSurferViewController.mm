@@ -217,7 +217,7 @@ enum {
         //Dattel (Esfera)
             //NSString *formula = @"x^2+y^2+z^2-19";  //Bien
         //Pipe
-            //NSString *formula = @"x^2-z";  //Error de calculo en zoom 1
+            NSString *formula = @"x^2-z";  //Error de calculo en zoom 1
         //Gupf
             //NSString *formula = @"x^2+y^2+z";  //Bien    
         //Kegel
@@ -245,7 +245,7 @@ enum {
         //Fanfare 
             //NSString *formula = @"z^2+y^2-x^3";
         //Whitney
-            NSString *formula = @"x^2-y^2*z"; // Este parece andar 80 %
+            //NSString *formula = @"x^2-y^2*z"; // Este parece andar 80 %
         //Sattel
             //NSString *formula = @"x^2+y^2*z+z^3"; 
     
@@ -521,17 +521,23 @@ enum {
     
     return TRUE;
 }
-
+float rotAtenuation = 100.0;
 -(void)rotateX:(float)x Y:(float)y{
     if( iSurferDelegate::rotationX >2 * M_PI || iSurferDelegate::rotationX < -2 * M_PI) 
         iSurferDelegate::rotationX = 0;
     else
-        iSurferDelegate::rotationX =  iSurferDelegate::rotationX + (y * M_PI / 180 / 5.0);
+        iSurferDelegate::rotationX =  iSurferDelegate::rotationX + (y * M_PI / 180 / rotAtenuation);
     if( iSurferDelegate::rotationY  > 2 * M_PI  || iSurferDelegate::rotationY  <  -2 * M_PI)
-        iSurferDelegate::rotationY  = 0;
+        iSurferDelegate::rotationX  = 0;
     else
-        iSurferDelegate::rotationY =  iSurferDelegate::rotationY +  (x * M_PI /180 /5.0);
-	NSLog(@"x: %.2f    y:%.2f", iSurferDelegate::rotationX , iSurferDelegate::rotationY );
+        iSurferDelegate::rotationY =  iSurferDelegate::rotationY +  (x * M_PI /180 /rotAtenuation);
+    if(x != 0 && y != 0)
+        if( iSurferDelegate::rotationZ  > 2 * M_PI  || iSurferDelegate::rotationZ  <  -2 * M_PI)
+            iSurferDelegate::rotationZ  = 0;
+        else
+            iSurferDelegate::rotationZ =  iSurferDelegate::rotationZ +  (x * M_PI /180 / rotAtenuation + y * M_PI /180 /rotAtenuation);
+
+	NSLog(@"x: %.2f    y:%.2f", x , y );
     //NSLog(@"calc x: %.2f  calcy: %.2f", x * M_PI / 180, y * M_PI / 180 );
 
 	[self drawFrame];
