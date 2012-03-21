@@ -56,6 +56,7 @@ void clearExp(void);
 char * getCodeDerivate(void);
 void EvalDerivate( expressionT exp);
 void EvalDerivateNoCode( expressionT exp);
+int getDegree(void);
  /* Funcion: libera la informacion
  * Uso: FreeTree( tree );
  * --------------------------------

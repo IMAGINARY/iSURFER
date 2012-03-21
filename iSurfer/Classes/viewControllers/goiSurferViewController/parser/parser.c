@@ -100,6 +100,8 @@ static expressionT ReadT(scannerADT scanner) {
         if (! StringEqual( ReadToken(scanner), ")"))
         {
             Error("Unbalanced parentheses");
+            free(token);
+
             return NULL;
         }
     } else
@@ -110,7 +112,7 @@ static expressionT ReadT(scannerADT scanner) {
         }
         if(token[0]=='+' || token[0]=='^' || token[0]=='-' || token[0]=='*' || token[0]=='/'){
             Error("ParseExp: %s unexpected", token);
-            
+            free(token);
             return NULL;
 
         }   
@@ -123,6 +125,7 @@ static expressionT ReadT(scannerADT scanner) {
         else
         {
             Error("Illegal term in expression");
+            free(token);
             return NULL;
         }
     }

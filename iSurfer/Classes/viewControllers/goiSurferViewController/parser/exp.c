@@ -27,7 +27,7 @@ char code[10000];
 char derivate[10000];
 char errorMsg[1000];
 int errorPointer = 0;
-
+int degreee;
 int codePointer = 0;
 int derivatePointer = 0;
 
@@ -41,6 +41,10 @@ int getCodeLeng(void){
 
 char * getCodeDerivate(void){
     return derivate;
+}
+
+int getDegree(void){
+    return degreee;
 }
 
 
@@ -154,6 +158,7 @@ SubTree( char* raiz, expressionT left, expressionT right) {
     expressionT root;
     root= malloc( sizeof (struct nodeT ) );
     strcpy(root->valor, raiz);
+    free(raiz);
     root->left= left;
     root->right= right;
     return root;
@@ -525,7 +530,7 @@ EvalDegreeZ( expressionT exp) {
 
 int EvalDegree( expressionT exp) {
 
-    return MAX(MAX( EvalDegreeX(exp), EvalDegreeY(exp)), EvalDegreeZ(exp) );
+    return degreee =  MAX(MAX( EvalDegreeX(exp), EvalDegreeY(exp)), EvalDegreeZ(exp) );
     }
 void
 FreeTree( expressionT tree) {

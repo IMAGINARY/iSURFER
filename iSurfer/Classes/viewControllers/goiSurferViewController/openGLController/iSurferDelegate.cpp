@@ -147,23 +147,26 @@ void iSurferDelegate::init(const char *vs1, const char *fs1, const char *vs2, co
 	clearExp();
 	EvalExp(expt, 0);
     EvalDerivateNoCode(expt);
+    EvalDegree(expt);
+
+    FreeScanner(scanner);
     if(ErrorExist()){
       printf("%s", getErrorMsg());  
         return ;
         
     }
     // no se si va    
-    //FreeTree(expt);
+    FreeTree(expt);
 
     glDeleteShader(alg_surface_glsl_program);
-//    printf("code\n");
-//	printf(getCode());
-//    printf("\nderivate\n");
-//    printf(getCodeDerivate());
-//    printf("\nderivate\n");
+    printf("code\n");
+	printf(getCode());
+    printf("\nderivate\n");
+    printf(getCodeDerivate());
+    printf("\nderivate\n");
     
-//	printf("\n");
-//	printf("Degree %d \n", EvalDegree(exp));
+	//printf("\n");
+	//printf("Degree %d \n", EvalDegree(exp));
 	
 	alg_surface_glsl_program = init( vs1/*"vs1.glsl"*/, fs1/*"fs1.glsl"*/ );
     if(debug){
@@ -208,7 +211,7 @@ GLuint iSurferDelegate::init( const char* vertex_shader_name, const char* fragme
 	int shaderLen = strlen(fragment_shader_code_c_str);
     int derivLen = strlen(getCodeDerivate()); 
     char degre[10];
-    sprintf(degre, "%d ", EvalDegree(expt));
+    sprintf(degre, "%d ", getDegree());
     printf("\n degree %s \n", degre);
 
     int degreLen = strlen(degre);
@@ -242,13 +245,11 @@ GLuint iSurferDelegate::init( const char* vertex_shader_name, const char* fragme
     memcpy(shader_code_c_str_aux, fragment_shader_code_c_str_aux , shaderLen  - positionDerivate );
     shader_code_c_str_aux += shaderLen - positionDerivate;
   
-	shader_code_c_str_aux[1] = '\0';
-    shader_code_c_str_aux[2] = '\0';
     shader_code_c_str_aux[0] = '\0';
 
-//	printf("\n\n\n\n\n%s\n\n\n\n\n\n\n", shader_code_c_str);
-//	fflush(stdout);
-//	printf("\nhola\n");
+	printf("\n\n\n\n\n%s\n\n\n\n\n\n\n", shader_code_c_str);
+	fflush(stdout);
+	printf("\nhola\n");
     const char *Frafmentshader_code_c_str = (const char *)shader_code_c_str;
 	glShaderSource( fragment_shader, 1, &Frafmentshader_code_c_str, NULL );
 	glCompileShader( fragment_shader );
@@ -919,8 +920,8 @@ void PlotBoxPoints(GLfloat radius,  GLfloat *v )
         printf("Llego a glDrawArrays\n");
         
 
-		for( GLint i = 0; i < stacks; i++)
-			glDrawArrays(GL_TRIANGLE_STRIP, i * triangles, triangles);
+		//for( GLint i = 0; i < stacks; i++)
+			glDrawArrays(GL_TRIANGLE_STRIP, 0, triangles * stacks);
         printf("Paso a glDrawArrays\n");
 
 		glDisableVertexAttribArray(attr_pos);
@@ -938,13 +939,14 @@ void PlotBoxPoints(GLfloat radius,  GLfloat *v )
 
 		glVertexAttribPointer( attr_pos, 3, GL_FLOAT, GL_FALSE, 0, v );
 		glEnableVertexAttribArray(attr_pos);
-		for( GLint i = 0; i < stacks; ++i)
+		//for( GLint i = 0; i < stacks; ++i)
 
-		{
-			GLint f = i * (slices + 1);
-			for ( GLint j = 0; j <= slices; ++j)
-				glDrawArrays(GL_LINE_LOOP, (f + j)*2, 3);
-		}
+		//{
+		//	GLint f = i * (slices + 1);
+		//	for ( GLint j = 0; j <= slices; ++j)
+        //      glDrawArrays(GL_LINE_LOOP, (f + j)*2, 3);
+		//}
+		glDrawArrays(GL_LINE_LOOP, 0, (slices + 1) * 2* stacks);
 
 		glDisableVertexAttribArray(attr_pos);
 

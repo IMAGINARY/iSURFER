@@ -70,8 +70,8 @@ enum {
 	[(EAGLView *)self.view setContext:context];
 	[(EAGLView *)self.view setFramebuffer];
 	
-	if ([context API] == kEAGLRenderingAPIOpenGLES2)
-		[self loadShaders];
+	//if ([context API] == kEAGLRenderingAPIOpenGLES2)
+	//	[self loadShaders];
 	glClearColor( 1.0, 1.0, 1.0, 1.0 );
 
 	animating = FALSE;
@@ -245,7 +245,7 @@ enum {
         //Fanfare 
             //NSString *formula = @"z^2+y^2-x^3";
         //Whitney
-            //NSString *formula = @"x^2-y^2*z"; // Este parece andar 80 %
+            NSString *formula = @"x^2-y^2*z"; // Este parece andar 80 %
         //Sattel
             //NSString *formula = @"x^2+y^2*z+z^3"; 
     
@@ -257,7 +257,9 @@ enum {
     
     //Grado 4
         //Calyx
-            NSString *formula = @"x^2+y^2*z^3-z^4";
+            //NSString *formula = @"x^2+y^2*z^3-z^4";
+    
+            //NSString *formula = @"x^4-2";
     
     
    iSurferDelegate::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[formula UTF8String]);
