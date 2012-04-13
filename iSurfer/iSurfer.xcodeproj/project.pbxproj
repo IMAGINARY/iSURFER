@@ -12,6 +12,14 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		330252981537970900EA2425 /* TrackBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 330252971537970900EA2425 /* TrackBall.m */; };
+		3308B1781533EC87001E853F /* ApplicationEngine.ParametricViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B1661533EC87001E853F /* ApplicationEngine.ParametricViewer.cpp */; };
+		3308B1791533EC87001E853F /* ParametricSurface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B16A1533EC87001E853F /* ParametricSurface.cpp */; };
+		3308B17A1533EC87001E853F /* RenderingEngine.SolidES2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B16D1533EC87001E853F /* RenderingEngine.SolidES2.cpp */; };
+		3308B17B1533EC87001E853F /* Compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B1701533EC87001E853F /* Compiler.cpp */; };
+		3308B17C1533EC87001E853F /* error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B1721533EC87001E853F /* error.cpp */; };
+		3308B17D1533EC87001E853F /* programData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B1741533EC87001E853F /* programData.cpp */; };
+		3308B17E1533EC87001E853F /* surfaceRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B1761533EC87001E853F /* surfaceRender.cpp */; };
 		8B29F94A13D3A20E00EDB516 /* AddNewGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B29F94813D3A20E00EDB516 /* AddNewGalleryViewController.m */; };
 		8B29F94B13D3A20E00EDB516 /* AddNewGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B29F94913D3A20E00EDB516 /* AddNewGalleryViewController.xib */; };
 		8B29F98713D3C6BE00EDB516 /* Gallery.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B29F98613D3C6BE00EDB516 /* Gallery.m */; };
@@ -23,7 +31,7 @@
 		8B29FCFD13D654DC00EDB516 /* SaveAlgebraicSurfaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B29FCFC13D654DC00EDB516 /* SaveAlgebraicSurfaceViewController.m */; };
 		8B29FCFF13D654EC00EDB516 /* SaveAlgebraicSurfaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B29FCFE13D654EC00EDB516 /* SaveAlgebraicSurfaceViewController.xib */; };
 		8B29FD0813D6685600EDB516 /* Black Line.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B29FD0713D6685600EDB516 /* Black Line.png */; };
-		8B3080F513BBEC6900EA792E /* GoiSurferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3080F413BBEC6900EA792E /* GoiSurferViewController.m */; };
+		8B3080F513BBEC6900EA792E /* GoiSurferViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8B3080F413BBEC6900EA792E /* GoiSurferViewController.mm */; };
 		8B3080F813BBEC7D00EA792E /* MyGalleriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3080F713BBEC7D00EA792E /* MyGalleriesViewController.m */; };
 		8B3080FA13BBECA900EA792E /* GoiSurferViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3080F913BBECA900EA792E /* GoiSurferViewController.xib */; };
 		8B3080FC13BBECB700EA792E /* MyGalleriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3080FB13BBECB700EA792E /* MyGalleriesViewController.xib */; };
@@ -64,7 +72,6 @@
 		8BC02C9D13B2938C003E41AC /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC02C9B13B2938C003E41AC /* SplashScreenViewController.m */; };
 		8BC02D0613B29C00003E41AC /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC02D0513B29C00003E41AC /* BaseViewController.m */; };
 		8BDD0A51142427450043741C /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A49142427450043741C /* matrix.cpp */; };
-		8BDD0A52142427450043741C /* iSurferDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A4B142427450043741C /* iSurferDelegate.cpp */; };
 		8BDD0A53142427450043741C /* EAGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A4E142427450043741C /* EAGLView.mm */; };
 		8BDD0A54142427450043741C /* iSurferViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A50142427450043741C /* iSurferViewController.mm */; };
 		8BDD0A721424281B0043741C /* exception.c in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A631424281B0043741C /* exception.c */; };
@@ -95,6 +102,25 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* iSurfer_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSurfer_Prefix.pch; sourceTree = "<group>"; };
+		330252961537970900EA2425 /* TrackBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackBall.h; sourceTree = "<group>"; };
+		330252971537970900EA2425 /* TrackBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackBall.m; sourceTree = "<group>"; };
+		3308B1661533EC87001E853F /* ApplicationEngine.ParametricViewer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ApplicationEngine.ParametricViewer.cpp; sourceTree = "<group>"; };
+		3308B1671533EC87001E853F /* Interfaces.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Interfaces.hpp; sourceTree = "<group>"; };
+		3308B1681533EC87001E853F /* Matrix.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Matrix.hpp; sourceTree = "<group>"; };
+		3308B1691533EC87001E853F /* ParametricEquations.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParametricEquations.hpp; sourceTree = "<group>"; };
+		3308B16A1533EC87001E853F /* ParametricSurface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParametricSurface.cpp; sourceTree = "<group>"; };
+		3308B16B1533EC87001E853F /* ParametricSurface.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ParametricSurface.hpp; sourceTree = "<group>"; };
+		3308B16C1533EC87001E853F /* Quaternion.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Quaternion.hpp; sourceTree = "<group>"; };
+		3308B16D1533EC87001E853F /* RenderingEngine.SolidES2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderingEngine.SolidES2.cpp; sourceTree = "<group>"; };
+		3308B16E1533EC87001E853F /* Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Vector.hpp; sourceTree = "<group>"; };
+		3308B1701533EC87001E853F /* Compiler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Compiler.cpp; sourceTree = "<group>"; };
+		3308B1711533EC87001E853F /* Compiler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Compiler.hpp; sourceTree = "<group>"; };
+		3308B1721533EC87001E853F /* error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = error.cpp; sourceTree = "<group>"; };
+		3308B1731533EC87001E853F /* error.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = error.hpp; sourceTree = "<group>"; };
+		3308B1741533EC87001E853F /* programData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = programData.cpp; sourceTree = "<group>"; };
+		3308B1751533EC87001E853F /* programData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = programData.hpp; sourceTree = "<group>"; };
+		3308B1761533EC87001E853F /* surfaceRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surfaceRender.cpp; sourceTree = "<group>"; };
+		3308B1771533EC87001E853F /* surfaceRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = surfaceRender.h; sourceTree = "<group>"; };
 		8B29F94713D3A20E00EDB516 /* AddNewGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewGalleryViewController.h; sourceTree = "<group>"; };
 		8B29F94813D3A20E00EDB516 /* AddNewGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewGalleryViewController.m; sourceTree = "<group>"; };
 		8B29F94913D3A20E00EDB516 /* AddNewGalleryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewGalleryViewController.xib; sourceTree = "<group>"; };
@@ -113,7 +139,7 @@
 		8B29FCFE13D654EC00EDB516 /* SaveAlgebraicSurfaceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveAlgebraicSurfaceViewController.xib; sourceTree = "<group>"; };
 		8B29FD0713D6685600EDB516 /* Black Line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black Line.png"; sourceTree = "<group>"; };
 		8B3080F313BBEC6900EA792E /* GoiSurferViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoiSurferViewController.h; sourceTree = "<group>"; };
-		8B3080F413BBEC6900EA792E /* GoiSurferViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoiSurferViewController.m; sourceTree = "<group>"; };
+		8B3080F413BBEC6900EA792E /* GoiSurferViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GoiSurferViewController.mm; sourceTree = "<group>"; };
 		8B3080F613BBEC7D00EA792E /* MyGalleriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGalleriesViewController.h; sourceTree = "<group>"; };
 		8B3080F713BBEC7D00EA792E /* MyGalleriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGalleriesViewController.m; sourceTree = "<group>"; };
 		8B3080F913BBECA900EA792E /* GoiSurferViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoiSurferViewController.xib; sourceTree = "<group>"; };
@@ -170,8 +196,6 @@
 		8BC02D0513B29C00003E41AC /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		8BDD0A49142427450043741C /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
 		8BDD0A4A142427450043741C /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix.h; sourceTree = "<group>"; };
-		8BDD0A4B142427450043741C /* iSurferDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = iSurferDelegate.cpp; sourceTree = "<group>"; };
-		8BDD0A4C142427450043741C /* iSurferDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSurferDelegate.h; sourceTree = "<group>"; };
 		8BDD0A4D142427450043741C /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
 		8BDD0A4E142427450043741C /* EAGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EAGLView.mm; sourceTree = "<group>"; };
 		8BDD0A4F142427450043741C /* iSurferViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSurferViewController.h; sourceTree = "<group>"; };
@@ -192,7 +216,7 @@
 		8BDD0A701424281B0043741C /* strlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = strlib.c; sourceTree = "<group>"; };
 		8BDD0A711424281B0043741C /* strlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strlib.h; sourceTree = "<group>"; };
 		8BDD0A851424283E0043741C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		8BDD0B3B142431D50043741C /* fs1.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fs1.glsl; sourceTree = "<group>"; };
+		8BDD0B3B142431D50043741C /* fs1.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fs1.glsl; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		8BDD0B3C142431D50043741C /* fs2.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fs2.glsl; sourceTree = "<group>"; };
 		8BDD0B3D142431D50043741C /* vs1.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vs1.glsl; sourceTree = "<group>"; };
 		8BDD0B3E142431D50043741C /* vs2.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vs2.glsl; sourceTree = "<group>"; };
@@ -294,6 +318,39 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3308B1651533EC87001E853F /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				330252961537970900EA2425 /* TrackBall.h */,
+				330252971537970900EA2425 /* TrackBall.m */,
+				3308B1661533EC87001E853F /* ApplicationEngine.ParametricViewer.cpp */,
+				3308B1671533EC87001E853F /* Interfaces.hpp */,
+				3308B1681533EC87001E853F /* Matrix.hpp */,
+				3308B1691533EC87001E853F /* ParametricEquations.hpp */,
+				3308B16A1533EC87001E853F /* ParametricSurface.cpp */,
+				3308B16B1533EC87001E853F /* ParametricSurface.hpp */,
+				3308B16C1533EC87001E853F /* Quaternion.hpp */,
+				3308B16D1533EC87001E853F /* RenderingEngine.SolidES2.cpp */,
+				3308B16E1533EC87001E853F /* Vector.hpp */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		3308B16F1533EC87001E853F /* Surface */ = {
+			isa = PBXGroup;
+			children = (
+				3308B1701533EC87001E853F /* Compiler.cpp */,
+				3308B1711533EC87001E853F /* Compiler.hpp */,
+				3308B1721533EC87001E853F /* error.cpp */,
+				3308B1731533EC87001E853F /* error.hpp */,
+				3308B1741533EC87001E853F /* programData.cpp */,
+				3308B1751533EC87001E853F /* programData.hpp */,
+				3308B1761533EC87001E853F /* surfaceRender.cpp */,
+				3308B1771533EC87001E853F /* surfaceRender.h */,
+			);
+			path = Surface;
+			sourceTree = "<group>";
+		};
 		8B29F94613D3A20E00EDB516 /* addGalleryViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,7 +409,7 @@
 				8BDD0A601424280B0043741C /* parser */,
 				8BDD0A45142426FF0043741C /* openGLController */,
 				8B3080F313BBEC6900EA792E /* GoiSurferViewController.h */,
-				8B3080F413BBEC6900EA792E /* GoiSurferViewController.m */,
+				8B3080F413BBEC6900EA792E /* GoiSurferViewController.mm */,
 				8B3080F913BBECA900EA792E /* GoiSurferViewController.xib */,
 			);
 			path = goiSurferViewController;
@@ -526,10 +583,10 @@
 		8BDD0A45142426FF0043741C /* openGLController */ = {
 			isa = PBXGroup;
 			children = (
+				3308B1651533EC87001E853F /* Engine */,
+				3308B16F1533EC87001E853F /* Surface */,
 				8BDD0A49142427450043741C /* matrix.cpp */,
 				8BDD0A4A142427450043741C /* matrix.h */,
-				8BDD0A4B142427450043741C /* iSurferDelegate.cpp */,
-				8BDD0A4C142427450043741C /* iSurferDelegate.h */,
 				8BDD0A4D142427450043741C /* EAGLView.h */,
 				8BDD0A4E142427450043741C /* EAGLView.mm */,
 				8BDD0A4F142427450043741C /* iSurferViewController.h */,
@@ -680,7 +737,7 @@
 				8BC02C9D13B2938C003E41AC /* SplashScreenViewController.m in Sources */,
 				8BC02D0613B29C00003E41AC /* BaseViewController.m in Sources */,
 				8B68A37E13B8031200EC98B5 /* MainMenuViewController.m in Sources */,
-				8B3080F513BBEC6900EA792E /* GoiSurferViewController.m in Sources */,
+				8B3080F513BBEC6900EA792E /* GoiSurferViewController.mm in Sources */,
 				8B3080F813BBEC7D00EA792E /* MyGalleriesViewController.m in Sources */,
 				8B30820413BC185C00EA792E /* HelpViewController.m in Sources */,
 				8B30823B13BD270400EA792E /* MyGalleryTableViewCell.m in Sources */,
@@ -692,7 +749,6 @@
 				8B29FB4513D4FF9B00EDB516 /* SurfaceCellView.m in Sources */,
 				8B29FCFD13D654DC00EDB516 /* SaveAlgebraicSurfaceViewController.m in Sources */,
 				8BDD0A51142427450043741C /* matrix.cpp in Sources */,
-				8BDD0A52142427450043741C /* iSurferDelegate.cpp in Sources */,
 				8BDD0A53142427450043741C /* EAGLView.mm in Sources */,
 				8BDD0A54142427450043741C /* iSurferViewController.mm in Sources */,
 				8BDD0A721424281B0043741C /* exception.c in Sources */,
@@ -707,6 +763,14 @@
 				8B9614E6144B1B040015D292 /* FMResultSet.m in Sources */,
 				8B9614F6144B1CFB0015D292 /* DataBaseController.m in Sources */,
 				8B9114D114BF862600BEAF27 /* Language.m in Sources */,
+				3308B1781533EC87001E853F /* ApplicationEngine.ParametricViewer.cpp in Sources */,
+				3308B1791533EC87001E853F /* ParametricSurface.cpp in Sources */,
+				3308B17A1533EC87001E853F /* RenderingEngine.SolidES2.cpp in Sources */,
+				3308B17B1533EC87001E853F /* Compiler.cpp in Sources */,
+				3308B17C1533EC87001E853F /* error.cpp in Sources */,
+				3308B17D1533EC87001E853F /* programData.cpp in Sources */,
+				3308B17E1533EC87001E853F /* surfaceRender.cpp in Sources */,
+				330252981537970900EA2425 /* TrackBall.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,7 +798,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iSurfer_Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "iSurfer-Info.plist";
 				PRODUCT_NAME = iSurfer;
 			};
@@ -747,7 +811,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iSurfer_Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "iSurfer-Info.plist";
 				PRODUCT_NAME = iSurfer;
 				VALIDATE_PRODUCT = YES;

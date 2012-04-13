@@ -159,7 +159,9 @@
 
 -(void)handlePanGesture:(UIPanGestureRecognizer*)gestureRecognizer{
 	CGPoint p;
-	p = [gestureRecognizer translationInView:gestureRecognizer.view];
+	p = [gestureRecognizer locationInView:baseView]; //:gestureRecognizer.view];
+    //p = [gestureRecognizer translationInView:gestureRecognizer.view];
+
 	CGRect f;
 	switch (gestureRecognizer.state) {
 		case UIGestureRecognizerStateBegan:
@@ -169,8 +171,15 @@
 
 			 f = CGRectMake(110, 24, 90, 70	);
 			algebraicSurfaceView.frame = f;
-
+            
 			temporalimgView.hidden = NO;
+           // 
+           // UITouch* touch = [touches anyObject];
+           // CGPoint previous  = [touch previousLocationInView: self];
+           // CGPoint current = [touch locationInView: self];
+
+            [openglController initRotationX:p.x Y:p.y];
+
 			break;
 		case UIGestureRecognizerStateChanged:
 			xpos.text = [NSString stringWithFormat:@"x: %.2f", p.x];
@@ -184,8 +193,9 @@
 			break;
 		case UIGestureRecognizerStateEnded:
 			NSLog(@"release");
-			[openglController rotateX:p.x Y:p.y];
+			[openglController endRotationX:p.x Y:p.y];
 			temporalimgView.image = [algebraicSurfaceView saveImageFromGLView];
+//			[openglController rotateX:p.x Y:p.y];
 
 			f = CGRectMake(110, 24, 364, 245	);
 			algebraicSurfaceView.frame = f;

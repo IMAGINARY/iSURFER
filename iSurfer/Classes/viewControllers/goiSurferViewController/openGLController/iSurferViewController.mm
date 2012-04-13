@@ -10,8 +10,12 @@
 
 #import "iSurferViewController.h"
 #import "EAGLView.h"
+#include "Compiler.hpp"
+#include "programData.hpp"
 
-#import "iSurferDelegate.h"
+#import "TrackBall.h"
+#import "Matrix.hpp"
+#include "Vector.hpp"
 
 // Uniform index.
 enum {
@@ -38,6 +42,7 @@ enum {
 @implementation iSurferViewController
 
 @synthesize animating, context;
+@synthesize trackBall;
 
 
 -(id)init{
@@ -217,7 +222,7 @@ enum {
         //Dattel (Esfera)
             //NSString *formula = @"x^2+y^2+z^2-19";  //Bien
         //Pipe
-            NSString *formula = @"x^2-z";  //Error de calculo en zoom 1
+            //NSString *formula = @"x^2-z";  //Error de calculo en zoom 1
         //Gupf
             //NSString *formula = @"x^2+y^2+z";  //Bien    
         //Kegel
@@ -229,12 +234,12 @@ enum {
         //Ufo
             //NSString *formula = @"z^2-x^2-y^2-10";  //Bien
         //Calypso 
-            //NSString *formula = @"x^2+y^2*z-z^2"; // colores Raros
+           // NSString *formula = @"x^2+y^2*z-z^2"; // colores Raros
 
         //Cayley Cubic
             //NSString *formula = @"x^2+y^2+z^2+2*x*y*z-1"; //Maso 
 
-            //NSString *formula = @"x^2+y^2+z*x+y";
+            NSString *formula = @"x^2+y^2+z*x+y";
     
         //Este se ve raro
             //NSString *formula = @"x^2-x-x^2*y-y*z^2-z^2";
@@ -262,8 +267,23 @@ enum {
             //NSString *formula = @"x^4-2";
     
     
-   iSurferDelegate::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[formula UTF8String]);
+   //iSurferDelegate::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[formula UTF8String]);
 	
+    m_renderingEngine = SolidES2::CreateRenderingEngine();
+    
+    m_applicationEngine = ParametricViewer::CreateApplicationEngine(m_renderingEngine);
+    
+    int width = 240;//CGRectGetWidth(frame);
+    int height = 240;//CGRectGetHeight(frame);
+    m_applicationEngine->Initialize(width, height);
+    
+    //m_applicationEngine->ChangeSurface(1);
+	Compiler::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[formula UTF8String]);
+    
+    programData::InitializeProgramData();
+
+    
+    
 	[self drawFrame];
 
 }
@@ -354,8 +374,8 @@ enum {
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 */
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f); 	
+    m_applicationEngine->Render();
 
-	iSurferDelegate::display();
     [(EAGLView *)self.view presentFramebuffer];
 }
 
@@ -521,22 +541,61 @@ enum {
     
     return TRUE;
 }
-float rotAtenuation = 100.0;
--(void)rotateX:(float)x Y:(float)y{
-    if( iSurferDelegate::rotationX >2 * M_PI || iSurferDelegate::rotationX < -2 * M_PI) 
-        iSurferDelegate::rotationX = 0;
-    else
-        iSurferDelegate::rotationX =  iSurferDelegate::rotationX + (y * M_PI / 180 / rotAtenuation);
-    if( iSurferDelegate::rotationY  > 2 * M_PI  || iSurferDelegate::rotationY  <  -2 * M_PI)
-        iSurferDelegate::rotationX  = 0;
-    else
-        iSurferDelegate::rotationY =  iSurferDelegate::rotationY +  (x * M_PI /180 /rotAtenuation);
-    if(x != 0 && y != 0)
-        if( iSurferDelegate::rotationZ  > 2 * M_PI  || iSurferDelegate::rotationZ  <  -2 * M_PI)
-            iSurferDelegate::rotationZ  = 0;
-        else
-            iSurferDelegate::rotationZ =  iSurferDelegate::rotationZ +  (x * M_PI /180 / rotAtenuation + y * M_PI /180 /rotAtenuation);
+float rotAtenuation = 100.0f;
 
+ivec2 oldLocation;
+-(void)rotateX:(float)x Y:(float)y{
+    m_applicationEngine->OnFingerMove(oldLocation, ivec2(x, y));
+    oldLocation= ivec2(x, y);
+
+    if( programData::rotationX >=2 * M_PI || programData::rotationX <= -2 * M_PI) 
+        programData::rotationX = 0;
+    else
+        programData::rotationX =  programData::rotationX + (y * M_PI / 180.0f / rotAtenuation);
+    
+    if( programData::rotationY  > 2 * M_PI  || programData::rotationY  <  -2 * M_PI)
+        programData::rotationY  = 0;
+    else
+        programData::rotationY =  programData::rotationY +  (x * M_PI /180.0f /rotAtenuation);
+    if(x != 0 && y != 0)
+        if( programData::rotationZ  > 2 * M_PI  || programData::rotationZ  <  -2 * M_PI)
+            programData::rotationZ  = 0;
+        else
+            programData::rotationZ =  programData::rotationZ +  (x * M_PI /180.0f / rotAtenuation + y * M_PI /180 /rotAtenuation);
+
+    CGPoint location;
+    location.x = x;
+    location.y = y;
+    
+    CATransform3D transform = [trackBall rotationTransformForLocation:location];
+    vec4 xvec,yvec,z,w;
+    xvec = vec4(transform.m11, transform.m12, transform.m13, transform.m41);
+    yvec = vec4(transform.m21, transform.m22, transform.m23, transform.m42);
+    z = vec4(transform.m31, transform.m32, transform.m33, transform.m43);
+    w = vec4(transform.m14, transform.m24, transform.m34, transform.m44);
+    programData::rot = mat4::fromCATransform3D(xvec, yvec, z, w);
+    
+    printf("loation %f %f" , location.x, location.y);
+
+    
+    printf("transform\n");
+    
+    printf("  %f  %f   %f  %f \n", transform.m11 , transform.m12, transform.m13, transform.m14);
+    printf("  %f  %f   %f  %f \n", transform.m21 , transform.m22, transform.m23, transform.m24);
+    printf("  %f  %f   %f  %f \n", transform.m31 , transform.m32, transform.m33, transform.m34);
+    printf("  %f  %f   %f  %f \n", transform.m41 , transform.m42, transform.m43, transform.m44);
+
+    
+    printf("rotation\n");
+    for (int i = 0; i<4; i++) {
+        for (int j=0; j<4; j++) {
+            printf("  %f", programData::rot.Pointer()[i*4+j]);
+        }
+        printf("\n");
+        
+    }
+
+    
 	NSLog(@"x: %.2f    y:%.2f", x , y );
     //NSLog(@"calc x: %.2f  calcy: %.2f", x * M_PI / 180, y * M_PI / 180 );
 
@@ -545,9 +604,52 @@ float rotAtenuation = 100.0;
 }
 
 
--(void)setZoom:(double)zoomvalue{
-	iSurferDelegate::radius = zoomvalue;
+-(void)initRotationX:(float)x Y:(float)y{
+    oldLocation = ivec2(x, y);
+    m_applicationEngine->OnFingerDown(oldLocation);
+    
+    CGPoint location;
+    location.x = x;
+    location.y = y;
+
+    
+    if(nil == self.trackBall) {
+        CGRect bounds = CGRectMake(110, 24, 364, 245	);
+ 
+        self.trackBall = [TrackBall trackBallWithLocation:location inRect:bounds];
+    } else {
+        [self.trackBall setStartPointFromLocation:location];
+    }
+
+    
+	NSLog(@"rotation start at x: %.2f    y:%.2f", x , y );
+    
 	[self drawFrame];
+}
+
+
+-(void)endRotationX:(float)x Y:(float)y{
+    oldLocation = ivec2(x, y);
+    m_applicationEngine->OnFingerDown(oldLocation);
+    
+    CGPoint location;
+    location.x = x;
+    location.y = y;
+    
+    [self.trackBall finalizeTrackBallForLocation:location];
+
+    
+	NSLog(@"rotation start at x: %.2f    y:%.2f", x , y );
+    
+	[self drawFrame];
+}
+
+-(void)setZoom:(double)zoomvalue{
+	//iSurferDelegate::radius = zoomvalue;
+    programData::UpdateRadius(zoomvalue + zoomvalue* .03f);
+    m_applicationEngine->Zoom(zoomvalue);
+
+    [self drawFrame];
 }
 
 -(void)generateSurface:(NSString*)eq{
@@ -556,22 +658,23 @@ float rotAtenuation = 100.0;
 	NSString *vs2 = [[NSBundle mainBundle] pathForResource:@"vs2" ofType:@"glsl"];
 	NSString *fs2 = [[NSBundle mainBundle] pathForResource:@"fs2" ofType:@"glsl"];
 	//NSString *formula = @"x^2+y^2+z*x+y";
-	iSurferDelegate::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[eq UTF8String]);
-	
+	//iSurferDelegate::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[eq UTF8String]);
+    Compiler::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[eq UTF8String]);
+    
+    programData::InitializeProgramData();
+
 	[self drawFrame];
 	
 }
 
 -(float)zoom{
-	return iSurferDelegate::radius;
+	return programData::radius;
 }
 
 -(void)setSurfaceColorRed:(float)red Green:(float)green Blue:(float)blue{
 	NSLog(@"red: %f green: %f  blue: %f", red, green, blue);
-	iSurferDelegate::colorR = red;
-	iSurferDelegate::colorG = green;
-	iSurferDelegate::colorB = blue;
-
+    
+	programData::UpdateColor(red, green, blue);
 	[self drawFrame];
 }
 

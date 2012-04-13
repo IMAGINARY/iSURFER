@@ -21,8 +21,8 @@ extern "C" {
 #include "parser.h"
 }
 
-#define STACKS 20
-#define SLICES 20
+#define STACKS 10
+#define SLICES 10
 float iSurferDelegate::rotationX = 0.0f;
 float iSurferDelegate::rotationY = 0.0f;
 float iSurferDelegate::rotationZ = M_PI_2;
@@ -131,6 +131,8 @@ void checkGLError( const char *location )
 		case GL_OUT_OF_MEMORY:
 			error( location, "GL_OUT_OF_MEMORY" );
 			break;
+        default:
+            error( location, "Uknown Error");
 	}
 }
 
@@ -409,7 +411,7 @@ void iSurferDelegate::display()
 	//Para el zoom parametrizar scale_matrix
 	//Para rotacion setear las variables de rotation_matrix
 	//Traslacion si es necesario usar la matriz
-    scale_matrix( 1, 1, 1, s );
+    scale_matrix( radius, radius, radius, s );
     
 	translation_matrix( 0.0, 0.0, -500 , t );
 
@@ -462,12 +464,13 @@ void iSurferDelegate::display()
         }
         else
         {
-            wireSphere( radius, 20, 20, attr_pos ); checkGLError( AT );
+            wireSphere( 1, SLICES, STACKS, attr_pos ); checkGLError( AT );
         }
 	}
 	// draw solid sphere, which is used for raycasting
 	{
 		glEnable( GL_CULL_FACE );
+        checkGLError( AT );
 
 		GLuint glsl_program = alg_surface_glsl_program;
 		glUseProgram( glsl_program ); checkGLError( AT );
@@ -501,14 +504,14 @@ void iSurferDelegate::display()
 
         //Power de la luz
         glUniform1f(m_uniforms.Shininess, Shininess);
-        vec4 lightPosition(radius, radius, 0, 0);
+        vec4 lightPosition(1, 1, 0, 0);
         glUniform3fv(m_uniforms.LightPosition, 1, lightPosition.Pointer());
         //vec4 lightPosition2(-1, 0, -200, 0);
-        vec4 lightPosition2(0, -radius, radius, 0);
+        vec4 lightPosition2(0, -1, 1, 0);
         
         glUniform3fv(m_uniforms.LightPosition2, 1, lightPosition2.Pointer());
 
-        vec4 lightPosition3(-radius, -radius, -radius, 0);
+        vec4 lightPosition3(-1, -1, -1, 0);
         glUniform3fv(m_uniforms.LightPosition3, 1, lightPosition3.Pointer());
 
         glUniform3f(m_uniforms.DiffuseMaterial, colorR, colorG, colorB);
@@ -518,7 +521,7 @@ void iSurferDelegate::display()
 		glUniformMatrix4fv( u_modelview_inv, 1, GL_FALSE, modelview_inv ); checkGLError( AT );
 		glUniformMatrix4fv( u_projection, 1, GL_FALSE, projection ); checkGLError( AT );
         
-		solidSphere( radius, slices, stacks, attr_pos ); checkGLError( AT );
+		solidSphere( 1, slices, stacks, attr_pos ); checkGLError( AT );
 
 	}
 	checkGLError( AT );

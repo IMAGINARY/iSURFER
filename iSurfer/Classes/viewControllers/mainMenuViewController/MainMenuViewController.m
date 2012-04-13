@@ -49,6 +49,7 @@
 			controllerName = @"other";
 			break;
 		default:
+            controllerName = @"other";
 			break;
 	}
 	[appcontroller pushViewControllerWithName:controllerName];

@@ -84,7 +84,7 @@
 		[gal1 addAlgebraicSurface:surface];
 		[gal2 addAlgebraicSurface:surface2];
 	
-		Gallery* gal3 = [[Gallery alloc]init];
+/*		Gallery* gal3 = [[Gallery alloc]init];
 		gal3.galleryName = @"galery3";
 		gal3.galleryDescription = @"description3";
 		gal3.editable = YES;
@@ -93,7 +93,7 @@
 		gal4.galleryName = @"galery4";
 		gal4.galleryDescription = @"description4";
 		gal4.editable = YES;
-
+*/
         [galleriesArray addObject:gal1];
         [galleriesArray addObject:gal2];
         

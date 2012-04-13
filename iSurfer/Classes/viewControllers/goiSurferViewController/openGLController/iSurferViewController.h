@@ -7,18 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Interfaces.hpp"
 #import <OpenGLES/EAGL.h>
 
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
+
+@class TrackBall;
+
 @interface iSurferViewController : UIViewController
 {
     EAGLContext *context;
     GLuint program;
-    
+    IApplicationEngine* m_applicationEngine;
+    IRenderingEngine* m_renderingEngine;
+   
     BOOL animating;
     BOOL displayLinkSupported;
     NSInteger animationFrameInterval;
@@ -30,7 +35,10 @@
     id displayLink;
     NSTimer *animationTimer;
 	NSAutoreleasePool* pool;
+    TrackBall *trackBall;
 }
+
+@property(nonatomic, retain) TrackBall *trackBall;
 
 @property (readonly, nonatomic, getter=isAnimating) BOOL animating;
 @property (nonatomic) NSInteger animationFrameInterval;
@@ -39,6 +47,11 @@
 - (void)stopAnimation;
 -(void)setupGLContxt;
 -(void)rotateX:(float)x Y:(float)y;
+-(void)initRotationX:(float)x Y:(float)y;
+
+-(void)endRotationX:(float)x Y:(float)y;
+
+
 -(void)drawFrame;
 -(void)setZoom:(double)zoomvalue;
 -(void)generateSurface:(NSString*)eq;

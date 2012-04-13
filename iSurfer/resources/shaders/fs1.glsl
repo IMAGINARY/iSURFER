@@ -406,11 +406,10 @@ highp float first_root_in__descartes( const in polynomial p, highp float epsilon
 
 highp float first_root_in( in polynomial p, highp float min, highp float max )
 {
+    
+#if DEGREE > 3
 //min = min -EPSILON;
 //max = max + EPSILON;
-/*
-if( DEGREE > 3 )
-{
     //
     // move roots from [min,max] to [0,1]
     polynomial p01;
@@ -418,7 +417,7 @@ if( DEGREE > 3 )
     //gl_FragColor = vec4( 1.0, 0.0, 0.0 , 1 );
 
     // find smallest root in [0,1], if any
-    highp float x0 = first_root_in__descartes( p1, EPSILON * ( max - min ), p );
+    highp float x0 = first_root_in__descartes( p01, EPSILON * ( max - min ), p );
 
     //return x0;
 
@@ -426,12 +425,10 @@ if( DEGREE > 3 )
         return (max-min)*x0+min; // move root back to original interval
     else    
         discard; // no root in [0,1]
-    }else
+    /*
 */
-/**/
-    if( DEGREE > 3 )
-    {
-        //
+
+/*      //
         // move roots from [min,max] to [0,1]
         polynomial p01, p02;
         shift( p, min, p01);
@@ -451,24 +448,24 @@ if( DEGREE > 3 )
 
         // find smallest root in [0,1], if any
         return min; // move root back to original interval
-        
-    }else
+ */
+    
+#endif
+    
+#if DEGREE ==1
 
-
-	if( DEGREE == 1 )
-	{
-		highp float x0 = -p.a[ 0 ] / p.a[ 1 ];
+        highp float x0 = -p.a[ 0 ] / p.a[ 1 ];
 		if( x0 >= min && x0 < max )
 			return x0;
 		else
 			discard;
-	}
 
 /**********************************************/
 
+#endif
+    
+#if DEGREE ==2
 
-	else if( DEGREE == 2 )
-	{
 		highp float a = p.a[ DEGREE ];
 		highp float b = p.a[ 1 ];
 		highp float c = p.a[ 0 ];
@@ -521,13 +518,12 @@ if( DEGREE > 3 )
 
 			discard;
         }
-	}
 
 /**********************************************/
 
-else if( DEGREE == 3)
-	{
-
+#endif
+    
+#if DEGREE ==3
 
 		highp float a=p.a[DEGREE-1]/-p.a[DEGREE];
 		highp float b=p.a[1]/-p.a[DEGREE];
@@ -639,15 +635,15 @@ else if( DEGREE == 3)
             discard;
 		
         }
-	}
+	
 	
 /**********************************************/
+#endif
 
-    else
-    {
-        // error!!
-        discard;
-    }
+#if DEGREE <=0
+discard;
+#endif
+
 }
 
 
@@ -812,7 +808,7 @@ void main( void )
 	highp vec3 hit_point = eye + root * dir;
 
 
- calc_lights( eye, dir, vec2( tmin, tmax ), hit_point );
+    calc_lights( eye, dir, vec2( tmin, tmax ), hit_point );
 
 
 	//gl_FragColor = vec4( normalize( mygradient( hit_point ) ), 0.5 );

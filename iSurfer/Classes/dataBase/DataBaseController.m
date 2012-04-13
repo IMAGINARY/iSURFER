@@ -34,7 +34,7 @@
 		}
 		NSLog(@"%@", databasePath);
 
-		[fileManager release];
+		//[fileManager release];
 				
 	//	db = [[FMDatabase alloc]initWithPath: [NSString stringWithFormat:@"%@%@", [[NSBundle mainBundle] pathForResource:@"iSurferDB" ofType:@"db"], DB_FILE_PATH]];
 		db = [[FMDatabase alloc]initWithPath: databasePath];
