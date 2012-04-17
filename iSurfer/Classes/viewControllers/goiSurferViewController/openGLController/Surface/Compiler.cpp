@@ -46,6 +46,7 @@ void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const cha
 	clearExp();
 	EvalExp(expt, 0);
     EvalDerivateNoCode(expt);
+    //EvalDerivate(expt);
     EvalDegree(expt);
 
     FreeScanner(scanner);
@@ -58,10 +59,10 @@ void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const cha
     FreeTree(expt);
 
     glDeleteShader(programData::programs.alg_surface_glsl_program);
-    //printf("code\n");
-	//printf(getCode());
-    //printf("\nderivate\n");
-    //printf(getCodeDerivate());
+    printf("code\n");
+	printf(getCode());
+    printf("\nderivate\n");
+    printf(getCodeDerivate());
     //printf("\nderivate\n");
     
 	//printf("\n");

@@ -1,6 +1,7 @@
 
 #define DEGREE 
-#define EPSILON 0.0001
+#define EPSILON 0.0
+#define DELTA 0.0000001
 #define SIZE DEGREE+1 
 
 // polynomial of degree 2
@@ -340,7 +341,7 @@ void reverseShift1( const in polynomial p, out polynomial result )
             result.a[ i ] = result.a[ i ] + result.a[ i + 1 ];
 }
 
-void shiftStretch( const in polynomial p, highp float shift, highp float scale, out polynomial result )
+polynomial shiftStretch( const in polynomial p, highp float shift, highp float scale, out polynomial result )
 {
     for( int i = 0; i < SIZE; i++ )
         result.a[ i ] = p.a[ i ];
@@ -355,6 +356,7 @@ void shiftStretch( const in polynomial p, highp float shift, highp float scale, 
         result.a[ i ] = multiplier * result.a[ i ];
         multiplier *= scale;
     }
+    return result;
 }
 
 highp float first_root_in__descartes( const in polynomial p, highp float epsilon, inout polynomial tmpCoeffs )
@@ -404,8 +406,9 @@ highp float first_root_in__descartes( const in polynomial p, highp float epsilon
     return result;
 }
 
-highp float first_root_in( in polynomial p, highp float min, highp float max )
+highp float first_root_in( inout polynomial p, highp float min, highp float max )
 {
+    //shiftStretch( p, min, max - min, p );
     
 #if DEGREE > 3
 //min = min -EPSILON;
@@ -455,6 +458,9 @@ highp float first_root_in( in polynomial p, highp float min, highp float max )
 #if DEGREE ==1
 
         highp float x0 = -p.a[ 0 ] / p.a[ 1 ];
+//    x0 = (max-min)*x0+min;
+    if(x0 < 1.0)
+        gl_FragColor = vec4( 1.0, 0.0, 1.0 , 1.0 );
 		if( x0 >= min && x0 < max )
 			return x0;
 		else
@@ -668,16 +674,21 @@ void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float 
 
 	//Find discriminant
 	highp float disc = b * b - 4.0 * a * c;
+    gl_FragColor = vec4( 0.0, 1.0, 1.0 , 0.5 );
 
+    if(disc < 1.0)
+        return;
+    gl_FragColor = vec4( 0.0, 0.0, 1.0 , 0.5 );
+    
 	// if discriminant is negative there are no real roots, so return 
 	// false as ray misses sphere
-	if (disc < 0.0)
+	if (disc < DELTA)
 		discard;
 
 	// compute q as described above
 	highp float distSqrt = sqrt(disc);
 	highp float q;
-	if (b < 0.0)
+	if (b < DELTA)
 		q = (-b - distSqrt)/2.0;
 	else
 		q = (-b + distSqrt)/2.0;
@@ -696,16 +707,31 @@ void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float 
 }
 
 
-void calc_lights( in highp vec3 eye, in highp vec3 dir, in highp vec2 trace_interval , in highp vec3 hit_point)
+void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point)
 {
 
         highp float x = hit_point.x;
         highp float y = hit_point.y;
         highp float z = hit_point.z;
+        //highp float tmin, tmax;
+
+    //polynomial x = create_poly_1( eye.x, dir.x );
+	//polynomial y = create_poly_1( eye.y, dir.y );
+	//polynomial z = create_poly_1( eye.z, dir.z );
+
+    
+        polynomial px, py ,pz;
+    
 
         highp vec3 N 
 
 
+        //tmin = min;
+        //tmax = max;
+        //tmin = (tmin - min) / (max-min);
+        //tmax = (tmax - min) / (max-min);
+
+    
         N = normalize(N);
 
         //highp vec3 N = eval_p(p_normal, hit_point);
@@ -713,10 +739,10 @@ void calc_lights( in highp vec3 eye, in highp vec3 dir, in highp vec2 trace_inte
 
 
         highp vec3 L = normalize(LightPosition);
-        highp vec3 E = varying_eye;
+        highp vec3 E = dir;
         lowp vec3 color;
 
-        if(dot(N, E) >= 0.0)
+        if(dot(N, E) >= DELTA)
         {
             highp vec3 H = normalize(L + E);
 
@@ -786,17 +812,23 @@ void main( void )
     //gl_FragColor = vec4( 0.0, 0.0, 1.0 , 1.0 );
 
 	// setup ray(s)
-	highp float tmin, tmax;
+	highp float tmin, tmax, min, max;
 	clip_to_unit_sphere( varying_eye, varying_dir, tmin, tmax );
 	highp float tcenter = ( tmin + tmax ) * 0.5;
 	highp vec3 eye = varying_eye + tcenter * varying_dir;
 	highp vec3 dir = varying_dir;
 	tmin = tmin - tcenter;
 	tmax = tmax - tcenter;
-
-	// setup polynomial
+    // setup polynomial
 	polynomial p_ray = calc_coefficients( eye, dir, vec2( tmin, tmax ) );
-
+    shiftStretch( p_ray, tmin, tmax - tmin, p_ray );
+    min = tmin;
+    max = tmax;
+    tmin = (tmin - min) / (max-min);
+//    if(tmin == 0.0)
+//        discard;
+	tmax = (tmax - min) / (max-min);
+    
     //gl_FragColor = vec4( clamp( dir, 0.0, 1.0 ), 0.5 );
 
 //gl_FragColor = vec4( 0.0, 0.0, 1.0 , 1.0 );
@@ -805,10 +837,11 @@ void main( void )
 	highp float root = first_root_in( p_ray, tmin, tmax );
 //    if(abs(root - tmax) < 0.1 || abs(root - tmin) < 0.1)
 //        discard;
+    root = (max-min)*root+min;
 	highp vec3 hit_point = eye + root * dir;
 
 
-    calc_lights( eye, dir, vec2( tmin, tmax ), hit_point );
+    calc_lights( eye, dir, hit_point);
 
 
 	//gl_FragColor = vec4( normalize( mygradient( hit_point ) ), 0.5 );

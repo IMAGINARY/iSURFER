@@ -166,13 +166,14 @@ SubTree( char* raiz, expressionT left, expressionT right) {
 
 void
 EvalDerivate( expressionT exp) {
-    printCode("= vec3(eval_p( ", 1);
+    //printCode("= vec3(eval_p( ", 1);
+    printCode("= vec3(eval_p(shiftStretch(", 1);
     EvalDerivateExp( exp, 'x');
-    printCode(", hit_point), eval_p(  ", 1);
+    printCode(",min,max-min,px), hit_point.x), eval_p(shiftStretch(  ", 1);
     EvalDerivateExp( exp, 'y');
-    printCode(", hit_point), eval_p(  ", 1);
+    printCode(",min,max-min,py), hit_point.y), eval_p(shiftStretch(  ", 1);
     EvalDerivateExp( exp, 'z');
-    printCode(", hit_point));", 1);
+    printCode(",min,max-min,pz), hit_point.z));", 1);
 }
 
 

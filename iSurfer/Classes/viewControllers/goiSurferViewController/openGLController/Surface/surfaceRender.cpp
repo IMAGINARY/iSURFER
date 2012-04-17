@@ -118,7 +118,7 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
 	translation_matrix( 0.0, 0.0, -500 , t );
     
     mat4 m_translation, modelview, projection;
-    m_translation = mat4::Translate(0, 0, -1000);
+    m_translation = mat4::Translate(0, 0, -500);
     Quaternion quaternion1;
     mat4 rotation = quaternion1.ToMatrix();
     modelview = programData::rot * m_translation;
@@ -143,7 +143,7 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
 	Matrix4x4 projectionOld;
     //rotationX++;
     printf("programData::radius %f \n", programData::radius);
-    ortho(programData::radius, -1000, 2000, projectionOld);
+    ortho(programData::radius+1, -1000, 2000, projectionOld);
     
     
     projection = mat4::Ortho(-programData::radius, programData::radius, -programData::radius, programData::radius, 0.1, 2000);

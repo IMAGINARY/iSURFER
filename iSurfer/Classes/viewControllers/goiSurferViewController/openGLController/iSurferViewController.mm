@@ -213,7 +213,8 @@ enum {
 	
     
     //GRADO 1
-    
+        //NSString *formula = @"x";
+
         //NSString *formula = @"z*x";  //Mal
     
     //Grado 2
@@ -237,20 +238,23 @@ enum {
            // NSString *formula = @"x^2+y^2*z-z^2"; // colores Raros
 
         //Cayley Cubic
-            //NSString *formula = @"x^2+y^2+z^2+2*x*y*z-1"; //Maso 
+            NSString *formula = @"x^2+y^2+z^2+2*x*y*z-1"; //Maso 
 
-            NSString *formula = @"x^2+y^2+z*x+y";
+            //NSString *formula = @"x^2+y^2+z*x+y";
     
         //Este se ve raro
             //NSString *formula = @"x^2-x-x^2*y-y*z^2-z^2";
-   
+
+    
+    //Whitney
+    //NSString *formula = @"x^2-y^2*z"; // Este parece andar 80 %
+
+    
     //Grado 3
         //DingDong
             //NSString *formula = @"x^2+y^2+z^3-z^2";
         //Fanfare 
             //NSString *formula = @"z^2+y^2-x^3";
-        //Whitney
-            //NSString *formula = @"x^2-y^2*z"; // Este parece andar 80 %
         //Sattel
             //NSString *formula = @"x^2+y^2*z+z^3"; 
     
