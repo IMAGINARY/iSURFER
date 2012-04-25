@@ -9,8 +9,9 @@ varying vec3 varying_dir;
 
 void main( void )
 {
-	vec4 origin = vec4( 0.0, 0.0, 0.0, 1.0 );
-	gl_Position = projectionMatrix * modelviewMatrix * pos;
+	//vec4 origin = vec4( 0, 0, 0, 1.0 );
+    vec4 origin = vec4( 0, 0, 0, 1.0 );
+    gl_Position =  modelviewMatrix * pos;
 	
 	// calculate ray in different coordinate systems
 	varying_eye = ( modelviewMatrixInverse * origin ).xyz;

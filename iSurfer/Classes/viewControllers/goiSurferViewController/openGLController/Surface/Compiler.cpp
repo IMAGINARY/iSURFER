@@ -59,18 +59,18 @@ void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const cha
     FreeTree(expt);
 
     glDeleteShader(programData::programs.alg_surface_glsl_program);
-    printf("code\n");
-	printf(getCode());
-    printf("\nderivate\n");
-    printf(getCodeDerivate());
+//    printf("code\n");
+//	printf(getCode());
+//    printf("\nderivate\n");
+//    printf(getCodeDerivate());
     //printf("\nderivate\n");
     
 	//printf("\n");
 	//printf("Degree %d \n", EvalDegree(exp));
 	
 	GLuint aux = init( vs1/*"vs1.glsl"*/, fs1/*"fs1.glsl"*/ );
-    programData::programs.alg_surface_glsl_program = aux;
     printf("aux val %d y alg_surface vale = %d\n\n", aux, programData::programs.alg_surface_glsl_program);
+    programData::programs.alg_surface_glsl_program = aux;
     
     if(programData::debug){
         glDeleteShader(programData::programs.wireframe_glsl_program);
@@ -151,8 +151,8 @@ GLuint Compiler::init( const char* vertex_shader_name, const char* fragment_shad
   
     shader_code_c_str_aux[0] = '\0';
 
-	printf("\n\n\n\n\n%s\n\n\n\n\n\n\n", shader_code_c_str);
-	fflush(stdout);
+	//printf("\n\n\n\n\n%s\n\n\n\n\n\n\n", shader_code_c_str);
+	//fflush(stdout);
 	//printf("\nhola\n");
     const char *Frafmentshader_code_c_str = (const char *)shader_code_c_str;
 	glShaderSource( fragment_shader, 1, &Frafmentshader_code_c_str, NULL );

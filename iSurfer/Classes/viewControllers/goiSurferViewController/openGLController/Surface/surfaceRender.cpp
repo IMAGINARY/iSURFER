@@ -114,15 +114,17 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
 	//Para rotacion setear las variables de rotation_matrix
 	//Traslacion si es necesario usar la matriz
     scale_matrix( 1, 1, 1, s );
+    Matrix4x4 aux, aux2, aux3, rota, look, other;
     
-	translation_matrix( 0.0, 0.0, -500 , t );
+	//translation_matrix( 0.0, 0.0, -0 , t );
     
-    mat4 m_translation, modelview, projection;
-    m_translation = mat4::Translate(0, 0, -500);
+    mat4 m_translation, modelview, projection, cameraT;
+    m_translation = mat4::Translate(0, 0,-programData::radius );//-10000);
     Quaternion quaternion1;
     mat4 rotation = quaternion1.ToMatrix();
-    modelview = programData::rot * m_translation;
-
+    modelview = programData::rot;//* m_translation;
+    programData::rot.toMatrix4x4(rota);
+    
 //    mult_matrix( t, s, modelView );
 
 //	rotation_matrix( 1.0f, 0.0f, 0.0f, programData::rotationX, rx );
@@ -130,27 +132,63 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
 //	rotation_matrix( 0.0f, 0.0f, 1.0f, programData::rotationZ, rz );
    // printf("rotx = %f rot y = %f rotz= %f\n", programData::rotationX, programData::rotationY,programData::rotationZ );
 	
-    Matrix4x4 aux;
-    modelview.toMatrix4x4(aux);
+    
+    cameraT = mat4::LookAt(vec3(0, 0, 120), vec3(0 , 0, 0), vec3(0, 1, 0));
+    cameraT.toMatrix4x4(look);
 
+    
+    modelview = modelview * cameraT;
+    mult_matrix( look, rota, other);
+
+    
+    printf("other\n");
+    for (int i = 0; i<4; i++) {
+        for (int j=0; j<4; j++) {
+            printf("  %f", look[i*4+j]);
+        }
+        printf("\n");
+        
+    }
+    
+    printf("modelView\n");
+    for (int i = 0; i<4; i++) {
+        for (int j=0; j<4; j++) {
+            printf("  %f", cameraT.Pointer()[i*4+j]);
+        }
+        printf("\n");
+        
+    }
+
+    
+    Matrix4x4 projectionOld;
+    //rotationX++;
+    printf("programData::radius %f \n", programData::radius);
+    //ortho(programData::radius+1, -1000, 2000, projectionOld);
+    
+    
+    projection = mat4::Ortho(-programData::radius, programData::radius, -programData::radius, programData::radius, -600.1, 20000);
+    //projection = mat4::Frustum(-programData::radius/2, programData::radius/2, -programData::radius/2, programData::radius/2, 0.1, 1000);    //printf("radius = %f\n", radius);
+    //printf("Rotaxion x = %f, y=%f, z=%f \n", rotationX, rotationY, rotationZ);
+    
+    //frustum_matrix(-programData::radius, programData::radius, -programData::radius, programData::radius, 5, programData::radius * 2 +10, projectionOld);
+    //perspective_projection_matrix( 60.0, 1.0, 0.1, 1000.0, projectionOld );
+    //perspective( 60.0, 1.0, programData::radius, 1000.0, projectionOld );
+    modelview.toMatrix4x4(aux);
+    projection.toMatrix4x4(aux2);
+    
+    invert_matrix( other, modelview_inv );
+    
+    mult_matrix( aux2, other, aux3);
+
+    modelview = modelview * projection;
+    
+    
 //	mult_matrix( aux, rx, aux );
 //	mult_matrix( aux, ry, aux );
 //	mult_matrix( aux, rz, aux );
 
-	invert_matrix( aux, modelview_inv );
     
-    
-	Matrix4x4 projectionOld;
-    //rotationX++;
-    printf("programData::radius %f \n", programData::radius);
-    ortho(programData::radius+1, -1000, 2000, projectionOld);
-    
-    
-    projection = mat4::Ortho(-programData::radius, programData::radius, -programData::radius, programData::radius, 0.1, 2000);
-    
-    //printf("radius = %f\n", radius);
-    //printf("Rotaxion x = %f, y=%f, z=%f \n", rotationX, rotationY, rotationZ);
-    
+
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); checkGLError( AT );
     
 	// enable blending
@@ -159,25 +197,9 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
     
 	// set culling properties
 	glFrontFace( GL_CCW );
-	glCullFace( GL_BACK );/*
-    printf("aux\n");
-    for (int i = 0; i<4; i++) {
-        for (int j=0; j<4; j++) {
-            printf("  %f", aux[i*4+j]);
-        }
-        printf("\n");
-
-    }
-
-    printf("modelView\n");
-    for (int i = 0; i<4; i++) {
-        for (int j=0; j<4; j++) {
-            printf("  %f", modelview.Pointer()[i*4+j]);
-        }
-        printf("\n");
-        
-    }
-*/
+	glCullFace( GL_BACK );
+    
+     
     printf("llege a los draw\n");
     if(programData::debug)
         // draw wireframe sphere
@@ -187,7 +209,7 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
         GLuint glsl_program = programData::programs.wireframe_glsl_program;
         glUseProgram( glsl_program ); checkGLError( AT );
                 
-        glUniformMatrix4fv( programData::shaderHandle.wire_modelview, 1, GL_FALSE, aux ); checkGLError( AT );
+        glUniformMatrix4fv( programData::shaderHandle.wire_modelview, 1, GL_FALSE, modelview.Pointer() ); checkGLError( AT );
         glUniformMatrix4fv( programData::shaderHandle.wire_projection, 1, GL_FALSE, projection.Pointer() ); checkGLError( AT );
             drawWire(drawable);
  	}
@@ -201,7 +223,7 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
 		glUseProgram( glsl_program ); checkGLError( AT );
                 
                 
-		glUniformMatrix4fv( programData::shaderHandle.u_modelview, 1, GL_FALSE, aux ); checkGLError( AT );
+		glUniformMatrix4fv( programData::shaderHandle.u_modelview, 1, GL_FALSE, aux3 ); checkGLError( AT );
 		glUniformMatrix4fv( programData::shaderHandle.u_modelview_inv, 1, GL_FALSE, modelview_inv ); checkGLError( AT );
 		glUniformMatrix4fv( programData::shaderHandle.u_projection, 1, GL_FALSE, projection.Pointer() ); checkGLError( AT );
         drawSurface(drawable);

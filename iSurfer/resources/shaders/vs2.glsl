@@ -6,5 +6,5 @@ attribute vec4 pos;
 
 void main()
 {
-	gl_Position = projectionMatrix * modelviewMatrix * pos;
+	gl_Position = modelviewMatrix * pos;
 }

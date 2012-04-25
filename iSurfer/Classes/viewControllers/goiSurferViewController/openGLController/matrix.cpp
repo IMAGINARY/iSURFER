@@ -76,6 +76,23 @@ void perspective_projection_matrix( float fovy, float aspect, float zNear, float
 	frustum_matrix( xmin, xmax, ymin, ymax, zNear, zFar, result );
 }
 
+float getTranslation(float fovy, float radius){
+    return radius / tan(fovy * M_PI / 360.0);
+	
+}
+
+void perspective( float fovy, float aspect, float radius, float zFar, Matrix4x4 result )
+{
+    
+	double xmin, xmax, ymin, ymax = radius,  zNear;
+    zNear = ymax / tan(fovy * M_PI / 360.0);
+	ymin = -ymax;
+	xmin = ymin * aspect;
+	xmax = ymax * aspect;
+	frustum_matrix( xmin, xmax, ymin, ymax, zNear, zFar, result );
+}
+
+
 void frustum_matrix( float left, float right, float bottom, float top, float nearval, float farval, Matrix4x4 result )
 {
    float x, y, a, b, c, d;

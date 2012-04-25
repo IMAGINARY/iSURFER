@@ -109,6 +109,32 @@ struct Matrix4 {
         m.x.w = 0; m.y.w = 0; m.z.w = 0; m.w.w = 1;
         return m;
     }
+    
+    static Matrix4<T> LookAt(vec3 eye, vec3 target, vec3 up)
+    {
+        vec3 zaxis = (target - eye).Normalized();    // The "look-at" vector.
+
+        vec3  xaxis = (up.Cross(zaxis)).Normalized();// The "right" vector.
+        vec3  yaxis = zaxis.Cross(xaxis);     // The "up" vector.
+        
+        
+        Matrix4 m, translation;
+        m.x.x = xaxis.x; m.x.y = yaxis.x; m.x.z = zaxis.x; m.w.x = 0;
+        m.y.x = xaxis.y; m.y.y = yaxis.y; m.y.z = zaxis.y; m.w.y = 0;
+        m.z.x = xaxis.z; m.z.y = yaxis.z; m.z.z = zaxis.z; m.w.z = 0;
+        m.x.w = 0;       m.y.w = 0;       m.z.w = 0;       m.w.w = 1;
+
+           
+        translation = Translate(-eye.x, -eye.y,-eye.z);
+  
+            // Create a 4x4 translation matrix by negating the eye position.
+            // Combine the orientation and translation to compute the view matrix
+        //http://3dgep.com/?p=1700
+        return ( translation * m );
+    
+
+    }
+    
     Matrix4& operator *= (const Matrix4& b)
     {
         Matrix4 m = *this * b;

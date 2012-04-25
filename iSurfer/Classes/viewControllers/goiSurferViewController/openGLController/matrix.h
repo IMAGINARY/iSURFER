@@ -12,5 +12,7 @@ void frustum_matrix( float xmin, float xmax, float ymin, float ymax, float zNear
 void mult_matrix( const Matrix4x4 m1, const Matrix4x4 m2, Matrix4x4 result );
 bool invert_matrix( const Matrix4x4 m, Matrix4x4 result );
 void ortho( float radius, float nearval, float farval, Matrix4x4 result );
+void perspective( float fovy, float aspect, float radius, float zFar, Matrix4x4 result );
+float getTranslation(float fovy, float radius);
 
 #endif

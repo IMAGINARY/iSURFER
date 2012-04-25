@@ -1,6 +1,6 @@
 
 #define DEGREE 
-#define EPSILON 0.0
+#define EPSILON 0.0001
 #define DELTA 0.0000001
 #define SIZE DEGREE+1 
 
@@ -35,8 +35,8 @@ highp float power( highp float base, int exp );
 
 polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir, in highp vec2 trace_interval )
 {
-	polynomial x = create_poly_1( eye.x, dir.x );
-	polynomial y = create_poly_1( eye.y, dir.y );
+	polynomial y = create_poly_1( eye.x, dir.x );
+	polynomial x = create_poly_1( eye.y, dir.y );
 	polynomial z = create_poly_1( eye.z, dir.z );
 	
 	return  ;
@@ -361,9 +361,9 @@ polynomial shiftStretch( const in polynomial p, highp float shift, highp float s
 
 highp float first_root_in__descartes( const in polynomial p, highp float epsilon, inout polynomial tmpCoeffs )
 {
-    reverseShift1( p, tmpCoeffs );
+    //reverseShift1( p, tmpCoeffs );
+    tmpCoeffs = p;
     int sign_changes = has_sign_changes( tmpCoeffs );
-    int id = 0;
     highp float size = 1.0;
     highp float result = -1.0;
     while( true )
@@ -371,37 +371,42 @@ highp float first_root_in__descartes( const in polynomial p, highp float epsilon
         if( sign_changes > 1 && size > epsilon )
         {
             // go deeper on left side
-            id *= 2;
             size /= 2.0;
         }
-    else if( sign_changes == 0 )
-    {
-        // go right
-        while( ( id / 2 ) * 2 != id )
-        {
-            id /= 2;
-            size *= 2.0;
+        else if( sign_changes == 0 )
+        {   
+            break;
         }
-        id++;
-    }
-    else if( sign_changes >= 1 ) // will also be called, if sign_changes > 1, but size <= epsilon
-    {
-        // root isolated -> refine
-        result = bisect_old( p, size * float( id ), size * float( id + 1 ), epsilon );
-        break;
-    }
-    else if( sign_changes == -1 )
+ /* no entiendo por que esto, dejo lo de arriba;
+        else if( sign_changes == 0 )
         {
-        result = size * float( id );
-        break;
-    }
+            // go right
+            while( ( id / 2 ) * 2 != id )
+            {
+                id /= 2;
+                size *= 2.0;
+            }
+            id++;
+        }
+  */
+        else if( sign_changes >= 1 ) // will also be called, if sign_changes > 1, but size <= epsilon
+        {
+            // root isolated -> refine
+            result = bisect_old( p, 0.0, size, epsilon );
+            break;
+        }
+        else if( sign_changes == -1 )
+        {
+            result = 0.0;
+            break;
+        }
 
-    if( size >= 1.0 ) // we would visit the root interval twice -> abort
-        break;
+        if( size >= 1.0 ) // we would visit the root interval twice -> abort
+            break;
 
-    shiftStretch( p, size * float( id ), size, tmpCoeffs );
-    reverseShift1( tmpCoeffs, tmpCoeffs );
-    sign_changes = has_sign_changes( tmpCoeffs );
+        shiftStretch( p, 0.0, size, tmpCoeffs );
+        //reverseShift1( tmpCoeffs, tmpCoeffs );
+        sign_changes = has_sign_changes( tmpCoeffs );
     }
     return result;
 }
@@ -410,7 +415,7 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
 {
     //shiftStretch( p, min, max - min, p );
     
-#if DEGREE > 3
+#if DEGREE == 12
 //min = min -EPSILON;
 //max = max + EPSILON;
     //
@@ -425,7 +430,7 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
     //return x0;
 
     if( x0 >= 0.0 )
-        return (max-min)*x0+min; // move root back to original interval
+        return x0;//(max-min)*x0+min; // move root back to original interval
     else    
         discard; // no root in [0,1]
     /*
@@ -814,20 +819,29 @@ void main( void )
 	// setup ray(s)
 	highp float tmin, tmax, min, max;
 	clip_to_unit_sphere( varying_eye, varying_dir, tmin, tmax );
+    //gl_FragColor = vec4( 0.0, 1.0, 0.0 , 1.0 );
+
+//    if(tmax < 10.0)
+  //      gl_FragColor = vec4( 0.0, 0.0, 1.0 , 1.0 ); 
+    
 	highp float tcenter = ( tmin + tmax ) * 0.5;
+    //Con esto ponemos el 0 en el medio del grafico.
 	highp vec3 eye = varying_eye + tcenter * varying_dir;
 	highp vec3 dir = varying_dir;
 	tmin = tmin - tcenter;
 	tmax = tmax - tcenter;
     // setup polynomial
 	polynomial p_ray = calc_coefficients( eye, dir, vec2( tmin, tmax ) );
-    shiftStretch( p_ray, tmin, tmax - tmin, p_ray );
+    highp float scale = tmax-tmin;
+    //highp float scale = 1000.0;
+
+    shiftStretch( p_ray, tmin, scale , p_ray );
     min = tmin;
     max = tmax;
-    tmin = (tmin - min) / (max-min);
+    tmin = 0.0;//(tmin - min) / (max-min);
 //    if(tmin == 0.0)
 //        discard;
-	tmax = (tmax - min) / (max-min);
+	tmax = (tmax - min) / scale;
     
     //gl_FragColor = vec4( clamp( dir, 0.0, 1.0 ), 0.5 );
 

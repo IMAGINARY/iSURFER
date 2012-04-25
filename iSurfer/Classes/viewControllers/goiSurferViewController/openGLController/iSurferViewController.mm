@@ -227,7 +227,7 @@ enum {
         //Gupf
             //NSString *formula = @"x^2+y^2+z";  //Bien    
         //Kegel
-            //NSString *formula = @"x^2+y^2-z^2";//Error de calculo en zoom 3  
+            NSString *formula = @"x^2+y^2-z^2";//Error de calculo en zoom 3  
         //Kreuz
             //NSString *formula = @"x*y*z";  //Parece mal 50%
         //Spindel
@@ -235,10 +235,10 @@ enum {
         //Ufo
             //NSString *formula = @"z^2-x^2-y^2-10";  //Bien
         //Calypso 
-           // NSString *formula = @"x^2+y^2*z-z^2"; // colores Raros
+            //NSString *formula = @"x^2+y^2*z-z^2"; // colores Raros
 
         //Cayley Cubic
-            NSString *formula = @"x^2+y^2+z^2+2*x*y*z-1"; //Maso 
+            //NSString *formula = @"x^2+y^2+z^2+2*x*y*z-1"; //Maso 
 
             //NSString *formula = @"x^2+y^2+z*x+y";
     
@@ -247,7 +247,7 @@ enum {
 
     
     //Whitney
-    //NSString *formula = @"x^2-y^2*z"; // Este parece andar 80 %
+        //NSString *formula = @"x^2-y^2*z"; // Este parece andar 80 %
 
     
     //Grado 3
@@ -579,6 +579,8 @@ ivec2 oldLocation;
     w = vec4(transform.m14, transform.m24, transform.m34, transform.m44);
     programData::rot = mat4::fromCATransform3D(xvec, yvec, z, w);
     
+    
+    /*
     printf("loation %f %f" , location.x, location.y);
 
     
@@ -599,8 +601,9 @@ ivec2 oldLocation;
         
     }
 
-    
+    */
 	NSLog(@"x: %.2f    y:%.2f", x , y );
+     
     //NSLog(@"calc x: %.2f  calcy: %.2f", x * M_PI / 180, y * M_PI / 180 );
 
 	[self drawFrame];
