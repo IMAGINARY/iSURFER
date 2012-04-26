@@ -11,7 +11,7 @@
 
 @implementation Gallery
 //--------------------------------------------------------------------------------------------------------
-@synthesize galleryName, galleryDescription,  editable, galID, thumbNail;
+@synthesize galleryName, galleryDescription,  editable, galID, thumbNail, saved;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) init{	
@@ -22,6 +22,7 @@
 		editable = YES;
 		galID = -1;
 		thumbNail = nil;
+        self.saved = NO;
 	}
 	return self;
 }

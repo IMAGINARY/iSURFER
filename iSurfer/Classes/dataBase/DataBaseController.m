@@ -155,6 +155,8 @@
 -(void)populateGallery:(Gallery*)gallery{
 	
 	FMResultSet *rs = [db executeQuery:@"SELECT  * FROM algebraicsurfaces WHERE gallery_id = ?", [NSNumber numberWithInt:gallery.galID]];
+    NSString * str = [NSString stringWithFormat:@"SELECT  * FROM algebraicsurfaces WHERE gallery_id = %d", [NSNumber numberWithInt:gallery.galID]];
+    NSLog(@"%@", str);
 	AlgebraicSurface* s = nil;
 	NSMutableArray* surfacesArray = [[NSMutableArray alloc]init];
 

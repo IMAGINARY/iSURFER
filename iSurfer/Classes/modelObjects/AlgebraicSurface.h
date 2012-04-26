@@ -14,12 +14,15 @@
 	NSString* surfaceName;
 	NSString* surfaceDescription;
 	NSString* equation;
+    BOOL saved;
 }
 
 @property(nonatomic, retain) NSString* equation;
 @property(nonatomic, retain) UIImage* surfaceImage;
 @property(nonatomic, retain) NSString* surfaceName;
 @property(nonatomic, retain) NSString* surfaceDescription;
+
+@property(nonatomic, assign)     BOOL saved;
 
 
 @end

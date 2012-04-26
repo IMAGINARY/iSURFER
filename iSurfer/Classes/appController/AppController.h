@@ -35,7 +35,6 @@
 	
 	NSMutableArray* galleriesArray;
     
-    int unalterableGalleries;
 }
 //--------------------------------------------------------------------------------------------------------
 @property(nonatomic, retain)	NSMutableArray* galleriesArray;

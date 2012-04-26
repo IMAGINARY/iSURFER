@@ -182,10 +182,10 @@
 //--------------------------------------------------------------------------------------------------------
 
 -(BOOL)tableView:(UITableView*)tableView canEditRowAtIndexPath:(NSIndexPath*)indexPath {
-	if( ![[appcontroller getGallery:[indexPath row]]editable] && eddition == DELETE) {
-		return NO;
+	if( [[appcontroller getGallery:[indexPath row]]editable] ) {
+		return YES;
 	}
-	return YES;
+	return NO;
 }
 //--------------------------------------------------------------------------------------------------------
 

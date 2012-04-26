@@ -93,19 +93,18 @@
 		gal4.galleryName = @"galery4";
 		gal4.galleryDescription = @"description4";
 		gal4.editable = YES;
-*/
+
         [galleriesArray addObject:gal1];
         [galleriesArray addObject:gal2];
         
-        
-        unalterableGalleries = 2;
+        */
         
         [galleriesArray addObjectsFromArray:[dataBase getGalleries]];
 
-		[surface release];
-		[surface2 release];
-		[gal1 release];
-		[gal2 release];
+        for( Gallery* g in galleriesArray ){
+            NSLog(@"%@   editable : %d", g.galleryName, g.editable );
+        }
+    
 			
         NSLog(@"jejeje %@",  [Language get:@"scorekey" alter:nil]);
 
@@ -173,11 +172,9 @@
 //--------------------------------------------------------------------------------------------------------
 
 -(void)addGallery:(Gallery*)gallery atIndex:(int) index{
-	if( index == 0 ){
-		[self.galleriesArray addObject:gallery];
-	}else{
-		[self.galleriesArray insertObject:gallery atIndex:index];
-	}
+	[self.galleriesArray addObject:gallery];
+	//	[self.galleriesArray insertObject:gallery atIndex:index];
+	
 	[dataBase saveGallery:gallery];
 }
 //--------------------------------------------------------------------------------------------------------
@@ -194,19 +191,16 @@
 
 -(void)accesGallery:(int)row{
 	Gallery* g = [self.galleriesArray objectAtIndex:row];
-    if( g.editable ){
-        [dataBase populateGallery:g];
-    }
+ 
+    [dataBase populateGallery:g];
+    
 	GalleryViewController* gallery = [[GalleryViewController alloc]initWithAppController:self andGallery:g];
 	[self.navcontroller pushViewController:gallery animated:YES];
 	[gallery release];
 }
 //--------------------------------------------------------------------------------------------------------
 -(Gallery*)getGallery:(int)index{
-    if( index + unalterableGalleries < [galleriesArray count] ){
-        return [self.galleriesArray objectAtIndex:index + unalterableGalleries];
-    }
-    return NULL;
+        return [self.galleriesArray objectAtIndex:index];    
 }
 //--------------------------------------------------------------------------------------------------------
 -(int)getGalleriesCount{
@@ -221,9 +215,9 @@
 //--------------------------------------------------------------------------------------------------------
 
 -(void)addAlgebraicSurface:(AlgebraicSurface*)surface atGalleryIndex:(int)index{
-	Gallery* g = [self.galleriesArray objectAtIndex:index + unalterableGalleries];
+	Gallery* g = [self.galleriesArray objectAtIndex:index];
 	[g addAlgebraicSurface:surface];
-    [dataBase saveSurface:surface toGallery:[self.galleriesArray objectAtIndex:index + unalterableGalleries]];
+    [dataBase saveSurface:surface toGallery:[self.galleriesArray objectAtIndex:index]];
 }
 //--------------------------------------------------------------------------------------------------------
 

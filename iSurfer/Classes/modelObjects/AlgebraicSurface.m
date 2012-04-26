@@ -11,7 +11,7 @@
 
 @implementation AlgebraicSurface
 //--------------------------------------------------------------------------------------------------------
-@synthesize surfaceImage, surfaceName, surfaceDescription, equation;
+@synthesize surfaceImage, surfaceName, surfaceDescription, equation, saved;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) init{	
@@ -19,6 +19,7 @@
 		self.surfaceName = @"";
 		self.surfaceDescription = @"";
 		self.surfaceImage = nil;
+        self.saved = NO;
 	}
 	return self;
 }

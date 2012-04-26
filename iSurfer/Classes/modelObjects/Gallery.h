@@ -16,6 +16,7 @@
 	NSString* galleryDescription;
 	NSMutableArray* surfacesArray;
 	BOOL editable;
+    BOOL saved;
 	
 }
 //--------------------------------------------------------------------------------------------------------
@@ -24,6 +25,8 @@
 @property(nonatomic, retain)	UIImage * thumbNail;
 @property(nonatomic, retain)	NSString* galleryDescription;
 @property(nonatomic, assign)	int galID;
+@property(nonatomic, assign)     BOOL saved;
+
 //--------------------------------------------------------------------------------------------------------
 -(void)addAlgebraicSurface:(AlgebraicSurface*)surface;
 -(void)removeSurfaceAtIndex:(int)index;
