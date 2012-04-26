@@ -14,5 +14,8 @@ bool invert_matrix( const Matrix4x4 m, Matrix4x4 result );
 void ortho( float radius, float nearval, float farval, Matrix4x4 result );
 void perspective( float fovy, float aspect, float radius, float zFar, Matrix4x4 result );
 float getTranslation(float fovy, float radius);
+void matrixRotateZ(float radians, Matrix4x4 matrix);
+void matrixRotateX(float radians, Matrix4x4 matrix);
+void matrixRotateY(float radians, Matrix4x4 matrix);
 
 #endif

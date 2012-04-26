@@ -10,6 +10,42 @@ void identity_matrix( Matrix4x4 matrix )
     matrix[11] = matrix[12] = matrix[13] = matrix[14] = 0.0;
 }
 
+void matrixRotateX(float radians, Matrix4x4 matrix)
+{
+    
+    identity_matrix(matrix);
+    
+    // Rotate X formula.
+    matrix[5] = cosf(radians);
+    matrix[6] = -sinf(radians);
+    matrix[9] = -matrix[6];
+    matrix[10] = matrix[5];
+}
+
+void matrixRotateY(float radians, Matrix4x4 matrix)
+{
+    
+    identity_matrix(matrix);
+    
+    // Rotate Y formula.
+    matrix[0] = cosf(radians);
+    matrix[2] = sinf(radians);
+    matrix[8] = -matrix[2];
+    matrix[10] = matrix[0];
+}
+
+void matrixRotateZ(float radians, Matrix4x4 matrix)
+{
+    
+    identity_matrix(matrix);
+    
+    // Rotate Z formula.
+    matrix[0] = cosf(radians);
+    matrix[1] = sinf(radians);
+    matrix[4] = -matrix[1];
+    matrix[5] = matrix[0];
+}
+
 void rotation_matrix( float axis_x, float axis_y, float axis_z, float angle, Matrix4x4 matrix )
 {
     float mag = sqrtf((axis_x*axis_x) + (axis_y*axis_y) + (axis_z*axis_z));

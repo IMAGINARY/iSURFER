@@ -129,15 +129,25 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
 
 //	rotation_matrix( 1.0f, 0.0f, 0.0f, programData::rotationX, rx );
 //	rotation_matrix( 0.0f, 1.0f, 0.0f, programData::rotationY, ry );
-//	rotation_matrix( 0.0f, 0.0f, 1.0f, programData::rotationZ, rz );
+	rotation_matrix( 0.0f, 0.0f, 1.0f, programData::rotationZ, rz );
+    //matrixRotateX( programData::rotationX,rx);
+    matrixRotateY( programData::rotationY,ry);
+    
+    //matrixRotateZ( programData::rotationZ,rz);
    // printf("rotx = %f rot y = %f rotz= %f\n", programData::rotationX, programData::rotationY,programData::rotationZ );
 	
+
     
     cameraT = mat4::LookAt(vec3(0, 0, 120), vec3(0 , 0, 0), vec3(0, 1, 0));
     cameraT.toMatrix4x4(look);
 
     
     modelview = modelview * cameraT;
+    
+    //	mult_matrix( look, rx, other );
+	//mult_matrix( other, ry, other );
+    //	mult_matrix( other, rz, other );
+
     mult_matrix( look, rota, other);
 
     
@@ -183,9 +193,6 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
     modelview = modelview * projection;
     
     
-//	mult_matrix( aux, rx, aux );
-//	mult_matrix( aux, ry, aux );
-//	mult_matrix( aux, rz, aux );
 
     
 

@@ -57,7 +57,6 @@
 		8B891CB313BA992B00EE4BC7 /* Imaginary lemon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8B891CB213BA992B00EE4BC7 /* Imaginary lemon.jpg */; };
 		8B9114CD14BF849D00BEAF27 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B9114CB14BF849D00BEAF27 /* Localizable.strings */; };
 		8B9114D114BF862600BEAF27 /* Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9114D014BF862600BEAF27 /* Language.m */; };
-		8B9114D314BF87B800BEAF27 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B9114CB14BF849D00BEAF27 /* Localizable.strings */; };
 		8B9114D714BF946C00BEAF27 /* lemon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B9114D514BF946C00BEAF27 /* lemon.png */; };
 		8B9114D814BF946C00BEAF27 /* nepali.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B9114D614BF946C00BEAF27 /* nepali.png */; };
 		8B9614E3144B1B040015D292 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9614DD144B1B040015D292 /* FMDatabase.m */; };
@@ -655,7 +654,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "iSurfer" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -718,7 +717,6 @@
 				8BDD0B42142431D50043741C /* vs2.glsl in Resources */,
 				8B961619144B45670015D292 /* iSurferDB.db in Resources */,
 				8B9114CD14BF849D00BEAF27 /* Localizable.strings in Resources */,
-				8B9114D314BF87B800BEAF27 /* Localizable.strings in Resources */,
 				8B9114D714BF946C00BEAF27 /* lemon.png in Resources */,
 				8B9114D814BF946C00BEAF27 /* nepali.png in Resources */,
 			);

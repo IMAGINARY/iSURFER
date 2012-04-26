@@ -1,12 +1,8 @@
 
 #define DEGREE 
-#define EPSILON 0.0001
+#define EPSILON 0.1
 #define DELTA 0.0000001
 #define SIZE DEGREE+1 
-
-// polynomial of degree 2
-//#define DEGREE 2
-//#define EPSILON 0.0001
 
 uniform lowp vec3 Diffuse;
 
@@ -274,17 +270,20 @@ int positive_sign_changes( const in polynomial p )
     return signChanges;
 }
 
-highp float bisect_old( const in polynomial p, highp float epsilon, highp float lowerBound, highp float upperBound )
+highp float bisect_old( const in polynomial p, highp float lowerBound, highp float upperBound )
 {
+    highp float aux = min(lowerBound, upperBound);
+    upperBound = max(lowerBound , upperBound);
+    lowerBound = aux;
     highp float center = lowerBound;
     highp float old_center = upperBound;
     highp float fl = eval_p( p, lowerBound );
     highp float fu = eval_p( p, upperBound );
-
-    while( abs( upperBound - lowerBound ) > epsilon )
+    highp float delta = abs( upperBound - lowerBound ); 
+    while( delta > EPSILON )
     {
         old_center = center;
-        center = 0.5 * ( lowerBound + upperBound );
+        center = delta + lowerBound;
         highp float fc = eval_p( p, center );
 
         if( fc * fl < 0.0 )
@@ -294,6 +293,7 @@ highp float bisect_old( const in polynomial p, highp float epsilon, highp float 
         }
         else if( fc == 0.0 )
         {
+            return center;
             break;
         }
         else
@@ -301,8 +301,11 @@ highp float bisect_old( const in polynomial p, highp float epsilon, highp float 
             lowerBound = center;
             fl = fc;
         }
+        
+        delta = abs( upperBound - lowerBound ); 
+
     }
-    return ( upperBound + lowerBound ) * 0.5;
+    return center;
 }
 
 // checks for sign changes in the coefficient array of p
@@ -392,7 +395,7 @@ highp float first_root_in__descartes( const in polynomial p, highp float epsilon
         else if( sign_changes >= 1 ) // will also be called, if sign_changes > 1, but size <= epsilon
         {
             // root isolated -> refine
-            result = bisect_old( p, 0.0, size, epsilon );
+            result = bisect_old( p, 0.0, size );
             break;
         }
         else if( sign_changes == -1 )
@@ -411,28 +414,70 @@ highp float first_root_in__descartes( const in polynomial p, highp float epsilon
     return result;
 }
 
+
+highp float first_root_in__descartes1( const in polynomial p, inout polynomial tmpCoeffs )
+{
+    //reverseShift1( p, tmpCoeffs );
+    tmpCoeffs = p;
+    int sign_changes = has_sign_changes( tmpCoeffs );
+    highp float size = 1.0;
+    while( size > EPSILON )
+    {
+        if( sign_changes > 1 )
+        {
+            // go deeper on left side
+            size /= 2.0;
+        }
+        else if( sign_changes == 0 )
+        {   
+            discard;
+        }
+        else if( sign_changes == -1 )
+        {
+            return 0.0;
+        }
+
+        else if( sign_changes == 1 ) 
+        {
+            break;
+        }
+        
+        if( size >= 1.0 ) // we would visit the root interval twice -> abort
+            discard;
+        
+        shiftStretch( p, 0.0, size, tmpCoeffs );
+        sign_changes = has_sign_changes( tmpCoeffs );
+    }
+    
+    if( sign_changes >= 1 ) 
+    {
+        // root isolated -> refine
+        return bisect_old( p, 0.0, size );
+    }
+    discard;
+}
+
+
 highp float first_root_in( inout polynomial p, highp float min, highp float max )
 {
     //shiftStretch( p, min, max - min, p );
     
-#if DEGREE == 12
-//min = min -EPSILON;
+#if DEGREE > 3
+    //min = min -EPSILON;
 //max = max + EPSILON;
     //
     // move roots from [min,max] to [0,1]
-    polynomial p01;
-    shiftStretch( p, min, max - min, p01 );
+    //shiftStretch( p, min, max - min, p01 );
     //gl_FragColor = vec4( 1.0, 0.0, 0.0 , 1 );
 
     // find smallest root in [0,1], if any
-    highp float x0 = first_root_in__descartes( p01, EPSILON * ( max - min ), p );
+    polynomial p01 = p;
+
+    highp float x0 = first_root_in__descartes1( p01, p );
 
     //return x0;
 
-    if( x0 >= 0.0 )
         return x0;//(max-min)*x0+min; // move root back to original interval
-    else    
-        discard; // no root in [0,1]
     /*
 */
 

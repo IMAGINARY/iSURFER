@@ -1,11 +1,11 @@
-uniform mat4 modelviewMatrix;
-uniform mat4 modelviewMatrixInverse;
-uniform mat4 projectionMatrix;
+uniform highp mat4 modelviewMatrix;
+uniform highp mat4 modelviewMatrixInverse;
+uniform highp mat4 projectionMatrix;
 
 attribute vec4 pos;
 
-varying vec3 varying_eye;
-varying vec3 varying_dir;
+varying highp vec3 varying_eye;
+varying highp vec3 varying_dir;
 
 void main( void )
 {

@@ -227,7 +227,7 @@ enum {
         //Gupf
             //NSString *formula = @"x^2+y^2+z";  //Bien    
         //Kegel
-            NSString *formula = @"x^2+y^2-z^2";//Error de calculo en zoom 3  
+            //NSString *formula = @"x^2+y^2-z^2";//Error de calculo en zoom 3  
         //Kreuz
             //NSString *formula = @"x*y*z";  //Parece mal 50%
         //Spindel
@@ -266,7 +266,7 @@ enum {
     
     //Grado 4
         //Calyx
-            //NSString *formula = @"x^2+y^2*z^3-z^4";
+            NSString *formula = @"x^2+y^2*z^3-z^4";
     
             //NSString *formula = @"x^4-2";
     
