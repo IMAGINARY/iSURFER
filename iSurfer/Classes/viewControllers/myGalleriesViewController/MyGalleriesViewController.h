@@ -15,7 +15,6 @@
 	edditingOption eddition;
 	BOOL tableIsEdditing;
 	UIBarButtonItem* toolbar;
-	NSMutableArray* galleries;
 }
 
 @property(nonatomic, retain)	UIBarButtonItem* toolbar;

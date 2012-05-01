@@ -56,7 +56,7 @@
 		NSMutableArray* tmparray = [[NSMutableArray alloc]init];
 		[self setGalleriesArray:tmparray];
 		[tmparray release];
-		
+		/*
 		Gallery* gal1 = [[Gallery alloc]init];
 		gal1.galleryName =[Language get:@"gal1Name" alter:nil];
 		gal1.galleryDescription = @"description1";
@@ -83,21 +83,7 @@
 	
 		[gal1 addAlgebraicSurface:surface];
 		[gal2 addAlgebraicSurface:surface2];
-	
-/*		Gallery* gal3 = [[Gallery alloc]init];
-		gal3.galleryName = @"galery3";
-		gal3.galleryDescription = @"description3";
-		gal3.editable = YES;
-
-		Gallery* gal4 = [[Gallery alloc]init];
-		gal4.galleryName = @"galery4";
-		gal4.galleryDescription = @"description4";
-		gal4.editable = YES;
-
-        [galleriesArray addObject:gal1];
-        [galleriesArray addObject:gal2];
-        
-        */
+	*/
         
         [galleriesArray addObjectsFromArray:[dataBase getGalleries]];
 
@@ -172,7 +158,7 @@
 //--------------------------------------------------------------------------------------------------------
 
 -(void)addGallery:(Gallery*)gallery atIndex:(int) index{
-	[self.galleriesArray addObject:gallery];
+	[self.galleriesArray insertObject:gallery atIndex:index];
 	//	[self.galleriesArray insertObject:gallery atIndex:index];
 	
 	[dataBase saveGallery:gallery];
@@ -204,13 +190,7 @@
 }
 //--------------------------------------------------------------------------------------------------------
 -(int)getGalleriesCount{
-    int count = 0;
-    for(Gallery* g in galleriesArray){
-        if( g.editable == YES){
-            count++;
-        }
-    }
-    return count;
+       return [ galleriesArray count];
 }
 //--------------------------------------------------------------------------------------------------------
 

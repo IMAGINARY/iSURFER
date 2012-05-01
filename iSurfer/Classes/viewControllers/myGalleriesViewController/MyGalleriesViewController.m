@@ -60,7 +60,7 @@
 -(void)viewDidLoad{
 	[super viewDidLoad];
 	self.title = @"Galleries";
-	galleries = [appcontroller getGalleries];
+	[appcontroller getGalleries];
 		
 	UIBarButtonItem *moveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(moveGalleries)];
 	moveButton.tag = 1;
@@ -146,7 +146,7 @@
 			}
 		}
 	}
-	Gallery* gallery = [galleries objectAtIndex:[indexPath row]];
+	Gallery* gallery = [[appcontroller getGalleries] objectAtIndex:[indexPath row]];
 	[cell.galleryTitleLabel setText:gallery.galleryName];
 	[cell.galleryDetailLabel setText:gallery.galleryDescription];
 	if( !gallery.thumbNail  ){
@@ -207,7 +207,7 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath{
 	NSUInteger fromRow = [fromIndexPath row];
 	NSUInteger toRow = [toIndexPath row];
-	Gallery* gal = [[galleries objectAtIndex:fromRow] retain];
+	Gallery* gal = [[[appcontroller getGalleries] objectAtIndex:fromRow] retain];
 	[appcontroller  removeGalleryAtRow:fromRow];
 	[appcontroller   addGallery:gal atIndex:toRow];
 	[gal release];
@@ -218,6 +218,7 @@
 	NSUInteger row = [indexPath row];
 	[self.appcontroller removeGalleryAtRow:row];
 	[self.galleriesTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [galleriesTable reloadData];
 }
 //--------------------------------------------------------------------------------------------------------
 

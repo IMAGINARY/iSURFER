@@ -91,6 +91,9 @@
 
 -(void)saveGallery:(Gallery*)gallery{
 	NSLog(@"saveGallery");
+    if( gallery.saved ){
+        return;
+    }
 	[db beginTransaction];
 	NSData* imgdata = UIImagePNGRepresentation(gallery.thumbNail);
 
@@ -104,7 +107,7 @@
     if ([db hadError]) {
         NSLog(@"Err %d: %@", [db lastErrorCode], [db lastErrorMessage]);
     }
-	
+	gallery.saved = YES;
     [db commit];
 	
 }
@@ -125,6 +128,7 @@
 		g.galleryName = [rs stringForColumn:@"galleryname"];
 		g.galleryDescription =  [rs stringForColumn:@"description"];
 		g.editable = [rs intForColumn:@"editable"];
+        g.saved = YES;
 		
 		if( ![rs dataForColumn:@"thumbnail"] ){
 			g.thumbNail = [UIImage imageNamed:@"Imaginary lemon.jpg"];
