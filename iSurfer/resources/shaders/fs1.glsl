@@ -1,6 +1,6 @@
 
 #define DEGREE 
-#define EPSILON 0.1
+#define EPSILON 0.001
 #define DELTA 0.0000001
 #define SIZE DEGREE+1 
 
@@ -279,12 +279,13 @@ highp float bisect_old( const in polynomial p, highp float lowerBound, highp flo
     highp float old_center = upperBound;
     highp float fl = eval_p( p, lowerBound );
     highp float fu = eval_p( p, upperBound );
-    highp float delta = abs( upperBound - lowerBound ); 
+    highp float delta = abs( upperBound - lowerBound )/ 2.0;
+    highp float fc= 0.0;
     while( delta > EPSILON )
     {
         old_center = center;
         center = delta + lowerBound;
-        highp float fc = eval_p( p, center );
+        fc = eval_p( p, center );
 
         if( fc * fl < 0.0 )
         {
@@ -302,8 +303,48 @@ highp float bisect_old( const in polynomial p, highp float lowerBound, highp flo
             fl = fc;
         }
         
-        delta = abs( upperBound - lowerBound ); 
+        delta = abs( upperBound - lowerBound ) /2.0; 
 
+    }
+    //if(abs(fc) > 1.0)
+    //    discard;
+    return center;
+}
+
+highp float bisect_new( const in polynomial p, highp float lowerBound, highp float upperBound, highp float epsilon )
+{
+    highp float aux = min(lowerBound, upperBound);
+    upperBound = max(lowerBound , upperBound);
+    lowerBound = aux;
+    highp float center = lowerBound;
+    highp float old_center = upperBound;
+    highp float fl = eval_p( p, lowerBound );
+    highp float fu = eval_p( p, upperBound );
+    highp float delta = abs( upperBound - lowerBound ); 
+    while( delta > epsilon )
+    {
+        old_center = center;
+        center = delta + lowerBound;
+        highp float fc = eval_p( p, center );
+        
+        if( fc * fl < 0.0 )
+        {
+            upperBound = center;
+            fu = fc;
+        }
+        else if( fc == 0.0 )
+        {
+            return center;
+            break;
+        }
+        else
+        {
+            lowerBound = center;
+            fl = fc;
+        }
+        
+        delta = abs( upperBound - lowerBound ) /2.0; 
+        
     }
     return center;
 }
@@ -415,6 +456,62 @@ highp float first_root_in__descartes( const in polynomial p, highp float epsilon
 }
 
 
+
+highp float first_root_Descartes_Old( const in polynomial p, highp float epsilon, inout polynomial tmpCoeffs )
+{
+	reverseShift1( p, tmpCoeffs );
+	int sign_changes = has_sign_changes( tmpCoeffs );
+	int id = 0;
+	highp float size = 1.0;
+	highp float result = -1.0;
+	while( true )
+	{
+		if( sign_changes > 1 && size > epsilon )
+		{
+			// go deeper on left side
+			id *= 2;
+			size /= 2.0;
+		}
+		else if( sign_changes == 0 )
+		{
+            gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
+
+			// go right
+			while( ( id / 2 ) * 2 != id )
+			{
+                gl_FragColor = vec4( 1.0, 0.0, 0.0 , 0.5 );
+
+				id /= 2;
+				size *= 2.0;
+			}
+			id++;
+		}
+		else if( sign_changes >= 1 ) // will also be called, if sign_changes > 1, but size <= epsilon
+		{
+			// root isolated -> refine
+			//result = bisect( p, size * float( id ), size * float( id + 1 ), epsilon );
+            //result = bisect_new( p, 0.0, size , epsilon);
+            result = bisect_old( p, 0.0, size);
+
+            break;
+		}
+		else if( sign_changes == -1 )
+		{
+			result = size * float( id );
+			break;
+		}
+        
+		if( size >= 1.0 ) // we would visit the root interval twice -> abort
+			break;
+        
+		shiftStretch( p, size * float( id ), size, tmpCoeffs );
+		reverseShift1( tmpCoeffs, tmpCoeffs );
+		sign_changes = has_sign_changes( tmpCoeffs );
+	}
+	return result;
+}
+
+
 highp float first_root_in__descartes1( const in polynomial p, inout polynomial tmpCoeffs )
 {
     //reverseShift1( p, tmpCoeffs );
@@ -442,8 +539,8 @@ highp float first_root_in__descartes1( const in polynomial p, inout polynomial t
             break;
         }
         
-        if( size >= 1.0 ) // we would visit the root interval twice -> abort
-            discard;
+        //if( size >= 1.0 ) // we would visit the root interval twice -> abort
+        //    discard;
         
         shiftStretch( p, 0.0, size, tmpCoeffs );
         sign_changes = has_sign_changes( tmpCoeffs );
@@ -462,7 +559,7 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
 {
     //shiftStretch( p, min, max - min, p );
     
-#if DEGREE > 3
+#if DEGREE >= 3
     //min = min -EPSILON;
 //max = max + EPSILON;
     //
@@ -473,11 +570,17 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
     // find smallest root in [0,1], if any
     polynomial p01 = p;
 
-    highp float x0 = first_root_in__descartes1( p01, p );
+    //highp float x0 = first_root_in__descartes1( p01, p );
 
+    highp float x0 = first_root_Descartes_Old( p01, EPSILON * ( max - min ), p );
+    
     //return x0;
-
-        return x0;//(max-min)*x0+min; // move root back to original interval
+    //return (max-min)*x0+min; // move root back to original interval
+    
+    if( x0 >= 0.0 )
+        return (max-min)*x0+min; // move root back to original interval
+    else
+        discard; // no root in [0,1]
     /*
 */
 
@@ -880,17 +983,17 @@ void main( void )
     highp float scale = tmax-tmin;
     //highp float scale = 1000.0;
 
-    shiftStretch( p_ray, tmin, scale , p_ray );
-    min = tmin;
-    max = tmax;
-    tmin = 0.0;//(tmin - min) / (max-min);
+    //shiftStretch( p_ray, tmin, scale , p_ray );
+    //min = tmin;
+    //max = tmax;
+    //tmin = 0.0;//(tmin - min) / (max-min);
 //    if(tmin == 0.0)
 //        discard;
-	tmax = (tmax - min) / scale;
+	//tmax = (tmax - min) / scale;
     
     //gl_FragColor = vec4( clamp( dir, 0.0, 1.0 ), 0.5 );
 
-//gl_FragColor = vec4( 0.0, 0.0, 1.0 , 1.0 );
+gl_FragColor = vec4( 0.0, 0.0, 1.0 , 1.0 );
 
 	// find intersection of ray and surface
 	highp float root = first_root_in( p_ray, tmin, tmax );

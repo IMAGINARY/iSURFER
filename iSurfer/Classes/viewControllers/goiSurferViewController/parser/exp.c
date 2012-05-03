@@ -396,7 +396,7 @@ EvalDerivateExp( expressionT exp, char var) {
             return;
 
             
-        case '!': printCode("neg(", 1);  EvalDerivateExp(exp->right, var); printChar(',', 1); printCodeNum( MAX(EvalDegree(exp) -1 , 0) ,1); printChar(')',1); return;
+        case '!': printCode("neg(", 1);  EvalDerivateExp(exp->right, var); printChar(',', 1); printCodeInt( MAX(EvalDegree(exp) -1 , 0) ,1); printChar(')',1); return;
     }
     if(IsVariable(exp->valor))
     {
@@ -429,7 +429,7 @@ EvalExp( expressionT exp, int where) {
         case '*': printCode("mult(",where);  EvalExpMacro(exp->left, where); printChar(',',where); EvalExpMacro(exp->right, where);printChar(',',where);printCodeInt( EvalDegree(exp),where); printChar(')',where); return;
         case '-': printCode("sub(",where);  EvalExpMacro(exp->left, where); printChar(',',where); EvalExpMacro(exp->right, where); printChar(',',where);printCodeInt( EvalDegree(exp),where); printChar(')',where); return;
         case '^': printCode("power(",where);  EvalExpMacro(exp->left, where); printChar(',',where); EsNumero(exp->right->valor, &nro); printCodeInt(nro,where); printChar(',',where);printCodeInt(EvalDegree(exp->left),where);printChar(')',where); return;
-        case '!': printCode("neg(",where);  EvalExpMacro(exp->right, where); printChar(',',where); printCodeNum(EvalDegree(exp),where); printChar(')',where); return;
+        case '!': printCode("neg(",where);  EvalExpMacro(exp->right, where); printChar(',',where); printCodeInt(EvalDegree(exp),where); printChar(')',where); return;
     }
     if(IsVariable(exp->valor))
         printChar(exp->valor[0],where);

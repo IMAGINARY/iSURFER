@@ -59,11 +59,11 @@ void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const cha
     FreeTree(expt);
 
     glDeleteShader(programData::programs.alg_surface_glsl_program);
-//    printf("code\n");
-//	printf(getCode());
-//    printf("\nderivate\n");
-//    printf(getCodeDerivate());
-    //printf("\nderivate\n");
+    printf("code\n");
+	printf(getCode());
+    printf("\nderivate\n");
+    printf(getCodeDerivate());
+    printf("\nderivate\n");
     
 	//printf("\n");
 	//printf("Degree %d \n", EvalDegree(exp));

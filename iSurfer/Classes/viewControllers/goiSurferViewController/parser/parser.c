@@ -109,7 +109,7 @@ static expressionT ReadT(scannerADT scanner) {
         if(token[0]=='!'){
             exp= SubTree(token ,NULL, NULL);
             exp->right = ReadE(scanner, 0);
-        }
+        }else
         if(token[0]=='+' || token[0]=='^' || token[0]=='-' || token[0]=='*' || token[0]=='/'){
             Error("ParseExp: %s unexpected", token);
             free(token);

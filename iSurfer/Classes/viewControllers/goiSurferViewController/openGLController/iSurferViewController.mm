@@ -266,10 +266,18 @@ enum {
     
     //Grado 4
         //Calyx
-            NSString *formula = @"x^2+y^2*z^3-z^4";
+            //NSString *formula = @"x^2+y^2*z^3-z^4";
     
             //NSString *formula = @"x^4-2";
-    
+
+    //Grado 6
+        //Cube
+            //NSString *formula = @"x^6+y^6+z^6-19";  //Bien
+        //citrus 
+            //x2+z2 = y3(y-1)3
+            //NSString *formula = @"x^2+z^2-(!y)^3*(y-1)^3";
+    NSString *formula = @"x^2+z^2-((0-1)*y)^3*(y-1)^3";
+    //NSString *formula = @"(!y)*2";
     
    //iSurferDelegate::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[formula UTF8String]);
 	
