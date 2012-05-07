@@ -109,48 +109,52 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
     //printf("Display empieza \n");
 	// setup matrices
     //mat4 projection;
-	Matrix4x4 t, s, modelview_inv, modelView, rx, ry, rz;
+	Matrix4x4 t, s, modelview_inv, modelView;//, rx, ry, rz;
 	//Para el zoom parametrizar scale_matrix
 	//Para rotacion setear las variables de rotation_matrix
 	//Traslacion si es necesario usar la matriz
-    scale_matrix( 1, 1, 1, s );
-    Matrix4x4 aux, aux2, aux3, rota, look, other;
+    scale_matrix( 0.75, 1, 1, s );
+    Matrix4x4 project, rota, look;
     
 	//translation_matrix( 0.0, 0.0, -0 , t );
     
-    mat4 m_translation, modelview, projection, cameraT;
-    m_translation = mat4::Translate(0, 0,-programData::radius );//-10000);
-    Quaternion quaternion1;
-    mat4 rotation = quaternion1.ToMatrix();
-    modelview = programData::rot;//* m_translation;
+    //mat4 m_translation, projection;
+    //m_translation = mat4::Translate(0, 0,-programData::radius );//-10000);
+    //mat4 modelview;
+    //Quaternion quaternion1;
+    //mat4 rotation = quaternion1.ToMatrix();
+    
+    //modelview = programData::rot;//* m_translation;
+    //modelview.Scale(1,1,1);
     programData::rot.toMatrix4x4(rota);
     
 //    mult_matrix( t, s, modelView );
 
 //	rotation_matrix( 1.0f, 0.0f, 0.0f, programData::rotationX, rx );
 //	rotation_matrix( 0.0f, 1.0f, 0.0f, programData::rotationY, ry );
-	rotation_matrix( 0.0f, 0.0f, 1.0f, programData::rotationZ, rz );
+//	rotation_matrix( 0.0f, 0.0f, 1.0f, programData::rotationZ, rz );
     //matrixRotateX( programData::rotationX,rx);
-    matrixRotateY( programData::rotationY,ry);
+//    matrixRotateY( programData::rotationY,ry);
     
     //matrixRotateZ( programData::rotationZ,rz);
    // printf("rotx = %f rot y = %f rotz= %f\n", programData::rotationX, programData::rotationY,programData::rotationZ );
-	
+	mat4 cameraT, projection;
 
     
     cameraT = mat4::LookAt(vec3(0, 0, 120), vec3(0 , 0, 0), vec3(0, 1, 0));
     cameraT.toMatrix4x4(look);
 
     
-    modelview = modelview * cameraT;
+    //modelview = modelview * cameraT;
     
     //	mult_matrix( look, rx, other );
 	//mult_matrix( other, ry, other );
     //	mult_matrix( other, rz, other );
+    mult_matrix( look, s, look);
 
-    mult_matrix( look, rota, other);
-
+    mult_matrix( look, rota, modelView);
     
+   /* 
     printf("other\n");
     for (int i = 0; i<4; i++) {
         for (int j=0; j<4; j++) {
@@ -169,8 +173,8 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
         
     }
 
+    */
     
-    Matrix4x4 projectionOld;
     //rotationX++;
     printf("programData::radius %f \n", programData::radius);
     //ortho(programData::radius+1, -1000, 2000, projectionOld);
@@ -183,14 +187,14 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
     //frustum_matrix(-programData::radius, programData::radius, -programData::radius, programData::radius, 5, programData::radius * 2 +10, projectionOld);
     //perspective_projection_matrix( 60.0, 1.0, 0.1, 1000.0, projectionOld );
     //perspective( 60.0, 1.0, programData::radius, 1000.0, projectionOld );
-    modelview.toMatrix4x4(aux);
-    projection.toMatrix4x4(aux2);
+    //modelview.toMatrix4x4(aux);
+    projection.toMatrix4x4(project);
     
-    invert_matrix( other, modelview_inv );
+    invert_matrix( modelView, modelview_inv );
     
-    mult_matrix( aux2, other, aux3);
+    mult_matrix( project, modelView, modelView);
 
-    modelview = modelview * projection;
+    //modelview = modelview * projection;
     
     
 
@@ -216,8 +220,7 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
         GLuint glsl_program = programData::programs.wireframe_glsl_program;
         glUseProgram( glsl_program ); checkGLError( AT );
                 
-        glUniformMatrix4fv( programData::shaderHandle.wire_modelview, 1, GL_FALSE, modelview.Pointer() ); checkGLError( AT );
-        glUniformMatrix4fv( programData::shaderHandle.wire_projection, 1, GL_FALSE, projection.Pointer() ); checkGLError( AT );
+        glUniformMatrix4fv( programData::shaderHandle.wire_modelview, 1, GL_FALSE, modelView ); checkGLError( AT );
             drawWire(drawable);
  	}
 	// draw solid sphere, which is used for raycasting
@@ -230,10 +233,9 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
 		glUseProgram( glsl_program ); checkGLError( AT );
                 
                 
-		glUniformMatrix4fv( programData::shaderHandle.u_modelview, 1, GL_FALSE, aux3 ); checkGLError( AT );
+		glUniformMatrix4fv( programData::shaderHandle.u_modelview, 1, GL_FALSE, modelView ); checkGLError( AT );
 		glUniformMatrix4fv( programData::shaderHandle.u_modelview_inv, 1, GL_FALSE, modelview_inv ); checkGLError( AT );
-		glUniformMatrix4fv( programData::shaderHandle.u_projection, 1, GL_FALSE, projection.Pointer() ); checkGLError( AT );
-        drawSurface(drawable);
+	    drawSurface(drawable);
 
 	}
 	checkGLError( AT );

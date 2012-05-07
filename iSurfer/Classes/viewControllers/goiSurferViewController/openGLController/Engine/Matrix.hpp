@@ -106,7 +106,7 @@ struct Matrix4 {
         m.x.x = a; m.x.y = 0; m.x.z = 0; m.w.x = tx;
         m.y.x = 0; m.y.y = b; m.y.z = 0; m.w.y = ty;
         m.z.x = 0; m.z.y = 0; m.z.z = c; m.w.z = tz;
-        m.x.w = 0; m.y.w = 0; m.z.w = 0; m.w.w = 1;
+        m.x.w = 0; m.y.w = 0; m.z.w = 0; m.w.w = 1.0;
         return m;
     }
     
@@ -183,6 +183,17 @@ struct Matrix4 {
         m.w.x = 0; m.w.y = 0; m.w.z = 0; m.w.w = 1;
         return m;
     }
+    
+    static Matrix4<T> Scale(T x, T y, T z)
+    {
+        Matrix4 m;
+        m.x.x = x; m.x.y = 0; m.x.z = 0; m.x.w = 0;
+        m.y.x = 0; m.y.y = y; m.y.z = 0; m.y.w = 0;
+        m.z.x = 0; m.z.y = 0; m.z.z = z; m.z.w = 0;
+        m.w.x = 0; m.w.y = 0; m.w.z = 0; m.w.w = 1;
+        return m;
+    }
+
     static Matrix4<T> Rotate(T degrees)
     {
         T radians = degrees * 3.14159f / 180.0f;

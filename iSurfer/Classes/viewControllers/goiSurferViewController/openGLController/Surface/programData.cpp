@@ -94,7 +94,7 @@ void programData::setConstant()
     glUniform3fv(programData::shaderHandle.LightPosition, 1, lightPosition.Pointer());
     
     //vec4 lightPosition2(-1, 0, -200, 0);
-    vec4 lightPosition2(0, -programData::radius, programData::radius, 0);
+    vec4 lightPosition2(-1, 0.5, 1, 0);
 
     glUniform3fv(programData::shaderHandle.LightPosition2, 1, lightPosition2.Pointer());
 

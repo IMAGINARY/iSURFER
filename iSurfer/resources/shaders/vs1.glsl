@@ -1,6 +1,5 @@
 uniform highp mat4 modelviewMatrix;
 uniform highp mat4 modelviewMatrixInverse;
-uniform highp mat4 projectionMatrix;
 
 attribute vec4 pos;
 

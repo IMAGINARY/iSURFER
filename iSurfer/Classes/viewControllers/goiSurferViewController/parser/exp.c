@@ -277,6 +277,19 @@ EvalDerivateExpNoCode( expressionT exp, char var) {
         printCode("0.0",1);
 }
 
+void cleanDeriv(void ){
+    char *p = derivate;
+
+    while ( (p=strstr(p,"--")) != NULL )
+    {
+        //strcpy(p, "  ");
+        memcpy(p, "+ ", sizeof(char)* 2);
+        p++;
+    }
+    
+}
+
+
 void
 EvalDerivateNoCode( expressionT exp) {
     printCode("= vec3( ", 1);
@@ -286,6 +299,8 @@ EvalDerivateNoCode( expressionT exp) {
     printChar(',', 1);
     EvalDerivateExpNoCode( exp, 'z');
     printCode(");", 1);
+    
+    cleanDeriv();
 }
 
 void

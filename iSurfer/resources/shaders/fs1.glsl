@@ -153,14 +153,6 @@ polynomial power_1( polynomial p, int exp )
 	return res;
 }
 
-// Ersatz für fehlerhafte NVidia-pow-Funktion ...
-highp float power( highp float base, int exp )
-{
-	highp float res = 1.0;
-	for( int i = 0; i < exp; i++ )
-		res *= base;
-	return res;
-}
 
 highp float mypower(highp float base, highp float exp)
 {
@@ -195,82 +187,6 @@ highp float eval_p( const in polynomial p, highp float x )
 }
 
 highp float bisect( const in polynomial p, highp float lowerBound, highp float upperBound )
-{
-	highp float center = 0.0;
-	highp float old_center = upperBound;
-	highp float fl = eval_p( p, lowerBound );
-	highp float fu = eval_p( p, upperBound );
-    int depth = 0;
-    if(fl * fu > 0.0 )
-        discard;
-	while( abs(center - old_center) < EPSILON )
-	{
-
-        depth++;
-        if( depth > 10 )
-        {
-            gl_FragColor = vec4( 0.0, 1.0, 1.0 , 1 );
-
-            return 0.0;
-        }
-
-
-		old_center = center;
-		center = 0.5 * ( lowerBound + upperBound );
-		highp float fc = eval_p( p, center );
-		
-		if( fc * fl < 0.0 )
-		{
-			upperBound = center;
-			fu = fc;
-		}
-		else if( fc == 0.0 )
-		{
-			break;
-		}
-		else
-		{
-			lowerBound = center;
-			fl = fc;
-		}
-	}
-	return center;
-}
-
-
-void shift( const in polynomial p, highp float shift, out polynomial result )
-{
-    for( int i = 0; i < DEGREE + 1; i++ )
-        result.a[ i ] = p.a[ i ];
-
-    for( int i = 1; i <= DEGREE + 1; i++ )
-        for( int j = DEGREE - 1; j >= i - 1; j-- )
-            result.a[ j ] = result.a[ j ] + shift * result.a[ j + 1 ];    
-}
-
-// checks for sign changes in the coefficient array of p
-// returns -1 (root at x=0), 0 (no sign change), 1+ number of changes
-
-int positive_sign_changes( const in polynomial p )
-{
-    if( p.a[ 0 ] == 0.0 )
-        return -1;
-
-    int signChanges = 0;
-    highp float lastNonZeroCoeff = p.a[ 0 ];
-    for( int i = 1; i < DEGREE + 1; i++ )
-    {
-        if( p.a[ i ] != 0.0 )
-        {
-            if( ( p.a[ i ] > 0.0 && lastNonZeroCoeff < 0.0 ) || ( p.a[ i ] < 0.0 && lastNonZeroCoeff > 0.0 ) )
-                signChanges++;
-            lastNonZeroCoeff = p.a[ i ];
-        }
-    }
-    return signChanges;
-}
-
-highp float bisect_old( const in polynomial p, highp float lowerBound, highp float upperBound )
 {
     highp float aux = min(lowerBound, upperBound);
     upperBound = max(lowerBound , upperBound);
@@ -308,44 +224,6 @@ highp float bisect_old( const in polynomial p, highp float lowerBound, highp flo
     }
     //if(abs(fc) > 1.0)
     //    discard;
-    return center;
-}
-
-highp float bisect_new( const in polynomial p, highp float lowerBound, highp float upperBound, highp float epsilon )
-{
-    highp float aux = min(lowerBound, upperBound);
-    upperBound = max(lowerBound , upperBound);
-    lowerBound = aux;
-    highp float center = lowerBound;
-    highp float old_center = upperBound;
-    highp float fl = eval_p( p, lowerBound );
-    highp float fu = eval_p( p, upperBound );
-    highp float delta = abs( upperBound - lowerBound ); 
-    while( delta > epsilon )
-    {
-        old_center = center;
-        center = delta + lowerBound;
-        highp float fc = eval_p( p, center );
-        
-        if( fc * fl < 0.0 )
-        {
-            upperBound = center;
-            fu = fc;
-        }
-        else if( fc == 0.0 )
-        {
-            return center;
-            break;
-        }
-        else
-        {
-            lowerBound = center;
-            fl = fc;
-        }
-        
-        delta = abs( upperBound - lowerBound ) /2.0; 
-        
-    }
     return center;
 }
 
@@ -403,61 +281,7 @@ polynomial shiftStretch( const in polynomial p, highp float shift, highp float s
     return result;
 }
 
-highp float first_root_in__descartes( const in polynomial p, highp float epsilon, inout polynomial tmpCoeffs )
-{
-    //reverseShift1( p, tmpCoeffs );
-    tmpCoeffs = p;
-    int sign_changes = has_sign_changes( tmpCoeffs );
-    highp float size = 1.0;
-    highp float result = -1.0;
-    while( true )
-    {
-        if( sign_changes > 1 && size > epsilon )
-        {
-            // go deeper on left side
-            size /= 2.0;
-        }
-        else if( sign_changes == 0 )
-        {   
-            break;
-        }
- /* no entiendo por que esto, dejo lo de arriba;
-        else if( sign_changes == 0 )
-        {
-            // go right
-            while( ( id / 2 ) * 2 != id )
-            {
-                id /= 2;
-                size *= 2.0;
-            }
-            id++;
-        }
-  */
-        else if( sign_changes >= 1 ) // will also be called, if sign_changes > 1, but size <= epsilon
-        {
-            // root isolated -> refine
-            result = bisect_old( p, 0.0, size );
-            break;
-        }
-        else if( sign_changes == -1 )
-        {
-            result = 0.0;
-            break;
-        }
-
-        if( size >= 1.0 ) // we would visit the root interval twice -> abort
-            break;
-
-        shiftStretch( p, 0.0, size, tmpCoeffs );
-        //reverseShift1( tmpCoeffs, tmpCoeffs );
-        sign_changes = has_sign_changes( tmpCoeffs );
-    }
-    return result;
-}
-
-
-
-highp float first_root_Descartes_Old( const in polynomial p, highp float epsilon, inout polynomial tmpCoeffs )
+highp float first_root_Descartes( const in polynomial p, highp float epsilon, inout polynomial tmpCoeffs )
 {
 	reverseShift1( p, tmpCoeffs );
 	int sign_changes = has_sign_changes( tmpCoeffs );
@@ -491,7 +315,7 @@ highp float first_root_Descartes_Old( const in polynomial p, highp float epsilon
 			// root isolated -> refine
 			//result = bisect( p, size * float( id ), size * float( id + 1 ), epsilon );
             //result = bisect_new( p, 0.0, size , epsilon);
-            result = bisect_old( p, 0.0, size);
+            result = bisect( p, 0.0, size);
 
             break;
 		}
@@ -512,99 +336,21 @@ highp float first_root_Descartes_Old( const in polynomial p, highp float epsilon
 }
 
 
-highp float first_root_in__descartes1( const in polynomial p, inout polynomial tmpCoeffs )
-{
-    //reverseShift1( p, tmpCoeffs );
-    tmpCoeffs = p;
-    int sign_changes = has_sign_changes( tmpCoeffs );
-    highp float size = 1.0;
-    while( size > EPSILON )
-    {
-        if( sign_changes > 1 )
-        {
-            // go deeper on left side
-            size /= 2.0;
-        }
-        else if( sign_changes == 0 )
-        {   
-            discard;
-        }
-        else if( sign_changes == -1 )
-        {
-            return 0.0;
-        }
-
-        else if( sign_changes == 1 ) 
-        {
-            break;
-        }
-        
-        //if( size >= 1.0 ) // we would visit the root interval twice -> abort
-        //    discard;
-        
-        shiftStretch( p, 0.0, size, tmpCoeffs );
-        sign_changes = has_sign_changes( tmpCoeffs );
-    }
-    
-    if( sign_changes >= 1 ) 
-    {
-        // root isolated -> refine
-        return bisect_old( p, 0.0, size );
-    }
-    discard;
-}
-
-
 highp float first_root_in( inout polynomial p, highp float min, highp float max )
 {
-    //shiftStretch( p, min, max - min, p );
     
 #if DEGREE >= 3
-    //min = min -EPSILON;
-//max = max + EPSILON;
-    //
-    // move roots from [min,max] to [0,1]
-    //shiftStretch( p, min, max - min, p01 );
-    //gl_FragColor = vec4( 1.0, 0.0, 0.0 , 1 );
 
     // find smallest root in [0,1], if any
     polynomial p01 = p;
 
-    //highp float x0 = first_root_in__descartes1( p01, p );
-
-    highp float x0 = first_root_Descartes_Old( p01, EPSILON * ( max - min ), p );
     
-    //return x0;
-    //return (max-min)*x0+min; // move root back to original interval
+    highp float x0 = first_root_Descartes( p01, EPSILON * ( max - min ), p );
     
     if( x0 >= 0.0 )
         return (max-min)*x0+min; // move root back to original interval
     else
         discard; // no root in [0,1]
-    /*
-*/
-
-/*      //
-        // move roots from [min,max] to [0,1]
-        polynomial p01, p02;
-        shift( p, min, p01);
-        int roots1 = positive_sign_changes(p01);
-        if( roots1 == 0 )
-            return min;
-
-
-        shift( p, max, p02);
-        int roots2 = positive_sign_changes(p02);
-        if( roots2 == roots1 )
-            discard;
-
-        bisect( p, min, max);
-
-        gl_FragColor = vec4( 1.0, 0.0, 0.0 , 1 );
-
-        // find smallest root in [0,1], if any
-        return min; // move root back to original interval
- */
     
 #endif
     
@@ -875,6 +621,13 @@ void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point
     
         polynomial px, py ,pz;
     
+    //highp float aux1 = 2.000000*x+2.000000*z*0.0--y;
+    //*-y*-y*3.000000*y-1.000000*y-1.000000*0.0-0.0+y-1.000000*y-1.000000*y-1.000000*3.000000*-y*-y*-0.0;
+
+    //highp float aux2 = 2.000000*x*0.0+2.000000*z*0.0--y*-y*-y*3.000000*y-1.000000*y-1.000000*1.0-0.0+y-1.000000*y-1.000000*y-1.000000*3.000000*-y*-y*-1.0;
+
+    
+    //highp float aux3 = 2.000000*x*0.0+2.000000*z--y*-y*-y*3.000000*y-1.000000*y-1.000000*0.0-0.0+y-1.000000*y-1.000000*y-1.000000*3.000000*-y*-y*-0.0;
 
         highp vec3 N 
 
@@ -999,7 +752,7 @@ gl_FragColor = vec4( 0.0, 0.0, 1.0 , 1.0 );
 	highp float root = first_root_in( p_ray, tmin, tmax );
 //    if(abs(root - tmax) < 0.1 || abs(root - tmin) < 0.1)
 //        discard;
-    root = (max-min)*root+min;
+    //root = (max-min)*root+min;
 	highp vec3 hit_point = eye + root * dir;
 
 
