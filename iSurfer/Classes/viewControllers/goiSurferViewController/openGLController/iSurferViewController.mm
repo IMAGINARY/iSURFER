@@ -635,7 +635,7 @@ ivec2 oldLocation;
     }
 
     */
-	NSLog(@"x: %.2f    y:%.2f", x , y );
+	//NSLog(@"x: %.2f    y:%.2f", x , y );
      
     //NSLog(@"calc x: %.2f  calcy: %.2f", x * M_PI / 180, y * M_PI / 180 );
 

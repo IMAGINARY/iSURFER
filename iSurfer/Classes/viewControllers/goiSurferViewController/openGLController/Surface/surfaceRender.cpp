@@ -63,11 +63,8 @@ void drawWire(Drawable drawable){
 
     glBindBuffer(GL_ARRAY_BUFFER, drawable.VertexBuffer);
     glVertexAttribPointer(position, 3, GL_FLOAT, GL_FALSE, stride, 0);
-    printf("pase elements 1");
-    
-    glDrawElements(GL_LINES, drawable.IndexCount, GL_UNSIGNED_SHORT, 0);
-    printf("pase elements 1");
 
+    glDrawElements(GL_LINES, drawable.IndexCount, GL_UNSIGNED_SHORT, 0);
     
     
 }
@@ -81,9 +78,7 @@ void drawSurface(Drawable drawable){
     glBindBuffer(GL_ARRAY_BUFFER, drawable.VertexBuffer);
     glVertexAttribPointer(position, 3, GL_FLOAT, GL_FALSE, stride, 0);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, drawable.IndexBuffer);
-    printf("llege elements 2");
     glDrawElements(GL_TRIANGLES, drawable.IndexCount, GL_UNSIGNED_SHORT, 0);
-    printf("pase elements 2");
     
 }
 
@@ -176,7 +171,7 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
     */
     
     //rotationX++;
-    printf("programData::radius %f \n", programData::radius);
+    //printf("programData::radius %f \n", programData::radius);
     //ortho(programData::radius+1, -1000, 2000, projectionOld);
     
     
@@ -211,7 +206,7 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
 	glCullFace( GL_BACK );
     
      
-    printf("llege a los draw\n");
+    printf("drawing frame\n");
     if(programData::debug)
         // draw wireframe sphere
 	{
@@ -239,7 +234,7 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
 
 	}
 	checkGLError( AT );
-    printf("pase a los draw\n");
+    printf("frame drew\n");
     
     //printf("Termino Display\n");
     

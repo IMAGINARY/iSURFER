@@ -34,7 +34,7 @@ void printProgramInfoLog( GLuint obj );
 
 void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const char *fs2, const char *formula)
 {
-    printf("\n\n\n debug = %d \n\n\n", programData::debug);
+    //printf("\n\n\n debug = %d \n\n\n", programData::debug);
 
 	checkGLError( AT );
 	scannerADT scanner;
@@ -59,17 +59,17 @@ void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const cha
     FreeTree(expt);
 
     glDeleteShader(programData::programs.alg_surface_glsl_program);
-    printf("code\n");
+    //printf("code\n");
 	printf(getCode());
-    printf("\nderivate\n");
-    printf(getCodeDerivate());
-    printf("\nderivate\n");
+    //printf("\nderivate\n");
+    //printf(getCodeDerivate());
+    //printf("\nderivate\n");
     
 	//printf("\n");
 	//printf("Degree %d \n", EvalDegree(exp));
 	
 	GLuint aux = init( vs1/*"vs1.glsl"*/, fs1/*"fs1.glsl"*/ );
-    printf("aux val %d y alg_surface vale = %d\n\n", aux, programData::programs.alg_surface_glsl_program);
+    //printf("aux val %d y alg_surface vale = %d\n\n", aux, programData::programs.alg_surface_glsl_program);
     programData::programs.alg_surface_glsl_program = aux;
     
     if(programData::debug){
