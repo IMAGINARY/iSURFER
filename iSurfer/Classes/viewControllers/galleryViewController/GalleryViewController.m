@@ -96,7 +96,8 @@
 	if( ![gallery isEmpty]){
 		AlgebraicSurface* surface = [gallery getSurfaceAtIndex:0];
 		[self.surfaceImage setImage:[surface surfaceImage]];
-		[self.surfaceEquation setText:[surface equation]];	
+		[self.surfaceEquation setText:[surface equation]];
+        NSLog(@"En galleryviewController %@", surface.equation);
 		[super viewWillAppear:animated];
 	}
 }

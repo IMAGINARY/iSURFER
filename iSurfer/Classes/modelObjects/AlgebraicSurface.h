@@ -10,17 +10,21 @@
 
 
 @interface AlgebraicSurface : NSObject {
+    int surfaceID;
 	UIImage* surfaceImage;
 	NSString* surfaceName;
-	NSString* surfaceDescription;
+    NSString* briefDescription;
+	NSString* completeDescription;
 	NSString* equation;
     BOOL saved;
 }
 
+@property(nonatomic, assign) int surfaceID;
 @property(nonatomic, retain) NSString* equation;
 @property(nonatomic, retain) UIImage* surfaceImage;
 @property(nonatomic, retain) NSString* surfaceName;
-@property(nonatomic, retain) NSString* surfaceDescription;
+@property(nonatomic, retain) NSString* briefDescription;
+@property(nonatomic, retain) NSString* completeDescription;
 
 @property(nonatomic, assign)     BOOL saved;
 

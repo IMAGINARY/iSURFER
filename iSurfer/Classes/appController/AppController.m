@@ -85,6 +85,9 @@
 		[gal2 addAlgebraicSurface:surface2];
 	*/
         
+        /*[dataBase saveGallery:gal1];
+        [dataBase saveGallery:gal2];*/
+        
         [galleriesArray addObjectsFromArray:[dataBase getGalleries]];
 
         for( Gallery* g in galleriesArray ){

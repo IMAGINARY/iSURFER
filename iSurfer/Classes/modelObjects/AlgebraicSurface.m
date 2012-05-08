@@ -11,13 +11,14 @@
 
 @implementation AlgebraicSurface
 //--------------------------------------------------------------------------------------------------------
-@synthesize surfaceImage, surfaceName, surfaceDescription, equation, saved;
+@synthesize surfaceID, surfaceImage, surfaceName, briefDescription, completeDescription, equation, saved;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) init{	
 	if (self = [super init]) {
 		self.surfaceName = @"";
-		self.surfaceDescription = @"";
+		self.briefDescription = @"";
+        self.completeDescription = @"";
 		self.surfaceImage = nil;
         self.saved = NO;
 	}
@@ -27,7 +28,8 @@
 
 -(void)dealloc{
 	[surfaceName release];
-	[surfaceDescription release];
+	[briefDescription release];
+    [completeDescription release];
 	[surfaceImage release];
 	[equation release];
 	[super dealloc];

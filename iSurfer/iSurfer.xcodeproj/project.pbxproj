@@ -85,6 +85,8 @@
 		8BDD0B40142431D50043741C /* fs2.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD0B3C142431D50043741C /* fs2.glsl */; };
 		8BDD0B41142431D50043741C /* vs1.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD0B3D142431D50043741C /* vs1.glsl */; };
 		8BDD0B42142431D50043741C /* vs2.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD0B3E142431D50043741C /* vs2.glsl */; };
+		B512776E154AE15400800A7C /* ImageDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B512776D154AE15400800A7C /* ImageDescriptionViewController.xib */; };
+		B5127771154AE7A600800A7C /* ImageDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5127770154AE7A600800A7C /* ImageDescriptionViewController.m */; };
 		B59EB95F13D0908100AD9F7C /* Button1_off.png in Resources */ = {isa = PBXBuildFile; fileRef = B59EB95913D0908100AD9F7C /* Button1_off.png */; };
 		B59EB96013D0908100AD9F7C /* Button1_on.png in Resources */ = {isa = PBXBuildFile; fileRef = B59EB95A13D0908100AD9F7C /* Button1_on.png */; };
 		B59EB96113D0908100AD9F7C /* Button2_off.png in Resources */ = {isa = PBXBuildFile; fileRef = B59EB95B13D0908100AD9F7C /* Button2_off.png */; };
@@ -220,6 +222,9 @@
 		8BDD0B3D142431D50043741C /* vs1.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vs1.glsl; sourceTree = "<group>"; };
 		8BDD0B3E142431D50043741C /* vs2.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vs2.glsl; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* iSurfer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iSurfer-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		B512776D154AE15400800A7C /* ImageDescriptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImageDescriptionViewController.xib; path = ../../../../../../../SVN/isurfer/trunk/iSurfer/Classes/viewControllers/imageDescriptionViewController/ImageDescriptionViewController.xib; sourceTree = "<group>"; };
+		B512776F154AE78C00800A7C /* ImageDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageDescriptionViewController.h; path = ../../../../../../../SVN/isurfer/trunk/iSurfer/Classes/viewControllers/imageDescriptionViewController/ImageDescriptionViewController.h; sourceTree = "<group>"; };
+		B5127770154AE7A600800A7C /* ImageDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageDescriptionViewController.m; path = ../../../../../../../SVN/isurfer/trunk/iSurfer/Classes/viewControllers/imageDescriptionViewController/ImageDescriptionViewController.m; sourceTree = "<group>"; };
 		B59EB95913D0908100AD9F7C /* Button1_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button1_off.png; path = ../Arte/Button1_off.png; sourceTree = SOURCE_ROOT; };
 		B59EB95A13D0908100AD9F7C /* Button1_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button1_on.png; path = ../Arte/Button1_on.png; sourceTree = SOURCE_ROOT; };
 		B59EB95B13D0908100AD9F7C /* Button2_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button2_off.png; path = ../Arte/Button2_off.png; sourceTree = SOURCE_ROOT; };
@@ -554,6 +559,7 @@
 		8BC02C7A13B292B3003E41AC /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B52C31E81548DC3F00089960 /* imageDescriptionViewController */,
 				8BC02C9813B2938C003E41AC /* splashScreenViewController */,
 				8B29FCFA13D654C900EDB516 /* saveAlgebraicSurfaceViewController */,
 				8B29FA4213D4E97700EDB516 /* galleryViewController */,
@@ -626,6 +632,16 @@
 			);
 			name = shaders;
 			path = resources/shaders;
+			sourceTree = "<group>";
+		};
+		B52C31E81548DC3F00089960 /* imageDescriptionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B512776D154AE15400800A7C /* ImageDescriptionViewController.xib */,
+				B512776F154AE78C00800A7C /* ImageDescriptionViewController.h */,
+				B5127770154AE7A600800A7C /* ImageDescriptionViewController.m */,
+			);
+			path = imageDescriptionViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -719,6 +735,7 @@
 				8B9114CD14BF849D00BEAF27 /* Localizable.strings in Resources */,
 				8B9114D714BF946C00BEAF27 /* lemon.png in Resources */,
 				8B9114D814BF946C00BEAF27 /* nepali.png in Resources */,
+				B512776E154AE15400800A7C /* ImageDescriptionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,6 +786,7 @@
 				3308B17D1533EC87001E853F /* programData.cpp in Sources */,
 				3308B17E1533EC87001E853F /* surfaceRender.cpp in Sources */,
 				330252981537970900EA2425 /* TrackBall.m in Sources */,
+				B5127771154AE7A600800A7C /* ImageDescriptionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -798,6 +816,7 @@
 				GCC_PREFIX_HEADER = iSurfer_Prefix.pch;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "iSurfer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = iSurfer;
 			};
 			name = Debug;
@@ -811,6 +830,7 @@
 				GCC_PREFIX_HEADER = iSurfer_Prefix.pch;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "iSurfer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = iSurfer;
 				VALIDATE_PRODUCT = YES;
 			};
