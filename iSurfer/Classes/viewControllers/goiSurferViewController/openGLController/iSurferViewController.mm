@@ -242,7 +242,7 @@ enum {
 
         //Gupf
             NSString *formula = @"x^2+y^2+z"; //Bien 
-
+    
             //NSString *formula = @"x^2+y^2+z*x+y";
     
         //Este se ve raro
@@ -699,7 +699,10 @@ ivec2 oldLocation;
 	NSString *fs2 = [[NSBundle mainBundle] pathForResource:@"fs2" ofType:@"glsl"];
 	//NSString *formula = @"x^2+y^2+z*x+y";
 	//iSurferDelegate::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[eq UTF8String]);
-    Compiler::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[eq UTF8String]);
+    NSString * str = [eq stringByReplacingOccurrencesOfString: @"-" withString:@"!"];
+    str = [str stringByReplacingOccurrencesOfString: @"\u2212" withString:@"-"];
+
+    Compiler::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[str UTF8String]);
     
     programData::InitializeProgramData();
 

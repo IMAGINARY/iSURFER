@@ -84,6 +84,9 @@
 
 
 -(IBAction)keyboardBarButtonPressed:(id)sender;
+-(IBAction)keyboardBarHyppenMinusButtonPressed:(id)sender;
+-(IBAction)keyboardBarMinusButtonPressed:(id)sender;
+
 -(IBAction)optionsButtonPressed:(id)sender;
 -(IBAction)hideOptions:(id)sender;
 -(IBAction)sliderChanged:(id)sender;

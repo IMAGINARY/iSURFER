@@ -361,6 +361,14 @@
 	self.equationTextField.text = [equationTextField.text stringByAppendingString:button.titleLabel.text];
 }
 
+-(IBAction)keyboardBarMinusButtonPressed:(id)sender{
+	self.equationTextField.text = [equationTextField.text stringByAppendingString:@"\u2212"];
+}
+
+-(IBAction)keyboardBarHyppenMinusButtonPressed:(id)sender{
+	self.equationTextField.text = [equationTextField.text stringByAppendingString:@"-"];
+}
+
 //--------------------------------------------------------------------------------------------------------
 -(void)doneButtonPressed{
 	[equationTextField resignFirstResponder];

@@ -109,7 +109,7 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
     //printf("Display empieza \n");
 	// setup matrices
     //mat4 projection;
-	Matrix4x4 t, s, modelview_inv, modelView;//, rx, ry, rz;
+	Matrix4x4 s, modelview_inv, modelView;//, rx, ry, rz;
 	//Para el zoom parametrizar scale_matrix
 	//Para rotacion setear las variables de rotation_matrix
 	//Traslacion si es necesario usar la matriz
@@ -180,7 +180,7 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
     //ortho(programData::radius+1, -1000, 2000, projectionOld);
     
     
-    projection = mat4::Ortho(-programData::radius, programData::radius, -programData::radius, programData::radius, -600.1, 20000);
+    projection = mat4::Ortho(-programData::radius, programData::radius, -programData::radius, programData::radius, -600.1, 1000);
     //projection = mat4::Frustum(-programData::radius/2, programData::radius/2, -programData::radius/2, programData::radius/2, 0.1, 1000);    //printf("radius = %f\n", radius);
     //printf("Rotaxion x = %f, y=%f, z=%f \n", rotationX, rotationY, rotationZ);
     
