@@ -197,6 +197,17 @@
 }
 //--------------------------------------------------------------------------------------------------------
 
+-(NSMutableArray*)getEditableGalleries{
+    NSMutableArray* editableArray = [NSMutableArray arrayWithCapacity:0];
+    for( Gallery* g in galleriesArray ){
+        if ( g.editable ){
+            [editableArray addObject:g];
+        }
+    }
+    return editableArray;
+}
+//--------------------------------------------------------------------------------------------------------
+
 -(void)addAlgebraicSurface:(AlgebraicSurface*)surface atGalleryIndex:(int)index{
 	Gallery* g = [self.galleriesArray objectAtIndex:index];
 	[g addAlgebraicSurface:surface];

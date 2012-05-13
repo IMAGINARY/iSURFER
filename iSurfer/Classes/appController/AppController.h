@@ -63,7 +63,7 @@
 
 -(int)getGalleriesCount;
 
-//-(void)goToSaveImage;
+-(NSMutableArray*)getEditableGalleries;
 
 -(void)addAlgebraicSurface:(AlgebraicSurface*)surface atGalleryIndex:(int)index;
 

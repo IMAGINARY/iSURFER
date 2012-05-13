@@ -25,6 +25,8 @@
 	int galleryIndex;
     
     GoiSurferViewController* delegate;
+    
+    NSMutableArray* editableGalleries;
 	
 }
 @property(nonatomic, retain)IBOutlet UINavigationItem* navBar;

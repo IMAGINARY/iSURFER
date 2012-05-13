@@ -32,6 +32,7 @@
 //--------------------------------------------------------------------------------------------------------
 
 -(void)viewDidLoad{
+    editableGalleries = [appcontroller getEditableGalleries];
 	navigationBar.tintColor = [UIColor colorWithRed:167/255.0 green:190/255.0 blue:12/255.0 alpha:1];
     
 	[surfaceDescriptionTextView.layer setBackgroundColor: [[UIColor whiteColor] CGColor]];
@@ -69,7 +70,8 @@
         newSurface.equation = @"x^2";
         newSurface.surfaceImage = [delegate getSurfaceImage];
 		[newSurface setSurfaceName:self.surfaceNameTextfield.text];
-		[newSurface setSurfaceDescription:self.surfaceDescriptionTextView.text];
+		[newSurface setBriefDescription:self.surfaceDescriptionTextView.text];
+        [newSurface setEquation:delegate.equationTextField.text];
 		[appcontroller addAlgebraicSurface:newSurface atGalleryIndex:galleryIndex];
 		[newSurface release];
 		
@@ -141,12 +143,12 @@
 }
 //--------------------------------------------------------------------------------------------------------
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-	return [[appcontroller getGallery:row]galleryName];
+	return [[editableGalleries objectAtIndex:row]galleryName];
 }
 //--------------------------------------------------------------------------------------------------------
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
 	galleryIndex = row;
-	self.galleryNameLabel.text = [[appcontroller getGallery:row]galleryName];
+	self.galleryNameLabel.text = [[editableGalleries objectAtIndex:row]galleryName];
 }
 //--------------------------------------------------------------------------------------------------------
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
@@ -155,7 +157,7 @@
 //--------------------------------------------------------------------------------------------------------
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-	return [appcontroller getGalleriesCount];
+	return [editableGalleries count];
 }
 //--------------------------------------------------------------------------------------------------------
 - (void) keyboardWillHide: (NSNotification *) notification {	
