@@ -43,10 +43,10 @@
 			controllerName = @"myGalleries";
 			break;
 		case HELP_BUTTON:
-			controllerName = @"help";
+			controllerName = @"imageDescription";
 			break;
 		case OTHER_BUTTON:
-			controllerName = @"other";
+			controllerName = @"imageDescription";
 			break;
 		default:
             controllerName = @"other";

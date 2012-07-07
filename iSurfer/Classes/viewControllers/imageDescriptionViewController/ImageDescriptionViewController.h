@@ -11,7 +11,15 @@
 #import "BaseViewController.h"
 
 @interface ImageDescriptionViewController : BaseViewController {
-    IBOutlet UIScrollView *scrollView;
+//    UITextView *textView;
+    IBOutlet UIImageView * imageView;
+    IBOutlet UIScrollView * scrollView;
+    IBOutlet UILabel * formula;
+    IBOutlet UILabel * description;
 }
-@property (nonatomic, retain) UIScrollView *scrollView;
+//@property (nonatomic, retain) UITextView *textView;
+@property (nonatomic, retain) UIImageView * imageView;
+@property (nonatomic, retain) UIScrollView * scrollView;
+@property (nonatomic, retain) UILabel * formula;
+@property (nonatomic, retain) UILabel * description;
 @end

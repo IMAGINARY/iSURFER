@@ -7,6 +7,7 @@
 //
 
 #import "AppController.h"
+#import "ImageDescriptionViewController.h"
 #import "MainMenuViewController.h"
 #import "GoiSurferViewController.h"
 #import "MyGalleriesViewController.h"
@@ -21,7 +22,7 @@
 //--------------------------------------------------------------------------------------------------------
 @implementation AppController
 //--------------------------------------------------------------------------------------------------------
-@synthesize mainMenuViewController, navcontroller, goiSurferViewController, myGalleriesViewController, helpViewController, galleriesArray, dataBase;
+@synthesize mainMenuViewController, navcontroller, goiSurferViewController, myGalleriesViewController, helpViewController, imageDescriptionViewController,  galleriesArray, dataBase;
 //--------------------------------------------------------------------------------------------------------
 
 -(id)initWithNavController:(UINavigationController*)aNavController{
@@ -52,10 +53,15 @@
 		HelpViewController* tmphelp = [[HelpViewController alloc]initWithAppController:self];
 		[self setHelpViewController:tmphelp];
 		[tmphelp release];
+        
+        ImageDescriptionViewController * tmpimageDesc = [[ImageDescriptionViewController alloc]initWithAppController:self];
+        [self setImageDescriptionViewController:tmpimageDesc];
+        [tmpimageDesc release];
 		
 		NSMutableArray* tmparray = [[NSMutableArray alloc]init];
 		[self setGalleriesArray:tmparray];
 		[tmparray release];
+        
 		/*
 		Gallery* gal1 = [[Gallery alloc]init];
 		gal1.galleryName =[Language get:@"gal1Name" alter:nil];

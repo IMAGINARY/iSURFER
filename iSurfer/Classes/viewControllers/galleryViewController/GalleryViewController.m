@@ -235,6 +235,7 @@
 	[self.surfaceImage setImage:[surface surfaceImage]];
 	[self.surfaceEquation setText:[surface equation]];
 	[tableView scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:UITableViewScrollPositionMiddle	animated:YES];
+    [appcontroller pushViewControllerWithName:@"imageDescription"];
 }
 //--------------------------------------------------------------------------------------------------------
 -(void)dealloc{

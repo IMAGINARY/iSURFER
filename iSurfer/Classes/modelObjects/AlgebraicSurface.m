@@ -16,6 +16,7 @@
 
 -(id) init{	
 	if (self = [super init]) {
+        //Falta imagen real para la descripcion completa
 		self.surfaceName = @"";
 		self.briefDescription = @"";
         self.completeDescription = @"";

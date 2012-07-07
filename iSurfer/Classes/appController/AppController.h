@@ -13,6 +13,7 @@
 @class MyGalleriesViewController;
 @class HelpViewController;
 @class DataBaseController;
+@class ImageDescriptionViewController;
 
 @protocol GalleryProtocol
 
@@ -30,6 +31,7 @@
 	GoiSurferViewController* goiSurferViewController;
 	MyGalleriesViewController* myGalleriesViewController;
 	HelpViewController* helpViewController;
+    ImageDescriptionViewController * imageDescriptionViewController;
 	
 	DataBaseController* dataBase;
 	
@@ -43,6 +45,7 @@
 @property(nonatomic, retain)	MainMenuViewController * mainMenuViewController;
 @property(nonatomic, retain)	GoiSurferViewController* goiSurferViewController;
 @property(nonatomic, retain)	HelpViewController* helpViewController;
+@property(nonatomic, retain)    ImageDescriptionViewController * imageDescriptionViewController;
 
 @property(nonatomic, retain)	DataBaseController* dataBase;
 

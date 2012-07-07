@@ -86,13 +86,13 @@
 		8BDD0B41142431D50043741C /* vs1.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD0B3D142431D50043741C /* vs1.glsl */; };
 		8BDD0B42142431D50043741C /* vs2.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD0B3E142431D50043741C /* vs2.glsl */; };
 		8BF0D11115604E8E006E4085 /* ImageDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF0D10F15604E8E006E4085 /* ImageDescriptionViewController.m */; };
-		8BF0D11215604E8E006E4085 /* ImageDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BF0D11015604E8E006E4085 /* ImageDescriptionViewController.xib */; };
 		B59EB95F13D0908100AD9F7C /* Button1_off.png in Resources */ = {isa = PBXBuildFile; fileRef = B59EB95913D0908100AD9F7C /* Button1_off.png */; };
 		B59EB96013D0908100AD9F7C /* Button1_on.png in Resources */ = {isa = PBXBuildFile; fileRef = B59EB95A13D0908100AD9F7C /* Button1_on.png */; };
 		B59EB96113D0908100AD9F7C /* Button2_off.png in Resources */ = {isa = PBXBuildFile; fileRef = B59EB95B13D0908100AD9F7C /* Button2_off.png */; };
 		B59EB96213D0908100AD9F7C /* Button2_on.png in Resources */ = {isa = PBXBuildFile; fileRef = B59EB95C13D0908100AD9F7C /* Button2_on.png */; };
 		B59EB96313D0908100AD9F7C /* Button3_off.png in Resources */ = {isa = PBXBuildFile; fileRef = B59EB95D13D0908100AD9F7C /* Button3_off.png */; };
 		B59EB96413D0908100AD9F7C /* Button3_on.png in Resources */ = {isa = PBXBuildFile; fileRef = B59EB95E13D0908100AD9F7C /* Button3_on.png */; };
+		B5DFEBD515A8BBA000203B41 /* ImageDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5DFEBD415A8BBA000203B41 /* ImageDescriptionViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -223,7 +223,6 @@
 		8BDD0B3E142431D50043741C /* vs2.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vs2.glsl; sourceTree = "<group>"; };
 		8BF0D10E15604E8E006E4085 /* ImageDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDescriptionViewController.h; sourceTree = "<group>"; };
 		8BF0D10F15604E8E006E4085 /* ImageDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDescriptionViewController.m; sourceTree = "<group>"; };
-		8BF0D11015604E8E006E4085 /* ImageDescriptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageDescriptionViewController.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* iSurfer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iSurfer-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		B59EB95913D0908100AD9F7C /* Button1_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button1_off.png; path = ../Arte/Button1_off.png; sourceTree = SOURCE_ROOT; };
 		B59EB95A13D0908100AD9F7C /* Button1_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button1_on.png; path = ../Arte/Button1_on.png; sourceTree = SOURCE_ROOT; };
@@ -231,6 +230,7 @@
 		B59EB95C13D0908100AD9F7C /* Button2_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button2_on.png; path = ../Arte/Button2_on.png; sourceTree = SOURCE_ROOT; };
 		B59EB95D13D0908100AD9F7C /* Button3_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button3_off.png; path = ../Arte/Button3_off.png; sourceTree = SOURCE_ROOT; };
 		B59EB95E13D0908100AD9F7C /* Button3_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button3_on.png; path = ../Arte/Button3_on.png; sourceTree = SOURCE_ROOT; };
+		B5DFEBD415A8BBA000203B41 /* ImageDescriptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageDescriptionViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -639,7 +639,7 @@
 			children = (
 				8BF0D10E15604E8E006E4085 /* ImageDescriptionViewController.h */,
 				8BF0D10F15604E8E006E4085 /* ImageDescriptionViewController.m */,
-				8BF0D11015604E8E006E4085 /* ImageDescriptionViewController.xib */,
+				B5DFEBD415A8BBA000203B41 /* ImageDescriptionViewController.xib */,
 			);
 			path = imageDescriptionViewController;
 			sourceTree = "<group>";
@@ -735,7 +735,7 @@
 				8B9114CD14BF849D00BEAF27 /* Localizable.strings in Resources */,
 				8B9114D714BF946C00BEAF27 /* lemon.png in Resources */,
 				8B9114D814BF946C00BEAF27 /* nepali.png in Resources */,
-				8BF0D11215604E8E006E4085 /* ImageDescriptionViewController.xib in Resources */,
+				B5DFEBD515A8BBA000203B41 /* ImageDescriptionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
