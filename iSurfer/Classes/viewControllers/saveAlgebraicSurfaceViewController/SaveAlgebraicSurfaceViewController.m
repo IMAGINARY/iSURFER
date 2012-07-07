@@ -32,7 +32,8 @@
 //--------------------------------------------------------------------------------------------------------
 
 -(void)viewDidLoad{
-    editableGalleries = [appcontroller getEditableGalleries];
+    editableGalleries = [[appcontroller getEditableGalleries]retain];
+    
 	navigationBar.tintColor = [UIColor colorWithRed:167/255.0 green:190/255.0 blue:12/255.0 alpha:1];
     
 	[surfaceDescriptionTextView.layer setBackgroundColor: [[UIColor whiteColor] CGColor]];
@@ -139,11 +140,15 @@
 	[dataWrapperView release];
 	[saveButton release];
 	[navBar release];
+    [editableGalleries release];
 	[super dealloc];
 }
 //--------------------------------------------------------------------------------------------------------
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-	return [[editableGalleries objectAtIndex:row]galleryName];
+    if( [editableGalleries objectAtIndex:row] )
+        return [[editableGalleries objectAtIndex:row]galleryName];
+    else 
+        return @"";
 }
 //--------------------------------------------------------------------------------------------------------
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
