@@ -19,10 +19,14 @@ float programData::lposX = 5.0f;
 float programData::lposY = 5.0f;
 float programData::lposZ = 1.0f;
 float programData::radius = 5;
+vect4 origin;
+
 mat4 programData::rot;
 
 ProgramHandle programData::shaderHandle;
 bool programData::debug = true;
+bool programData::panoramic = false;
+
 bool programData::box = false;
 GLfloat programData::vertex[STACKS*(SLICES+1)*2*3];
 GLfloat programData::normalized[STACKS*(SLICES+1)*2*3];
@@ -39,6 +43,7 @@ void programData::InitializeProgramData()
     programData::shaderHandle.u_modelview_inv = glGetUniformLocation( glsl_program, "modelviewMatrixInverse" ); checkGLError( AT );
     programData::shaderHandle.u_projection = glGetUniformLocation( glsl_program, "projectionMatrix" ); checkGLError( AT );
     programData::shaderHandle.Radius2 = glGetUniformLocation(glsl_program, "radius2");
+    programData::shaderHandle.eye = glGetUniformLocation(glsl_program, "varying_eye");
     programData::shaderHandle.LightPosition = glGetUniformLocation(glsl_program, "LightPosition");
     programData::shaderHandle.LightPosition2 = glGetUniformLocation(glsl_program, "LightPosition2");
     programData::shaderHandle.LightPosition3 = glGetUniformLocation(glsl_program, "LightPosition3");
@@ -104,6 +109,21 @@ void programData::setConstant()
     glUniform3f(programData::shaderHandle.DiffuseMaterial, programData::colorR, programData::colorG,programData::colorB);
 
 }
+
+void programData::SetEye(Matrix4x4 inverse){
+    origin[0]=0.0;
+    origin[1]=0.0;
+    origin[2]=0.0;
+    origin[3]=1.0;
+    checkGLError( AT );
+    
+    mult_vect(inverse, origin, origin);
+    glUniform3fv(programData::shaderHandle.eye, 1, origin);
+    
+    checkGLError( AT );
+    
+}
+
 
 
 void programData::UpdateRadius(float Radius)

@@ -15,7 +15,8 @@ uniform highp vec3 SpecularMaterial;
 uniform highp vec3 SpecularMaterial2;
 uniform highp float Shininess;
 uniform highp float radius2;
-
+uniform highp vec4 eye;
+//uniform highp vec3 varying_eye;
 
 struct polynomial { highp float a[ DEGREE + 1 ]; };
 
@@ -339,7 +340,7 @@ highp float first_root_Descartes( const in polynomial p, highp float epsilon, in
 highp float first_root_in( inout polynomial p, highp float min, highp float max )
 {
     
-#if DEGREE >= 3
+#if DEGREE > 3
 
     // find smallest root in [0,1], if any
     polynomial p01 = p;
@@ -461,9 +462,10 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
             {
                 gl_FragColor = vec4( 1.0, 1.0, 0.0 , 1 );
                 //Este no sirve hace circulos raros.
-                discard;
+                //discard;
                 return x0;
             }else
+                //gl_FragColor = vec4( 0.5, 0.5, 1 , 1 );
                 discard;
 
 		}
@@ -512,7 +514,7 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
             highp float xmin = min(x0, min(x1, x2));
             if(xmin >= min && xmin < max)
             {
-                gl_FragColor = vec4( 0.0, 0.0, 1.0 , 1 );
+                gl_FragColor = vec4( 0.0, 1.0, 1.0 , 1 );
 
                 return xmin;
             }
@@ -577,7 +579,7 @@ void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float 
 
     if(disc < 1.0)
         return;
-    gl_FragColor = vec4( 0.0, 0.0, 1.0 , 0.5 );
+    gl_FragColor = vec4( 0.0, 1.0, 1.0 , 0.5 );
     
 	// if discriminant is negative there are no real roots, so return 
 	// false as ray misses sphere
@@ -748,7 +750,7 @@ gl_FragColor = vec4( 0.0, 0.0, 1.0 , 1.0 );
 	highp vec3 hit_point = eye + root * dir;
 
 
-    calc_lights( eye, dir, hit_point);
+   calc_lights( eye, dir, hit_point);
 
 
 	//gl_FragColor = vec4( normalize( mygradient( hit_point ) ), 0.5 );

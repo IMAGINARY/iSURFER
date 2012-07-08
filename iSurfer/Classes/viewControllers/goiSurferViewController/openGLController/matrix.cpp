@@ -104,13 +104,24 @@ void scale_matrix( float scale_x, float scale_y, float scale_z, Matrix4x4 matrix
 
 void perspective_projection_matrix( float fovy, float aspect, float zNear, float zFar, Matrix4x4 result )
 {
-	double xmin, xmax, ymin, ymax;
+	float xmin, xmax, ymin, ymax;
 	ymax = zNear * tan(fovy * M_PI / 360.0);
 	ymin = -ymax;
 	xmin = ymin * aspect;
 	xmax = ymax * aspect;
 	frustum_matrix( xmin, xmax, ymin, ymax, zNear, zFar, result );
 }
+
+void My_perspective_projection_matrix( float fovy, float aspect, float zNear, float zFar, Matrix4x4 result )
+{
+	float xmin, xmax, ymin, ymax;
+	ymax = zNear * tan(fovy * M_PI / 360.0);
+	ymin = -ymax;
+	xmin = ymin * aspect;
+	xmax = ymax * aspect;
+	frustum_matrix( xmin, xmax, ymin, ymax, zNear, zFar, result );
+}
+
 
 float getTranslation(float fovy, float radius){
     return radius / tan(fovy * M_PI / 360.0);
@@ -120,7 +131,7 @@ float getTranslation(float fovy, float radius){
 void perspective( float fovy, float aspect, float radius, float zFar, Matrix4x4 result )
 {
     
-	double xmin, xmax, ymin, ymax = radius,  zNear;
+	float xmin, xmax, ymin, ymax = radius,  zNear;
     zNear = ymax / tan(fovy * M_PI / 360.0);
 	ymin = -ymax;
 	xmin = ymin * aspect;
@@ -197,6 +208,20 @@ void mult_matrix( const Matrix4x4 m1, const Matrix4x4 m2, Matrix4x4 result )
     for( int i = 0; i < 16; i++ )
         result[ i ] = R[ i ];
 }
+
+void mult_vect( const Matrix4x4 m1, const vect4 m2, vect4 result )
+{
+    vect4 R;
+    R[0] = m1[0] * m2[0] + m1[4] * m2[1] + m1[8] * m2[2] + m1[12] * m2[3];
+    R[1] = m1[1] * m2[0] + m1[5] * m2[1] + m1[9] * m2[2] + m1[13] * m2[3];
+    R[2] = m1[2] * m2[0] + m1[6] * m2[1] + m1[10] * m2[2] + m1[14] * m2[3];
+    R[3] = m1[3] * m2[0] + m1[7] * m2[1] + m1[11] * m2[2] + m1[15] * m2[3];
+    
+    
+    for( int i = 0; i < 16; i++ )
+        result[ i ] = R[ i ];
+}
+
 
 #define MAT(m,r,c) (m)[(c)*4+(r)]
 #define SWAP_ROWS(a, b) { float *_tmp = a; (a)=(b); (b)=_tmp; }

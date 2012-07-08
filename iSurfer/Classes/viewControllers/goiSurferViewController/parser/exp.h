@@ -49,6 +49,7 @@ expressionT SubTree( char* raiz, expressionT left, expressionT right);
  */
 
 void EvalExp( expressionT exp, int where);
+void EvalExpNoCode( expressionT exp, int where);
 char * getCode(void);
 int EvalDegree( expressionT exp);
 int getCodeLeng(void);

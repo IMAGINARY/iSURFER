@@ -15,6 +15,7 @@ struct ProgramHandle {
     GLint u_modelview_inv;
     GLint u_projection;
     GLuint LightPosition;
+    GLuint eye;
     GLuint LightPosition2;
     GLuint LightPosition3;
     GLint AmbientMaterial;
@@ -50,6 +51,7 @@ class programData
         static float radius;
         static mat4 rot;
         static bool debug;
+        static bool panoramic;
         static bool box;
         static int currentSurface, SurfaceCount;
         static ProgramHandle shaderHandle;
@@ -57,6 +59,8 @@ class programData
         static GLfloat normalized[STACKS*(SLICES+1)*2*3];
         static void InitializeProgramData();
     
+    void static SetEye(Matrix4x4 inverse);
+
         void static UpdateColor(float red, float green, float blue);
         void static UpdateRadius(float Radius);
     static ProgramIdentifiers programs;

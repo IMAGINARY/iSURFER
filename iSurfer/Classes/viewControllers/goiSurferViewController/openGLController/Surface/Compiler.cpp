@@ -45,6 +45,8 @@ void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const cha
 	expt= ParseExp(scanner);
 	clearExp();
 	EvalExp(expt, 0);
+    //EvalExpNoCode(expt, 0);
+
     EvalDerivateNoCode(expt);
     //EvalDerivate(expt);
     EvalDegree(expt);
@@ -57,13 +59,15 @@ void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const cha
     }
     // no se si va    
     FreeTree(expt);
-
     glDeleteShader(programData::programs.alg_surface_glsl_program);
-    //printf("code\n");
+    printf("code\n");
 	printf(getCode());
-    //printf("\nderivate\n");
-    //printf(getCodeDerivate());
-    //printf("\nderivate\n");
+    printf("formula\n");
+	printf(formula);
+
+    printf("\nderivate\n");
+    printf(getCodeDerivate());
+    printf("\nderivate\n");
     
 	//printf("\n");
 	//printf("Degree %d \n", EvalDegree(exp));
@@ -116,7 +120,8 @@ GLuint Compiler::init( const char* vertex_shader_name, const char* fragment_shad
     int derivLen = strlen(getCodeDerivate()); 
     char degre[10];
     sprintf(degre, "%d ", getDegree());
-    //printf("\n degree %s \n", degre);
+    //TODO tocar el degree de arriba.
+    printf("\n degree %s \n", degre);
 
     int degreLen = strlen(degre);
 	char * shader_code_c_str = (char *) malloc( shaderLen + codeLen + derivLen + degreLen + 2) ;

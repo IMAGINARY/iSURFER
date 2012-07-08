@@ -212,96 +212,106 @@ enum {
 	NSString *fs2 = [[NSBundle mainBundle] pathForResource:@"fs2" ofType:@"glsl"];
 	
     
+    NSString *formula =@"(z^3-2)^2+(x^2+y^2-3)^3";
+    //NSString *formula =@"(z^3-2)^2";
+    
+    
     //GRADO 1
-        //NSString *formula = @"x";
+        //NSString *formula = @"x"; //Bien
 
-        //NSString *formula = @"z*x";  //Mal
     
     //Grado 2
+        
+            //NSString *formula = @"y*x";  //Bien
+
         //Cylinder
             //NSString *formula = @"x^2+y^2-5";  //Bien
         //Dattel (Esfera)
             //NSString *formula = @"x^2+y^2+z^2-19";  //Bien
         //Pipe
-            //NSString *formula = @"x^2-z";  //Error de calculo en zoom 1
+            //NSString *formula = @"x^2-z";  //Bien mal color
         //Gupf
             //NSString *formula = @"x^2+y^2+z";  //Bien    
         //Kegel
-            //NSString *formula = @"x^2+y^2-z^2";//Error de calculo en zoom 3  
-        //Kreuz
-            //NSString *formula = @"x*y*z";  //Parece mal 50%
+            //NSString *formula = @"x^2+y^2-z^2";//Bien  
         //Spindel
-            //NSString *formula = @"x^2+y^2-z^2-1"; /Error de calculo en zoom chico
+            //NSString *formula = @"x^2+y^2-z^2-1"; //Bien
         //Ufo
             //NSString *formula = @"z^2-x^2-y^2-10";  //Bien
-        //Calypso 
-            //NSString *formula = @"x^2+y^2*z-z^2"; // colores Raros
 
-        //Cayley Cubic
-            //NSString *formula = @"x^2+y^2+z^2+2*x*y*z-1"; //Maso 
 
         //Gupf
-            NSString *formula = @"x^2+y^2+z"; //Bien 
+            //NSString *formula = @"x^2+y^2+z"; //Bien 
     
-            //NSString *formula = @"x^2+y^2+z*x+y";
     
-        //Este se ve raro
-            //NSString *formula = @"x^2-x-x^2*y-y*z^2-z^2";
+             //NSString *formula = @"x^2+y^2+z*x+y"; // mal color
+    
 
     
-    //Whitney
-        //NSString *formula = @"x^2-y^2*z"; // Este parece andar 80 %
 
     
     //Grado 3
+        //Kreuz
+            //NSString *formula = @"x*y*z";  //mal 100%
+        //Calypso 
+            //NSString *formula = @"x^2+y^2*z-z^2"; // Mal
+        //Cayley Cubic
+           // NSString *formula = @"x^2+y^2+z^2+2*x*y*z-1"; //Maso Mal 
+        //Este se ve raro
+            //NSString *formula = @"x^2-x-x^2*y-y*z^2-z^2"; //Bien
+
+    
         //DingDong
-            //NSString *formula = @"x^2+y^2+z^3-z^2";
+            //NSString *formula = @"x^2+y^2+z^3-z^2"; //Maso.
         //Fanfare 
-            //NSString *formula = @"z^2+y^2-x^3";
+            //NSString *formula = @"z^2+y^2-x^3"; //Bien
         //Sattel
-            //NSString *formula = @"x^2+y^2*z+z^3"; 
+            //NSString *formula = @"x^2+y^2*z+z^3"; // Mal
     
     
-    
-            //NSString *formula = @"x^2-y^3*z^3";
-    
-            //NSString *formula = @"x^2+y^2*z^3";
+        //Whitney
+            //NSString *formula = @"x^2-y^2*z"; // Mal 30%
     
     //Grado 4
         //Calyx
-            //NSString *formula = @"x^2+y^2*z^3-z^4";
+            //NSString *formula = @"x^2+y^2*z^3-z^4"; //Mal
     
-            //NSString *formula = @"x^4-2";
+            //NSString *formula = @"x^4-2";// Bien
 
         //Pellet
-            //NSString *formula = @"x^2+y^2+z^4-20";
+            //NSString *formula = @"x^2+y^2+z^4-20"; //Bien
         //cosa rara
-            //NSString *formula =@"x^2+y^2+z^4-20*x^2-y^3";
+            //NSString *formula =@"x^2+y^2+z^4-20*x^2-y^3"; //Bien
 
     
         //Zeck
-            //NSString *formula =@"20*(z^2+y^2)-20*x^3+x^4";
+            //NSString *formula =@"20*(z^2+y^2)-20*x^3+x^4"; // Bien
          
         //Helix
-            //NSString *formula =@"6*x^2-2*x^4-y^2*z^2";
+            //NSString *formula =@"6*x^2-2*x^4-y^2*z^2"; //bien
     
+        //DromeBar
+            //NSString *formula =@"x^4-3*x^2+y^2+z^3";// rara pero bien en forma. la corta la esfera
+        
+        //Xano
+            //NSString *formula =@"x^4+z^3-y*z^2"; //MAL
+
+
+    //Grado 5
+        //NSString *formula = @"x^2+y^2*z^3";// mal
+
     
     //Grado 6
         //Cube
             //NSString *formula = @"x^6+y^6+z^6-19";  //Bien
         //citrus 
-            //x2+z2 = y3(y-1)3
             //NSString *formula = @"x^2+z^2-(!y)^3*(y-1)^3";
-            //NSString *formula = @"x^2+z^2-((0-1)*y)^3*(y-1)^3";
-    //NSString *formula = @"1-(!y)*2";
+            //NSString *formula = @"x^2+z^2-((0-1)*y)^3*(y-1)^3"; //Maso
         //Twilight
-            //NSString *formula =@"(z^3-2)^2+(x^2+y^2-3)^3";
-        //DromeBar
-            //NSString *formula =@"x^4-3*x^2+y^2+z^3";
-        //Xano
-            //NSString *formula =@"x^4+z^3-y*z^2";
+            //NSString *formula =@"(z^3-2)^2+(x^2+y^2-3)^3"; // Mal el color. Bien la forma
 
-     
+            //NSString *formula = @"x^2-y^3*z^3"; //Mal
+
     
     
    //iSurferDelegate::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[formula UTF8String]);

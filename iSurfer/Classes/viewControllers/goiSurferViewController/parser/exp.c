@@ -190,14 +190,17 @@ EvalExpNoCode( expressionT exp, int where) {
     
     switch( exp->valor[0] )
     {
-        case '+':  EvalExpNoCode(exp->left, where); printChar('+', 1); EvalExpNoCode(exp->right, where); return;
-        case '-':  EvalExpNoCode(exp->left, where); printChar('-', 1); EvalExpNoCode(exp->right, where); return;
+        case '+':  printChar('(', where); EvalExpNoCode(exp->left, where); printChar('+', where); EvalExpNoCode(exp->right, where); printChar(')', where); return;
+        case '-':  printChar('(', where); EvalExpNoCode(exp->left, where); printChar('-', where); EvalExpNoCode(exp->right, where); printChar(')', where); return;
             
         case '!':  printChar('-', where); EvalExpNoCode(exp->right, where); return;
-        case '*':  EvalExpNoCode(exp->left, where); printChar('*', 1); EvalExpNoCode(exp->right, where); return;
+        case '*':  printChar('(', where); EvalExpNoCode(exp->left, where); printChar('*', where); EvalExpNoCode(exp->right, where); printChar(')', where); return;
 
         case '^': 
+            printChar('(', where);
             EvalExpNoCode(exp->left,where); 
+            printChar(')', where);
+
             EsNumero(exp->right->valor, &nro); 
             
             for (int i=1; i<nro; i++) {
@@ -226,7 +229,7 @@ EvalDerivateExpNoCode( expressionT exp, char var) {
     
     switch( exp->valor[0] )
     {
-        case '+':  EvalDerivateExpNoCode(exp->left, var); printChar('+', 1); EvalDerivateExpNoCode(exp->right, var); return;
+        case '+': printChar('(', 1);  EvalDerivateExpNoCode(exp->left, var); printChar('+', 1); EvalDerivateExpNoCode(exp->right, var);  printChar(')', 1);return;
             
             
         case '*': 
@@ -240,27 +243,29 @@ EvalDerivateExpNoCode( expressionT exp, char var) {
             EvalDerivateExpNoCode(exp->left, var);
             return;
             
-        case '-':  EvalDerivateExpNoCode(exp->left, var); printChar('-', 1); EvalDerivateExpNoCode(exp->right, var); return;
+        case '-':  printChar('(', 1); EvalDerivateExpNoCode(exp->left, var); printChar('-', 1); EvalDerivateExpNoCode(exp->right, var); printChar(')', 1); return;
             
         case '^': EsNumero(exp->right->valor, &nro);
             
-            if(*(exp->left->valor) == var)
-                {
                     printCodeNum(nro, 1); 
+
                     for (int i=1; i<nro; i++) {
                         printChar('*', 1);
+                        if(i==1)
+                            printChar('(', 1);
+
                         EvalExpNoCode(exp->left,1); 
+                        if(i==nro -1)
+                            printChar(')', 1);
+    
                     }
-                }else
-                {
-                    printCodeNum(nro, 1); 
-                    for (int i=1; i<nro; i++) {
-                        printChar('*', 1);
-                        EvalExpNoCode(exp->left,1); 
-                    }
+                    
                     printChar('*', 1);
-                    EvalDerivateExpNoCode(exp->left, var);                    
-                }
+                    printChar('(', 1);
+            
+                    EvalDerivateExpNoCode(exp->left, var);                   
+                    printChar(')', 1);
+            
             return;
             
             
@@ -275,32 +280,6 @@ EvalDerivateExpNoCode( expressionT exp, char var) {
     }
     if(EsNumero(exp->valor, &nro))
         printCode("0.0",1);
-}
-
-void cleanDeriv(void ){
-    char *p = derivate;
-
-    while ( (p=strstr(p,"--")) != NULL )
-    {
-        //strcpy(p, "  ");
-        memcpy(p, "+ ", sizeof(char)* 2);
-        p++;
-    }
-    
-}
-
-
-void
-EvalDerivateNoCode( expressionT exp) {
-    printCode("= vec3( ", 1);
-    EvalDerivateExpNoCode( exp, 'x');
-    printChar(',', 1);
-    EvalDerivateExpNoCode( exp, 'y');
-    printChar(',', 1);
-    EvalDerivateExpNoCode( exp, 'z');
-    printCode(");", 1);
-    
-    cleanDeriv();
 }
 
 void
@@ -322,7 +301,7 @@ EvalDerivateExp( expressionT exp, char var) {
             EvalDerivateExp(exp->right, var);
             printChar(',', 1);
             printCodeInt( MAX(EvalDegree(exp) -1 , 0),1);
-
+            
             printCode("),mult(", 1);
             EvalExpMacro(exp->right,1);
             printChar(',', 1);
@@ -356,8 +335,8 @@ EvalDerivateExp( expressionT exp, char var) {
                     printCode("),", 1);
                     printCodeInt( MAX(EvalDegree(exp) -1 , 0),1);
                     printChar(')', 1);
-    
-
+                    
+                    
                 }else
                 {
                     printCode("mult(mult(create_poly_0(", 1); printCodeInt(nro, 1); 
@@ -378,7 +357,7 @@ EvalDerivateExp( expressionT exp, char var) {
                     printChar(')', 1);
                     
                 }
-
+                
                 
             }else{
                 if(*(exp->left->valor) ==  var)
@@ -404,12 +383,12 @@ EvalDerivateExp( expressionT exp, char var) {
                     printChar(')', 1);
                     
                 }
-
+                
                 
                 
             }
             return;
-
+            
             
         case '!': printCode("neg(", 1);  EvalDerivateExp(exp->right, var); printChar(',', 1); printCodeInt( MAX(EvalDegree(exp) -1 , 0) ,1); printChar(')',1); return;
     }
@@ -424,6 +403,32 @@ EvalDerivateExp( expressionT exp, char var) {
         printCode("create_poly_0(0.0)",1);
 }
 
+
+void cleanDeriv(void ){
+    char *p = derivate;
+
+    while ( (p=strstr(p,"--")) != NULL )
+    {
+        //strcpy(p, "  ");
+        memcpy(p, "+ ", sizeof(char)* 2);
+        p++;
+    }
+    
+}
+
+
+void
+EvalDerivateNoCode( expressionT exp) {
+    printCode("= vec3( ", 1);
+    EvalDerivateExpNoCode( exp, 'x');
+    printChar(',', 1);
+    EvalDerivateExpNoCode( exp, 'y');
+    printChar(',', 1);
+    EvalDerivateExpNoCode( exp, 'z');
+    printCode(");", 1);
+    
+    cleanDeriv();
+}
 
 
 
@@ -543,11 +548,38 @@ EvalDegreeZ( expressionT exp) {
 }
 
 
+int 
+EvalDegreeSuper( expressionT exp) {
+    if ( exp == NULL )
+        return 0;
+    /*if ( exp->left == NULL && exp->right == NULL )
+     {
+     printf(" %d " , atoi(exp->valor));
+     return ;
+     }*/
+    double nro;
+    switch( exp->valor[0] )
+    {
+        case '+': return MAX( EvalDegreeSuper(exp->left) , EvalDegreeSuper(exp->right));
+        case '*': return EvalDegreeSuper(exp->left) + EvalDegreeSuper(exp->right);
+        case '-': return MAX( EvalDegreeSuper(exp->left) , EvalDegreeSuper(exp->right));
+        case '^': 
+            EsNumero(exp->right->valor , &nro);
+            return EvalDegreeSuper(exp->left) * nro;
+        case '!':   return EvalDegreeSuper(exp->right);
+            
+    }
+    if(exp->valor[0]=='z' || exp->valor[0]=='y' || exp->valor[0]=='x')
+        return 1;
+    
+    return 0;
+}
 
 
 int EvalDegree( expressionT exp) {
 
-    return degreee =  MAX(MAX( EvalDegreeX(exp), EvalDegreeY(exp)), EvalDegreeZ(exp) );
+//    return degreee =  MAX(MAX( EvalDegreeX(exp), EvalDegreeY(exp)), EvalDegreeZ(exp) );
+    return degreee =  EvalDegreeSuper(exp);
     }
 void
 FreeTree( expressionT tree) {
