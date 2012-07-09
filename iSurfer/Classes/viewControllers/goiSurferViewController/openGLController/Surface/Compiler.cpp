@@ -62,7 +62,7 @@ void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const cha
     glDeleteShader(programData::programs.alg_surface_glsl_program);
     printf("code\n");
 	printf(getCode());
-    printf("formula\n");
+    printf("\nformula\n");
 	printf(formula);
 
     printf("\nderivate\n");

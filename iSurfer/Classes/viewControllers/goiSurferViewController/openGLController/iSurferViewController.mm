@@ -212,7 +212,7 @@ enum {
 	NSString *fs2 = [[NSBundle mainBundle] pathForResource:@"fs2" ofType:@"glsl"];
 	
     
-    NSString *formula =@"(z^3-2)^2+(x^2+y^2-3)^3";
+    //NSString *formula =@"(z^3-2)^2+(x^2+y^2-3)^3";
     //NSString *formula =@"(z^3-2)^2";
     
     
@@ -229,7 +229,7 @@ enum {
         //Dattel (Esfera)
             //NSString *formula = @"x^2+y^2+z^2-19";  //Bien
         //Pipe
-            //NSString *formula = @"x^2-z";  //Bien mal color
+            NSString *formula = @"x^2-z";  //Bien mal color
         //Gupf
             //NSString *formula = @"x^2+y^2+z";  //Bien    
         //Kegel
@@ -308,7 +308,7 @@ enum {
             //NSString *formula = @"x^2+z^2-(!y)^3*(y-1)^3";
             //NSString *formula = @"x^2+z^2-((0-1)*y)^3*(y-1)^3"; //Maso
         //Twilight
-            //NSString *formula =@"(z^3-2)^2+(x^2+y^2-3)^3"; // Mal el color. Bien la forma
+            //NSString *formula =@"(z^3-2)^2+(x^2+y^2-3)^3"; //Bien
 
             //NSString *formula = @"x^2-y^3*z^3"; //Mal
 

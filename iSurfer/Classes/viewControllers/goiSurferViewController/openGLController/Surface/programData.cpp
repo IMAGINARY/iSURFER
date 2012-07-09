@@ -36,6 +36,7 @@ ProgramIdentifiers programData::programs;
 void programData::InitializeProgramData()
 {
 
+
     GLuint glsl_program = programData::programs.alg_surface_glsl_program;
     glUseProgram( glsl_program ); checkGLError( AT );
   

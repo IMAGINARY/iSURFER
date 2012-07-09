@@ -113,7 +113,7 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
         mat4 cameraT;
         
         
-        cameraT = mat4::LookAt(vec3(0, 0, 120), vec3(0 , 0, 0), vec3(0, 1, 0));
+        cameraT = mat4::LookAt(vec3(0, 0, 120), vec3(0 , 0, 0), vec3(0, -1, 0));
         cameraT.toMatrix4x4(look);
         
         

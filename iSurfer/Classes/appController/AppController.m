@@ -101,8 +101,6 @@
         }
     
 			
-        NSLog(@"jejeje %@",  [Language get:@"scorekey" alter:nil]);
-
 		[self performSelector:@selector(showMainMenu) withObject:nil afterDelay:SPLASH_DELAY];
 				
 	}	

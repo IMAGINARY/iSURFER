@@ -32,8 +32,8 @@ highp float power( highp float base, int exp );
 
 polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir, in highp vec2 trace_interval )
 {
-	polynomial y = create_poly_1( eye.x, dir.x );
-	polynomial x = create_poly_1( eye.y, dir.y );
+	polynomial x = create_poly_1( eye.x, dir.x );
+	polynomial y = create_poly_1( eye.y, dir.y );
 	polynomial z = create_poly_1( eye.z, dir.z );
 	
 	return  ;
@@ -639,7 +639,7 @@ void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point
 
 
         highp vec3 L = normalize(LightPosition);
-        highp vec3 E = dir;
+        highp vec3 E = -dir;
         lowp vec3 color;
 
         if(dot(N, E) >= DELTA)
