@@ -73,7 +73,8 @@
 		[newSurface setSurfaceName:self.surfaceNameTextfield.text];
 		[newSurface setBriefDescription:self.surfaceDescriptionTextView.text];
         [newSurface setEquation:delegate.equationTextField.text];
-		[appcontroller addAlgebraicSurface:newSurface atGalleryIndex:galleryIndex];
+        Gallery * selectedGallery = [editableGalleries objectAtIndex:galleryIndex];
+		[appcontroller addAlgebraicSurface:newSurface atGallery:selectedGallery];
 		[newSurface release];
 		
 		[self dismissModalViewControllerAnimated:YES];

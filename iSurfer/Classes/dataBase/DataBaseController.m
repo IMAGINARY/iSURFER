@@ -71,20 +71,28 @@
 	[db beginTransaction];
 	NSData* imgdata = UIImagePNGRepresentation(surface.surfaceImage);
 	
-    NSLog(@"%@", surface.surfaceID);
-    NSLog(@"%@", gal.galID);
+    //NSLog(@"%@", surface.surfaceID);
+    NSLog(@"GalID %d", gal.galID);
+    NSLog(@"GalName %@", gal.galleryName);
     
-	[db executeUpdate:@"insert into surfaces(name, equation, image, galleryid) values(?, ?, ?, ?, ?)",	
+	[db executeUpdate:@"insert into surfaces(name, equation, image, galleryid) values(?, ?, ?, ?)",	
 	 surface.surfaceName,
 	 surface.equation,
 	 imgdata,
 	 [NSNumber numberWithInt:gal.galID]];
     //TODO
-    [db executeUpdate:@"insert into surfacestexts (surfaceid, briefdescription, completedescription, language ) values (?, ?, ?, ?)",
+    
+    FMResultSet * rs = [db executeQuery:@"select max(id) as serial from surfaces"];
+    [rs next];
+    int serial = [rs intForColumn:@"serial"];
+    
+    surface.surfaceID = serial;
+    
+    [db executeUpdate:@"insert into surfacestexts (surfaceid, briefdescription, completedescription, language) values (?, ?, ?, ?)",
      [NSNumber numberWithInt:surface.surfaceID],
      surface.briefDescription,
      surface.completeDescription,
-     1];
+     [NSNumber numberWithInt:1]];
 //	FMDBQuickCheck([db hadError]);
     
     if ([db hadError]) {
@@ -110,17 +118,27 @@
     NSLog(@"%@", gallery.galleryName);
 //    NSLog(@"%@", gallery.editable);
     NSLog(@"%@", imgdata);
+    gallery.editable = YES;
     
-	NSLog(@"%@", [db executeUpdate:@"insert into galleries (name, editable, thumbnail) values (?, ?, ?, ?)",	
+	[db executeUpdate:@"insert into galleries(name, editable, thumbnail) values(?, ?, ?)",	
 	 gallery.galleryName,
-	 gallery.editable, 
-	 imgdata]);
-    NSLog(@"%@", db.logsErrors);
-    NSLog(@"%@", db.lastInsertRowId);
-    [db executeUpdate:@"insert into galleriestext (galleryid, description, language) values (?,?,?)",
+     [NSNumber numberWithInt: gallery.editable],
+	 imgdata];
+//    NSLog(@"INSERT1 %@", db.logsErrors);
+    if ([db hadError]) {
+        NSLog(@"Err %d: %@", [db lastErrorCode], [db lastErrorMessage]);
+    }
+    
+    FMResultSet *rs =[db executeQuery:@"select max(id) as serial from galleries"];
+    [rs next];
+    int serial = [rs intForColumn:@"serial"];
+    gallery.galID = serial;
+    
+    //NSLog(@"%d@", db.lastInsertRowId);
+    [db executeUpdate:@"insert into galleriestexts (galleryid, description, language) values (?, ?, ?)",
      [NSNumber numberWithInt:gallery.galID],
      gallery.galleryDescription,
-     1];
+     [NSNumber numberWithInt: 1]];
 //	FMDBQuickCheck([db hadError]);
     
     if ([db hadError]) {
@@ -168,7 +186,7 @@
 
 
 		// just print out what we've got in a number of formats.
-		NSLog(@"%d %@ %@ %d",
+		NSLog(@"id:%d name:%@ description:%@ editable:%d",
 			  [rs intForColumn:@"id"],
 			  [rs stringForColumn:@"name"],
 			  [rstext stringForColumn:@"description"],

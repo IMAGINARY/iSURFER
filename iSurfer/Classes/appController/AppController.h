@@ -68,7 +68,7 @@
 
 -(NSMutableArray*)getEditableGalleries;
 
--(void)addAlgebraicSurface:(AlgebraicSurface*)surface atGalleryIndex:(int)index;
+-(void)addAlgebraicSurface:(AlgebraicSurface*)surface atGallery:(Gallery*)gallery;
 
 -(void)goToGalleries;
 

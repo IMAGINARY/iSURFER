@@ -227,10 +227,9 @@
 }
 //--------------------------------------------------------------------------------------------------------
 
--(void)addAlgebraicSurface:(AlgebraicSurface*)surface atGalleryIndex:(int)index{
-	Gallery* g = [self.galleriesArray objectAtIndex:index];
-	[g addAlgebraicSurface:surface];
-    [dataBase saveSurface:surface toGallery:[self.galleriesArray objectAtIndex:index]];
+-(void)addAlgebraicSurface:(AlgebraicSurface*)surface atGallery:(Gallery*)gallery{
+	[gallery addAlgebraicSurface:surface];
+    [dataBase saveSurface:surface toGallery:gallery];
 }
 //--------------------------------------------------------------------------------------------------------
 
