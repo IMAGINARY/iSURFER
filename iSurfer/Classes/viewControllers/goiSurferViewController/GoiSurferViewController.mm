@@ -167,9 +167,9 @@
 		case UIGestureRecognizerStateBegan:
 			NSLog(@"began");
 
-		//	temporalimgView.image = [self captureView:algebraicSurfaceView];
+			temporalimgView.image = [self captureView:algebraicSurfaceView];
 
-			 f = CGRectMake(110, 24, 90, 70	);
+			 f = CGRectMake(0, 24, 90, 70	);
 			algebraicSurfaceView.frame = f;
             
 			temporalimgView.hidden = NO;
@@ -197,7 +197,7 @@
 			temporalimgView.image = [algebraicSurfaceView saveImageFromGLView];
 //			[openglController rotateX:p.x Y:p.y];
 
-			f = CGRectMake(110, 24, 364, 245	);
+			f = CGRectMake(0, 24, 364, 245	);
 			algebraicSurfaceView.frame = f;
 
 			temporalimgView.hidden = YES;
@@ -408,19 +408,12 @@
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
 	CGRect r=[showingView frame];
-	CGRect f=[algebraicSurfaceView frame];
-
+    
 	if(yes){
-		r.origin.x =  0;
-		f.origin.x = f.origin.x + 40;
-		f.size.width = f.size.width - 40;
+        showingView.alpha =  1;
 	}else{
-		r.origin.x = -OPTIONS_VIEWS_WIDTH;
-		f.origin.x = f.origin.x - 40;
-		f.size.width = f.size.width + 40;
+        showingView.alpha =  0;
 	}
-	[algebraicSurfaceView setFrame:f];
-	[showingView setFrame:r];
 	[UIView commitAnimations];
 }
 //--------------------------------------------------------------------------------------------------------
@@ -511,6 +504,12 @@
 	[saveimg release];
 }
 //--------------------------------------------------------------------------------------------------------
+
+-(IBAction)flipToGalleries:(id)sender{
+    
+    [appcontroller goToGalleries];
+}
+
 
 -(void)dealloc{
 	[equationTextField release];

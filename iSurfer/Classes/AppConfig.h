@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define SPLASH_DELAY 2
+#define SPLASH_DELAY 1
 
 #define GO_ISURFER_BUTTON	1
 #define MY_GALLERIES_BUTTON 2

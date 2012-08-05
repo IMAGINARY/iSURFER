@@ -93,5 +93,6 @@
 -(IBAction)saveImage;
 -(IBAction)setSurfaceColors;
 -(UIImage*)getSurfaceImage;
+-(IBAction)flipToGalleries:(id)sender;
 
 @end

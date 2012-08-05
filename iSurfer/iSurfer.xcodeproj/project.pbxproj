@@ -809,6 +809,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Damian Modernell (U8CX6D8PSW)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -816,8 +817,9 @@
 				GCC_PREFIX_HEADER = iSurfer_Prefix.pch;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "iSurfer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = iSurfer;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E3DE1026-3E5E-4F77-A49D-CAFE2752E4D7";
 			};
 			name = Debug;
 		};
@@ -830,7 +832,7 @@
 				GCC_PREFIX_HEADER = iSurfer_Prefix.pch;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "iSurfer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = iSurfer;
 				VALIDATE_PRODUCT = YES;
 			};

@@ -101,15 +101,30 @@
         }
     
 			
-		[self performSelector:@selector(showMainMenu) withObject:nil afterDelay:SPLASH_DELAY];
+		[self performSelector:@selector(goToMainScreen) withObject:nil afterDelay:SPLASH_DELAY];
 				
 	}	
 	return self;		
 }
 //--------------------------------------------------------------------------------------------------------
+-(void)goToGalleries{
+    
+    [UIView beginAnimations:@"View Flip" context:nil];
+    [UIView setAnimationDuration:0.80];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight
+                           forView:self.navcontroller.view cache:NO];
+    
+    [self.navcontroller pushViewController:myGalleriesViewController animated:YES];
+    [UIView commitAnimations];
+    
+}
 
--(void)showMainMenu{
-	[self.navcontroller pushViewController:mainMenuViewController animated:NO];
+
+
+-(void)goToMainScreen{
+	[self.navcontroller pushViewController:goiSurferViewController animated:NO];
 }
 //--------------------------------------------------------------------------------------------------------
 

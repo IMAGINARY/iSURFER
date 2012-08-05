@@ -70,5 +70,7 @@
 
 -(void)addAlgebraicSurface:(AlgebraicSurface*)surface atGalleryIndex:(int)index;
 
+-(void)goToGalleries;
+
 //--------------------------------------------------------------------------------------------------------
 @end
