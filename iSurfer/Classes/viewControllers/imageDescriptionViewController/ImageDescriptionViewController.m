@@ -7,13 +7,13 @@
 //
 
 #import "ImageDescriptionViewController.h"
-#import "ImageDescriptionViewController.h"
+#import "DataBaseController.h"
 
 @implementation ImageDescriptionViewController
-@synthesize imageView, scrollView, formula, description;
+@synthesize surface, imageView, scrollView, formula, description;
 
 
--(id) initWithAppController:(AppController*)anappCtrl{
+-(id) initWithAppController:(AppController*)anappCtrl {
 	
 	if (self = [super initWithNibName:@"ImageDescriptionViewController" bundle:[NSBundle mainBundle]]) {
 		[self setAppcontroller:anappCtrl];
@@ -21,13 +21,26 @@
 	return self;
 }
 
+-(void)initialize{
+    NSMutableArray* galleries = self.appcontroller.galleriesArray;
+    Gallery * firstGallery = [galleries objectAtIndex:0];
+    [self.appcontroller.dataBase populateGallery:firstGallery];
+    NSLog(@"%@", firstGallery.galleryName);
+    NSLog(@"%@", firstGallery.galleryDescription);
+    
+    AlgebraicSurface * firstSurface = [firstGallery getSurfaceAtIndex:0];
+    NSLog(@"%@", firstSurface.equation);
+    NSLog(@"%@", firstSurface.briefDescription);
+    [self setSurface: firstSurface];
+}
+
 -(void)setFormula{
-    [formula setText:@"formula"];
+    [formula setText:surface.equation];
 }
 
 -(void)setDescription
 {
-    [description setText:@"description"];
+    [description setText:surface.completeDescription];
 }
 
 -(void)setImageView
@@ -41,7 +54,10 @@
     /*El content size es el tamaño de lo que está adentro del ScrollView.
     //El tamaño del ScrollView se setea desde el interface builder.
     //El tamaño del contentSize se setea en el código*/
-    [scrollView setContentSize:CGSizeMake(380, 500)];
+    [self initialize];
+    int descriptionLength = surface.completeDescription.length;
+    int height = descriptionLength/50*13;
+    [scrollView setContentSize:CGSizeMake(380, height)];
     [super viewDidLoad]; 
     [self setImageView];
     [self setFormula];

@@ -60,6 +60,11 @@
 	self.navigationItem.rightBarButtonItem = self.toolbar;
 	self.navigationItem.title = self.gallery.galleryName;
 	
+    UIGestureRecognizer * tabGesture = [[UIGestureRecognizer alloc]initWithTarget:self action:@selector(tagHandler:)];
+    
+    [surfaceImage addGestureRecognizer: tabGesture];
+    
+    [tabGesture release];
 	[actionSheetButton release];
 	[spaceBetweenButtons release];
 	[tmptoolbar release];
@@ -69,6 +74,11 @@
 }
 
 //--------------------------------------------------------------------------------------------------------
+
+- (void)tabGesture: (id)sender{
+    NSLog(@"tabGesture");
+    
+}
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
 	NSLog(@"clickedButtonAtIndex:");
@@ -235,7 +245,8 @@
 	[self.surfaceImage setImage:[surface surfaceImage]];
 	[self.surfaceEquation setText:[surface equation]];
 	[tableView scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:UITableViewScrollPositionMiddle	animated:YES];
-    [appcontroller pushViewControllerWithName:@"imageDescription"];
+    // TODO borrar esto
+    //[appcontroller pushViewControllerWithName:@"imageDescription"];
 }
 //--------------------------------------------------------------------------------------------------------
 -(void)dealloc{

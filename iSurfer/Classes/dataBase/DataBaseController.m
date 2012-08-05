@@ -71,7 +71,10 @@
 	[db beginTransaction];
 	NSData* imgdata = UIImagePNGRepresentation(surface.surfaceImage);
 	
-	[db executeUpdate:@"insert into surfaces (name, equation, surfaceimage, galleryid) values (?, ?, ?, ?, ?)",	
+    NSLog(@"%@", surface.surfaceID);
+    NSLog(@"%@", gal.galID);
+    
+	[db executeUpdate:@"insert into surfaces(name, equation, image, galleryid) values(?, ?, ?, ?, ?)",	
 	 surface.surfaceName,
 	 surface.equation,
 	 imgdata,
@@ -99,13 +102,21 @@
     if( gallery.saved ){
         return;
     }
+    
 	[db beginTransaction];
 	NSData* imgdata = UIImagePNGRepresentation(gallery.thumbNail);
 
-	[db executeUpdate:@"insert into galleries (name, editable, thumbnail) values (?, ?, ?, ?)",	
+    NSLog(@"%@", gallery);
+    NSLog(@"%@", gallery.galleryName);
+//    NSLog(@"%@", gallery.editable);
+    NSLog(@"%@", imgdata);
+    
+	NSLog(@"%@", [db executeUpdate:@"insert into galleries (name, editable, thumbnail) values (?, ?, ?, ?)",	
 	 gallery.galleryName,
-	 [NSNumber numberWithInt:gallery.editable], 
-	 imgdata];
+	 gallery.editable, 
+	 imgdata]);
+    NSLog(@"%@", db.logsErrors);
+    NSLog(@"%@", db.lastInsertRowId);
     [db executeUpdate:@"insert into galleriestext (galleryid, description, language) values (?,?,?)",
      [NSNumber numberWithInt:gallery.galID],
      gallery.galleryDescription,

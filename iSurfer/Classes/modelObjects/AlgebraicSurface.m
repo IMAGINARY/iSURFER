@@ -9,9 +9,11 @@
 #import "AlgebraicSurface.h"
 
 
+//TODO Considerar hacer una subclase de AlgebraicSurface para las imágenes de las galerías
+//TODO Considerar no tener los atributos completeDescription y realImage en la superficie para ahorrar memoria a la hora de levantar todas las superficies. Considerar pedirlas cuando sea necesario, es decir, cuando se entra a la descripción completa de una superficie.
 @implementation AlgebraicSurface
 //--------------------------------------------------------------------------------------------------------
-@synthesize surfaceID, surfaceImage, surfaceName, briefDescription, completeDescription, equation, saved;
+@synthesize surfaceID, surfaceImage, realImage, surfaceName, briefDescription, completeDescription, equation, saved;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) init{	
@@ -20,7 +22,9 @@
 		self.surfaceName = @"";
 		self.briefDescription = @"";
         self.completeDescription = @"";
+        self.equation = @"";
 		self.surfaceImage = nil;
+        self.realImage = nil;
         self.saved = NO;
 	}
 	return self;
@@ -32,6 +36,7 @@
 	[briefDescription release];
     [completeDescription release];
 	[surfaceImage release];
+    [realImage release];
 	[equation release];
 	[super dealloc];
 }
