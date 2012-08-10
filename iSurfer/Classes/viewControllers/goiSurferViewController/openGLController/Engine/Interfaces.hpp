@@ -9,6 +9,8 @@
 #include <vector>
 #include <string>
 
+
+
 using std::vector;
 using std::string;
 
@@ -70,5 +72,29 @@ namespace SolidGL2     { IRenderingEngine* CreateRenderingEngine(); }
 namespace FacetedES2   { IRenderingEngine* CreateRenderingEngine(); }
 namespace DepthViewer  { IRenderingEngine* CreateRenderingEngine(); }
 
-
+namespace ParametricViewer {   
+class ApplicationEngine : public IApplicationEngine {
+public:
+    ApplicationEngine(IRenderingEngine* renderingEngine);
+    ~ApplicationEngine();
+    void Initialize(int width, int height);
+    void OnFingerDown(ivec2 location);
+    void OnFingerMove(ivec2 oldLocation, ivec2 newLocation);
+    void Zoom(float radius);
+    void Render();
+    void ChangeSurface(int surfaceIndex);
+private:
+    vec3 MapToSphere(ivec2 touchpoint) const;
+    float m_trackballRadius;
+    Quaternion m_orientation;
+    Quaternion m_previousOrientation;
+    ivec2 m_fingerStart;
+    ivec2 m_screenSize;
+    ivec2 m_centerPoint;
+    IRenderingEngine* m_renderingEngine;
+    vector<ISurface*> surfaces;
+    int currentSurface;
+    
+};
+}
 #endif

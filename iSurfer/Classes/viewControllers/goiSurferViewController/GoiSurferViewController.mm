@@ -41,6 +41,10 @@
 	//Color sliders conf
 	[optionsViews addObject:self.shareView];
 	[optionsViews addObject:self.colorPaletteView];
+    [optionsViews addObject:settingsView];
+
+    
+    
 	[self.shareView setHidden:YES];
 	[self.colorPaletteView setHidden:YES];
 	self.greenColorSlider.minimumValue = 0;
@@ -215,6 +219,8 @@
     return [algebraicSurfaceView saveImageFromGLView];
 }
 //--------------------------------------------------------------------------------------------------------
+
+
 -(void)handleTwoFingerTouch:(UIGestureRecognizer*)doubleFingerGesture{
 	switch (doubleFingerGesture.state) {
 		case UIGestureRecognizerStateBegan:
@@ -336,6 +342,27 @@
 	[self.colorTestView setBackgroundColor:color];
 }
 //--------------------------------------------------------------------------------------------------------
+
+- (IBAction)settingsSliderChanged:(id)sender {
+    UISlider *slider = (UISlider *)sender;
+    
+    if( slider.value >=0 && slider.value< 5){
+        slider.value = 0;
+    }else if (slider.value >=5 && slider.value< 15){
+        slider.value = 10;
+    }else if (slider.value >=15 && slider.value< 25){
+        slider.value = 20;
+    }else if (slider.value >=25 && slider.value< 35){
+        slider.value = 30;
+    }else if (slider.value >=35 && slider.value< 45){
+        slider.value = 40;
+    }else if (slider.value >=45 && slider.value< 50){
+        slider.value = 50;
+    }
+    
+}
+//--------------------------------------------------------------------------------------------------------
+
 -(IBAction)optionsButtonPressed:(id)sender{
 	UIButton* button = (UIButton*)sender;
 	switch (button.tag) {
@@ -345,6 +372,9 @@
 		case 2:
 			[self showOptionsViewWrapper:YES view:colorPaletteView];
 			break;
+        case 3:
+            [self showOptionsViewWrapper:YES view:settingsView];
+            break;
 		default:
 			break;
 	}
@@ -420,7 +450,7 @@
 
 -(void)showOptionsViewWrapper:(BOOL)yes view:(UIView*)showingView{
 	for( UIView* optionsView in self.optionsViews ){
-		//[self showOptionsView:NO view:optionsView];
+		[self showOptionsView:NO view:optionsView];
 	}
 	if( showingView ){
 		[showingView setHidden:NO];

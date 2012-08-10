@@ -25,6 +25,7 @@
 	IBOutlet UIView* shareView;
 	
 	//Color palette view outlets
+    IBOutlet UIView* settingsView;
 	IBOutlet UIView* colorPaletteView;
 	IBOutlet UIView* colorTestView;
 	IBOutlet UISlider* greenColorSlider;

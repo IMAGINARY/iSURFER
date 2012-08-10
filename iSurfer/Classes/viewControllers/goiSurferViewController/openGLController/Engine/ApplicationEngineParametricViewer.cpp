@@ -1,8 +1,7 @@
-#include "Interfaces.hpp"
 #include "ParametricEquations.hpp"
 #include "ParametricSurface.hpp"
+#include "ApplicationEngineParametricViewer.hpp"
 
-namespace ParametricViewer {   
     
 static const int SurfaceCount = 6;
     vector<ISurface*> surfaces(SurfaceCount);
@@ -13,7 +12,7 @@ static const int SurfaceCount = 6;
     }
 
     ApplicationEngine::ApplicationEngine(IRenderingEngine* renderingEngine) :
-    currentSurface(1),
+    currentSurface(0),
     m_renderingEngine(renderingEngine)
     {
     }
@@ -23,7 +22,7 @@ static const int SurfaceCount = 6;
         delete m_renderingEngine;
     }
 
-
+//TODO PICKER bounding box
 
     void ApplicationEngine::Initialize(int width, int height)
     {
@@ -102,5 +101,5 @@ static const int SurfaceCount = 6;
 
 
 
-}
+
 
