@@ -10,6 +10,7 @@
 #import "SaveAlgebraicSurfaceViewController.h"
 #import "iSurferViewController.h"
 #import "EAGLView.h"
+#import "Interfaces.hpp"
 
 //--------------------------------------------------------------------------------------------------------
 @interface GoiSurferViewController(PrivateMethods)
@@ -348,17 +349,29 @@
     
     if( slider.value >=0 && slider.value< 5){
         slider.value = 0;
+        openglController.m_applicationEngine->ChangeSurface(0);
     }else if (slider.value >=5 && slider.value< 15){
         slider.value = 10;
+        openglController.m_applicationEngine->ChangeSurface(1);
+
     }else if (slider.value >=15 && slider.value< 25){
         slider.value = 20;
+        openglController.m_applicationEngine->ChangeSurface(2);
+
     }else if (slider.value >=25 && slider.value< 35){
         slider.value = 30;
+        openglController.m_applicationEngine->ChangeSurface(3);
+
     }else if (slider.value >=35 && slider.value< 45){
         slider.value = 40;
+        openglController.m_applicationEngine->ChangeSurface(4);
+
     }else if (slider.value >=45 && slider.value< 50){
         slider.value = 50;
+        openglController.m_applicationEngine->ChangeSurface(5);
+
     }
+	[openglController generateSurface:self.equationTextField.text];
     
 }
 //--------------------------------------------------------------------------------------------------------

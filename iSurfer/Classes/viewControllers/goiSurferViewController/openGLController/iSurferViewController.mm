@@ -42,7 +42,7 @@ enum {
 @implementation iSurferViewController
 
 @synthesize animating, context;
-@synthesize trackBall;
+@synthesize trackBall, m_applicationEngine;
 
 
 -(id)init{
@@ -319,7 +319,6 @@ enum {
     m_renderingEngine = SolidES2::CreateRenderingEngine();
     
     m_applicationEngine = ParametricViewer::CreateApplicationEngine(m_renderingEngine);
-    
     int width = 240;//CGRectGetWidth(frame);
     int height = 240;//CGRectGetHeight(frame);
     m_applicationEngine->Initialize(width, height);

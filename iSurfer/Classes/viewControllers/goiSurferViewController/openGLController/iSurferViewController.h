@@ -43,6 +43,10 @@
 @property (readonly, nonatomic, getter=isAnimating) BOOL animating;
 @property (nonatomic) NSInteger animationFrameInterval;
 
+@property (readonly, nonatomic )    IApplicationEngine* m_applicationEngine;
+
+
+
 - (void)startAnimation;
 - (void)stopAnimation;
 -(void)setupGLContxt;

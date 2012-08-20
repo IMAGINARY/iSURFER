@@ -20,6 +20,17 @@
 		3308B17C1533EC87001E853F /* error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B1721533EC87001E853F /* error.cpp */; };
 		3308B17D1533EC87001E853F /* programData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B1741533EC87001E853F /* programData.cpp */; };
 		3308B17E1533EC87001E853F /* surfaceRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B1761533EC87001E853F /* surfaceRender.cpp */; };
+		5EDA315515E2FD6400F7BC06 /* button-share.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA315315E2FD6400F7BC06 /* button-share.png */; };
+		5EDA315615E2FD6400F7BC06 /* button-share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA315415E2FD6400F7BC06 /* button-share@2x.png */; };
+		5EDA315915E2FD7F00F7BC06 /* button-galleries-not-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA315715E2FD7F00F7BC06 /* button-galleries-not-active.png */; };
+		5EDA315A15E2FD7F00F7BC06 /* button-galleries-not-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA315815E2FD7F00F7BC06 /* button-galleries-not-active@2x.png */; };
+		5EDA315D15E2FDB600F7BC06 /* button-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA315B15E2FDB600F7BC06 /* button-color.png */; };
+		5EDA315E15E2FDB600F7BC06 /* button-color@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA315C15E2FDB600F7BC06 /* button-color@2x.png */; };
+		5EDA316115E2FDC800F7BC06 /* button-render-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA315F15E2FDC800F7BC06 /* button-render-active.png */; };
+		5EDA316215E2FDC800F7BC06 /* button-render-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA316015E2FDC800F7BC06 /* button-render-active@2x.png */; };
+		5EDA316515E2FF0200F7BC06 /* button-settings-not-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA316315E2FF0200F7BC06 /* button-settings-not-active.png */; };
+		5EDA316615E2FF0200F7BC06 /* button-settings-not-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA316415E2FF0200F7BC06 /* button-settings-not-active@2x.png */; };
+		5EDA316815E3016400F7BC06 /* button-save.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA316715E3016400F7BC06 /* button-save.png */; };
 		8B29F94A13D3A20E00EDB516 /* AddNewGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B29F94813D3A20E00EDB516 /* AddNewGalleryViewController.m */; };
 		8B29F94B13D3A20E00EDB516 /* AddNewGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B29F94913D3A20E00EDB516 /* AddNewGalleryViewController.xib */; };
 		8B29F98713D3C6BE00EDB516 /* Gallery.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B29F98613D3C6BE00EDB516 /* Gallery.m */; };
@@ -122,6 +133,17 @@
 		3308B1751533EC87001E853F /* programData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = programData.hpp; sourceTree = "<group>"; };
 		3308B1761533EC87001E853F /* surfaceRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surfaceRender.cpp; sourceTree = "<group>"; };
 		3308B1771533EC87001E853F /* surfaceRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = surfaceRender.h; sourceTree = "<group>"; };
+		5EDA315315E2FD6400F7BC06 /* button-share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-share.png"; sourceTree = "<group>"; };
+		5EDA315415E2FD6400F7BC06 /* button-share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-share@2x.png"; sourceTree = "<group>"; };
+		5EDA315715E2FD7F00F7BC06 /* button-galleries-not-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-galleries-not-active.png"; sourceTree = "<group>"; };
+		5EDA315815E2FD7F00F7BC06 /* button-galleries-not-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-galleries-not-active@2x.png"; sourceTree = "<group>"; };
+		5EDA315B15E2FDB600F7BC06 /* button-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-color.png"; sourceTree = "<group>"; };
+		5EDA315C15E2FDB600F7BC06 /* button-color@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-color@2x.png"; sourceTree = "<group>"; };
+		5EDA315F15E2FDC800F7BC06 /* button-render-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-render-active.png"; sourceTree = "<group>"; };
+		5EDA316015E2FDC800F7BC06 /* button-render-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-render-active@2x.png"; sourceTree = "<group>"; };
+		5EDA316315E2FF0200F7BC06 /* button-settings-not-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-settings-not-active.png"; sourceTree = "<group>"; };
+		5EDA316415E2FF0200F7BC06 /* button-settings-not-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-settings-not-active@2x.png"; sourceTree = "<group>"; };
+		5EDA316715E3016400F7BC06 /* button-save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-save.png"; sourceTree = "<group>"; };
 		8B29F94713D3A20E00EDB516 /* AddNewGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewGalleryViewController.h; sourceTree = "<group>"; };
 		8B29F94813D3A20E00EDB516 /* AddNewGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewGalleryViewController.m; sourceTree = "<group>"; };
 		8B29F94913D3A20E00EDB516 /* AddNewGalleryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewGalleryViewController.xib; sourceTree = "<group>"; };
@@ -355,6 +377,24 @@
 			path = Surface;
 			sourceTree = "<group>";
 		};
+		5EDA315115E2FD2600F7BC06 /* mainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5EDA316715E3016400F7BC06 /* button-save.png */,
+				5EDA316315E2FF0200F7BC06 /* button-settings-not-active.png */,
+				5EDA316415E2FF0200F7BC06 /* button-settings-not-active@2x.png */,
+				5EDA315F15E2FDC800F7BC06 /* button-render-active.png */,
+				5EDA316015E2FDC800F7BC06 /* button-render-active@2x.png */,
+				5EDA315B15E2FDB600F7BC06 /* button-color.png */,
+				5EDA315C15E2FDB600F7BC06 /* button-color@2x.png */,
+				5EDA315715E2FD7F00F7BC06 /* button-galleries-not-active.png */,
+				5EDA315815E2FD7F00F7BC06 /* button-galleries-not-active@2x.png */,
+				5EDA315315E2FD6400F7BC06 /* button-share.png */,
+				5EDA315415E2FD6400F7BC06 /* button-share@2x.png */,
+			);
+			path = mainScreen;
+			sourceTree = "<group>";
+		};
 		8B29F94613D3A20E00EDB516 /* addGalleryViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,6 +520,7 @@
 		8B891CB113BA990B00EE4BC7 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				5EDA315115E2FD2600F7BC06 /* mainScreen */,
 				8B29FD0713D6685600EDB516 /* Black Line.png */,
 				8B43078313C903B3004812EE /* goSurfer_background.png */,
 				8B43078413C903B3004812EE /* green wallpaper.JPG */,
@@ -736,6 +777,17 @@
 				8B9114D714BF946C00BEAF27 /* lemon.png in Resources */,
 				8B9114D814BF946C00BEAF27 /* nepali.png in Resources */,
 				B5DFEBD515A8BBA000203B41 /* ImageDescriptionViewController.xib in Resources */,
+				5EDA315515E2FD6400F7BC06 /* button-share.png in Resources */,
+				5EDA315615E2FD6400F7BC06 /* button-share@2x.png in Resources */,
+				5EDA315915E2FD7F00F7BC06 /* button-galleries-not-active.png in Resources */,
+				5EDA315A15E2FD7F00F7BC06 /* button-galleries-not-active@2x.png in Resources */,
+				5EDA315D15E2FDB600F7BC06 /* button-color.png in Resources */,
+				5EDA315E15E2FDB600F7BC06 /* button-color@2x.png in Resources */,
+				5EDA316115E2FDC800F7BC06 /* button-render-active.png in Resources */,
+				5EDA316215E2FDC800F7BC06 /* button-render-active@2x.png in Resources */,
+				5EDA316515E2FF0200F7BC06 /* button-settings-not-active.png in Resources */,
+				5EDA316615E2FF0200F7BC06 /* button-settings-not-active@2x.png in Resources */,
+				5EDA316815E3016400F7BC06 /* button-save.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
