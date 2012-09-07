@@ -222,14 +222,14 @@ enum {
     
     //Grado 2
         
-            //NSString *formula = @"y*x";  //Bien
+        //NSString *formula = @"y*x";  //Bien
 
         //Cylinder
             //NSString *formula = @"x^2+y^2-5";  //Bien
         //Dattel (Esfera)
             //NSString *formula = @"x^2+y^2+z^2-19";  //Bien
         //Pipe
-            NSString *formula = @"x^2-z";  //Bien mal color
+            //NSString *formula = @"x^2-z";  //Bien
         //Gupf
             //NSString *formula = @"x^2+y^2+z";  //Bien    
         //Kegel
@@ -244,19 +244,25 @@ enum {
             //NSString *formula = @"x^2+y^2+z"; //Bien 
     
     
-             //NSString *formula = @"x^2+y^2+z*x+y"; // mal color
     
 
+            //NSString *formula = @"x^2+y^2+z*x+y"; //Bien
     
 
     
     //Grado 3
+    
+        
+    //Kegel
+        //NSString *formula = @"x^2+y^2+z^3-20";//Bien 
+    
+            //NSString *formula = @"x^2+y^2+z^3-1";//Bien 
         //Kreuz
-            //NSString *formula = @"x*y*z";  //mal 100%
+            NSString *formula = @"x*y*z";  //mal 100%
         //Calypso 
-            //NSString *formula = @"x^2+y^2*z-z^2"; // Mal
+           // NSString *formula = @"x^2+y^2*z-z^2"; // Mal
         //Cayley Cubic
-           // NSString *formula = @"x^2+y^2+z^2+2*x*y*z-1"; //Maso Mal 
+            //NSString *formula = @"x^2+y^2+z^2+2*x*y*z-1"; //Maso Mal 
         //Este se ve raro
             //NSString *formula = @"x^2-x-x^2*y-y*z^2-z^2"; //Bien
 
@@ -273,8 +279,11 @@ enum {
             //NSString *formula = @"x^2-y^2*z"; // Mal 30%
     
     //Grado 4
-        //Calyx
-            //NSString *formula = @"x^2+y^2*z^3-z^4"; //Mal
+    
+    //NSString *formula = @"x^4+y^4+z^4-1";// Bien
+
+      
+   // NSString *formula = @"x^6-y^4-z*y";// Bien
     
             //NSString *formula = @"x^4-2";// Bien
 
@@ -298,7 +307,11 @@ enum {
 
 
     //Grado 5
+    //Calyx
+    //NSString *formula = @"x^2+y^2*z^3-z^4"; //Maso
+
         //NSString *formula = @"x^2+y^2*z^3";// mal
+    //NSString *formula = @"x^2+y^2*z^3";// mal
 
     
     //Grado 6
@@ -306,7 +319,7 @@ enum {
             //NSString *formula = @"x^6+y^6+z^6-19";  //Bien
         //citrus 
             //NSString *formula = @"x^2+z^2-(!y)^3*(y-1)^3";
-            //NSString *formula = @"x^2+z^2-((0-1)*y)^3*(y-1)^3"; //Maso
+            //NSString *formula = @"x^2+z^2-((0-1)*y)^3*(y-1)^3"; //Bien
         //Twilight
             //NSString *formula =@"(z^3-2)^2+(x^2+y^2-3)^3"; //Bien
 

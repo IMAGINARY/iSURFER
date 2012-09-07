@@ -71,10 +71,15 @@ void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const cha
     
 	//printf("\n");
 	//printf("Degree %d \n", EvalDegree(exp));
-	
+    //int range, precision;
+    //glGetShaderPrecisionFormat(GL_FRAGMENT_SHADER, GL_HIGH_FLOAT, &range, &precision);
+    //printf("Range %d, precision %d.\n", range, precision);
+	checkGLError( AT );
+    
 	GLuint aux = init( vs1/*"vs1.glsl"*/, fs1/*"fs1.glsl"*/ );
     //printf("aux val %d y alg_surface vale = %d\n\n", aux, programData::programs.alg_surface_glsl_program);
     programData::programs.alg_surface_glsl_program = aux;
+	checkGLError( AT );
     
     if(programData::debug){
         glDeleteShader(programData::programs.wireframe_glsl_program);

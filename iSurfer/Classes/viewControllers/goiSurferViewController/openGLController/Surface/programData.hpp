@@ -59,6 +59,9 @@ class programData
         static GLfloat normalized[STACKS*(SLICES+1)*2*3];
         static void InitializeProgramData();
     
+
+    void OnFingerDown(ivec2 location);
+
     void static SetEye(Matrix4x4 inverse);
 
         void static UpdateColor(float red, float green, float blue);

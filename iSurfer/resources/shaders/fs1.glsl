@@ -340,7 +340,7 @@ highp float first_root_Descartes( const in polynomial p, highp float epsilon, in
 highp float first_root_in( inout polynomial p, highp float min, highp float max )
 {
     
-#if DEGREE > 3
+#if DEGREE >= 3
 
     // find smallest root in [0,1], if any
     polynomial p01 = p;
@@ -429,7 +429,7 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
 
 #endif
     
-#if DEGREE ==3
+#if DEGREE ==10
 
 		highp float a=p.a[DEGREE-1]/-p.a[DEGREE];
 		highp float b=p.a[1]/-p.a[DEGREE];
@@ -449,7 +449,8 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
 		
 		
 		highp float disc=qu*qu+4.0*pe*pe*pe/27.0;
-		
+    //min = min*0.25;
+    //max = max*4.0;
 
 		if (disc > 0.0 )
 		{
@@ -465,9 +466,12 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
                 //discard;
                 return x0;
             }else
-                //gl_FragColor = vec4( 0.5, 0.5, 1 , 1 );
-                discard;
-
+                gl_FragColor = vec4( 0.0, 0.0, 1 , 1 );
+              //Dejar el discard despues  
+            //discard;
+            return x0;
+            
+            //return 0.0;
 		}
 		/*else if (disc >= 0.0 - EPSILON && disc <= 0.0 + EPSILON)
 		{
@@ -539,7 +543,11 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
                 gl_FragColor = vec4( 1.0, 0.0, 0.0 , 1 );
                 return xmax;
             }
-            discard;
+            gl_FragColor = vec4( 0.0, 0.0, 0.0 , 1 );
+            
+            return 0.0;
+            //Volver a poner este discard
+            //discard;
 		
         }
 	
@@ -721,8 +729,10 @@ void main( void )
     
 	highp float tcenter = ( tmin + tmax ) * 0.5;
     //Con esto ponemos el 0 en el medio del grafico.
+    
+	//highp vec3 eye = vec3(0.0,0.0,0.0);//varying_eye + tcenter * varying_dir;
 	highp vec3 eye = varying_eye + tcenter * varying_dir;
-	highp vec3 dir = varying_dir;
+    highp vec3 dir = varying_dir;
 	tmin = tmin - tcenter;
 	tmax = tmax - tcenter;
     // setup polynomial

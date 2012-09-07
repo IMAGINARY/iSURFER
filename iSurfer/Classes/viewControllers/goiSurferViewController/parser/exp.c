@@ -233,7 +233,8 @@ EvalDerivateExpNoCode( expressionT exp, char var) {
             
             
         case '*': 
-        
+            printChar('(', 1);
+            
             EvalExpNoCode(exp->left,1);
             printChar('*', 1);
             EvalDerivateExpNoCode(exp->right, var);
@@ -241,6 +242,8 @@ EvalDerivateExpNoCode( expressionT exp, char var) {
             EvalExpNoCode(exp->right,1);
             printChar('*', 1);
             EvalDerivateExpNoCode(exp->left, var);
+            printChar(')', 1);
+            
             return;
             
         case '-':  printChar('(', 1); EvalDerivateExpNoCode(exp->left, var); printChar('-', 1); EvalDerivateExpNoCode(exp->right, var); printChar(')', 1); return;

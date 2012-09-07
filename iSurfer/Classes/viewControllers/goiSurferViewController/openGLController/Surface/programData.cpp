@@ -166,6 +166,8 @@ void programData::UpdateColor(float red, float green, float blue)
 }
 
 
+
+
 void programData::GenerateArrays()
 {
     // Initialize various state.
