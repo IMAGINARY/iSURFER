@@ -69,11 +69,22 @@
 	
 	NSLog(@"saveSurface");
 	[db beginTransaction];
+    
 	NSData* imgdata = UIImagePNGRepresentation(surface.surfaceImage);
 	
     //NSLog(@"%@", surface.surfaceID);
     NSLog(@"GalID %d", gal.galID);
     NSLog(@"GalName %@", gal.galleryName);
+    NSLog(@"imagen:  %@", [surface.surfaceImage description]);
+    /*
+    NSString* date = [[NSDate date] description ];
+    
+    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *pngFilePath = [NSString stringWithFormat:@"%@/%@-%@-%@.png",rootPath, surface.surfaceName, gal.galleryName, date ];
+	NSData *data1 = [NSData dataWithData:UIImagePNGRepresentation(surface.surfaceImage)];
+	[data1 writeToFile:pngFilePath atomically:YES];
+    
+    */
     
 	[db executeUpdate:@"insert into surfaces(name, equation, image, galleryid) values(?, ?, ?, ?)",	
 	 surface.surfaceName,
@@ -87,7 +98,8 @@
     int serial = [rs intForColumn:@"serial"];
     
     surface.surfaceID = serial;
-    
+    [db commit];
+
     [db executeUpdate:@"insert into surfacestexts (surfaceid, briefdescription, completedescription, language) values (?, ?, ?, ?)",
      [NSNumber numberWithInt:surface.surfaceID],
      surface.briefDescription,
@@ -233,7 +245,8 @@
         
         //db executeQuery:@"select description from galleriestexts where galleryid = %d and language = 0", g.galID
         
-		s.surfaceImage = [UIImage imageWithData:[rs dataForColumn:@"surfaceimage"]];
+		s.surfaceImage = [UIImage imageWithData:[rs dataForColumn:@"image"]];
+        NSLog(@" %@",[s.surfaceImage description] );
         
         NSLog(@"%@", [rstext stringForColumn:@"briefdescription"]);
         NSLog(@"%@", [rstext stringForColumn:@"completedescription"]);
