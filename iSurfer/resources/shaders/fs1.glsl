@@ -429,130 +429,142 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
 
 #endif
     
-#if DEGREE ==10
-
-		highp float a=p.a[DEGREE-1]/-p.a[DEGREE];
-		highp float b=p.a[1]/-p.a[DEGREE];
-		highp float c=p.a[0]/-p.a[DEGREE];
-
-
-				
-		highp float pe=b-a*a/3.0;
-
-		
-		highp float part1qu = 2.0* a*a*a/27.0;
-		highp float part2qu = a*b/3.0;
-		
-
-		
-		highp float qu=part1qu - part2qu + c;
-		
-		
-		highp float disc=qu*qu+4.0*pe*pe*pe/27.0;
+#if DEGREE ==3
+    
+    highp float a=p.a[2]/p.a[3];
+    highp float b=p.a[1]/p.a[3];
+    highp float c=p.a[0]/p.a[3];
+    
+    highp float pe=b-a*a/3.0;		
+    highp float part1qu = 2.0* a*a*a/27.0;
+    highp float part2qu = a*b/3.0;
+    
+    
+    
+    highp float qu=part1qu - part2qu + c;
+    
+    
+    highp float disc=qu*qu+4.0*pe*pe*pe/27.0;
     //min = min*0.25;
     //max = max*4.0;
-
-		if (disc > 0.0 )
-		{
+    
+    if (disc > 0.0 )
+    {
 		
-			highp float u=mypower(((-qu+mypower(disc,0.5))/2.0),1.0/3.0);
-			highp float v=mypower(((-qu-mypower(disc,0.5))/2.0),1.0/3.0);
-			highp float z0=u+v;
-			highp float x0 = z0-a/3.0;
-            if(x0 >= min && x0 < max)
-            {
-                gl_FragColor = vec4( 1.0, 1.0, 0.0 , 1 );
-                //Este no sirve hace circulos raros.
-                //discard;
-                return x0;
-            }else
-                gl_FragColor = vec4( 0.0, 0.0, 1 , 1 );
-              //Dejar el discard despues  
+        highp float u=mypower(((-qu+mypower(disc,0.5))/2.0),1.0/3.0);
+        highp float v=mypower(((-qu-mypower(disc,0.5))/2.0),1.0/3.0);
+        highp float z0=u+v;
+        highp float x0 = z0-a/3.0;
+        if(x0 >= min && x0 < max)
+        {
+            gl_FragColor = vec4( 1.0, 1.0, 0.0 , 1 );
+            //Este no sirve hace circulos raros.
             //discard;
             return x0;
+        }else
+            gl_FragColor = vec4( 0.0, 0.0, 1 , 1 );
+        //Dejar el discard despues  
+        //discard;
+        return x0;
+        
+        //return 0.0;
+    }
+    else if (disc >= 0.0 - EPSILON && disc <= 0.0 + EPSILON){
+        highp float z0 = 3.0*qu/pe;
+        highp float z1 = -3.0*qu/2.0*pe;
+        highp float x0 = z0-a/3.0;
+        highp float x1 = z1-a/3.0;
+        
+        highp float xmin = min(x0, x1);
+        highp float xmax = max(x0, x1);
+        if(xmin >= min && xmin < max){
+            return xmin;
+        }
+        else if(xmax >= min && xmax < max){
+            return xmax;
+        }
+        discard;
+    }    
+    /*else if (disc >= 0.0 - EPSILON && disc <= 0.0 + EPSILON)
+     {
+     highp float z0=3.0*qu/pe;
+     highp float z1=-3.0*qu/(2.0*pe);
+     highp float x0 = z0-a/3.0;
+     highp float x1 = z1-a/3.0;
+     
+     if(x0 >=min && x0 < max)
+     {
+     
+     if(x1 >= min && x1 < max && x1 < x0)
+     return x1;
+     return x0;	
+     }
+     else if(x1 >=min && x1 < max)
+     return x1;
+     else
+     discard;
+     }*/
+    else if (disc < 0.0 )
+    {
+        highp float pi = 3.14159265358979323846264;
+        highp float z0 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/(-pe*pe*pe),0.5)));
+        highp float z1 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/(-pe*pe*pe),0.5))+2.0*pi/3.0);
+        highp float z2 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/(-pe*pe*pe),0.5))+4.0*pi/3.0);
+        highp float x0 = z0- a/3.0;
+        highp float x1 = z1- a/3.0;
+        highp float x2 = z2- a/3.0;
+        
+        //----Testeo raices----
+        
+        //if(x0 > 2.9 && x0 < 3.1)
+        //	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
+        
+        //if(x1 > -2.1 && x1 < -1.9)
+        //	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
+        
+        //if(x2 > 0.9 && x2 < 1.1)
+        //	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
+        
+        //----Raices correctas----
+        
+        highp float xmin = min(x0, min(x1, x2));
+        if(xmin >= min && xmin < max)
+        {
+            gl_FragColor = vec4( 0.0, 1.0, 1.0 , 1 );
             
-            //return 0.0;
-		}
-		/*else if (disc >= 0.0 - EPSILON && disc <= 0.0 + EPSILON)
-		{
-			highp float z0=3.0*qu/pe;
-			highp float z1=-3.0*qu/(2.0*pe);
-			highp float x0 = z0-a/3.0;
-			highp float x1 = z1-a/3.0;
-				
-			if(x0 >=min && x0 < max)
-			{
-             
-				if(x1 >= min && x1 < max && x1 < x0)
-					return x1;
-				return x0;	
-			}
-			else if(x1 >=min && x1 < max)
-				return x1;
-			else
-				discard;
-		}*/
-		else if (disc < 0.0 )
-		{
-			highp float pi = 3.14159265358979323846264;
-			highp float z0 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/(-pe*pe*pe),0.5)));
-			highp float z1 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/(-pe*pe*pe),0.5))+2.0*pi/3.0);
-			highp float z2 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/(-pe*pe*pe),0.5))+4.0*pi/3.0);
-			highp float x0 = z0- a/3.0;
-			highp float x1 = z1- a/3.0;
-			highp float x2 = z2- a/3.0;
-			
-			//----Testeo raices----
-			
-			//if(x0 > 2.9 && x0 < 3.1)
-			//	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
-			
-			//if(x1 > -2.1 && x1 < -1.9)
-			//	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
-				
-			//if(x2 > 0.9 && x2 < 1.1)
-			//	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
-			
-			//----Raices correctas----
-	
-            highp float xmin = min(x0, min(x1, x2));
-            if(xmin >= min && xmin < max)
-            {
-                gl_FragColor = vec4( 0.0, 1.0, 1.0 , 1 );
-
-                return xmin;
-            }
-            highp float xmax = max(x0, max(x1,x2));
-            highp float xmid; 
-
-            if(xmin == x0 || xmax== x0 )
-                if(xmin == x1 || xmax == x1)
-                    xmid = x2;
-                else
-                    xmid = x1;
+            return xmin;
+        }
+        highp float xmax = max(x0, max(x1,x2));
+        highp float xmid; 
+        
+        if(xmin == x0 || xmax== x0 )
+            if(xmin == x1 || xmax == x1)
+                xmid = x2;
+            else
+                xmid = x1;
             else
                 xmid = x0;
-
-            if(xmid >= min && xmid < max)
-            {
-                gl_FragColor = vec4( 1.0, 0.0, 1.0 , 1 );
-                return xmid;
-            }
-            if(xmax >= min && xmax < max)
-            {
-                gl_FragColor = vec4( 1.0, 0.0, 0.0 , 1 );
-                return xmax;
-            }
-            gl_FragColor = vec4( 0.0, 0.0, 0.0 , 1 );
-            
-            return 0.0;
-            //Volver a poner este discard
-            //discard;
-		
+        
+        if(xmid >= min && xmid < max)
+        {
+            gl_FragColor = vec4( 1.0, 0.0, 1.0 , 1 );
+            return xmid;
         }
+        if(xmax >= min && xmax < max)
+        {
+            gl_FragColor = vec4( 1.0, 0.0, 0.0 , 1 );
+            return xmax;
+        }
+        gl_FragColor = vec4( 0.0, 0.0, 0.0 , 1 );
+        
+        return 0.0;
+        //Volver a poner este discard
+        //discard;
+		
+    }
 	
 	
-/**********************************************/
+    /**********************************************/
 #endif
 
 #if DEGREE <=0
