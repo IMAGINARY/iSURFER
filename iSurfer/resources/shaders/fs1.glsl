@@ -340,7 +340,7 @@ highp float first_root_Descartes( const in polynomial p, highp float epsilon, in
 highp float first_root_in( inout polynomial p, highp float min, highp float max )
 {
     
-#if DEGREE >= 3
+#if DEGREE > 3
 
     // find smallest root in [0,1], if any
     polynomial p01 = p;
@@ -469,22 +469,22 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
         
         //return 0.0;
     }
-    else if (disc >= 0.0 - EPSILON && disc <= 0.0 + EPSILON){
-        highp float z0 = 3.0*qu/pe;
-        highp float z1 = -3.0*qu/2.0*pe;
-        highp float x0 = z0-a/3.0;
-        highp float x1 = z1-a/3.0;
-        
-        highp float xmin = min(x0, x1);
-        highp float xmax = max(x0, x1);
-        if(xmin >= min && xmin < max){
-            return xmin;
-        }
-        else if(xmax >= min && xmax < max){
-            return xmax;
-        }
-        discard;
-    }    
+//    else if (disc >= 0.0 - DELTA && disc <= 0.0 + DELTA){
+//        highp float z0 = 3.0*qu/pe;
+//        highp float z1 = -3.0*qu/2.0*pe;
+//        highp float x0 = z0-a/3.0;
+//        highp float x1 = z1-a/3.0;
+//        
+//        highp float xmin = min(x0, x1);
+//        highp float xmax = max(x0, x1);
+//        if(xmin >= min && xmin < max){
+//            return xmin;
+//        }
+//        else if(xmax >= min && xmax < max){
+//            return xmax;
+//        }
+//        discard;
+//    }    
     /*else if (disc >= 0.0 - EPSILON && disc <= 0.0 + EPSILON)
      {
      highp float z0=3.0*qu/pe;
@@ -504,7 +504,7 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
      else
      discard;
      }*/
-    else if (disc < 0.0 )
+    if (disc < 0.0 )
     {
         highp float pi = 3.14159265358979323846264;
         highp float z0 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/(-pe*pe*pe),0.5)));
