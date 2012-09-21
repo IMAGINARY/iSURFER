@@ -174,7 +174,7 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
         
     }
 
-    //programData::SetEye(modelview_inv);
+    programData::SetEye(modelview_inv);
     
     
 

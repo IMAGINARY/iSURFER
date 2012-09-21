@@ -429,6 +429,27 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
 
 #endif
     
+/*#if DEGREE ==3
+
+		highp float a=p.a[DEGREE-1]/-p.a[DEGREE];
+		highp float b=p.a[1]/-p.a[DEGREE];
+		highp float c=p.a[0]/-p.a[DEGREE];
+
+
+				
+		highp float pe=b-a*a/3.0;
+
+		
+		highp float part1qu = 2.0* a*a*a/27.0;
+		highp float part2qu = a*b/3.0;
+		
+
+		
+		highp float qu=part1qu - part2qu + c;
+		
+		
+		highp float disc=qu*qu+4.0*pe*pe*pe/27.0;
+*/
 #if DEGREE ==3
     
     highp float a=p.a[2]/p.a[3];
@@ -447,7 +468,6 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
     highp float disc=qu*qu+4.0*pe*pe*pe/27.0;
     //min = min*0.25;
     //max = max*4.0;
-    
     if (disc > 0.0 )
     {
 		
@@ -462,10 +482,10 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
             //discard;
             return x0;
         }else
-            gl_FragColor = vec4( 0.0, 0.0, 1 , 1 );
+            //gl_FragColor = vec4( 0.0, 0.0, 1 , 1 );
         //Dejar el discard despues  
-        //discard;
-        return x0;
+        discard;
+        //return x0;
         
         //return 0.0;
     }
@@ -531,7 +551,7 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
         if(xmin >= min && xmin < max)
         {
             gl_FragColor = vec4( 0.0, 1.0, 1.0 , 1 );
-            
+            //discard;
             return xmin;
         }
         highp float xmax = max(x0, max(x1,x2));
@@ -557,9 +577,9 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
         }
         gl_FragColor = vec4( 0.0, 0.0, 0.0 , 1 );
         
-        return 0.0;
+        //return 0.0;
         //Volver a poner este discard
-        //discard;
+        discard;
 		
     }
 	
@@ -592,7 +612,12 @@ void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float 
 	highp float a = dot(dir, dir);
 	highp float b = 2.0 * dot(dir, eye);
 	highp float c = dot(eye, eye) - (radius2);
-
+    highp float D = b * b - c;
+    if(D <0.0)
+        discard;
+   // tmin = -b -sqrt(D);
+   // tmax = b + sqrt(D);
+   // return;
 	//Find discriminant
 	highp float disc = b * b - 4.0 * a * c;
     gl_FragColor = vec4( 0.0, 1.0, 1.0 , 0.5 );
@@ -723,17 +748,29 @@ void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point
 }
 
 
+uniform highp vec4 origin;
 
 /**
  * main method, that guides the overall process
  */
 void main( void )
 {
+/*    highp vec4 aux = vec4(1.0,2.0,3.0,4.0);
+    highp vec4 aux2 = vec4(0.0,0.0,0.0,1.0);
+    
+    if(origin == aux)
+        gl_FragColor = vec4( 0.0, 0.0, 1.0 , 1.0 );
+    else
+        gl_FragColor = vec4( 1.0, 0.0, 0.0 , 1.0 );
+    return;
+*/
     //gl_FragColor = vec4( 0.0, 0.0, 1.0 , 1.0 );
+	highp float l = length( varying_dir );
+    highp vec3 dir = varying_dir;// / l;
 
 	// setup ray(s)
 	highp float tmin, tmax, min, max;
-	clip_to_unit_sphere( varying_eye, varying_dir, tmin, tmax );
+	clip_to_unit_sphere( varying_eye, dir, tmin, tmax );
     //gl_FragColor = vec4( 0.0, 1.0, 0.0 , 1.0 );
 
 //    if(tmax < 10.0)
@@ -743,8 +780,7 @@ void main( void )
     //Con esto ponemos el 0 en el medio del grafico.
     
 	//highp vec3 eye = vec3(0.0,0.0,0.0);//varying_eye + tcenter * varying_dir;
-	highp vec3 eye = varying_eye + tcenter * varying_dir;
-    highp vec3 dir = varying_dir;
+	highp vec3 eye = varying_eye + tcenter * dir;
 	tmin = tmin - tcenter;
 	tmax = tmax - tcenter;
     // setup polynomial
@@ -772,7 +808,7 @@ gl_FragColor = vec4( 0.0, 0.0, 1.0 , 1.0 );
 	highp vec3 hit_point = eye + root * dir;
 
 
-   calc_lights( eye, dir, hit_point);
+  calc_lights( eye, dir, hit_point);
 
 
 	//gl_FragColor = vec4( normalize( mygradient( hit_point ) ), 0.5 );

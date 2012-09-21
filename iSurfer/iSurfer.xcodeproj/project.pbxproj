@@ -20,6 +20,7 @@
 		3308B17C1533EC87001E853F /* error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B1721533EC87001E853F /* error.cpp */; };
 		3308B17D1533EC87001E853F /* programData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B1741533EC87001E853F /* programData.cpp */; };
 		3308B17E1533EC87001E853F /* surfaceRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B1761533EC87001E853F /* surfaceRender.cpp */; };
+		338CE34015FABA6C00E8AA18 /* vs3.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 338CE33F15FABA6C00E8AA18 /* vs3.glsl */; };
 		5EDA315515E2FD6400F7BC06 /* button-share.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA315315E2FD6400F7BC06 /* button-share.png */; };
 		5EDA315615E2FD6400F7BC06 /* button-share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA315415E2FD6400F7BC06 /* button-share@2x.png */; };
 		5EDA315915E2FD7F00F7BC06 /* button-galleries-not-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA315715E2FD7F00F7BC06 /* button-galleries-not-active.png */; };
@@ -133,6 +134,7 @@
 		3308B1751533EC87001E853F /* programData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = programData.hpp; sourceTree = "<group>"; };
 		3308B1761533EC87001E853F /* surfaceRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surfaceRender.cpp; sourceTree = "<group>"; };
 		3308B1771533EC87001E853F /* surfaceRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = surfaceRender.h; sourceTree = "<group>"; };
+		338CE33F15FABA6C00E8AA18 /* vs3.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vs3.glsl; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		5EDA315315E2FD6400F7BC06 /* button-share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-share.png"; sourceTree = "<group>"; };
 		5EDA315415E2FD6400F7BC06 /* button-share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-share@2x.png"; sourceTree = "<group>"; };
 		5EDA315715E2FD7F00F7BC06 /* button-galleries-not-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-galleries-not-active.png"; sourceTree = "<group>"; };
@@ -241,7 +243,7 @@
 		8BDD0A851424283E0043741C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		8BDD0B3B142431D50043741C /* fs1.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fs1.glsl; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		8BDD0B3C142431D50043741C /* fs2.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fs2.glsl; sourceTree = "<group>"; };
-		8BDD0B3D142431D50043741C /* vs1.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vs1.glsl; sourceTree = "<group>"; };
+		8BDD0B3D142431D50043741C /* vs1.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vs1.glsl; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		8BDD0B3E142431D50043741C /* vs2.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vs2.glsl; sourceTree = "<group>"; };
 		8BF0D10E15604E8E006E4085 /* ImageDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDescriptionViewController.h; sourceTree = "<group>"; };
 		8BF0D10F15604E8E006E4085 /* ImageDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDescriptionViewController.m; sourceTree = "<group>"; };
@@ -669,6 +671,7 @@
 				8BDD0B3B142431D50043741C /* fs1.glsl */,
 				8BDD0B3C142431D50043741C /* fs2.glsl */,
 				8BDD0B3D142431D50043741C /* vs1.glsl */,
+				338CE33F15FABA6C00E8AA18 /* vs3.glsl */,
 				8BDD0B3E142431D50043741C /* vs2.glsl */,
 			);
 			name = shaders;
@@ -788,6 +791,7 @@
 				5EDA316515E2FF0200F7BC06 /* button-settings-not-active.png in Resources */,
 				5EDA316615E2FF0200F7BC06 /* button-settings-not-active@2x.png in Resources */,
 				5EDA316815E3016400F7BC06 /* button-save.png in Resources */,
+				338CE34015FABA6C00E8AA18 /* vs3.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
