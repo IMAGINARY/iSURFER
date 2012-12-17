@@ -12,7 +12,6 @@
 #include "programData.hpp"
 #include "error.hpp"
 #include "Vector.hpp"
-#include "matrix.h"
 #include "Matrix.hpp"
 #include "Quaternion.hpp" 
 //#include "Myvector.h"
@@ -100,26 +99,17 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
 {
     
     mat4 project; 
-    
-    Matrix4x4 t, s, rx, ry, rz, modelView, modelview_inv, projection;
-    Matrix4x4 rota, look;
+    mat4 s, cameraT, model, modelView, projectionModelView, trans, modelViewInv;
     
     if( ! programData::panoramic)
     {
-        scale_matrix( 0.75, 1, 1, s );
-        
-        programData::rot.toMatrix4x4(rota);
-        
-        mat4 cameraT;
-        
+        s = mat4::Scale(0.75, 1, 1);
         
         cameraT = mat4::LookAt(vec3(0, 0, 120), vec3(0 , 0, 0), vec3(0, -1, 0));
-        cameraT.toMatrix4x4(look);
         
+        model = s * cameraT;
         
-        mult_matrix( look, s, modelView);
-        
-        mult_matrix( modelView, rota, modelView);
+        modelView = programData::rot * model ;
         
         
        // rotation_matrix( 1.0f, 0.0f, 0.0f, programData::rotationX, rx );
@@ -135,24 +125,47 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
         
         //project = mat4::Frustum(-programData::radius, programData::radius, -programData::radius, programData::radius, -600.1, 1000);
         
-        project.toMatrix4x4(projection);
+        //modelView.invert_matrix( modelview_inv );
+       /* printf("modelView\n");
+        for (int i = 0; i<4; i++) {
+            for (int j=0; j<4; j++) {
+                printf("  %f", modelView.Pointer()[i*4+j]);
+            }
+            printf("\n");
+            
+        }
+        */
+/*
+        float a[]= {0.8272,0.0069   ,1.0457,         0,
+        -0.5727,   -0.6802,    0.4575,    0.0000,
+        0.5359,   -0.7330,   -0.4190,         0,
+            -64.3025,   87.9584,   50.2843,    1.0000};
+
+        float b[]= {    0.4653,   -0.5727,    0.5359,         0,
+            0.0039,   -0.6802,   -0.7330,         0,
+            0.5882,    0.4575,   -0.4190,         0,
+            0,         0,  120.0000,    1.0000};
+        modelView = mat4(b);
+        modelViewInv = mat4(a);
+  */      
         
-        invert_matrix( modelView, modelview_inv );
-        
-        mult_matrix( projection, modelView, modelView);
+        modelViewInv = modelView.invert_matrix();
+
+        projectionModelView = modelView * project;
+     
         
     }else{
         //MATRIZ de TRANS para ortho
         
         //translation_matrix( 0.0, 0.0, -programData::radius , t );
+        s = mat4::Scale(0.125f, 0.125f, 0.125f);
+
+        cameraT =  mat4::Translate(0.0, 0.0, -programData::radius * tan(30.0 * M_PI / 360.0));
         
-        scale_matrix( 0.125f, 0.125f, 0.125f, s );
-        translation_matrix( 0.0, 0.0, -programData::radius * tan(30.0 * M_PI / 360.0) , t );
-        programData::rot.toMatrix4x4(rota);
-        
-        mult_matrix( t, s, modelView );
-        
-        
+        model = cameraT * s;        
+       
+        modelView = model * programData::rot;
+
         //rotation_matrix( 1.0f, 0.0f, 0.0f, programData::rotationX, rx );
         //rotation_matrix( 0.0f, 1.0f, 0.0f, programData::rotationY, ry );
         //rotation_matrix( 0.0f, 0.0f, 1.0f, programData::rotationZ, rz );
@@ -161,20 +174,19 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
         //mult_matrix( modelView, ry, modelView );
         //mult_matrix( modelView, rz, modelView );
         
-        mult_matrix( modelView, rota, modelView );
         
-        invert_matrix( modelView, modelview_inv );
+        modelViewInv = modelView.invert_matrix();
+        
+        project = mat4::Perspective(60.0, 1.0, 0.1, 300.0);
+        
+        projectionModelView = project *  modelView;
+
         
         
-        
-        
-        My_perspective_projection_matrix( 60.0, 1.0, 0.1, 300.0, projection );
-        
-        mult_matrix( projection, modelView, modelView);
-        
+
     }
 
-    programData::SetEye(modelview_inv);
+    programData::SetEye();
     
     
 
@@ -198,7 +210,7 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
         GLuint glsl_program = programData::programs.wireframe_glsl_program;
         glUseProgram( glsl_program ); checkGLError( AT );
                 
-        glUniformMatrix4fv( programData::shaderHandle.wire_modelview, 1, GL_FALSE, modelView ); checkGLError( AT );
+        glUniformMatrix4fv( programData::shaderHandle.wire_modelview, 1, GL_FALSE, projectionModelView.Pointer() ); checkGLError( AT );
             drawWire(drawable);
  	}
 	// draw solid sphere, which is used for raycasting
@@ -211,8 +223,8 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
 		glUseProgram( glsl_program ); checkGLError( AT );
                 
                 
-		glUniformMatrix4fv( programData::shaderHandle.u_modelview, 1, GL_FALSE, modelView ); checkGLError( AT );
-		glUniformMatrix4fv( programData::shaderHandle.u_modelview_inv, 1, GL_FALSE, modelview_inv ); checkGLError( AT );
+		glUniformMatrix4fv( programData::shaderHandle.u_modelview, 1, GL_FALSE, projectionModelView.Pointer() ); checkGLError( AT );
+		glUniformMatrix4fv( programData::shaderHandle.u_modelview_inv, 1, GL_FALSE, modelViewInv.Pointer() ); checkGLError( AT );
 	    drawSurface(drawable);
 
 	}

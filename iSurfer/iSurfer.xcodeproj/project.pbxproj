@@ -82,7 +82,6 @@
 		8BC02C9C13B2938C003E41AC /* SpashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BC02C9913B2938C003E41AC /* SpashScreenViewController.xib */; };
 		8BC02C9D13B2938C003E41AC /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC02C9B13B2938C003E41AC /* SplashScreenViewController.m */; };
 		8BC02D0613B29C00003E41AC /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC02D0513B29C00003E41AC /* BaseViewController.m */; };
-		8BDD0A51142427450043741C /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A49142427450043741C /* matrix.cpp */; };
 		8BDD0A53142427450043741C /* EAGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A4E142427450043741C /* EAGLView.mm */; };
 		8BDD0A54142427450043741C /* iSurferViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A50142427450043741C /* iSurferViewController.mm */; };
 		8BDD0A721424281B0043741C /* exception.c in Sources */ = {isa = PBXBuildFile; fileRef = 8BDD0A631424281B0043741C /* exception.c */; };
@@ -219,8 +218,6 @@
 		8BC02C9B13B2938C003E41AC /* SplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenViewController.m; sourceTree = "<group>"; };
 		8BC02D0413B29C00003E41AC /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		8BC02D0513B29C00003E41AC /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		8BDD0A49142427450043741C /* matrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = matrix.cpp; sourceTree = "<group>"; };
-		8BDD0A4A142427450043741C /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix.h; sourceTree = "<group>"; };
 		8BDD0A4D142427450043741C /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
 		8BDD0A4E142427450043741C /* EAGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EAGLView.mm; sourceTree = "<group>"; };
 		8BDD0A4F142427450043741C /* iSurferViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iSurferViewController.h; sourceTree = "<group>"; };
@@ -633,8 +630,6 @@
 			children = (
 				3308B1651533EC87001E853F /* Engine */,
 				3308B16F1533EC87001E853F /* Surface */,
-				8BDD0A49142427450043741C /* matrix.cpp */,
-				8BDD0A4A142427450043741C /* matrix.h */,
 				8BDD0A4D142427450043741C /* EAGLView.h */,
 				8BDD0A4E142427450043741C /* EAGLView.mm */,
 				8BDD0A4F142427450043741C /* iSurferViewController.h */,
@@ -819,7 +814,6 @@
 				8B29FAB213D4F30C00EDB516 /* AlgebraicSurface.m in Sources */,
 				8B29FB4513D4FF9B00EDB516 /* SurfaceCellView.m in Sources */,
 				8B29FCFD13D654DC00EDB516 /* SaveAlgebraicSurfaceViewController.m in Sources */,
-				8BDD0A51142427450043741C /* matrix.cpp in Sources */,
 				8BDD0A53142427450043741C /* EAGLView.mm in Sources */,
 				8BDD0A54142427450043741C /* iSurferViewController.mm in Sources */,
 				8BDD0A721424281B0043741C /* exception.c in Sources */,

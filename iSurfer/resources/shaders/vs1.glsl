@@ -1,7 +1,7 @@
 uniform highp mat4 modelviewMatrix;
 uniform highp mat4 modelviewMatrixInverse;
 uniform highp vec4 origin;
-
+uniform highp vec4 surface_transform_inverse;
 attribute vec4 pos;
 
 varying highp vec3 varying_eye;
@@ -15,6 +15,11 @@ varying vec3 clipping_space_dir;
 varying vec3 surface_space_eye;
 varying vec3 surface_space_dir;
 */
+
+varying highp vec3 surface_space_eye;
+varying highp vec3 surface_space_dir;
+
+
 void main( void )
 {
 	//vec4 origin = vec4( 0, 0, 0, 1.0 );
@@ -30,6 +35,8 @@ void main( void )
 	varying_dir = pos.xyz - varying_eye;
     
     
+    //surface_space_eye = ( surface_transform_inverse * origin ).xyz;
+    //surface_space_dir = ( surface_space_eye - ( surface_transform_inverse * modelviewMatrixInverse * origin ).xyz );
     
     
 

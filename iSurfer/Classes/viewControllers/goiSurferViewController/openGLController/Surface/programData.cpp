@@ -1,5 +1,4 @@
 #include "programData.hpp"
-#include "matrix.h"
 #include "Vector.hpp"
 #include "error.hpp"
 #include "Matrix.hpp"
@@ -111,11 +110,11 @@ void programData::setConstant()
 
 }
 
-void programData::SetEye(Matrix4x4 inverse){
+void programData::SetEye(/*Matrix4x4 inverse*/){
     origin[0]=0.0;
     origin[1]=0.0;
-    origin[2]=110.0;
-    origin[2]=0;//-10010.0;
+    origin[2]=0.0;
+   // origin[2]=0;//-10010.0;
     origin[3]=1.0;
     origin[4]=1.0;
     checkGLError( AT );

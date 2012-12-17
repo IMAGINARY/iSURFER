@@ -62,7 +62,7 @@ class programData
 
     void OnFingerDown(ivec2 location);
 
-    void static SetEye(Matrix4x4 inverse);
+    void static SetEye();
 
         void static UpdateColor(float red, float green, float blue);
         void static UpdateRadius(float Radius);

@@ -482,7 +482,7 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
             //discard;
             return x0;
         }else
-            //gl_FragColor = vec4( 0.0, 0.0, 1 , 1 );
+            gl_FragColor = vec4( 0.0, 0.0, 1 , 1 );
         //Dejar el discard despues  
         discard;
         //return x0;
@@ -749,6 +749,8 @@ void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point
 
 
 uniform highp vec4 origin;
+
+
 
 /**
  * main method, that guides the overall process
