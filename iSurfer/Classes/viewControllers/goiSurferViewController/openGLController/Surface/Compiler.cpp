@@ -36,12 +36,14 @@ void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const cha
 {
     //printf("\n\n\n debug = %d \n\n\n", programData::debug);
 
-	checkGLError( AT );
+    
+    checkGLError( AT );
 	scannerADT scanner;
     scanner= NewScanner();
     SetScannerSpaceOption(scanner, IgnoreSpaces);
 	
 	SetScannerString(scanner, (char *)formula);
+    
 	expt= ParseExp(scanner);
 	clearExp();
 	EvalExp(expt, 0);

@@ -58,10 +58,108 @@ void FreeScanner(scannerADT scanner)
     FreeBlock(scanner);
 }
 
+static booleano IsThisANegation(char * token) {
+    if (StringLength(token) == 0)
+        return FALSE;
+    switch(token[0])
+    {
+        case '+': case '-': case '*': case '^': case '=': case '(': case ')': case '!':
+            return TRUE;
+        default:
+            return FALSE;
+    } 
+}
+
+
+void processMinus(char * str)
+{
+    char * root, pointer;
+    int len = StringLength(str);
+
+    root = str;
+    for( int i =0; i<=len; i++)
+    {
+        if(i==0)
+        {
+            if(str[i]=='-')
+                str[i]='!';
+        }else {
+            if(str[i]=='-')
+            {
+                if(IsThisANegation(str + i -1))
+                    str[i] ='!';
+            }
+        }
+        
+    }
+    
+    
+}
+
+void reduceEquation(char *str)
+{
+    int i = 1;
+    while (str[i]!='\0') {
+        if(str[i]=='!')
+        {
+            if(str[i-1] =='!')
+            {
+                int j = i-1, aux = i;
+                while(str[i]!='\0')
+                {
+                    i++;
+                    str[j] =str[i];
+                    j++;
+                }
+                i = aux -1;
+            }
+            
+            if(str[i-1] =='+')
+            {
+                str[i-1] = '-';
+                int j = i, aux = i;
+                while(str[i]!='\0')
+                {
+                    i++;
+                    str[j] =str[i];
+                    j++;
+
+                }
+                i = aux -1;
+            }
+
+            if(str[i-1] =='-')
+            {
+                str[i-1] = '+';
+                int j = i, aux = i;
+                while(str[i]!='\0')
+                {
+                    i++;
+                    str[j] =str[i];
+                    j++;
+                }
+                i = aux -1;
+            }
+
+            
+        }       
+        i++;
+    }
+}
+
+
 void SetScannerString(scannerADT scanner, char * str)
 {
+   
+    
     if (scanner->str != NULL) FreeBlock(scanner->str);
     scanner->str = CopyString(str);
+    printf("%s\n", str);
+    processMinus( scanner->str);
+    printf("%s\n", scanner->str);
+    reduceEquation( scanner->str);
+    printf("%s\n", scanner->str);
+
     scanner->len = StringLength(str);
     scanner->cp = 0;
     scanner->savedToken = NULL;
