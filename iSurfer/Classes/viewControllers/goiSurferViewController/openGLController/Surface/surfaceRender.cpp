@@ -76,7 +76,10 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
         
         model = s * cameraT;
         
-        modelView = programData::rot * model ;
+        
+        modelView = Matrix4< float >(orientation.ToMatrix()) * model ;
+      
+//        modelView = programData::rot * model ;
         
         project = mat4::Ortho(-programData::radius, programData::radius, -programData::radius, programData::radius, -600.1, 1000);
                 

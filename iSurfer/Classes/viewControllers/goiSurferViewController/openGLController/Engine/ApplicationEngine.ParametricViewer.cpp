@@ -1,7 +1,6 @@
 #include "Interfaces.hpp"
 #include "ParametricEquations.hpp"
 #include "ParametricSurface.hpp"
-
 namespace ParametricViewer {   
     
 static const int SurfaceCount = 6;
@@ -61,8 +60,30 @@ static const int SurfaceCount = 6;
         m_renderingEngine->Render(currentSurface, m_orientation);
     }
     
-
     
+    void ApplicationEngine::OnFingerDown(ivec2 location)
+    {
+    }
+    
+    void ApplicationEngine::OnFingerMove(ivec2 oldLocation, ivec2 location)
+    {
+        
+        int x = location.x, y = location.y;
+        int last_x = oldLocation.x, last_y = oldLocation.y;
+                
+        double z = sqrt( ( double ) ( last_y - y ) * ( last_y - y ) + ( last_x - x ) * ( last_x - x ) );
+        // axis of rotation is located in the xy plane orthogonal to the difference vector of current and old mouse location
+        double axis_x = ( last_y - y ) / z;
+        double axis_y = -( last_x - x ) / z;
+        if( ( axis_x != 0 || axis_y != 0 ) && z != 0 )
+        {
+            Quaternion delta = Quaternion::CreateFromAxisAngle( Vector3< float >( axis_x, axis_y, 0.0 ), ( z * M_PI ) / 180.0 );
+            m_orientation = delta.Rotated(m_orientation);
+        }
+    }
+
+
+/*    
     void ApplicationEngine::OnFingerDown(ivec2 location)
     {
         m_fingerStart = location;
@@ -77,7 +98,7 @@ static const int SurfaceCount = 6;
         m_orientation = delta.Rotated(m_previousOrientation);
         
     }
-    
+  */  
     vec3 ApplicationEngine::MapToSphere(ivec2 touchpoint) const
     {
         vec2 p = touchpoint - m_centerPoint;
