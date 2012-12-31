@@ -1,5 +1,27 @@
 #include "ParametricSurface.hpp"
 
+
+
+
+/**
+ * File: ParametricEquations.hpp
+ * Version: 1.0
+ * @module Engine
+ */
+
+/** 
+ * Last modified on February 13 2012 by dazar
+ * -----------------------------------------------------
+ * This file contains some parametric surfaces. This surfaces can be used to pass vertex to OpenGL.
+ * It is based on the book "iPhone 3D Programming".
+ * 
+ * It contains: Cone, Sphere, Torus, TrefoilKnot, MobiusStrip, KleinBottle
+ *
+ * @class ParametricEquations
+ */
+
+
+
 class Cone : public ParametricSurface {
 public:
     Cone(float height, float radius) : m_height(height), m_radius(radius)

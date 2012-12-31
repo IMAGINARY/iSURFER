@@ -1,6 +1,22 @@
 #pragma once
 #include "Matrix.hpp"
 
+/**
+ * File: Quaternion.hpp
+ * Version: 1.0
+ * @module Engine
+ */
+
+/** 
+ *Last modified on February 13 2012 by dazar
+ * -----------------------------------------------------
+ * This interface provides access to a Quaternion library.
+ * It is based on the book "iPhone 3D Programming".
+ * 
+ * @class QuaternionT
+ */
+
+
 template <typename T>
 struct QuaternionT {
     T x;

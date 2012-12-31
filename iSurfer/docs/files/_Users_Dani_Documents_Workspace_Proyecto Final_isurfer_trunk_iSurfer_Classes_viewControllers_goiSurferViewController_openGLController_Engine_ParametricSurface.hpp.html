@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;Classes&#x2F;viewControllers&#x2F;goiSurferViewController&#x2F;openGLController&#x2F;Engine&#x2F;ParametricSurface.hpp - iSurfer</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0pr2&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.8.0pr2&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..&#x2F;assets/css/logo.png" title="iSurfer"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 2.0.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/ApplicationEngine.html">ApplicationEngine</a></li>
+            
+                <li><a href="..&#x2F;classes/Compiler.html">Compiler</a></li>
+            
+                <li><a href="..&#x2F;classes/Error.html">Error</a></li>
+            
+                <li><a href="..&#x2F;classes/exception.html">exception</a></li>
+            
+                <li><a href="..&#x2F;classes/expressionT.html">expressionT</a></li>
+            
+                <li><a href="..&#x2F;classes/genlib.html">genlib</a></li>
+            
+                <li><a href="..&#x2F;classes/Matrix.html">Matrix</a></li>
+            
+                <li><a href="..&#x2F;classes/ParametricEquations.html">ParametricEquations</a></li>
+            
+                <li><a href="..&#x2F;classes/ParametricSurface.html">ParametricSurface</a></li>
+            
+                <li><a href="..&#x2F;classes/parser.html">parser</a></li>
+            
+                <li><a href="..&#x2F;classes/programData.html">programData</a></li>
+            
+                <li><a href="..&#x2F;classes/QuaternionT.html">QuaternionT</a></li>
+            
+                <li><a href="..&#x2F;classes/ScannerADT.html">ScannerADT</a></li>
+            
+                <li><a href="..&#x2F;classes/simpio.html">simpio</a></li>
+            
+                <li><a href="..&#x2F;classes/strlib.html">strlib</a></li>
+            
+                <li><a href="..&#x2F;classes/surfaceRender.html">surfaceRender</a></li>
+            
+                <li><a href="..&#x2F;classes/Vector.html">Vector</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/Engine.html">Engine</a></li>
+            
+                <li><a href="..&#x2F;modules/Parser.html">Parser</a></li>
+            
+                <li><a href="..&#x2F;modules/Surface.html">Surface</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: &#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;Classes&#x2F;viewControllers&#x2F;goiSurferViewController&#x2F;openGLController&#x2F;Engine&#x2F;ParametricSurface.hpp</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+#pragma once
+#include &quot;Interfaces.hpp&quot;
+
+&#x2F;**
+ * File: ParametricSurface.hpp
+ * Version: 1.0
+ * @module Engine
+ *&#x2F;
+
+&#x2F;** 
+ * Last modified on February 13 2012 by dazar
+ * -----------------------------------------------------
+ * This interface provides access to a Matrix library. Matrix2, Matrix3, Matrix4.
+ * It is based on the book &quot;iPhone 3D Programming&quot; with some added functionality like matrix inverse.
+ * 
+ * @class ParametricSurface
+ *&#x2F;
+
+struct ParametricInterval {
+    ivec2 Divisions;
+    vec2 UpperBound;
+    vec2 TextureCount;
+};
+
+class ParametricSurface : public ISurface {
+public:
+    &#x2F;**
+     * Usage: i = GetVertexCount();
+     * ----------------------------------
+     * Returns the number of vertex of the parametric surface. 
+     * @method GetVertexCount
+     * @return {int} number of vertex.
+     *&#x2F;
+    int GetVertexCount() const;
+    &#x2F;**
+     * Usage: i = GetLineIndexCount();
+     * ----------------------------------
+     * Returns the number of lines of the parametric surface. 
+     * @method GetLineIndexCount
+     * @return {int} number of lines.
+     *&#x2F;
+    int GetLineIndexCount() const;
+    &#x2F;**
+     * Usage: i = GetTriangleIndexCount();
+     * ----------------------------------
+     * Returns the number of triangles of the parametric surface. 
+     * @method GetTriangleIndexCount
+     * @return {int} number of triangles.
+     *&#x2F;
+    int GetTriangleIndexCount() const;
+    &#x2F;**
+     * Usage: GenerateVertices(vertices, flags);
+     * ----------------------------------
+     * Generates the vertices of the surface. 
+     * @method GenerateVertices
+     * @param vertices {vector&lt;float&gt;} vector array of vertices.
+     * @param flags {char}.
+     *&#x2F;
+    void GenerateVertices(vector&lt;float&gt;&amp; vertices, unsigned char flags) const;
+    &#x2F;**
+     * Usage: GenerateLineIndices(indices);
+     * ----------------------------------
+     * Generates the line indexes of the surface. 
+     * @method GenerateLineIndices
+     * @param vertices {vector&lt;short&gt; &amp;} vector array of lines indexes.
+     *&#x2F;
+    void GenerateLineIndices(vector&lt;unsigned short&gt;&amp; indices) const;
+    &#x2F;**
+     * Usage: GenerateTriangleIndices(vertices);
+     * ----------------------------------
+     * Generates the triangle indexes of the surface. 
+     * @method GenerateTriangleIndices
+     * @param vertices {vector&lt;float&gt;} vector array of triangle indexes.
+     *&#x2F;
+    void GenerateTriangleIndices(vector&lt;unsigned short&gt;&amp; indices) const;
+    &#x2F;**
+     * Usage: Zoom(newRadius);
+     * ----------------------------------
+     * change the zoom of the surface. 
+     * @method Zoom
+     * @param newRadius {float} change the zoom of the surface.
+     *&#x2F;
+    virtual void Zoom(const float newRadius)  = 0;
+
+protected:
+    void SetInterval(const ParametricInterval&amp; interval);
+    virtual vec3 Evaluate(const vec2&amp; domain) const = 0;
+
+    virtual bool InvertNormal(const vec2&amp; domain) const { return false; }
+private:
+    vec2 ComputeDomain(float i, float j) const;
+    ivec2 m_slices;
+    ivec2 m_divisions;
+    vec2 m_upperBound;
+	vec2 m_textureCount;
+};
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

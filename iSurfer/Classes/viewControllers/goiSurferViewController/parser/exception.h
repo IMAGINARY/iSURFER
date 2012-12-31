@@ -1,17 +1,32 @@
-/*
- * File: exception.h
- * Version: 1.0
- * Last modified on Thu Feb 23 12:45:01 1995 by eroberts
- * -----------------------------------------------------
- * The exception package provides a general exception
- * handling mechanism for use with C that is portable
- * across a variety of compilers and operating systems.
- */
+
+/** 
+* This module is written in C. it is in charge
+ of parsing the function and generate shader code for it.
+ 
+ For this porpouse we use an expression tree. and some string filters on the formula.
+ by dazar
+
+* @module Parser
+* 
+*/ 
+ 
+/**
+* 
+* Last modified on Thu Feb 23 12:45:01 1995 by eroberts
+* -----------------------------------------------------
+* The exception package provides a general exception
+* handling mechanism for use with C that is portable
+* across a variety of compilers and operating systems.
+* @class exception
+*/
+
 
 #ifndef _exception_h
 #define _exception_h
 
+
 /*
+ * 
  * Overview:
  * --------
  * The exception package makes it possible for clients to
@@ -195,24 +210,29 @@ extern exception ANY;
 
 extern context_block *exceptionStack;
 
-/*
- * Function: RaiseException
+/**
  * Usage: RaiseException(&e, name, value);
  * ---------------------------------------
  * This function is called by the raise macro and does the
  * work necessary to raise the exception.  See the exception.c file
  * for details.  Clients do not ordinarily call this directly.
+ * @method RaiseException
+ * @param {exception} e is the exception to be raised. 
+ * @param {char *} name the name of the class/method. 
+ * @param {void *} value the memory pointer. 
  */
 
 void RaiseException(exception *e, char * name, void *value);
 
-/*
- * Function: HandlerExists
+/**
  * Usage: if (HandlerExists(&e)) ...
  * ---------------------------------
  * Determines whether a handler exists for an exception in
  * the dynamically enclosing scope.  Intended only for use
  * by special clients, such as the Error package.
+ * @method HandlerExists
+ * @param {exception} e  
+ * @return boolean 
  */
 
 booleano HandlerExists(exception *e);

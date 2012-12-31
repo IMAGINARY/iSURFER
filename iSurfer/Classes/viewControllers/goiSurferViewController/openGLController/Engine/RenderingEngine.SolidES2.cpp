@@ -86,26 +86,12 @@ void RenderingEngine::UpdateSurface(vector<ISurface*>& surfaces, int currentSurf
                  vertices.size() * sizeof(vertices[0]),
                  &vertices[0],
                  GL_DYNAMIC_DRAW);
-/*
-    
-    GLuint vertexBuffer;
-    glGenBuffers(1, &vertexBuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-    glBufferData(GL_ARRAY_BUFFER,
-                 vertices.size() * sizeof(vertices[0]),
-                 &vertices[0],
-                 GL_DYNAMIC_DRAW);
-*/
-//    glBufferSubData(GL_ARRAY_BUFFER, 0, 
-//                    vertices.size() * sizeof(vertices[0]),
-//                    &vertices[0]);    
 }
 
     
     void RenderingEngine::Render(int currentSurface, Quaternion orientation) 
     {
         Drawable drawable = m_drawables[currentSurface];
-        //surfaceRender::hola();
         surfaceRender::display(drawable, orientation);
 
     }

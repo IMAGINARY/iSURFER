@@ -1,0 +1,2086 @@
+{
+    "project": {
+        "name": "iSurfer",
+        "description": "iSurfer: is a program design for iOS to render algerbraic surfaces in a 3D space.",
+        "version": "2.0.0",
+        "url": "http://example.com/"
+    },
+    "files": {
+        "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/Interfaces.hpp": {
+            "name": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/Interfaces.hpp",
+            "modules": {
+                "Engine": 1
+            },
+            "classes": {
+                "ApplicationEngine": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/Matrix.hpp": {
+            "name": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/Matrix.hpp",
+            "modules": {},
+            "classes": {
+                "Matrix": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/ParametricEquations.hpp": {
+            "name": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/ParametricEquations.hpp",
+            "modules": {},
+            "classes": {
+                "ParametricEquations": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/ParametricSurface.hpp": {
+            "name": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/ParametricSurface.hpp",
+            "modules": {},
+            "classes": {
+                "ParametricSurface": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/Quaternion.hpp": {
+            "name": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/Quaternion.hpp",
+            "modules": {},
+            "classes": {
+                "QuaternionT": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/Vector.hpp": {
+            "name": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/Vector.hpp",
+            "modules": {},
+            "classes": {
+                "Vector": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/Compiler.hpp": {
+            "name": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/Compiler.hpp",
+            "modules": {
+                "Surface": 1
+            },
+            "classes": {
+                "Compiler": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/error.hpp": {
+            "name": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/error.hpp",
+            "modules": {},
+            "classes": {
+                "Error": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/programData.hpp": {
+            "name": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/programData.hpp",
+            "modules": {},
+            "classes": {
+                "programData": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/surfaceRender.h": {
+            "name": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/surfaceRender.h",
+            "modules": {},
+            "classes": {
+                "surfaceRender": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exception.h": {
+            "name": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exception.h",
+            "modules": {
+                "Parser": 1
+            },
+            "classes": {
+                "exception": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h": {
+            "name": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h",
+            "modules": {},
+            "classes": {
+                "expressionT": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/genlib.h": {
+            "name": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/genlib.h",
+            "modules": {},
+            "classes": {
+                "genlib": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/parser.h": {
+            "name": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/parser.h",
+            "modules": {},
+            "classes": {
+                "parser": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/scanadt.h": {
+            "name": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/scanadt.h",
+            "modules": {},
+            "classes": {
+                "ScannerADT": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/simpio.h": {
+            "name": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/simpio.h",
+            "modules": {},
+            "classes": {
+                "simpio": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h": {
+            "name": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h",
+            "modules": {},
+            "classes": {
+                "strlib": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h": {
+            "name": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "Engine": {
+            "name": "Engine",
+            "submodules": {},
+            "classes": {
+                "ApplicationEngine": 1,
+                "Matrix": 1,
+                "ParametricEquations": 1,
+                "ParametricSurface": 1,
+                "QuaternionT": 1,
+                "Vector": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/Vector.hpp",
+            "line": 10,
+            "description": "This module is written in C++. it is in charge\nof parsing initialize and generate some Data to use OpenGL.\n\nSome parts are based on the book \"iPhone 3D programming\" from O'Reilly.\nby dazar\n\nVersion: 1.0"
+        },
+        "Surface": {
+            "name": "Surface",
+            "submodules": {},
+            "classes": {
+                "Compiler": 1,
+                "Error": 1,
+                "programData": 1,
+                "surfaceRender": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/surfaceRender.h",
+            "line": 20,
+            "description": "This module is written in C++. it is in charge\nof Creating and compilling the shaders, and render them.\n by dazar\n\nVersion: 3.0"
+        },
+        "Parser": {
+            "name": "Parser",
+            "submodules": {},
+            "classes": {
+                "exception": 1,
+                "expressionT": 1,
+                "genlib": 1,
+                "parser": 1,
+                "ScannerADT": 1,
+                "simpio": 1,
+                "strlib": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h",
+            "line": 5,
+            "description": "This module is written in C. it is in charge\nof parsing the function and generate shader code for it.\n\nFor this porpouse we use an expression tree. and some string filters on the formula.\nby dazar"
+        }
+    },
+    "classes": {
+        "ApplicationEngine": {
+            "name": "ApplicationEngine",
+            "shortname": "ApplicationEngine",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Engine",
+            "namespace": "",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/Interfaces.hpp",
+            "line": 20,
+            "description": "Last modified on February 13 2012 by dazar\n-----------------------------------------------------\nThis interface provides access to a Matrix library. Matrix2, Matrix3, Matrix4.\nIt is based on the book \"iPhone 3D Programming\" with some added functionality like matrix inverse."
+        },
+        "Matrix": {
+            "name": "Matrix",
+            "shortname": "Matrix",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Engine",
+            "namespace": "",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/Matrix.hpp",
+            "line": 11,
+            "description": "Last modified on February 13 2012 by dazar\n-----------------------------------------------------\nThis interface provides access to a Matrix library. Matrix2, Matrix3, Matrix4.\nIt is based on the book \"iPhone 3D Programming\" with some added functionality like matrix inverse."
+        },
+        "ParametricEquations": {
+            "name": "ParametricEquations",
+            "shortname": "ParametricEquations",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Engine",
+            "namespace": "",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/ParametricEquations.hpp",
+            "line": 12,
+            "description": "Last modified on February 13 2012 by dazar\n-----------------------------------------------------\nThis file contains some parametric surfaces. This surfaces can be used to pass vertex to OpenGL.\nIt is based on the book \"iPhone 3D Programming\".\n\nIt contains: Cone, Sphere, Torus, TrefoilKnot, MobiusStrip, KleinBottle"
+        },
+        "ParametricSurface": {
+            "name": "ParametricSurface",
+            "shortname": "ParametricSurface",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Engine",
+            "namespace": "",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/ParametricSurface.hpp",
+            "line": 10,
+            "description": "Last modified on February 13 2012 by dazar\n-----------------------------------------------------\nThis interface provides access to a Matrix library. Matrix2, Matrix3, Matrix4.\nIt is based on the book \"iPhone 3D Programming\" with some added functionality like matrix inverse."
+        },
+        "QuaternionT": {
+            "name": "QuaternionT",
+            "shortname": "QuaternionT",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Engine",
+            "namespace": "",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/Quaternion.hpp",
+            "line": 10,
+            "description": "Last modified on February 13 2012 by dazar\n -----------------------------------------------------\n This interface provides access to a Quaternion library.\n It is based on the book \"iPhone 3D Programming\"."
+        },
+        "Vector": {
+            "name": "Vector",
+            "shortname": "Vector",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Engine",
+            "namespace": "",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/Vector.hpp",
+            "line": 10,
+            "description": "Last modified on February 13 2012 by dazar\n -----------------------------------------------------\n This interface provides access to a vector library. vec2, vec3, vec4.\n It is based on the book \"iPhone 3D Programming\" with some added operations to do operations between mat4 and vec4."
+        },
+        "Compiler": {
+            "name": "Compiler",
+            "shortname": "Compiler",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Surface",
+            "namespace": "",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/Compiler.hpp",
+            "line": 17,
+            "description": "Last modified on December 5 2011 by dazar\n-----------------------------------------------------\nThis interface provides access the shader compiler. It is in charge of generating all the shader code from the algebraic surface equation.\nThen it compiles it to the GPU."
+        },
+        "Error": {
+            "name": "Error",
+            "shortname": "Error",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Surface",
+            "namespace": "",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/error.hpp",
+            "line": 24,
+            "description": "Last modified on December 5 2011 by dazar\n-----------------------------------------------------\nThis interface simplify reading GPU errors."
+        },
+        "programData": {
+            "name": "programData",
+            "shortname": "programData",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Surface",
+            "namespace": "",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/programData.hpp",
+            "line": 44,
+            "description": "Last modified on December 5 2011 by dazar\n-----------------------------------------------------\nThis interface is incharge of all the variables and information requiered to render a frame in OpenGL."
+        },
+        "surfaceRender": {
+            "name": "surfaceRender",
+            "shortname": "surfaceRender",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Surface",
+            "namespace": "",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/surfaceRender.h",
+            "line": 20,
+            "description": "Last modified on December 5 2011 by dazar\n-----------------------------------------------------\nThis interface is incharge of rendering a frame. \nIt makes all the matrix necesary to render in Opengl."
+        },
+        "exception": {
+            "name": "exception",
+            "shortname": "exception",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Parser",
+            "namespace": "",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exception.h",
+            "line": 13,
+            "description": "Last modified on Thu Feb 23 12:45:01 1995 by eroberts\n -----------------------------------------------------\n The exception package provides a general exception\n handling mechanism for use with C that is portable\n across a variety of compilers and operating systems."
+        },
+        "expressionT": {
+            "name": "expressionT",
+            "shortname": "expressionT",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Parser",
+            "namespace": "",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h",
+            "line": 18,
+            "description": "Last modified on November 12 2011 by dazar\n -----------------------------------------------------\n This interface provides access to an expression tree designed to parse algebraic surface equations.\n This tree has methods to dinamicaly generate shader code, derivate the expresion, etc."
+        },
+        "genlib": {
+            "name": "genlib",
+            "shortname": "genlib",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Parser",
+            "namespace": "",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/genlib.h",
+            "line": 16,
+            "description": "Last modified on Sun Jul 24 10:32:49 1994 by eroberts\n-----------------------------------------------------\nThis file contains several definitions that form the\ncore of a general-purpose ANSI C library developed by Eric\nRoberts.  The goal of this library is to provide a basic\nset of tools and conventions that increase the readability\nof C programs, particularly as they are used in a teaching\nenvironment.\n\nThe basic definitions provided by genlib.h are:\n\n   1.  Declarations for several new \"primitive\" types\n       (most importantly bool and string) that are\n       used throughout the other libraries and\n       applications as fundamental types.\n\n   2.  A new set of functions for memory allocation.\n\n   3.  A function for error handling.\n\n   4.  A repeat statement for loops with interior exits."
+        },
+        "parser": {
+            "name": "parser",
+            "shortname": "parser",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Parser",
+            "namespace": "",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/parser.h",
+            "line": 18,
+            "description": "Last modified on FRY June 12 2012 by dazar\n -----------------------------------------------------\n This interface provides access to a simple package of\n functions that simplify the parser of equations from the file exp."
+        },
+        "ScannerADT": {
+            "name": "ScannerADT",
+            "shortname": "ScannerADT",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Parser",
+            "namespace": "",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/scanadt.h",
+            "line": 64,
+            "description": "Type: scannerADT\n----------------\nThis type is the abstract type used to represent a single instance\nof a scanner.  As with any abstract type, the details of the\ninternal representation are hidden from the client.\nThis is modified by dazar to resolve some equation problems."
+        },
+        "simpio": {
+            "name": "simpio",
+            "shortname": "simpio",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Parser",
+            "namespace": "",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/simpio.h",
+            "line": 15,
+            "description": "Last modified on Wed Apr 27 07:29:13 1994 by eroberts\n -----------------------------------------------------\n This interface provides access to a simple package of\n functions that simplify the reading of input data."
+        },
+        "strlib": {
+            "name": "strlib",
+            "shortname": "strlib",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Parser",
+            "namespace": "",
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h",
+            "line": 5,
+            "description": "Version: 1.0\nLast modified on Fri Jul 15 14:10:40 1994 by eroberts\n-----------------------------------------------------\nThe strlib.h file defines the interface for a simple\nstring library.  In the context of this package, strings\nare considered to be an abstract data type, which means\nthat the client relies only on the operations defined for\nthe type and not on the underlying representation."
+        }
+    },
+    "classitems": [
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/Interfaces.hpp",
+            "line": 46,
+            "description": "Usage: Initialize(w, h);\n----------------------------------\nInitialize the engine. Creates the default parmetric surfaces.",
+            "itemtype": "method",
+            "name": "Initialize",
+            "params": [
+                {
+                    "name": "width",
+                    "description": "pixels width.",
+                    "type": "Int"
+                },
+                {
+                    "name": "height",
+                    "description": "pixels height.",
+                    "type": "Int"
+                }
+            ],
+            "class": "ApplicationEngine",
+            "module": "Engine"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/Interfaces.hpp",
+            "line": 55,
+            "description": "Usage: OnFingerDown(l);\n----------------------------------\nStarts a gesture, rotation.",
+            "itemtype": "method",
+            "name": "OnFingerDown",
+            "params": [
+                {
+                    "name": "location",
+                    "description": "locaiton press.",
+                    "type": "Ivec2"
+                }
+            ],
+            "class": "ApplicationEngine",
+            "module": "Engine"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/Interfaces.hpp",
+            "line": 63,
+            "description": "Usage: OnFingerDown(ld, ln);\n----------------------------------\ncontinue a gesture, rotation.",
+            "itemtype": "method",
+            "name": "OnFingerDown",
+            "params": [
+                {
+                    "name": "oldlocation",
+                    "description": "old locaiton press.",
+                    "type": "Ivec2"
+                },
+                {
+                    "name": "newlocation",
+                    "description": "new locaiton press.",
+                    "type": "Ivec2"
+                }
+            ],
+            "class": "ApplicationEngine",
+            "module": "Engine"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/Interfaces.hpp",
+            "line": 72,
+            "description": "Usage: Zoom(z);\n----------------------------------\nSets a new zoom radius.",
+            "itemtype": "method",
+            "name": "Zoom",
+            "params": [
+                {
+                    "name": "radius",
+                    "description": "radius too set zoom.",
+                    "type": "Float"
+                }
+            ],
+            "class": "ApplicationEngine",
+            "module": "Engine"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/Interfaces.hpp",
+            "line": 80,
+            "description": "Usage: Render();\n----------------------------------\nrenders one frame.",
+            "itemtype": "method",
+            "name": "Render",
+            "return": {
+                "description": "void;"
+            },
+            "class": "ApplicationEngine",
+            "module": "Engine"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/Interfaces.hpp",
+            "line": 89,
+            "description": "Usage: ChangeSurface(3);\n----------------------------------\nSets a new parametric surface.",
+            "itemtype": "method",
+            "name": "Initialize",
+            "params": [
+                {
+                    "name": "surfaceIndex",
+                    "description": "new surface index.",
+                    "type": "Int"
+                }
+            ],
+            "class": "ApplicationEngine",
+            "module": "Engine"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/ParametricSurface.hpp",
+            "line": 27,
+            "description": "Usage: i = GetVertexCount();\n----------------------------------\nReturns the number of vertex of the parametric surface.",
+            "itemtype": "method",
+            "name": "GetVertexCount",
+            "return": {
+                "description": "number of vertex.",
+                "type": "Int"
+            },
+            "class": "ParametricSurface",
+            "module": "Engine"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/ParametricSurface.hpp",
+            "line": 35,
+            "description": "Usage: i = GetLineIndexCount();\n----------------------------------\nReturns the number of lines of the parametric surface.",
+            "itemtype": "method",
+            "name": "GetLineIndexCount",
+            "return": {
+                "description": "number of lines.",
+                "type": "Int"
+            },
+            "class": "ParametricSurface",
+            "module": "Engine"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/ParametricSurface.hpp",
+            "line": 43,
+            "description": "Usage: i = GetTriangleIndexCount();\n----------------------------------\nReturns the number of triangles of the parametric surface.",
+            "itemtype": "method",
+            "name": "GetTriangleIndexCount",
+            "return": {
+                "description": "number of triangles.",
+                "type": "Int"
+            },
+            "class": "ParametricSurface",
+            "module": "Engine"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/ParametricSurface.hpp",
+            "line": 51,
+            "description": "Usage: GenerateVertices(vertices, flags);\n----------------------------------\nGenerates the vertices of the surface.",
+            "itemtype": "method",
+            "name": "GenerateVertices",
+            "params": [
+                {
+                    "name": "vertices",
+                    "description": "vector array of vertices.",
+                    "type": "Vector<float>"
+                },
+                {
+                    "name": "flags",
+                    "description": ".",
+                    "type": "Char"
+                }
+            ],
+            "class": "ParametricSurface",
+            "module": "Engine"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/ParametricSurface.hpp",
+            "line": 60,
+            "description": "Usage: GenerateLineIndices(indices);\n----------------------------------\nGenerates the line indexes of the surface.",
+            "itemtype": "method",
+            "name": "GenerateLineIndices",
+            "params": [
+                {
+                    "name": "vertices",
+                    "description": "vector array of lines indexes.",
+                    "type": "Vector<short> &"
+                }
+            ],
+            "class": "ParametricSurface",
+            "module": "Engine"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/ParametricSurface.hpp",
+            "line": 68,
+            "description": "Usage: GenerateTriangleIndices(vertices);\n----------------------------------\nGenerates the triangle indexes of the surface.",
+            "itemtype": "method",
+            "name": "GenerateTriangleIndices",
+            "params": [
+                {
+                    "name": "vertices",
+                    "description": "vector array of triangle indexes.",
+                    "type": "Vector<float>"
+                }
+            ],
+            "class": "ParametricSurface",
+            "module": "Engine"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Engine/ParametricSurface.hpp",
+            "line": 76,
+            "description": "Usage: Zoom(newRadius);\n----------------------------------\nchange the zoom of the surface.",
+            "itemtype": "method",
+            "name": "Zoom",
+            "params": [
+                {
+                    "name": "newRadius",
+                    "description": "change the zoom of the surface.",
+                    "type": "Float"
+                }
+            ],
+            "class": "ParametricSurface",
+            "module": "Engine"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/Compiler.hpp",
+            "line": 33,
+            "description": "Usage: init(v1, f1,v2,f2,eq);\n----------------------------------\nGenerate the needed shader code from the equation, reads shader files \nand compile 1 or two programs depending on if wireSphere is active or not.",
+            "itemtype": "method",
+            "name": "init",
+            "params": [
+                {
+                    "name": "vs1",
+                    "description": "vertex shader file name for isurfer.",
+                    "type": "Char *"
+                },
+                {
+                    "name": "fs1",
+                    "description": "fragment shader file name for isurfer.",
+                    "type": "Char *"
+                },
+                {
+                    "name": "fs2",
+                    "description": "fragment shader file name for wiresphere.",
+                    "type": "Char *"
+                },
+                {
+                    "name": "vs2",
+                    "description": "vertex shader file name for wiresphere.",
+                    "type": "Char *"
+                },
+                {
+                    "name": "formula",
+                    "description": "surface formula.",
+                    "type": "Char *"
+                }
+            ],
+            "class": "Compiler",
+            "module": "Surface"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/error.hpp",
+            "line": 31,
+            "description": "Usage: checkGLError( AT );\n----------------------------------\nPrints an error message depending on glGetError(). It also include the location, \nfile and line number where the error was spotted.",
+            "itemtype": "method",
+            "name": "checkGLError",
+            "params": [
+                {
+                    "name": "location",
+                    "description": "vertex shader file name for isurfer.",
+                    "type": "Char *"
+                }
+            ],
+            "class": "Error",
+            "module": "Surface"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/programData.hpp",
+            "line": 68,
+            "description": "the zoom radius, radius of BB sphere to pass to fragment shader for raytrace.",
+            "itemtype": "property",
+            "name": "radius",
+            "type": "{float}",
+            "default": "5",
+            "class": "programData",
+            "module": "Surface"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/programData.hpp",
+            "line": 76,
+            "description": "if true we show the BB with a wireframe.",
+            "itemtype": "property",
+            "name": "debug",
+            "type": "{bool}",
+            "default": "true",
+            "class": "programData",
+            "module": "Surface"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/programData.hpp",
+            "line": 83,
+            "description": "if true we use a panoramic camera, else a orthogonal.",
+            "itemtype": "property",
+            "name": "debug",
+            "type": "{bool}",
+            "default": "false",
+            "class": "programData",
+            "module": "Surface"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/programData.hpp",
+            "line": 90,
+            "description": "it is the parametric surface to use as BB.",
+            "itemtype": "property",
+            "name": "currentSurface",
+            "type": "{int}",
+            "default": "1",
+            "class": "programData",
+            "module": "Surface"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/programData.hpp",
+            "line": 97,
+            "description": "it has all the pointers to opengl reserved memory.",
+            "itemtype": "property",
+            "name": "shaderHandle",
+            "type": "{ProgramHandle}",
+            "class": "programData",
+            "module": "Surface"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/programData.hpp",
+            "line": 104,
+            "description": "Usage:  InitializeProgramData();\n----------------------------------\nInitialize all OpenGL requiered variables for our shaders.",
+            "itemtype": "method",
+            "name": "InitializeProgramData",
+            "return": {
+                "description": "void"
+            },
+            "class": "programData",
+            "module": "Surface"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/programData.hpp",
+            "line": 114,
+            "description": "Usage:  SetEye();\n----------------------------------\nSets the eye position to the vertex shader, we need this to do the raytrace.",
+            "itemtype": "method",
+            "name": "SetEye",
+            "return": {
+                "description": "void"
+            },
+            "class": "programData",
+            "module": "Surface"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/programData.hpp",
+            "line": 124,
+            "description": "Usage:  UpdateColor(r,g,b);\n----------------------------------\nUpdates the primary color rgb of the algebraic surface render.",
+            "itemtype": "method",
+            "name": "UpdateColor",
+            "params": [
+                {
+                    "name": "red",
+                    "description": "red value [0,1]",
+                    "type": "Float"
+                }
+            ],
+            "class": "programData",
+            "module": "Surface"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/programData.hpp",
+            "line": 133,
+            "description": "Usage:  UpdateColor2(r,g,b);\n----------------------------------\nUpdates the secondary color rgb of the algebraic surface render.",
+            "itemtype": "method",
+            "name": "UpdateColor2",
+            "params": [
+                {
+                    "name": "red",
+                    "description": "red value [0,1]",
+                    "type": "Float"
+                }
+            ],
+            "class": "programData",
+            "module": "Surface"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/programData.hpp",
+            "line": 143,
+            "description": "Usage:  UpdateRadius(r);\n----------------------------------\nUpdates the radius value we pass to the shader for intersection.",
+            "itemtype": "method",
+            "name": "UpdateRadius",
+            "params": [
+                {
+                    "name": "radius",
+                    "description": "new radius value",
+                    "type": "Float"
+                }
+            ],
+            "class": "programData",
+            "module": "Surface"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/programData.hpp",
+            "line": 155,
+            "description": "Usage:  setConstant();\n----------------------------------\nSets constanst values in OpenGL, like lights.",
+            "itemtype": "method",
+            "name": "setConstant",
+            "access": "private",
+            "tagname": "",
+            "class": "programData",
+            "module": "Surface"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/programData.hpp",
+            "line": 164,
+            "description": "Usage:  GenerateArrays();\n----------------------------------\nGenerates vertices array space in OpenGL.",
+            "itemtype": "method",
+            "name": "GenerateArrays",
+            "access": "private",
+            "tagname": "",
+            "class": "programData",
+            "module": "Surface"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/surfaceRender.h",
+            "line": 34,
+            "description": "Usage: resize( w, h );\n----------------------------------\nResize OpenGl ViewPort.",
+            "itemtype": "method",
+            "name": "resize",
+            "params": [
+                {
+                    "name": "w",
+                    "description": "viewPort wide.",
+                    "type": "Int"
+                },
+                {
+                    "name": "h",
+                    "description": "viewPort height.",
+                    "type": "Int"
+                }
+            ],
+            "class": "surfaceRender",
+            "module": "Surface"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/openGLController/Surface/surfaceRender.h",
+            "line": 44,
+            "description": "Usage: display( w, h );\n----------------------------------\nRenders one frame.",
+            "itemtype": "method",
+            "name": "display",
+            "params": [
+                {
+                    "name": "drawable",
+                    "description": "the drawable parametric Surface.",
+                    "type": "Drawable"
+                },
+                {
+                    "name": "Quaternion",
+                    "description": "device orientation.",
+                    "type": "Quaternion"
+                }
+            ],
+            "class": "surfaceRender",
+            "module": "Surface"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exception.h",
+            "line": 213,
+            "description": "Usage: RaiseException(&e, name, value);\n---------------------------------------\nThis function is called by the raise macro and does the\nwork necessary to raise the exception.  See the exception.c file\nfor details.  Clients do not ordinarily call this directly.",
+            "itemtype": "method",
+            "name": "RaiseException",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "is the exception to be raised.",
+                    "type": "Exception"
+                },
+                {
+                    "name": "name",
+                    "description": "the name of the class/method.",
+                    "type": "Char *"
+                },
+                {
+                    "name": "value",
+                    "description": "the memory pointer.",
+                    "type": "Void *"
+                }
+            ],
+            "class": "exception",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exception.h",
+            "line": 227,
+            "description": "Usage: if (HandlerExists(&e)) ...\n---------------------------------\nDetermines whether a handler exists for an exception in\nthe dynamically enclosing scope.  Intended only for use\nby special clients, such as the Error package.",
+            "itemtype": "method",
+            "name": "HandlerExists",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "Exception"
+                }
+            ],
+            "return": {
+                "description": "boolean"
+            },
+            "class": "exception",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h",
+            "line": 38,
+            "itemtype": "method",
+            "name": "NewTree",
+            "return": {
+                "description": "a new tree.\n\nUsage: expressionT myTree; myTree= NewTree();\n\n--------------------------------------\nThis function creates a new tree.",
+                "type": "ExpressionT"
+            },
+            "class": "expressionT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h",
+            "line": 49,
+            "description": "Usage: expressionT myTree; PreOrder( myTree );\n--------------------------------------\nprints the tree in PreOrder.",
+            "itemtype": "method",
+            "name": "PreOrder",
+            "params": [
+                {
+                    "name": "tree",
+                    "description": "an instance of expressionT.",
+                    "type": "ExpressionT"
+                }
+            ],
+            "return": {
+                "description": "a new tree.",
+                "type": "ExpressionT"
+            },
+            "class": "expressionT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h",
+            "line": 58,
+            "description": "Usage: expressionT myTree; myTree= SubTree( \"10\", NULL, NULL);\n--------------------------------------\nCreates a Tree. Using raiz as the root and left and right as both childs.\nLeft and Right should be created before. If they are Null it is a leaf, a number or variable.",
+            "itemtype": "method",
+            "name": "SubTree",
+            "params": [
+                {
+                    "name": "raiz",
+                    "description": "the text of this node.",
+                    "type": "Char *"
+                },
+                {
+                    "name": "left",
+                    "description": "the left child of the new tree.",
+                    "type": "ExpressionT"
+                },
+                {
+                    "name": "right",
+                    "description": "the right child of the new tree.",
+                    "type": "ExpressionT"
+                }
+            ],
+            "return": {
+                "description": "a new tree.",
+                "type": "ExpressionT"
+            },
+            "class": "expressionT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h",
+            "line": 71,
+            "description": "Usage: EvalExp( myTree, 0);\n--------------------------------------\nCreates the shader code for the surface.",
+            "itemtype": "method",
+            "name": "EvalExp",
+            "params": [
+                {
+                    "name": "exp",
+                    "description": "the tree to analize.",
+                    "type": "ExpressionT"
+                },
+                {
+                    "name": "where",
+                    "description": "where to print the result. \n\n0 Means it is the algebraic surface. \n\n1 Means it is the algebraic surface derivate.",
+                    "type": "Int"
+                }
+            ],
+            "class": "expressionT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h",
+            "line": 85,
+            "description": "Usage: EvalExpNoCode( myTree, 0);\n--------------------------------------\nCreates the expression for the surface.",
+            "itemtype": "method",
+            "name": "EvalExpNoCode",
+            "params": [
+                {
+                    "name": "exp",
+                    "description": "the tree to analize.",
+                    "type": "ExpressionT"
+                },
+                {
+                    "name": "where",
+                    "description": "where to print the result. \n\n0 Means it is the algebraic surface. \n\n1 Means it is the algebraic surface derivate.",
+                    "type": "Int"
+                }
+            ],
+            "class": "expressionT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h",
+            "line": 99,
+            "description": "Usage: string = getCode();\n--------------------------------------\nReturns a string with the  algebraic surface generated.\nIt can be shader code or the expression.",
+            "itemtype": "method",
+            "name": "getCode",
+            "return": {
+                "description": "The algebraic surface generated.",
+                "type": "Char *"
+            },
+            "class": "expressionT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h",
+            "line": 109,
+            "description": "Usage: EvalDegree(myTree);\n--------------------------------------\nreturns the degree of the algebraic surface.",
+            "itemtype": "method",
+            "name": "EvalDegree",
+            "params": [
+                {
+                    "name": "exp",
+                    "description": "the tree to analize.",
+                    "type": "ExpressionT"
+                }
+            ],
+            "return": {
+                "description": "the degree.",
+                "type": "Int"
+            },
+            "class": "expressionT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h",
+            "line": 120,
+            "description": "Usage: i = getCodeLeng();\n--------------------------------------\nReturns the length of  the algebraic surface generated.",
+            "itemtype": "method",
+            "name": "getCodeLeng",
+            "return": {
+                "description": "The length of the algebraic surface generated.",
+                "type": "Int"
+            },
+            "class": "expressionT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h",
+            "line": 129,
+            "description": "Usage: clearExp();\n--------------------------------------\nclears all the memory to parse a new expression.\nThis method should be called before using any other method.",
+            "itemtype": "method",
+            "name": "clearExp",
+            "return": {
+                "description": "void"
+            },
+            "class": "expressionT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h",
+            "line": 139,
+            "description": "Usage: string = getCodeDerivate();\n--------------------------------------\nReturns a string with the  algebraic surface derivative generated.\nIt can be shader code or the expression.",
+            "itemtype": "method",
+            "name": "getCodeDerivate",
+            "return": {
+                "description": "The algebraic surface derivative generated.",
+                "type": "Char *"
+            },
+            "class": "expressionT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h",
+            "line": 149,
+            "description": "Usage: EvalDerivate( myTree);\n--------------------------------------\nCreates shader code for the algebraic surface partial derivatives.",
+            "itemtype": "method",
+            "name": "EvalDerivate",
+            "params": [
+                {
+                    "name": "exp",
+                    "description": "the tree to analize.",
+                    "type": "ExpressionT"
+                }
+            ],
+            "class": "expressionT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h",
+            "line": 159,
+            "description": "Usage: EvalDerivateNoCode( myTree);\n--------------------------------------\nCreates the expression for the algebraic surface partial derivatives.",
+            "itemtype": "method",
+            "name": "EvalDerivateNoCode",
+            "params": [
+                {
+                    "name": "exp",
+                    "description": "the tree to analize.",
+                    "type": "ExpressionT"
+                }
+            ],
+            "class": "expressionT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h",
+            "line": 170,
+            "description": "Usage: getDegree();\n--------------------------------------\nreturns the degree of the algebraic surface.",
+            "itemtype": "method",
+            "name": "getDegree",
+            "return": {
+                "description": "the degree.",
+                "type": "Int"
+            },
+            "class": "expressionT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h",
+            "line": 179,
+            "description": "Usage: FreeTree();\n--------------------------------------\nDelete all the tree info and free the memory.\nIt should be called once and only on the root node of a tree.",
+            "itemtype": "method",
+            "name": "FreeTree",
+            "params": [
+                {
+                    "name": "exp",
+                    "description": "the tree to delete.",
+                    "type": "ExpressionT"
+                }
+            ],
+            "return": {
+                "description": "the degree.",
+                "type": "Int"
+            },
+            "class": "expressionT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h",
+            "line": 190,
+            "description": "Usage: if(ErrorExist())\n--------------------------------------\nThis should be called to look if there was an error in any of the methods of this class.",
+            "itemtype": "method",
+            "name": "ErrorExist",
+            "return": {
+                "description": "if there was an error.",
+                "type": "Boolean"
+            },
+            "class": "expressionT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h",
+            "line": 200,
+            "description": "Usage: if(ErrorExist()) string = getErrorMsg();\n--------------------------------------\nif there was an error call this to get the message.",
+            "itemtype": "method",
+            "name": "getErrorMsg",
+            "return": {
+                "description": "error message.",
+                "type": "Char *"
+            },
+            "class": "expressionT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/exp.h",
+            "line": 210,
+            "description": "Usage: ParseError(msg);\n--------------------------------------\nTo be call to raise an error.",
+            "itemtype": "method",
+            "name": "ParseError",
+            "params": [
+                {
+                    "name": "msg",
+                    "description": "error message.",
+                    "type": "Char *"
+                }
+            ],
+            "class": "expressionT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/genlib.h",
+            "line": 122,
+            "description": "Usage: ptr = (type) GetBlock(nbytes);\n-------------------------------------\nGetBlock allocates a block of memory of the given size.  If\nno memory is available, GetBlock generates an error.",
+            "itemtype": "method",
+            "name": "GetBlock",
+            "params": [
+                {
+                    "name": "nbytes",
+                    "description": "size of the block.",
+                    "type": "Size_t"
+                }
+            ],
+            "return": {
+                "description": "pointer no the newly allocated block.",
+                "type": "Void *"
+            },
+            "class": "genlib",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/genlib.h",
+            "line": 134,
+            "description": "Usage: FreeBlock(ptr);\n----------------------\nFreeBlock frees the memory associated with ptr, which must\nhave been allocated using GetBlock, New, or NewArray.",
+            "itemtype": "method",
+            "name": "FreeBlock",
+            "params": [
+                {
+                    "name": "ptr",
+                    "description": "pointer to the block.",
+                    "type": "Void *"
+                }
+            ],
+            "class": "genlib",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/genlib.h",
+            "line": 171,
+            "description": "Usage: Error(msg, ...)\n----------------------\nError generates an error string, expanding % constructions\nappearing in the error message string just as printf does.\nIf an error handler exception has been introduced (see the\n\"exception.h\" facility), the ErrorException exception is\nraised with the expanded error string as argument.  If\nthere is no ErrorException defined, the program exits\nwith a status code indicating failure (as given by the\nconstant ErrorExitStatus).  The length of the error\nmessage string following expansion must not exceed\nMaxErrorMessage, and it is the client's responsibility\nto ensure this.",
+            "itemtype": "method",
+            "name": "Error",
+            "params": [
+                {
+                    "name": "msg",
+                    "description": "error message to be print in stderr.",
+                    "type": "Char *"
+                }
+            ],
+            "class": "genlib",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/parser.h",
+            "line": 28,
+            "description": "Usage: exp = ParseExp(scanner);\n----------------------------\nReads the scanner and generates an expression tree with the equation.\nThe tree is formed with the correct precedence considering \"(\" and \")\".\nReturns Null in case of error.",
+            "itemtype": "method",
+            "name": "ParseExp",
+            "params": [
+                {
+                    "name": "scanner",
+                    "description": "a scanner with the equation formula.",
+                    "type": "ScannerADT"
+                }
+            ],
+            "return": {
+                "description": "an expression tree.",
+                "type": "ExpressionT"
+            },
+            "class": "parser",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/parser.h",
+            "line": 41,
+            "description": "Usage: b = IsVariable(token);\n----------------------------\nIsVariable reads a char of text from the pointer and\nreturns a boolean indicating if it is a variable or not.\nthat terminates the input is not stored as part of the\nA variable can be x, y ,z.",
+            "itemtype": "method",
+            "name": "IsVariable",
+            "params": [
+                {
+                    "name": "token",
+                    "description": "pointer to the char to analize.",
+                    "type": "Char *"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Booleano"
+            },
+            "class": "parser",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/parser.h",
+            "line": 54,
+            "description": "Usage: b = EsNumero(token);\n----------------------------\nIsVariable reads a number from the pointer and\nreturns a boolean indicating if it is a number or not.\nThe number is left in valor.",
+            "itemtype": "method",
+            "name": "EsNumero",
+            "params": [
+                {
+                    "name": "token",
+                    "description": "pointer to the char to analize.",
+                    "type": "Char *"
+                },
+                {
+                    "name": "valor",
+                    "description": "pointer where we place the number read.",
+                    "type": "Double *"
+                }
+            ],
+            "return": {
+                "description": "if it can read the number",
+                "type": "Booleano"
+            },
+            "class": "parser",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/scanadt.h",
+            "line": 76,
+            "description": "Usage: scanner = NewScanner();\n------------------------------\nThis function creates a new scanner instance.  All other functions\nin this interface take this scanner value as their first argument\nso that they can identify what particular instance of the scanner\nis in use.  This design makes it possible for clients to have more\nthan one scanner process active at the same time.",
+            "itemtype": "method",
+            "name": "NewScanner",
+            "return": {
+                "description": "a new instance of the scanner.",
+                "type": "ScannerADT"
+            },
+            "class": "ScannerADT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/scanadt.h",
+            "line": 90,
+            "description": "Usage: FreeScanner(scanner);\n----------------------------\nThis function frees the storage associated with scanner.",
+            "itemtype": "method",
+            "name": "FreeScanner",
+            "params": [
+                {
+                    "name": "scanner",
+                    "description": "destroys the instance.",
+                    "type": "ScannerADT"
+                }
+            ],
+            "class": "ScannerADT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/scanadt.h",
+            "line": 100,
+            "description": "Usage: SetScannerString(scanner, str);\n--------------------------------------\nThis function initializes the scanner so that it will start\nextracting tokens from the string str. This method is modified to also reduce the equation.\nand resolve a minus or negation from a \"-\".",
+            "itemtype": "method",
+            "name": "SetScannerString",
+            "params": [
+                {
+                    "name": "scanner",
+                    "description": "an instance of scanner.",
+                    "type": "ScannerADT"
+                },
+                {
+                    "name": "str",
+                    "description": "a string for the scanner.",
+                    "type": "Char *"
+                }
+            ],
+            "class": "ScannerADT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/scanadt.h",
+            "line": 113,
+            "description": "Usage: token = ReadToken(scanner);\n----------------------------------\nThis function returns the next token from scanner.  If\nReadToken is called when no tokens are available, it returns\nthe empty string.  The token returned by ReadToken is always\nallocated in the heap, which means that clients can call\nFreeBlock when the token is no longer needed.",
+            "itemtype": "method",
+            "name": "ReadToken",
+            "params": [
+                {
+                    "name": "scanner",
+                    "description": "an instance of scanner.",
+                    "type": "ScannerADT"
+                }
+            ],
+            "return": {
+                "description": "the string read.",
+                "type": "Char *"
+            },
+            "class": "ScannerADT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/scanadt.h",
+            "line": 128,
+            "description": "Usage: if (MoreTokensExist(scanner)) . . .\n------------------------------------------\nThis function returns TRUE as long as there are additional\ntokens for the scanner to read.",
+            "itemtype": "method",
+            "name": "MoreTokensExist",
+            "params": [
+                {
+                    "name": "scanner",
+                    "description": "an instance of scanner.",
+                    "type": "ScannerADT"
+                }
+            ],
+            "return": {
+                "description": "returns TRUE as long as there are additional tokens for the scanner to read.",
+                "type": "Boolean"
+            },
+            "class": "ScannerADT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/scanadt.h",
+            "line": 140,
+            "description": "Usage: SaveToken(scanner, token);\n---------------------------------\nThis function stores the token in the scanner data structure\nin such a way that the next time ReadToken is called, it will\nreturn that token without reading any additional characters\nfrom the input.",
+            "itemtype": "method",
+            "name": "SaveToken",
+            "params": [
+                {
+                    "name": "scanner",
+                    "description": "an instance of scanner.",
+                    "type": "ScannerADT"
+                },
+                {
+                    "name": "token",
+                    "description": "the token to save.",
+                    "type": "Char *"
+                }
+            ],
+            "class": "ScannerADT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/scanadt.h",
+            "line": 154,
+            "description": "Usage: SetScannerSpaceOption(scanner, option);\n-----------------------------------------------\nThe SetScannerSpaceOption function controls whether the scanner\nignores whitespace characters or treats them as valid tokens.\nBy default, the ReadToken function treats whitespace characters,\nsuch as spaces and tabs, just like any other punctuation mark.\nIf, however, you call\n\n   SetScannerSpaceOption(scanner, IgnoreSpaces);\n\nthe scanner will skip over any white space before reading a token.\nYou can restore the original behavior by calling\n\n   SetScannerSpaceOption(scanner, PreserveSpaces);\n\nThe GetScannerSpaceOption function returns the current setting\nof this option.",
+            "itemtype": "method",
+            "name": "SetScannerSpaceOption",
+            "params": [
+                {
+                    "name": "scanner",
+                    "description": "an instance of scanner.",
+                    "type": "ScannerADT"
+                },
+                {
+                    "name": "option",
+                    "description": "what option to use.",
+                    "type": "SpaceOptionT *"
+                }
+            ],
+            "class": "ScannerADT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/scanadt.h",
+            "line": 181,
+            "description": "Usage: option = GetScannerSpaceOption(scanner);\n-----------------------------------------------\nThe SetScannerSpaceOption function controls whether the scanner\nignores whitespace characters or treats them as valid tokens.\nBy default, the ReadToken function treats whitespace characters,\nsuch as spaces and tabs, just like any other punctuation mark.\nIf, however, you call\n\n   SetScannerSpaceOption(scanner, IgnoreSpaces);\n\nthe scanner will skip over any white space before reading a token.\nYou can restore the original behavior by calling\n\n   SetScannerSpaceOption(scanner, PreserveSpaces);\n\nThe GetScannerSpaceOption function returns the current setting\nof this option.",
+            "itemtype": "method",
+            "name": "GetScannerSpaceOption",
+            "params": [
+                {
+                    "name": "scanner",
+                    "description": "an instance of scanner.",
+                    "type": "ScannerADT"
+                }
+            ],
+            "return": {
+                "description": "what option to use.",
+                "type": "SpaceOptionT *"
+            },
+            "class": "ScannerADT",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/simpio.h",
+            "line": 28,
+            "description": "Usage: i = GetInteger();\n------------------------\nGetInteger reads a line of text from standard input and scans\nit as an integer.  The integer value is returned.  If an\ninteger cannot be scanned or if more characters follow the\nnumber, the user is given a chance to retry.",
+            "itemtype": "method",
+            "name": "GetInteger",
+            "return": {
+                "description": "the number read.",
+                "type": "Int"
+            },
+            "class": "simpio",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/simpio.h",
+            "line": 41,
+            "description": "Usage: l = GetLong();\n---------------------\nGetLong reads a line of text from standard input and scans\nit as a long integer.  The value is returned as a long.\nIf an integer cannot be scanned or if more characters follow\nthe number, the user is given a chance to retry.",
+            "itemtype": "method",
+            "name": "GetLong",
+            "return": {
+                "description": "the number read.",
+                "type": "Long"
+            },
+            "class": "simpio",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/simpio.h",
+            "line": 54,
+            "description": "Usage: x = GetReal();\n---------------------\nGetReal reads a line of text from standard input and scans\nit as a double.  If the number cannot be scanned or if extra\ncharacters follow after the number ends, the user is given\na chance to reenter the value.",
+            "itemtype": "method",
+            "name": "GetReal",
+            "return": {
+                "description": "the number read.",
+                "type": "Double"
+            },
+            "class": "simpio",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/simpio.h",
+            "line": 67,
+            "description": "Usage: s = GetLine();\n---------------------\nGetLine reads a line of text from standard input and returns\nthe line as a string.  The newline character that terminates\nthe input is not stored as part of the string.",
+            "itemtype": "method",
+            "name": "GetLine",
+            "return": {
+                "description": "the string read.",
+                "type": "Char *"
+            },
+            "class": "simpio",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/simpio.h",
+            "line": 79,
+            "description": "Usage: s = ReadLine(infile);\n----------------------------\nReadLine reads a line of text from the input file and\nreturns the line as a string.  The newline character\nthat terminates the input is not stored as part of the\nstring.  The ReadLine function returns NULL if infile\nis at the end-of-file position.",
+            "itemtype": "method",
+            "name": "ReadLine",
+            "params": [
+                {
+                    "name": "infile",
+                    "description": "",
+                    "type": "FILE"
+                }
+            ],
+            "return": {
+                "description": "the string read.",
+                "type": "Char *"
+            },
+            "class": "simpio",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h",
+            "line": 42,
+            "description": "Usage: s = Concat(s1, s2);\n--------------------------\nThis function concatenates two strings by joining them end\nto end.  For example, Concat(\"ABC\", \"DE\") returns the string\n\"ABCDE\".",
+            "itemtype": "method",
+            "name": "Concat",
+            "params": [
+                {
+                    "name": "s1",
+                    "description": "pointer to left part.",
+                    "type": "Char *"
+                },
+                {
+                    "name": "s2",
+                    "description": "pointer with what to concat.",
+                    "type": "Char *"
+                }
+            ],
+            "return": {
+                "description": "a new string with the result.",
+                "type": "Char *"
+            },
+            "class": "strlib",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h",
+            "line": 56,
+            "description": "Usage: ch = IthChar(s, i);\n--------------------------\nThis function returns the character at position i in the\nstring s.  It is included in the library to make the type\nstring a true abstract type in the sense that all of the\nnecessary operations can be invoked using functions. Calling\nIthChar(s, i) is like selecting s[i], except that IthChar\nchecks to see if i is within the range of legal index\npositions, which extend from 0 to StringLength(s).\nIthChar(s, StringLength(s)) returns the null character\nat the end of the string.",
+            "itemtype": "method",
+            "name": "IthChar",
+            "params": [
+                {
+                    "name": "s",
+                    "description": "pointer to string.",
+                    "type": "Char *"
+                },
+                {
+                    "name": "i",
+                    "description": "char index.",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "the character at position i.",
+                "type": "Char"
+            },
+            "class": "strlib",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h",
+            "line": 76,
+            "description": "Usage: t = SubString(s, p1, p2);\n--------------------------------\nSubString returns a copy of the substring of s consisting\nof the characters between index positions p1 and p2,\ninclusive.  The following special cases apply:\n\n1. If p1 is less than 0, it is assumed to be 0.\n2. If p2 is greater than the index of the last string\n   position, which is StringLength(s) - 1, then p2 is\n   set equal to StringLength(s) - 1.\n3. If p2 < p1, SubString returns the empty string.",
+            "itemtype": "method",
+            "name": "SubString",
+            "params": [
+                {
+                    "name": "s",
+                    "description": "pointer to string.",
+                    "type": "Char *"
+                },
+                {
+                    "name": "p1",
+                    "description": "start index.",
+                    "type": "Int"
+                },
+                {
+                    "name": "p2",
+                    "description": "end index.",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "a new string with the result.",
+                "type": "Char *"
+            },
+            "class": "strlib",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h",
+            "line": 97,
+            "description": "Usage: s = CharToString(ch);\n----------------------------\nThis function takes a single character and returns a\none-character string consisting of that character.  The\nCharToString function is useful, for example, if you\nneed to concatenate a string and a character.  Since\nConcat requires two strings, you must first convert\nthe character into a string.",
+            "itemtype": "method",
+            "name": "CharToString",
+            "params": [
+                {
+                    "name": "ch",
+                    "description": "pointer to string.",
+                    "type": "Char"
+                }
+            ],
+            "return": {
+                "description": "a new string with the result.",
+                "type": "Char *"
+            },
+            "class": "strlib",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h",
+            "line": 113,
+            "description": "Usage: len = StringLength(s);\n-----------------------------\nThis function returns the length of s.",
+            "itemtype": "method",
+            "name": "StringLength",
+            "params": [
+                {
+                    "name": "s",
+                    "description": "pointer to string.",
+                    "type": "Char *"
+                }
+            ],
+            "return": {
+                "description": "the length of the string.",
+                "type": "Int"
+            },
+            "class": "strlib",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h",
+            "line": 124,
+            "description": "Usage: newstr = CopyString(s);\n------------------------------\nCopyString copies the string s into dynamically allocated\nstorage and returns the new string.  This function is not\nordinarily required if this package is used on its own,\nbut is often necessary when you are working with more than\none string package.",
+            "itemtype": "method",
+            "name": "CopyString",
+            "params": [
+                {
+                    "name": "s",
+                    "description": "pointer to string.",
+                    "type": "Char *"
+                }
+            ],
+            "return": {
+                "description": "a copy of the string.",
+                "type": "Char *"
+            },
+            "class": "strlib",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h",
+            "line": 141,
+            "description": "Usage: if (StringEqual(s1, s2)) ...\n-----------------------------------\nThis function returns TRUE if the strings s1 and s2 are\nequal.  For the strings to be considered equal, every\ncharacter in one string must precisely match the\ncorresponding character in the other.  Uppercase and\nlowercase characters are considered to be different.",
+            "itemtype": "method",
+            "name": "StringEqual",
+            "params": [
+                {
+                    "name": "s1",
+                    "description": "pointer to string 1.",
+                    "type": "Char *"
+                },
+                {
+                    "name": "s1",
+                    "description": "pointer to string 2.",
+                    "type": "Char *"
+                }
+            ],
+            "return": {
+                "description": ".",
+                "type": "Boolean"
+            },
+            "class": "strlib",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h",
+            "line": 157,
+            "description": "Usage: if (StringCompare(s1, s2) < 0) ...\n-----------------------------------------\nThis function returns a number less than 0 if string s1\ncomes before s2 in alphabetical order, 0 if they are equal,\nand a number greater than 0 if s1 comes after s2.  The\nordering is determined by the internal representation used\nfor characters, which is usually ASCII.",
+            "itemtype": "method",
+            "name": "StringCompare",
+            "params": [
+                {
+                    "name": "s1",
+                    "description": "pointer to string 1.",
+                    "type": "Char *"
+                },
+                {
+                    "name": "s1",
+                    "description": "pointer to string 2.",
+                    "type": "Char *"
+                }
+            ],
+            "return": {
+                "description": ".",
+                "type": "Int"
+            },
+            "class": "strlib",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h",
+            "line": 175,
+            "description": "Usage: p = FindChar(ch, text, start);\n-------------------------------------\nBeginning at position start in the string text, this\nfunction searches for the character ch and returns the\nfirst index at which it appears or -1 if no match is\nfound.",
+            "itemtype": "method",
+            "name": "FindChar",
+            "params": [
+                {
+                    "name": "ch",
+                    "description": "char to search.",
+                    "type": "Char"
+                },
+                {
+                    "name": "text",
+                    "description": "pointer to string.",
+                    "type": "Char *"
+                },
+                {
+                    "name": "start",
+                    "description": "position to start searching.",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "the first index at which ch appears or -1 if no match is found.",
+                "type": "Int"
+            },
+            "class": "strlib",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h",
+            "line": 191,
+            "description": "Usage: p = FindString(str, text, start);\n----------------------------------------\nBeginning at position start in the string text, this\nfunction searches for the string str and returns the\nfirst index at which it appears or -1 if no match is\nfound.",
+            "itemtype": "method",
+            "name": "FindString",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "pointer to string to find.",
+                    "type": "Const char *"
+                },
+                {
+                    "name": "text",
+                    "description": "pointer to string.",
+                    "type": "Char *"
+                },
+                {
+                    "name": "start",
+                    "description": "position to start searching.",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "the first index at which ch appears or -1 if no match is found.",
+                "type": "Int"
+            },
+            "class": "strlib",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h",
+            "line": 209,
+            "description": "Usage: s = ConvertToLowerCase(s);\n---------------------------------\nThis function returns a new string with all\nalphabetic characters converted to lower case.",
+            "itemtype": "method",
+            "name": "ConvertToLowerCase",
+            "params": [
+                {
+                    "name": "s",
+                    "description": "pointer to string.",
+                    "type": "Char *"
+                }
+            ],
+            "return": {
+                "description": "a new string with the result.",
+                "type": "Char *"
+            },
+            "class": "strlib",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h",
+            "line": 221,
+            "description": "Usage: s = ConvertToUpperCase(s);\n---------------------------------\nThis function returns a new string with all\nalphabetic characters converted to upper case.",
+            "itemtype": "method",
+            "name": "ConvertToUpperCase",
+            "params": [
+                {
+                    "name": "s",
+                    "description": "pointer to string.",
+                    "type": "Char *"
+                }
+            ],
+            "return": {
+                "description": "a new string with the result.",
+                "type": "Char *"
+            },
+            "class": "strlib",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h",
+            "line": 235,
+            "description": "Usage: s = IntegerToString(n);\n------------------------------\nThis function converts an integer into the corresponding\nstring of digits.  For example, IntegerToString(123)\nreturns \"123\" as a string.",
+            "itemtype": "method",
+            "name": "IntegerToString",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "number.",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "a new string with the result.",
+                "type": "Char *"
+            },
+            "class": "strlib",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h",
+            "line": 248,
+            "description": "Usage: n = StringToInteger(s);\n------------------------------\nThis function converts a string of digits into an integer.\nIf the string is not a legal integer or contains extraneous\ncharacters, StringToInteger signals an error condition.",
+            "itemtype": "method",
+            "name": "StringToInteger",
+            "params": [
+                {
+                    "name": "s",
+                    "description": "pointer to string.",
+                    "type": "Char *"
+                }
+            ],
+            "return": {
+                "description": "with the number in the string.",
+                "type": "Int"
+            },
+            "class": "strlib",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h",
+            "line": 261,
+            "description": "Usage: s = RealToString(d);\n---------------------------\nThis function converts a floating-point number into the\ncorresponding string form.  For example, calling\nRealToString(23.45) returns \"23.45\".  The conversion is\nthe same as that used for \"%G\" format in printf.",
+            "itemtype": "method",
+            "name": "RealToString",
+            "params": [
+                {
+                    "name": "n",
+                    "description": "number.",
+                    "type": "Double"
+                }
+            ],
+            "return": {
+                "description": "a new string with the result.",
+                "type": "Char *"
+            },
+            "class": "strlib",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/goiSurferViewController/parser/strlib.h",
+            "line": 275,
+            "description": "Usage: d = StringToReal(s);\n---------------------------\nThis function converts a string representing a real number\ninto its corresponding value.  If the string is not a\nlegal floating-point number or if it contains extraneous\ncharacters, StringToReal signals an error condition.",
+            "itemtype": "method",
+            "name": "StringToReal",
+            "params": [
+                {
+                    "name": "s",
+                    "description": "pointer to string.",
+                    "type": "Char *"
+                }
+            ],
+            "return": {
+                "description": "with the number in the string.",
+                "type": "Double"
+            },
+            "class": "strlib",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h",
+            "line": 17,
+            "description": "View that displays the video. Should be set in the Interface builder for\n adjusting size and other atributes if necesary",
+            "class": "",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h",
+            "line": 28,
+            "description": "Loads a video stored in the iphone \n\nThe video gets initialized with default movie playback controls",
+            "params": [
+                {
+                    "name": "videoName",
+                    "description": ""
+                },
+                {
+                    "name": "videotype",
+                    "description": ""
+                }
+            ],
+            "class": "",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h",
+            "line": 38,
+            "description": "Loads a video from a URL in the web\n The video gets initialized with default movie playback controls",
+            "params": [
+                {
+                    "name": "URL",
+                    "description": "of the video Ex: @\"http://videos/myVideo.mov\""
+                }
+            ],
+            "class": "",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h",
+            "line": 47,
+            "description": "Starts playing a video",
+            "class": "",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h",
+            "line": 51,
+            "description": "Stops playing a video",
+            "class": "",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h",
+            "line": 55,
+            "description": "Pauses playing a video",
+            "class": "",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h",
+            "line": 59,
+            "description": "Sets the default movie player controls for movie playback",
+            "class": "",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h",
+            "line": 63,
+            "description": "removes movie default controls in the movie view",
+            "class": "",
+            "module": "Parser"
+        },
+        {
+            "file": "/Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h",
+            "line": 67,
+            "description": "sets a video in full screen mode",
+            "params": [
+                {
+                    "name": "YES",
+                    "description": "for fullscreen mode, NO for normal view"
+                }
+            ],
+            "class": "",
+            "module": "Parser"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type\nView that displays the video. Should be set in the Interface builder for\n adjusting size and other atributes if necesary",
+            "line": " /Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h:17"
+        },
+        {
+            "message": "Missing item type\nLoads a video stored in the iphone \n\nThe video gets initialized with default movie playback controls",
+            "line": " /Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h:28"
+        },
+        {
+            "message": "Missing item type\nLoads a video from a URL in the web\n The video gets initialized with default movie playback controls",
+            "line": " /Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h:38"
+        },
+        {
+            "message": "Missing item type\nStarts playing a video",
+            "line": " /Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h:47"
+        },
+        {
+            "message": "Missing item type\nStops playing a video",
+            "line": " /Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h:51"
+        },
+        {
+            "message": "Missing item type\nPauses playing a video",
+            "line": " /Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h:55"
+        },
+        {
+            "message": "Missing item type\nSets the default movie player controls for movie playback",
+            "line": " /Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h:59"
+        },
+        {
+            "message": "Missing item type\nremoves movie default controls in the movie view",
+            "line": " /Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h:63"
+        },
+        {
+            "message": "Missing item type\nsets a video in full screen mode",
+            "line": " /Users/Dani/Documents/Workspace/Proyecto Final/isurfer/trunk/iSurfer/Classes/viewControllers/VideoViewController.h:67"
+        }
+    ]
+}

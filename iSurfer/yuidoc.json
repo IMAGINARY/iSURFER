@@ -1,0 +1,13 @@
+{
+    "name": "iSurfer",
+    "description": "iSurfer: is a program design for iOS to render algerbraic surfaces in a 3D space.",
+    "version": "2.0.0",
+    "url": "http://example.com/",
+    "options": {
+        "outdir": "./docs",
+        "extension": ".c,.h,.cpp,.hpp",
+        "paths": "*"
+        
+
+    }
+}

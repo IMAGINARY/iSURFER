@@ -21,6 +21,7 @@
 		3308B17D1533EC87001E853F /* programData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B1741533EC87001E853F /* programData.cpp */; };
 		3308B17E1533EC87001E853F /* surfaceRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B1761533EC87001E853F /* surfaceRender.cpp */; };
 		338CE34015FABA6C00E8AA18 /* vs3.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 338CE33F15FABA6C00E8AA18 /* vs3.glsl */; };
+		3395689C168FEA4B002F5CCC /* yuidoc.json in Resources */ = {isa = PBXBuildFile; fileRef = 3395689B168FEA4A002F5CCC /* yuidoc.json */; };
 		5EDA315515E2FD6400F7BC06 /* button-share.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA315315E2FD6400F7BC06 /* button-share.png */; };
 		5EDA315615E2FD6400F7BC06 /* button-share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA315415E2FD6400F7BC06 /* button-share@2x.png */; };
 		5EDA315915E2FD7F00F7BC06 /* button-galleries-not-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA315715E2FD7F00F7BC06 /* button-galleries-not-active.png */; };
@@ -134,6 +135,7 @@
 		3308B1761533EC87001E853F /* surfaceRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surfaceRender.cpp; sourceTree = "<group>"; };
 		3308B1771533EC87001E853F /* surfaceRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = surfaceRender.h; sourceTree = "<group>"; };
 		338CE33F15FABA6C00E8AA18 /* vs3.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vs3.glsl; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		3395689B168FEA4A002F5CCC /* yuidoc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = yuidoc.json; sourceTree = "<group>"; };
 		5EDA315315E2FD6400F7BC06 /* button-share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-share.png"; sourceTree = "<group>"; };
 		5EDA315415E2FD6400F7BC06 /* button-share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-share@2x.png"; sourceTree = "<group>"; };
 		5EDA315715E2FD7F00F7BC06 /* button-galleries-not-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-galleries-not-active.png"; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				3395689B168FEA4A002F5CCC /* yuidoc.json */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -787,6 +790,7 @@
 				5EDA316615E2FF0200F7BC06 /* button-settings-not-active@2x.png in Resources */,
 				5EDA316815E3016400F7BC06 /* button-save.png in Resources */,
 				338CE34015FABA6C00E8AA18 /* vs3.glsl in Resources */,
+				3395689C168FEA4B002F5CCC /* yuidoc.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

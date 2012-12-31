@@ -26,9 +26,7 @@ ProgramHandle programData::shaderHandle;
 bool programData::debug = true;
 bool programData::panoramic = false;
 
-bool programData::box = false;
-GLfloat programData::vertex[STACKS*(SLICES+1)*2*3];
-GLfloat programData::normalized[STACKS*(SLICES+1)*2*3];
+
 ProgramIdentifiers programData::programs;
 
 
@@ -61,26 +59,6 @@ void programData::InitializeProgramData()
     programData::shaderHandle.wire_projection = glGetUniformLocation( glsl_program, "projectionMatrix" ); checkGLError( AT );
     
     
-    //glEnableVertexAttribArray(programData::shaderHandle.wire_attr_pos);	checkGLError( AT );
-    //glEnableVertexAttribArray(programData::shaderHandle.attr_pos);	checkGLError( AT );
-    
-    
-    
-    //glGenBuffers(1, &programData::shaderHandle.wire_vertexBuffer);
-    //glBindBuffer(GL_ARRAY_BUFFER, programData::shaderHandle.wire_vertexBuffer);
-    //glBufferData(GL_ARRAY_BUFFER, STACKS*(SLICES+1)*2*3 *sizeof(*normalized), normalized, GL_STATIC_DRAW);
-
-    
-    
-    
-    
-    //glGenBuffers(1, &programData::shaderHandle.vertexBuffer);	checkGLError( AT );
-    //GLfloat* vertexPositions = sphereBuffer(5, SLICES , STACKS);	checkGLError( AT );
-    //glBindBuffer(GL_ARRAY_BUFFER, programData::shaderHandle.vertexBuffer);	checkGLError( AT );
-    //glBufferData(programData::shaderHandle.vertexBuffer, STACKS*(SLICES+1)*2*3 *sizeof(*normalized), normalized, GL_DYNAMIC_DRAW);	checkGLError( AT );
-     
-    
-    
     programData::setConstant();
     programData::GenerateArrays();
 }
@@ -92,13 +70,10 @@ void programData::setConstant()
     UpdateRadius(programData::radius);
     //Power de la luz
     glUniform1f(programData::shaderHandle.Shininess, programData::Shininess);
-    //vec4 lightPosition(programData::radius, programData::radius, 0, 0);
-    //glUniform3fv(programData::shaderHandle.LightPosition, 1, lightPosition.Pointer());
     vec4 lightPosition(0.25, 0.25, 1, 0);
 
     glUniform3fv(programData::shaderHandle.LightPosition, 1, lightPosition.Pointer());
     
-    //vec4 lightPosition2(-1, 0, -200, 0);
     vec4 lightPosition2(-1, 0.5, 1, 0);
 
     glUniform3fv(programData::shaderHandle.LightPosition2, 1, lightPosition2.Pointer());
@@ -114,7 +89,6 @@ void programData::SetEye(/*Matrix4x4 inverse*/){
     origin[0]=0.0;
     origin[1]=0.0;
     origin[2]=0.0;
-   // origin[2]=0;//-10010.0;
     origin[3]=1.0;
     origin[4]=1.0;
     checkGLError( AT );
@@ -141,32 +115,37 @@ void programData::UpdateColor(float red, float green, float blue)
     programData::colorG =green;
     programData::colorB =blue;
     
-    //Color ambient, sin luz
-    //float div = 4.0f;
-//    float diffuseDiv = 0.75f;
     float diffuseDiv = 1;
     glUniform3f(programData::shaderHandle.DiffuseMaterial, programData::colorR *diffuseDiv, programData::colorG *diffuseDiv, programData::colorB *diffuseDiv);
     glUniform3f(programData::shaderHandle.DiffuseMaterial2, programData::colorR2 *diffuseDiv, programData::colorG2 *diffuseDiv, programData::colorB2 *diffuseDiv);
-    /*
-    glUniform3f(programData::shaderHandle.AmbientMaterial, programData::colorR / div, programData::colorG /div, programData::colorB / div);
-    glUniform3f(programData::shaderHandle.AmbientMaterial2, programData::colorR2 / div, programData::colorG2 /div, programData::colorB2 / div);
-    //R,G,B, alpha con luz
-    glUniform3f(programData::shaderHandle.SpecularMaterial,  programData::colorR, programData::colorG, programData::colorB);
-    glUniform3f(programData::shaderHandle.SpecularMaterial2, programData::colorR2, programData::colorG2, programData::colorB2);
-  */
+
     glUniform3f(programData::shaderHandle.AmbientMaterial, 0.04f, 0.04f, 0.04f);
     glUniform3f(programData::shaderHandle.AmbientMaterial2,0.04f, 0.04f, 0.04f);
     //R,G,B, alpha con luz
     glUniform3f(programData::shaderHandle.SpecularMaterial,  programData::colorR, programData::colorG, programData::colorB);
     glUniform3f(programData::shaderHandle.SpecularMaterial2, programData::colorR2, programData::colorG2, programData::colorB2);
-
-    //glUniform3f(programData::shaderHandle.SpecularMaterial,  1, 0.5, 0.5);
-    //glUniform3f(programData::shaderHandle.SpecularMaterial2, 0.5, 0.5, 0.5);
     
     
 }
 
-
+void programData::UpdateColor2(float red, float green, float blue)
+{
+    programData::colorR2 =red;
+    programData::colorG2 =green;
+    programData::colorB2 =blue;
+    
+    float diffuseDiv = 1;
+    glUniform3f(programData::shaderHandle.DiffuseMaterial, programData::colorR *diffuseDiv, programData::colorG *diffuseDiv, programData::colorB *diffuseDiv);
+    glUniform3f(programData::shaderHandle.DiffuseMaterial2, programData::colorR2 *diffuseDiv, programData::colorG2 *diffuseDiv, programData::colorB2 *diffuseDiv);
+    
+    glUniform3f(programData::shaderHandle.AmbientMaterial, 0.04f, 0.04f, 0.04f);
+    glUniform3f(programData::shaderHandle.AmbientMaterial2,0.04f, 0.04f, 0.04f);
+    //R,G,B, alpha con luz
+    glUniform3f(programData::shaderHandle.SpecularMaterial,  programData::colorR, programData::colorG, programData::colorB);
+    glUniform3f(programData::shaderHandle.SpecularMaterial2, programData::colorR2, programData::colorG2, programData::colorB2);
+    
+    
+}
 
 
 void programData::GenerateArrays()

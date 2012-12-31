@@ -66,7 +66,7 @@ void clearExp(void){
 
 
 
-int ErrorExist(){
+booleano ErrorExist(){
     return errorPointer != 0;
 }
 void ParseError(char * msg){
@@ -97,9 +97,9 @@ EvalDerivateExp( expressionT exp, char var);
 void printCode(char * message, int where){
     if(where == 0)
     {
-        codePointer += sprintf(code + codePointer, message);
+        codePointer += sprintf(code + codePointer,"%s",  message);
     }else{
-        derivatePointer += sprintf(derivate + derivatePointer, message);
+        derivatePointer += sprintf(derivate + derivatePointer, "%s", message);
         
     }
     
@@ -166,7 +166,6 @@ SubTree( char* raiz, expressionT left, expressionT right) {
 
 void
 EvalDerivate( expressionT exp) {
-    //printCode("= vec3(eval_p( ", 1);
     printCode("= vec3(eval_p(shiftStretch(", 1);
     EvalDerivateExp( exp, 'x');
     printCode(",min,max-min,px), hit_point.x), eval_p(shiftStretch(  ", 1);
@@ -181,11 +180,6 @@ void
 EvalExpNoCode( expressionT exp, int where) {
     if ( exp == NULL )
         return ;
-    /*if ( exp->left == NULL && exp->right == NULL )
-     {
-     printf(" %d " , atoi(exp->valor));
-     return ;
-     }*/
 	double nro;
     
     switch( exp->valor[0] )
@@ -412,7 +406,6 @@ void cleanDeriv(void ){
 
     while ( (p=strstr(p,"--")) != NULL )
     {
-        //strcpy(p, "  ");
         memcpy(p, "+ ", sizeof(char)* 2);
         p++;
     }
@@ -439,11 +432,6 @@ void
 EvalExp( expressionT exp, int where) {
     if ( exp == NULL )
         return ;
-    /*if ( exp->left == NULL && exp->right == NULL )
-    {
-        printf(" %d " , atoi(exp->valor));
-        return ;
-    }*/
 	double nro;
 
     switch( exp->valor[0] )
@@ -477,11 +465,6 @@ int
 EvalDegreeX( expressionT exp) {
     if ( exp == NULL )
         return 0;
-    /*if ( exp->left == NULL && exp->right == NULL )
-     {
-     printf(" %d " , atoi(exp->valor));
-     return ;
-     }*/
     double nro;
     switch( exp->valor[0] )
     {
@@ -502,11 +485,6 @@ int
 EvalDegreeY( expressionT exp) {
     if ( exp == NULL )
         return 0;
-    /*if ( exp->left == NULL && exp->right == NULL )
-     {
-     printf(" %d " , atoi(exp->valor));
-     return ;
-     }*/
     double nro;
     switch( exp->valor[0] )
     {
@@ -527,11 +505,6 @@ int
 EvalDegreeZ( expressionT exp) {
     if ( exp == NULL )
         return 0;
-    /*if ( exp->left == NULL && exp->right == NULL )
-     {
-     printf(" %d " , atoi(exp->valor));
-     return ;
-     }*/
     double nro;
     switch( exp->valor[0] )
     {
@@ -555,11 +528,7 @@ int
 EvalDegreeSuper( expressionT exp) {
     if ( exp == NULL )
         return 0;
-    /*if ( exp->left == NULL && exp->right == NULL )
-     {
-     printf(" %d " , atoi(exp->valor));
-     return ;
-     }*/
+
     double nro;
     switch( exp->valor[0] )
     {
@@ -581,7 +550,6 @@ EvalDegreeSuper( expressionT exp) {
 
 int EvalDegree( expressionT exp) {
 
-//    return degreee =  MAX(MAX( EvalDegreeX(exp), EvalDegreeY(exp)), EvalDegreeZ(exp) );
     return degreee =  EvalDegreeSuper(exp);
     }
 void

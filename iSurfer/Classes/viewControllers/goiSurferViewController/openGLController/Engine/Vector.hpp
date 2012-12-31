@@ -1,5 +1,23 @@
 #pragma once
 #include <cmath>
+
+/**
+ * File: Vector.hpp
+ * Version: 1.0
+ * @module Engine
+ */
+
+/** 
+ *Last modified on February 13 2012 by dazar
+ * -----------------------------------------------------
+ * This interface provides access to a vector library. vec2, vec3, vec4.
+ * It is based on the book "iPhone 3D Programming" with some added operations to do operations between mat4 and vec4.
+ * 
+ * @class Vector
+ */
+
+
+
 const float Pi = 4 * std::atan(1.0f);
 const float TwoPi = 2 * Pi;
 

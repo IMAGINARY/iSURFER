@@ -73,7 +73,7 @@ static booleano IsThisANegation(char * token) {
 
 void processMinus(char * str)
 {
-    char * root, pointer;
+    char * root;
     int len = StringLength(str);
 
     root = str;
@@ -154,11 +154,11 @@ void SetScannerString(scannerADT scanner, char * str)
     
     if (scanner->str != NULL) FreeBlock(scanner->str);
     scanner->str = CopyString(str);
-    printf("%s\n", str);
+    //printf("%s\n", str);
     processMinus( scanner->str);
-    printf("%s\n", scanner->str);
+    //printf("%s\n", scanner->str);
     reduceEquation( scanner->str);
-    printf("%s\n", scanner->str);
+    //printf("%s\n", scanner->str);
 
     scanner->len = StringLength(str);
     scanner->cp = 0;

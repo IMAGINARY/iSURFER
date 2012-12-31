@@ -1,6 +1,23 @@
 #pragma once
 #include "Vector.hpp"
 #include "stdio.h"
+
+/**
+ * File: Matrix.hpp
+ * Version: 1.0
+ * @module Engine
+ */
+
+/** 
+ * Last modified on February 13 2012 by dazar
+ * -----------------------------------------------------
+ * This interface provides access to a Matrix library. Matrix2, Matrix3, Matrix4.
+ * It is based on the book "iPhone 3D Programming" with some added functionality like matrix inverse.
+ * 
+ * @class Matrix
+ */
+
+
 typedef float Matrix4x4[16];
 
 template <typename T>

@@ -6,9 +6,14 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-/*
+/**
  * File: genlib.h
  * Version: 1.0
+ * @module Parser
+ */
+
+
+/**
  * Last modified on Sun Jul 24 10:32:49 1994 by eroberts
  * -----------------------------------------------------
  * This file contains several definitions that form the
@@ -30,6 +35,7 @@
  *    3.  A function for error handling.
  *
  *    4.  A repeat statement for loops with interior exits.
+ * @class genlib
  */
 
 #ifndef _genlib_h
@@ -113,22 +119,25 @@ extern char undefined_object[];
  * substituting a garbage-collecting allocator.
  */
 
-/*
- * Function: GetBlock
+/**
  * Usage: ptr = (type) GetBlock(nbytes);
  * -------------------------------------
  * GetBlock allocates a block of memory of the given size.  If
  * no memory is available, GetBlock generates an error.
+ * @method GetBlock
+ * @param nbytes {size_t} size of the block.
+ * @return {void *} pointer no the newly allocated block.
  */
 
 void *GetBlock(size_t nbytes);
 
-/*
- * Function: FreeBlock
+/**
  * Usage: FreeBlock(ptr);
  * ----------------------
  * FreeBlock frees the memory associated with ptr, which must
  * have been allocated using GetBlock, New, or NewArray.
+ * @method FreeBlock
+ * @param ptr {void *} pointer to the block.
  */
 
 void FreeBlock(void *ptr);
@@ -159,8 +168,7 @@ void FreeBlock(void *ptr);
 
 /* Section 3 -- Basic error handling */
 
-/*
- * Function: Error
+/**
  * Usage: Error(msg, ...)
  * ----------------------
  * Error generates an error string, expanding % constructions
@@ -174,6 +182,8 @@ void FreeBlock(void *ptr);
  * message string following expansion must not exceed
  * MaxErrorMessage, and it is the client's responsibility
  * to ensure this.
+ * @method Error
+ * @param msg {char *} error message to be print in stderr.
  */
 
 void Error(char * msg, ...);

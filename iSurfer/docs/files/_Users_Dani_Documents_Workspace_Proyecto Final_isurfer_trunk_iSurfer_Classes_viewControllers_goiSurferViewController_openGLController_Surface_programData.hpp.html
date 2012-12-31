@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;Classes&#x2F;viewControllers&#x2F;goiSurferViewController&#x2F;openGLController&#x2F;Surface&#x2F;programData.hpp - iSurfer</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0pr2&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.8.0pr2&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..&#x2F;assets/css/logo.png" title="iSurfer"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 2.0.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/ApplicationEngine.html">ApplicationEngine</a></li>
+            
+                <li><a href="..&#x2F;classes/Compiler.html">Compiler</a></li>
+            
+                <li><a href="..&#x2F;classes/Error.html">Error</a></li>
+            
+                <li><a href="..&#x2F;classes/exception.html">exception</a></li>
+            
+                <li><a href="..&#x2F;classes/expressionT.html">expressionT</a></li>
+            
+                <li><a href="..&#x2F;classes/genlib.html">genlib</a></li>
+            
+                <li><a href="..&#x2F;classes/Matrix.html">Matrix</a></li>
+            
+                <li><a href="..&#x2F;classes/ParametricEquations.html">ParametricEquations</a></li>
+            
+                <li><a href="..&#x2F;classes/ParametricSurface.html">ParametricSurface</a></li>
+            
+                <li><a href="..&#x2F;classes/parser.html">parser</a></li>
+            
+                <li><a href="..&#x2F;classes/programData.html">programData</a></li>
+            
+                <li><a href="..&#x2F;classes/QuaternionT.html">QuaternionT</a></li>
+            
+                <li><a href="..&#x2F;classes/ScannerADT.html">ScannerADT</a></li>
+            
+                <li><a href="..&#x2F;classes/simpio.html">simpio</a></li>
+            
+                <li><a href="..&#x2F;classes/strlib.html">strlib</a></li>
+            
+                <li><a href="..&#x2F;classes/surfaceRender.html">surfaceRender</a></li>
+            
+                <li><a href="..&#x2F;classes/Vector.html">Vector</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/Engine.html">Engine</a></li>
+            
+                <li><a href="..&#x2F;modules/Parser.html">Parser</a></li>
+            
+                <li><a href="..&#x2F;modules/Surface.html">Surface</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: &#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;Classes&#x2F;viewControllers&#x2F;goiSurferViewController&#x2F;openGLController&#x2F;Surface&#x2F;programData.hpp</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+#ifndef __PROGRAMDATA_H__
+#define __PROGRAMDATA_H__
+
+
+#import &lt;OpenGLES&#x2F;ES2&#x2F;gl.h&gt;
+#import &quot;Vector.hpp&quot;
+#include &quot;Matrix.hpp&quot;
+
+#define STACKS 10
+#define SLICES 10
+
+struct ProgramHandle {
+    GLuint attr_pos;
+    GLint u_modelview;
+    GLint u_modelview_inv;
+    GLint u_projection;
+    GLuint LightPosition;
+    GLuint eye;
+    GLuint LightPosition2;
+    GLuint LightPosition3;
+    GLint AmbientMaterial;
+    GLint AmbientMaterial2;
+    GLint SpecularMaterial;
+    GLint SpecularMaterial2;
+    GLint Shininess;
+    GLint DiffuseMaterial;
+    GLint DiffuseMaterial2;
+    GLint Radius2;
+    GLint wire_attr_pos;
+    GLint wire_modelview;
+    GLint wire_projection;
+    GLuint vertexBuffer;
+    GLuint wire_vertexBuffer;
+
+};
+
+
+&#x2F;**
+ * File: programData.hpp
+ * Version: 1.0
+ * @module Surface
+ *&#x2F;
+
+&#x2F;** 
+ * Last modified on December 5 2011 by dazar
+ * -----------------------------------------------------
+ * This interface is incharge of all the variables and information requiered to render a frame in OpenGL. 
+ * @class programData
+ *&#x2F;
+
+
+
+struct ProgramIdentifiers {
+    GLuint alg_surface_glsl_program;
+    GLuint wireframe_glsl_program;
+};
+
+class programData
+{
+	public:
+    
+    
+        &#x2F;&#x2F;agregue los colorG2, etc para la segunda cara.
+		static float rotationX, rotationY, rotationZ, Shininess, colorR, colorG, colorB, colorR2, colorG2, colorB2, lposX, lposY ,lposZ;
+        &#x2F;&#x2F;Estos son los parametros de tamaño de esfera, redius para zoom y los otros 2 para bajar la resolucion
+        &#x2F;&#x2F;default radius 1.0, slices y stacks 20;
+    
+    &#x2F;**
+     * the zoom radius, radius of BB sphere to pass to fragment shader for raytrace.  
+     * @property radius
+     * @type {float}
+     * @default 5
+     *&#x2F;
+        static float radius;
+        static mat4 rot;
+    &#x2F;**
+     * if true we show the BB with a wireframe.  
+     * @property debug
+     * @type {bool}
+     * @default true
+     *&#x2F;
+        static bool debug;
+    &#x2F;**
+     * if true we use a panoramic camera, else a orthogonal.  
+     * @property debug
+     * @type {bool}
+     * @default false
+     *&#x2F;
+        static bool panoramic;
+    &#x2F;**
+     * it is the parametric surface to use as BB.  
+     * @property currentSurface
+     * @type {int}
+     * @default 1
+     *&#x2F;
+        static int currentSurface, SurfaceCount;
+    &#x2F;**
+     * it has all the pointers to opengl reserved memory.  
+     * @property shaderHandle
+     * @type {ProgramHandle}
+     *&#x2F;
+        static ProgramHandle shaderHandle;
+    
+    &#x2F;**
+     * Usage:  InitializeProgramData();
+     * ----------------------------------
+     * Initialize all OpenGL requiered variables for our shaders. 
+     * @method InitializeProgramData
+     * @return void
+     *&#x2F;    
+        static void InitializeProgramData();
+    
+
+    &#x2F;**
+     * Usage:  SetEye();
+     * ----------------------------------
+     * Sets the eye position to the vertex shader, we need this to do the raytrace. 
+     * @method SetEye
+     * @return void
+     *&#x2F;
+
+    void static SetEye();
+
+    &#x2F;**
+     * Usage:  UpdateColor(r,g,b);
+     * ----------------------------------
+     * Updates the primary color rgb of the algebraic surface render. 
+     * @method UpdateColor
+     * @param red {float} red value [0,1]
+     *&#x2F;
+        void static UpdateColor(float red, float green, float blue);
+
+    &#x2F;**
+     * Usage:  UpdateColor2(r,g,b);
+     * ----------------------------------
+     * Updates the secondary color rgb of the algebraic surface render. 
+     * @method UpdateColor2
+     * @param red {float} red value [0,1]
+     *&#x2F;
+    
+        void static UpdateColor2(float red, float green, float blue);
+
+    &#x2F;**
+     * Usage:  UpdateRadius(r);
+     * ----------------------------------
+     * Updates the radius value we pass to the shader for intersection. 
+     * @method UpdateRadius
+     * @param radius {float} new radius value
+     *&#x2F;
+
+        void static UpdateRadius(float Radius);
+    static ProgramIdentifiers programs;
+
+	private:
+    &#x2F;**
+     * Usage:  setConstant();
+     * ----------------------------------
+     * Sets constanst values in OpenGL, like lights. 
+     * @method setConstant
+     * @private
+     *&#x2F;
+    
+        void static setConstant();
+    &#x2F;**
+     * Usage:  GenerateArrays();
+     * ----------------------------------
+     * Generates vertices array space in OpenGL. 
+     * @method GenerateArrays
+     * @private
+     *&#x2F;
+
+        void static GenerateArrays();
+};
+
+
+
+
+
+#endif
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

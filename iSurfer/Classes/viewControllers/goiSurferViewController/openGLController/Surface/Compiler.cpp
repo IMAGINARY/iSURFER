@@ -33,10 +33,7 @@ void printProgramInfoLog( GLuint obj );
 
 
 void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const char *fs2, const char *formula)
-{
-    //printf("\n\n\n debug = %d \n\n\n", programData::debug);
-
-    
+{    
     checkGLError( AT );
 	scannerADT scanner;
     scanner= NewScanner();
@@ -47,10 +44,7 @@ void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const cha
 	expt= ParseExp(scanner);
 	clearExp();
 	EvalExp(expt, 0);
-    //EvalExpNoCode(expt, 0);
-
     EvalDerivateNoCode(expt);
-    //EvalDerivate(expt);
     EvalDegree(expt);
 
     FreeScanner(scanner);
@@ -59,27 +53,27 @@ void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const cha
         return ;
         
     }
-    // no se si va    
     FreeTree(expt);
     glDeleteShader(programData::programs.alg_surface_glsl_program);
     printf("code\n");
-	printf(getCode());
+	printf("%s", getCode());
     printf("\nformula\n");
-	printf(formula);
+	printf("%s",formula);
 
     printf("\nderivate\n");
-    printf(getCodeDerivate());
+    printf("%s", getCodeDerivate());
     printf("\nderivate\n");
     
-	//printf("\n");
-	//printf("Degree %d \n", EvalDegree(exp));
+    //To print degre uncomment next line
+	//printf("\nDegree %d \n", EvalDegree(exp));
+
+    //To get OpenGL range and precision uncomment next three lines
     //int range, precision;
     //glGetShaderPrecisionFormat(GL_FRAGMENT_SHADER, GL_HIGH_FLOAT, &range, &precision);
     //printf("Range %d, precision %d.\n", range, precision);
 	checkGLError( AT );
     
-	GLuint aux = init( vs1/*"vs1.glsl"*/, fs1/*"fs1.glsl"*/ );
-    //printf("aux val %d y alg_surface vale = %d\n\n", aux, programData::programs.alg_surface_glsl_program);
+	GLuint aux = init( vs1, fs1 );
     programData::programs.alg_surface_glsl_program = aux;
 	checkGLError( AT );
     
@@ -126,10 +120,9 @@ GLuint Compiler::init( const char* vertex_shader_name, const char* fragment_shad
 	int shaderLen = strlen(fragment_shader_code_c_str);
     int derivLen = strlen(getCodeDerivate()); 
     char degre[10];
+    
     sprintf(degre, "%d ", getDegree());
-    //TODO tocar el degree de arriba.
-    printf("\n degree %s \n", degre);
-
+    
     int degreLen = strlen(degre);
 	char * shader_code_c_str = (char *) malloc( shaderLen + codeLen + derivLen + degreLen + 2) ;
     int degrePosition = 15 + FindString((char *) "#define DEGREE ", (char * )fragment_shader_code_c_str, 1);;
@@ -163,9 +156,10 @@ GLuint Compiler::init( const char* vertex_shader_name, const char* fragment_shad
   
     shader_code_c_str_aux[0] = '\0';
 
+    //Uncoment next line too print complete shader code.
 	//printf("\n\n\n\n\n%s\n\n\n\n\n\n\n", shader_code_c_str);
 	//fflush(stdout);
-	//printf("\nhola\n");
+
     const char *Frafmentshader_code_c_str = (const char *)shader_code_c_str;
 	glShaderSource( fragment_shader, 1, &Frafmentshader_code_c_str, NULL );
 	glCompileShader( fragment_shader );
@@ -216,7 +210,6 @@ GLuint Compiler::init( const char* vertex_shader_name, const char* fragment_shad
 			return 0;
 		}
 	}
-//	printf( "\n" );
 
 	glUseProgram( glsl_program );
 	return glsl_program;

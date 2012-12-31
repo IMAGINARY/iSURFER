@@ -35,7 +35,7 @@ booleano IsVariable(char * token) {
 }
 
 
-int
+booleano
 EsNumero(char* strNumero, double* valor) {
     return sscanf( strNumero, "%lg", valor) == 1;
 }
