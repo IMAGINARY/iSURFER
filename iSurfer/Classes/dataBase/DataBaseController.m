@@ -190,7 +190,7 @@
         g.saved = YES;
 		
 		if( ![rs dataForColumn:@"thumbnail"] ){
-			g.thumbNail = [UIImage imageNamed:@"Imaginary lemon.jpg"];
+			g.thumbNail = [UIImage imageNamed:@"Imaginary_lemon.jpg"];
 		}else {
 			UIImage* img = [UIImage imageWithData:[rs dataForColumn:@"thumbnail"]];
 			g.thumbNail = img;

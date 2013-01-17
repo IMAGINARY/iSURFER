@@ -1,13 +1,12 @@
 {
     "name": "iSurfer",
-    "description": "iSurfer: is a program design for iOS to render algerbraic surfaces in a 3D space.",
-    "version": "2.0.0",
-    "url": "http://example.com/",
+    "description": "iSurfer: is a program designed for iOS to render algerbraic surfaces in a 3D space.",
+    "version": "3.0.0",
+    "url": "http://www.imaginary-exhibition.com/jsurfer.php?lang=es",
+    "logo": "./../resources/images/Imaginary_lemon_mini.jpg",
     "options": {
         "outdir": "./docs",
-        "extension": ".c,.h,.cpp,.hpp",
+        "extension": ".c,.h,.cpp,.hpp,.glsl",
         "paths": "*"
-        
-
     }
 }

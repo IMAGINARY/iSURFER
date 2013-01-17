@@ -36,13 +36,12 @@ typedef struct nodeT
 } *expressionT;
 
 /**
+ * Usage: expressionT myTree; myTree= NewTree(); 
+ * --------------------------------------
+ * This function creates a new tree.
  * @method NewTree
  * @return {expressionT} a new tree.
  
- * Usage: expressionT myTree; myTree= NewTree();
- 
- * --------------------------------------
- * This function creates a new tree.
  */
 expressionT NewTree(void);
 

@@ -1,6 +1,23 @@
+/**
+ * File: fs1.glsl
+ * Version: 1.0
+ * @module OpenGL
+ */
+
+/** 
+ *Last modified on January 13 2013 by dazar
+ * -----------------------------------------------------
+ * This is the fragment Shader. It is in charge of all the calculations to render an algebraic surface.
+ * This Shader is not complete, it must be filled with the degree, equation and partial derivatives of the surface.
+ * It use an adaptation of a Ray Tracer to generate the image from the surface roots.
+ * It is based on the Surfer made by Christian Stussak and adapted by Daniel Azar and Cristian Prieto for the iPhone gpu.
+ * Some bug fix made also by Christian Stussak.
+ * @class Fragment_Shader
+ */
+
 
 #define DEGREE 
-#define EPSILON 0.001
+#define EPSILON 0.00001
 #define DELTA 0.0000001
 #define SIZE DEGREE+1 
 
@@ -16,9 +33,9 @@ uniform highp vec3 SpecularMaterial2;
 uniform highp float Shininess;
 uniform highp float radius2;
 uniform highp vec4 eye;
-//uniform highp vec3 varying_eye;
 
 struct polynomial { highp float a[ DEGREE + 1 ]; };
+
 
 polynomial create_poly_0( highp float a0 );
 polynomial create_poly_1( highp float a0, highp float a1 );
@@ -27,10 +44,9 @@ polynomial sub( polynomial p1, polynomial p2, int res_degree );
 polynomial mult( polynomial p1, polynomial p2, int res_degree );
 polynomial neg( polynomial p, int res_degree );
 polynomial power( polynomial p, int exp, int degree );
-polynomial power_1( polynomial p, int exp );
-highp float power( highp float base, int exp );
 
-polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir, in highp vec2 trace_interval )
+
+polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir)
 {
 	polynomial x = create_poly_1( eye.x, dir.x );
 	polynomial y = create_poly_1( eye.y, dir.y );
@@ -39,7 +55,219 @@ polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir, in highp vec
 	return  ;
 	
 	//return sub( add( add( power( x, 2, 2 ), power( y, 2, 2 ), 2 ), power( z, 2, 2 ), 2 ), create_poly_0( 0.5 ), 2 );
-	}
+}
+
+/**
+ * Usage: polynomial p; p = create_poly_0(3.0); 
+ * --------------------------------------
+ * This function creates a new polynomial of degree DEGREE with an unique constant value.
+ * @method create_poly_0
+ * @param a0 {highp float} float value of independant coeficient.
+ * @return {polynomial} a new polynomial.
+ */
+/**
+ * Usage: polynomial p; p = create_poly_1(3.0,2.0); 
+ * --------------------------------------
+ * This function creates a new polynomial of degree DEGREE with two values linear and independant.
+ * Use this method to generate the axis from the eye and dir of the ray. 
+ * @method create_poly_1
+ * @param a0 {highp float} float value of independant coeficient.
+ * @param a1 {highp float} float value of linear coeficient.
+ * @return {polynomial} a new polynomial.
+ */
+/**
+ * Usage: polynomial p; p = add(p1,p2,5); 
+ * --------------------------------------
+ * This function creates a new polynomial of degree res_degree with the addition of p1 and p2.
+ * It needs the degree of the result to optimize the function. 
+ * @method add
+ * @param p1 {polynomial} First poly.
+ * @param p2 {polynomial} Second polly.
+ * @param res_degree {int} degree of the resultant polynomial.
+ * @return {polynomial} a new polynomial.
+ */
+/**
+ * Usage: polynomial p; p = sub(p1,p2,5); 
+ * --------------------------------------
+ * This function creates a new polynomial of degree res_degree with the Substraction of p2 to p1.
+ * It needs the degree of the result to optimize the function. 
+ * @method sub
+ * @param p1 {polynomial} First poly.
+ * @param p2 {polynomial} Second polly.
+ * @param res_degree {int} degree of the resultant polynomial.
+ * @return {polynomial} a new polynomial.
+ */
+/**
+ * Usage: polynomial p; p = mult(p1,p2,5); 
+ * --------------------------------------
+ * This function creates a new polynomial of degree res_degree with the multiplication of p1 and p2.
+ * It needs the degree of the result to optimize the function. 
+ * @method mult
+ * @param p1 {polynomial} First poly.
+ * @param p2 {polynomial} Second polly.
+ * @param res_degree {int} degree of the resultant polynomial.
+ * @return {polynomial} a new polynomial.
+ */
+/**
+ * Usage: polynomial p; p = neg(p1,5); 
+ * --------------------------------------
+ * This function creates a new polynomial of degree res_degree with the negation of p.
+ * It needs the degree of the result to optimize the function. 
+ * @method neg
+ * @param p1 {polynomial} First poly.
+ * @param res_degree {int} degree of the resultant polynomial.
+ * @return {polynomial} a new polynomial.
+ */
+/**
+ * Usage: polynomial p; p = power(p1,7,5); 
+ * --------------------------------------
+ * This function creates a new polynomial of degree res_degree with p elevated to exp.
+ * It needs the degree of the result to optimize the function. 
+ * @method power
+ * @param p {polynomial} First poly.
+ * @param exp {int} Exponent.
+ * @param res_degree {int} degree of the resultant polynomial.
+ * @return {polynomial} a new polynomial.
+ */
+/**
+ * Usage: polynomial p; p = calc_coefficients(eye,dir); 
+ * --------------------------------------
+ * This function creates a new polynomial of of the algebraic surface.
+ * It needs eye and dir to generate the x,y,z axis.
+ * This method should be filled with the algebraic surface equation in shader code. 
+ * @method calc_coefficients
+ * @param eye {highp float} eye of the Ray. Camera coord.
+ * @param dir {highp float} direction of the Ray.
+ * @return {polynomial} a new polynomial.
+ */
+polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir);
+/**
+ * Usage: Gl_fragColor = mygradient(point); 
+ * --------------------------------------
+ * Returns a color vector with gradient for the point specified.
+ * @method mygradient
+ * @param point {highp vec3} point in x,y,z to paint.
+ * @return {vec3} color.
+ */
+highp vec3 mygradient( in highp vec3 point );
+/**
+ * Usage: s = eval_p(p,3.2); 
+ * --------------------------------------
+ * This function evaluates the polynomial at the point x.
+ * @method eval_p
+ * @param p {polynomial} polynomial to evaluate.
+ * @param x {highp float} point to evaluate.
+ * @return {highp float}.
+ */
+highp float eval_p( const in polynomial p, highp float x );
+/**
+ * Usage: s = bisect(p,lower,upper); 
+ * --------------------------------------
+ * This function uses the bisection method to select the next path for the roots.
+ * It uses a while instead of recursion for performance.
+ * @method bisect
+ * @param p {polynomial} polynomial to evaluate.
+ * @param lowerBound {highp float}
+ * @param upperBound {highp float}
+ * @return {highp float}.
+ */
+highp float bisect( const in polynomial p, highp float lowerBound, highp float upperBound );
+/**
+ * Usage: s = has_sign_changes(p); 
+ * --------------------------------------
+ * This function checks for sign changes in the coefficient array of p. It is used in Descartes algorithm
+ * Returns -1 (root at x=0), 0 (no sign change), 1 (one sign change) or 2 (two OR MORE sign changes).
+ * @method has_sign_changes
+ * @param p {polynomial} polynomial to evaluate.
+ * @return {int}.
+ */
+int has_sign_changes( const in polynomial p );
+/**
+ * Usage: s = reverseShift1(p,result); 
+ * --------------------------------------
+ * This function reverts the changes from shiftStrech.
+ * @method reverseShift1
+ * @param p {polynomial} polynomial to evaluate.
+ * @param result {polynomial} polynomial output, this is the return value.
+ * @return {void}.
+ */
+void reverseShift1( const in polynomial p, out polynomial result );
+/**
+ * Usage: s = shiftStretch(p,shift, scale, poly); 
+ * --------------------------------------
+ * This function shifts and strech the polynomial. The idea is to focus the roots in the interval (0;1) for precision.
+ * Shift is like using p(x-shift) instead of p(x). Strech is like using p(x/scale) instead of p(x). 
+ * @method shiftStretch
+ * @param p {polynomial} polynomial to modify.
+ * @param shift {highp float}
+ * @param scale {highp float}
+ * @param result {polynomial} polynomial output, this is the return value.
+ * @return {polynomial} result is returned.
+ */
+polynomial shiftStretch( const in polynomial p, highp float shift, highp float scale, out polynomial result );
+
+/**
+ * Usage: s = first_root_Descartes(p,epsilon, tmpCoeffs); 
+ * --------------------------------------
+ * This function shifts and strech the polynomial. The idea is to focus the roots in the interval (0;1) for precision.
+ * Shift is like using p(x-shift) instead of p(x). Strech is like using p(x/scale) instead of p(x). 
+ * @method first_root_Descartes
+ * @param p {polynomial} polynomial to find the roots.
+ * @param epsilon {highp float} this should be related to the interval length.
+ * @param tmpCoeffs {polynomial} polynomial output / input, is the poly streched and shifted.
+ * @return {polynomial} If the return value is >= 0 then it is the first root, else it should be discarded.
+ */
+highp float first_root_Descartes( const in polynomial p, highp float epsilon, inout polynomial tmpCoeffs );
+
+/**
+ * Usage: 	first_root_in( p,min,max ); 
+ * --------------------------------------
+ * This method is changed on compilation time to the right algorithm for the degree.
+ * @param p {polynomial} Polinomial of th surface parametrized on t for the Ray.
+ * @param min {highp float} Min value of t.
+ * @param max {highp float} Max value of t.
+ * @method first_root_in
+ * @return {highp float} The nearest root to the camera inside the sphere if any.
+ * Discard if there is no root inside the sphere.
+ */
+highp float first_root_in( inout polynomial p, highp float min, highp float max );
+/**
+ * Usage: 	clip_to_unit_sphere( varying_eye, dir, tmin, tmax ); 
+ * --------------------------------------
+ * This method is needed to generate the minimum and maximum value of t in the sphere.
+ * We use the Ray Tracer principle of a a ray equation. a ray is a line so Y= m * t+b. 
+ * We know b and m, and with this function we get the tmin and tmax for the ray inside the sphere.
+ * @param eye {highp float} eye of the Ray. Camera coord.
+ * @param dir {highp float} direction of the Ray.
+ * @method clip_to_unit_sphere
+ * @return tmin and tmax {highp floats} 
+ */
+void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float tmin, out highp float tmax );
+/**
+ * Usage: 	  calc_lights( eye, dir, hit_point); 
+ * --------------------------------------
+ * This method is needed to get the color of the surface at the hitpoint.
+ * The result is written directly to gl_FragColor. 
+ * It needs the partial derivatives to be filled, to calculate the Normal of the surface at the hit point.
+ * So we can select which color is ok, if it is facing the camera or not.
+ * @param eye {highp float} eye of the Ray. Camera coord.
+ * @param dir {highp float} direction of the Ray.
+ 
+ * @method clip_to_unit_sphere
+ * @return tmin and tmax {highp floats} 
+ */
+
+void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point);
+/**
+ * Usage: main(); 
+ * --------------------------------------
+ * This method guides the overall process. It is called automatically by OpenGL for each pixel. 
+ * When a pixel is valid the vertex shader call this method as the entry point to the fragment shader. 
+ * @method main
+ * @return {void}
+ */
+void main( void );
+
 
 
 
@@ -87,9 +315,7 @@ polynomial add( polynomial p1, in polynomial p2, int res_degree )
 polynomial sub( polynomial p1, in polynomial p2, int res_degree )
 {
 	for( int i = 0; i <= res_degree; i++ )
-		/* works with this line: */ // p1.a[ i ] = -( p2.a[ i ] - p1.a[ i ] );
-		p1.a[ i ] = p1.a[ i ] - p2.a[ i ];
-		
+        p1.a[ i ] = p1.a[ i ] - p2.a[ i ];
 	return p1;
 }
 
@@ -118,63 +344,6 @@ polynomial power( in polynomial p, int exp, int degree )
 	for( int res_degree = degree; res_degree < degree * exp + 1; res_degree += degree )
 		res = mult( res, p, res_degree );
 	return res;
-}
-
-polynomial power_1( polynomial p, int exp )
-{
-//	return power( p, exp, 1 );
-
-	// compute powers of p.a[ 0 ] and p.a[ 1 ]
-	highp float a0 = p.a[ 0 ];
-	highp float a1 = p.a[ 1 ];
-	highp float powers_0[ DEGREE + 1 ];
-	highp float powers_1[ DEGREE + 1 ];
-	powers_0[ 0 ] = 1.0;
-	powers_0[ 1 ] = a0;
-	powers_1[ 0 ] = 1.0;
-	powers_1[ 1 ] = a1;
-	for( int i = 2; i <= exp; i++ )
-	{
-		powers_0[ i ] = powers_0[ i - 1 ] * a0;
-		powers_1[ i ] = powers_1[ i - 1 ] * a1;
-	}
-	
-	// compute coefficients of polynomials by binomial expansion
-	polynomial res = create_poly_0( 0.0 );
-	int a1_exp = exp;
-	int a0_exp = 0;
-	int bin_coeff = 1;
-	for( int deg = exp; deg >= 0; deg-- )
-	{
-		res.a[ deg ] = float( bin_coeff ) * powers_1[ a1_exp ] * powers_0[ a0_exp ];
-		a0_exp++;
-		bin_coeff = ( bin_coeff * a1_exp ) / a0_exp;
-		a1_exp--;
-	}
-	return res;
-}
-
-
-highp float mypower(highp float base, highp float exp)
-{
-	int neg = 0;
-	highp float ans;
-	if(base < 0.0)
-	{
-		neg = 1;
-		base = base * -1.0;
-	}
-			
-	ans = pow(base, exp);
-
-	if(exp == 1.0/3.0)
-		ans = ans * -1.0;
-	else if(exp == 0.5)
-		ans = ans;
-	else if(neg == 1  && mod(exp,2.0) != 0.0)
-		ans = ans * -1.0;
-
-	return ans;	
 }
 
 // ===================================================
@@ -223,8 +392,6 @@ highp float bisect( const in polynomial p, highp float lowerBound, highp float u
         delta = abs( upperBound - lowerBound ) /2.0; 
 
     }
-    //if(abs(fc) > 1.0)
-    //    discard;
     return center;
 }
 
@@ -314,9 +481,7 @@ highp float first_root_Descartes( const in polynomial p, highp float epsilon, in
 		else if( sign_changes >= 1 ) // will also be called, if sign_changes > 1, but size <= epsilon
 		{
 			// root isolated -> refine
-			//result = bisect( p, size * float( id ), size * float( id + 1 ), epsilon );
-            //result = bisect_new( p, 0.0, size , epsilon);
-            result = bisect( p, 0.0, size);
+			result = bisect( p, size * float( id ), size * float( id + 1 ) );
 
             break;
 		}
@@ -344,7 +509,8 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
 
     // find smallest root in [0,1], if any
     polynomial p01 = p;
-
+    
+    p01 = shiftStretch( p, min, max - min, p01 );
     
     highp float x0 = first_root_Descartes( p01, EPSILON * ( max - min ), p );
     
@@ -357,236 +523,138 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
     
 #if DEGREE ==1
 
-        highp float x0 = -p.a[ 0 ] / p.a[ 1 ];
-//    x0 = (max-min)*x0+min;
-    if(x0 < 1.0)
-        gl_FragColor = vec4( 1.0, 0.0, 1.0 , 1.0 );
-		if( x0 >= min && x0 < max )
-			return x0;
-		else
-			discard;
-
-/**********************************************/
-
+    highp float x0 = -p.a[ 0 ] / p.a[ 1 ];
+    if( x0 >= min && x0 < max )
+        return x0;
+    else
+        discard;
 #endif
     
 #if DEGREE ==2
 
-		highp float a = p.a[ DEGREE ];
-		highp float b = p.a[ 1 ];
-		highp float c = p.a[ 0 ];
+    highp float a = p.a[ DEGREE ];
+    highp float b = p.a[ 1 ];
+    highp float c = p.a[ 0 ];
 
-		//Find discriminant
-		highp float disc = b * b - 4.0 * a * c;
+    //Find discriminant
+    highp float disc = b * b - 4.0 * a * c;
 
-		// if discriminant is negative there are no real roots, so return 
-		// false as ray misses sphere
-		if (disc < 0.0)
-        {
-            //gl_FragColor = vec4( 1.0, 0.0, 0.0 , 1.0 );
-            //return 0.0;
-            discard;
-        }
-		// compute q as described above
-		highp float distSqrt = sqrt(disc);
-		highp float q;
-		if (b < 0.0)
-			q = (-b - distSqrt)/2.0;
-		else
-			q = (-b + distSqrt)/2.0;
+    // if discriminant is negative there are no real roots, so return 
+    // false as ray misses sphere
+    if (disc < 0.0)
+    {
+        discard;
+    }
+    // compute q as described above
+    highp float distSqrt = sqrt(disc);
+    highp float q;
+    if (b < 0.0)
+        q = (-b - distSqrt)/2.0;
+    else
+        q = (-b + distSqrt)/2.0;
 
-		// compute tmin and tmax
-		highp float x0 = q / a;
-		highp float x1 = c / q;
+    // compute tmin and tmax
+    highp float x0 = q / a;
+    highp float x1 = c / q;
 
-		// make sure tmin is smaller than tmax
-		if (x0 > x1)
-		{
-			highp float temp = x0;
-			x0 = x1;
-			x1 = temp;
-		}
+    // make sure tmin is smaller than tmax
+    if (x0 > x1)
+    {
+        highp float temp = x0;
+        x0 = x1;
+        x1 = temp;
+    }
 
-		if( x0 >= min  && x0 < max )
-			return x0;
-		else if( x1 >= min && x1 < max )
-			return x1;
-		else
-        {
-            //if( (x0 < min && abs(x0-min) < EPSILON) || (x0 >max && abs(x0-max) < EPSILON ))
-            //    return x0;
-            //if( (x1 < min && abs(x1-min) < EPSILON) || (x1 >max && abs(x1-max) < EPSILON ))
-            //    return x1;
-
-            //gl_FragColor = vec4( 1.0, 1.0, 0.0 , 1.0 );
-
-            //return 0.0;
-
-			discard;
-        }
-
-/**********************************************/
+    if( x0 >= min  && x0 < max )
+        return x0;
+    else if( x1 >= min && x1 < max )
+            return x1;
+        else
+        	discard;
 
 #endif
     
-/*#if DEGREE ==3
+#if DEGREE == 3
+    highp float PI = 3.14159265358979323846264;
+    // Based on JMonkey Engine https://projectsforge.org/projects/bundles/browser/trunk/jogl-2.0-rc3/jogl/src/main/java/jogamp/graph/math/plane/Crossing.java
+    highp float res[ 3 ];
+    res[0] =100000.0;
+    res[1] =100000.0;
+    res[2] =100000.0;
 
-		highp float a=p.a[DEGREE-1]/-p.a[DEGREE];
-		highp float b=p.a[1]/-p.a[DEGREE];
-		highp float c=p.a[0]/-p.a[DEGREE];
-
-
-				
-		highp float pe=b-a*a/3.0;
-
-		
-		highp float part1qu = 2.0* a*a*a/27.0;
-		highp float part2qu = a*b/3.0;
-		
-
-		
-		highp float qu=part1qu - part2qu + c;
-		
-		
-		highp float disc=qu*qu+4.0*pe*pe*pe/27.0;
-*/
-#if DEGREE ==3
+    highp float a = p.a[ 2 ] / p.a[ 3 ];
+    highp float b = p.a[ 1 ] / p.a[ 3 ];
+    highp float c = p.a[ 0 ] / p.a[ 3 ];
+    highp int rc = 0;
     
-    highp float a=p.a[2]/p.a[3];
-    highp float b=p.a[1]/p.a[3];
-    highp float c=p.a[0]/p.a[3];
-    
-    highp float pe=b-a*a/3.0;		
-    highp float part1qu = 2.0* a*a*a/27.0;
-    highp float part2qu = a*b/3.0;
-    
-    
-    
-    highp float qu=part1qu - part2qu + c;
-    
-    
-    highp float disc=qu*qu+4.0*pe*pe*pe/27.0;
-    //min = min*0.25;
-    //max = max*4.0;
-    if (disc > 0.0 )
-    {
-		
-        highp float u=mypower(((-qu+mypower(disc,0.5))/2.0),1.0/3.0);
-        highp float v=mypower(((-qu-mypower(disc,0.5))/2.0),1.0/3.0);
-        highp float z0=u+v;
-        highp float x0 = z0-a/3.0;
-        if(x0 >= min && x0 < max)
-        {
-            gl_FragColor = vec4( 1.0, 1.0, 0.0 , 1 );
-            //Este no sirve hace circulos raros.
-            //discard;
-            return x0;
-        }else
-            gl_FragColor = vec4( 0.0, 0.0, 1 , 1 );
-        //Dejar el discard despues  
-        discard;
-        //return x0;
-        
-        //return 0.0;
+    highp float Q = (a * a - 3.0 * b) / 9.0;
+    highp float R = (2.0 * a * a * a - 9.0 * a * b + 27.0 * c) / 54.0;
+    highp float Q3 = Q * Q * Q;
+    highp float R2 = R * R;
+    highp float n = - a / 3.0;
+    	
+    if (R2 < Q3) {
+        highp float t = acos(R / sqrt(Q3)) / 3.0;
+        highp float p = 2.0 * PI / 3.0;
+        highp float m = -2.0 * sqrt(Q);
+        res[0] = m * cos(t) + n;
+        res[1] = m * cos(t + p) + n;
+        res[2] = m * cos(t - p) + n;
+    } else {
+        highp float A = pow(abs(R) + sqrt(R2 - Q3), 1.0 / 3.0);
+        if (R > 0.0) {
+            A = -A;
+        }
+        if (  A == 0.0) {
+            res[rc++] = n;
+        } else {
+            highp float B = Q / A;
+            res[rc++] = A + B + n;
+            highp float delta = R2 - Q3;
+            if ( delta  == 0.0) {
+                res[rc++] = - (A + B) / 2.0 + n;
+            }
+        }
+            	
     }
-//    else if (disc >= 0.0 - DELTA && disc <= 0.0 + DELTA){
-//        highp float z0 = 3.0*qu/pe;
-//        highp float z1 = -3.0*qu/2.0*pe;
-//        highp float x0 = z0-a/3.0;
-//        highp float x1 = z1-a/3.0;
-//        
-//        highp float xmin = min(x0, x1);
-//        highp float xmax = max(x0, x1);
-//        if(xmin >= min && xmin < max){
-//            return xmin;
-//        }
-//        else if(xmax >= min && xmax < max){
-//            return xmax;
-//        }
-//        discard;
-//    }    
-    /*else if (disc >= 0.0 - EPSILON && disc <= 0.0 + EPSILON)
-     {
-     highp float z0=3.0*qu/pe;
-     highp float z1=-3.0*qu/(2.0*pe);
-     highp float x0 = z0-a/3.0;
-     highp float x1 = z1-a/3.0;
-     
-     if(x0 >=min && x0 < max)
-     {
-     
-     if(x1 >= min && x1 < max && x1 < x0)
-     return x1;
-     return x0;	
-     }
-     else if(x1 >=min && x1 < max)
-     return x1;
-     else
-     discard;
-     }*/
-    if (disc < 0.0 )
+    highp float aux = res[0];
+    if(res[2] < res[1])
     {
-        highp float pi = 3.14159265358979323846264;
-        highp float z0 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/(-pe*pe*pe),0.5)));
-        highp float z1 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/(-pe*pe*pe),0.5))+2.0*pi/3.0);
-        highp float z2 = 2.0*(mypower(-pe/3.0,0.5))*cos((1.0/3.0)*acos((-qu/2.0)*mypower(27.0/(-pe*pe*pe),0.5))+4.0*pi/3.0);
-        highp float x0 = z0- a/3.0;
-        highp float x1 = z1- a/3.0;
-        highp float x2 = z2- a/3.0;
-        
-        //----Testeo raices----
-        
-        //if(x0 > 2.9 && x0 < 3.1)
-        //	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
-        
-        //if(x1 > -2.1 && x1 < -1.9)
-        //	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
-        
-        //if(x2 > 0.9 && x2 < 1.1)
-        //	gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
-        
-        //----Raices correctas----
-        
-        highp float xmin = min(x0, min(x1, x2));
-        if(xmin >= min && xmin < max)
-        {
-            gl_FragColor = vec4( 0.0, 1.0, 1.0 , 1 );
-            //discard;
-            return xmin;
-        }
-        highp float xmax = max(x0, max(x1,x2));
-        highp float xmid; 
-        
-        if(xmin == x0 || xmax== x0 )
-            if(xmin == x1 || xmax == x1)
-                xmid = x2;
-            else
-                xmid = x1;
-            else
-                xmid = x0;
-        
-        if(xmid >= min && xmid < max)
-        {
-            gl_FragColor = vec4( 1.0, 0.0, 1.0 , 1 );
-            return xmid;
-        }
-        if(xmax >= min && xmax < max)
-        {
-            gl_FragColor = vec4( 1.0, 0.0, 0.0 , 1 );
-            return xmax;
-        }
-        gl_FragColor = vec4( 0.0, 0.0, 0.0 , 1 );
-        
-        //return 0.0;
-        //Volver a poner este discard
-        discard;
-		
+        aux = res[2];
+        res[2] = res[1];
+        res[2] = aux;
     }
-	
-	
-    /**********************************************/
+    
+    if(res[1] < res[0])
+    {
+        aux = res[1];
+        res[1] = res[0];
+        res[0] = aux;
+    }
+    
+    if(res[2] < res[1])
+    {
+        aux = res[2];
+        res[2] = res[1];
+        res[2] = aux;
+    }
+    
+    
+    highp float result = min;
+    if( result < res[ 0 ] && res[ 0 ] < max )
+        result = res[ 0 ];
+    if( result < res[ 1 ] && res[ 1 ] < max )
+        result = res[ 1 ];
+    if( result < res[ 2 ] && res[ 2 ] < max )
+        result = res[ 2 ];
+    
+    if( min < result && result < max )
+        return result;
+    else
+        discard;
+
 #endif
-
+  
 #if DEGREE <=0
 discard;
 #endif
@@ -596,13 +664,6 @@ discard;
 
 varying highp vec3 varying_eye;
 varying highp vec3 varying_dir;
-/*
-void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float tmin, out highp float tmax )
-{
-    tmin = -radius2;
-    tmax = radius2;
-}
-*/
 
 void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float tmin, out highp float tmax )
 {
@@ -655,33 +716,14 @@ void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float 
 
 void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point)
 {
-
+        // We use the hitPoint and numbers, and not the Poly Structure because of speed.
         highp float x = hit_point.x;
         highp float y = hit_point.y;
         highp float z = hit_point.z;
-        //highp float tmin, tmax;
-
-    //polynomial x = create_poly_1( eye.x, dir.x );
-	//polynomial y = create_poly_1( eye.y, dir.y );
-	//polynomial z = create_poly_1( eye.z, dir.z );
-
-    
-        polynomial px, py ,pz;
-    
+ 
         highp vec3 N 
-
-
-        //tmin = min;
-        //tmax = max;
-        //tmin = (tmin - min) / (max-min);
-        //tmax = (tmax - min) / (max-min);
-
     
         N = normalize(N);
-
-        //highp vec3 N = eval_p(p_normal, hit_point);
-        //highp vec3 N = vec3(eval_p( mult(create_poly_0(2.0),x,1), hit_point.x), eval_p(  mult(mult(create_poly_0(2.0),x,1),create_poly_0(0.0),1), hit_point.x), eval_p(  mult(mult(create_poly_0(2.0),x,1),create_poly_0(0.0),1), hit_point.z));
-
 
         highp vec3 L = normalize(LightPosition);
         highp vec3 E = -dir;
@@ -704,15 +746,6 @@ void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point
             sf = pow(sf, Shininess);
             color +=   sf * SpecularMaterial;
 
-          /*  L = normalize(LightPosition3);
-            H = normalize(L + E);
-
-            df = max(0.0, dot(N, L));
-            sf = max(0.0, dot(N, H));
-            sf = pow(sf, Shininess);
-            color +=   sf * SpecularMaterial;
-          */
-
         }else
         {
             E = - E;
@@ -730,15 +763,6 @@ void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point
             sf = max(0.0, dot(N, H));
             sf = pow(sf, Shininess);
             color +=   sf * SpecularMaterial2;
-
-          /*  L = normalize(LightPosition3);
-            H = normalize(L + E);
-
-            df = max(0.0, dot(N, L));
-            sf = max(0.0, dot(N, H));
-            sf = pow(sf, Shininess);
-            color +=   sf * SpecularMaterial2;
-        */
         }
 
 
@@ -752,72 +776,35 @@ uniform highp vec4 origin;
 
 
 
-/**
- * main method, that guides the overall process
- */
 void main( void )
 {
-/*    highp vec4 aux = vec4(1.0,2.0,3.0,4.0);
-    highp vec4 aux2 = vec4(0.0,0.0,0.0,1.0);
-    
-    if(origin == aux)
-        gl_FragColor = vec4( 0.0, 0.0, 1.0 , 1.0 );
-    else
-        gl_FragColor = vec4( 1.0, 0.0, 0.0 , 1.0 );
-    return;
-*/
-    //gl_FragColor = vec4( 0.0, 0.0, 1.0 , 1.0 );
 	highp float l = length( varying_dir );
     highp vec3 dir = varying_dir;// / l;
 
 	// setup ray(s)
 	highp float tmin, tmax, min, max;
 	clip_to_unit_sphere( varying_eye, dir, tmin, tmax );
-    //gl_FragColor = vec4( 0.0, 1.0, 0.0 , 1.0 );
-
-//    if(tmax < 10.0)
-  //      gl_FragColor = vec4( 0.0, 0.0, 1.0 , 1.0 ); 
     
 	highp float tcenter = ( tmin + tmax ) * 0.5;
+
     //Con esto ponemos el 0 en el medio del grafico.
-    
-	//highp vec3 eye = vec3(0.0,0.0,0.0);//varying_eye + tcenter * varying_dir;
 	highp vec3 eye = varying_eye + tcenter * dir;
 	tmin = tmin - tcenter;
 	tmax = tmax - tcenter;
+
     // setup polynomial
-	polynomial p_ray = calc_coefficients( eye, dir, vec2( tmin, tmax ) );
+	polynomial p_ray = calc_coefficients( eye, dir);
     highp float scale = tmax-tmin;
-    //highp float scale = 1000.0;
-
-    //shiftStretch( p_ray, tmin, scale , p_ray );
-    //min = tmin;
-    //max = tmax;
-    //tmin = 0.0;//(tmin - min) / (max-min);
-//    if(tmin == 0.0)
-//        discard;
-	//tmax = (tmax - min) / scale;
-    
-    //gl_FragColor = vec4( clamp( dir, 0.0, 1.0 ), 0.5 );
-
-gl_FragColor = vec4( 0.0, 0.0, 1.0 , 1.0 );
 
 	// find intersection of ray and surface
 	highp float root = first_root_in( p_ray, tmin, tmax );
-//    if(abs(root - tmax) < 0.1 || abs(root - tmin) < 0.1)
-//        discard;
-    //root = (max-min)*root+min;
+
+    if( root <= tmin || root >= tmax )
+        discard;
+
 	highp vec3 hit_point = eye + root * dir;
 
 
   calc_lights( eye, dir, hit_point);
-
-
-	//gl_FragColor = vec4( normalize( mygradient( hit_point ) ), 0.5 );
-
-//gl_FragColor = gl_Color;
-//gl_FragColor = vec4( 0.0, 0.0, 1.0 , 0.5 );
-//gl_FragColor = vec4( clamp( dir, 0.0, 1.0 ), 0.5 );
-
 
 }

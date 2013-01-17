@@ -63,7 +63,8 @@ static booleano IsThisANegation(char * token) {
         return FALSE;
     switch(token[0])
     {
-        case '+': case '-': case '*': case '^': case '=': case '(': case ')': case '!':
+        //case '+': case '-':
+        case '*': case '^': case '=': case '(': case ')': case '!':
             return TRUE;
         default:
             return FALSE;
@@ -86,7 +87,7 @@ void processMinus(char * str)
         }else {
             if(str[i]=='-')
             {
-                if(IsThisANegation(str + i -1))
+                if(IsThisANegation(str + i -1) || i ==0)
                     str[i] ='!';
             }
         }

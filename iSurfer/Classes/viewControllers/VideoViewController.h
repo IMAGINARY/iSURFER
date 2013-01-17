@@ -14,7 +14,7 @@
 	
 	MPMoviePlayerViewController*	movie;
 	MPMoviePlayerController*		player;
-	/**
+	/*
 	 *	View that displays the video. Should be set in the Interface builder for
 	 * adjusting size and other atributes if necesary
 	 */
@@ -25,7 +25,7 @@
 @property(nonatomic, retain)MPMoviePlayerViewController*	movie;
 @property(nonatomic, retain)MPMoviePlayerController*		player;
 
-/**
+/*
  * Loads a video stored in the iphone 
  *
  * The video gets initialized with default movie playback controls
@@ -35,7 +35,7 @@
  * 
 */
 -(void)loadVideoWithName:(NSString*)name ofType:(NSString*)type;
-/**
+/*
  *Loads a video from a URL in the web
  * The video gets initialized with default movie playback controls
  *
@@ -44,27 +44,27 @@
  * 
  */
 -(void)loadMovieFromWebURL:(NSString*)urlstr;
-/**
+/*
  * Starts playing a video
  */
 -(void)playVideo;
-/**
+/*
  * Stops playing a video
  */
 -(void)stopVideo;
-/**
+/*
  * Pauses playing a video
  */
 -(void)pauseVideo;
-/**
+/*
  * Sets the default movie player controls for movie playback
  */
 -(void)setDefaultPlayerControls;
-/**
+/*
  * removes movie default controls in the movie view
  */
 -(void)removeMoviePlayerControls;
-/**
+/*
  * sets a video in full screen mode
  * @param YES for fullscreen mode, NO for normal view
  */
