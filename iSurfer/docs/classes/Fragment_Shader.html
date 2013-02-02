@@ -1,0 +1,5506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Fragment_Shader - iSurfer</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0pr2&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.8.0pr2&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src=".&#x2F;..&#x2F;resources&#x2F;images&#x2F;Imaginary_lemon_mini.jpg" title="iSurfer"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 3.0.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/ApplicationEngine.html">ApplicationEngine</a></li>
+            
+                <li><a href="..&#x2F;classes/Compiler.html">Compiler</a></li>
+            
+                <li><a href="..&#x2F;classes/Error.html">Error</a></li>
+            
+                <li><a href="..&#x2F;classes/exception.html">exception</a></li>
+            
+                <li><a href="..&#x2F;classes/expressionT.html">expressionT</a></li>
+            
+                <li><a href="..&#x2F;classes/Fragment_Shader.html">Fragment_Shader</a></li>
+            
+                <li><a href="..&#x2F;classes/genlib.html">genlib</a></li>
+            
+                <li><a href="..&#x2F;classes/Matrix.html">Matrix</a></li>
+            
+                <li><a href="..&#x2F;classes/ParametricEquations.html">ParametricEquations</a></li>
+            
+                <li><a href="..&#x2F;classes/ParametricSurface.html">ParametricSurface</a></li>
+            
+                <li><a href="..&#x2F;classes/parser.html">parser</a></li>
+            
+                <li><a href="..&#x2F;classes/programData.html">programData</a></li>
+            
+                <li><a href="..&#x2F;classes/QuaternionT.html">QuaternionT</a></li>
+            
+                <li><a href="..&#x2F;classes/ScannerADT.html">ScannerADT</a></li>
+            
+                <li><a href="..&#x2F;classes/simpio.html">simpio</a></li>
+            
+                <li><a href="..&#x2F;classes/strlib.html">strlib</a></li>
+            
+                <li><a href="..&#x2F;classes/surfaceRender.html">surfaceRender</a></li>
+            
+                <li><a href="..&#x2F;classes/Vector.html">Vector</a></li>
+            
+                <li><a href="..&#x2F;classes/Vertex_Shader.html">Vertex_Shader</a></li>
+            
+                <li><a href="..&#x2F;classes/Wire_Fragment_Shader.html">Wire_Fragment_Shader</a></li>
+            
+                <li><a href="..&#x2F;classes/Wire_Vertex_Shader.html">Wire_Vertex_Shader</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/Engine.html">Engine</a></li>
+            
+                <li><a href="..&#x2F;modules/OpenGL.html">OpenGL</a></li>
+            
+                <li><a href="..&#x2F;modules/Parser.html">Parser</a></li>
+            
+                <li><a href="..&#x2F;modules/Surface.html">Surface</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1>Fragment_Shader Class</h1>
+<div class="box meta">
+    
+
+    
+
+    
+        <div class="foundat">
+            Defined in: <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l7"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:7</code></a>
+        </div>
+    
+
+    
+        
+            Module: <a href="../modules/OpenGL.html">OpenGL</a>
+        
+    
+
+    
+</div>
+
+
+
+<div class="box intro">
+    <p>Last modified on January 13 2013 by dazar</p>
+
+<hr />
+
+<p>This is the fragment Shader. It is in charge of all the calculations to render an algebraic surface.
+ This Shader is not complete, it must be filled with the degree, equation and partial derivatives of the surface.
+ It use an adaptation of a Ray Tracer to generate the image from the surface roots.
+ It is based on the Surfer made by Christian Stussak and adapted by Daniel Azar and Cristian Prieto for the iPhone gpu.
+ Some bug fix made also by Christian Stussak.</p>
+</div>
+
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+                                <a href="#method_add">add</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_add">add</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_bisect">bisect</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_bisect">bisect</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_calc_coefficients">calc_coefficients</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_calc_coefficients">calc_coefficients</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_clip_to_unit_sphere">clip_to_unit_sphere</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_clip_to_unit_sphere">clip_to_unit_sphere</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_clip_to_unit_sphere">clip_to_unit_sphere</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_clip_to_unit_sphere">clip_to_unit_sphere</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_create_poly_0">create_poly_0</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_create_poly_0">create_poly_0</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_create_poly_1">create_poly_1</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_create_poly_1">create_poly_1</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_eval_p">eval_p</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_eval_p">eval_p</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_first_root_Descartes">first_root_Descartes</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_first_root_Descartes">first_root_Descartes</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_first_root_in">first_root_in</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_first_root_in">first_root_in</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_has_sign_changes">has_sign_changes</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_has_sign_changes">has_sign_changes</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_main">main</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_main">main</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_mult">mult</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_mult">mult</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_mygradient">mygradient</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_mygradient">mygradient</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_neg">neg</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_neg">neg</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_power">power</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_power">power</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_reverseShift1">reverseShift1</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_reverseShift1">reverseShift1</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_shiftStretch">shiftStretch</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_shiftStretch">shiftStretch</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_sub">sub</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_sub">sub</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_add" class="method item">
+    <h3 class="name"><code>add</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p1</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>p2</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>res_degree</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_build_Debug-iphonesimulator_iSurfer.app_fs1.glsl.html#l78"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;build&#x2F;Debug-iphonesimulator&#x2F;iSurfer.app&#x2F;fs1.glsl:78</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: polynomial p; p = add(p1,p2,5); </h2>
+
+<p>This function creates a new polynomial of degree res_degree with the addition of p1 and p2.
+It needs the degree of the result to optimize the function.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p1</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>First poly.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">p2</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Second polly.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">res_degree</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>degree of the resultant polynomial.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    a new polynomial.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_add" class="method item">
+    <h3 class="name"><code>add</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p1</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>p2</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>res_degree</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l78"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:78</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: polynomial p; p = add(p1,p2,5); </h2>
+
+<p>This function creates a new polynomial of degree res_degree with the addition of p1 and p2.
+It needs the degree of the result to optimize the function.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p1</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>First poly.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">p2</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Second polly.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">res_degree</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>degree of the resultant polynomial.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    a new polynomial.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_bisect" class="method item">
+    <h3 class="name"><code>bisect</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>lowerBound</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>upperBound</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Highp float</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l163"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:163</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: s = bisect(p,lower,upper); </h2>
+
+<p>This function uses the bisection method to select the next path for the roots.
+It uses a while instead of recursion for performance.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>polynomial to evaluate.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">lowerBound</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">upperBound</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Highp float</span>:
+                    
+                    .
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_bisect" class="method item">
+    <h3 class="name"><code>bisect</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>lowerBound</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>upperBound</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Highp float</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_build_Debug-iphonesimulator_iSurfer.app_fs1.glsl.html#l163"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;build&#x2F;Debug-iphonesimulator&#x2F;iSurfer.app&#x2F;fs1.glsl:163</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: s = bisect(p,lower,upper); </h2>
+
+<p>This function uses the bisection method to select the next path for the roots.
+It uses a while instead of recursion for performance.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>polynomial to evaluate.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">lowerBound</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">upperBound</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Highp float</span>:
+                    
+                    .
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_calc_coefficients" class="method item">
+    <h3 class="name"><code>calc_coefficients</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>eye</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>dir</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l132"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:132</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: polynomial p; p = calc_coefficients(eye,dir); </h2>
+
+<p>This function creates a new polynomial of of the algebraic surface.
+It needs eye and dir to generate the x,y,z axis.
+This method should be filled with the algebraic surface equation in shader code.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">eye</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>eye of the Ray. Camera coord.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">dir</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>direction of the Ray.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    a new polynomial.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_calc_coefficients" class="method item">
+    <h3 class="name"><code>calc_coefficients</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>eye</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>dir</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_build_Debug-iphonesimulator_iSurfer.app_fs1.glsl.html#l132"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;build&#x2F;Debug-iphonesimulator&#x2F;iSurfer.app&#x2F;fs1.glsl:132</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: polynomial p; p = calc_coefficients(eye,dir); </h2>
+
+<p>This function creates a new polynomial of of the algebraic surface.
+It needs eye and dir to generate the x,y,z axis.
+This method should be filled with the algebraic surface equation in shader code.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">eye</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>eye of the Ray. Camera coord.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">dir</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>direction of the Ray.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    a new polynomial.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_clip_to_unit_sphere" class="method item">
+    <h3 class="name"><code>clip_to_unit_sphere</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>eye</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>dir</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Highp floats</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l234"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:234</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage:     clip<em>to</em>unit<em>sphere( varying</em>eye, dir, tmin, tmax ); </h2>
+
+<p>This method is needed to generate the minimum and maximum value of t in the sphere.
+We use the Ray Tracer principle of a a ray equation. a ray is a line so Y= m * t+b. 
+We know b and m, and with this function we get the tmin and tmax for the ray inside the sphere.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">eye</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>eye of the Ray. Camera coord.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">dir</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>direction of the Ray.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Highp floats</span>:
+                    
+                    tmin and tmax
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_clip_to_unit_sphere" class="method item">
+    <h3 class="name"><code>clip_to_unit_sphere</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>eye</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>dir</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Highp floats</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_build_Debug-iphonesimulator_iSurfer.app_fs1.glsl.html#l234"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;build&#x2F;Debug-iphonesimulator&#x2F;iSurfer.app&#x2F;fs1.glsl:234</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage:     clip<em>to</em>unit<em>sphere( varying</em>eye, dir, tmin, tmax ); </h2>
+
+<p>This method is needed to generate the minimum and maximum value of t in the sphere.
+We use the Ray Tracer principle of a a ray equation. a ray is a line so Y= m * t+b. 
+We know b and m, and with this function we get the tmin and tmax for the ray inside the sphere.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">eye</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>eye of the Ray. Camera coord.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">dir</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>direction of the Ray.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Highp floats</span>:
+                    
+                    tmin and tmax
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_clip_to_unit_sphere" class="method item">
+    <h3 class="name"><code>clip_to_unit_sphere</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>eye</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>dir</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Highp floats</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_build_Debug-iphonesimulator_iSurfer.app_fs1.glsl.html#l246"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;build&#x2F;Debug-iphonesimulator&#x2F;iSurfer.app&#x2F;fs1.glsl:246</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage:       calc<em>lights( eye, dir, hit</em>point); </h2>
+
+<p>This method is needed to get the color of the surface at the hitpoint.
+The result is written directly to gl_FragColor. 
+It needs the partial derivatives to be filled, to calculate the Normal of the surface at the hit point.
+So we can select which color is ok, if it is facing the camera or not.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">eye</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>eye of the Ray. Camera coord.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">dir</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>direction of the Ray.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Highp floats</span>:
+                    
+                    tmin and tmax
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_clip_to_unit_sphere" class="method item">
+    <h3 class="name"><code>clip_to_unit_sphere</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>eye</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>dir</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Highp floats</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l246"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:246</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage:       calc<em>lights( eye, dir, hit</em>point); </h2>
+
+<p>This method is needed to get the color of the surface at the hitpoint.
+The result is written directly to gl_FragColor. 
+It needs the partial derivatives to be filled, to calculate the Normal of the surface at the hit point.
+So we can select which color is ok, if it is facing the camera or not.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">eye</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>eye of the Ray. Camera coord.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">dir</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>direction of the Ray.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Highp floats</span>:
+                    
+                    tmin and tmax
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_create_poly_0" class="method item">
+    <h3 class="name"><code>create_poly_0</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>a0</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l60"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:60</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: polynomial p; p = create<em>poly</em>0(3.0); </h2>
+
+<p>This function creates a new polynomial of degree DEGREE with an unique constant value.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">a0</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>float value of independant coeficient.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    a new polynomial.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_create_poly_0" class="method item">
+    <h3 class="name"><code>create_poly_0</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>a0</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_build_Debug-iphonesimulator_iSurfer.app_fs1.glsl.html#l60"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;build&#x2F;Debug-iphonesimulator&#x2F;iSurfer.app&#x2F;fs1.glsl:60</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: polynomial p; p = create<em>poly</em>0(3.0); </h2>
+
+<p>This function creates a new polynomial of degree DEGREE with an unique constant value.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">a0</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>float value of independant coeficient.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    a new polynomial.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_create_poly_1" class="method item">
+    <h3 class="name"><code>create_poly_1</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>a0</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>a1</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_build_Debug-iphonesimulator_iSurfer.app_fs1.glsl.html#l68"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;build&#x2F;Debug-iphonesimulator&#x2F;iSurfer.app&#x2F;fs1.glsl:68</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: polynomial p; p = create<em>poly</em>1(3.0,2.0); </h2>
+
+<p>This function creates a new polynomial of degree DEGREE with two values linear and independant.
+Use this method to generate the axis from the eye and dir of the ray.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">a0</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>float value of independant coeficient.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">a1</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>float value of linear coeficient.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    a new polynomial.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_create_poly_1" class="method item">
+    <h3 class="name"><code>create_poly_1</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>a0</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>a1</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l68"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:68</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: polynomial p; p = create<em>poly</em>1(3.0,2.0); </h2>
+
+<p>This function creates a new polynomial of degree DEGREE with two values linear and independant.
+Use this method to generate the axis from the eye and dir of the ray.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">a0</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>float value of independant coeficient.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">a1</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>float value of linear coeficient.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    a new polynomial.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_eval_p" class="method item">
+    <h3 class="name"><code>eval_p</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Highp float</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_build_Debug-iphonesimulator_iSurfer.app_fs1.glsl.html#l153"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;build&#x2F;Debug-iphonesimulator&#x2F;iSurfer.app&#x2F;fs1.glsl:153</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: s = eval_p(p,3.2); </h2>
+
+<p>This function evaluates the polynomial at the point x.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>polynomial to evaluate.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>point to evaluate.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Highp float</span>:
+                    
+                    .
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_eval_p" class="method item">
+    <h3 class="name"><code>eval_p</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>x</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Highp float</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l153"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:153</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: s = eval_p(p,3.2); </h2>
+
+<p>This function evaluates the polynomial at the point x.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>polynomial to evaluate.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">x</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>point to evaluate.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Highp float</span>:
+                    
+                    .
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_first_root_Descartes" class="method item">
+    <h3 class="name"><code>first_root_Descartes</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>epsilon</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>tmpCoeffs</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l209"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:209</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: s = first<em>root</em>Descartes(p,epsilon, tmpCoeffs); </h2>
+
+<p>This function shifts and strech the polynomial. The idea is to focus the roots in the interval (0;1) for precision.
+Shift is like using p(x-shift) instead of p(x). Strech is like using p(x/scale) instead of p(x).</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>polynomial to find the roots.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">epsilon</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>this should be related to the interval length.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">tmpCoeffs</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>polynomial output / input, is the poly streched and shifted.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    If the return value is >= 0 then it is the first root, else it should be discarded.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_first_root_Descartes" class="method item">
+    <h3 class="name"><code>first_root_Descartes</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>epsilon</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>tmpCoeffs</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_build_Debug-iphonesimulator_iSurfer.app_fs1.glsl.html#l209"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;build&#x2F;Debug-iphonesimulator&#x2F;iSurfer.app&#x2F;fs1.glsl:209</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: s = first<em>root</em>Descartes(p,epsilon, tmpCoeffs); </h2>
+
+<p>This function shifts and strech the polynomial. The idea is to focus the roots in the interval (0;1) for precision.
+Shift is like using p(x-shift) instead of p(x). Strech is like using p(x/scale) instead of p(x).</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>polynomial to find the roots.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">epsilon</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>this should be related to the interval length.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">tmpCoeffs</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>polynomial output / input, is the poly streched and shifted.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    If the return value is >= 0 then it is the first root, else it should be discarded.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_first_root_in" class="method item">
+    <h3 class="name"><code>first_root_in</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>min</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>max</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Highp float</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_build_Debug-iphonesimulator_iSurfer.app_fs1.glsl.html#l222"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;build&#x2F;Debug-iphonesimulator&#x2F;iSurfer.app&#x2F;fs1.glsl:222</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage:     first<em>root</em>in( p,min,max ); </h2>
+
+<p>This method is changed on compilation time to the right algorithm for the degree.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Polinomial of th surface parametrized on t for the Ray.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">min</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Min value of t.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">max</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Max value of t.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Highp float</span>:
+                    
+                    The nearest root to the camera inside the sphere if any.
+Discard if there is no root inside the sphere.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_first_root_in" class="method item">
+    <h3 class="name"><code>first_root_in</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>min</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>max</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Highp float</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l222"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:222</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage:     first<em>root</em>in( p,min,max ); </h2>
+
+<p>This method is changed on compilation time to the right algorithm for the degree.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Polinomial of th surface parametrized on t for the Ray.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">min</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Min value of t.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">max</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Max value of t.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Highp float</span>:
+                    
+                    The nearest root to the camera inside the sphere if any.
+Discard if there is no root inside the sphere.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_has_sign_changes" class="method item">
+    <h3 class="name"><code>has_sign_changes</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Int</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_build_Debug-iphonesimulator_iSurfer.app_fs1.glsl.html#l175"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;build&#x2F;Debug-iphonesimulator&#x2F;iSurfer.app&#x2F;fs1.glsl:175</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: s = has<em>sign</em>changes(p); </h2>
+
+<p>This function checks for sign changes in the coefficient array of p. It is used in Descartes algorithm
+Returns -1 (root at x=0), 0 (no sign change), 1 (one sign change) or 2 (two OR MORE sign changes).</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>polynomial to evaluate.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Int</span>:
+                    
+                    .
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_has_sign_changes" class="method item">
+    <h3 class="name"><code>has_sign_changes</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Int</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l175"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:175</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: s = has<em>sign</em>changes(p); </h2>
+
+<p>This function checks for sign changes in the coefficient array of p. It is used in Descartes algorithm
+Returns -1 (root at x=0), 0 (no sign change), 1 (one sign change) or 2 (two OR MORE sign changes).</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>polynomial to evaluate.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Int</span>:
+                    
+                    .
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_main" class="method item">
+    <h3 class="name"><code>main</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l261"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:261</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: main(); </h2>
+
+<p>This method guides the overall process. It is called automatically by OpenGL for each pixel. 
+When a pixel is valid the vertex shader call this method as the entry point to the fragment shader.</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Void</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_main" class="method item">
+    <h3 class="name"><code>main</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_build_Debug-iphonesimulator_iSurfer.app_fs1.glsl.html#l261"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;build&#x2F;Debug-iphonesimulator&#x2F;iSurfer.app&#x2F;fs1.glsl:261</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: main(); </h2>
+
+<p>This method guides the overall process. It is called automatically by OpenGL for each pixel. 
+When a pixel is valid the vertex shader call this method as the entry point to the fragment shader.</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Void</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_mult" class="method item">
+    <h3 class="name"><code>mult</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p1</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>p2</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>res_degree</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l100"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:100</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: polynomial p; p = mult(p1,p2,5); </h2>
+
+<p>This function creates a new polynomial of degree res_degree with the multiplication of p1 and p2.
+It needs the degree of the result to optimize the function.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p1</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>First poly.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">p2</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Second polly.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">res_degree</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>degree of the resultant polynomial.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    a new polynomial.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_mult" class="method item">
+    <h3 class="name"><code>mult</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p1</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>p2</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>res_degree</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_build_Debug-iphonesimulator_iSurfer.app_fs1.glsl.html#l100"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;build&#x2F;Debug-iphonesimulator&#x2F;iSurfer.app&#x2F;fs1.glsl:100</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: polynomial p; p = mult(p1,p2,5); </h2>
+
+<p>This function creates a new polynomial of degree res_degree with the multiplication of p1 and p2.
+It needs the degree of the result to optimize the function.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p1</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>First poly.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">p2</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Second polly.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">res_degree</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>degree of the resultant polynomial.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    a new polynomial.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_mygradient" class="method item">
+    <h3 class="name"><code>mygradient</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>point</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Vec3</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l144"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:144</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: Gl_fragColor = mygradient(point); </h2>
+
+<p>Returns a color vector with gradient for the point specified.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">point</code>
+                        <span class="type">Highp vec3</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>point in x,y,z to paint.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Vec3</span>:
+                    
+                    color.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_mygradient" class="method item">
+    <h3 class="name"><code>mygradient</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>point</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Vec3</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_build_Debug-iphonesimulator_iSurfer.app_fs1.glsl.html#l144"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;build&#x2F;Debug-iphonesimulator&#x2F;iSurfer.app&#x2F;fs1.glsl:144</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: Gl_fragColor = mygradient(point); </h2>
+
+<p>Returns a color vector with gradient for the point specified.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">point</code>
+                        <span class="type">Highp vec3</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>point in x,y,z to paint.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Vec3</span>:
+                    
+                    color.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_neg" class="method item">
+    <h3 class="name"><code>neg</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p1</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>res_degree</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l111"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:111</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: polynomial p; p = neg(p1,5); </h2>
+
+<p>This function creates a new polynomial of degree res_degree with the negation of p.
+It needs the degree of the result to optimize the function.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p1</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>First poly.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">res_degree</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>degree of the resultant polynomial.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    a new polynomial.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_neg" class="method item">
+    <h3 class="name"><code>neg</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p1</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>res_degree</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_build_Debug-iphonesimulator_iSurfer.app_fs1.glsl.html#l111"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;build&#x2F;Debug-iphonesimulator&#x2F;iSurfer.app&#x2F;fs1.glsl:111</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: polynomial p; p = neg(p1,5); </h2>
+
+<p>This function creates a new polynomial of degree res_degree with the negation of p.
+It needs the degree of the result to optimize the function.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p1</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>First poly.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">res_degree</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>degree of the resultant polynomial.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    a new polynomial.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_power" class="method item">
+    <h3 class="name"><code>power</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>exp</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>res_degree</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_build_Debug-iphonesimulator_iSurfer.app_fs1.glsl.html#l121"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;build&#x2F;Debug-iphonesimulator&#x2F;iSurfer.app&#x2F;fs1.glsl:121</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: polynomial p; p = power(p1,7,5); </h2>
+
+<p>This function creates a new polynomial of degree res_degree with p elevated to exp.
+It needs the degree of the result to optimize the function.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>First poly.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">exp</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Exponent.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">res_degree</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>degree of the resultant polynomial.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    a new polynomial.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_power" class="method item">
+    <h3 class="name"><code>power</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>exp</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>res_degree</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l121"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:121</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: polynomial p; p = power(p1,7,5); </h2>
+
+<p>This function creates a new polynomial of degree res_degree with p elevated to exp.
+It needs the degree of the result to optimize the function.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>First poly.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">exp</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Exponent.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">res_degree</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>degree of the resultant polynomial.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    a new polynomial.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_reverseShift1" class="method item">
+    <h3 class="name"><code>reverseShift1</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>result</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l185"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:185</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: s = reverseShift1(p,result); </h2>
+
+<p>This function reverts the changes from shiftStrech.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>polynomial to evaluate.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">result</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>polynomial output, this is the return value.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Void</span>:
+                    
+                    .
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_reverseShift1" class="method item">
+    <h3 class="name"><code>reverseShift1</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>result</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_build_Debug-iphonesimulator_iSurfer.app_fs1.glsl.html#l185"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;build&#x2F;Debug-iphonesimulator&#x2F;iSurfer.app&#x2F;fs1.glsl:185</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: s = reverseShift1(p,result); </h2>
+
+<p>This function reverts the changes from shiftStrech.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>polynomial to evaluate.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">result</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>polynomial output, this is the return value.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Void</span>:
+                    
+                    .
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_shiftStretch" class="method item">
+    <h3 class="name"><code>shiftStretch</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>shift</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>scale</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>result</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l195"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:195</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: s = shiftStretch(p,shift, scale, poly); </h2>
+
+<p>This function shifts and strech the polynomial. The idea is to focus the roots in the interval (0;1) for precision.
+Shift is like using p(x-shift) instead of p(x). Strech is like using p(x/scale) instead of p(x).</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>polynomial to modify.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">shift</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">scale</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">result</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>polynomial output, this is the return value.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    result is returned.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_shiftStretch" class="method item">
+    <h3 class="name"><code>shiftStretch</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>shift</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>scale</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>result</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_build_Debug-iphonesimulator_iSurfer.app_fs1.glsl.html#l195"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;build&#x2F;Debug-iphonesimulator&#x2F;iSurfer.app&#x2F;fs1.glsl:195</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: s = shiftStretch(p,shift, scale, poly); </h2>
+
+<p>This function shifts and strech the polynomial. The idea is to focus the roots in the interval (0;1) for precision.
+Shift is like using p(x-shift) instead of p(x). Strech is like using p(x/scale) instead of p(x).</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>polynomial to modify.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">shift</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">scale</code>
+                        <span class="type">Highp float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">result</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>polynomial output, this is the return value.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    result is returned.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_sub" class="method item">
+    <h3 class="name"><code>sub</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p1</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>p2</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>res_degree</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_resources_shaders_fs1.glsl.html#l89"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl:89</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: polynomial p; p = sub(p1,p2,5); </h2>
+
+<p>This function creates a new polynomial of degree res_degree with the Substraction of p2 to p1.
+It needs the degree of the result to optimize the function.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p1</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>First poly.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">p2</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Second polly.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">res_degree</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>degree of the resultant polynomial.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    a new polynomial.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_sub" class="method item">
+    <h3 class="name"><code>sub</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>p1</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>p2</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>res_degree</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Polynomial</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_build_Debug-iphonesimulator_iSurfer.app_fs1.glsl.html#l89"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;build&#x2F;Debug-iphonesimulator&#x2F;iSurfer.app&#x2F;fs1.glsl:89</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: polynomial p; p = sub(p1,p2,5); </h2>
+
+<p>This function creates a new polynomial of degree res_degree with the Substraction of p2 to p1.
+It needs the degree of the result to optimize the function.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">p1</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>First poly.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">p2</code>
+                        <span class="type">Polynomial</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Second polly.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">res_degree</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>degree of the resultant polynomial.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Polynomial</span>:
+                    
+                    a new polynomial.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

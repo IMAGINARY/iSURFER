@@ -62,7 +62,9 @@ static int Precedence(char * token) {
         case '=': return 1;
         case '+': case '-': return 2;
         case '*': case '/': return 3;
-        case '^': return 4;     
+        case '^': return 5;
+        case '!': return 4;
+            
         default: return 0;
     } }
 static expressionT
@@ -108,7 +110,7 @@ static expressionT ReadT(scannerADT scanner) {
     {
         if(token[0]=='!'){
             exp= SubTree(token ,NULL, NULL);
-            exp->right = ReadE(scanner, 0);
+            exp->right = ReadE(scanner, 4);
         }else
         if(token[0]=='+' || token[0]=='^' || token[0]=='-' || token[0]=='*' || token[0]=='/'){
             Error("ParseExp: %s unexpected", token);

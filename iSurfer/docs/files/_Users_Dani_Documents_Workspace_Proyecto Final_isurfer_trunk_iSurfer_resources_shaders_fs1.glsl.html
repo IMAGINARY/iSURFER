@@ -1,10 +1,146 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl - iSurfer</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0pr2&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.8.0pr2&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src=".&#x2F;..&#x2F;resources&#x2F;images&#x2F;Imaginary_lemon_mini.jpg" title="iSurfer"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 3.0.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/ApplicationEngine.html">ApplicationEngine</a></li>
+            
+                <li><a href="..&#x2F;classes/Compiler.html">Compiler</a></li>
+            
+                <li><a href="..&#x2F;classes/Error.html">Error</a></li>
+            
+                <li><a href="..&#x2F;classes/exception.html">exception</a></li>
+            
+                <li><a href="..&#x2F;classes/expressionT.html">expressionT</a></li>
+            
+                <li><a href="..&#x2F;classes/Fragment_Shader.html">Fragment_Shader</a></li>
+            
+                <li><a href="..&#x2F;classes/genlib.html">genlib</a></li>
+            
+                <li><a href="..&#x2F;classes/Matrix.html">Matrix</a></li>
+            
+                <li><a href="..&#x2F;classes/ParametricEquations.html">ParametricEquations</a></li>
+            
+                <li><a href="..&#x2F;classes/ParametricSurface.html">ParametricSurface</a></li>
+            
+                <li><a href="..&#x2F;classes/parser.html">parser</a></li>
+            
+                <li><a href="..&#x2F;classes/programData.html">programData</a></li>
+            
+                <li><a href="..&#x2F;classes/QuaternionT.html">QuaternionT</a></li>
+            
+                <li><a href="..&#x2F;classes/ScannerADT.html">ScannerADT</a></li>
+            
+                <li><a href="..&#x2F;classes/simpio.html">simpio</a></li>
+            
+                <li><a href="..&#x2F;classes/strlib.html">strlib</a></li>
+            
+                <li><a href="..&#x2F;classes/surfaceRender.html">surfaceRender</a></li>
+            
+                <li><a href="..&#x2F;classes/Vector.html">Vector</a></li>
+            
+                <li><a href="..&#x2F;classes/Vertex_Shader.html">Vertex_Shader</a></li>
+            
+                <li><a href="..&#x2F;classes/Wire_Fragment_Shader.html">Wire_Fragment_Shader</a></li>
+            
+                <li><a href="..&#x2F;classes/Wire_Vertex_Shader.html">Wire_Vertex_Shader</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/Engine.html">Engine</a></li>
+            
+                <li><a href="..&#x2F;modules/OpenGL.html">OpenGL</a></li>
+            
+                <li><a href="..&#x2F;modules/Parser.html">Parser</a></li>
+            
+                <li><a href="..&#x2F;modules/Surface.html">Surface</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: &#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;resources&#x2F;shaders&#x2F;fs1.glsl</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x2F;**
  * File: fs1.glsl
  * Version: 1.0
  * @module OpenGL
- */
+ *&#x2F;
 
-/** 
+&#x2F;** 
  *Last modified on January 13 2013 by dazar
  * -----------------------------------------------------
  * This is the fragment Shader. It is in charge of all the calculations to render an algebraic surface.
@@ -13,7 +149,7 @@
  * It is based on the Surfer made by Christian Stussak and adapted by Daniel Azar and Cristian Prieto for the iPhone gpu.
  * Some bug fix made also by Christian Stussak.
  * @class Fragment_Shader
- */
+ *&#x2F;
 
 
 #define DEGREE 
@@ -54,18 +190,18 @@ polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir)
 	
 	return  ;
 	
-	//return sub( add( add( power( x, 2, 2 ), power( y, 2, 2 ), 2 ), power( z, 2, 2 ), 2 ), create_poly_0( 0.5 ), 2 );
+	&#x2F;&#x2F;return sub( add( add( power( x, 2, 2 ), power( y, 2, 2 ), 2 ), power( z, 2, 2 ), 2 ), create_poly_0( 0.5 ), 2 );
 }
 
-/**
+&#x2F;**
  * Usage: polynomial p; p = create_poly_0(3.0); 
  * --------------------------------------
  * This function creates a new polynomial of degree DEGREE with an unique constant value.
  * @method create_poly_0
  * @param a0 {highp float} float value of independant coeficient.
  * @return {polynomial} a new polynomial.
- */
-/**
+ *&#x2F;
+&#x2F;**
  * Usage: polynomial p; p = create_poly_1(3.0,2.0); 
  * --------------------------------------
  * This function creates a new polynomial of degree DEGREE with two values linear and independant.
@@ -74,8 +210,8 @@ polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir)
  * @param a0 {highp float} float value of independant coeficient.
  * @param a1 {highp float} float value of linear coeficient.
  * @return {polynomial} a new polynomial.
- */
-/**
+ *&#x2F;
+&#x2F;**
  * Usage: polynomial p; p = add(p1,p2,5); 
  * --------------------------------------
  * This function creates a new polynomial of degree res_degree with the addition of p1 and p2.
@@ -85,8 +221,8 @@ polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir)
  * @param p2 {polynomial} Second polly.
  * @param res_degree {int} degree of the resultant polynomial.
  * @return {polynomial} a new polynomial.
- */
-/**
+ *&#x2F;
+&#x2F;**
  * Usage: polynomial p; p = sub(p1,p2,5); 
  * --------------------------------------
  * This function creates a new polynomial of degree res_degree with the Substraction of p2 to p1.
@@ -96,8 +232,8 @@ polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir)
  * @param p2 {polynomial} Second polly.
  * @param res_degree {int} degree of the resultant polynomial.
  * @return {polynomial} a new polynomial.
- */
-/**
+ *&#x2F;
+&#x2F;**
  * Usage: polynomial p; p = mult(p1,p2,5); 
  * --------------------------------------
  * This function creates a new polynomial of degree res_degree with the multiplication of p1 and p2.
@@ -107,8 +243,8 @@ polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir)
  * @param p2 {polynomial} Second polly.
  * @param res_degree {int} degree of the resultant polynomial.
  * @return {polynomial} a new polynomial.
- */
-/**
+ *&#x2F;
+&#x2F;**
  * Usage: polynomial p; p = neg(p1,5); 
  * --------------------------------------
  * This function creates a new polynomial of degree res_degree with the negation of p.
@@ -117,8 +253,8 @@ polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir)
  * @param p1 {polynomial} First poly.
  * @param res_degree {int} degree of the resultant polynomial.
  * @return {polynomial} a new polynomial.
- */
-/**
+ *&#x2F;
+&#x2F;**
  * Usage: polynomial p; p = power(p1,7,5); 
  * --------------------------------------
  * This function creates a new polynomial of degree res_degree with p elevated to exp.
@@ -128,8 +264,8 @@ polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir)
  * @param exp {int} Exponent.
  * @param res_degree {int} degree of the resultant polynomial.
  * @return {polynomial} a new polynomial.
- */
-/**
+ *&#x2F;
+&#x2F;**
  * Usage: polynomial p; p = calc_coefficients(eye,dir); 
  * --------------------------------------
  * This function creates a new polynomial of of the algebraic surface.
@@ -139,18 +275,18 @@ polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir)
  * @param eye {highp float} eye of the Ray. Camera coord.
  * @param dir {highp float} direction of the Ray.
  * @return {polynomial} a new polynomial.
- */
+ *&#x2F;
 polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir);
-/**
+&#x2F;**
  * Usage: Gl_fragColor = mygradient(point); 
  * --------------------------------------
  * Returns a color vector with gradient for the point specified.
  * @method mygradient
  * @param point {highp vec3} point in x,y,z to paint.
  * @return {vec3} color.
- */
+ *&#x2F;
 highp vec3 mygradient( in highp vec3 point );
-/**
+&#x2F;**
  * Usage: s = eval_p(p,3.2); 
  * --------------------------------------
  * This function evaluates the polynomial at the point x.
@@ -158,9 +294,9 @@ highp vec3 mygradient( in highp vec3 point );
  * @param p {polynomial} polynomial to evaluate.
  * @param x {highp float} point to evaluate.
  * @return {highp float}.
- */
+ *&#x2F;
 highp float eval_p( const in polynomial p, highp float x );
-/**
+&#x2F;**
  * Usage: s = bisect(p,lower,upper); 
  * --------------------------------------
  * This function uses the bisection method to select the next path for the roots.
@@ -170,9 +306,9 @@ highp float eval_p( const in polynomial p, highp float x );
  * @param lowerBound {highp float}
  * @param upperBound {highp float}
  * @return {highp float}.
- */
+ *&#x2F;
 highp float bisect( const in polynomial p, highp float lowerBound, highp float upperBound );
-/**
+&#x2F;**
  * Usage: s = has_sign_changes(p); 
  * --------------------------------------
  * This function checks for sign changes in the coefficient array of p. It is used in Descartes algorithm
@@ -180,9 +316,9 @@ highp float bisect( const in polynomial p, highp float lowerBound, highp float u
  * @method has_sign_changes
  * @param p {polynomial} polynomial to evaluate.
  * @return {int}.
- */
+ *&#x2F;
 int has_sign_changes( const in polynomial p );
-/**
+&#x2F;**
  * Usage: s = reverseShift1(p,result); 
  * --------------------------------------
  * This function reverts the changes from shiftStrech.
@@ -190,36 +326,36 @@ int has_sign_changes( const in polynomial p );
  * @param p {polynomial} polynomial to evaluate.
  * @param result {polynomial} polynomial output, this is the return value.
  * @return {void}.
- */
+ *&#x2F;
 void reverseShift1( const in polynomial p, out polynomial result );
-/**
+&#x2F;**
  * Usage: s = shiftStretch(p,shift, scale, poly); 
  * --------------------------------------
  * This function shifts and strech the polynomial. The idea is to focus the roots in the interval (0;1) for precision.
- * Shift is like using p(x-shift) instead of p(x). Strech is like using p(x/scale) instead of p(x). 
+ * Shift is like using p(x-shift) instead of p(x). Strech is like using p(x&#x2F;scale) instead of p(x). 
  * @method shiftStretch
  * @param p {polynomial} polynomial to modify.
  * @param shift {highp float}
  * @param scale {highp float}
  * @param result {polynomial} polynomial output, this is the return value.
  * @return {polynomial} result is returned.
- */
+ *&#x2F;
 polynomial shiftStretch( const in polynomial p, highp float shift, highp float scale, out polynomial result );
 
-/**
+&#x2F;**
  * Usage: s = first_root_Descartes(p,epsilon, tmpCoeffs); 
  * --------------------------------------
  * This function shifts and strech the polynomial. The idea is to focus the roots in the interval (0;1) for precision.
- * Shift is like using p(x-shift) instead of p(x). Strech is like using p(x/scale) instead of p(x). 
+ * Shift is like using p(x-shift) instead of p(x). Strech is like using p(x&#x2F;scale) instead of p(x). 
  * @method first_root_Descartes
  * @param p {polynomial} polynomial to find the roots.
  * @param epsilon {highp float} this should be related to the interval length.
- * @param tmpCoeffs {polynomial} polynomial output / input, is the poly streched and shifted.
- * @return {polynomial} If the return value is >= 0 then it is the first root, else it should be discarded.
- */
+ * @param tmpCoeffs {polynomial} polynomial output &#x2F; input, is the poly streched and shifted.
+ * @return {polynomial} If the return value is &gt;= 0 then it is the first root, else it should be discarded.
+ *&#x2F;
 highp float first_root_Descartes( const in polynomial p, highp float epsilon, inout polynomial tmpCoeffs );
 
-/**
+&#x2F;**
  * Usage: 	first_root_in( p,min,max ); 
  * --------------------------------------
  * This method is changed on compilation time to the right algorithm for the degree.
@@ -229,9 +365,9 @@ highp float first_root_Descartes( const in polynomial p, highp float epsilon, in
  * @method first_root_in
  * @return {highp float} The nearest root to the camera inside the sphere if any.
  * Discard if there is no root inside the sphere.
- */
+ *&#x2F;
 highp float first_root_in( inout polynomial p, highp float min, highp float max );
-/**
+&#x2F;**
  * Usage: 	clip_to_unit_sphere( varying_eye, dir, tmin, tmax ); 
  * --------------------------------------
  * This method is needed to generate the minimum and maximum value of t in the sphere.
@@ -241,9 +377,9 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
  * @param dir {highp float} direction of the Ray.
  * @method clip_to_unit_sphere
  * @return tmin and tmax {highp floats} 
- */
+ *&#x2F;
 void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float tmin, out highp float tmax );
-/**
+&#x2F;**
  * Usage: 	  calc_lights( eye, dir, hit_point); 
  * --------------------------------------
  * This method is needed to get the color of the surface at the hitpoint.
@@ -255,17 +391,17 @@ void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float 
  
  * @method clip_to_unit_sphere
  * @return tmin and tmax {highp floats} 
- */
+ *&#x2F;
 
 void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point);
-/**
+&#x2F;**
  * Usage: main(); 
  * --------------------------------------
  * This method guides the overall process. It is called automatically by OpenGL for each pixel. 
  * When a pixel is valid the vertex shader call this method as the entry point to the fragment shader. 
  * @method main
  * @return {void}
- */
+ *&#x2F;
 void main( void );
 
 
@@ -287,7 +423,7 @@ highp vec3 mygradient( in highp vec3 point )
 polynomial create_poly_0( highp float a0 )
 {
 	polynomial res;
-	for( int i = 1; i <= DEGREE; i++ )
+	for( int i = 1; i &lt;= DEGREE; i++ )
 		res.a[ i ] = 0.0;
 	res.a[ 0 ] = a0;
 	return res;
@@ -296,8 +432,8 @@ polynomial create_poly_0( highp float a0 )
 polynomial create_poly_1( highp float a0, highp float a1 )
 {
 	polynomial res;
-#if DEGREE > 1
-	for( int i = 2; i <= DEGREE; i++ )
+#if DEGREE &gt; 1
+	for( int i = 2; i &lt;= DEGREE; i++ )
 		res.a[ i ] = 0.0;
 #endif
 	res.a[ 0 ] = a0;
@@ -307,14 +443,14 @@ polynomial create_poly_1( highp float a0, highp float a1 )
 
 polynomial add( polynomial p1, in polynomial p2, int res_degree )
 {
-	for( int i = 0; i <= res_degree; i++ )
+	for( int i = 0; i &lt;= res_degree; i++ )
 		p1.a[ i ] += p2.a[ i ];
 	return p1;
 }
 
 polynomial sub( polynomial p1, in polynomial p2, int res_degree )
 {
-	for( int i = 0; i <= res_degree; i++ )
+	for( int i = 0; i &lt;= res_degree; i++ )
         p1.a[ i ] = p1.a[ i ] - p2.a[ i ];
 	return p1;
 }
@@ -322,10 +458,10 @@ polynomial sub( polynomial p1, in polynomial p2, int res_degree )
 polynomial mult( in polynomial p1, in polynomial p2, int res_degree )
 {
 	polynomial res = p1;
-	for( int i = 0; i <= res_degree; i++ )
+	for( int i = 0; i &lt;= res_degree; i++ )
 	{
 		res.a[ i ] = 0.0;
-		for( int j = 0; j <= i; j++ )
+		for( int j = 0; j &lt;= i; j++ )
 			res.a[ i ] += p1.a[ j ] * p2.a[ i - j ];
 	}
 	return res;
@@ -333,7 +469,7 @@ polynomial mult( in polynomial p1, in polynomial p2, int res_degree )
 
 polynomial neg( polynomial p, int res_degree )
 {
-	for( int i = 0; i <= res_degree; i++ )
+	for( int i = 0; i &lt;= res_degree; i++ )
 		p.a[ i ] = -p.a[ i ];
 	return p;
 }
@@ -341,17 +477,17 @@ polynomial neg( polynomial p, int res_degree )
 polynomial power( in polynomial p, int exp, int degree )
 {
 	polynomial res = create_poly_0( 1.0 );
-	for( int res_degree = degree; res_degree < degree * exp + 1; res_degree += degree )
+	for( int res_degree = degree; res_degree &lt; degree * exp + 1; res_degree += degree )
 		res = mult( res, p, res_degree );
 	return res;
 }
 
-// ===================================================
+&#x2F;&#x2F; ===================================================
 
 highp float eval_p( const in polynomial p, highp float x )
 {
 	highp float fx = p.a[ DEGREE];
-	for( int i = DEGREE - 1; i >= 0; i-- )
+	for( int i = DEGREE - 1; i &gt;= 0; i-- )
 		fx = fx * x + p.a[ i ];
 	return fx;
 }
@@ -365,15 +501,15 @@ highp float bisect( const in polynomial p, highp float lowerBound, highp float u
     highp float old_center = upperBound;
     highp float fl = eval_p( p, lowerBound );
     highp float fu = eval_p( p, upperBound );
-    highp float delta = abs( upperBound - lowerBound )/ 2.0;
+    highp float delta = abs( upperBound - lowerBound )&#x2F; 2.0;
     highp float fc= 0.0;
-    while( delta > EPSILON )
+    while( delta &gt; EPSILON )
     {
         old_center = center;
         center = delta + lowerBound;
         fc = eval_p( p, center );
 
-        if( fc * fl < 0.0 )
+        if( fc * fl &lt; 0.0 )
         {
             upperBound = center;
             fu = fc;
@@ -389,14 +525,14 @@ highp float bisect( const in polynomial p, highp float lowerBound, highp float u
             fl = fc;
         }
         
-        delta = abs( upperBound - lowerBound ) /2.0; 
+        delta = abs( upperBound - lowerBound ) &#x2F;2.0; 
 
     }
     return center;
 }
 
-// checks for sign changes in the coefficient array of p
-// returns -1 (root at x=0), 0 (no sign change), 1 (one sign change) or 2 (two OR MORE sign changes)
+&#x2F;&#x2F; checks for sign changes in the coefficient array of p
+&#x2F;&#x2F; returns -1 (root at x=0), 0 (no sign change), 1 (one sign change) or 2 (two OR MORE sign changes)
 int has_sign_changes( const in polynomial p )
 {
     if( p.a[ 0 ] == 0.0 )
@@ -404,11 +540,11 @@ int has_sign_changes( const in polynomial p )
 
     int signChanges = 0;
     highp float lastNonZeroCoeff = p.a[ 0 ];
-    for( int i = 1; i < SIZE && signChanges < 2; i++ )
+    for( int i = 1; i &lt; SIZE &amp;&amp; signChanges &lt; 2; i++ )
     {
         if( p.a[ i ] != 0.0 )
         {
-            if( ( p.a[ i ] > 0.0 && lastNonZeroCoeff < 0.0 ) || ( p.a[ i ] < 0.0 && lastNonZeroCoeff > 0.0 ) )
+            if( ( p.a[ i ] &gt; 0.0 &amp;&amp; lastNonZeroCoeff &lt; 0.0 ) || ( p.a[ i ] &lt; 0.0 &amp;&amp; lastNonZeroCoeff &gt; 0.0 ) )
                 signChanges++;
             lastNonZeroCoeff = p.a[ i ];
         }
@@ -418,30 +554,30 @@ int has_sign_changes( const in polynomial p )
 
 void reverseShift1( const in polynomial p, out polynomial result )
 {
-    for( int i = 0; i < SIZE / 2; i++ ) // in-place reverse (because p and result may be the same arrays)
+    for( int i = 0; i &lt; SIZE &#x2F; 2; i++ ) &#x2F;&#x2F; in-place reverse (because p and result may be the same arrays)
     {
         highp float tmp = p.a[ i ];
         result.a[ i ] = p.a[ ( SIZE - 1 ) - i ];
         result.a[ ( SIZE - 1 ) - i ] = tmp;
     }
-        result.a[ SIZE / 2 ] = p.a[ ( SIZE - 1 ) - SIZE / 2 ];
+        result.a[ SIZE &#x2F; 2 ] = p.a[ ( SIZE - 1 ) - SIZE &#x2F; 2 ];
 
-    for( int j = 0; j < SIZE; j++ )
-        for( int i = SIZE - 2; i >= j; i-- )
+    for( int j = 0; j &lt; SIZE; j++ )
+        for( int i = SIZE - 2; i &gt;= j; i-- )
             result.a[ i ] = result.a[ i ] + result.a[ i + 1 ];
 }
 
 polynomial shiftStretch( const in polynomial p, highp float shift, highp float scale, out polynomial result )
 {
-    for( int i = 0; i < SIZE; i++ )
+    for( int i = 0; i &lt; SIZE; i++ )
         result.a[ i ] = p.a[ i ];
 
-    for( int i = 1; i <= SIZE; i++ )
-        for( int j = SIZE - 2; j >= i - 1; j-- )
+    for( int i = 1; i &lt;= SIZE; i++ )
+        for( int j = SIZE - 2; j &gt;= i - 1; j-- )
             result.a[ j ] = result.a[ j ] + shift * result.a[ j + 1 ];    
 
     highp float multiplier = scale;
-    for( int i = 1; i < SIZE; i++ )
+    for( int i = 1; i &lt; SIZE; i++ )
     {
         result.a[ i ] = multiplier * result.a[ i ];
         multiplier *= scale;
@@ -458,29 +594,29 @@ highp float first_root_Descartes( const in polynomial p, highp float epsilon, in
 	highp float result = -1.0;
 	while( true )
 	{
-		if( sign_changes > 1 && size > epsilon )
+		if( sign_changes &gt; 1 &amp;&amp; size &gt; epsilon )
 		{
-			// go deeper on left side
+			&#x2F;&#x2F; go deeper on left side
 			id *= 2;
-			size /= 2.0;
+			size &#x2F;= 2.0;
 		}
 		else if( sign_changes == 0 )
 		{
             gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
 
-			// go right
-			while( ( id / 2 ) * 2 != id )
+			&#x2F;&#x2F; go right
+			while( ( id &#x2F; 2 ) * 2 != id )
 			{
                 gl_FragColor = vec4( 1.0, 0.0, 0.0 , 0.5 );
 
-				id /= 2;
+				id &#x2F;= 2;
 				size *= 2.0;
 			}
 			id++;
 		}
-		else if( sign_changes >= 1 ) // will also be called, if sign_changes > 1, but size <= epsilon
+		else if( sign_changes &gt;= 1 ) &#x2F;&#x2F; will also be called, if sign_changes &gt; 1, but size &lt;= epsilon
 		{
-			// root isolated -> refine
+			&#x2F;&#x2F; root isolated -&gt; refine
 			result = bisect( p, size * float( id ), size * float( id + 1 ) );
 
             break;
@@ -491,7 +627,7 @@ highp float first_root_Descartes( const in polynomial p, highp float epsilon, in
 			break;
 		}
         
-		if( size >= 1.0 ) // we would visit the root interval twice -> abort
+		if( size &gt;= 1.0 ) &#x2F;&#x2F; we would visit the root interval twice -&gt; abort
 			break;
         
 		shiftStretch( p, size * float( id ), size, tmpCoeffs );
@@ -505,26 +641,26 @@ highp float first_root_Descartes( const in polynomial p, highp float epsilon, in
 highp float first_root_in( inout polynomial p, highp float min, highp float max )
 {
     
-#if DEGREE >= 3
+#if DEGREE &gt; 3
 
-    // find smallest root in [0,1], if any
+    &#x2F;&#x2F; find smallest root in [0,1], if any
     polynomial p01 = p;
     
     p01 = shiftStretch( p, min, max - min, p01 );
     
     highp float x0 = first_root_Descartes( p01, EPSILON * ( max - min ), p );
     
-    if( x0 >= 0.0 )
-        return (max-min)*x0+min; // move root back to original interval
+    if( x0 &gt;= 0.0 )
+        return (max-min)*x0+min; &#x2F;&#x2F; move root back to original interval
     else
-        discard; // no root in [0,1]
+        discard; &#x2F;&#x2F; no root in [0,1]
     
 #endif
     
 #if DEGREE ==1
 
-    highp float x0 = -p.a[ 0 ] / p.a[ 1 ];
-    if( x0 >= min && x0 < max )
+    highp float x0 = -p.a[ 0 ] &#x2F; p.a[ 1 ];
+    if( x0 &gt;= min &amp;&amp; x0 &lt; max )
         return x0;
     else
         discard;
@@ -536,103 +672,103 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
     highp float b = p.a[ 1 ];
     highp float c = p.a[ 0 ];
 
-    //Find discriminant
+    &#x2F;&#x2F;Find discriminant
     highp float disc = b * b - 4.0 * a * c;
 
-    // if discriminant is negative there are no real roots, so return 
-    // false as ray misses sphere
-    if (disc < 0.0)
+    &#x2F;&#x2F; if discriminant is negative there are no real roots, so return 
+    &#x2F;&#x2F; false as ray misses sphere
+    if (disc &lt; 0.0)
     {
         discard;
     }
-    // compute q as described above
+    &#x2F;&#x2F; compute q as described above
     highp float distSqrt = sqrt(disc);
     highp float q;
-    if (b < 0.0)
-        q = (-b - distSqrt)/2.0;
+    if (b &lt; 0.0)
+        q = (-b - distSqrt)&#x2F;2.0;
     else
-        q = (-b + distSqrt)/2.0;
+        q = (-b + distSqrt)&#x2F;2.0;
 
-    // compute tmin and tmax
-    highp float x0 = q / a;
-    highp float x1 = c / q;
+    &#x2F;&#x2F; compute tmin and tmax
+    highp float x0 = q &#x2F; a;
+    highp float x1 = c &#x2F; q;
 
-    // make sure tmin is smaller than tmax
-    if (x0 > x1)
+    &#x2F;&#x2F; make sure tmin is smaller than tmax
+    if (x0 &gt; x1)
     {
         highp float temp = x0;
         x0 = x1;
         x1 = temp;
     }
 
-    if( x0 >= min  && x0 < max )
+    if( x0 &gt;= min  &amp;&amp; x0 &lt; max )
         return x0;
-    else if( x1 >= min && x1 < max )
+    else if( x1 &gt;= min &amp;&amp; x1 &lt; max )
             return x1;
         else
         	discard;
 
 #endif
-        //este es el grado 3 Cardano pero tiene Ruido.
-#if DEGREE == -10
+    
+#if DEGREE == 3
     highp float PI = 3.14159265358979323846264;
-    // Based on JMonkey Engine https://projectsforge.org/projects/bundles/browser/trunk/jogl-2.0-rc3/jogl/src/main/java/jogamp/graph/math/plane/Crossing.java
+    &#x2F;&#x2F; Based on JMonkey Engine https:&#x2F;&#x2F;projectsforge.org&#x2F;projects&#x2F;bundles&#x2F;browser&#x2F;trunk&#x2F;jogl-2.0-rc3&#x2F;jogl&#x2F;src&#x2F;main&#x2F;java&#x2F;jogamp&#x2F;graph&#x2F;math&#x2F;plane&#x2F;Crossing.java
     highp float res[ 3 ];
     res[0] =100000.0;
     res[1] =100000.0;
     res[2] =100000.0;
 
-    highp float a = p.a[ 2 ] / p.a[ 3 ];
-    highp float b = p.a[ 1 ] / p.a[ 3 ];
-    highp float c = p.a[ 0 ] / p.a[ 3 ];
+    highp float a = p.a[ 2 ] &#x2F; p.a[ 3 ];
+    highp float b = p.a[ 1 ] &#x2F; p.a[ 3 ];
+    highp float c = p.a[ 0 ] &#x2F; p.a[ 3 ];
     highp int rc = 0;
     
-    highp float Q = (a * a - 3.0 * b) / 9.0;
-    highp float R = (2.0 * a * a * a - 9.0 * a * b + 27.0 * c) / 54.0;
+    highp float Q = (a * a - 3.0 * b) &#x2F; 9.0;
+    highp float R = (2.0 * a * a * a - 9.0 * a * b + 27.0 * c) &#x2F; 54.0;
     highp float Q3 = Q * Q * Q;
     highp float R2 = R * R;
-    highp float n = - a / 3.0;
+    highp float n = - a &#x2F; 3.0;
     	
-    if (R2 < Q3) {
-        highp float t = acos(R / sqrt(Q3)) / 3.0;
-        highp float p = 2.0 * PI / 3.0;
+    if (R2 &lt; Q3) {
+        highp float t = acos(R &#x2F; sqrt(Q3)) &#x2F; 3.0;
+        highp float p = 2.0 * PI &#x2F; 3.0;
         highp float m = -2.0 * sqrt(Q);
         res[0] = m * cos(t) + n;
         res[1] = m * cos(t + p) + n;
         res[2] = m * cos(t - p) + n;
     } else {
-        highp float A = pow(abs(R) + sqrt(R2 - Q3), 1.0 / 3.0);
-        if (R > 0.0) {
+        highp float A = pow(abs(R) + sqrt(R2 - Q3), 1.0 &#x2F; 3.0);
+        if (R &gt; 0.0) {
             A = -A;
         }
         if (  A == 0.0) {
             res[rc++] = n;
         } else {
-            highp float B = Q / A;
+            highp float B = Q &#x2F; A;
             res[rc++] = A + B + n;
             highp float delta = R2 - Q3;
             if ( delta  == 0.0) {
-                res[rc++] = - (A + B) / 2.0 + n;
+                res[rc++] = - (A + B) &#x2F; 2.0 + n;
             }
         }
             	
     }
     highp float aux = res[0];
-    if(res[2] < res[1])
+    if(res[2] &lt; res[1])
     {
         aux = res[2];
         res[2] = res[1];
         res[2] = aux;
     }
     
-    if(res[1] < res[0])
+    if(res[1] &lt; res[0])
     {
         aux = res[1];
         res[1] = res[0];
         res[0] = aux;
     }
     
-    if(res[2] < res[1])
+    if(res[2] &lt; res[1])
     {
         aux = res[2];
         res[2] = res[1];
@@ -641,21 +777,21 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
     
     
     highp float result = min;
-    if( result < res[ 0 ] && res[ 0 ] < max )
+    if( result &lt; res[ 0 ] &amp;&amp; res[ 0 ] &lt; max )
         result = res[ 0 ];
-    if( result < res[ 1 ] && res[ 1 ] < max )
+    if( result &lt; res[ 1 ] &amp;&amp; res[ 1 ] &lt; max )
         result = res[ 1 ];
-    if( result < res[ 2 ] && res[ 2 ] < max )
+    if( result &lt; res[ 2 ] &amp;&amp; res[ 2 ] &lt; max )
         result = res[ 2 ];
     
-    if( min < result && result < max )
+    if( min &lt; result &amp;&amp; result &lt; max )
         return result;
     else
         discard;
 
 #endif
   
-#if DEGREE <=0
+#if DEGREE &lt;=0
 discard;
 #endif
 
@@ -668,44 +804,44 @@ varying highp vec3 varying_dir;
 void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float tmin, out highp float tmax )
 {
 
-// http://wiki.cgsociety.org/index.php/Ray_Sphere_Intersection
-	//Compute A, B and C coefficients
+&#x2F;&#x2F; http:&#x2F;&#x2F;wiki.cgsociety.org&#x2F;index.php&#x2F;Ray_Sphere_Intersection
+	&#x2F;&#x2F;Compute A, B and C coefficients
 	highp float a = dot(dir, dir);
 	highp float b = 2.0 * dot(dir, eye);
 	highp float c = dot(eye, eye) - (radius2);
     highp float D = b * b - c;
-    if(D <0.0)
+    if(D &lt;0.0)
         discard;
-   // tmin = -b -sqrt(D);
-   // tmax = b + sqrt(D);
-   // return;
-	//Find discriminant
+   &#x2F;&#x2F; tmin = -b -sqrt(D);
+   &#x2F;&#x2F; tmax = b + sqrt(D);
+   &#x2F;&#x2F; return;
+	&#x2F;&#x2F;Find discriminant
 	highp float disc = b * b - 4.0 * a * c;
     gl_FragColor = vec4( 0.0, 1.0, 1.0 , 0.5 );
 
-    if(disc < 1.0)
+    if(disc &lt; 1.0)
         return;
     gl_FragColor = vec4( 0.0, 1.0, 1.0 , 0.5 );
     
-	// if discriminant is negative there are no real roots, so return 
-	// false as ray misses sphere
-	if (disc < DELTA)
+	&#x2F;&#x2F; if discriminant is negative there are no real roots, so return 
+	&#x2F;&#x2F; false as ray misses sphere
+	if (disc &lt; DELTA)
 		discard;
 
-	// compute q as described above
+	&#x2F;&#x2F; compute q as described above
 	highp float distSqrt = sqrt(disc);
 	highp float q;
-	if (b < DELTA)
-		q = (-b - distSqrt)/2.0;
+	if (b &lt; DELTA)
+		q = (-b - distSqrt)&#x2F;2.0;
 	else
-		q = (-b + distSqrt)/2.0;
+		q = (-b + distSqrt)&#x2F;2.0;
 
-	// compute tmin and tmax
-	tmin = q / a;
-	tmax = c / q;
+	&#x2F;&#x2F; compute tmin and tmax
+	tmin = q &#x2F; a;
+	tmax = c &#x2F; q;
 
-	// make sure tmin is smaller than tmax
-	if (tmin > tmax)
+	&#x2F;&#x2F; make sure tmin is smaller than tmax
+	if (tmin &gt; tmax)
 	{
 		highp float temp = tmax;
 		tmax = tmin;
@@ -716,7 +852,7 @@ void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float 
 
 void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point)
 {
-        // We use the hitPoint and numbers, and not the Poly Structure because of speed.
+        &#x2F;&#x2F; We use the hitPoint and numbers, and not the Poly Structure because of speed.
         highp float x = hit_point.x;
         highp float y = hit_point.y;
         highp float z = hit_point.z;
@@ -729,7 +865,7 @@ void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point
         highp vec3 E = -dir;
         lowp vec3 color;
 
-        if(dot(N, E) >= DELTA)
+        if(dot(N, E) &gt;= DELTA)
         {
             highp vec3 H = normalize(L + E);
 
@@ -779,27 +915,27 @@ uniform highp vec4 origin;
 void main( void )
 {
 	highp float l = length( varying_dir );
-    highp vec3 dir = varying_dir;// / l;
+    highp vec3 dir = varying_dir;&#x2F;&#x2F; &#x2F; l;
 
-	// setup ray(s)
+	&#x2F;&#x2F; setup ray(s)
 	highp float tmin, tmax, min, max;
 	clip_to_unit_sphere( varying_eye, dir, tmin, tmax );
     
 	highp float tcenter = ( tmin + tmax ) * 0.5;
 
-    //Con esto ponemos el 0 en el medio del grafico.
+    &#x2F;&#x2F;Con esto ponemos el 0 en el medio del grafico.
 	highp vec3 eye = varying_eye + tcenter * dir;
 	tmin = tmin - tcenter;
 	tmax = tmax - tcenter;
 
-    // setup polynomial
+    &#x2F;&#x2F; setup polynomial
 	polynomial p_ray = calc_coefficients( eye, dir);
     highp float scale = tmax-tmin;
 
-	// find intersection of ray and surface
+	&#x2F;&#x2F; find intersection of ray and surface
 	highp float root = first_root_in( p_ray, tmin, tmax );
 
-    if( root <= tmin || root >= tmax )
+    if( root &lt;= tmin || root &gt;= tmax )
         discard;
 
 	highp vec3 hit_point = eye + root * dir;
@@ -808,3 +944,23 @@ void main( void )
   calc_lights( eye, dir, hit_point);
 
 }
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

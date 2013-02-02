@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>parser - iSurfer</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0pr2&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.8.0pr2&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src=".&#x2F;..&#x2F;resources&#x2F;images&#x2F;Imaginary_lemon_mini.jpg" title="iSurfer"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 3.0.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/ApplicationEngine.html">ApplicationEngine</a></li>
+            
+                <li><a href="..&#x2F;classes/Compiler.html">Compiler</a></li>
+            
+                <li><a href="..&#x2F;classes/Error.html">Error</a></li>
+            
+                <li><a href="..&#x2F;classes/exception.html">exception</a></li>
+            
+                <li><a href="..&#x2F;classes/expressionT.html">expressionT</a></li>
+            
+                <li><a href="..&#x2F;classes/Fragment_Shader.html">Fragment_Shader</a></li>
+            
+                <li><a href="..&#x2F;classes/genlib.html">genlib</a></li>
+            
+                <li><a href="..&#x2F;classes/Matrix.html">Matrix</a></li>
+            
+                <li><a href="..&#x2F;classes/ParametricEquations.html">ParametricEquations</a></li>
+            
+                <li><a href="..&#x2F;classes/ParametricSurface.html">ParametricSurface</a></li>
+            
+                <li><a href="..&#x2F;classes/parser.html">parser</a></li>
+            
+                <li><a href="..&#x2F;classes/programData.html">programData</a></li>
+            
+                <li><a href="..&#x2F;classes/QuaternionT.html">QuaternionT</a></li>
+            
+                <li><a href="..&#x2F;classes/ScannerADT.html">ScannerADT</a></li>
+            
+                <li><a href="..&#x2F;classes/simpio.html">simpio</a></li>
+            
+                <li><a href="..&#x2F;classes/strlib.html">strlib</a></li>
+            
+                <li><a href="..&#x2F;classes/surfaceRender.html">surfaceRender</a></li>
+            
+                <li><a href="..&#x2F;classes/Vector.html">Vector</a></li>
+            
+                <li><a href="..&#x2F;classes/Vertex_Shader.html">Vertex_Shader</a></li>
+            
+                <li><a href="..&#x2F;classes/Wire_Fragment_Shader.html">Wire_Fragment_Shader</a></li>
+            
+                <li><a href="..&#x2F;classes/Wire_Vertex_Shader.html">Wire_Vertex_Shader</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/Engine.html">Engine</a></li>
+            
+                <li><a href="..&#x2F;modules/OpenGL.html">OpenGL</a></li>
+            
+                <li><a href="..&#x2F;modules/Parser.html">Parser</a></li>
+            
+                <li><a href="..&#x2F;modules/Surface.html">Surface</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1>parser Class</h1>
+<div class="box meta">
+    
+
+    
+
+    
+        <div class="foundat">
+            Defined in: <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_Classes_viewControllers_goiSurferViewController_parser_parser.h.html#l18"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;Classes&#x2F;viewControllers&#x2F;goiSurferViewController&#x2F;parser&#x2F;parser.h:18</code></a>
+        </div>
+    
+
+    
+        
+            Module: <a href="../modules/Parser.html">Parser</a>
+        
+    
+
+    
+</div>
+
+
+
+<div class="box intro">
+    <p>Last modified on FRY June 12 2012 by dazar</p>
+
+<hr />
+
+<p>This interface provides access to a simple package of
+ functions that simplify the parser of equations from the file exp.</p>
+</div>
+
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+                                <a href="#method_EsNumero">EsNumero</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_IsVariable">IsVariable</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_ParseExp">ParseExp</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_EsNumero" class="method item">
+    <h3 class="name"><code>EsNumero</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>token</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>valor</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Booleano</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_Classes_viewControllers_goiSurferViewController_parser_parser.h.html#l54"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;Classes&#x2F;viewControllers&#x2F;goiSurferViewController&#x2F;parser&#x2F;parser.h:54</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: b = EsNumero(token);</h2>
+
+<p>IsVariable reads a number from the pointer and
+returns a boolean indicating if it is a number or not.
+The number is left in valor.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">token</code>
+                        <span class="type">Char </span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>pointer to the char to analize.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">valor</code>
+                        <span class="type">Double </span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>pointer where we place the number read.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Booleano</span>:
+                    
+                    if it can read the number
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_IsVariable" class="method item">
+    <h3 class="name"><code>IsVariable</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>token</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Booleano</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_Classes_viewControllers_goiSurferViewController_parser_parser.h.html#l41"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;Classes&#x2F;viewControllers&#x2F;goiSurferViewController&#x2F;parser&#x2F;parser.h:41</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: b = IsVariable(token);</h2>
+
+<p>IsVariable reads a char of text from the pointer and
+returns a boolean indicating if it is a variable or not.
+that terminates the input is not stored as part of the
+A variable can be x, y ,z.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">token</code>
+                        <span class="type">Char </span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>pointer to the char to analize.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Booleano</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_ParseExp" class="method item">
+    <h3 class="name"><code>ParseExp</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>scanner</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">ExpressionT</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;_Users_Dani_Documents_Workspace_Proyecto Final_isurfer_trunk_iSurfer_Classes_viewControllers_goiSurferViewController_parser_parser.h.html#l28"><code>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;Classes&#x2F;viewControllers&#x2F;goiSurferViewController&#x2F;parser&#x2F;parser.h:28</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <h2>Usage: exp = ParseExp(scanner);</h2>
+
+<p>Reads the scanner and generates an expression tree with the equation.
+The tree is formed with the correct precedence considering "(" and ")".
+Returns Null in case of error.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">scanner</code>
+                        <span class="type"><a href="../classes/ScannerADT.html" class="crosslink">ScannerADT</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>a scanner with the equation formula.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">ExpressionT</span>:
+                    
+                    an expression tree.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

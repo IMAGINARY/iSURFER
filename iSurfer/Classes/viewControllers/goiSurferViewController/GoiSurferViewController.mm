@@ -255,7 +255,7 @@
 			self.zoomSlider.value += 1;
 		}
 	}else if (pinchGesture.state == UIGestureRecognizerStateEnded) {
-		[openglController setZoom:101.0 - zoomSlider.value];
+		[openglController setZoom:101.1111 - zoomSlider.value];
 		//[openglController drawFrame];
 	}
 	previousScale = pinchGesture.scale;	

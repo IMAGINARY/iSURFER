@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>&#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;Classes&#x2F;viewControllers&#x2F;goiSurferViewController&#x2F;parser&#x2F;strlib.h - iSurfer</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0pr2&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.8.0pr2&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src=".&#x2F;..&#x2F;resources&#x2F;images&#x2F;Imaginary_lemon_mini.jpg" title="iSurfer"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 3.0.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/ApplicationEngine.html">ApplicationEngine</a></li>
+            
+                <li><a href="..&#x2F;classes/Compiler.html">Compiler</a></li>
+            
+                <li><a href="..&#x2F;classes/Error.html">Error</a></li>
+            
+                <li><a href="..&#x2F;classes/exception.html">exception</a></li>
+            
+                <li><a href="..&#x2F;classes/expressionT.html">expressionT</a></li>
+            
+                <li><a href="..&#x2F;classes/Fragment_Shader.html">Fragment_Shader</a></li>
+            
+                <li><a href="..&#x2F;classes/genlib.html">genlib</a></li>
+            
+                <li><a href="..&#x2F;classes/Matrix.html">Matrix</a></li>
+            
+                <li><a href="..&#x2F;classes/ParametricEquations.html">ParametricEquations</a></li>
+            
+                <li><a href="..&#x2F;classes/ParametricSurface.html">ParametricSurface</a></li>
+            
+                <li><a href="..&#x2F;classes/parser.html">parser</a></li>
+            
+                <li><a href="..&#x2F;classes/programData.html">programData</a></li>
+            
+                <li><a href="..&#x2F;classes/QuaternionT.html">QuaternionT</a></li>
+            
+                <li><a href="..&#x2F;classes/ScannerADT.html">ScannerADT</a></li>
+            
+                <li><a href="..&#x2F;classes/simpio.html">simpio</a></li>
+            
+                <li><a href="..&#x2F;classes/strlib.html">strlib</a></li>
+            
+                <li><a href="..&#x2F;classes/surfaceRender.html">surfaceRender</a></li>
+            
+                <li><a href="..&#x2F;classes/Vector.html">Vector</a></li>
+            
+                <li><a href="..&#x2F;classes/Vertex_Shader.html">Vertex_Shader</a></li>
+            
+                <li><a href="..&#x2F;classes/Wire_Fragment_Shader.html">Wire_Fragment_Shader</a></li>
+            
+                <li><a href="..&#x2F;classes/Wire_Vertex_Shader.html">Wire_Vertex_Shader</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/Engine.html">Engine</a></li>
+            
+                <li><a href="..&#x2F;modules/OpenGL.html">OpenGL</a></li>
+            
+                <li><a href="..&#x2F;modules/Parser.html">Parser</a></li>
+            
+                <li><a href="..&#x2F;modules/Surface.html">Surface</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: &#x2F;Users&#x2F;Dani&#x2F;Documents&#x2F;Workspace&#x2F;Proyecto Final&#x2F;isurfer&#x2F;trunk&#x2F;iSurfer&#x2F;Classes&#x2F;viewControllers&#x2F;goiSurferViewController&#x2F;parser&#x2F;strlib.h</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x2F;**
+ * File: strlib.h
+ * @module Parser
+*&#x2F;
+ &#x2F;**
+ * Version: 1.0
+ * Last modified on Fri Jul 15 14:10:40 1994 by eroberts
+ * -----------------------------------------------------
+ * The strlib.h file defines the interface for a simple
+ * string library.  In the context of this package, strings
+ * are considered to be an abstract data type, which means
+ * that the client relies only on the operations defined for
+ * the type and not on the underlying representation.
+ * @class strlib
+ *&#x2F;
+
+&#x2F;*
+ * Cautionary note:
+ * ----------------
+ * Although this interface provides an extremely convenient
+ * abstraction for working with strings, it is not appropriate
+ * for all applications.  In this interface, the functions that
+ * return string values (such as Concat and SubString) do so
+ * by allocating new memory.  Over time, a program that uses
+ * this package will consume increasing amounts of memory
+ * and eventually exhaust the available supply.  If you are
+ * writing a program that runs for a short time and stops,
+ * the fact that the package consumes memory is not a problem.
+ * If, however, you are writing an application that must run
+ * for an extended period of time, using this package requires
+ * that you make some provision for freeing any allocated
+ * storage.
+ *&#x2F;
+
+#ifndef _strlib_h
+#define _strlib_h
+
+#include &quot;genlib.h&quot;
+
+&#x2F;* Section 1 -- Basic string operations *&#x2F;
+
+&#x2F;**
+ * Usage: s = Concat(s1, s2);
+ * --------------------------
+ * This function concatenates two strings by joining them end
+ * to end.  For example, Concat(&quot;ABC&quot;, &quot;DE&quot;) returns the string
+ * &quot;ABCDE&quot;.
+ * @method Concat
+ * @param s1 {char *} pointer to left part.
+ * @param s2 {char *} pointer with what to concat.
+ * @return {char *} a new string with the result.
+ *&#x2F;
+
+char * Concat(char * s1, char * s2);
+
+&#x2F;**
+ * Usage: ch = IthChar(s, i);
+ * --------------------------
+ * This function returns the character at position i in the
+ * string s.  It is included in the library to make the type
+ * string a true abstract type in the sense that all of the
+ * necessary operations can be invoked using functions. Calling
+ * IthChar(s, i) is like selecting s[i], except that IthChar
+ * checks to see if i is within the range of legal index
+ * positions, which extend from 0 to StringLength(s).
+ * IthChar(s, StringLength(s)) returns the null character
+ * at the end of the string.
+ * @method IthChar
+ * @param s {char *} pointer to string.
+ * @param i {int} char index.
+ * @return {char } the character at position i.
+ *&#x2F;
+
+char IthChar(char * s, int i);
+
+&#x2F;**
+ * Usage: t = SubString(s, p1, p2);
+ * --------------------------------
+ * SubString returns a copy of the substring of s consisting
+ * of the characters between index positions p1 and p2,
+ * inclusive.  The following special cases apply:
+ *
+ * 1. If p1 is less than 0, it is assumed to be 0.
+ * 2. If p2 is greater than the index of the last string
+ *    position, which is StringLength(s) - 1, then p2 is
+ *    set equal to StringLength(s) - 1.
+ * 3. If p2 &lt; p1, SubString returns the empty string.
+ * @method SubString
+ * @param s {char *} pointer to string.
+ * @param p1 {int} start index.
+ * @param p2 {int} end index.
+ * @return {char *} a new string with the result.
+ *&#x2F;
+
+char * SubString(char * s, int p1, int p2);
+
+&#x2F;**
+ * Usage: s = CharToString(ch);
+ * ----------------------------
+ * This function takes a single character and returns a
+ * one-character string consisting of that character.  The
+ * CharToString function is useful, for example, if you
+ * need to concatenate a string and a character.  Since
+ * Concat requires two strings, you must first convert
+ * the character into a string.
+ * @method CharToString
+ * @param ch {char} pointer to string.
+ * @return {char *} a new string with the result.
+ *&#x2F;
+
+char * CharToString(char ch);
+
+&#x2F;**
+ * Usage: len = StringLength(s);
+ * -----------------------------
+ * This function returns the length of s.
+ * @method StringLength
+ * @param s {char *} pointer to string.
+ * @return {int} the length of the string.
+ *&#x2F;
+
+int StringLength(char * s);
+
+&#x2F;**
+ * Usage: newstr = CopyString(s);
+ * ------------------------------
+ * CopyString copies the string s into dynamically allocated
+ * storage and returns the new string.  This function is not
+ * ordinarily required if this package is used on its own,
+ * but is often necessary when you are working with more than
+ * one string package.
+ * @method CopyString
+ * @param s {char *} pointer to string.
+ * @return {char *} a copy of the string.
+ *&#x2F;
+
+char * CopyString(char * s);
+
+&#x2F;* Section 2 -- String comparison functions *&#x2F;
+
+&#x2F;**
+ * Usage: if (StringEqual(s1, s2)) ...
+ * -----------------------------------
+ * This function returns TRUE if the strings s1 and s2 are
+ * equal.  For the strings to be considered equal, every
+ * character in one string must precisely match the
+ * corresponding character in the other.  Uppercase and
+ * lowercase characters are considered to be different.
+ * @method StringEqual
+ * @param s1 {char *} pointer to string 1.
+ * @param s1 {char *} pointer to string 2.
+ * @return {Boolean}.
+ *&#x2F;
+
+booleano StringEqual(char * s1, char * s2);
+
+&#x2F;**
+ * Usage: if (StringCompare(s1, s2) &lt; 0) ...
+ * -----------------------------------------
+ * This function returns a number less than 0 if string s1
+ * comes before s2 in alphabetical order, 0 if they are equal,
+ * and a number greater than 0 if s1 comes after s2.  The
+ * ordering is determined by the internal representation used
+ * for characters, which is usually ASCII.
+ * @method StringCompare
+ * @param s1 {char *} pointer to string 1.
+ * @param s1 {char *} pointer to string 2.
+ * @return {int}.
+ *&#x2F;
+
+int StringCompare(char * s1, char * s2);
+
+&#x2F;* Section 3 -- Search functions *&#x2F;
+
+&#x2F;**
+ * Usage: p = FindChar(ch, text, start);
+ * -------------------------------------
+ * Beginning at position start in the string text, this
+ * function searches for the character ch and returns the
+ * first index at which it appears or -1 if no match is
+ * found.
+ * @method FindChar
+ * @param ch {char} char to search.
+ * @param text {char *} pointer to string.
+ * @param start {int} position to start searching.
+ * @return {int} the first index at which ch appears or -1 if no match is found.
+ *&#x2F;
+
+int FindChar(char ch, char * text, int start);
+
+&#x2F;**
+ * Usage: p = FindString(str, text, start);
+ * ----------------------------------------
+ * Beginning at position start in the string text, this
+ * function searches for the string str and returns the
+ * first index at which it appears or -1 if no match is
+ * found.
+ * @method FindString
+ * @param str {const char *} pointer to string to find.
+ * @param text {char *} pointer to string.
+ * @param start {int} position to start searching.
+ * @return {int} the first index at which ch appears or -1 if no match is found.
+ *&#x2F;
+
+int FindString(const char * str, char * text, int start);
+
+&#x2F;* Section 4 -- Case-conversion functions *&#x2F;
+
+&#x2F;**
+ * Usage: s = ConvertToLowerCase(s);
+ * ---------------------------------
+ * This function returns a new string with all
+ * alphabetic characters converted to lower case.
+ * @method ConvertToLowerCase
+ * @param s {char *} pointer to string.
+ * @return {char *} a new string with the result.
+ *&#x2F;
+
+char * ConvertToLowerCase(char * s);
+
+&#x2F;**
+ * Usage: s = ConvertToUpperCase(s);
+ * ---------------------------------
+ * This function returns a new string with all
+ * alphabetic characters converted to upper case.
+ * @method ConvertToUpperCase
+ * @param s {char *} pointer to string.
+ * @return {char *} a new string with the result.
+ *&#x2F;
+
+char * ConvertToUpperCase(char * s);
+
+&#x2F;* Section 5 -- Functions for converting numbers to strings *&#x2F;
+
+&#x2F;**
+ * Usage: s = IntegerToString(n);
+ * ------------------------------
+ * This function converts an integer into the corresponding
+ * string of digits.  For example, IntegerToString(123)
+ * returns &quot;123&quot; as a string.
+ * @method IntegerToString
+ * @param n {int} number.
+ * @return {char *} a new string with the result.
+ *&#x2F;
+
+char * IntegerToString(int n);
+
+&#x2F;**
+ * Usage: n = StringToInteger(s);
+ * ------------------------------
+ * This function converts a string of digits into an integer.
+ * If the string is not a legal integer or contains extraneous
+ * characters, StringToInteger signals an error condition.
+ * @method StringToInteger
+ * @param s {char *} pointer to string.
+ * @return {int} with the number in the string.
+ *&#x2F;
+
+int StringToInteger(char * s);
+
+&#x2F;**
+ * Usage: s = RealToString(d);
+ * ---------------------------
+ * This function converts a floating-point number into the
+ * corresponding string form.  For example, calling
+ * RealToString(23.45) returns &quot;23.45&quot;.  The conversion is
+ * the same as that used for &quot;%G&quot; format in printf.
+ * @method RealToString
+ * @param n {double} number.
+ * @return {char *} a new string with the result.
+ *&#x2F;
+
+char * RealToString(double d);
+
+&#x2F;**
+ * Usage: d = StringToReal(s);
+ * ---------------------------
+ * This function converts a string representing a real number
+ * into its corresponding value.  If the string is not a
+ * legal floating-point number or if it contains extraneous
+ * characters, StringToReal signals an error condition.
+ * @method StringToReal
+ * @param s {char *} pointer to string.
+ * @return {double} with the number in the string.
+ *&#x2F;
+
+double StringToReal(char * s);
+
+#endif
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>
