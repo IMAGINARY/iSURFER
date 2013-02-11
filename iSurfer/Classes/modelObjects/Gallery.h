@@ -14,6 +14,7 @@
 	UIImage * thumbNail;
 	NSString* galleryName;
 	NSString* galleryDescription;
+    int surfacesNumber;
 	NSMutableArray* surfacesArray;
 	BOOL editable;
     BOOL saved;
@@ -24,6 +25,7 @@
 @property(nonatomic, retain)	NSString* galleryName;
 @property(nonatomic, retain)	UIImage * thumbNail;
 @property(nonatomic, retain)	NSString* galleryDescription;
+@property(nonatomic, assign)    int surfacesNumber;
 @property(nonatomic, assign)	int galID;
 @property(nonatomic, assign)     BOOL saved;
 

@@ -7,6 +7,7 @@
 //
 
 #import "DataBaseController.h"
+#import "Language.h"
 #define FMDBQuickCheck(SomeBool) { if (!(SomeBool)) { NSLog(@"Failure on line %d", __LINE__); return 123; } }
 
 //------------------------------------------------------------------------
@@ -86,8 +87,7 @@
     
     */
     
-	[db executeUpdate:@"insert into surfaces(name, equation, image, galleryid) values(?, ?, ?, ?)",	
-	 surface.surfaceName,
+	[db executeUpdate:@"insert into surfaces(equation, image, galleryid) values(?, ?, ?, ?)",	
 	 surface.equation,
 	 imgdata,
 	 [NSNumber numberWithInt:gal.galID]];
@@ -100,8 +100,9 @@
     surface.surfaceID = serial;
     [db commit];
 
-    [db executeUpdate:@"insert into surfacestexts (surfaceid, briefdescription, completedescription, language) values (?, ?, ?, ?)",
+    [db executeUpdate:@"insert into surfacestexts (surfaceid, name, briefdescription, completedescription, language) values (?, ?, ?, ?, ?)",
      [NSNumber numberWithInt:surface.surfaceID],
+     surface.surfaceName,
      surface.briefDescription,
      surface.completeDescription,
      [NSNumber numberWithInt:1]];
@@ -132,8 +133,7 @@
     NSLog(@"%@", imgdata);
     gallery.editable = YES;
     
-	[db executeUpdate:@"insert into galleries(name, editable, thumbnail) values(?, ?, ?)",	
-	 gallery.galleryName,
+	[db executeUpdate:@"insert into galleries(editable, thumbnail) values(?, ?)",	
      [NSNumber numberWithInt: gallery.editable],
 	 imgdata];
 //    NSLog(@"INSERT1 %@", db.logsErrors);
@@ -147,8 +147,9 @@
     gallery.galID = serial;
     
     //NSLog(@"%d@", db.lastInsertRowId);
-    [db executeUpdate:@"insert into galleriestexts (galleryid, description, language) values (?, ?, ?)",
+    [db executeUpdate:@"insert into galleriestexts (galleryid, name, description, language) values (?, ?, ?, ?)",
      [NSNumber numberWithInt:gallery.galID],
+     gallery.galleryName,
      gallery.galleryDescription,
      [NSNumber numberWithInt: 1]];
 //	FMDBQuickCheck([db hadError]);
@@ -167,7 +168,7 @@
 	
 	//FMResultSet *rs2 =	[db executeQuery:@"SELECT * FROM sqlite_master WHERE type='table'"];
 
-	FMResultSet *rs = [db executeQuery:@"select id, name, editable, thumbnail from galleries"];
+	FMResultSet *rs = [db executeQuery:@"select id, editable, thumbnail from galleries"];
 	Gallery* g = nil;
 	NSMutableArray* array = [[[NSMutableArray alloc]init] autorelease];
 	while ([rs next]) {
@@ -175,15 +176,22 @@
 	
 		g.galID = [rs intForColumn:@"id"];
         
-        //Only objects are used as query arguments
-        FMResultSet *rstext = [db executeQuery:@"select description from galleriestexts where language = 0 and galleryid = ? ", [NSNumber numberWithInt:g.galID]];
+        NSString * lang = [Language getCurrentLang];
         
-        //This methos has to be executed always
+        //Only objects are used as query arguments
+        FMResultSet *rstext = [db executeQuery:@"select name, description from galleriestexts where language = 0 and galleryid = ?", [NSNumber numberWithInt:g.galID]];
+        
+        FMResultSet * count = [db executeQuery:@"SELECT count(*) as surfaces FROM surfaces WHERE galleryid = ? GROUP BY galleryid", [NSNumber numberWithInt:g.galID]];
+        
+        //This method has to be executed always
+        [count next];
         [rstext next];
         
-		g.galleryName = [rs stringForColumn:@"name"];
+        g.surfacesNumber = [count intForColumn:@"surfaces"];
+		g.galleryName = [rstext stringForColumn:@"name"];
 		g.galleryDescription =  [rstext stringForColumn:@"description"];
         
+        NSLog(@"galleryName %@", g.galleryName);
         NSLog(@"galleryDescription %@", g.galleryDescription);
         
 		g.editable = [rs intForColumn:@"editable"];
@@ -200,7 +208,7 @@
 		// just print out what we've got in a number of formats.
 		NSLog(@"id:%d name:%@ description:%@ editable:%d",
 			  [rs intForColumn:@"id"],
-			  [rs stringForColumn:@"name"],
+			  [rstext stringForColumn:@"name"],
 			  [rstext stringForColumn:@"description"],
 			  [rs intForColumn:@"editable"]);
 	
@@ -222,7 +230,7 @@
     //NSLog(@"lala: %@",[NSString stringWithFormat:@"%d", [rs columnIndexForName:@"id"]]);
     //NSLog(@"This string should end with NO: %@", [rs hasAnotherRow]?@"YES":@"NO");
     //NSLog(@"This string should end with YES:  %@", [rs next]?@"YES":@"NO");
-    NSLog(@"%@", str);
+    NSLog(@"POPULATE%@", str);
 	AlgebraicSurface* s = nil;
 	NSMutableArray* surfacesArray = [[NSMutableArray alloc]init];
 
@@ -239,7 +247,7 @@
         
         s.surfaceID = [rs intForColumn:@"id"];
         
-        FMResultSet *rstext = [db executeQuery:@"select briefdescription, completedescription from surfacestexts where language = 0 and surfaceid = ?", [NSNumber numberWithInt:s.surfaceID]];
+        FMResultSet *rstext = [db executeQuery:@"select name, briefdescription, completedescription from surfacestexts where language = 0 and surfaceid = ?", [NSNumber numberWithInt:s.surfaceID]];
         
         [rstext next];
         
@@ -250,12 +258,12 @@
         
         NSLog(@"%@", [rstext stringForColumn:@"briefdescription"]);
         NSLog(@"%@", [rstext stringForColumn:@"completedescription"]);
-        NSLog(@"%@", [rs stringForColumn:@"name"]);
+        NSLog(@"%@", [rstext stringForColumn:@"name"]);
         NSLog(@"%@", [rs stringForColumn:@"equation"]);
         
 		s.briefDescription =  [rstext stringForColumn:@"briefdescription"];
         s.completeDescription = [rstext stringForColumn:@"completedescription"];
-		s.surfaceName =   [rs stringForColumn:@"name"];
+		s.surfaceName =   [rstext stringForColumn:@"name"];
 		s.equation =  [rs stringForColumn:@"equation"];
         
         NSLog(@"%@", s.equation);

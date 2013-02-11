@@ -223,11 +223,14 @@
 //--------------------------------------------------------------------------------------------------------
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if( [[[appcontroller getGalleries] objectAtIndex:indexPath.row] isEmpty] ){
+//    if( [[[appcontroller getGalleries] objectAtIndex:indexPath.row] isEmpty] ){
+    [[[appcontroller getGalleries] objectAtIndex:indexPath.row] surfacesNumber];
+    if([[[appcontroller getGalleries] objectAtIndex:indexPath.row] surfacesNumber] == 0){
         UIAlertView* emptygal =[[UIAlertView alloc]initWithTitle:@"Empty" message:@"The Gallery is Empty" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
         [emptygal show];
         [emptygal release];
     }
+//    }
     else{
         [appcontroller accesGallery:[indexPath row]];
     }

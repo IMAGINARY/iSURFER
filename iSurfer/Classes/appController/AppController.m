@@ -27,6 +27,8 @@
 
 -(id)initWithNavController:(UINavigationController*)aNavController{
 	if (self = [self init]) {
+        
+        [Language initialize];
 		
 		[self setNavcontroller:aNavController];
 		[self.navcontroller setDelegate:self];

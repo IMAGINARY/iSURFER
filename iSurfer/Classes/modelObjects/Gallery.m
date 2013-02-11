@@ -11,7 +11,7 @@
 
 @implementation Gallery
 //--------------------------------------------------------------------------------------------------------
-@synthesize galleryName, galleryDescription,  editable, galID, thumbNail, saved;
+@synthesize galleryName, galleryDescription, surfacesNumber, editable, galID, thumbNail, saved;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) init{	
