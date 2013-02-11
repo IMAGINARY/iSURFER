@@ -675,9 +675,38 @@ ivec2 oldLocation;
 	[self drawFrame];
 
 }
+-(void)initRotation:(NSMutableDictionary*)dic{
+    float x = [[dic valueForKey:@"x"]floatValue ];
+    float y = [[dic valueForKey:@"y"]floatValue ];
+    
+    oldLocation = ivec2(x, y);
+    m_applicationEngine->OnFingerDown(oldLocation);
+    
+    CGPoint location;
+    location.x = x;
+    location.y = y;
+    
+    
+    if(nil == self.trackBall) {
+        CGRect bounds = CGRectMake(110, 24, 364, 245	);
+        
+        self.trackBall = [TrackBall trackBallWithLocation:location inRect:bounds];
+    } else {
+        [self.trackBall setStartPointFromLocation:location];
+    }
+    
+    
+	NSLog(@"rotation start at x: %.2f    y:%.2f", x , y );
+    
+	[self drawFrame];
+
+}
+
 
 
 -(void)initRotationX:(float)x Y:(float)y{
+    
+      
     oldLocation = ivec2(x, y);
     m_applicationEngine->OnFingerDown(oldLocation);
     
@@ -698,6 +727,7 @@ ivec2 oldLocation;
 	NSLog(@"rotation start at x: %.2f    y:%.2f", x , y );
     
 	[self drawFrame];
+     
 }
 
 

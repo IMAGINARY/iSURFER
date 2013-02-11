@@ -153,6 +153,7 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
 
 	}
 	checkGLError( AT );
+    
     printf("frame drew\n");
     
 }

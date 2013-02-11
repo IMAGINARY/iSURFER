@@ -16,9 +16,10 @@
 #import <OpenGLES/ES2/glext.h>
 
 @class TrackBall;
-
+@class GoiSurferViewController;
 @interface iSurferViewController : UIViewController
 {
+    GoiSurferViewController* delegate;
     EAGLContext *context;
     GLuint program;
     IApplicationEngine* m_applicationEngine;

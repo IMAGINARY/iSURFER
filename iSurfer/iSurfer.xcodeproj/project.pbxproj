@@ -22,6 +22,7 @@
 		3308B17E1533EC87001E853F /* surfaceRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B1761533EC87001E853F /* surfaceRender.cpp */; };
 		338CE34015FABA6C00E8AA18 /* vs3.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 338CE33F15FABA6C00E8AA18 /* vs3.glsl */; };
 		3395689C168FEA4B002F5CCC /* yuidoc.json in Resources */ = {isa = PBXBuildFile; fileRef = 3395689B168FEA4A002F5CCC /* yuidoc.json */; };
+		5E0A32DB16C964AF00F32E77 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0A32DA16C964AF00F32E77 /* SVProgressHUD.m */; };
 		5EDA315515E2FD6400F7BC06 /* button-share.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA315315E2FD6400F7BC06 /* button-share.png */; };
 		5EDA315615E2FD6400F7BC06 /* button-share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA315415E2FD6400F7BC06 /* button-share@2x.png */; };
 		5EDA315915E2FD7F00F7BC06 /* button-galleries-not-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA315715E2FD7F00F7BC06 /* button-galleries-not-active.png */; };
@@ -136,6 +137,8 @@
 		3308B1771533EC87001E853F /* surfaceRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = surfaceRender.h; sourceTree = "<group>"; };
 		338CE33F15FABA6C00E8AA18 /* vs3.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vs3.glsl; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		3395689B168FEA4A002F5CCC /* yuidoc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = yuidoc.json; sourceTree = "<group>"; };
+		5E0A32D916C964AF00F32E77 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		5E0A32DA16C964AF00F32E77 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		5EDA315315E2FD6400F7BC06 /* button-share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-share.png"; sourceTree = "<group>"; };
 		5EDA315415E2FD6400F7BC06 /* button-share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-share@2x.png"; sourceTree = "<group>"; };
 		5EDA315715E2FD7F00F7BC06 /* button-galleries-not-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-galleries-not-active.png"; sourceTree = "<group>"; };
@@ -541,6 +544,8 @@
 		8B9114CE14BF861400BEAF27 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				5E0A32D916C964AF00F32E77 /* SVProgressHUD.h */,
+				5E0A32DA16C964AF00F32E77 /* SVProgressHUD.m */,
 				8B9114CF14BF862600BEAF27 /* Language.h */,
 				8B9114D014BF862600BEAF27 /* Language.m */,
 			);
@@ -841,6 +846,7 @@
 				3308B17E1533EC87001E853F /* surfaceRender.cpp in Sources */,
 				330252981537970900EA2425 /* TrackBall.m in Sources */,
 				8BF0D11115604E8E006E4085 /* ImageDescriptionViewController.m in Sources */,
+				5E0A32DB16C964AF00F32E77 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

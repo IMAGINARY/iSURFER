@@ -11,7 +11,7 @@
 #import "iSurferViewController.h"
 #import "EAGLView.h"
 #import "Interfaces.hpp"
-
+#import "SVProgressHUD.h"
 //--------------------------------------------------------------------------------------------------------
 @interface GoiSurferViewController(PrivateMethods)
 -(void)showOptionsViewWrapper:(BOOL)yes view:(UIView*)showingView;
@@ -115,8 +115,10 @@
 	[xpos setHidden:YES];
 	[ypos setHidden:YES];
 	algebraicsurfaceViewFrame = algebraicSurfaceView.frame;
-	
-//	[self performSelectorInBackground:@selector(doOpenGLMagic) withObject:nil];
+  //   [self 	doOpenGLMagic];
+
+	[SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
+	[self performSelectorInBackground:@selector(doOpenGLMagic) withObject:nil];
 }
 //--------------------------------------------------------------------------------------------------------
 
@@ -124,8 +126,21 @@
 	openglController = [[iSurferViewController alloc]init];
 	openglController.view = algebraicSurfaceView;
 	[openglController setupGLContxt];
-//	[openglController performSelectorInBackground:@selector(startAnimation) withObject:nil];
+//	[openglController performSelectorInBackground:@selector(startAnimation) withObject:nil];]
 	[openglController startAnimation];
+    [self performSelectorOnMainThread:@selector(dismissRosquet) withObject:nil waitUntilDone:NO];
+
+
+}
+
+-(void)dismissRosquet{
+    
+    [SVProgressHUD dismiss];
+    [self performSelector:@selector(setTemporalImage) withObject:nil afterDelay:0.5];
+}
+
+-(void)setTemporalImage{
+  //  temporalimgView.image = [algebraicSurfaceView saveImageFromGLView];
 
 }
 
@@ -171,7 +186,6 @@
 	switch (gestureRecognizer.state) {
 		case UIGestureRecognizerStateBegan:
 			NSLog(@"began");
-
 			temporalimgView.image = [self captureView:algebraicSurfaceView];
 
 			 f = CGRectMake(0, 24, 90, 70	);
@@ -201,8 +215,11 @@
 			[openglController endRotationX:p.x Y:p.y];
 			temporalimgView.image = [algebraicSurfaceView saveImageFromGLView];
 //			[openglController rotateX:p.x Y:p.y];
-
-			f = CGRectMake(0, 24, 364, 245	);
+            if( fullScreen){
+                f = CGRectMake(0, 0, 440, 320	);
+            }else{
+                f = CGRectMake(0, 24, 364, 245	);
+            }
 			algebraicSurfaceView.frame = f;
 
 			temporalimgView.hidden = YES;
@@ -274,17 +291,22 @@
 	
 	if(fullScreen){
 		fullScreen = NO;
-		[[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+	//	[[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 		layer.cornerRadius = 8;
 		[algebraicSurfaceView setFrame:algebraicsurfaceViewFrame];
 	//	[self.algebraicSurfaceView setFrame:CGRectMake(109, 7, 364, 258)];
 		zoomframe.origin.y = 27;
+        temporalimgView.frame = CGRectMake(0, 24, 364, 245);
+
 	}else{
 		fullScreen = YES;
 		[[UIApplication sharedApplication]setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 		layer.cornerRadius = 0;
-		[self.algebraicSurfaceView setFrame:CGRectMake(0, 0, 480, 320)];
+		[self.algebraicSurfaceView setFrame:FULL_SCREEN_SURFACE_FRAME];
 		zoomframe.origin.y = algebraicSurfaceView.frame.origin.y + 55;
+        temporalimgView.frame = CGRectMake(0, 0, 440, 320);
+
+
 	}
 	zoomframe.origin.x =   ZOOM_VIEW_X_POSITION;
 
@@ -295,7 +317,7 @@
 -(void)viewDidAppear:(BOOL)animated{
 	
 //	[self performSelectorInBackground:@selector(doOpenGLMagic) withObject:nil];
-	[self 	doOpenGLMagic];
+	//  [self 	doOpenGLMagic];
 	self.zoomSlider.value = 101.0 - [openglController zoom];
 
 	[super viewDidAppear:animated];
@@ -475,7 +497,7 @@
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
 	CGRect thisViewFrame = [baseView frame];	
-	thisViewFrame.origin.y = -20;
+	thisViewFrame.origin.y = 0;
 	[baseView setFrame:thisViewFrame];
 	[UIView commitAnimations];
 	[self showExtKeyboard:NO];
