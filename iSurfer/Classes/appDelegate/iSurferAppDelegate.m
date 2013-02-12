@@ -32,7 +32,8 @@
 	SplashScreenViewController* tmpSplash = [[SplashScreenViewController alloc]init];
 	[self.navcontroller pushViewController:tmpSplash animated:NO];
     [tmpSplash release];
-	[self.window addSubview:navcontroller.view];
+    [self.window setRootViewController:navcontroller];
+    
     [self.window makeKeyAndVisible];
 
     return YES;

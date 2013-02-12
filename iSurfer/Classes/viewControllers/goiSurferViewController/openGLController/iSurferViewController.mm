@@ -792,7 +792,7 @@ ivec2 oldLocation;
 	glFinish();
 	glPixelStorei(GL_PACK_ALIGNMENT, 4);
 	
-	glReadPixels(myRect.origin.x, myRect.origin.y, myRect.size.width, myRect.size.height, GL_RGB, GL_UNSIGNED_BYTE, buffer);
+	glReadPixels(myRect.origin.x, myRect.origin.y, myRect.size.width, myRect.size.height, GL_RGB, GL_UNSIGNED_INT, buffer);
 	
 	NSData* myImageData = [NSData dataWithBytesNoCopy:(unsigned char const **)&buffer length:myDataLength freeWhenDone:NO];
 	

@@ -56,6 +56,8 @@
 	iSurferViewController* openglController;
 
 	IBOutlet UIImageView* temporalimgView;
+    
+    NSArray* keyboardButtons;
 
 }
 

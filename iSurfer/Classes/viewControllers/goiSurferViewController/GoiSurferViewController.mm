@@ -39,7 +39,12 @@
 -(void)viewDidLoad{
 
 	[super viewDidLoad];
+    
+    keyboardButtons = [[NSArray alloc]initWithObjects:@"x", @"y",@"z",@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7", @"8",@"9",@"+",@"-",@"*",@"^2",@"^3",@"^",@"(",@")",@",",@"",nil];
 	//Color sliders conf
+    
+    equationTextField.inputView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
+
 	[optionsViews addObject:self.shareView];
 	[optionsViews addObject:self.colorPaletteView];
     [optionsViews addObject:settingsView];
@@ -140,7 +145,7 @@
 }
 
 -(void)setTemporalImage{
-  //  temporalimgView.image = [algebraicSurfaceView saveImageFromGLView];
+   temporalimgView.image = [algebraicSurfaceView snapshot];
 
 }
 
@@ -186,7 +191,8 @@
 	switch (gestureRecognizer.state) {
 		case UIGestureRecognizerStateBegan:
 			NSLog(@"began");
-			temporalimgView.image = [self captureView:algebraicSurfaceView];
+			//temporalimgView.image = [self captureView:algebraicSurfaceView];
+      //      temporalimgView.image = [algebraicSurfaceView snapshot];
 
 			 f = CGRectMake(0, 24, 90, 70	);
 			algebraicSurfaceView.frame = f;
@@ -205,15 +211,23 @@
 			ypos.text = [NSString stringWithFormat:@"y: %.2f", p.y];
 			[openglController rotateX:p.x Y:p.y];
 
-//			temporalimgView.image = [self captureView:algebraicSurfaceView];
+		//	temporalimgView.image = [self captureView:algebraicSurfaceView];
+         //   temporalimgView.image =[self imageWithView:algebraicSurfaceView];
 		//	temporalimgView.image = [openglController drawableToCGImage];
-			temporalimgView.image = [algebraicSurfaceView saveImageFromGLView];
+    //        temporalimgView.image = [algebraicSurfaceView snapUIImage];
+
+        //      temporalimgView.image = [self captureView:algebraicSurfaceView];
+       //     temporalimgView.image = [algebraicSurfaceView screenShotUIImage];
+       //     temporalimgView.image = [algebraicSurfaceView drawableToCGImage];
+
+
+            temporalimgView.image = [algebraicSurfaceView snapshot];
 
 			break;
 		case UIGestureRecognizerStateEnded:
 			NSLog(@"release");
 			[openglController endRotationX:p.x Y:p.y];
-			temporalimgView.image = [algebraicSurfaceView saveImageFromGLView];
+            temporalimgView.image = [algebraicSurfaceView snapshot];
 //			[openglController rotateX:p.x Y:p.y];
             if( fullScreen){
                 f = CGRectMake(0, 0, 440, 320	);
@@ -393,6 +407,7 @@
         openglController.m_applicationEngine->ChangeSurface(5);
 
     }
+    
 	[openglController generateSurface:self.equationTextField.text];
     
 }
@@ -435,9 +450,15 @@
 }
 
 //--------------------------------------------------------------------------------------------------------
--(void)doneButtonPressed{
-	[equationTextField resignFirstResponder];
-	//aca habria que hacer todo el validamiento de la ecuacion 
+-(IBAction)doneButtonPressed{
+    [equationTextField resignFirstResponder];
+    [self scrollViewTo:nil movePixels:0 baseView:self.baseView];
+    [self showExtKeyboard:NO];
+    [SVProgressHUD showWithStatus:@"Generando superficie..."];
+    [openglController generateSurface:self.equationTextField.text];
+    [SVProgressHUD dismiss];
+  //  [openglController performSelectorInBackground:@selector(generateSurface:) withObject: self.equationTextField.text];
+   	//aca habria que hacer todo el validamiento de la ecuacion 
  }
 //--------------------------------------------------------------------------------------------------------
 
@@ -505,15 +526,17 @@
 //--------------------------------------------------------------------------------------------------------
 
 - (void) keyboardDidHide: (NSNotification *) notification {
-	[openglController generateSurface:self.equationTextField.text];
+//	[openglController generateSurface:self.equationTextField.text];
 }
 
 //---------------------------------------------------------------------------------------------
 - (void) keyboardWillShow: (NSNotification *) notification {	
-	[self showOptionsViewWrapper:NO view:nil];
-	[self showExtKeyboard:YES];
+	//[self showOptionsViewWrapper:NO view:nil];
+//	[self showExtKeyboard:YES];
 }
 //--------------------------------------------------------------------------------------------------------
+
+/*
 
 - (void) keyboardDidShow: (NSNotification *) notification {	
 	
@@ -538,15 +561,29 @@
         }
     }
 }
+ 
+ */
 #pragma mark UITextfield delegate
 //--------------------------------------------------------------------------------------------------------
+-(IBAction)cancelKeyboard:(id)sender{
+    [self scrollViewTo:nil movePixels:0 baseView:self.baseView];
+	[self showExtKeyboard:NO];
+    [equationTextField resignFirstResponder];
+}
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-	[self scrollViewTo:equationTextfieldView movePixels:70 baseView:self.baseView];
+	[self scrollViewTo:equationTextfieldView movePixels:VIEW_SCROLL baseView:self.baseView];
+    [self showExtKeyboard:YES];
+    
+//    [textField setEditing:YES];
+    // [textField becomeFirstResponder];
   	return YES;
 }
 //--------------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
 	[equationTextField resignFirstResponder];
+    
+    [openglController performSelectorInBackground:@selector(enerateSurface:) withObject: self.equationTextField.text];
+
 	return YES;
 }
 //--------------------------------------------------------------------------------------------------------
@@ -574,7 +611,22 @@
     
     [appcontroller goToGalleries];
 }
-
+//--------------------------------------------------------------------------------------------------------
+-(IBAction)keyboardKeyTapped:(id)sender{
+    UIButton* keyboardButton = (UIButton*)sender;
+    switch (keyboardButton.tag) {
+            
+        case 30:
+            if(equationTextField.text.length > 0 )
+                equationTextField.text = [equationTextField.text substringToIndex:equationTextField.text.length -1];
+            break;
+            
+        default:
+            equationTextField.text = [equationTextField.text stringByAppendingString:[keyboardButtons objectAtIndex:keyboardButton.tag]];
+            break;
+    }
+}
+//--------------------------------------------------------------------------------------------------------
 
 -(void)dealloc{
 	[equationTextField release];

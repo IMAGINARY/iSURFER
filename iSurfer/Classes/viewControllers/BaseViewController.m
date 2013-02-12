@@ -190,4 +190,14 @@
 }
 //--------------------------------------------------------------------------------------------------------
 
+
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+- (BOOL)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskLandscape;
+}
 @end
