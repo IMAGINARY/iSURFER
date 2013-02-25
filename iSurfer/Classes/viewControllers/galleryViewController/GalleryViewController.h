@@ -13,7 +13,10 @@
 	Gallery* gallery;
 	IBOutlet UIScrollView* surfacesScrollView;
 	IBOutlet UIImageView* surfaceImage;
+    IBOutlet UIButton* descriptionButton;
+    IBOutlet UITextView* briefDescription;
 	IBOutlet UILabel* surfaceEquation;
+    IBOutlet UIButton* detailedDescription;
 
 	IBOutlet UITableView* surfacesTable;
 	
@@ -33,6 +36,9 @@
 @property(nonatomic, retain)	Gallery* gallery;
 @property(nonatomic, retain)	IBOutlet UIScrollView* surfacesScrollView;
 @property(nonatomic, retain)	IBOutlet UIImageView* surfaceImage;
+@property(nonatomic, retain)    IBOutlet UIButton* descriptionButton;
+@property(nonatomic, retain)    IBOutlet UIButton* detailedDescription;
+@property(nonatomic, retain)    IBOutlet UITextView* briefDescription;
 
 
 

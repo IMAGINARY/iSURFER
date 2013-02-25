@@ -9,12 +9,13 @@
 #import "GalleryViewController.h"
 #import "AlgebraicSurface.h"
 #import "SurfaceCellView.h"
+#import "ImageDescriptionViewController.h"
 
 #define BUTTON_SPACE 25.0
 
 @implementation GalleryViewController
 //--------------------------------------------------------------------------------------------------------
-@synthesize gallery, surfacesScrollView, surfaceImage, surfacesTable, toolbar, surfaceEquation;
+@synthesize gallery, surfacesScrollView, surfaceImage, surfacesTable, toolbar, surfaceEquation, briefDescription, descriptionButton, detailedDescription;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) initWithAppController:(AppController*)anappCtrl andGallery:(Gallery*)aGallery{
@@ -106,12 +107,51 @@
 -(void)viewWillAppear:(BOOL)animated{
 	if( ![gallery isEmpty]){
 		AlgebraicSurface* surface = [gallery getSurfaceAtIndex:0];
-		[self.surfaceImage setImage:[surface surfaceImage]];
+        UIImage * image = [UIImage imageNamed: @"Logo-twitter.png"];
+
+		[self.surfaceImage setImage:image];
+        
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
+        UITapGestureRecognizer *descriptionTapGestureRecognizer = [[UITapGestureRecognizer alloc]
+            initWithTarget:self action:@selector(descriptionTapHandler:)];
+        
+        //[self.surfaceImage addGestureRecognizer:tapGestureRecognizer];
+
 		[self.surfaceEquation setText:[surface equation]];
+        [self.briefDescription setText:surface.briefDescription];
+        [descriptionButton addGestureRecognizer:tapGestureRecognizer];
+        [detailedDescription addGestureRecognizer:descriptionTapGestureRecognizer];
+        NSLog(@"%@", surface.briefDescription);
         NSLog(@"En galleryviewController %@", surface.equation);
 		[super viewWillAppear:animated];
 	}
 }
+
+-(void)descriptionTapHandler: (UITapGestureRecognizer *)recognizer{
+    [self.navigationController pushViewController:self.appcontroller.imageDescriptionViewController animated:false];
+}
+
+//--------------------------------------------------------------------------------------------------------
+-(void)tapHandler: (UITapGestureRecognizer *)recognizer{
+/*    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Hello World!"
+                                                      message:@"This is your first UIAlertview message."
+                                                     delegate:nil
+                                            cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
+    
+      [message show];*/
+    //ImageDescriptionViewController* imageDescription = [[ImageDescriptionViewController alloc]initWithAppController:self.appcontroller];
+   // briefDescription.text = briefDescription.text +
+    briefDescription.hidden = !briefDescription.hidden;
+    detailedDescription.hidden = briefDescription.hidden;
+    surfaceEquation.hidden = !briefDescription.hidden;
+    if(briefDescription.hidden)
+        [descriptionButton setTitle:@"+" forState:UIControlStateNormal];
+    else
+        [descriptionButton setTitle:@"-" forState:UIControlStateNormal];
+//    [self.navigationController pushViewController:self.appcontroller.imageDescriptionViewController animated:false];
+}
+
 //--------------------------------------------------------------------------------------------------------
 -(void)stopEditting{
 	eddition = NONE;
