@@ -45,7 +45,7 @@
 
 -(void)setImageView
 {
-    UIImage * image = [UIImage imageNamed: @"Logo-twitter.png"];
+    UIImage * image = [UIImage imageNamed:surface.realImageName];
     [imageView setImage: image];
 }
 

@@ -260,11 +260,13 @@
         NSLog(@"%@", [rstext stringForColumn:@"completedescription"]);
         NSLog(@"%@", [rstext stringForColumn:@"name"]);
         NSLog(@"%@", [rs stringForColumn:@"equation"]);
+        NSLog(@"%@", [rs stringForColumn:@"realimage"]);
         
 		s.briefDescription =  [rstext stringForColumn:@"briefdescription"];
         s.completeDescription = [rstext stringForColumn:@"completedescription"];
 		s.surfaceName =   [rstext stringForColumn:@"name"];
 		s.equation =  [rs stringForColumn:@"equation"];
+        s.realImageName = [rs stringForColumn:@"realimage"];
         
         NSLog(@"%@", s.equation);
         NSLog(@"%@", s.briefDescription);

@@ -128,7 +128,7 @@
 }
 
 -(void)descriptionTapHandler: (UITapGestureRecognizer *)recognizer{
-    [self.navigationController pushViewController:self.appcontroller.imageDescriptionViewController animated:false];
+    [self.navigationController pushViewController:self.appcontroller.imageDescriptionViewController animated:true];
 }
 
 //--------------------------------------------------------------------------------------------------------
