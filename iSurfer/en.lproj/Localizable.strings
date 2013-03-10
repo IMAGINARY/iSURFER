@@ -1,17 +1,37 @@
-/* 
-  Localizable.strings
-  iSurfer
+/*
+ Localizable.strings
+ iSurfer
+ 
+ Created by Damian Modernell on 1/12/12.
+ Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+ */
 
-  Created by Damian Modernell on 1/12/12.
-  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-*/
-"scorekey" = "puto";
+/*Menu*/
+"MENU_COLOR" = "Color";
+"MENU_SHARE" = "Share";
+"MENU_SAVE" = "Save";
+"MENU_SETTINGS" = "Settings";
+"MENU_GALLERIES" = "Galleries";
+"MENU_RENDER" = "Render";
 
-"gal1Name" = "Tutorial";
-"gal2Name" = "Scientific";
+/*Common*/
+"BACK" = "Back";
+"GO" = "Go";
+"CANCEL" = "Cancel";
+"SAVE" = "Save";
 
-"gal1Desc" = "puto";
-"gal2Desc" = "puto";
+/*Menu color*/
+"RED" = "Red";
+"GREEN" = "Green";
+"BLUE" = "Blue";
 
+/*Menu save*/
+"SURFACE_NAME" = "Surface name";
+"SURFACE_DESCRIPTION" = "Surface description";
+"GALLERY" = "Gallery";
 
+/*Menu settings*/
 
+/*Menu galleries*/
+
+/*Menu render*/

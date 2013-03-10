@@ -10,6 +10,11 @@
 #import "BaseViewController.h"
 @class GoiSurferViewController;
 @interface SaveAlgebraicSurfaceViewController : BaseViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate>{
+    IBOutlet UILabel* surfaceNameLabel;
+    IBOutlet UILabel* surfaceDescriptionLabel;
+    IBOutlet UILabel* galleryLabel;
+    
+    
 	IBOutlet UIPickerView* galleryPicker;
 	IBOutlet UITextField* surfaceNameTextfield;
 	IBOutlet UITextView* surfaceDescriptionTextView;
@@ -19,6 +24,7 @@
 	IBOutlet UIView* dataWrapperView;
 	
 	IBOutlet UIBarButtonItem* saveButton;
+    IBOutlet UIBarButtonItem* cancelButton;
 	IBOutlet UINavigationItem* navBar;
 	
 	IBOutlet UINavigationBar* navigationBar;
@@ -33,8 +39,13 @@
 
 
 @property(nonatomic, retain)IBOutlet UIBarButtonItem* saveButton;
+@property(nonatomic, retain)IBOutlet UIBarButtonItem* cancelButton;
 
 @property(nonatomic, assign)IBOutlet     GoiSurferViewController* delegate;
+
+@property(nonatomic, assign)IBOutlet UILabel* surfaceNameLabel;
+@property(nonatomic, assign)IBOutlet UILabel* surfaceDescriptionLabel;
+@property(nonatomic, assign)IBOutlet UILabel* galleryLabel;
 
 
 @property(nonatomic, retain)IBOutlet UIView* dataWrapperView;

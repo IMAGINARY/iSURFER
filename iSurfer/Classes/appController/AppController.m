@@ -38,7 +38,6 @@
 		[tmpdb release];
 		
 		[dataBase openDB];
-        [Language initialize];
 
 		MyGalleriesViewController* tmpgal = [[MyGalleriesViewController alloc]initWithAppController:self ];
 		[self setMyGalleriesViewController:tmpgal];

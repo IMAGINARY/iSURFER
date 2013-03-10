@@ -12,7 +12,7 @@
 
 @implementation SaveAlgebraicSurfaceViewController
 //--------------------------------------------------------------------------------------------------------
-@synthesize galleryPicker, surfaceNameTextfield, surfaceDescriptionTextView, galleriesPickerButton, galleryNameLabel, pickerWrapperView, dataWrapperView, saveButton, navBar, delegate;
+@synthesize galleryPicker, surfaceNameTextfield, surfaceDescriptionTextView, galleriesPickerButton, galleryNameLabel, pickerWrapperView, dataWrapperView, saveButton, cancelButton, navBar, delegate, surfaceNameLabel, galleryLabel, surfaceDescriptionLabel;
 //--------------------------------------------------------------------------------------------------------
 -(id) initWithAppController:(AppController*)anappCtrl{
 	
@@ -41,7 +41,18 @@
     [surfaceDescriptionTextView.layer setBorderWidth: 1.0];
     [surfaceDescriptionTextView.layer setCornerRadius:8.0f];
     [surfaceDescriptionTextView.layer setMasksToBounds:YES];
+    
+    [self localize];
+    
 	[super viewDidLoad];
+}
+
+-(void)localize{
+    [surfaceNameLabel setText:NSLocalizedString(@"SURFACE_NAME", nil)];
+    [surfaceDescriptionLabel setText:NSLocalizedString(@"SURFACE_DESCRIPTION", nil)];
+    [galleryLabel setText:NSLocalizedString(@"GALLERY", nil)];
+    [saveButton setTitle:NSLocalizedString(@"SAVE", nil)];
+    [cancelButton setTitle:NSLocalizedString(@"CANCEL", nil)];
 }
 //--------------------------------------------------------------------------------------------------------
 
@@ -142,6 +153,9 @@
 	[saveButton release];
 	[navBar release];
     [editableGalleries release];
+    [surfaceNameLabel release];
+    [surfaceDescriptionLabel release];
+    [galleryLabel release];
 	[super dealloc];
 }
 //--------------------------------------------------------------------------------------------------------

@@ -36,7 +36,12 @@
 	
 	IBOutlet UIImageView* rotateimage;
 	
-	IBOutlet UIButton* saveButton;
+    IBOutlet UIButton* colorButton;
+    IBOutlet UIButton* shareButton;
+    IBOutlet UIButton* saveButton;
+    IBOutlet UIButton* settingsButton;
+    IBOutlet UIButton* galleriesButton;
+    IBOutlet UIButton* renderButton;
 	
 	//Zoom view
 	IBOutlet UIView* zoomView;
@@ -65,8 +70,13 @@
 
 
 @property(nonatomic, retain)	IBOutlet UIView* zoomView;
-@property(nonatomic, retain)	 UISlider* zoomSlider;
+@property(nonatomic, retain)	UISlider* zoomSlider;
+@property(nonatomic, retain)    IBOutlet UIButton* colorButton;
+@property(nonatomic, retain)    IBOutlet UIButton* shareButton;
 @property(nonatomic, retain)	IBOutlet UIButton* saveButton;
+@property(nonatomic, retain)    IBOutlet UIButton* settingsButton;
+@property(nonatomic, retain)    IBOutlet UIButton* galleriesButton;
+@property(nonatomic, retain)    IBOutlet UIButton* renderButton;
 @property(nonatomic, retain)	IBOutlet UIImageView* rotateimage;
 @property(nonatomic, retain)	IBOutlet UIView* equationTextfieldView;
 @property(nonatomic, retain)	IBOutlet UIView* algebraicSurfaceView;

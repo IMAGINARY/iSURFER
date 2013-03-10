@@ -6,18 +6,33 @@
    Copyright 2011 __MyCompanyName__. All rights reserved.
  */
 
-"gal1Name" = "Tutorial";
-"gal2Name" = "Cientificas";
+/*Menu*/
+"MENU_COLOR" = "Color";
+"MENU_SHARE" = "Compartir";
+"MENU_SAVE" = "Grabar";
+"MENU_SETTINGS" = "Preferencias";
+"MENU_GALLERIES" = "Gallerías";
+"MENU_RENDER" = "Render";
 
-"surf1Name" = "Zitrus";
-"surf1Desc" = "Esta figura es un modelo matemático que nos ayuda a entender mejor las propiedades de la forma que tiene el limón.";
+/*Common*/
+"BACK" = "Atrás";
+"GO" = "Ya";
+"CANCEL" = "Cancelar";
+"SAVE" = "Grabar";
 
-"surf2Name" = "Nepali";
-"surf2Desc" = "¿Podemos encontrar un modo de nombrar las figuras que nunca lleve a confusión? Las matemáticas lo han resuelto al nombrarlas por su ecuación. Las ecuaciones se escriben y se interpretan de la misma forma en todo el mundo porque el lenguaje de las matemáticas es universal, como las partituras musicales.";
+/*Menu color*/
+"RED" = "Rojo";
+"GREEN" = "Verde";
+"BLUE" = "Azul";
 
+/*Menu save*/
+"SURFACE_NAME" = "Nombre de superficie:";
+"SURFACE_DESCRIPTION" = "Descripción de superficie:";
+"GALLERY" = "Galería:";
 
-"surf3Name" = "Zitrus";
+/*Menu settings*/
 
+/*Menu galleries*/
 
+/*Menu render*/
 
-"gal2Desc" = "puto";

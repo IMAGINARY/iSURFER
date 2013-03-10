@@ -20,7 +20,7 @@
 @implementation GoiSurferViewController
 //--------------------------------------------------------------------------------------------------------
 @synthesize equationTextField, keyboardExtensionBar, baseView, colorPaletteView, shareView, optionsViews, colorTestView, greenColorSlider, redColorSlider, blueColorSlider;
-@synthesize algebraicSurfaceView, equationTextfieldView,rotateimage, colorButton, shareButton, saveButton, galleriesButton, settingsButton, renderButton, zoomSlider, zoomView, algebraicSurface, temporalimgView;
+@synthesize algebraicSurfaceView, equationTextfieldView,rotateimage, saveButton, colorButton, shareButton, settingsButton, renderButton, galleriesButton, zoomSlider, zoomView, algebraicSurface, temporalimgView;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) initWithAppController:(AppController*)anappCtrl andAlgebraicSurface:(AlgebraicSurface*)surface{
@@ -35,6 +35,7 @@
 	return self;
 }
 //--------------------------------------------------------------------------------------------------------
+
 -(void)viewDidLoad{
 
 	[super viewDidLoad];
@@ -42,7 +43,7 @@
     keyboardButtons = [[NSArray alloc]initWithObjects:@"x", @"y",@"z",@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7", @"8",@"9",@"+",@"-",@"*",@"^2",@"^3",@"^",@"(",@")",@",",@"",nil];
 	//Color sliders conf
     
-    [self localize];
+    //colorButton.titleLabel = @"PEPE";
     
     equationTextField.inputView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
 
@@ -123,15 +124,6 @@
 
 	[SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
 	[self performSelectorInBackground:@selector(doOpenGLMagic) withObject:nil];
-}
-
-- (void) localize{
-    [colorButton setTitle: NSLocalizedString(@"MENU_COLOR", nil) forState:UIControlStateNormal];
-    [shareButton setTitle:NSLocalizedString(@"MENU_SHARE", nil) forState:UIControlStateNormal];
-    [saveButton setTitle:NSLocalizedString(@"MENU_SAVE", nil) forState:UIControlStateNormal];
-    [galleriesButton setTitle:NSLocalizedString(@"MENU_GALLERIES", nil) forState:UIControlStateNormal];
-    [settingsButton setTitle:NSLocalizedString(@"MENU_SETTINGS", nil) forState:UIControlStateNormal];
-    [renderButton setTitle:NSLocalizedString(@"MENU_RENDER", nil) forState:UIControlStateNormal];
 }
 //--------------------------------------------------------------------------------------------------------
 
@@ -368,7 +360,7 @@
 
 #pragma mark buttons actions
 //--------------------------------------------------------------------------------------------------------
-- (IBAction)sliderChanged:(id)sender { 
+- (IBAction)sliderChanged:(id)sender {
 	UISlider *slider = (UISlider *)sender;
 	switch (slider.tag) {
 		case 1:
@@ -656,12 +648,6 @@
 	[algebraicSurface release];
 	[openglController release];
     [temporalimgView release];
-    [colorButton release];
-    [shareButton release];
-    [saveButton release];
-    [galleriesButton release];
-    [settingsButton release];
-    [renderButton release];
 	[super dealloc];
 }
 //---------------------------------------------------------------------------------------------
