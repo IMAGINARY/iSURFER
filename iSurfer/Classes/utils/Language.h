@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface Language : NSObject {
 
 }
@@ -17,5 +16,6 @@
 +(void)setLanguage:(NSString *)l;
 +(NSString *)get:(NSString *)key alter:(NSString *)alternate;
 +(NSString*)getCurrentLang;
++(int) getLanguageIndex;
 
 @end

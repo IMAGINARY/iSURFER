@@ -176,10 +176,14 @@
 	
 		g.galID = [rs intForColumn:@"id"];
         
-        NSString * lang = [Language getCurrentLang];
+        int lang = [Language getLanguageIndex];
         
         //Only objects are used as query arguments
-        FMResultSet *rstext = [db executeQuery:@"select name, description from galleriestexts where language = 0 and galleryid = ?", [NSNumber numberWithInt:g.galID]];
+        NSString * query = [NSString stringWithFormat:@"%@%i%@%i", @"select name, description from galleriestexts where language = ", [Language getLanguageIndex], @" and galleryid = ", [NSNumber numberWithInt:g.galID].intValue];
+        
+        FMResultSet *rstext = [db executeQuery:query];
+
+//        FMResultSet *rstext = [db executeQuery:@"select name, description from galleriestexts where language = ? and galleryid = ?", [Language getLanguageIndex], [NSNumber numberWithInt:g.galID]];
         
         FMResultSet * count = [db executeQuery:@"SELECT count(*) as surfaces FROM surfaces WHERE galleryid = ? GROUP BY galleryid", [NSNumber numberWithInt:g.galID]];
         
@@ -247,7 +251,9 @@
         
         s.surfaceID = [rs intForColumn:@"id"];
         
-        FMResultSet *rstext = [db executeQuery:@"select name, briefdescription, completedescription from surfacestexts where language = 0 and surfaceid = ?", [NSNumber numberWithInt:s.surfaceID]];
+        NSString * query = [NSString stringWithFormat:@"%@%i%@%i", @"select name, briefdescription, completedescription from surfacestexts where language = ", [Language getLanguageIndex], @" and surfaceid = ", [NSNumber numberWithInt:s.surfaceID].intValue];
+        
+        FMResultSet *rstext = [db executeQuery:query];
         
         [rstext next];
         

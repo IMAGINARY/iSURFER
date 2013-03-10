@@ -45,5 +45,10 @@ static NSString* lang = nil;
 	return lang;
 }
 //---------------------------------------------------------------------------------------------
++(int) getLanguageIndex{
+    if([lang isEqualToString: @"es"])
+        return 1;
+    return 0;
+}
 
 @end
