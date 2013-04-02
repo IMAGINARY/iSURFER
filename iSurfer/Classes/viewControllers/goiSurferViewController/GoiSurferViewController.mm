@@ -45,9 +45,13 @@
     [self localize];
     
     equationTextField.inputView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-
+    
+    colorpalette = [[FCColorPickerViewController alloc]initWithNibName:@"FCColorPickerViewController" bundle:[NSBundle mainBundle]];
+    colorpalette.delegate = self;
+    colorpalette.view.frame = CGRectMake(100, 0, 320, 320 );
+    
 	[optionsViews addObject:self.shareView];
-	[optionsViews addObject:self.colorPaletteView];
+	[optionsViews addObject:colorpalette.view];
     [optionsViews addObject:settingsView];
     
 	[self.shareView setHidden:YES];
@@ -121,7 +125,9 @@
 	algebraicsurfaceViewFrame = algebraicSurfaceView.frame;
   //   [self 	doOpenGLMagic];
 
-	//[SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
+    
+  
+
 	[self performSelectorInBackground:@selector(doOpenGLMagic) withObject:nil];
 }
 
@@ -136,10 +142,13 @@
 //--------------------------------------------------------------------------------------------------------
 
 -(void)doOpenGLMagic{
+    lv = [LoadingView loadingView:@"Generando superficie..."];
+    [self.view addSubview:lv];
+
 	openglController = [[iSurferViewController alloc]init];
 	openglController.view = algebraicSurfaceView;
 	[openglController setupGLContxt];
-//	[openglController performSelectorInBackground:@selector(startAnimation) withObject:nil];]
+  //	[openglController performSelectorInBackground:@selector(startAnimation) withObject:nil];]
 	[openglController startAnimation];
     [self performSelectorOnMainThread:@selector(dismissRosquet) withObject:nil waitUntilDone:NO];
 
@@ -148,7 +157,7 @@
 
 -(void)dismissRosquet{
     
- //   [SVProgressHUD dismiss];
+    [self removeLoadingView];
     [self performSelector:@selector(setTemporalImage) withObject:nil afterDelay:0.5];
 }
 
@@ -428,7 +437,9 @@
 			[self showOptionsViewWrapper:YES view:shareView];
 			break;
 		case 2:
-			[self showOptionsViewWrapper:YES view:colorPaletteView];
+            [self.view addSubview:colorpalette.view];
+
+			[self showOptionsViewWrapper:YES view:colorpalette.view];
 			break;
         case 3:
             [self showOptionsViewWrapper:YES view:settingsView];
@@ -436,6 +447,17 @@
 		default:
 			break;
 	}
+}
+
+- (void)colorPickerViewController:(FCColorPickerViewController *)colorPicker didSelectColor:(UIColor *)color{
+    const float* colors = CGColorGetComponents( color.CGColor );
+    [openglController setSurfaceColorRed:colors[0] Green:colors[1] Blue:colors[2]];
+	[self showOptionsViewWrapper:NO view:colorPicker.view];
+    [colorpalette.view removeFromSuperview];
+}
+- (void)colorPickerViewControllerDidCancel:(FCColorPickerViewController *)colorPicker{
+    [self showOptionsViewWrapper:NO view:colorPicker.view];
+    [colorpalette.view removeFromSuperview];
 }
 //--------------------------------------------------------------------------------------------------------
 -(IBAction)hideOptions:(id)sender{
@@ -457,22 +479,31 @@
 	self.equationTextField.text = [equationTextField.text stringByAppendingString:@"-"];
 }
 
+-(void)removeLoadingView{
+    if( lv != NULL){
+        [lv removeFromSuperview];
+        lv = nil;
+    }
+}
+
 -(void)doSurfaceGeneration{
     
     [openglController generateSurface:self.equationTextField.text];
- //   [SVProgressHUD dismiss];
-
+    [self removeLoadingView];
 }
 //--------------------------------------------------------------------------------------------------------
 -(IBAction)doneButtonPressed{
     [equationTextField resignFirstResponder];
     [self scrollViewTo:nil movePixels:0 baseView:self.baseView];
     [self showExtKeyboard:NO];
-    if( ![currentEquation isEqualToString:equationTextField.text]){
+    if( currentEquation != NULL && ![currentEquation isEqualToString:equationTextField.text]){
 //        [SVProgressHUD showWithStatus:@"Generando superficie..."];
+        lv = [LoadingView loadingView:@"Generando superficie..."];
+        [self.view addSubview:lv];
+
         [self performSelector:@selector(doSurfaceGeneration) withObject:nil afterDelay:0.5];
     }
-    currentEquation = self.equationTextField.text;
+    currentEquation = [self.equationTextField.text copy];
     
    
   //  [openglController performSelectorInBackground:@selector(generateSurface:) withObject: self.equationTextField.text];

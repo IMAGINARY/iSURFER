@@ -8,10 +8,12 @@
 
 #import "BaseViewController.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "LoadingView.h"
+#import "FCColorPickerViewController.h"
 @class iSurferViewController;
 @class EAGLView;
-@interface GoiSurferViewController : BaseViewController <UITextFieldDelegate, UIGestureRecognizerDelegate>{
+@class FCColorPickerViewController;
+@interface GoiSurferViewController : BaseViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, ColorPickerViewControllerDelegate>{
 	NSMutableArray* optionsViews;
 	
 	//main view
@@ -64,7 +66,10 @@
     
     NSArray* keyboardButtons;
     NSString* currentEquation;
+    
+    LoadingView * lv;
 
+    FCColorPickerViewController* colorpalette;
 }
 
 @property(nonatomic, retain)	AlgebraicSurface* algebraicSurface;

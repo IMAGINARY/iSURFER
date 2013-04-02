@@ -121,6 +121,18 @@
 		5EDA316515E2FF0200F7BC06 /* button-settings-not-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA316315E2FF0200F7BC06 /* button-settings-not-active.png */; };
 		5EDA316615E2FF0200F7BC06 /* button-settings-not-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA316415E2FF0200F7BC06 /* button-settings-not-active@2x.png */; };
 		5EDA316815E3016400F7BC06 /* button-save.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA316715E3016400F7BC06 /* button-save.png */; };
+		5EE60FBB170B455100E323A8 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE60FBA170B455100E323A8 /* LoadingView.m */; };
+		5EE60FCF170B533900E323A8 /* bar_select.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EE60FCA170B533900E323A8 /* bar_select.png */; };
+		5EE60FD0170B533900E323A8 /* bar_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EE60FCB170B533900E323A8 /* bar_select@2x.png */; };
+		5EE60FD1170B533900E323A8 /* colormap.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EE60FCC170B533900E323A8 /* colormap.png */; };
+		5EE60FD2170B533900E323A8 /* crosshair.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EE60FCD170B533900E323A8 /* crosshair.png */; };
+		5EE60FD3170B533900E323A8 /* crosshair@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EE60FCE170B533900E323A8 /* crosshair@2x.png */; };
+		5EE6100A170B6C8E00E323A8 /* UIColor-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE61007170B6C8E00E323A8 /* UIColor-Expanded.m */; };
+		5EE6100B170B6C8E00E323A8 /* UIColor-HSVAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE61009170B6C8E00E323A8 /* UIColor-HSVAdditions.m */; };
+		5EE61013170B6C9C00E323A8 /* FCBrightDarkGradView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE6100D170B6C9C00E323A8 /* FCBrightDarkGradView.m */; };
+		5EE61014170B6C9C00E323A8 /* FCColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE6100F170B6C9C00E323A8 /* FCColorPickerViewController.m */; };
+		5EE61015170B6C9C00E323A8 /* FCColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EE61010170B6C9C00E323A8 /* FCColorPickerViewController.xib */; };
+		5EE61016170B6C9C00E323A8 /* FCColorSwatchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE61012170B6C9C00E323A8 /* FCColorSwatchView.m */; };
 		8B29F94A13D3A20E00EDB516 /* AddNewGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B29F94813D3A20E00EDB516 /* AddNewGalleryViewController.m */; };
 		8B29F94B13D3A20E00EDB516 /* AddNewGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B29F94913D3A20E00EDB516 /* AddNewGalleryViewController.xib */; };
 		8B29F98713D3C6BE00EDB516 /* Gallery.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B29F98613D3C6BE00EDB516 /* Gallery.m */; };
@@ -324,6 +336,24 @@
 		5EDA316315E2FF0200F7BC06 /* button-settings-not-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-settings-not-active.png"; sourceTree = "<group>"; };
 		5EDA316415E2FF0200F7BC06 /* button-settings-not-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-settings-not-active@2x.png"; sourceTree = "<group>"; };
 		5EDA316715E3016400F7BC06 /* button-save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-save.png"; sourceTree = "<group>"; };
+		5EE60FB9170B455100E323A8 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		5EE60FBA170B455100E323A8 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
+		5EE60FCA170B533900E323A8 /* bar_select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar_select.png; sourceTree = "<group>"; };
+		5EE60FCB170B533900E323A8 /* bar_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar_select@2x.png"; sourceTree = "<group>"; };
+		5EE60FCC170B533900E323A8 /* colormap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colormap.png; sourceTree = "<group>"; };
+		5EE60FCD170B533900E323A8 /* crosshair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crosshair.png; sourceTree = "<group>"; };
+		5EE60FCE170B533900E323A8 /* crosshair@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "crosshair@2x.png"; sourceTree = "<group>"; };
+		5EE61006170B6C8E00E323A8 /* UIColor-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor-Expanded.h"; sourceTree = "<group>"; };
+		5EE61007170B6C8E00E323A8 /* UIColor-Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor-Expanded.m"; sourceTree = "<group>"; };
+		5EE61008170B6C8E00E323A8 /* UIColor-HSVAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor-HSVAdditions.h"; sourceTree = "<group>"; };
+		5EE61009170B6C8E00E323A8 /* UIColor-HSVAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor-HSVAdditions.m"; sourceTree = "<group>"; };
+		5EE6100C170B6C9C00E323A8 /* FCBrightDarkGradView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCBrightDarkGradView.h; sourceTree = "<group>"; };
+		5EE6100D170B6C9C00E323A8 /* FCBrightDarkGradView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCBrightDarkGradView.m; sourceTree = "<group>"; };
+		5EE6100E170B6C9C00E323A8 /* FCColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCColorPickerViewController.h; sourceTree = "<group>"; };
+		5EE6100F170B6C9C00E323A8 /* FCColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCColorPickerViewController.m; sourceTree = "<group>"; };
+		5EE61010170B6C9C00E323A8 /* FCColorPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FCColorPickerViewController.xib; sourceTree = "<group>"; };
+		5EE61011170B6C9C00E323A8 /* FCColorSwatchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCColorSwatchView.h; sourceTree = "<group>"; };
+		5EE61012170B6C9C00E323A8 /* FCColorSwatchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCColorSwatchView.m; sourceTree = "<group>"; };
 		8B29F94713D3A20E00EDB516 /* AddNewGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewGalleryViewController.h; sourceTree = "<group>"; };
 		8B29F94813D3A20E00EDB516 /* AddNewGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewGalleryViewController.m; sourceTree = "<group>"; };
 		8B29F94913D3A20E00EDB516 /* AddNewGalleryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewGalleryViewController.xib; sourceTree = "<group>"; };
@@ -670,6 +700,53 @@
 			path = mainScreen;
 			sourceTree = "<group>";
 		};
+		5EE60FBC170B52D100E323A8 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				5EE6100C170B6C9C00E323A8 /* FCBrightDarkGradView.h */,
+				5EE6100D170B6C9C00E323A8 /* FCBrightDarkGradView.m */,
+				5EE6100E170B6C9C00E323A8 /* FCColorPickerViewController.h */,
+				5EE6100F170B6C9C00E323A8 /* FCColorPickerViewController.m */,
+				5EE61010170B6C9C00E323A8 /* FCColorPickerViewController.xib */,
+				5EE61011170B6C9C00E323A8 /* FCColorSwatchView.h */,
+				5EE61012170B6C9C00E323A8 /* FCColorSwatchView.m */,
+				5EE60FC9170B533900E323A8 /* Resources */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+		5EE60FBD170B52DC00E323A8 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				5EE60FF6170B5EB200E323A8 /* UIColor */,
+				5EE60FBC170B52D100E323A8 /* utils */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		5EE60FC9170B533900E323A8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5EE60FCA170B533900E323A8 /* bar_select.png */,
+				5EE60FCB170B533900E323A8 /* bar_select@2x.png */,
+				5EE60FCC170B533900E323A8 /* colormap.png */,
+				5EE60FCD170B533900E323A8 /* crosshair.png */,
+				5EE60FCE170B533900E323A8 /* crosshair@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5EE60FF6170B5EB200E323A8 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				5EE61006170B6C8E00E323A8 /* UIColor-Expanded.h */,
+				5EE61007170B6C8E00E323A8 /* UIColor-Expanded.m */,
+				5EE61008170B6C8E00E323A8 /* UIColor-HSVAdditions.h */,
+				5EE61009170B6C8E00E323A8 /* UIColor-HSVAdditions.m */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
 		8B29F94613D3A20E00EDB516 /* addGalleryViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -816,6 +893,9 @@
 		8B9114CE14BF861400BEAF27 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				5EE60FBD170B52DC00E323A8 /* New Group */,
+				5EE60FB9170B455100E323A8 /* LoadingView.h */,
+				5EE60FBA170B455100E323A8 /* LoadingView.m */,
 				8B9114CF14BF862600BEAF27 /* Language.h */,
 				8B9114D014BF862600BEAF27 /* Language.m */,
 			);
@@ -1153,6 +1233,12 @@
 				5E0A338916C9870B00F32E77 /* standard-controls@2x.png in Resources */,
 				5E0A338A16C9870B00F32E77 /* startscreen.png in Resources */,
 				5E0A338B16C9870B00F32E77 /* startscreen@2x.png in Resources */,
+				5EE60FCF170B533900E323A8 /* bar_select.png in Resources */,
+				5EE60FD0170B533900E323A8 /* bar_select@2x.png in Resources */,
+				5EE60FD1170B533900E323A8 /* colormap.png in Resources */,
+				5EE60FD2170B533900E323A8 /* crosshair.png in Resources */,
+				5EE60FD3170B533900E323A8 /* crosshair@2x.png in Resources */,
+				5EE61015170B6C9C00E323A8 /* FCColorPickerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1204,6 +1290,12 @@
 				330252981537970900EA2425 /* TrackBall.m in Sources */,
 				8BF0D11115604E8E006E4085 /* ImageDescriptionViewController.m in Sources */,
 				5EC1898E16C9ACB6006AA0AA /* UINavigationController+rotate.m in Sources */,
+				5EE60FBB170B455100E323A8 /* LoadingView.m in Sources */,
+				5EE6100A170B6C8E00E323A8 /* UIColor-Expanded.m in Sources */,
+				5EE6100B170B6C8E00E323A8 /* UIColor-HSVAdditions.m in Sources */,
+				5EE61013170B6C9C00E323A8 /* FCBrightDarkGradView.m in Sources */,
+				5EE61014170B6C9C00E323A8 /* FCColorPickerViewController.m in Sources */,
+				5EE61016170B6C9C00E323A8 /* FCColorSwatchView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
