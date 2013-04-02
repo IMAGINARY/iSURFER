@@ -153,9 +153,6 @@
 	[saveButton release];
 	[navBar release];
     [editableGalleries release];
-    [surfaceNameLabel release];
-    [surfaceDescriptionLabel release];
-    [galleryLabel release];
 	[super dealloc];
 }
 //--------------------------------------------------------------------------------------------------------

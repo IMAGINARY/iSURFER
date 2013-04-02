@@ -11,7 +11,7 @@
 #import "iSurferViewController.h"
 #import "EAGLView.h"
 #import "Interfaces.hpp"
-#import "SVProgressHUD.h"
+//#import "SVProgressHUD.h"
 //--------------------------------------------------------------------------------------------------------
 @interface GoiSurferViewController(PrivateMethods)
 -(void)showOptionsViewWrapper:(BOOL)yes view:(UIView*)showingView;
@@ -121,7 +121,7 @@
 	algebraicsurfaceViewFrame = algebraicSurfaceView.frame;
   //   [self 	doOpenGLMagic];
 
-	[SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
+	//[SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
 	[self performSelectorInBackground:@selector(doOpenGLMagic) withObject:nil];
 }
 
@@ -148,7 +148,7 @@
 
 -(void)dismissRosquet{
     
-    [SVProgressHUD dismiss];
+ //   [SVProgressHUD dismiss];
     [self performSelector:@selector(setTemporalImage) withObject:nil afterDelay:0.5];
 }
 
@@ -457,14 +457,24 @@
 	self.equationTextField.text = [equationTextField.text stringByAppendingString:@"-"];
 }
 
+-(void)doSurfaceGeneration{
+    
+    [openglController generateSurface:self.equationTextField.text];
+ //   [SVProgressHUD dismiss];
+
+}
 //--------------------------------------------------------------------------------------------------------
 -(IBAction)doneButtonPressed{
     [equationTextField resignFirstResponder];
     [self scrollViewTo:nil movePixels:0 baseView:self.baseView];
     [self showExtKeyboard:NO];
-    [SVProgressHUD showWithStatus:@"Generando superficie..."];
-    [openglController generateSurface:self.equationTextField.text];
-    [SVProgressHUD dismiss];
+    if( ![currentEquation isEqualToString:equationTextField.text]){
+//        [SVProgressHUD showWithStatus:@"Generando superficie..."];
+        [self performSelector:@selector(doSurfaceGeneration) withObject:nil afterDelay:0.5];
+    }
+    currentEquation = self.equationTextField.text;
+    
+   
   //  [openglController performSelectorInBackground:@selector(generateSurface:) withObject: self.equationTextField.text];
    	//aca habria que hacer todo el validamiento de la ecuacion 
  }

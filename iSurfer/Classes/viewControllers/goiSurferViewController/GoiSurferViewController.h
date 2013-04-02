@@ -63,6 +63,7 @@
 	IBOutlet UIImageView* temporalimgView;
     
     NSArray* keyboardButtons;
+    NSString* currentEquation;
 
 }
 
