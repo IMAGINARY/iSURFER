@@ -265,7 +265,7 @@
 
 -(UIImage*)getSurfaceImage{
     
-    return [algebraicSurfaceView saveImageFromGLView];
+    return [algebraicSurfaceView snapshot];
 }
 //--------------------------------------------------------------------------------------------------------
 

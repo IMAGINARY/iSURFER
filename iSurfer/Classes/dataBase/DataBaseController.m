@@ -87,7 +87,7 @@
     
     */
     
-	[db executeUpdate:@"insert into surfaces(equation, image, galleryid) values(?, ?, ?, ?)",	
+	[db executeUpdate:@"insert into surfaces(equation, image, galleryid) values(?, ?, ?)",	
 	 surface.equation,
 	 imgdata,
 	 [NSNumber numberWithInt:gal.galID]];
@@ -100,12 +100,11 @@
     surface.surfaceID = serial;
     [db commit];
 
-    [db executeUpdate:@"insert into surfacestexts (surfaceid, name, briefdescription, completedescription, language) values (?, ?, ?, ?, ?)",
+    [db executeUpdate:@"insert into surfacestexts (surfaceid, name, briefdescription, completedescription) values (?, ?, ?, ?)",
      [NSNumber numberWithInt:surface.surfaceID],
      surface.surfaceName,
      surface.briefDescription,
-     surface.completeDescription,
-     [NSNumber numberWithInt:1]];
+     surface.completeDescription];
 //	FMDBQuickCheck([db hadError]);
     
     if ([db hadError]) {
@@ -141,17 +140,18 @@
         NSLog(@"Err %d: %@", [db lastErrorCode], [db lastErrorMessage]);
     }
     
+//    [db commit];
+    
     FMResultSet *rs =[db executeQuery:@"select max(id) as serial from galleries"];
     [rs next];
     int serial = [rs intForColumn:@"serial"];
     gallery.galID = serial;
     
+    //NSString * query = [NSString stringWithFormat:@"%@%i%@%@%@%@%@", @"insert into galleriestexts (galleryid, name, description) values(", [NSNumber numberWithInt:gallery.galID].intValue, @",", gallery.galleryName, @",", gallery.galleryDescription, @")"];
+    
     //NSLog(@"%d@", db.lastInsertRowId);
-    [db executeUpdate:@"insert into galleriestexts (galleryid, name, description, language) values (?, ?, ?, ?)",
-     [NSNumber numberWithInt:gallery.galID],
-     gallery.galleryName,
-     gallery.galleryDescription,
-     [NSNumber numberWithInt: 1]];
+    //[db executeQuery:query];
+    [db executeUpdate:@"insert into galleriestexts (galleryid, name, description) values (?, ?, ?)",[NSNumber numberWithInt:gallery.galID], gallery.galleryName, gallery.galleryDescription];
 //	FMDBQuickCheck([db hadError]);
     
     if ([db hadError]) {
@@ -179,7 +179,8 @@
         int lang = [Language getLanguageIndex];
         
         //Only objects are used as query arguments
-        NSString * query = [NSString stringWithFormat:@"%@%i%@%i", @"select name, description from galleriestexts where language = ", [Language getLanguageIndex], @" and galleryid = ", [NSNumber numberWithInt:g.galID].intValue];
+        
+        NSString * query = [NSString stringWithFormat:@"%@%i%@%i", @"select name, description from galleriestexts where language is null or language = ", [Language getLanguageIndex], @" and galleryid = ", [NSNumber numberWithInt:g.galID].intValue];
         
         FMResultSet *rstext = [db executeQuery:query];
 
@@ -195,6 +196,7 @@
 		g.galleryName = [rstext stringForColumn:@"name"];
 		g.galleryDescription =  [rstext stringForColumn:@"description"];
         
+        NSLog(@"surfacesNumber %i", g.surfacesNumber);
         NSLog(@"galleryName %@", g.galleryName);
         NSLog(@"galleryDescription %@", g.galleryDescription);
         
@@ -262,11 +264,11 @@
 		s.surfaceImage = [UIImage imageWithData:[rs dataForColumn:@"image"]];
         NSLog(@" %@",[s.surfaceImage description] );
         
-        NSLog(@"%@", [rstext stringForColumn:@"briefdescription"]);
-        NSLog(@"%@", [rstext stringForColumn:@"completedescription"]);
-        NSLog(@"%@", [rstext stringForColumn:@"name"]);
-        NSLog(@"%@", [rs stringForColumn:@"equation"]);
-        NSLog(@"%@", [rs stringForColumn:@"realimage"]);
+//        NSLog(@"%@", [rstext stringForColumn:@"briefdescription"]);
+//        NSLog(@"%@", [rstext stringForColumn:@"completedescription"]);
+//        NSLog(@"%@", [rstext stringForColumn:@"name"]);
+//        NSLog(@"%@", [rs stringForColumn:@"equation"]);
+//        NSLog(@"%@", [rs stringForColumn:@"realimage"]);
         
 		s.briefDescription =  [rstext stringForColumn:@"briefdescription"];
         s.completeDescription = [rstext stringForColumn:@"completedescription"];
