@@ -197,6 +197,10 @@
 -(NSMutableArray*)getGalleries{
 	return self.galleriesArray;
 }
+
+-(NSMutableArray*)getUpdatedGalleries{
+    return [dataBase getGalleries];
+}
 //--------------------------------------------------------------------------------------------------------
 
 -(void)accesGallery:(int)row{

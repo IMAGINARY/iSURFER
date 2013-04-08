@@ -60,6 +60,8 @@
 
 -(NSMutableArray*)getGalleries;
 
+-(NSMutableArray*)getUpdatedGalleries;
+
 -(void)accesGallery:(int)row;
 
 -(Gallery*)getGallery:(int)index;
