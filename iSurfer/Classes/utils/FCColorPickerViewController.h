@@ -14,7 +14,7 @@
 @protocol ColorPickerViewControllerDelegate <NSObject>
 
 - (void)colorPickerViewController:(FCColorPickerViewController *)colorPicker didSelectColor:(UIColor *)color;
-- (void)colorPickerViewControllerDidCancel:(FCColorPickerViewController *)colorPicker;
+- (void)colorPickerViewController:(FCColorPickerViewController *)colorPicker didSelectColor2:(UIColor *)color;
 
 @end
 
@@ -30,7 +30,7 @@
 @property (readwrite, nonatomic, retain) IBOutlet FCColorSwatchView *swatch;
 
 - (IBAction) chooseSelectedColor;
-- (IBAction) cancelColorSelection;
+- (IBAction) chooseSelectedColor2;
 
 @end
 

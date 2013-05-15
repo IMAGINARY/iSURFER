@@ -51,6 +51,8 @@ static const int SurfaceCount = 6;
     }
 
     void ApplicationEngine::ChangeSurface(int surfaceIndex){
+        if(surfaceIndex == currentSurface)
+            return;
         currentSurface = surfaceIndex;
         m_renderingEngine->UpdateSurface(surfaces, currentSurface);
         

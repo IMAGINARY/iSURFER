@@ -49,12 +49,10 @@
 	IBOutlet UIView* zoomView;
 	UISlider* zoomSlider;
 	
-	
 	BOOL fullScreen;
 	CGRect algebraicsurfaceViewFrame;
 	BOOL showZoomSlider;
 	float previousScale;
-	
 	AlgebraicSurface* algebraicSurface;
 	
 	IBOutlet UILabel* xpos;

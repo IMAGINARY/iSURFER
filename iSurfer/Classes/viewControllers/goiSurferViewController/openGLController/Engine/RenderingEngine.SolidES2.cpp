@@ -85,7 +85,7 @@ void RenderingEngine::UpdateSurface(vector<ISurface*>& surfaces, int currentSurf
     glBufferData(GL_ARRAY_BUFFER,
                  vertices.size() * sizeof(vertices[0]),
                  &vertices[0],
-                 GL_DYNAMIC_DRAW);
+                 GL_STATIC_DRAW);
 }
 
     

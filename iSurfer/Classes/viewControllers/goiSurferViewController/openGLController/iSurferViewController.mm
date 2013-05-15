@@ -348,10 +348,11 @@ enum {
     m_applicationEngine->Initialize(width, height);
     
     //m_applicationEngine->ChangeSurface(1);
+    
+    
 	Compiler::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[formula UTF8String]);
     
     programData::InitializeProgramData();
-
     
     
 	[self drawFrame];
@@ -380,73 +381,14 @@ enum {
 - (void)drawFrame
 {
     [(EAGLView *)self.view setFramebuffer];
-/*
-    // Replace the implementation of this method to do your own custom drawing.
-    static const GLfloat squareVertices[] = {
-        -0.5f, -0.33f,
-        0.5f, -0.33f,
-        -0.5f,  0.33f,
-        0.5f,  0.33f,
-    };
-    
-    static const GLubyte squareColors[] = {
-        255, 255,   0, 255,
-        0,   255, 255, 255,
-        0,     0,   0,   0,
-        255,   0, 255, 255,
-    };
-    
-    static float transY = 0.0f;
-    
-    glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
-    
-    if ([context API] == kEAGLRenderingAPIOpenGLES2)
-    {
-        // Use shader program.
-        glUseProgram(program);
-        
-        // Update uniform value.
-        glUniform1f(uniforms[UNIFORM_TRANSLATE], (GLfloat)transY);
-        transY += 0.075f;	
-        
-        // Update attribute values.
-        glVertexAttribPointer(ATTRIB_VERTEX, 2, GL_FLOAT, 0, 0, squareVertices);
-        glEnableVertexAttribArray(ATTRIB_VERTEX);
-        glVertexAttribPointer(ATTRIB_COLOR, 4, GL_UNSIGNED_BYTE, 1, 0, squareColors);
-        glEnableVertexAttribArray(ATTRIB_COLOR);
-        
-        // Validate program before drawing. This is a good check, but only really necessary in a debug build.
-        // DEBUG macro must be defined in your debug configurations if that's not already the case.
-#if defined(DEBUG)
-        if (![self validateProgram:program])
-        {
-            NSLog(@"Failed to validate program: %d", program);
-            return;
-        }
-#endif
-    }
-    else
-    {
-        glMatrixMode(GL_PROJECTION);
-        glLoadIdentity();
-        glMatrixMode(GL_MODELVIEW);
-        glLoadIdentity();
-        glTranslatef(0.0f, (GLfloat)(sinf(transY)/2.0f), 0.0f);
-        transY += 0.075f;
-        
-        glVertexPointer(2, GL_FLOAT, 0, squareVertices);
-        glEnableClientState(GL_VERTEX_ARRAY);
-        glColorPointer(4, GL_UNSIGNED_BYTE, 0, squareColors);
-        glEnableClientState(GL_COLOR_ARRAY);
-    }
-    
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-*/
-	glClearColor(1.0f, 1.0f, 1.0f, 1.0f); 	
-    m_applicationEngine->Render();
 
-    [(EAGLView *)self.view presentFramebuffer];
+    @synchronized(self)
+    {
+            glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+            m_applicationEngine->Render();
+
+              [(EAGLView *)self.view presentFramebuffer];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -628,11 +570,14 @@ ivec2 oldLocation;
     else
         programData::rotationY =  programData::rotationY +  (x * M_PI /180.0f /rotAtenuation);
     if(x != 0 && y != 0)
+    {
         if( programData::rotationZ  > 2 * M_PI  || programData::rotationZ  <  -2 * M_PI)
+        {
             programData::rotationZ  = 0;
+        }
         else
             programData::rotationZ =  programData::rotationZ +  (x * M_PI /180.0f / rotAtenuation + y * M_PI /180 /rotAtenuation);
-
+    }
     CGPoint location;
     location.x = x;
     location.y = y;
@@ -783,6 +728,14 @@ ivec2 oldLocation;
 	programData::UpdateColor(red, green, blue);
 	[self drawFrame];
 }
+
+-(void)setSurfaceColor2Red:(float)red Green:(float)green Blue:(float)blue{
+	NSLog(@"red: %f green: %f  blue: %f", red, green, blue);
+    
+	programData::UpdateColor2(red, green, blue);
+	[self drawFrame];
+}
+
 
 -(UIImage *) drawableToCGImage {
 	CGRect myRect = CGRectMake(0, 0, 300, 200	);

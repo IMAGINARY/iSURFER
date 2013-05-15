@@ -29,12 +29,12 @@ void drawWire(Drawable drawable){
 
     int stride = 2 * sizeof(vec3);
     GLint position = programData::shaderHandle.wire_attr_pos;
-
+    printf("drawable index count %d\n", drawable.IndexCount);
+    
     glBindBuffer(GL_ARRAY_BUFFER, drawable.VertexBuffer);
     glVertexAttribPointer(position, 3, GL_FLOAT, GL_FALSE, stride, 0);
 
-    glDrawElements(GL_LINES, drawable.IndexCount, GL_UNSIGNED_SHORT, 0);
-    
+    glDrawElements(GL_LINES, drawable.IndexCount-1, GL_UNSIGNED_SHORT, 0);
     
 }
 
@@ -95,15 +95,20 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
 
         cameraT =  mat4::Translate(0.0, 0.0, -programData::radius * tan(30.0 * M_PI / 360.0));
         
-        model = cameraT * s;        
+//        model = cameraT * s;
        
-        modelView = model * programData::rot;
+//        modelView = model * programData::rot;
+
+        model = s * cameraT;
         
-        modelViewInv = modelView.invert_matrix();
+        
+        modelView = Matrix4< float >(orientation.ToMatrix()) * model ;
         
         project = mat4::Perspective(60.0, 1.0, 0.1, 300.0);
         
-        projectionModelView = project *  modelView;
+        modelViewInv = modelView.invert_matrix();
+        
+        projectionModelView = modelView * project;
 
         
         
@@ -126,7 +131,7 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
     
      
     printf("drawing frame\n");
-    if(programData::debug)
+    if(programData::wireFrame)
         // draw wireframe sphere
 	{
         glDisable( GL_CULL_FACE );

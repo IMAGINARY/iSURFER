@@ -24,7 +24,6 @@
     GLuint program;
     IApplicationEngine* m_applicationEngine;
     IRenderingEngine* m_renderingEngine;
-   
     BOOL animating;
     BOOL displayLinkSupported;
     NSInteger animationFrameInterval;
@@ -41,7 +40,8 @@
 
 @property(nonatomic, retain) TrackBall *trackBall;
 
-@property (readonly, nonatomic, getter=isAnimating) BOOL animating;
+
+@property (readonly, nonatomic) BOOL animating;
 @property (nonatomic) NSInteger animationFrameInterval;
 
 @property (readonly, nonatomic )    IApplicationEngine* m_applicationEngine;
@@ -62,6 +62,7 @@
 -(void)generateSurface:(NSString*)eq;
 -(float)zoom;
 -(void)setSurfaceColorRed:(float)red Green:(float)green Blue:(float)blue;
+-(void)setSurfaceColor2Red:(float)red Green:(float)green Blue:(float)blue;
 -(UIImage *) drawableToCGImage ;
 
 @end

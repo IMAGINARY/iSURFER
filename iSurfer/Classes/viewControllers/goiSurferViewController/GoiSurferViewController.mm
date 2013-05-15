@@ -11,6 +11,8 @@
 #import "iSurferViewController.h"
 #import "EAGLView.h"
 #import "Interfaces.hpp"
+#include "programData.hpp"
+
 //#import "SVProgressHUD.h"
 //--------------------------------------------------------------------------------------------------------
 @interface GoiSurferViewController(PrivateMethods)
@@ -48,6 +50,9 @@
     
     colorpalette = [[FCColorPickerViewController alloc]initWithNibName:@"FCColorPickerViewController" bundle:[NSBundle mainBundle]];
     colorpalette.delegate = self;
+
+    colorpalette.color =     [UIColor colorWithRed:programData::colorR green:programData::colorG blue:programData::colorB alpha:0.5];
+//[UIColor greenColor];
     colorpalette.view.frame = CGRectMake(100, 0, 320, 320 );
     
 	[optionsViews addObject:self.shareView];
@@ -267,7 +272,7 @@
     
     return [algebraicSurfaceView snapshot];
 }
-//--------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------
 
 
 -(void)handleTwoFingerTouch:(UIGestureRecognizer*)doubleFingerGesture{
@@ -400,34 +405,57 @@
 - (IBAction)settingsSliderChanged:(id)sender {
     UISlider *slider = (UISlider *)sender;
     
-    if( slider.value >=0 && slider.value< 5){
-        slider.value = 0;
-        openglController.m_applicationEngine->ChangeSurface(0);
-    }else if (slider.value >=5 && slider.value< 15){
-        slider.value = 10;
-        openglController.m_applicationEngine->ChangeSurface(1);
+    @synchronized(openglController)
+    {
+        if( slider.value >=0 && slider.value< 5){
+            slider.value = 0;
+            openglController.m_applicationEngine->ChangeSurface(0);
+        }else if (slider.value >=5 && slider.value< 15){
+            slider.value = 10;
+            openglController.m_applicationEngine->ChangeSurface(1);
 
-    }else if (slider.value >=15 && slider.value< 25){
-        slider.value = 20;
-        openglController.m_applicationEngine->ChangeSurface(2);
+        }else if (slider.value >=15 && slider.value< 25){
+            slider.value = 20;
+            openglController.m_applicationEngine->ChangeSurface(2);
 
-    }else if (slider.value >=25 && slider.value< 35){
-        slider.value = 30;
-        openglController.m_applicationEngine->ChangeSurface(3);
+        }else if (slider.value >=25 && slider.value< 35){
+            slider.value = 30;
+            openglController.m_applicationEngine->ChangeSurface(3);
 
-    }else if (slider.value >=35 && slider.value< 45){
-        slider.value = 40;
-        openglController.m_applicationEngine->ChangeSurface(4);
+        }else if (slider.value >=35 && slider.value< 45){
+            slider.value = 40;
+            openglController.m_applicationEngine->ChangeSurface(4);
 
-    }else if (slider.value >=45 && slider.value< 50){
-        slider.value = 50;
-        openglController.m_applicationEngine->ChangeSurface(5);
+        }else if (slider.value >=45 && slider.value< 50){
+            slider.value = 50;
+            openglController.m_applicationEngine->ChangeSurface(5);
 
+        }
+        [openglController setZoom:openglController.zoom];
+	//[openglController generateSurface:self.equationTextField.text];
+        //[openglController drawFrame];
     }
-    
-	[openglController generateSurface:self.equationTextField.text];
-    
 }
+//--------------------------------------------------------------------------------------------------------
+
+- (IBAction)WireChanged:(id)sender {
+    @synchronized(openglController)
+    {
+
+    programData::wireFrame = !programData::wireFrame;
+        [openglController drawFrame];
+    }
+}
+
+- (IBAction)CameraChanged:(id)sender {
+    @synchronized(openglController)
+    {
+        
+        programData::panoramic = !programData::panoramic;
+        [openglController drawFrame];
+    }
+}
+
 //--------------------------------------------------------------------------------------------------------
 
 -(IBAction)optionsButtonPressed:(id)sender{
@@ -455,8 +483,11 @@
 	[self showOptionsViewWrapper:NO view:colorPicker.view];
     [colorpalette.view removeFromSuperview];
 }
-- (void)colorPickerViewControllerDidCancel:(FCColorPickerViewController *)colorPicker{
-    [self showOptionsViewWrapper:NO view:colorPicker.view];
+
+- (void)colorPickerViewController:(FCColorPickerViewController *)colorPicker didSelectColor2:(UIColor *)color{
+    const float* colors = CGColorGetComponents( color.CGColor );
+    [openglController setSurfaceColor2Red:colors[0] Green:colors[1] Blue:colors[2]];
+	[self showOptionsViewWrapper:NO view:colorPicker.view];
     [colorpalette.view removeFromSuperview];
 }
 //--------------------------------------------------------------------------------------------------------
@@ -558,7 +589,7 @@
 		[self showOptionsView:NO view:optionsView];
 	}
 	if( showingView ){
-		[showingView setHidden:NO];
+		[showingView setHidden:!showingView.hidden];
 		[self showOptionsView:yes view:showingView];
 	}
 }

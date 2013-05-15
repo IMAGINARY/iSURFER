@@ -79,7 +79,7 @@ class programData
      * @type {bool}
      * @default true
      */
-        static bool debug;
+        static bool wireFrame;
     /**
      * if true we use a panoramic camera, else a orthogonal.  
      * @property debug

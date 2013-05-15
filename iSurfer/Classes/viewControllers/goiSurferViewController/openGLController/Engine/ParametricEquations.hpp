@@ -110,7 +110,7 @@ class TrefoilKnot : public ParametricSurface {
 public:
     TrefoilKnot(float scale) : m_scale(scale)
     {
-        ParametricInterval interval = { ivec2(60, 15), vec2(TwoPi, TwoPi), vec2(100, 8) };
+        ParametricInterval interval = { ivec2(50, 12), vec2(TwoPi, TwoPi), vec2(100, 8) };
         SetInterval(interval);
     }
     vec3 Evaluate(const vec2& domain) const
@@ -158,7 +158,7 @@ class MobiusStrip : public ParametricSurface {
 public:
     MobiusStrip(float scale) : m_scale(scale)
     {
-        ParametricInterval interval = { ivec2(40, 20), vec2(TwoPi, TwoPi), vec2(40, 15) };
+        ParametricInterval interval = { ivec2(30, 20), vec2(TwoPi, TwoPi), vec2(40, 15) };
         SetInterval(interval);
     }
     vec3 Evaluate(const vec2& domain) const

@@ -23,7 +23,7 @@ float origin[5];
 mat4 programData::rot;
 
 ProgramHandle programData::shaderHandle;
-bool programData::debug = true;
+bool programData::wireFrame = true;
 bool programData::panoramic = false;
 
 
@@ -57,7 +57,6 @@ void programData::InitializeProgramData()
     programData::shaderHandle.wire_attr_pos = glGetAttribLocation( glsl_program, "pos" ); checkGLError( AT );
     programData::shaderHandle.wire_modelview = glGetUniformLocation( glsl_program, "modelviewMatrix" ); checkGLError( AT );
     programData::shaderHandle.wire_projection = glGetUniformLocation( glsl_program, "projectionMatrix" ); checkGLError( AT );
-    
     
     programData::setConstant();
     programData::GenerateArrays();

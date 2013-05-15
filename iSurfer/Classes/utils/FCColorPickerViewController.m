@@ -159,11 +159,12 @@
 #pragma mark IBActions
 
 - (IBAction)chooseSelectedColor {
+    
   [_delegate colorPickerViewController:self didSelectColor:self.color];
 }
 
-- (IBAction)cancelColorSelection {
-  [_delegate colorPickerViewControllerDidCancel:self];
+- (IBAction)chooseSelectedColor2 {
+    [_delegate colorPickerViewController:self didSelectColor2:self.color];
 }
 
 @end

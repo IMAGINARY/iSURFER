@@ -27,8 +27,7 @@ using namespace std;
 string read_file( string filename );
 void printShaderInfoLog( GLuint obj );
 void printProgramInfoLog( GLuint obj );
-
-
+int Compiler::COUNTER=0;
 
 
 
@@ -77,7 +76,8 @@ void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const cha
     programData::programs.alg_surface_glsl_program = aux;
 	checkGLError( AT );
     
-    if(programData::debug){
+    if(COUNTER == 0){
+        COUNTER++;
         glDeleteShader(programData::programs.wireframe_glsl_program);
         programData::programs.wireframe_glsl_program = initWire( vs2/*"vs2.glsl"*/, fs2/*"fs2.glsl"*/ );
     }
