@@ -34,7 +34,7 @@
 -(void)viewDidLoad{
     editableGalleries = [[appcontroller getEditableGalleries]retain];
     
-	navigationBar.tintColor = [UIColor colorWithRed:167/255.0 green:190/255.0 blue:12/255.0 alpha:1];
+	navigationBar.tintColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
     
 	[surfaceDescriptionTextView.layer setBackgroundColor: [[UIColor whiteColor] CGColor]];
     [surfaceDescriptionTextView.layer setBorderColor: [[UIColor lightGrayColor] CGColor]];
