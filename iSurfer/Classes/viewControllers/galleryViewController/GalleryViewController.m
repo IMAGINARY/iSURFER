@@ -144,11 +144,14 @@
    // briefDescription.text = briefDescription.text +
     briefDescription.hidden = !briefDescription.hidden;
     detailedDescription.hidden = briefDescription.hidden;
+    if(gallery.editable)
+        detailedDescription.hidden = true;
     surfaceEquation.hidden = !briefDescription.hidden;
     if(briefDescription.hidden)
         [descriptionButton setTitle:@"+" forState:UIControlStateNormal];
     else
         [descriptionButton setTitle:@"-" forState:UIControlStateNormal];
+    NSLog(@"Brief description %@", briefDescription.text);
 //    [self.navigationController pushViewController:self.appcontroller.imageDescriptionViewController animated:false];
 }
 
@@ -284,6 +287,8 @@
 	AlgebraicSurface* surface = [gallery getSurfaceAtIndex:[indexPath row]];
 	[self.surfaceImage setImage:[surface surfaceImage]];
 	[self.surfaceEquation setText:[surface equation]];
+    NSLog(@"surfacesNumber %@", surface.briefDescription);
+    [self.briefDescription setText:[surface briefDescription]];
 	[tableView scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:UITableViewScrollPositionMiddle	animated:YES];
     // TODO borrar esto
     //[appcontroller pushViewControllerWithName:@"imageDescription"];

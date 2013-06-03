@@ -9,10 +9,11 @@
 #import "SaveAlgebraicSurfaceViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "GoiSurferViewController.h"
+#import "AddNewGalleryViewController.h"
 
 @implementation SaveAlgebraicSurfaceViewController
 //--------------------------------------------------------------------------------------------------------
-@synthesize galleryPicker, surfaceNameTextfield, surfaceDescriptionTextView, galleriesPickerButton, galleryNameLabel, pickerWrapperView, dataWrapperView, saveButton, cancelButton, navBar, delegate, surfaceNameLabel, galleryLabel, surfaceDescriptionLabel;
+@synthesize galleryPicker, surfaceNameTextfield, surfaceDescriptionTextView, galleriesPickerButton, galleryNameLabel, blackLine, galleryCreateButton, pickerWrapperView, dataWrapperView, saveButton, cancelButton, navBar, delegate, surfaceNameLabel, galleryLabel, surfaceDescriptionLabel;
 //--------------------------------------------------------------------------------------------------------
 -(id) initWithAppController:(AppController*)anappCtrl{
 	
@@ -41,7 +42,11 @@
     [surfaceDescriptionTextView.layer setBorderWidth: 1.0];
     [surfaceDescriptionTextView.layer setCornerRadius:8.0f];
     [surfaceDescriptionTextView.layer setMasksToBounds:YES];
-    
+    if ([editableGalleries count] == 0) {
+        galleriesPickerButton.hidden = true;
+        blackLine.hidden = true;
+    }
+    [galleryCreateButton addTarget:self action:@selector(addGallery) forControlEvents:UIControlEventTouchUpInside];
     [self localize];
     
 	[super viewDidLoad];
@@ -168,6 +173,8 @@
 	[galleryPicker release];
 	[galleriesPickerButton release];
 	[galleryNameLabel release];
+    [blackLine release];
+    [galleryCreateButton release];
 	[pickerWrapperView release];
 	[dataWrapperView release];
 	[saveButton release];
@@ -233,5 +240,11 @@
     return YES;
 }
 //--------------------------------------------------------------------------------------------------------
+
+-(void)addGallery{
+	AddNewGalleryViewController * addGallery = [[AddNewGalleryViewController alloc]initWithAppController:self.appcontroller];
+	[self presentModalViewController:addGallery animated:YES];
+	[addGallery release];
+}
 
 @end

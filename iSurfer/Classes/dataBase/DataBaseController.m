@@ -196,7 +196,8 @@
 		g.galleryName = [rstext stringForColumn:@"name"];
 		g.galleryDescription =  [rstext stringForColumn:@"description"];
         
-        NSLog(@"surfacesNumber %i", g.surfacesNumber);
+        //NSLog(@"surfacesNumber %i", g.surfacesNumber);
+        NSLog(@"galleryId %i", g.galID);
         NSLog(@"galleryName %@", g.galleryName);
         NSLog(@"galleryDescription %@", g.galleryDescription);
         
@@ -253,7 +254,7 @@
         
         s.surfaceID = [rs intForColumn:@"id"];
         
-        NSString * query = [NSString stringWithFormat:@"%@%i%@%i", @"select name, briefdescription, completedescription from surfacestexts where language = ", [Language getLanguageIndex], @" and surfaceid = ", [NSNumber numberWithInt:s.surfaceID].intValue];
+        NSString * query = [NSString stringWithFormat:@"%@%i%@%i", @"select name, briefdescription, completedescription from surfacestexts where language is null or language = ", [Language getLanguageIndex], @" and surfaceid = ", [NSNumber numberWithInt:s.surfaceID].intValue];
         
         FMResultSet *rstext = [db executeQuery:query];
         

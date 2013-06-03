@@ -18,7 +18,9 @@
 	IBOutlet UIPickerView* galleryPicker;
 	IBOutlet UITextField* surfaceNameTextfield;
 	IBOutlet UITextView* surfaceDescriptionTextView;
+    IBOutlet UIButton* galleryCreateButton;
 	IBOutlet UIButton* galleriesPickerButton;
+    IBOutlet UIImageView * blackLine;
 	IBOutlet UILabel* galleryNameLabel;
 	IBOutlet UIView* pickerWrapperView;	
 	IBOutlet UIView* dataWrapperView;
@@ -52,6 +54,8 @@
 @property(nonatomic, retain)IBOutlet UIView* pickerWrapperView;
 @property(nonatomic, retain)IBOutlet UILabel* galleryNameLabel;
 @property(nonatomic, retain)IBOutlet UIButton* galleriesPickerButton;
+@property(nonatomic, retain)IBOutlet UIImageView* blackLine;
+@property(nonatomic, retain)IBOutlet UIButton* galleryCreateButton;
 @property(nonatomic, retain)IBOutlet UIPickerView* galleryPicker;
 @property(nonatomic, retain)IBOutlet UITextField* surfaceNameTextfield;
 @property(nonatomic, retain)IBOutlet UITextView* surfaceDescriptionTextView;
