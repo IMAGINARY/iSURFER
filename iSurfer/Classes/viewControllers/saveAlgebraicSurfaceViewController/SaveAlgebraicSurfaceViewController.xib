@@ -293,7 +293,6 @@
 								<int key="NSvFlags">290</int>
 								<string key="NSFrameSize">{480, 216}</string>
 								<reference key="NSSuperview" ref="477934155"/>
-								<reference key="NSNextKeyView"/>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<bool key="IBUIShowsSelectionIndicator">YES</bool>
 							</object>

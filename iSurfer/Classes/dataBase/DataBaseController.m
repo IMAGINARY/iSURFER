@@ -180,7 +180,7 @@
         
         //Only objects are used as query arguments
         
-        NSString * query = [NSString stringWithFormat:@"%@%i%@%i", @"select name, description from galleriestexts where language is null or language = ", [Language getLanguageIndex], @" and galleryid = ", [NSNumber numberWithInt:g.galID].intValue];
+        NSString * query = [NSString stringWithFormat:@"%@%i%@%i", @"select name, description from galleriestexts where (language is null or language = ", [Language getLanguageIndex], @") and galleryid = ", [NSNumber numberWithInt:g.galID].intValue];
         
         FMResultSet *rstext = [db executeQuery:query];
 

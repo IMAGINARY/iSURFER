@@ -193,6 +193,7 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
 	galleryIndex = row;
 	self.galleryNameLabel.text = [[editableGalleries objectAtIndex:row]galleryName];
+    [galleriesPickerButton setTitle:@"" forState:(UIControlStateNormal)];
 }
 //--------------------------------------------------------------------------------------------------------
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
