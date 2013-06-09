@@ -12,6 +12,7 @@
 
 @interface ImageDescriptionViewController : BaseViewController {
 //    UITextView *textView;
+    Gallery* gallery;
     AlgebraicSurface * surface;
     IBOutlet UIImageView * imageView;
     IBOutlet UIScrollView * scrollView;
@@ -22,6 +23,7 @@
 //--------------------------------------------------------------------------------------
 
 //@property (nonatomic, retain) UITextView *textView;
+@property (nonatomic, retain) Gallery * gallery;
 @property (nonatomic, retain) AlgebraicSurface * surface;
 @property (nonatomic, retain) UIImageView * imageView;
 @property (nonatomic, retain) UIScrollView * scrollView;

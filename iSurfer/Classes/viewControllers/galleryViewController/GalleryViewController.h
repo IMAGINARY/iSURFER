@@ -11,6 +11,7 @@
 
 @interface GalleryViewController : BaseViewController<UIActionSheetDelegate, UITableViewDelegate, UITableViewDataSource> {
 	Gallery* gallery;
+    AlgebraicSurface* selectedSurface;
 	IBOutlet UIScrollView* surfacesScrollView;
 	IBOutlet UIImageView* surfaceImage;
     IBOutlet UIButton* descriptionButton;
@@ -34,6 +35,7 @@
 
 
 @property(nonatomic, retain)	Gallery* gallery;
+@property(nonatomic, retain)	AlgebraicSurface* selectedSurface;
 @property(nonatomic, retain)	IBOutlet UIScrollView* surfacesScrollView;
 @property(nonatomic, retain)	IBOutlet UIImageView* surfaceImage;
 @property(nonatomic, retain)    IBOutlet UIButton* descriptionButton;

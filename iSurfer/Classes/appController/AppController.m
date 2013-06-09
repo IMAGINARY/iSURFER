@@ -174,6 +174,7 @@
 	[goiSurferViewController release];
 	[myGalleriesViewController release];
 	[helpViewController release];
+    [imageDescriptionViewController release];
 	[galleriesArray release];
 	[dataBase release];
 	[super dealloc];

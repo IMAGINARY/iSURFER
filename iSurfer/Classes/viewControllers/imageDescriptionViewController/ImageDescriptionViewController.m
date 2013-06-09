@@ -10,28 +10,29 @@
 #import "DataBaseController.h"
 
 @implementation ImageDescriptionViewController
-@synthesize surface, imageView, scrollView, formula, description;
+@synthesize gallery, surface, imageView, scrollView, formula, description;
 
 
--(id) initWithAppController:(AppController*)anappCtrl {
+-(id) initWithAppController:(AppController*)anappCtrl andSurface:(AlgebraicSurface*)aSurface {
 	
 	if (self = [super initWithNibName:@"ImageDescriptionViewController" bundle:[NSBundle mainBundle]]) {
 		[self setAppcontroller:anappCtrl];
+        [self setSurface:aSurface];
 	}
 	return self;
 }
 
 -(void)initialize{
-    NSMutableArray* galleries = self.appcontroller.galleriesArray;
-    Gallery * firstGallery = [galleries objectAtIndex:0];
-    [self.appcontroller.dataBase populateGallery:firstGallery];
-    NSLog(@"%@", firstGallery.galleryName);
-    NSLog(@"%@", firstGallery.galleryDescription);
+    //NSMutableArray* galleries = self.appcontroller.galleriesArray;
+    //Gallery * firstGallery = [galleries objectAtIndex:0];
+    //[self.appcontroller.dataBase populateGallery:firstGallery];
+    //NSLog(@"%@", gallery.galleryName);
+    //NSLog(@"%@", gallery.galleryDescription);
     
-    AlgebraicSurface * firstSurface = [firstGallery getSurfaceAtIndex:0];
-    NSLog(@"%@", firstSurface.equation);
-    NSLog(@"%@", firstSurface.briefDescription);
-    [self setSurface: firstSurface];
+    //AlgebraicSurface * firstSurface = [firstGallery getSurfaceAtIndex:0];
+    NSLog(@"%@", surface.equation);
+    NSLog(@"%@", surface.briefDescription);
+    //[self setSurface: firstSurface];
 }
 
 -(void)setFormula{

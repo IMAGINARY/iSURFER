@@ -15,7 +15,7 @@
 
 @implementation GalleryViewController
 //--------------------------------------------------------------------------------------------------------
-@synthesize gallery, surfacesScrollView, surfaceImage, surfacesTable, toolbar, surfaceEquation, briefDescription, descriptionButton, detailedDescription;
+@synthesize gallery, selectedSurface, surfacesScrollView, surfaceImage, surfacesTable, toolbar, surfaceEquation, briefDescription, descriptionButton, detailedDescription;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) initWithAppController:(AppController*)anappCtrl andGallery:(Gallery*)aGallery{
@@ -107,6 +107,7 @@
 -(void)viewWillAppear:(BOOL)animated{
 	if( ![gallery isEmpty]){
 		AlgebraicSurface* surface = [gallery getSurfaceAtIndex:0];
+        self.selectedSurface = surface;
         UIImage * image = [UIImage imageNamed: @"Logo-twitter.png"];
 
 		[self.surfaceImage setImage:image];
@@ -128,7 +129,10 @@
 }
 
 -(void)descriptionTapHandler: (UITapGestureRecognizer *)recognizer{
-    [self.navigationController pushViewController:self.appcontroller.imageDescriptionViewController animated:true];
+    ImageDescriptionViewController* idvc = [[ImageDescriptionViewController alloc]initWithAppController: self.appcontroller andSurface: selectedSurface];
+	[self.navigationController pushViewController: idvc animated:true];
+	[idvc release];
+    //[self.navigationController pushViewController:self.appcontroller.imageDescriptionViewController animated:true];
 }
 
 //--------------------------------------------------------------------------------------------------------
@@ -285,6 +289,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	AlgebraicSurface* surface = [gallery getSurfaceAtIndex:[indexPath row]];
+    self.selectedSurface = surface;
 	[self.surfaceImage setImage:[surface surfaceImage]];
 	[self.surfaceEquation setText:[surface equation]];
     NSLog(@"surfacesNumber %@", surface.briefDescription);
@@ -296,6 +301,7 @@
 //--------------------------------------------------------------------------------------------------------
 -(void)dealloc{
 	[gallery release];
+    [selectedSurface release];
 	[surfacesScrollView release];
 	[surfaceImage release];
 	[surfacesTable release];
