@@ -23,6 +23,7 @@ struct ProgramHandle {
     GLint SpecularMaterial;
     GLint SpecularMaterial2;
     GLint Shininess;
+    GLint CELLSHADE;
     GLint DiffuseMaterial;
     GLint DiffuseMaterial2;
     GLint Radius2;
@@ -61,7 +62,7 @@ class programData
     
     
         //agregue los colorG2, etc para la segunda cara.
-		static float rotationX, rotationY, rotationZ, Shininess, colorR, colorG, colorB, colorR2, colorG2, colorB2, lposX, lposY ,lposZ;
+		static float rotationX, rotationY, rotationZ, Shininess, colorR, colorG, colorB, colorR2, colorG2, colorB2, lposX, lposY ,lposZ ;
         //Estos son los parametros de tamaño de esfera, redius para zoom y los otros 2 para bajar la resolucion
         //default radius 1.0, slices y stacks 20;
     
@@ -80,6 +81,15 @@ class programData
      * @default true
      */
         static bool wireFrame;
+
+    /**
+     * if true use toon Shader instead of color.
+     * @property debug
+     * @type {bool}
+     * @default true
+     */
+    static bool toonShader;
+
     /**
      * if true we use a panoramic camera, else a orthogonal.  
      * @property debug
@@ -149,6 +159,16 @@ class programData
      */
 
         void static UpdateRadius(float Radius);
+    /**
+     * Usage:  setCellShade(cellshading);
+     * ----------------------------------
+     * Enables or disable the CellShading mode in render.
+     * @method setCellShade
+     * @param cellshading {bool} new radius value
+     */
+    void static setCellShade(bool cellshading);
+
+    
     static ProgramIdentifiers programs;
 
 	private:
@@ -161,6 +181,8 @@ class programData
      */
     
         void static setConstant();
+    
+    
     /**
      * Usage:  GenerateArrays();
      * ----------------------------------

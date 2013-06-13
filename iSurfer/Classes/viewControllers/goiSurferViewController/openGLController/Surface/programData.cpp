@@ -7,15 +7,15 @@ float programData::rotationX = 0.0f;
 float programData::rotationY = 0.0f;
 float programData::rotationZ = M_PI_2;
 //float programData::Shininess = 0.20f;
-float programData::Shininess = 2;
+float programData::Shininess = 5;
 float programData::colorR = 0.5f;
 float programData::colorG = 0.4f;
 float programData::colorB = 0.8f;
 float programData::colorR2 = 0.9f;
 float programData::colorG2 = 0.5f;
 float programData::colorB2 = 0.6f;
-float programData::lposX = 5.0f;
-float programData::lposY = 5.0f;
+float programData::lposX = 0.25f;
+float programData::lposY = 0.25f;
 float programData::lposZ = 1.0f;
 float programData::radius = 5;
 float origin[5];
@@ -25,6 +25,7 @@ mat4 programData::rot;
 ProgramHandle programData::shaderHandle;
 bool programData::wireFrame = true;
 bool programData::panoramic = false;
+bool programData::toonShader = false;
 
 
 ProgramIdentifiers programData::programs;
@@ -50,6 +51,8 @@ void programData::InitializeProgramData()
     programData::shaderHandle.SpecularMaterial = glGetUniformLocation(glsl_program, "SpecularMaterial");
     programData::shaderHandle.SpecularMaterial2 = glGetUniformLocation(glsl_program, "SpecularMaterial2");
     programData::shaderHandle.Shininess = glGetUniformLocation(glsl_program, "Shininess"); 
+    programData::shaderHandle.CELLSHADE = glGetUniformLocation(glsl_program, "CELLSHADE");
+
     programData::shaderHandle.DiffuseMaterial = glGetAttribLocation(glsl_program, "Diffuse");
     programData::shaderHandle.DiffuseMaterial2 = glGetAttribLocation(glsl_program, "Diffuse2");
     programData::shaderHandle.attr_pos = glGetAttribLocation( glsl_program, "pos" ); checkGLError( AT );
@@ -60,6 +63,21 @@ void programData::InitializeProgramData()
     
     programData::setConstant();
     programData::GenerateArrays();
+    programData::setCellShade(toonShader);
+}
+
+void programData::setCellShade(bool cellshading)
+{
+    float value = 1.0;
+    if (cellshading) {
+        value = 1.0;
+    }else
+    {
+        value =0.0;
+    }
+    glUniform1f(programData::shaderHandle.CELLSHADE, value);
+    
+    
 }
 
 void programData::setConstant()
@@ -69,6 +87,7 @@ void programData::setConstant()
     UpdateRadius(programData::radius);
     //Power de la luz
     glUniform1f(programData::shaderHandle.Shininess, programData::Shininess);
+
     vec4 lightPosition(0.25, 0.25, 1, 0);
 
     glUniform3fv(programData::shaderHandle.LightPosition, 1, lightPosition.Pointer());

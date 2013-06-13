@@ -23,6 +23,8 @@
 
 uniform lowp vec3 Diffuse;
 
+uniform highp float CELLSHADE;
+
 uniform highp vec3 LightPosition;
 uniform highp vec3 LightPosition2;
 uniform highp vec3 LightPosition3;
@@ -728,15 +730,58 @@ void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point
         highp vec3 L = normalize(LightPosition);
         highp vec3 E = -dir;
         lowp vec3 color;
+if (CELLSHADE ==1.0)
+{
+    if(dot(N, E) >= DELTA)
+    {
+        highp vec3 H = normalize(L + E);
+        highp float df = max(0.0, dot(N, L)); highp float sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
+        if (df < 0.1) df = 0.0; else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
+        if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
+        color = AmbientMaterial + df * Diffuse + sf * SpecularMaterial;
+        L = normalize(LightPosition2);
+        H = normalize(L + E);
+        df = max(0.0, dot(N, L));
+        sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
+        if (df < 0.1) df = 0.0;
+        else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
+        if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
+        color +=   sf * SpecularMaterial +  df * Diffuse;
+        
+        
+    }else
+    {
+        E = -E;
+        highp vec3 H = normalize(L + E);
+        highp float df = max(0.0, dot(N, L)); highp float sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
+        if (df < 0.1) df = 0.0;
+        else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
+        if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
+        color = AmbientMaterial2 + df * Diffuse + sf * SpecularMaterial2;
+        L = normalize(LightPosition2);
+        H = normalize(L + E);
+        df = max(0.0, dot(N, L));
+        sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
+        if (df < 0.1) df = 0.0;
+        else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
+        if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
+        color +=   sf * SpecularMaterial2 +  df * Diffuse;
+        
+        
 
-        if(dot(N, E) >= DELTA)
+    }
+}
+else
+{
+    if(dot(N, E) >= DELTA)
         {
             highp vec3 H = normalize(L + E);
 
-            highp float df = max(0.0, dot(N, L));
             highp float sf = max(0.0, dot(N, H));
             sf = pow(sf, Shininess);
-            color = AmbientMaterial;
+            highp float df = max(0.0, dot(N, L));
+            color = AmbientMaterial +  df * Diffuse;
+
             color +=   sf * SpecularMaterial;
             L = normalize(LightPosition2);
             H = normalize(L + E);
@@ -744,7 +789,7 @@ void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point
             df = max(0.0, dot(N, L));
             sf = max(0.0, dot(N, H));
             sf = pow(sf, Shininess);
-            color +=   sf * SpecularMaterial;
+            color +=   sf * SpecularMaterial +  df * Diffuse;
 
         }else
         {
@@ -754,7 +799,7 @@ void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point
             highp float df = max(0.0, dot(N, L));
             highp float sf = max(0.0, dot(N, H));
             sf = pow(sf, Shininess);
-            color = AmbientMaterial2;
+            color = AmbientMaterial2 +  df * Diffuse;
             color +=   sf * SpecularMaterial2;
             L = normalize(LightPosition2);
             H = normalize(L + E);
@@ -762,9 +807,9 @@ void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point
             df = max(0.0, dot(N, L));
             sf = max(0.0, dot(N, H));
             sf = pow(sf, Shininess);
-            color +=   sf * SpecularMaterial2;
+            color +=   sf * SpecularMaterial2 +  df * Diffuse;
         }
-
+}
 
     gl_FragColor = vec4(color, 1);
 

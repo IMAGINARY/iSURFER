@@ -693,11 +693,14 @@ ivec2 oldLocation;
 }
 
 -(void)setZoom:(double)zoomvalue{
+    @synchronized(self)
+    {
 	//iSurferDelegate::radius = zoomvalue;
     programData::UpdateRadius(zoomvalue);
     m_applicationEngine->Zoom(zoomvalue);
-
+    
     [self drawFrame];
+    }
 }
 
 -(void)generateSurface:(NSString*)eq{

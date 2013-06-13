@@ -456,6 +456,18 @@
     }
 }
 
+- (IBAction)ToonShader:(id)sender {
+    @synchronized(openglController)
+    {
+
+        
+        programData::toonShader = !programData::toonShader;
+        programData::setCellShade(programData::toonShader);
+
+        [openglController drawFrame];
+    }
+}
+
 //--------------------------------------------------------------------------------------------------------
 
 -(IBAction)optionsButtonPressed:(id)sender{
