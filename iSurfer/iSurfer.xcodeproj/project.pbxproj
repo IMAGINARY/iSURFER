@@ -22,6 +22,14 @@
 		3308B17E1533EC87001E853F /* surfaceRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B1761533EC87001E853F /* surfaceRender.cpp */; };
 		338CE34015FABA6C00E8AA18 /* vs3.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 338CE33F15FABA6C00E8AA18 /* vs3.glsl */; };
 		3395689C168FEA4B002F5CCC /* yuidoc.json in Resources */ = {isa = PBXBuildFile; fileRef = 3395689B168FEA4A002F5CCC /* yuidoc.json */; };
+		33FA6549176990CC0074C59A /* ResourceManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33FA6548176990CC0074C59A /* ResourceManager.mm */; };
+		33FA654C1769958A0074C59A /* Grid16.png in Resources */ = {isa = PBXBuildFile; fileRef = 33FA654B1769958A0074C59A /* Grid16.png */; };
+		33FA655017699B530074C59A /* Grasshopper.png in Resources */ = {isa = PBXBuildFile; fileRef = 33FA654F17699B530074C59A /* Grasshopper.png */; };
+		33FA655417699FEF0074C59A /* test2.png in Resources */ = {isa = PBXBuildFile; fileRef = 33FA655317699FEF0074C59A /* test2.png */; };
+		33FA6576176A372E0074C59A /* marble.png in Resources */ = {isa = PBXBuildFile; fileRef = 33FA6575176A372D0074C59A /* marble.png */; };
+		33FA657C176A38940074C59A /* aluminium.png in Resources */ = {isa = PBXBuildFile; fileRef = 33FA6579176A38940074C59A /* aluminium.png */; };
+		33FA657D176A38940074C59A /* bricks.png in Resources */ = {isa = PBXBuildFile; fileRef = 33FA657A176A38940074C59A /* bricks.png */; };
+		33FA657E176A38940074C59A /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = 33FA657B176A38940074C59A /* grass.png */; };
 		5E0A333516C9870B00F32E77 /* button-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E0A32DE16C9870B00F32E77 /* button-0.png */; };
 		5E0A333616C9870B00F32E77 /* button-0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E0A32DF16C9870B00F32E77 /* button-0@2x.png */; };
 		5E0A333716C9870B00F32E77 /* button-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E0A32E016C9870B00F32E77 /* button-1.png */; };
@@ -236,6 +244,14 @@
 		3308B1771533EC87001E853F /* surfaceRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = surfaceRender.h; sourceTree = "<group>"; };
 		338CE33F15FABA6C00E8AA18 /* vs3.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vs3.glsl; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		3395689B168FEA4A002F5CCC /* yuidoc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = yuidoc.json; sourceTree = "<group>"; };
+		33FA6548176990CC0074C59A /* ResourceManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourceManager.mm; sourceTree = "<group>"; };
+		33FA654B1769958A0074C59A /* Grid16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Grid16.png; sourceTree = "<group>"; };
+		33FA654F17699B530074C59A /* Grasshopper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Grasshopper.png; sourceTree = "<group>"; };
+		33FA655317699FEF0074C59A /* test2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test2.png; sourceTree = "<group>"; };
+		33FA6575176A372D0074C59A /* marble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble.png; sourceTree = "<group>"; };
+		33FA6579176A38940074C59A /* aluminium.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aluminium.png; sourceTree = "<group>"; };
+		33FA657A176A38940074C59A /* bricks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bricks.png; sourceTree = "<group>"; };
+		33FA657B176A38940074C59A /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
 		5E0A32DE16C9870B00F32E77 /* button-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-0.png"; sourceTree = "<group>"; };
 		5E0A32DF16C9870B00F32E77 /* button-0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-0@2x.png"; sourceTree = "<group>"; };
 		5E0A32E016C9870B00F32E77 /* button-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-1.png"; sourceTree = "<group>"; };
@@ -528,6 +544,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				33FA654A1769958A0074C59A /* Textures */,
 				5E0A32DD16C9870B00F32E77 /* keyboard */,
 				8B9114D414BF946C00BEAF27 /* staticSurfaces */,
 				8BDD0B36142431C40043741C /* shaders */,
@@ -557,6 +574,7 @@
 		3308B1651533EC87001E853F /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				33FA6548176990CC0074C59A /* ResourceManager.mm */,
 				330252961537970900EA2425 /* TrackBall.h */,
 				330252971537970900EA2425 /* TrackBall.m */,
 				3308B1661533EC87001E853F /* ApplicationEngine.ParametricViewer.cpp */,
@@ -585,6 +603,21 @@
 				3308B1771533EC87001E853F /* surfaceRender.h */,
 			);
 			path = Surface;
+			sourceTree = "<group>";
+		};
+		33FA654A1769958A0074C59A /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				33FA6579176A38940074C59A /* aluminium.png */,
+				33FA657A176A38940074C59A /* bricks.png */,
+				33FA657B176A38940074C59A /* grass.png */,
+				33FA6575176A372D0074C59A /* marble.png */,
+				33FA655317699FEF0074C59A /* test2.png */,
+				33FA654F17699B530074C59A /* Grasshopper.png */,
+				33FA654B1769958A0074C59A /* Grid16.png */,
+			);
+			name = Textures;
+			path = resources/Textures;
 			sourceTree = "<group>";
 		};
 		5E0A32DD16C9870B00F32E77 /* keyboard */ = {
@@ -1239,6 +1272,13 @@
 				5EE60FD2170B533900E323A8 /* crosshair.png in Resources */,
 				5EE60FD3170B533900E323A8 /* crosshair@2x.png in Resources */,
 				5EE61015170B6C9C00E323A8 /* FCColorPickerViewController.xib in Resources */,
+				33FA654C1769958A0074C59A /* Grid16.png in Resources */,
+				33FA655017699B530074C59A /* Grasshopper.png in Resources */,
+				33FA655417699FEF0074C59A /* test2.png in Resources */,
+				33FA6576176A372E0074C59A /* marble.png in Resources */,
+				33FA657C176A38940074C59A /* aluminium.png in Resources */,
+				33FA657D176A38940074C59A /* bricks.png in Resources */,
+				33FA657E176A38940074C59A /* grass.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1296,6 +1336,7 @@
 				5EE61013170B6C9C00E323A8 /* FCBrightDarkGradView.m in Sources */,
 				5EE61014170B6C9C00E323A8 /* FCColorPickerViewController.m in Sources */,
 				5EE61016170B6C9C00E323A8 /* FCColorSwatchView.m in Sources */,
+				33FA6549176990CC0074C59A /* ResourceManager.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

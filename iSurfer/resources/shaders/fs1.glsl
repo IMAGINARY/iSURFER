@@ -24,6 +24,7 @@
 uniform lowp vec3 Diffuse;
 
 uniform highp float CELLSHADE;
+uniform highp float TEXTURE;
 
 uniform highp vec3 LightPosition;
 uniform highp vec3 LightPosition2;
@@ -35,6 +36,11 @@ uniform highp vec3 SpecularMaterial2;
 uniform highp float Shininess;
 uniform highp float radius2;
 uniform highp vec4 eye;
+
+varying mediump vec2 TextureCoordOut;
+
+uniform sampler2D Sampler;
+
 
 struct polynomial { highp float a[ DEGREE + 1 ]; };
 
@@ -810,9 +816,12 @@ else
             color +=   sf * SpecularMaterial2 +  df * Diffuse;
         }
 }
-
-    gl_FragColor = vec4(color, 1);
-
+    if (TEXTURE== 1.0) {
+        gl_FragColor = texture2D(Sampler, TextureCoordOut) * vec4(color,1);
+    }
+    else{
+        gl_FragColor = vec4(color, 1);
+    }
 
 }
 

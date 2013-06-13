@@ -233,6 +233,8 @@ enum {
     //NSString *formula = @"--x^2+-------y*x*x";  //Bien
    // NSString *formula = @"x^2-y*x*x";  //Bien
     
+    NSString *formula = @"x^2+y^2+z^2+2*x*y*z-1"; //Bien
+    //NSString *formula = @"x^2+y^2+z^2-1";  //Bien
     
     
         //Cylinder
@@ -273,7 +275,7 @@ enum {
         //Calypso 
            // NSString *formula = @"x^2+y^2*z-z^2"; // Mal
         //Cayley Cubic
-            NSString *formula = @"x^2+y^2+z^2+2*x*y*z-1"; //Bien
+            //NSString *formula = @"x^2+y^2+z^2+2*x*y*z-1"; //Bien
         //Este se ve raro
             //NSString *formula = @"x^2-x-x^2*y-y*z^2-z^2"; //Bien
 

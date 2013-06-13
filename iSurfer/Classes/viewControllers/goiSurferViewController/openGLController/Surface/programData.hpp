@@ -32,6 +32,10 @@ struct ProgramHandle {
     GLint wire_projection;
     GLuint vertexBuffer;
     GLuint wire_vertexBuffer;
+    GLint Sampler;
+    GLint TextureCoord;
+    GLint TEXTURE;
+
 
 };
 
@@ -73,6 +77,14 @@ class programData
      * @default 5
      */
         static float radius;
+    /**
+     * The texture to load.
+     * @property textureFileName
+     * @type {char *}
+     * @default 5
+     */
+        static char  * textureFileName;
+
         static mat4 rot;
     /**
      * if true we show the BB with a wireframe.  
@@ -90,6 +102,13 @@ class programData
      */
     static bool toonShader;
 
+    /**
+     * if true use Texture instead of color.
+     * @property debug
+     * @type {bool}
+     * @default true
+     */
+    static bool textureEnable;
     /**
      * if true we use a panoramic camera, else a orthogonal.  
      * @property debug
@@ -167,6 +186,23 @@ class programData
      * @param cellshading {bool} new radius value
      */
     void static setCellShade(bool cellshading);
+    /**
+     * Usage:  setTexture(texture);
+     * ----------------------------------
+     * Enables or disable the Texture mode in render.
+     * @method setCellShade
+     * @param cellshading {bool} new radius value
+     */
+    void static setTexture(bool texture);
+
+    /**
+     * Usage:  initializeTexture(filename);
+     * ----------------------------------
+     * Load the texture file into OpenGL.
+     * @method setCellShade
+     * @param cellshading {bool} new radius value
+     */
+    void static initializeTexture(char * filename);
 
     
     static ProgramIdentifiers programs;

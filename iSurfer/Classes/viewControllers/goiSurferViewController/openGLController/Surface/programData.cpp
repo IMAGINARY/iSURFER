@@ -2,7 +2,7 @@
 #include "Vector.hpp"
 #include "error.hpp"
 #include "Matrix.hpp"
-
+#include "Interfaces.hpp"
 float programData::rotationX = 0.0f;
 float programData::rotationY = 0.0f;
 float programData::rotationZ = M_PI_2;
@@ -19,6 +19,7 @@ float programData::lposY = 0.25f;
 float programData::lposZ = 1.0f;
 float programData::radius = 5;
 float origin[5];
+char * programData::textureFileName = "bricks";
 
 mat4 programData::rot;
 
@@ -26,13 +27,16 @@ ProgramHandle programData::shaderHandle;
 bool programData::wireFrame = true;
 bool programData::panoramic = false;
 bool programData::toonShader = false;
+bool programData::textureEnable = false;
 
-
+GLuint m_gridTexture;
+IResourceManager *m_resourceManager;
 ProgramIdentifiers programData::programs;
 
 
 void programData::InitializeProgramData()
 {
+    m_resourceManager = Darwin::CreateResourceManager();
 
 
     GLuint glsl_program = programData::programs.alg_surface_glsl_program;
@@ -52,7 +56,10 @@ void programData::InitializeProgramData()
     programData::shaderHandle.SpecularMaterial2 = glGetUniformLocation(glsl_program, "SpecularMaterial2");
     programData::shaderHandle.Shininess = glGetUniformLocation(glsl_program, "Shininess"); 
     programData::shaderHandle.CELLSHADE = glGetUniformLocation(glsl_program, "CELLSHADE");
+    programData::shaderHandle.Sampler = glGetUniformLocation(glsl_program, "Sampler");
+    programData::shaderHandle.TEXTURE = glGetUniformLocation(glsl_program, "TEXTURE");
 
+    programData::shaderHandle.TextureCoord = glGetAttribLocation(glsl_program, "TextureCoord");
     programData::shaderHandle.DiffuseMaterial = glGetAttribLocation(glsl_program, "Diffuse");
     programData::shaderHandle.DiffuseMaterial2 = glGetAttribLocation(glsl_program, "Diffuse2");
     programData::shaderHandle.attr_pos = glGetAttribLocation( glsl_program, "pos" ); checkGLError( AT );
@@ -60,7 +67,8 @@ void programData::InitializeProgramData()
     programData::shaderHandle.wire_attr_pos = glGetAttribLocation( glsl_program, "pos" ); checkGLError( AT );
     programData::shaderHandle.wire_modelview = glGetUniformLocation( glsl_program, "modelviewMatrix" ); checkGLError( AT );
     programData::shaderHandle.wire_projection = glGetUniformLocation( glsl_program, "projectionMatrix" ); checkGLError( AT );
-    
+    setTexture(textureEnable);
+    initializeTexture(textureFileName);
     programData::setConstant();
     programData::GenerateArrays();
     programData::setCellShade(toonShader);
@@ -79,6 +87,47 @@ void programData::setCellShade(bool cellshading)
     
     
 }
+
+void programData::setTexture(bool texture)
+{
+  
+    float value = 1.0;
+    if (texture) {
+        value = 1.0;
+    }else
+    {
+        value =0.0;
+    }
+    glUniform1f(programData::shaderHandle.TEXTURE, value);
+    
+}
+
+void programData::initializeTexture(char * filename)
+{
+    glDeleteTextures(1, &m_gridTexture);
+    // Set the active sampler to stage 0.  Not really necessary since the uniform
+    // defaults to zero anyway, but good practice.
+    glActiveTexture(GL_TEXTURE0);checkGLError( AT );
+    
+    glUniform1i(programData::shaderHandle.Sampler, 0);   checkGLError( AT );
+    
+    
+    // Load the texture.
+    glGenTextures(1, &m_gridTexture);   checkGLError( AT );
+    glBindTexture(GL_TEXTURE_2D, m_gridTexture);   checkGLError( AT );
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);   checkGLError( AT );
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);   checkGLError( AT );
+    
+    //m_resourceManager->LoadPngImage("Grid16");
+    m_resourceManager->LoadPngImage(filename);   checkGLError( AT );
+    void* pixels = m_resourceManager->GetImageData();   checkGLError( AT );
+    ivec2 size = m_resourceManager->GetImageSize();   checkGLError( AT );
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, size.x, size.y, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);   checkGLError( AT );
+    m_resourceManager->UnloadImage();   checkGLError( AT );
+    glGenerateMipmap(GL_TEXTURE_2D);   checkGLError( AT );
+    
+}
+
 
 void programData::setConstant()
 {
@@ -171,7 +220,8 @@ void programData::GenerateArrays()
     // Initialize various state.
     glEnableVertexAttribArray(programData::shaderHandle.wire_attr_pos);	checkGLError( AT );
     glEnableVertexAttribArray(programData::shaderHandle.attr_pos);	checkGLError( AT );
-    
+    glEnableVertexAttribArray(programData::shaderHandle.TextureCoord); checkGLError( AT );
+
     
     // no se
     glEnable(GL_DEPTH_TEST);

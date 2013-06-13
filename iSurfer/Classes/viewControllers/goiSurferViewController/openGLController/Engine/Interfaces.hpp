@@ -132,6 +132,15 @@ struct IRenderingEngine {
     virtual void Render(int currentSurface, Quaternion orientation) = 0;
 };
 
+struct IResourceManager {
+    virtual string GetResourcePath() const = 0;
+    virtual void LoadPngImage(const string& filename) = 0;
+    virtual void* GetImageData() = 0;
+    virtual ivec2 GetImageSize() = 0;
+    virtual void UnloadImage() = 0;
+    virtual ~IResourceManager() {}
+};
+
 
 namespace ParametricViewer { IApplicationEngine* CreateApplicationEngine(IRenderingEngine*); }
 namespace WireframeES2 { IRenderingEngine* CreateRenderingEngine(); }
@@ -139,6 +148,7 @@ namespace SolidES2     { IRenderingEngine* CreateRenderingEngine(); }
 namespace SolidGL2     { IRenderingEngine* CreateRenderingEngine(); }
 namespace FacetedES2   { IRenderingEngine* CreateRenderingEngine(); }
 namespace DepthViewer  { IRenderingEngine* CreateRenderingEngine(); }
+namespace Darwin       { IResourceManager* CreateResourceManager(); }
 
 namespace ParametricViewer {   
 class ApplicationEngine : public IApplicationEngine {

@@ -468,6 +468,18 @@
     }
 }
 
+- (IBAction)Texture:(id)sender {
+    @synchronized(openglController)
+    {
+        
+        
+        programData::textureEnable = !programData::textureEnable;
+        programData::setTexture(programData::textureEnable);
+        
+        [openglController drawFrame];
+    }
+}
+
 //--------------------------------------------------------------------------------------------------------
 
 -(IBAction)optionsButtonPressed:(id)sender{

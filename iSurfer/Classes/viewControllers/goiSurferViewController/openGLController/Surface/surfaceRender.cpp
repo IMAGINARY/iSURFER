@@ -39,7 +39,7 @@ void drawWire(Drawable drawable){
 }
 
 void drawSurface(Drawable drawable){
-    
+    /*
     // Draw the surface.
     int stride = 2 * sizeof(vec3);
     //const GLvoid* offset = (const GLvoid*) sizeof(vec3);
@@ -48,7 +48,22 @@ void drawSurface(Drawable drawable){
     glVertexAttribPointer(position, 3, GL_FLOAT, GL_FALSE, stride, 0);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, drawable.IndexBuffer);
     glDrawElements(GL_TRIANGLES, drawable.IndexCount, GL_UNSIGNED_SHORT, 0);
+ */
     
+    // Draw the surface.
+    int stride = 2 * sizeof(vec3);
+    //const GLvoid* offset = (const GLvoid*) sizeof(vec3);
+
+    const GLvoid* texCoordOffset = (const GLvoid*) (2 * sizeof(vec3));
+    GLint position = programData::shaderHandle.wire_attr_pos;
+
+    GLint texCoord = programData::shaderHandle.TextureCoord;
+    glBindBuffer(GL_ARRAY_BUFFER, drawable.VertexBuffer);
+    glVertexAttribPointer(position, 3, GL_FLOAT, GL_FALSE, stride, 0);
+    glVertexAttribPointer(texCoord, 2, GL_FLOAT, GL_FALSE, stride, texCoordOffset);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, drawable.IndexBuffer);
+    glDrawElements(GL_TRIANGLES, drawable.IndexCount, GL_UNSIGNED_SHORT, 0);
+
 }
 
 
