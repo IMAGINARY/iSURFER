@@ -716,7 +716,7 @@ ivec2 oldLocation;
     //str = [str stringByReplacingOccurrencesOfString: @"\u2212" withString:@"-"];
 
     Compiler::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[eq UTF8String]);
-    
+
     programData::InitializeProgramData();
 
 	[self drawFrame];

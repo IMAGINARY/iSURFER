@@ -41,7 +41,8 @@ void programData::InitializeProgramData()
 
     GLuint glsl_program = programData::programs.alg_surface_glsl_program;
     glUseProgram( glsl_program ); checkGLError( AT );
-  
+
+    //printf("%d\n", glsl_program);
     programData::shaderHandle.u_modelview = glGetUniformLocation( glsl_program, "modelviewMatrix" ); checkGLError( AT );
     programData::shaderHandle.u_modelview_inv = glGetUniformLocation( glsl_program, "modelviewMatrixInverse" ); checkGLError( AT );
     programData::shaderHandle.u_projection = glGetUniformLocation( glsl_program, "projectionMatrix" ); checkGLError( AT );
@@ -72,6 +73,7 @@ void programData::InitializeProgramData()
     programData::setConstant();
     programData::GenerateArrays();
     programData::setCellShade(toonShader);
+    SetEye();
 }
 
 void programData::setCellShade(bool cellshading)

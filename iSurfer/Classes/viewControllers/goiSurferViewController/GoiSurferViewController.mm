@@ -33,6 +33,7 @@
 			self.algebraicSurface = surface;
 		}
 		optionsViews = [[NSMutableArray alloc]init];
+        COUNTER = 0;
 	}
 	return self;
 }
@@ -549,14 +550,23 @@
 //--------------------------------------------------------------------------------------------------------
 -(IBAction)doneButtonPressed{
     [equationTextField resignFirstResponder];
+    printf("Boton done apretado\n");
     [self scrollViewTo:nil movePixels:0 baseView:self.baseView];
     [self showExtKeyboard:NO];
-    if( currentEquation != NULL && ![currentEquation isEqualToString:equationTextField.text]){
+    if( currentEquation != NULL || ![currentEquation isEqualToString:equationTextField.text]){
 //        [SVProgressHUD showWithStatus:@"Generando superficie..."];
         lv = [LoadingView loadingView:@"Generando superficie..."];
         [self.view addSubview:lv];
-
+        //[openglController generateSurface:self.equationTextField.text];
         [self performSelector:@selector(doSurfaceGeneration) withObject:nil afterDelay:0.5];
+        //while (programData::programs.alg_surface_glsl_program == 0) {
+            //[openglController generateSurface:self.equationTextField.text];
+            if(COUNTER == 0)
+            {
+                COUNTER++;
+                [self performSelector:@selector(doSurfaceGeneration) withObject:nil afterDelay:0.5];
+            }//[self doSurfaceGeneration ];
+        //}
     }
     currentEquation = [self.equationTextField.text copy];
     
@@ -684,9 +694,10 @@
 }
 //--------------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-	[equationTextField resignFirstResponder];
-    
-    [openglController performSelectorInBackground:@selector(enerateSurface:) withObject: self.equationTextField.text];
+	//[equationTextField resignFirstResponder];
+    [openglController generateSurface:self.equationTextField.text];
+
+//    [openglController performSelectorInBackground:@selector(generateSurface:) withObject: self.equationTextField.text];
 
 	return YES;
 }

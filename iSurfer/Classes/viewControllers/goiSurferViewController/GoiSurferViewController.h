@@ -22,6 +22,7 @@
 	IBOutlet UITextField* equationTextField;
 	IBOutlet UIView* equationTextfieldView;
 	IBOutlet UIView* keyboardExtensionBar;
+    int COUNTER;
 	
 	// share view outlets
 	IBOutlet UIView* shareView;

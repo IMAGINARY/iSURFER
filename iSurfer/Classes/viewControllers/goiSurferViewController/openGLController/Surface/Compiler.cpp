@@ -75,7 +75,6 @@ void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const cha
 	GLuint aux = init( vs1, fs1 );
     programData::programs.alg_surface_glsl_program = aux;
 	checkGLError( AT );
-    
     if(COUNTER == 0){
         COUNTER++;
         glDeleteShader(programData::programs.wireframe_glsl_program);
@@ -104,11 +103,12 @@ GLuint Compiler::init( const char* vertex_shader_name, const char* fragment_shad
 		{
 			printf( "Error during Vertex Shader \"%s\" compilation:\n", vertex_shader_name );
 			printShaderInfoLog( vertex_shader );
-			return 0;
+			return 2134235643;
 		}
 		else
 		{
-			printf( "Vertex Shader \"%s\" successfully compiled.\n", vertex_shader_name );
+			printShaderInfoLog( vertex_shader );
+            printf( "Vertex Shader \"%s\" successfully compiled. %u \n", vertex_shader_name, vertex_shader );
 		}
 	}
 
@@ -172,11 +172,11 @@ GLuint Compiler::init( const char* vertex_shader_name, const char* fragment_shad
 		{
 			printf( "Error during Fragment Shader \"%s\" compilation:\n", fragment_shader_name );
 			printShaderInfoLog( fragment_shader );
-			return 0;
+			return 2134235643;
 		}
 		else
 		{
-			printf( "Fragment Shader \"%s\" successfully compiled.\n", fragment_shader_name );
+			printf( "Fragment Shader \"%s\" successfully compiled. %u \n", fragment_shader_name, fragment_shader );
 		}
 	}
 	
@@ -184,14 +184,15 @@ GLuint Compiler::init( const char* vertex_shader_name, const char* fragment_shad
 	glAttachShader( glsl_program, vertex_shader );
 	glAttachShader( glsl_program, fragment_shader );
 	glLinkProgram( glsl_program );
-
+    glDeleteProgram( vertex_shader);
+    glDeleteProgram( fragment_shader);
 	{
 		glGetProgramiv( glsl_program, GL_LINK_STATUS, &error_code );
 		if( error_code == GL_FALSE )
 		{
 			printf( "Error during GLSL program %i linking.\n", glsl_program );
 			printProgramInfoLog( glsl_program );
-			return 0;
+			return 2134235643;
 		}
 		else
 		{
@@ -207,7 +208,7 @@ GLuint Compiler::init( const char* vertex_shader_name, const char* fragment_shad
 		{
 			printf( "Error during GLSL program %i validation.\n", glsl_program );
 			printProgramInfoLog( glsl_program );
-			return 0;
+			return 2134235643;
 		}
 	}
 
@@ -238,7 +239,8 @@ GLuint Compiler::initWire( const char* vertex_shader_name, const char* fragment_
 		}
 		else
 		{
-			printf( "Vertex Shader \"%s\" successfully compiled.\n", vertex_shader_name );
+			printf( "Vertex Shader \"%s\" successfully compiled. %u \n", vertex_shader_name, vertex_shader );
+
 		}
 	}
     
@@ -260,6 +262,8 @@ GLuint Compiler::initWire( const char* vertex_shader_name, const char* fragment_
 		else
 		{
 			printf( "Fragment Shader \"%s\" successfully compiled.\n", fragment_shader_name );
+            printf( "%u successfully linked.\n", fragment_shader );
+
 		}
 	}
 	
