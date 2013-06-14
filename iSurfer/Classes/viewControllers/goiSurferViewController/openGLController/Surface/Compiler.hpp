@@ -47,7 +47,8 @@ class Compiler
 
     
 	private:
-        static int COUNTER;
+        static bool compileWireframe;
+        static bool compileVertex;
 		static GLuint init( const char* vertex_shader_name, const char* fragment_shader_name );
         static GLuint initWire( const char* vertex_shader_name, const char* fragment_shader_name );
 

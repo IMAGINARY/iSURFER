@@ -27,8 +27,9 @@ using namespace std;
 string read_file( string filename );
 void printShaderInfoLog( GLuint obj );
 void printProgramInfoLog( GLuint obj );
-int Compiler::COUNTER=0;
-
+bool Compiler::compileWireframe=true;
+bool Compiler::compileVertex=true;
+GLuint vertex_shader;
 
 
 void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const char *fs2, const char *formula)
@@ -70,16 +71,20 @@ void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const cha
     //int range, precision;
     //glGetShaderPrecisionFormat(GL_FRAGMENT_SHADER, GL_HIGH_FLOAT, &range, &precision);
     //printf("Range %d, precision %d.\n", range, precision);
+    
+    
 	checkGLError( AT );
     
-	GLuint aux = init( vs1, fs1 );
-    programData::programs.alg_surface_glsl_program = aux;
-	checkGLError( AT );
-    if(COUNTER == 0){
-        COUNTER++;
+    if(compileWireframe){
+        compileWireframe = false;
         glDeleteShader(programData::programs.wireframe_glsl_program);
         programData::programs.wireframe_glsl_program = initWire( vs2/*"vs2.glsl"*/, fs2/*"fs2.glsl"*/ );
     }
+	checkGLError( AT );
+
+    
+	GLuint aux = init( vs1, fs1 );
+    programData::programs.alg_surface_glsl_program = aux;
 	checkGLError( AT );
     
     
@@ -88,31 +93,33 @@ void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const cha
 GLuint Compiler::init( const char* vertex_shader_name, const char* fragment_shader_name )
 {
 	GLint error_code;
+    if(compileVertex)
+    {
+        compileVertex = false;
+        // create, load and compile vertex shader
+        vertex_shader = glCreateShader( GL_VERTEX_SHADER );
+        string vertex_shader_code = read_file( vertex_shader_name );
+        const char *vertex_shader_code_c_str = vertex_shader_code.c_str();
+        glShaderSource( vertex_shader, 1, &vertex_shader_code_c_str, NULL );
+        glCompileShader( vertex_shader );
 
-	// create, load and compile vertex shader 
-	GLuint vertex_shader = glCreateShader( GL_VERTEX_SHADER );
-	string vertex_shader_code = read_file( vertex_shader_name );
-	const char *vertex_shader_code_c_str = vertex_shader_code.c_str();
-	glShaderSource( vertex_shader, 1, &vertex_shader_code_c_str, NULL );
-	glCompileShader( vertex_shader );
+        {
+            glGetShaderiv( vertex_shader, GL_COMPILE_STATUS, &error_code );
 
-	{
-		glGetShaderiv( vertex_shader, GL_COMPILE_STATUS, &error_code );
-
-		if( error_code == GL_FALSE )
-		{
-			printf( "Error during Vertex Shader \"%s\" compilation:\n", vertex_shader_name );
-			printShaderInfoLog( vertex_shader );
-			return 2134235643;
-		}
-		else
-		{
-			printShaderInfoLog( vertex_shader );
-            printf( "Vertex Shader \"%s\" successfully compiled. %u \n", vertex_shader_name, vertex_shader );
-		}
-	}
-
-	// create, load and compile fragment shader 
+            if( error_code == GL_FALSE )
+            {
+                printf( "Error during Vertex Shader \"%s\" compilation:\n", vertex_shader_name );
+                printShaderInfoLog( vertex_shader );
+                return 2134235643;
+            }
+            else
+            {
+                printShaderInfoLog( vertex_shader );
+                printf( "Vertex Shader \"%s\" successfully compiled. %u \n", vertex_shader_name, vertex_shader );
+            }
+        }
+    }
+	// create, load and compile fragment shader
 	GLuint fragment_shader = glCreateShader( GL_FRAGMENT_SHADER );
 	string fragment_shader_code = read_file( fragment_shader_name );
 	const char *fragment_shader_code_c_str = fragment_shader_code.c_str();
@@ -184,7 +191,6 @@ GLuint Compiler::init( const char* vertex_shader_name, const char* fragment_shad
 	glAttachShader( glsl_program, vertex_shader );
 	glAttachShader( glsl_program, fragment_shader );
 	glLinkProgram( glsl_program );
-    glDeleteProgram( vertex_shader);
     glDeleteProgram( fragment_shader);
 	{
 		glGetProgramiv( glsl_program, GL_LINK_STATUS, &error_code );
@@ -298,6 +304,8 @@ GLuint Compiler::initWire( const char* vertex_shader_name, const char* fragment_
 		}
 	}
     
+    glDeleteProgram(vertex_shader);
+    glDeleteProgram(fragment_shader);
 	glUseProgram( glsl_program );
     
 	return glsl_program;

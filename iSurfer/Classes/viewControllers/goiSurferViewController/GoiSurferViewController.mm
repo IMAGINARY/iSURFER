@@ -557,16 +557,12 @@
 //        [SVProgressHUD showWithStatus:@"Generando superficie..."];
         lv = [LoadingView loadingView:@"Generando superficie..."];
         [self.view addSubview:lv];
-        //[openglController generateSurface:self.equationTextField.text];
         [self performSelector:@selector(doSurfaceGeneration) withObject:nil afterDelay:0.5];
-        //while (programData::programs.alg_surface_glsl_program == 0) {
-            //[openglController generateSurface:self.equationTextField.text];
             if(COUNTER == 0)
             {
                 COUNTER++;
                 [self performSelector:@selector(doSurfaceGeneration) withObject:nil afterDelay:0.5];
-            }//[self doSurfaceGeneration ];
-        //}
+            }
     }
     currentEquation = [self.equationTextField.text copy];
     
