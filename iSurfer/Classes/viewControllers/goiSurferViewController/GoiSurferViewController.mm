@@ -79,6 +79,8 @@
 	
 	//Zoom slider
 	UISlider* tmpzoomSlider = [[UISlider alloc]init];
+    CGRect zoomframe = CGRectMake(-100, 25,100, 150);
+    tmpzoomSlider.frame = zoomframe;
 	tmpzoomSlider.minimumValue = 1;
 	tmpzoomSlider.maximumValue = 100;
 	[tmpzoomSlider setUserInteractionEnabled:NO];
@@ -126,12 +128,15 @@
 	[doubleTap release];
 	[self.zoomView setAlpha:0.0];
 	
-	[xpos setHidden:YES];
-	[ypos setHidden:YES];
+	
 	algebraicsurfaceViewFrame = algebraicSurfaceView.frame;
   //   [self 	doOpenGLMagic];
 
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receivedDrewFrameNotif)
+                                                 name:@"drewnotif"
+                                               object:nil];
+
   
 
 	[self performSelectorInBackground:@selector(doOpenGLMagic) withObject:nil];
@@ -145,10 +150,16 @@
     [settingsButton setTitle:NSLocalizedString(@"MENU_SETTINGS", nil) forState:UIControlStateNormal];
     [renderButton setTitle:NSLocalizedString(@"MENU_RENDER", nil) forState:UIControlStateNormal];
 }
+
+
+-(void)receivedDrewFrameNotif{
+    
+    
+}
 //--------------------------------------------------------------------------------------------------------
 
 -(void)doOpenGLMagic{
-    lv = [LoadingView loadingView:@"Generando superficie..."];
+    lv = [LoadingView loadingView:@""];
     [self.view addSubview:lv];
 
 	openglController = [[iSurferViewController alloc]init];
@@ -173,29 +184,17 @@
 }
 
 //--------------------------------------------------------------------------------------------------------
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
-	if([gestureRecognizer isKindOfClass:[UIPinchGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]] ||
-	   [gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]] ){
-		return YES;
-	}
-	return NO;
-}
 //--------------------------------------------------------------------------------------------------------
 -(void)handleSingleLongPressTouch:(UILongPressGestureRecognizer*)singleLongPressGesture{
 	switch (singleLongPressGesture.state) {
 		case UIGestureRecognizerStateBegan:
-			[xpos setHidden:NO];
-			[ypos setHidden:NO];
-			xpos.text = @"x: 0";
-			ypos.text = @"y: 0";
-			break;
+	
+					break;
 		case UIGestureRecognizerStateChanged:
 			break;
 		case UIGestureRecognizerStateEnded:
 			[openglController drawFrame];
-			[xpos setHidden:YES];
-			[ypos setHidden:YES];
-			break;
+				break;
 		default:
 			break;
 	}
@@ -203,13 +202,23 @@
 //--------------------------------------------------------------------------------------------------------
 
 
+-(void)changeframe{
+    CGRect f;
 
+    f = CGRectMake(0, 0, 90, 70	);
+    algebraicSurfaceView.frame = f;
+    
+    temporalimgView.hidden = NO;
+    NSLog(@"changeframe");
+
+}
 
 -(void)handlePanGesture:(UIPanGestureRecognizer*)gestureRecognizer{
 	CGPoint p;
 	p = [gestureRecognizer locationInView:baseView]; //:gestureRecognizer.view];
     //p = [gestureRecognizer translationInView:gestureRecognizer.view];
-
+    
+    
 	CGRect f;
 	switch (gestureRecognizer.state) {
 		case UIGestureRecognizerStateBegan:
@@ -217,22 +226,19 @@
 			//temporalimgView.image = [self captureView:algebraicSurfaceView];
       //      temporalimgView.image = [algebraicSurfaceView snapshot];
 
-			 f = CGRectMake(0, 24, 90, 70	);
-			algebraicSurfaceView.frame = f;
-            
-			temporalimgView.hidden = NO;
            // 
            // UITouch* touch = [touches anyObject];
            // CGPoint previous  = [touch previousLocationInView: self];
            // CGPoint current = [touch locationInView: self];
 
             [openglController initRotationX:p.x Y:p.y];
+            [self changeframe];
+       //     [self performSelector:@selector(changeframe) withObject:nil afterDelay:0.1];
+         
 
 			break;
 		case UIGestureRecognizerStateChanged:
-			xpos.text = [NSString stringWithFormat:@"x: %.2f", p.x];
-			ypos.text = [NSString stringWithFormat:@"y: %.2f", p.y];
-			[openglController rotateX:p.x Y:p.y];
+				[openglController rotateX:p.x Y:p.y];
 
 		//	temporalimgView.image = [self captureView:algebraicSurfaceView];
          //   temporalimgView.image =[self imageWithView:algebraicSurfaceView];
@@ -248,19 +254,22 @@
 
 			break;
 		case UIGestureRecognizerStateEnded:
-			NSLog(@"release");
+        case UIGestureRecognizerStateCancelled:
+        case UIGestureRecognizerStateFailed:
 			[openglController endRotationX:p.x Y:p.y];
-            temporalimgView.image = [algebraicSurfaceView snapshot];
+            NSLog(@"UIGestureRecognizerStateEnded");
+
 //			[openglController rotateX:p.x Y:p.y];
             if( fullScreen){
                 f = CGRectMake(0, 0, 440, 320	);
             }else{
-                f = CGRectMake(0, 24, 364, 245	);
+                f = CGRectMake(0, 0 , 430, 277	);
             }
 			algebraicSurfaceView.frame = f;
 
-			temporalimgView.hidden = YES;
 			[openglController performSelector:@selector(drawFrame) withObject:nil afterDelay:0.1  ];
+            [self performSelector:@selector(hidetempimage) withObject:nil afterDelay:0.4];
+
 
 			break;
 		default:
@@ -268,6 +277,23 @@
 	}
 }
 
+-(void)hidetempimage{
+    temporalimgView.image = [algebraicSurfaceView snapshot];
+
+  //  temporalimgView.hidden = YES;
+
+    
+}
+//-------------------------------------------------------------------------------------------------------
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+    if(([gestureRecognizer isKindOfClass:[UIPinchGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]] )||
+     (  [gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]]) ){
+        return YES;
+    }
+    return NO;
+}
+//-------------------------------------------------------------------------------------------------------
 
 -(UIImage*)getSurfaceImage{
     
@@ -333,7 +359,7 @@
 		[algebraicSurfaceView setFrame:algebraicsurfaceViewFrame];
 	//	[self.algebraicSurfaceView setFrame:CGRectMake(109, 7, 364, 258)];
 		zoomframe.origin.y = 27;
-        temporalimgView.frame = CGRectMake(0, 24, 364, 245);
+        temporalimgView.frame = CGRectMake(0, 0, 430, 277);
 
 	}else{
 		fullScreen = YES;
@@ -554,8 +580,7 @@
     [self scrollViewTo:nil movePixels:0 baseView:self.baseView];
     [self showExtKeyboard:NO];
     if( currentEquation != NULL || ![currentEquation isEqualToString:equationTextField.text]){
-//        [SVProgressHUD showWithStatus:@"Generando superficie..."];
-        lv = [LoadingView loadingView:@"Generando superficie..."];
+        lv = [LoadingView loadingView:@""];
         [self.view addSubview:lv];
         [self performSelector:@selector(doSurfaceGeneration) withObject:nil afterDelay:0.5];
             if(COUNTER == 0)
@@ -687,25 +712,6 @@
 //    [textField setEditing:YES];
     // [textField becomeFirstResponder];
   	return YES;
-}
-//--------------------------------------------------------------------------------------------------------
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-	//[equationTextField resignFirstResponder];
-    [openglController generateSurface:self.equationTextField.text];
-
-//    [openglController performSelectorInBackground:@selector(generateSurface:) withObject: self.equationTextField.text];
-
-	return YES;
-}
-//--------------------------------------------------------------------------------------------------------
-
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-	
-}
-
-//--------------------------------------------------------------------------------------------------------
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-	return YES;
 }
 //--------------------------------------------------------------------------------------------------------
 #pragma mark dealloc

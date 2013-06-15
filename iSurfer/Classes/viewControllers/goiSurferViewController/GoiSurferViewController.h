@@ -56,8 +56,6 @@
 	float previousScale;
 	AlgebraicSurface* algebraicSurface;
 	
-	IBOutlet UILabel* xpos;
-	IBOutlet UILabel* ypos;
 	
 	iSurferViewController* openglController;
 

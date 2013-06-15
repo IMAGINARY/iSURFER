@@ -390,6 +390,7 @@ enum {
             m_applicationEngine->Render();
 
               [(EAGLView *)self.view presentFramebuffer];
+        
     }
 }
 
@@ -674,6 +675,8 @@ ivec2 oldLocation;
 	NSLog(@"rotation start at x: %.2f    y:%.2f", x , y );
     
 	[self drawFrame];
+    
+    NSLog(@"rotation ends");
      
 }
 

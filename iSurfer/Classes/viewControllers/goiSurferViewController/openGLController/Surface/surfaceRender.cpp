@@ -6,7 +6,6 @@
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
-
 #include "surfaceRender.h"
 
 #include "programData.hpp"
@@ -175,5 +174,7 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
 	checkGLError( AT );
     
     printf("frame drew\n");
+    
+
     
 }

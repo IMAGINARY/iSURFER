@@ -110,15 +110,8 @@
 //--------------------------------------------------------------------------------------------------------
 -(void)goToGalleries{
     
-    [UIView beginAnimations:@"View Flip" context:nil];
-    [UIView setAnimationDuration:0.80];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight
-                           forView:self.navcontroller.view cache:NO];
-    
+      
     [self.navcontroller pushViewController:myGalleriesViewController animated:YES];
-    [UIView commitAnimations];
     
 }
 
