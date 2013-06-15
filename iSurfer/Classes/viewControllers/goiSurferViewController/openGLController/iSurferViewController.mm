@@ -388,8 +388,8 @@ enum {
     {
             glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
             m_applicationEngine->Render();
-
-              [(EAGLView *)self.view presentFramebuffer];
+        NSLog(@"finished drawing");
+        [(EAGLView *)self.view presentFramebuffer];
         
     }
 }

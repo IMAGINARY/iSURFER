@@ -79,7 +79,7 @@
 	
 	//Zoom slider
 	UISlider* tmpzoomSlider = [[UISlider alloc]init];
-    CGRect zoomframe = CGRectMake(-100, 25,100, 150);
+    CGRect zoomframe = CGRectMake(-115, 25,80, 35);
     tmpzoomSlider.frame = zoomframe;
 	tmpzoomSlider.minimumValue = 1;
 	tmpzoomSlider.maximumValue = 100;
@@ -263,7 +263,7 @@
             if( fullScreen){
                 f = CGRectMake(0, 0, 440, 320	);
             }else{
-                f = CGRectMake(0, 0 , 430, 277	);
+                f = CGRectMake(0, 0 , 400, 277	);
             }
 			algebraicSurfaceView.frame = f;
 
@@ -359,7 +359,7 @@
 		[algebraicSurfaceView setFrame:algebraicsurfaceViewFrame];
 	//	[self.algebraicSurfaceView setFrame:CGRectMake(109, 7, 364, 258)];
 		zoomframe.origin.y = 27;
-        temporalimgView.frame = CGRectMake(0, 0, 430, 277);
+        temporalimgView.frame = CGRectMake(0, 0, 400, 277);
 
 	}else{
 		fullScreen = YES;
