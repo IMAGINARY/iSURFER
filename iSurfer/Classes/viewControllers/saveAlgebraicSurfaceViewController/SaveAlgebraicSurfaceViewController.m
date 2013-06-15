@@ -29,6 +29,7 @@
 	self.galleryNameLabel.text = @"";
 	self.surfaceDescriptionTextView.text = @"";
 	self.galleryNameLabel.text = @"";
+    editableGalleries = [[appcontroller getEditableGalleries]retain];
 }
 //--------------------------------------------------------------------------------------------------------
 
@@ -76,6 +77,7 @@
 //--------------------------------------------------------------------------------------------------------
 
 -(IBAction)saveSurface{
+    editableGalleries = [[appcontroller getEditableGalleries]retain];
 	NSString* error = [self fieldsAreValid];
 	if( error ){
 		UIAlertView* validationAlert = [[UIAlertView alloc] initWithTitle:@"Save" message:error delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

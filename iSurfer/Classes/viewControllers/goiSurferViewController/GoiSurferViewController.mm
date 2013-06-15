@@ -22,7 +22,7 @@
 @implementation GoiSurferViewController
 //--------------------------------------------------------------------------------------------------------
 @synthesize equationTextField, keyboardExtensionBar, baseView, colorPaletteView, shareView, optionsViews, colorTestView, greenColorSlider, redColorSlider, blueColorSlider;
-@synthesize algebraicSurfaceView, equationTextfieldView,rotateimage, colorButton, shareButton, saveButton, galleriesButton, settingsButton, renderButton, zoomSlider, zoomView, algebraicSurface, temporalimgView;
+@synthesize algebraicSurfaceView, equationTextfieldView,rotateimage, colorButton, shareButton, saveButton, galleriesButton, settingsButton, helpButton, zoomSlider, zoomView, algebraicSurface, temporalimgView;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) initWithAppController:(AppController*)anappCtrl andAlgebraicSurface:(AlgebraicSurface*)surface{
@@ -148,7 +148,7 @@
     [saveButton setTitle:NSLocalizedString(@"MENU_SAVE", nil) forState:UIControlStateNormal];
     [galleriesButton setTitle:NSLocalizedString(@"MENU_GALLERIES", nil) forState:UIControlStateNormal];
     [settingsButton setTitle:NSLocalizedString(@"MENU_SETTINGS", nil) forState:UIControlStateNormal];
-    [renderButton setTitle:NSLocalizedString(@"MENU_RENDER", nil) forState:UIControlStateNormal];
+    [helpButton setTitle:NSLocalizedString(@"MENU_HELP", nil) forState:UIControlStateNormal];
 }
 
 
@@ -759,7 +759,6 @@
 	[equationTextfieldView release];
 	[algebraicSurfaceView release];
 	[rotateimage release];
-	[saveButton release];
 	[zoomSlider release];
 	[zoomView release];
 	[algebraicSurface release];
@@ -770,7 +769,7 @@
     [saveButton release];
     [galleriesButton release];
     [settingsButton release];
-    [renderButton release];
+    [helpButton release];
 	[super dealloc];
 }
 //---------------------------------------------------------------------------------------------

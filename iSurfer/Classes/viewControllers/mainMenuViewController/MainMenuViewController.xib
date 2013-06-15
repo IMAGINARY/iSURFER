@@ -84,10 +84,6 @@
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">Button1_off.jpg</string>
 								</object>
-								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">Button1_on.png</string>
-								</object>
 								<object class="IBUIFontDescription" key="IBUIFontDescription" id="641560382">
 									<string key="name">Helvetica-Bold</string>
 									<string key="family">Helvetica</string>
@@ -120,10 +116,6 @@
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">Button2_off.jpg</string>
 								</object>
-								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">Button2_on.png</string>
-								</object>
 								<reference key="IBUIFontDescription" ref="641560382"/>
 								<reference key="IBUIFont" ref="1009661705"/>
 							</object>
@@ -146,10 +138,6 @@
 								<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">Button3_off.jpg</string>
-								</object>
-								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">Button3_on.png</string>
 								</object>
 								<reference key="IBUIFontDescription" ref="641560382"/>
 								<reference key="IBUIFont" ref="1009661705"/>
@@ -415,18 +403,12 @@
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>Button1_off.jpg</string>
-				<string>Button1_on.png</string>
 				<string>Button2_off.jpg</string>
-				<string>Button2_on.png</string>
 				<string>Button3_off.jpg</string>
-				<string>Button3_on.png</string>
 				<string>Imaginary lemon.jpg</string>
 			</object>
 			<object class="NSArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>{493, 123}</string>
-				<string>{493, 123}</string>
-				<string>{493, 123}</string>
 				<string>{493, 123}</string>
 				<string>{493, 123}</string>
 				<string>{493, 123}</string>

@@ -12,6 +12,8 @@
 #import "GoiSurferViewController.h"
 #import "MyGalleriesViewController.h"
 #import "HelpViewController.h"
+#import "CreditsViewController.h"
+#import "TutorialViewController.h"
 #import "SplashScreenViewController.h"
 #import "GalleryViewController.h"
 #import "SaveAlgebraicSurfaceViewController.h"
@@ -22,7 +24,7 @@
 //--------------------------------------------------------------------------------------------------------
 @implementation AppController
 //--------------------------------------------------------------------------------------------------------
-@synthesize mainMenuViewController, navcontroller, goiSurferViewController, myGalleriesViewController, helpViewController, imageDescriptionViewController,  galleriesArray, dataBase;
+@synthesize mainMenuViewController, navcontroller, goiSurferViewController, myGalleriesViewController, helpViewController, creditsViewController, tutorialViewController, imageDescriptionViewController, galleriesArray, dataBase;
 //--------------------------------------------------------------------------------------------------------
 
 -(id)initWithNavController:(UINavigationController*)aNavController{
@@ -54,6 +56,14 @@
 		HelpViewController* tmphelp = [[HelpViewController alloc]initWithAppController:self];
 		[self setHelpViewController:tmphelp];
 		[tmphelp release];
+        
+        CreditsViewController* tmpcredits = [[CreditsViewController alloc]initWithAppController:self];
+		[self setCreditsViewController:tmpcredits];
+		[tmpcredits release];
+        
+        TutorialViewController* tmptutorial = [[TutorialViewController alloc]initWithAppController:self];
+		[self setTutorialViewController:tmptutorial];
+		[tmptutorial release];
         
         ImageDescriptionViewController * tmpimageDesc = [[ImageDescriptionViewController alloc]initWithAppController:self];
         [self setImageDescriptionViewController:tmpimageDesc];
@@ -167,6 +177,8 @@
 	[goiSurferViewController release];
 	[myGalleriesViewController release];
 	[helpViewController release];
+    [creditsViewController release];
+    [tutorialViewController release];
     [imageDescriptionViewController release];
 	[galleriesArray release];
 	[dataBase release];

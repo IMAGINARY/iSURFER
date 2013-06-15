@@ -9,9 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "VideoViewController.h"
 
-@interface HelpViewController : VideoViewController {
+@interface HelpViewController : BaseViewController <UITextFieldDelegate, UIGestureRecognizerDelegate> {
 
+    IBOutlet UIButton* credits;
+    IBOutlet UIButton* tutorial;
 }
--(IBAction)playVideo2;
+
+@property(nonatomic, retain)	IBOutlet UIButton* credits;
+@property(nonatomic, retain)	IBOutlet UIButton* tutorial;
 
 @end

@@ -3057,9 +3057,9 @@
 							<string>equationTextfieldView</string>
 							<string>galleriesButton</string>
 							<string>greenColorSlider</string>
+							<string>helpButton</string>
 							<string>keyboardExtensionBar</string>
 							<string>redColorSlider</string>
-							<string>renderButton</string>
 							<string>rotateimage</string>
 							<string>saveButton</string>
 							<string>settingsButton</string>
@@ -3081,9 +3081,9 @@
 							<string>UIView</string>
 							<string>UIButton</string>
 							<string>UISlider</string>
+							<string>UIButton</string>
 							<string>UIView</string>
 							<string>UISlider</string>
-							<string>UIButton</string>
 							<string>UIImageView</string>
 							<string>UIButton</string>
 							<string>UIButton</string>
@@ -3108,9 +3108,9 @@
 							<string>equationTextfieldView</string>
 							<string>galleriesButton</string>
 							<string>greenColorSlider</string>
+							<string>helpButton</string>
 							<string>keyboardExtensionBar</string>
 							<string>redColorSlider</string>
-							<string>renderButton</string>
 							<string>rotateimage</string>
 							<string>saveButton</string>
 							<string>settingsButton</string>
@@ -3163,16 +3163,16 @@
 								<string key="candidateClassName">UISlider</string>
 							</object>
 							<object class="IBToOneOutletInfo">
+								<string key="name">helpButton</string>
+								<string key="candidateClassName">UIButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">keyboardExtensionBar</string>
 								<string key="candidateClassName">UIView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">redColorSlider</string>
 								<string key="candidateClassName">UISlider</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">renderButton</string>
-								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">rotateimage</string>

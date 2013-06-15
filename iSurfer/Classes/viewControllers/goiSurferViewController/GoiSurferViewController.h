@@ -44,7 +44,7 @@
     IBOutlet UIButton* saveButton;
     IBOutlet UIButton* settingsButton;
     IBOutlet UIButton* galleriesButton;
-    IBOutlet UIButton* renderButton;
+    IBOutlet UIButton* helpButton;
 	
 	//Zoom view
 	IBOutlet UIView* zoomView;
@@ -79,7 +79,7 @@
 @property(nonatomic, retain)	IBOutlet UIButton* saveButton;
 @property(nonatomic, retain)    IBOutlet UIButton* settingsButton;
 @property(nonatomic, retain)    IBOutlet UIButton* galleriesButton;
-@property(nonatomic, retain)    IBOutlet UIButton* renderButton;
+@property(nonatomic, retain)    IBOutlet UIButton* helpButton;
 @property(nonatomic, retain)	IBOutlet UIImageView* rotateimage;
 @property(nonatomic, retain)	IBOutlet UIView* equationTextfieldView;
 @property(nonatomic, retain)	IBOutlet UIView* algebraicSurfaceView;
