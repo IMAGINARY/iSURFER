@@ -184,7 +184,6 @@
 }
 
 //--------------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------------
 -(void)handleSingleLongPressTouch:(UILongPressGestureRecognizer*)singleLongPressGesture{
 	switch (singleLongPressGesture.state) {
 		case UIGestureRecognizerStateBegan:
@@ -533,6 +532,8 @@
     [openglController setSurfaceColorRed:colors[0] Green:colors[1] Blue:colors[2]];
 	[self showOptionsViewWrapper:NO view:colorPicker.view];
     [colorpalette.view removeFromSuperview];
+	[openglController startAnimation];
+
 }
 
 - (void)colorPickerViewController:(FCColorPickerViewController *)colorPicker didSelectColor2:(UIColor *)color{
@@ -540,6 +541,8 @@
     [openglController setSurfaceColor2Red:colors[0] Green:colors[1] Blue:colors[2]];
 	[self showOptionsViewWrapper:NO view:colorPicker.view];
     [colorpalette.view removeFromSuperview];
+	[openglController startAnimation];
+
 }
 //--------------------------------------------------------------------------------------------------------
 -(IBAction)hideOptions:(id)sender{
@@ -628,7 +631,6 @@
 -(void)showOptionsView:(BOOL)yes view:(UIView*)showingView{
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
-	CGRect r=[showingView frame];
     
 	if(yes){
         showingView.alpha =  1;
