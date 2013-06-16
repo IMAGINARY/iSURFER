@@ -30,6 +30,11 @@
 	IBOutlet UINavigationItem* navBar;
 	
 	IBOutlet UINavigationBar* navigationBar;
+    
+    IBOutlet UIImageView* image;
+    
+    UIImage * surfaceImagex;
+    
 	int galleryIndex;
     
     GoiSurferViewController* delegate;
@@ -60,7 +65,9 @@
 @property(nonatomic, retain)IBOutlet UITextField* surfaceNameTextfield;
 @property(nonatomic, retain)IBOutlet UITextView* surfaceDescriptionTextView;
 
--(id) initWithAppController:(AppController*)anappCtrl;
+@property(nonatomic, retain)IBOutlet UIImageView* image;
+
+-(id) initWithAppController:(AppController*)anappCtrl andImage:(UIImage*) image;
 -(IBAction)showGalleriiesPicker:(BOOL)yes;
 -(IBAction)done;
 -(IBAction)saveSurface;

@@ -13,13 +13,18 @@
 
 @implementation SaveAlgebraicSurfaceViewController
 //--------------------------------------------------------------------------------------------------------
-@synthesize galleryPicker, surfaceNameTextfield, surfaceDescriptionTextView, galleriesPickerButton, galleryNameLabel, blackLine, galleryCreateButton, pickerWrapperView, dataWrapperView, saveButton, cancelButton, navBar, delegate, surfaceNameLabel, galleryLabel, surfaceDescriptionLabel;
+@synthesize galleryPicker, surfaceNameTextfield, surfaceDescriptionTextView, galleriesPickerButton, galleryNameLabel, blackLine, galleryCreateButton, pickerWrapperView, dataWrapperView, saveButton, cancelButton, navBar, delegate, surfaceNameLabel, galleryLabel, surfaceDescriptionLabel, image;
 //--------------------------------------------------------------------------------------------------------
--(id) initWithAppController:(AppController*)anappCtrl{
+-(id) initWithAppController:(AppController*)anappCtrl andImage: (UIImage*) surfaceImage{
 	
 	if (self = [super initWithNibName:@"SaveAlgebraicSurfaceViewController" bundle:[NSBundle mainBundle]]) {
 		[self setAppcontroller:anappCtrl];
 	}
+    
+    NSLog(@"image %@", surfaceImage);
+    
+    surfaceImagex = surfaceImage;
+    
 	return self;
 }
 //--------------------------------------------------------------------------------------------------------
@@ -30,11 +35,19 @@
 	self.surfaceDescriptionTextView.text = @"";
 	self.galleryNameLabel.text = @"";
     editableGalleries = [[appcontroller getEditableGalleries]retain];
+    if ([editableGalleries count] == 0) {
+        galleriesPickerButton.hidden = true;
+        blackLine.hidden = true;
+    } else {
+        galleriesPickerButton.hidden = false;
+        blackLine.hidden = false;
+    }
+    [galleryPicker reloadAllComponents];
 }
 //--------------------------------------------------------------------------------------------------------
 
 -(void)viewDidLoad{
-    editableGalleries = [[appcontroller getEditableGalleries]retain];
+    self.image.image = surfaceImagex;
     
 	navigationBar.tintColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
     
@@ -43,10 +56,6 @@
     [surfaceDescriptionTextView.layer setBorderWidth: 1.0];
     [surfaceDescriptionTextView.layer setCornerRadius:8.0f];
     [surfaceDescriptionTextView.layer setMasksToBounds:YES];
-    if ([editableGalleries count] == 0) {
-        galleriesPickerButton.hidden = true;
-        blackLine.hidden = true;
-    }
     [galleryCreateButton addTarget:self action:@selector(addGallery) forControlEvents:UIControlEventTouchUpInside];
     [self localize];
     
@@ -77,7 +86,6 @@
 //--------------------------------------------------------------------------------------------------------
 
 -(IBAction)saveSurface{
-    editableGalleries = [[appcontroller getEditableGalleries]retain];
 	NSString* error = [self fieldsAreValid];
 	if( error ){
 		UIAlertView* validationAlert = [[UIAlertView alloc] initWithTitle:@"Save" message:error delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

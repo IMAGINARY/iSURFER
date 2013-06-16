@@ -181,7 +181,8 @@
 }
 
 -(void)setTemporalImage{
-   temporalimgView.image = [algebraicSurfaceView snapshot];
+    UIImage* image = [algebraicSurfaceView snapshot];
+//   temporalimgView.image = [algebraicSurfaceView snapshot];
 
 }
 
@@ -251,7 +252,7 @@
        //     temporalimgView.image = [algebraicSurfaceView drawableToCGImage];
 
 
-            temporalimgView.image = [algebraicSurfaceView snapshot];
+//            temporalimgView.image = [algebraicSurfaceView snapshot];
 
 			break;
 		case UIGestureRecognizerStateEnded:
@@ -279,7 +280,7 @@
 }
 
 -(void)hidetempimage{
-    temporalimgView.image = [algebraicSurfaceView snapshot];
+//    temporalimgView.image = [algebraicSurfaceView snapshot];
 
   //  temporalimgView.hidden = YES;
 
@@ -358,7 +359,7 @@
 	//	[[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 		layer.cornerRadius = 8;
 		[algebraicSurfaceView setFrame:algebraicsurfaceViewFrame];
-	//	[self.algebraicSurfaceView setFrame:CGRectMake(109, 7, 364, 258)];
+	//	[self.algebraicSurfaceView setFrame:CGRectMake(109, 7, 364, 2w58)];
 		zoomframe.origin.y = 27;
         temporalimgView.frame = CGRectMake(0, 0, 400, 277);
 
@@ -682,7 +683,7 @@
 	
 	NSLog(@"keyboarddidshow");
 	UIButton *doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	doneButton.frame = CGRectMake(0, 123, 158,39); 
+	doneButton.frame = CGRectMake(0, 123, 158,39);
 
     doneButton.adjustsImageWhenHighlighted = NO;
     [doneButton setImage:[UIImage imageNamed:@"done_up.png"] forState:UIControlStateNormal];
@@ -722,7 +723,8 @@
 #pragma mark dealloc
 
 -(IBAction)saveImage{
-	SaveAlgebraicSurfaceViewController* saveimg = [[SaveAlgebraicSurfaceViewController alloc]initWithAppController:self.appcontroller];
+    UIImage* image = temporalimgView.image;
+	SaveAlgebraicSurfaceViewController* saveimg = [[SaveAlgebraicSurfaceViewController alloc]initWithAppController:self.appcontroller andImage: temporalimgView.image];
     saveimg.delegate = self;
 	[self presentModalViewController:saveimg animated:YES];
 	[saveimg release];
