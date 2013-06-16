@@ -81,7 +81,7 @@
 		[newGallery setGalleryDescription:self.galleryDescription.text];
 		newGallery.editable = YES;
 		newGallery.thumbNail = NULL;
-		[self.appcontroller addGallery:newGallery atIndex:0];
+		[self.appcontroller addGallery:newGallery atIndex:[appcontroller getGalleriesCount]];
 		[newGallery release];
 		[self dismissModalViewControllerAnimated:YES];
 	}
