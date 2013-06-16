@@ -314,4 +314,27 @@
 
 //------------------------------------------------------------------------
 
+-(void) deleteSurface: (AlgebraicSurface*) surface{
+    //TODO delete image
+    [db executeUpdate:@"delete from surfaces where id = ?",
+     [NSNumber numberWithInt: surface.surfaceID]];
+    [db executeUpdate:@"delete from surfacestexts where surfaceid=?",
+     [NSNumber numberWithInt: surface.surfaceID]];
+    
+    [db commit];
+}
+
+//------------------------------------------------------------------------
+
+-(void) deleteGallery: (Gallery*) gallery{
+    [db executeUpdate:@"delete from galleries where id = ?",
+     [NSNumber numberWithInt: gallery.galID]];
+    [db executeUpdate:@"delete from galleriestexts where galleryid=?",
+     [NSNumber numberWithInt: gallery.galID]];
+    
+    [db commit];
+}
+
+//------------------------------------------------------------------------
+
 @end

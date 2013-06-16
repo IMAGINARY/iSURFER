@@ -78,6 +78,10 @@
 
 -(void)addAlgebraicSurface:(AlgebraicSurface*)surface atGallery:(Gallery*)gallery;
 
+-(void)removeSurface:(AlgebraicSurface*)surface;
+
+-(void) removeGallery:(Gallery*)gallery;
+
 -(void)goToGalleries;
 
 //--------------------------------------------------------------------------------------------------------

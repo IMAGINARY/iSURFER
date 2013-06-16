@@ -193,6 +193,18 @@
 	
 	[dataBase saveGallery:gallery];
 }
+
+//--------------------------------------------------------------------------------------------------------
+
+-(void)removeSurface:(AlgebraicSurface*)surface {
+	[dataBase deleteSurface:surface];
+}
+
+//--------------------------------------------------------------------------------------------------------
+-(void) removeGallery:(Gallery*)gallery {
+    [dataBase deleteGallery:gallery];
+}
+
 //--------------------------------------------------------------------------------------------------------
 
 -(void)removeGalleryAtRow:(int)row{
@@ -203,6 +215,8 @@
 -(NSMutableArray*)getGalleries{
 	return self.galleriesArray;
 }
+
+//--------------------------------------------------------------------------------------------------------
 
 -(NSMutableArray*)getUpdatedGalleries{
     return [dataBase getGalleries];

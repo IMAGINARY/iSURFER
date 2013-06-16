@@ -216,6 +216,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSUInteger row = [indexPath row];
+    [appcontroller removeGallery:[[appcontroller getGalleries] objectAtIndex:[indexPath row]]];
 	[self.appcontroller removeGalleryAtRow:row];
 	[self.galleriesTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     [galleriesTable reloadData];
