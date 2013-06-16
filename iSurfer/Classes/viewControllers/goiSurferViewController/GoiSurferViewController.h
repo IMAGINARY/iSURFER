@@ -10,6 +10,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import "LoadingView.h"
 #import "FCColorPickerViewController.h"
+#import <Social/Social.h>
+#import <Accounts/Accounts.h>
+
+
 @class iSurferViewController;
 @class EAGLView;
 @class FCColorPickerViewController;
@@ -67,6 +71,9 @@
     LoadingView * lv;
 
     FCColorPickerViewController* colorpalette;
+    
+    SLComposeViewController *mySLComposerSheet;
+
 }
 
 @property(nonatomic, retain)	AlgebraicSurface* algebraicSurface;
@@ -82,7 +89,7 @@
 @property(nonatomic, retain)    IBOutlet UIButton* helpButton;
 @property(nonatomic, retain)	IBOutlet UIImageView* rotateimage;
 @property(nonatomic, retain)	IBOutlet UIView* equationTextfieldView;
-@property(nonatomic, retain)	IBOutlet UIView* algebraicSurfaceView;
+@property(nonatomic, retain)	IBOutlet EAGLView* algebraicSurfaceView;
 @property(nonatomic, retain)	IBOutlet UISlider* greenColorSlider;
 @property(nonatomic, retain)	IBOutlet UISlider* blueColorSlider;
 @property(nonatomic, retain)	IBOutlet UISlider* redColorSlider;
@@ -110,5 +117,6 @@
 -(IBAction)setSurfaceColors;
 -(UIImage*)getSurfaceImage;
 -(IBAction)flipToGalleries:(id)sender;
+-(void)setSurfaceImg;
 
 @end

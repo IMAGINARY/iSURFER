@@ -12,6 +12,7 @@
 #import "EAGLView.h"
 #import "Interfaces.hpp"
 #include "programData.hpp"
+#import "GoiSurferViewController+Share.h"
 
 //#import "SVProgressHUD.h"
 //--------------------------------------------------------------------------------------------------------
@@ -163,6 +164,7 @@
     [self.view addSubview:lv];
 
 	openglController = [[iSurferViewController alloc]init];
+    openglController.delegate = self;
 	openglController.view = algebraicSurfaceView;
 	[openglController setupGLContxt];
   //	[openglController performSelectorInBackground:@selector(startAnimation) withObject:nil];]
@@ -513,6 +515,7 @@
 	switch (button.tag) {
 		case 1:
 			[self showOptionsViewWrapper:YES view:shareView];
+            [self postSurfaceToFacebook:self.temporalimgView.image];
 			break;
 		case 2:
             [self.view addSubview:colorpalette.view];
@@ -532,7 +535,7 @@
     [openglController setSurfaceColorRed:colors[0] Green:colors[1] Blue:colors[2]];
 	[self showOptionsViewWrapper:NO view:colorPicker.view];
     [colorpalette.view removeFromSuperview];
-	[openglController startAnimation];
+    [openglController drawFrame];
 
 }
 
@@ -541,7 +544,7 @@
     [openglController setSurfaceColor2Red:colors[0] Green:colors[1] Blue:colors[2]];
 	[self showOptionsViewWrapper:NO view:colorPicker.view];
     [colorpalette.view removeFromSuperview];
-	[openglController startAnimation];
+    [openglController drawFrame];
 
 }
 //--------------------------------------------------------------------------------------------------------
@@ -775,4 +778,9 @@
 	[super dealloc];
 }
 //---------------------------------------------------------------------------------------------
+
+-(void)setSurfaceImg{
+    
+    self.temporalimgView.image = [algebraicSurfaceView snapshot];
+}
 @end

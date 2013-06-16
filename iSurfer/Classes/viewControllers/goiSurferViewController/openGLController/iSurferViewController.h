@@ -46,6 +46,8 @@
 
 @property (readonly, nonatomic )    IApplicationEngine* m_applicationEngine;
 
+@property (retain, nonatomic )       GoiSurferViewController* delegate;
+
 
 
 - (void)startAnimation;

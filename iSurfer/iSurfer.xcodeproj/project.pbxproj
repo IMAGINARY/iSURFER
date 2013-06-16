@@ -106,6 +106,8 @@
 		5EC1898E16C9ACB6006AA0AA /* UINavigationController+rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC1898D16C9ACB6006AA0AA /* UINavigationController+rotate.m */; };
 		5ECCABD1176D106A00A62334 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ECCABCF176D106A00A62334 /* Default.png */; };
 		5ECCABD2176D106A00A62334 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ECCABD0176D106A00A62334 /* Default@2x.png */; };
+		5ECCABD5176E2CE500A62334 /* GoiSurferViewController+Share.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECCABD4176E2CE500A62334 /* GoiSurferViewController+Share.m */; };
+		5ECCABD7176E2F1C00A62334 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ECCABD6176E2F1C00A62334 /* Social.framework */; };
 		5EDA315515E2FD6400F7BC06 /* button-share.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA315315E2FD6400F7BC06 /* button-share.png */; };
 		5EDA315615E2FD6400F7BC06 /* button-share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA315415E2FD6400F7BC06 /* button-share@2x.png */; };
 		5EDA315915E2FD7F00F7BC06 /* button-galleries-not-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA315715E2FD7F00F7BC06 /* button-galleries-not-active.png */; };
@@ -348,6 +350,9 @@
 		5EC1898D16C9ACB6006AA0AA /* UINavigationController+rotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+rotate.m"; sourceTree = "<group>"; };
 		5ECCABCF176D106A00A62334 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		5ECCABD0176D106A00A62334 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		5ECCABD3176E2CE500A62334 /* GoiSurferViewController+Share.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GoiSurferViewController+Share.h"; path = "goiSurferViewController/GoiSurferViewController+Share.h"; sourceTree = "<group>"; };
+		5ECCABD4176E2CE500A62334 /* GoiSurferViewController+Share.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GoiSurferViewController+Share.m"; path = "goiSurferViewController/GoiSurferViewController+Share.m"; sourceTree = "<group>"; };
+		5ECCABD6176E2F1C00A62334 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		5EDA315315E2FD6400F7BC06 /* button-share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-share.png"; sourceTree = "<group>"; };
 		5EDA315415E2FD6400F7BC06 /* button-share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-share@2x.png"; sourceTree = "<group>"; };
 		5EDA315715E2FD7F00F7BC06 /* button-galleries-not-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-galleries-not-active.png"; sourceTree = "<group>"; };
@@ -524,6 +529,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ECCABD7176E2F1C00A62334 /* Social.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -562,6 +568,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				5ECCABD6176E2F1C00A62334 /* Social.framework */,
 				3395689B168FEA4A002F5CCC /* yuidoc.json */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -1033,6 +1040,8 @@
 				8B7F61B213C27DFE0098948F /* VideoViewController.m */,
 				8BC02D0413B29C00003E41AC /* BaseViewController.h */,
 				8BC02D0513B29C00003E41AC /* BaseViewController.m */,
+				5ECCABD3176E2CE500A62334 /* GoiSurferViewController+Share.h */,
+				5ECCABD4176E2CE500A62334 /* GoiSurferViewController+Share.m */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -1465,6 +1474,7 @@
 				33FA6549176990CC0074C59A /* ResourceManager.mm in Sources */,
 				B5F3BDBB176CE0FB00D492E9 /* CreditsViewController.m in Sources */,
 				B5F3BDBE176CE50300D492E9 /* TutorialViewController.m in Sources */,
+				5ECCABD5176E2CE500A62334 /* GoiSurferViewController+Share.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

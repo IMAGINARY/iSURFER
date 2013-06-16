@@ -41,7 +41,7 @@ enum {
 
 @implementation iSurferViewController
 
-@synthesize animating, context;
+@synthesize animating, context, delegate;
 @synthesize trackBall, m_applicationEngine;
 
 
@@ -390,7 +390,8 @@ enum {
             m_applicationEngine->Render();
         NSLog(@"finished drawing");
         [(EAGLView *)self.view presentFramebuffer];
-        
+        [delegate setSurfaceImg];
+
     }
 }
 
