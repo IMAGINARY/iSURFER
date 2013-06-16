@@ -170,7 +170,7 @@
   //	[openglController performSelectorInBackground:@selector(startAnimation) withObject:nil];]
 	[openglController startAnimation];
     [self performSelectorOnMainThread:@selector(dismissRosquet) withObject:nil waitUntilDone:NO];
-
+    [openglController drawFrame];
 
 }
 
@@ -516,6 +516,7 @@
 	switch (button.tag) {
 		case 1:
 			[self showOptionsViewWrapper:YES view:shareView];
+            [self setSurfaceImg];
             [self postSurfaceToFacebook:self.temporalimgView.image];
 			break;
 		case 2:
@@ -665,45 +666,6 @@
 	[self showExtKeyboard:NO];
 }
 //--------------------------------------------------------------------------------------------------------
-
-- (void) keyboardDidHide: (NSNotification *) notification {
-//	[openglController generateSurface:self.equationTextField.text];
-}
-
-//---------------------------------------------------------------------------------------------
-- (void) keyboardWillShow: (NSNotification *) notification {	
-	//[self showOptionsViewWrapper:NO view:nil];
-//	[self showExtKeyboard:YES];
-}
-//--------------------------------------------------------------------------------------------------------
-
-/*
-
-- (void) keyboardDidShow: (NSNotification *) notification {	
-	
-	NSLog(@"keyboarddidshow");
-	UIButton *doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	doneButton.frame = CGRectMake(0, 123, 158,39);
-
-    doneButton.adjustsImageWhenHighlighted = NO;
-    [doneButton setImage:[UIImage imageNamed:@"done_up.png"] forState:UIControlStateNormal];
-    [doneButton setImage:[UIImage imageNamed:@"done_down.png"] forState:UIControlStateHighlighted];
-    [doneButton addTarget:self action:@selector(doneButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-	
-	NSString *keyboardPrefix = [[[UIDevice currentDevice] systemVersion] floatValue] >= 3.2 ? @"<UIPeripheralHost" : @"<UIKeyboard";
-	NSArray *allWindows = [[UIApplication sharedApplication] windows];
-	int topWindow = [allWindows count] - 1;
-	UIWindow *keyboardWindow = [allWindows objectAtIndex:topWindow];
-	for (UIView *subView in keyboardWindow.subviews) {
-        if ([[subView description] hasPrefix:keyboardPrefix]) {
-            [subView addSubview:doneButton];
-			[subView bringSubviewToFront:doneButton];
-            break;
-        }
-    }
-}
- 
- */
 #pragma mark UITextfield delegate
 //--------------------------------------------------------------------------------------------------------
 -(IBAction)cancelKeyboard:(id)sender{
@@ -783,6 +745,6 @@
 
 -(void)setSurfaceImg{
     
-    self.temporalimgView.image = [algebraicSurfaceView snapshot];
+    temporalimgView.image = [algebraicSurfaceView snapshot];
 }
 @end

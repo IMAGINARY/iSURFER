@@ -16,7 +16,7 @@
     {
         mySLComposerSheet = [[SLComposeViewController alloc] init]; //initiate the Social Controller
         mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook]; //Tell him with what social plattform to use it, e.g. facebook or twitter
-        [mySLComposerSheet setInitialText:[NSString stringWithFormat:@"iSurfer for iOS - %@", equationTextField.text]]; //the message you want to post
+        [mySLComposerSheet setInitialText:[NSString stringWithFormat:@"iSurfer for iOS - %@ + 0", equationTextField.text]]; //the message you want to post
         [mySLComposerSheet addImage:surface]; //an image you could post
         //for more instance methodes, go here:https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Reference/SLComposeViewController_Class/Reference/Reference.html#//apple_ref/doc/uid/TP40012205
         [self presentViewController:mySLComposerSheet animated:YES completion:nil];
