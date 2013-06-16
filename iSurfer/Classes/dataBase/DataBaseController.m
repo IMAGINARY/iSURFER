@@ -64,6 +64,27 @@
 	[db release];
 	[super dealloc];
 }
+
+//------------------------------------------------------------------------
+
+-(UIImage*)loadImageFromFile:(NSString*)imagefileName{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:imagefileName]; //Add the file name
+    return [[UIImage alloc] initWithContentsOfFile:filePath];
+}
+//------------------------------------------------------------------------
+
+-(void)saveImage:(UIImage*)image withName:(NSString*)imagename{
+    if( image != NULL ){
+        NSData *pngData = UIImagePNGRepresentation(image);
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
+        NSString *filePath = [documentsPath stringByAppendingPathComponent:imagename]; //Add the file name
+        [pngData writeToFile:filePath atomically:YES]; //Write the file
+    }
+}
+
 //------------------------------------------------------------------------
 
 -(void)saveSurface:(AlgebraicSurface*)surface toGallery:(Gallery*)gal{
@@ -86,6 +107,8 @@
 	[data1 writeToFile:pngFilePath atomically:YES];
     
     */
+    
+    [self saveImage: surface.surfaceImage withName:surface.realImageName];
     
 	[db executeUpdate:@"insert into surfaces(equation, image, galleryid) values(?, ?, ?)",	
 	 surface.equation,
@@ -161,6 +184,7 @@
     [db commit];
 	
 }
+
 //------------------------------------------------------------------------
 
 -(NSMutableArray*)getGalleries{

@@ -20,6 +20,8 @@
 }
 -(BOOL)openDB;
 -(void)saveGallery:(Gallery*)gallery;
+-(UIImage*)loadImageFromFile:(NSString*)imagefileName;
+-(void)saveImage:(UIImage*)image withName:(NSString*)imagename;
 -(NSMutableArray*)getGalleries;
 -(void)saveSurface:(AlgebraicSurface*)surface toGallery:(Gallery*)gal;
 -(void)populateGallery:(Gallery*)gallery;

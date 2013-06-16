@@ -95,7 +95,8 @@
 	else{
 		AlgebraicSurface* newSurface = [[AlgebraicSurface alloc] init];
         newSurface.equation = @"x^2";
-        newSurface.surfaceImage = [delegate getSurfaceImage];
+        newSurface.surfaceImage = surfaceImagex;
+        newSurface.realImageName = [NSString stringWithFormat:@"/surface-images/%@%@", self.surfaceNameTextfield.text, @".png"];
 		[newSurface setSurfaceName:self.surfaceNameTextfield.text];
 		[newSurface setBriefDescription:self.surfaceDescriptionTextView.text];
         [newSurface setEquation:delegate.equationTextField.text];
