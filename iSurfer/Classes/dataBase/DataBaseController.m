@@ -278,7 +278,9 @@
         
         s.surfaceID = [rs intForColumn:@"id"];
         
-        NSString * query = [NSString stringWithFormat:@"%@%i%@%i", @"select name, briefdescription, completedescription from surfacestexts where language is null or language = ", [Language getLanguageIndex], @" and surfaceid = ", [NSNumber numberWithInt:s.surfaceID].intValue];
+        NSString * query = [NSString stringWithFormat:@"%@%i%@%i", @"select name, briefdescription, completedescription from surfacestexts where (language is null or language = ", [Language getLanguageIndex], @") and surfaceid = ", [NSNumber numberWithInt:s.surfaceID].intValue];
+        
+        NSLog(@"Q%@", query);
         
         FMResultSet *rstext = [db executeQuery:query];
         
@@ -289,11 +291,11 @@
 		s.surfaceImage = [UIImage imageWithData:[rs dataForColumn:@"image"]];
         NSLog(@" %@",[s.surfaceImage description] );
         
-//        NSLog(@"%@", [rstext stringForColumn:@"briefdescription"]);
-//        NSLog(@"%@", [rstext stringForColumn:@"completedescription"]);
-//        NSLog(@"%@", [rstext stringForColumn:@"name"]);
-//        NSLog(@"%@", [rs stringForColumn:@"equation"]);
-//        NSLog(@"%@", [rs stringForColumn:@"realimage"]);
+//        NSLog(@"BD%@", [rstext stringForColumn:@"briefdescription"]);
+//        NSLog(@"CD%@", [rstext stringForColumn:@"completedescription"]);
+//        NSLog(@"N%@", [rstext stringForColumn:@"name"]);
+//        NSLog(@"E%@", [rs stringForColumn:@"equation"]);
+//        NSLog(@"RI%@", [rs stringForColumn:@"realimage"]);
         
 		s.briefDescription =  [rstext stringForColumn:@"briefdescription"];
         s.completeDescription = [rstext stringForColumn:@"completedescription"];
@@ -301,10 +303,10 @@
 		s.equation =  [rs stringForColumn:@"equation"];
         s.realImageName = [rs stringForColumn:@"realimage"];
         
-        NSLog(@"%@", s.equation);
-        NSLog(@"%@", s.briefDescription);
-        NSLog(@"%@", s.completeDescription);
-        NSLog(@"%@", s.surfaceName);
+//        NSLog(@"%@", s.equation);
+//        NSLog(@"%@", s.briefDescription);
+//        NSLog(@"%@", s.completeDescription);
+//        NSLog(@"%@", s.surfaceName);
 
 		[s release];
 	}
