@@ -194,8 +194,9 @@
 		8BDD0B41142431D50043741C /* vs1.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD0B3D142431D50043741C /* vs1.glsl */; };
 		8BDD0B42142431D50043741C /* vs2.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD0B3E142431D50043741C /* vs2.glsl */; };
 		8BF0D11115604E8E006E4085 /* ImageDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF0D10F15604E8E006E4085 /* ImageDescriptionViewController.m */; };
-		B59454F2176CF9D300121912 /* button-help-not-active.png in Resources */ = {isa = PBXBuildFile; fileRef = B59454F1176CF9D300121912 /* button-help-not-active.png */; };
-		B59454F4176CF9DC00121912 /* button-help-not-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B59454F3176CF9DC00121912 /* button-help-not-active@2x.png */; };
+		B58D4CE417762506004C8501 /* button-help-not-active.png in Resources */ = {isa = PBXBuildFile; fileRef = B58D4CE217762506004C8501 /* button-help-not-active.png */; };
+		B58D4CE517762506004C8501 /* button-help-not-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B58D4CE317762506004C8501 /* button-help-not-active@2x.png */; };
+		B58D4CE717763056004C8501 /* button-save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B58D4CE617763056004C8501 /* button-save@2x.png */; };
 		B59EB95F13D0908100AD9F7C /* Button1_off.png in Resources */ = {isa = PBXBuildFile; fileRef = B59EB95913D0908100AD9F7C /* Button1_off.png */; };
 		B59EB96013D0908100AD9F7C /* Button1_on.png in Resources */ = {isa = PBXBuildFile; fileRef = B59EB95A13D0908100AD9F7C /* Button1_on.png */; };
 		B59EB96113D0908100AD9F7C /* Button2_off.png in Resources */ = {isa = PBXBuildFile; fileRef = B59EB95B13D0908100AD9F7C /* Button2_off.png */; };
@@ -480,8 +481,9 @@
 		8BF0D10E15604E8E006E4085 /* ImageDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDescriptionViewController.h; sourceTree = "<group>"; };
 		8BF0D10F15604E8E006E4085 /* ImageDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDescriptionViewController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* iSurfer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iSurfer-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		B59454F1176CF9D300121912 /* button-help-not-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-help-not-active.png"; sourceTree = "<group>"; };
-		B59454F3176CF9DC00121912 /* button-help-not-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-help-not-active@2x.png"; sourceTree = "<group>"; };
+		B58D4CE217762506004C8501 /* button-help-not-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-help-not-active.png"; sourceTree = "<group>"; };
+		B58D4CE317762506004C8501 /* button-help-not-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-help-not-active@2x.png"; sourceTree = "<group>"; };
+		B58D4CE617763056004C8501 /* button-save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-save@2x.png"; sourceTree = "<group>"; };
 		B59EB95913D0908100AD9F7C /* Button1_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button1_off.png; path = ../Arte/Button1_off.png; sourceTree = SOURCE_ROOT; };
 		B59EB95A13D0908100AD9F7C /* Button1_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button1_on.png; path = ../Arte/Button1_on.png; sourceTree = SOURCE_ROOT; };
 		B59EB95B13D0908100AD9F7C /* Button2_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Button2_off.png; path = ../Arte/Button2_off.png; sourceTree = SOURCE_ROOT; };
@@ -753,8 +755,9 @@
 		5EDA315115E2FD2600F7BC06 /* mainScreen */ = {
 			isa = PBXGroup;
 			children = (
-				B59454F3176CF9DC00121912 /* button-help-not-active@2x.png */,
-				B59454F1176CF9D300121912 /* button-help-not-active.png */,
+				B58D4CE617763056004C8501 /* button-save@2x.png */,
+				B58D4CE217762506004C8501 /* button-help-not-active.png */,
+				B58D4CE317762506004C8501 /* button-help-not-active@2x.png */,
 				5EDA316715E3016400F7BC06 /* button-save.png */,
 				5EDA316315E2FF0200F7BC06 /* button-settings-not-active.png */,
 				5EDA316415E2FF0200F7BC06 /* button-settings-not-active@2x.png */,
@@ -1185,9 +1188,9 @@
 		B5F3BDB6176CE08900D492E9 /* creditsViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B5F3BDB7176CE0C400D492E9 /* CreditsViewController.xib */,
 				B5F3BDB9176CE0FB00D492E9 /* CreditsViewController.h */,
 				B5F3BDBA176CE0FB00D492E9 /* CreditsViewController.m */,
+				B5F3BDB7176CE0C400D492E9 /* CreditsViewController.xib */,
 			);
 			name = creditsViewController;
 			sourceTree = "<group>";
@@ -1410,10 +1413,11 @@
 				B5F3BDB4176CD9DC00D492E9 /* Union.png in Resources */,
 				B5F3BDB8176CE0C400D492E9 /* CreditsViewController.xib in Resources */,
 				B5F3BDC0176CE51F00D492E9 /* TutorialViewController.xib in Resources */,
-				B59454F2176CF9D300121912 /* button-help-not-active.png in Resources */,
-				B59454F4176CF9DC00121912 /* button-help-not-active@2x.png in Resources */,
 				5ECCABD1176D106A00A62334 /* Default.png in Resources */,
 				5ECCABD2176D106A00A62334 /* Default@2x.png in Resources */,
+				B58D4CE417762506004C8501 /* button-help-not-active.png in Resources */,
+				B58D4CE517762506004C8501 /* button-help-not-active@2x.png in Resources */,
+				B58D4CE717763056004C8501 /* button-save@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

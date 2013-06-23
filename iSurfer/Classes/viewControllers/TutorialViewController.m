@@ -8,6 +8,8 @@
 #import "TutorialViewController.h"
 
 @implementation TutorialViewController
+
+@synthesize tutorialLabel;
 //------------------------------------------------------------------------------
 
 -(id) initWithAppController:(AppController*)anappCtrl{

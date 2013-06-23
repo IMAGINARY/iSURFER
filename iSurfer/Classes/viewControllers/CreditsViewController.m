@@ -10,6 +10,8 @@
 
 @implementation CreditsViewController
 
+@synthesize creditsLabel;
+
 //------------------------------------------------------------------------------
 
 -(id) initWithAppController:(AppController*)anappCtrl{

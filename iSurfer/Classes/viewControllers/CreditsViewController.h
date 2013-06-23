@@ -11,6 +11,9 @@
 
 @interface CreditsViewController : BaseViewController<UIActionSheetDelegate, UITableViewDelegate, UITableViewDataSource> {
 
+	IBOutlet UILabel* creditsLabel;
 }
+
+@property(nonatomic, retain)	IBOutlet UILabel* creditsLabel;
 
 @end

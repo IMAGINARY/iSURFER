@@ -532,6 +532,10 @@
 	}
 }
 
+-(IBAction)helpButtonPressed:(id)sender{
+    [appcontroller goToHelp];
+}
+
 - (void)colorPickerViewController:(FCColorPickerViewController *)colorPicker didSelectColor:(UIColor *)color{
     const float* colors = CGColorGetComponents( color.CGColor );
     [openglController setSurfaceColorRed:colors[0] Green:colors[1] Blue:colors[2]];

@@ -9,9 +9,11 @@
 #import "BaseViewController.h"
 #import <Foundation/Foundation.h>
 
-@interface TutorialViewController : BaseViewController<UIActionSheetDelegate, UITableViewDelegate, UITableViewDataSource>{
+@interface TutorialViewController : BaseViewController{
 
-
+    IBOutlet UILabel* tutorialLabel;
 }
+
+@property(nonatomic, retain)	IBOutlet UILabel* tutorialLabel;
 
 @end

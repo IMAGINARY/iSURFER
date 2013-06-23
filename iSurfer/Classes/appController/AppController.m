@@ -125,7 +125,9 @@
     
 }
 
-
+-(void)goToHelp{
+    [self.navcontroller pushViewController:helpViewController animated:YES];
+}
 
 -(void)goToMainScreen{
 	[self.navcontroller pushViewController:goiSurferViewController animated:NO];

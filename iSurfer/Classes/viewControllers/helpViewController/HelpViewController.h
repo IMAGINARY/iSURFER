@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "VideoViewController.h"
+#import "BaseViewController.h"
 
-@interface HelpViewController : BaseViewController <UITextFieldDelegate, UIGestureRecognizerDelegate> {
+@interface HelpViewController : BaseViewController {
 
     IBOutlet UIButton* credits;
     IBOutlet UIButton* tutorial;
@@ -17,5 +17,7 @@
 
 @property(nonatomic, retain)	IBOutlet UIButton* credits;
 @property(nonatomic, retain)	IBOutlet UIButton* tutorial;
+
+-(void)showCredits;
 
 @end

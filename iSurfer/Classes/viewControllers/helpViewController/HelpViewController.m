@@ -39,7 +39,9 @@
 //------------------------------------------------------------------------------
 
 -(void)showTutorial{
-
+    TutorialViewController* tutorialvc = [[TutorialViewController alloc]initWithAppController: self.appcontroller];
+    [self.navigationController pushViewController: tutorialvc animated:true];
+    [tutorialvc release];
 }
 //------------------------------------------------------------------------------
 
