@@ -23,16 +23,16 @@
 }
 
 -(void)initialize{
+    [self setImageView];
+    [self setFormula];
+    [self setDescription];
     //NSMutableArray* galleries = self.appcontroller.galleriesArray;
     //Gallery * firstGallery = [galleries objectAtIndex:0];
     //[self.appcontroller.dataBase populateGallery:firstGallery];
     //NSLog(@"%@", gallery.galleryName);
     //NSLog(@"%@", gallery.galleryDescription);
-    
-    //AlgebraicSurface * firstSurface = [firstGallery getSurfaceAtIndex:0];
-    NSLog(@"%@", surface.equation);
-    NSLog(@"%@", surface.briefDescription);
-    //[self setSurface: firstSurface];
+//    NSLog(@"%@", surface.equation);
+//    NSLog(@"%@", surface.briefDescription);
 }
 
 -(void)setFormula{
@@ -57,16 +57,25 @@
     //El tamaño del ScrollView se setea desde el interface builder.
     //El tamaño del contentSize se setea en el código*/
     [self initialize];
-    int descriptionLength = surface.completeDescription.length;
-    int height = descriptionLength/50*13;
-    [scrollView setContentSize:CGSizeMake(380, height)];
-    [super viewDidLoad]; 
-    [self setImageView];
-    [self setFormula];
-    [self setDescription];
-    /*self.title = NSLocalizedString(@"TextViewTitle", @"");    
-     
-     [self setupTextView];*/
+
+    [description sizeToFit];
+    [scrollView sizeToFit];
+    
+    float sizeOfContent = 0;
+    int i;
+    for (i = 0; i < [scrollView.subviews count]; i++) {
+        UIView *view =[scrollView.subviews objectAtIndex:i];
+        sizeOfContent += view.frame.size.height;
+    }
+    
+    // Set content size for scroll view
+    scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, sizeOfContent);
+
+//    int descriptionLength = surface.completeDescription.length;
+//    int height = descriptionLength/50*13;
+//    height = height + imageView.frame.size.height;
+//    [scrollView setContentSize:CGSizeMake(380, height)];
+    [super viewDidLoad];
     
 }
 
