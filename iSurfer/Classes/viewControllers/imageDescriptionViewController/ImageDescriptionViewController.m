@@ -47,6 +47,7 @@
 -(void)setImageView
 {
     UIImage * image = [UIImage imageNamed:surface.realImageName];
+    
     [imageView setImage: image];
 }
 
