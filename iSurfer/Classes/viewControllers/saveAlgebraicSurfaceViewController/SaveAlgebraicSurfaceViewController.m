@@ -249,7 +249,8 @@
         [textView resignFirstResponder];
 		return NO;
     }
-    return YES;
+    NSUInteger newLength = [textView.text length] + [text length] - range.length;
+    return (newLength > 104) ? NO : YES;
 }
 //--------------------------------------------------------------------------------------------------------
 

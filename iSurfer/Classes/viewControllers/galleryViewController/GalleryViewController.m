@@ -11,6 +11,8 @@
 #import "SurfaceCellView.h"
 #import "ImageDescriptionViewController.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 #define BUTTON_SPACE 25.0
 
 @implementation GalleryViewController
@@ -29,7 +31,13 @@
 //--------------------------------------------------------------------------------------------------------
 
 -(void)viewDidLoad{
+    
+    surfaceEquation.clipsToBounds = YES;
+    surfaceEquation.layer.cornerRadius = 10.0f;
 	
+    briefDescription.clipsToBounds = YES;
+    briefDescription.layer.cornerRadius = 10.0f;
+    
 	UIToolbar* tmptoolbar = [[UIToolbar alloc] init];
 	tmptoolbar.barStyle = -1; // clear background
 	NSMutableArray* items = [[NSMutableArray alloc]init];
@@ -108,9 +116,8 @@
 	if( ![gallery isEmpty]){
 		AlgebraicSurface* surface = [gallery getSurfaceAtIndex:0];
         self.selectedSurface = surface;
-        UIImage * image = [UIImage imageNamed: @"Logo-twitter.png"];
 
-		[self.surfaceImage setImage:image];
+		[self.surfaceImage setImage:surface.surfaceImage];
         
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
         UITapGestureRecognizer *descriptionTapGestureRecognizer = [[UITapGestureRecognizer alloc]

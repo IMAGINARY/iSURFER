@@ -16,7 +16,7 @@
     AlgebraicSurface * surface;
     IBOutlet UIImageView * imageView;
     IBOutlet UIScrollView * scrollView;
-    IBOutlet UILabel * formula;
+    IBOutlet UITextView * formula;
     IBOutlet UILabel * description;
 }
 
@@ -27,7 +27,7 @@
 @property (nonatomic, retain) AlgebraicSurface * surface;
 @property (nonatomic, retain) UIImageView * imageView;
 @property (nonatomic, retain) UIScrollView * scrollView;
-@property (nonatomic, retain) UILabel * formula;
+@property (nonatomic, retain) UITextView * formula;
 @property (nonatomic, retain) UILabel * description;
 
 //--------------------------------------------------------------------------------------

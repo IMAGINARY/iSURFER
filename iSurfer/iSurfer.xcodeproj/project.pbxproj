@@ -906,6 +906,8 @@
 		8B30820013BC185C00EA792E /* helpViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B5F3BDB6176CE08900D492E9 /* creditsViewController */,
+				B5F3BDB5176CE07200D492E9 /* tutorialViewController */,
 				8B30820113BC185C00EA792E /* HelpViewController.h */,
 				8B30820213BC185C00EA792E /* HelpViewController.m */,
 				8B30820313BC185C00EA792E /* HelpViewController.xib */,
@@ -1030,8 +1032,6 @@
 		8BC02C7A13B292B3003E41AC /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B5F3BDB6176CE08900D492E9 /* creditsViewController */,
-				B5F3BDB5176CE07200D492E9 /* tutorialViewController */,
 				8BF0D10D15604E8E006E4085 /* imageDescriptionViewController */,
 				8BC02C9813B2938C003E41AC /* splashScreenViewController */,
 				8B29FCFA13D654C900EDB516 /* saveAlgebraicSurfaceViewController */,
@@ -1182,6 +1182,7 @@
 				B5F3BDBF176CE51F00D492E9 /* TutorialViewController.xib */,
 			);
 			name = tutorialViewController;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		B5F3BDB6176CE08900D492E9 /* creditsViewController */ = {
@@ -1192,6 +1193,7 @@
 				B5F3BDB7176CE0C400D492E9 /* CreditsViewController.xib */,
 			);
 			name = creditsViewController;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -16,7 +16,7 @@
 	IBOutlet UIImageView* surfaceImage;
     IBOutlet UIButton* descriptionButton;
     IBOutlet UITextView* briefDescription;
-	IBOutlet UILabel* surfaceEquation;
+	IBOutlet UITextView* surfaceEquation;
     IBOutlet UIButton* detailedDescription;
 
 	IBOutlet UITableView* surfacesTable;
@@ -27,7 +27,7 @@
 
 
 }
-@property(nonatomic, retain)	IBOutlet UILabel* surfaceEquation;
+@property(nonatomic, retain)	IBOutlet UITextView* surfaceEquation;
 
 
 
