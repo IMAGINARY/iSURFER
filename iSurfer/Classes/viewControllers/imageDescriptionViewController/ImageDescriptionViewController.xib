@@ -54,11 +54,11 @@
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">descripcion</string>
-								<object class="NSColor" key="IBUITextColor" id="54553222">
+								<object class="NSColor" key="IBUITextColor" id="910640046">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
 								</object>
-								<reference key="IBUIHighlightedColor" ref="54553222"/>
+								<reference key="IBUIHighlightedColor" ref="910640046"/>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<float key="IBUIMinimumFontSize">10</float>
 								<int key="IBUINumberOfLines">20</int>
@@ -80,19 +80,19 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 20}, {184, 118}}</string>
 								<reference key="NSSuperview" ref="556352592"/>
-								<reference key="NSNextKeyView" ref="302798149"/>
+								<reference key="NSNextKeyView" ref="692866312"/>
 								<int key="IBUIContentMode">1</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
-							<object class="IBUITextView" id="302798149">
+							<object class="IBUITextView" id="692866312">
 								<reference key="NSNextResponder" ref="556352592"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{216, 20}, {164, 118}}</string>
 								<reference key="NSSuperview" ref="556352592"/>
 								<reference key="NSNextKeyView" ref="714260622"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
-								<object class="NSColor" key="IBUIBackgroundColor" id="860680162">
+								<object class="NSColor" key="IBUIBackgroundColor" id="105500945">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MAA</bytes>
 								</object>
@@ -103,7 +103,7 @@
 								<object class="NSAttributedString" key="IBUIAttributedText">
 									<string key="NSString">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
 									<dictionary key="NSAttributes">
-										<reference key="NSColor" ref="54553222"/>
+										<reference key="NSColor" ref="910640046"/>
 										<object class="NSFont" key="NSFont">
 											<string key="NSName">Helvetica</string>
 											<double key="NSSize">14</double>
@@ -125,7 +125,7 @@
 						<string key="NSFrame">{{20, 20}, {380, 280}}</string>
 						<reference key="NSSuperview" ref="784141011"/>
 						<reference key="NSNextKeyView" ref="468302174"/>
-						<reference key="IBUIBackgroundColor" ref="860680162"/>
+						<reference key="IBUIBackgroundColor" ref="105500945"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">1</int>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -188,7 +188,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">formula</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="302798149"/>
+						<reference key="destination" ref="692866312"/>
 					</object>
 					<int key="connectionID">22</int>
 				</object>
@@ -224,9 +224,9 @@
 						<int key="objectID">3</int>
 						<reference key="object" ref="556352592"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="468302174"/>
-							<reference ref="302798149"/>
+							<reference ref="692866312"/>
 							<reference ref="714260622"/>
+							<reference ref="468302174"/>
 						</array>
 						<reference key="parent" ref="784141011"/>
 					</object>
@@ -242,7 +242,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">21</int>
-						<reference key="object" ref="302798149"/>
+						<reference key="object" ref="692866312"/>
 						<reference key="parent" ref="556352592"/>
 					</object>
 				</array>

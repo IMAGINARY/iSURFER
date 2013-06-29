@@ -288,7 +288,11 @@
         
         //db executeQuery:@"select description from galleriestexts where galleryid = %d and language = 0", g.galID
         
-		s.surfaceImage = [UIImage imageWithData:[rs dataForColumn:@"image"]];
+        if(gallery.editable)
+            s.surfaceImage = [UIImage imageWithData:[rs dataForColumn:@"image"]];
+        else
+            s.surfaceImage = [UIImage imageNamed:[rs stringForColumn:@"image"]];
+        NSLog(@" %@",[rs stringForColumn:@"image"]);
         NSLog(@" %@",[s.surfaceImage description] );
         
 //        NSLog(@"BD%@", [rstext stringForColumn:@"briefdescription"]);
