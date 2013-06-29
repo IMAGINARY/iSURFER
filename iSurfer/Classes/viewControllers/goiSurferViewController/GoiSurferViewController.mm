@@ -13,6 +13,7 @@
 #import "Interfaces.hpp"
 #include "programData.hpp"
 #import "GoiSurferViewController+Share.h"
+#import "UITextField+removecharacters.h"
 
 //#import "SVProgressHUD.h"
 //--------------------------------------------------------------------------------------------------------
@@ -40,7 +41,7 @@
 }
 //--------------------------------------------------------------------------------------------------------
 -(void)viewDidLoad{
-
+    
 	[super viewDidLoad];
     
     keyboardButtons = [[NSArray alloc]initWithObjects:@"x", @"y",@"z",@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7", @"8",@"9",@"+",@"-",@"*",@"^2",@"^3",@"^",@"(",@")",@",",@"",nil];
@@ -52,9 +53,9 @@
     
     colorpalette = [[FCColorPickerViewController alloc]initWithNibName:@"FCColorPickerViewController" bundle:[NSBundle mainBundle]];
     colorpalette.delegate = self;
-
+    
     colorpalette.color =     [UIColor colorWithRed:programData::colorR green:programData::colorG blue:programData::colorB alpha:0.5];
-//[UIColor greenColor];
+    //[UIColor greenColor];
     colorpalette.view.frame = CGRectMake(100, 0, 320, 320 );
     
 	[optionsViews addObject:self.shareView];
@@ -102,7 +103,7 @@
 	UITapGestureRecognizer* doubleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleDoubleTap:)];
 	UILongPressGestureRecognizer* doubleTouch = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(handleTwoFingerTouch:)];
 	UILongPressGestureRecognizer* singleLongPressTouch = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(handleSingleLongPressTouch:)];
-
+    
 	[pinchGesture setDelegate:self];
 	
 	[singleLongPressTouch setMinimumPressDuration:0.08];
@@ -115,13 +116,13 @@
 	[doubleTap setDelegate:self];
 	
 	[panGesture setDelegate:self];
-		
+    
 	[self.algebraicSurfaceView addGestureRecognizer:pinchGesture];
 	[self.algebraicSurfaceView addGestureRecognizer:doubleTouch];
 	[self.algebraicSurfaceView addGestureRecognizer:singleLongPressTouch];
 	[self.algebraicSurfaceView addGestureRecognizer:doubleTap];
 	[self.algebraicSurfaceView addGestureRecognizer:panGesture];
-
+    
 	[singleLongPressTouch release];
 	[panGesture release];
 	[doubleTouch release];
@@ -131,15 +132,15 @@
 	
 	
 	algebraicsurfaceViewFrame = algebraicSurfaceView.frame;
-  //   [self 	doOpenGLMagic];
-
+    //   [self 	doOpenGLMagic];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receivedDrewFrameNotif)
                                                  name:@"drewnotif"
                                                object:nil];
-
-  
-
+    
+    
+    
 	[self performSelectorInBackground:@selector(doOpenGLMagic) withObject:nil];
 }
 
@@ -162,16 +163,16 @@
 -(void)doOpenGLMagic{
     lv = [LoadingView loadingView:@""];
     [self.view addSubview:lv];
-
+    
 	openglController = [[iSurferViewController alloc]init];
     openglController.delegate = self;
 	openglController.view = algebraicSurfaceView;
 	[openglController setupGLContxt];
-  //	[openglController performSelectorInBackground:@selector(startAnimation) withObject:nil];]
+    //	[openglController performSelectorInBackground:@selector(startAnimation) withObject:nil];]
 	[openglController startAnimation];
     [self performSelectorOnMainThread:@selector(dismissRosquet) withObject:nil waitUntilDone:NO];
     [openglController drawFrame];
-
+    
 }
 
 -(void)dismissRosquet{
@@ -182,37 +183,36 @@
 
 -(void)setTemporalImage{
     UIImage* image = [algebraicSurfaceView snapshot];
-//   temporalimgView.image = [algebraicSurfaceView snapshot];
-
+    //   temporalimgView.image = [algebraicSurfaceView snapshot];
+    
 }
 
 //--------------------------------------------------------------------------------------------------------
 -(void)handleSingleLongPressTouch:(UILongPressGestureRecognizer*)singleLongPressGesture{
 	switch (singleLongPressGesture.state) {
 		case UIGestureRecognizerStateBegan:
-	
-					break;
+            
+            break;
 		case UIGestureRecognizerStateChanged:
 			break;
 		case UIGestureRecognizerStateEnded:
 			[openglController drawFrame];
-				break;
+            break;
 		default:
 			break;
 	}
 }
 //--------------------------------------------------------------------------------------------------------
 
-
 -(void)changeframe{
     CGRect f;
-
+    
     f = CGRectMake(0, 0, 90, 70	);
     algebraicSurfaceView.frame = f;
     
     temporalimgView.hidden = NO;
     NSLog(@"changeframe");
-
+    
 }
 
 -(void)handlePanGesture:(UIPanGestureRecognizer*)gestureRecognizer{
@@ -226,53 +226,53 @@
 		case UIGestureRecognizerStateBegan:
 			NSLog(@"began");
 			//temporalimgView.image = [self captureView:algebraicSurfaceView];
-      //      temporalimgView.image = [algebraicSurfaceView snapshot];
-
-           // 
-           // UITouch* touch = [touches anyObject];
-           // CGPoint previous  = [touch previousLocationInView: self];
-           // CGPoint current = [touch locationInView: self];
-
+            //      temporalimgView.image = [algebraicSurfaceView snapshot];
+            
+            //
+            // UITouch* touch = [touches anyObject];
+            // CGPoint previous  = [touch previousLocationInView: self];
+            // CGPoint current = [touch locationInView: self];
+            
             [openglController initRotationX:p.x Y:p.y];
             [self changeframe];
-       //     [self performSelector:@selector(changeframe) withObject:nil afterDelay:0.1];
-         
-
+            //     [self performSelector:@selector(changeframe) withObject:nil afterDelay:0.1];
+            
+            
 			break;
 		case UIGestureRecognizerStateChanged:
-				[openglController rotateX:p.x Y:p.y];
-
-		//	temporalimgView.image = [self captureView:algebraicSurfaceView];
-         //   temporalimgView.image =[self imageWithView:algebraicSurfaceView];
-		//	temporalimgView.image = [openglController drawableToCGImage];
-    //        temporalimgView.image = [algebraicSurfaceView snapUIImage];
-
-        //      temporalimgView.image = [self captureView:algebraicSurfaceView];
-       //     temporalimgView.image = [algebraicSurfaceView screenShotUIImage];
-       //     temporalimgView.image = [algebraicSurfaceView drawableToCGImage];
-
-
-//            temporalimgView.image = [algebraicSurfaceView snapshot];
-
+            [openglController rotateX:p.x Y:p.y];
+            
+            //	temporalimgView.image = [self captureView:algebraicSurfaceView];
+            //   temporalimgView.image =[self imageWithView:algebraicSurfaceView];
+            //	temporalimgView.image = [openglController drawableToCGImage];
+            //        temporalimgView.image = [algebraicSurfaceView snapUIImage];
+            
+            //      temporalimgView.image = [self captureView:algebraicSurfaceView];
+            //     temporalimgView.image = [algebraicSurfaceView screenShotUIImage];
+            //     temporalimgView.image = [algebraicSurfaceView drawableToCGImage];
+            
+            
+            //            temporalimgView.image = [algebraicSurfaceView snapshot];
+            
 			break;
 		case UIGestureRecognizerStateEnded:
         case UIGestureRecognizerStateCancelled:
         case UIGestureRecognizerStateFailed:
 			[openglController endRotationX:p.x Y:p.y];
             NSLog(@"UIGestureRecognizerStateEnded");
-
-//			[openglController rotateX:p.x Y:p.y];
+            
+            //			[openglController rotateX:p.x Y:p.y];
             if( fullScreen){
                 f = CGRectMake(0, 0, 440, 320	);
             }else{
                 f = CGRectMake(0, 0 , 400, 277	);
             }
 			algebraicSurfaceView.frame = f;
-
+            
 			[openglController performSelector:@selector(drawFrame) withObject:nil afterDelay:0.1  ];
             [self performSelector:@selector(hidetempimage) withObject:nil afterDelay:0.4];
-
-
+            
+            
 			break;
 		default:
 			break;
@@ -280,17 +280,17 @@
 }
 
 -(void)hidetempimage{
-//    temporalimgView.image = [algebraicSurfaceView snapshot];
-
-  //  temporalimgView.hidden = YES;
-
+    //    temporalimgView.image = [algebraicSurfaceView snapshot];
+    
+    //  temporalimgView.hidden = YES;
+    
     
 }
 //-------------------------------------------------------------------------------------------------------
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
     if(([gestureRecognizer isKindOfClass:[UIPinchGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]] )||
-     (  [gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]]) ){
+       (  [gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]]) ){
         return YES;
     }
     return NO;
@@ -307,12 +307,12 @@
 -(void)handleTwoFingerTouch:(UIGestureRecognizer*)doubleFingerGesture{
 	switch (doubleFingerGesture.state) {
 		case UIGestureRecognizerStateBegan:
-			showZoomSlider = YES;		
+			showZoomSlider = YES;
 			break;
 		case UIGestureRecognizerStateChanged:
 			break;
 		case UIGestureRecognizerStateEnded:
-			showZoomSlider = NO;		
+			showZoomSlider = NO;
 			break;
 		default:
 			break;
@@ -340,12 +340,12 @@
 		[openglController setZoom:101.1111 - zoomSlider.value];
 		//[openglController drawFrame];
 	}
-	previousScale = pinchGesture.scale;	
+	previousScale = pinchGesture.scale;
 }
 
 //--------------------------------------------------------------------------------------------------------
 
--(void)handleDoubleTap:(UIGestureRecognizer*)doubleTapGesture{	
+-(void)handleDoubleTap:(UIGestureRecognizer*)doubleTapGesture{
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
 	CGRect zoomframe = self.zoomView.frame;
@@ -356,13 +356,13 @@
 	
 	if(fullScreen){
 		fullScreen = NO;
-	//	[[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+        //	[[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 		layer.cornerRadius = 8;
 		[algebraicSurfaceView setFrame:algebraicsurfaceViewFrame];
-	//	[self.algebraicSurfaceView setFrame:CGRectMake(109, 7, 364, 2w58)];
+        //	[self.algebraicSurfaceView setFrame:CGRectMake(109, 7, 364, 2w58)];
 		zoomframe.origin.y = 27;
         temporalimgView.frame = CGRectMake(0, 0, 400, 277);
-
+        
 	}else{
 		fullScreen = YES;
 		[[UIApplication sharedApplication]setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
@@ -370,21 +370,21 @@
 		[self.algebraicSurfaceView setFrame:FULL_SCREEN_SURFACE_FRAME];
 		zoomframe.origin.y = algebraicSurfaceView.frame.origin.y + 55;
         temporalimgView.frame = CGRectMake(0, 0, 440, 320);
-
-
+        
+        
 	}
 	zoomframe.origin.x =   ZOOM_VIEW_X_POSITION;
-
+    
 	[self.zoomView setFrame:zoomframe];
 	[UIView commitAnimations];
 }
 //--------------------------------------------------------------------------------------------------------
 -(void)viewDidAppear:(BOOL)animated{
 	
-//	[self performSelectorInBackground:@selector(doOpenGLMagic) withObject:nil];
+    //	[self performSelectorInBackground:@selector(doOpenGLMagic) withObject:nil];
 	//  [self 	doOpenGLMagic];
 	self.zoomSlider.value = 101.0 - [openglController zoom];
-
+    
 	[super viewDidAppear:animated];
 	
 }
@@ -402,7 +402,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
 	[openglController stopAnimation];
-
+    
 	for( UIView* optionView in self.optionsViews ){
 		[optionView setHidden:YES];
 	}
@@ -411,7 +411,7 @@
 
 #pragma mark buttons actions
 //--------------------------------------------------------------------------------------------------------
-- (IBAction)sliderChanged:(id)sender { 
+- (IBAction)sliderChanged:(id)sender {
 	UISlider *slider = (UISlider *)sender;
 	switch (slider.tag) {
 		case 1:
@@ -442,26 +442,26 @@
         }else if (slider.value >=5 && slider.value< 15){
             slider.value = 10;
             openglController.m_applicationEngine->ChangeSurface(1);
-
+            
         }else if (slider.value >=15 && slider.value< 25){
             slider.value = 20;
             openglController.m_applicationEngine->ChangeSurface(2);
-
+            
         }else if (slider.value >=25 && slider.value< 35){
             slider.value = 30;
             openglController.m_applicationEngine->ChangeSurface(3);
-
+            
         }else if (slider.value >=35 && slider.value< 45){
             slider.value = 40;
             openglController.m_applicationEngine->ChangeSurface(4);
-
+            
         }else if (slider.value >=45 && slider.value< 50){
             slider.value = 50;
             openglController.m_applicationEngine->ChangeSurface(5);
-
+            
         }
         [openglController setZoom:openglController.zoom];
-	//[openglController generateSurface:self.equationTextField.text];
+        //[openglController generateSurface:self.equationTextField.text];
         //[openglController drawFrame];
     }
 }
@@ -470,8 +470,8 @@
 - (IBAction)WireChanged:(id)sender {
     @synchronized(openglController)
     {
-
-    programData::wireFrame = !programData::wireFrame;
+        
+        programData::wireFrame = !programData::wireFrame;
         [openglController drawFrame];
     }
 }
@@ -488,11 +488,11 @@
 - (IBAction)ToonShader:(id)sender {
     @synchronized(openglController)
     {
-
+        
         
         programData::toonShader = !programData::toonShader;
         programData::setCellShade(programData::toonShader);
-
+        
         [openglController drawFrame];
     }
 }
@@ -521,7 +521,7 @@
 			break;
 		case 2:
             [self.view addSubview:colorpalette.view];
-
+            
 			[self showOptionsViewWrapper:YES view:colorpalette.view];
 			break;
         case 3:
@@ -542,7 +542,7 @@
 	[self showOptionsViewWrapper:NO view:colorPicker.view];
     [colorpalette.view removeFromSuperview];
     [openglController drawFrame];
-
+    
 }
 
 - (void)colorPickerViewController:(FCColorPickerViewController *)colorPicker didSelectColor2:(UIColor *)color{
@@ -551,7 +551,7 @@
 	[self showOptionsViewWrapper:NO view:colorPicker.view];
     [colorpalette.view removeFromSuperview];
     [openglController drawFrame];
-
+    
 }
 //--------------------------------------------------------------------------------------------------------
 -(IBAction)hideOptions:(id)sender{
@@ -595,18 +595,18 @@
         lv = [LoadingView loadingView:@""];
         [self.view addSubview:lv];
         [self performSelector:@selector(doSurfaceGeneration) withObject:nil afterDelay:0.5];
-            if(COUNTER == 0)
-            {
-                COUNTER++;
-                [self performSelector:@selector(doSurfaceGeneration) withObject:nil afterDelay:0.5];
-            }
+        if(COUNTER == 0)
+        {
+            COUNTER++;
+            [self performSelector:@selector(doSurfaceGeneration) withObject:nil afterDelay:0.5];
+        }
     }
     currentEquation = [self.equationTextField.text copy];
     
-   
-  //  [openglController performSelectorInBackground:@selector(generateSurface:) withObject: self.equationTextField.text];
-   	//aca habria que hacer todo el validamiento de la ecuacion 
- }
+    
+    //  [openglController performSelectorInBackground:@selector(generateSurface:) withObject: self.equationTextField.text];
+   	//aca habria que hacer todo el validamiento de la ecuacion
+}
 //--------------------------------------------------------------------------------------------------------
 
 -(IBAction)setSurfaceColors{
@@ -623,7 +623,7 @@
 	if(yesOrNo){
 		[self.algebraicSurfaceView setAlpha:0.0];
 		self.saveButton.alpha = 0.0;
-		 eqtxtfldFrame.origin.y = EQUATION_TEXTFIELD_EDITING_HEIGHT;
+        eqtxtfldFrame.origin.y = EQUATION_TEXTFIELD_EDITING_HEIGHT;
 		r.origin.y=  KEYBOARD_VIEW_SHOW_HEIGHT;
 	}else{
 		self.saveButton.alpha = 1.0;
@@ -663,7 +663,7 @@
 - (void) keyboardWillHide: (NSNotification *) notification {
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
-	CGRect thisViewFrame = [baseView frame];	
+	CGRect thisViewFrame = [baseView frame];
 	thisViewFrame.origin.y = 0;
 	[baseView setFrame:thisViewFrame];
 	[UIView commitAnimations];
@@ -681,9 +681,15 @@
 	[self scrollViewTo:equationTextfieldView movePixels:VIEW_SCROLL baseView:self.baseView];
     [self showExtKeyboard:YES];
     
-//    [textField setEditing:YES];
+    //    [textField setEditing:YES];
     // [textField becomeFirstResponder];
   	return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    // [textField becomeFirstResponder];
+    
+    
 }
 //--------------------------------------------------------------------------------------------------------
 #pragma mark dealloc
@@ -706,11 +712,20 @@
     UIButton* keyboardButton = (UIButton*)sender;
     switch (keyboardButton.tag) {
             
-        case 30:
-            if(equationTextField.text.length > 0 )
-                equationTextField.text = [equationTextField.text substringToIndex:equationTextField.text.length -1];
+        case 30:{
+            if(equationTextField.text.length > 0 ){                
+                UITextRange *selRange = equationTextField.selectedTextRange;
+                UITextPosition *selStartPos = selRange.start;
+                NSInteger idx = [equationTextField offsetFromPosition:equationTextField.beginningOfDocument toPosition:selStartPos];
+                if( idx > 0) {
+                    NSString* str = [equationTextField.text substringToIndex:idx -1];
+                    NSString* str2 = [equationTextField.text substringFromIndex:idx];                    
+                    equationTextField.text = [NSString stringWithFormat:@"%@%@", str, str2];
+                    [equationTextField selectTextForInputatRange:NSMakeRange(idx - 1, 0)];
+                }
+            }
             break;
-            
+        }
         default:
             equationTextField.text = [equationTextField.text stringByAppendingString:[keyboardButtons objectAtIndex:keyboardButton.tag]];
             break;

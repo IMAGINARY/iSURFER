@@ -129,6 +129,7 @@
 		5EE61014170B6C9C00E323A8 /* FCColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE6100F170B6C9C00E323A8 /* FCColorPickerViewController.m */; };
 		5EE61015170B6C9C00E323A8 /* FCColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EE61010170B6C9C00E323A8 /* FCColorPickerViewController.xib */; };
 		5EE61016170B6C9C00E323A8 /* FCColorSwatchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE61012170B6C9C00E323A8 /* FCColorSwatchView.m */; };
+		5EE8156B177F588B005E8796 /* UITextField+removecharacters.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE8156A177F588B005E8796 /* UITextField+removecharacters.m */; };
 		8B29F94A13D3A20E00EDB516 /* AddNewGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B29F94813D3A20E00EDB516 /* AddNewGalleryViewController.m */; };
 		8B29F94B13D3A20E00EDB516 /* AddNewGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B29F94913D3A20E00EDB516 /* AddNewGalleryViewController.xib */; };
 		8B29F98713D3C6BE00EDB516 /* Gallery.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B29F98613D3C6BE00EDB516 /* Gallery.m */; };
@@ -379,6 +380,8 @@
 		5EE61010170B6C9C00E323A8 /* FCColorPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FCColorPickerViewController.xib; sourceTree = "<group>"; };
 		5EE61011170B6C9C00E323A8 /* FCColorSwatchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCColorSwatchView.h; sourceTree = "<group>"; };
 		5EE61012170B6C9C00E323A8 /* FCColorSwatchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCColorSwatchView.m; sourceTree = "<group>"; };
+		5EE81569177F588B005E8796 /* UITextField+removecharacters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+removecharacters.h"; sourceTree = "<group>"; };
+		5EE8156A177F588B005E8796 /* UITextField+removecharacters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+removecharacters.m"; sourceTree = "<group>"; };
 		8B29F94713D3A20E00EDB516 /* AddNewGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNewGalleryViewController.h; sourceTree = "<group>"; };
 		8B29F94813D3A20E00EDB516 /* AddNewGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNewGalleryViewController.m; sourceTree = "<group>"; };
 		8B29F94913D3A20E00EDB516 /* AddNewGalleryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewGalleryViewController.xib; sourceTree = "<group>"; };
@@ -966,6 +969,8 @@
 				5EE60FBA170B455100E323A8 /* LoadingView.m */,
 				8B9114CF14BF862600BEAF27 /* Language.h */,
 				8B9114D014BF862600BEAF27 /* Language.m */,
+				5EE81569177F588B005E8796 /* UITextField+removecharacters.h */,
+				5EE8156A177F588B005E8796 /* UITextField+removecharacters.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -1471,6 +1476,7 @@
 				B5F3BDBB176CE0FB00D492E9 /* CreditsViewController.m in Sources */,
 				B5F3BDBE176CE50300D492E9 /* TutorialViewController.m in Sources */,
 				5ECCABD5176E2CE500A62334 /* GoiSurferViewController+Share.m in Sources */,
+				5EE8156B177F588B005E8796 /* UITextField+removecharacters.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
