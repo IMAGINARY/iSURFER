@@ -24,7 +24,7 @@ char * programData::textureFileName = "bricks";
 mat4 programData::rot;
 
 ProgramHandle programData::shaderHandle;
-bool programData::wireFrame = true;
+bool programData::wireFrame = false;
 bool programData::panoramic = false;
 bool programData::toonShader = false;
 bool programData::textureEnable = false;
