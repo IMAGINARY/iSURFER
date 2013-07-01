@@ -110,6 +110,9 @@
     
     [self saveImage: surface.surfaceImage withName:surface.realImageName];
     
+    if(gal.surfacesNumber == 0)
+        gal.thumbNail = surface.surfaceImage;
+    
 	[db executeUpdate:@"insert into surfaces(equation, image, galleryid) values(?, ?, ?)",	
 	 surface.equation,
 	 imgdata,

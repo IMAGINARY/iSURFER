@@ -100,7 +100,7 @@
 		[newSurface setSurfaceName:self.surfaceNameTextfield.text];
 		[newSurface setBriefDescription:self.surfaceDescriptionTextView.text];
         [newSurface setEquation:delegate.equationTextField.text];
-        Gallery * selectedGallery = [editableGalleries objectAtIndex:galleryIndex];
+        Gallery * selectedGallery = [editableGalleries objectAtIndex:galleryIndex];        
 		[appcontroller addAlgebraicSurface:newSurface atGallery:selectedGallery];
 		[newSurface release];
         

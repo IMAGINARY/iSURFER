@@ -150,7 +150,7 @@
 	[cell.galleryTitleLabel setText:gallery.galleryName];
 	[cell.galleryDetailLabel setText:gallery.galleryDescription];
 	if( !gallery.thumbNail  ){
-		[cell.galleryImage setImage:[UIImage imageNamed:@"Imaginary_lemon.jpg"]];
+		[cell.galleryImage setImage:[UIImage imageNamed:@"Imaginary lemon.jpg"]];
 	}else {
 		[cell.galleryImage setImage:gallery.thumbNail];
 	}
