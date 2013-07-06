@@ -47,14 +47,13 @@
 
 	if( [gallery editable] ){
 		
-		UIBarButtonItem *moveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(moveSurfaces)];
-		moveButton.tag = 1;
+//		UIBarButtonItem *moveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(moveSurfaces)];
+//		moveButton.tag = 1;
 		UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteSurfaces)];
 		deleteButton.tag = 2;
 			
-		[items addObjectsFromArray:[NSArray arrayWithObjects:moveButton, spaceBetweenButtons, deleteButton, nil]];
-		
-		[moveButton release];
+		[items addObjectsFromArray:[NSArray arrayWithObjects: spaceBetweenButtons, deleteButton, nil]];
+
 		[deleteButton release];
 	}
 	

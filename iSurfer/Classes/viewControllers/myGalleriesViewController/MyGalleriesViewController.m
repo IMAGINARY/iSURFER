@@ -62,12 +62,12 @@
 	self.title = @"Galleries";
 	[appcontroller getGalleries];
 		
-	UIBarButtonItem *moveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(moveGalleries)];
-	moveButton.tag = 1;
+//	UIBarButtonItem *moveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(moveGalleries)];
+//	moveButton.tag = 1;
 	UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteGalleries)];
 	deleteButton.tag = 2;
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addGallery)];
-	moveButton.tag = 3;
+	addButton.tag = 3;
 	// Create a spacer.
 	UIBarButtonItem* spaceBetweenButtons = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
 	spaceBetweenButtons.width = 25.0f;
@@ -75,7 +75,7 @@
 	UIToolbar* tmptoolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(20.0f, 0.0f, 130.0f, 33.01f)];
 	tmptoolbar.barStyle = -1; // clear background
 
-	NSArray* buttons = [NSArray arrayWithObjects:moveButton, spaceBetweenButtons, deleteButton, spaceBetweenButtons, addButton, nil];
+	NSArray* buttons = [NSArray arrayWithObjects: spaceBetweenButtons, deleteButton, spaceBetweenButtons, addButton, nil];
 	[tmptoolbar setItems:buttons animated:NO];
 	UIBarButtonItem * tmptoolbarItems = [[UIBarButtonItem alloc] initWithCustomView:tmptoolbar];
 
@@ -83,17 +83,16 @@
 
 	self.navigationItem.rightBarButtonItem = self.toolbar;
 	[tmptoolbar release];
-	[moveButton release];
 	[spaceBetweenButtons release];
 	[deleteButton release];
 	[addButton release];
 	[tmptoolbarItems release];
 }
-//--------------------------------------------------------------------------------------------------------
--(void)moveGalleries{
-	eddition = MOVE;
-	[self startEditting];
-}
+////--------------------------------------------------------------------------------------------------------
+//-(void)moveGalleries{
+//	eddition = MOVE;
+//	[self startEditting];
+//}
 //--------------------------------------------------------------------------------------------------------
 -(void)deleteGalleries{
 	eddition = DELETE;
