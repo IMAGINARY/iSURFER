@@ -32,7 +32,7 @@
 -(void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
 	self.galleryNameLabel.text = @"";
-	self.surfaceDescriptionTextView.text = @"";
+//	self.surfaceDescriptionTextView.text = @"";
 	self.galleryNameLabel.text = @"";
     editableGalleries = [[appcontroller getEditableGalleries]retain];
     if ([editableGalleries count] == 0) {
@@ -96,11 +96,11 @@
 		AlgebraicSurface* newSurface = [[AlgebraicSurface alloc] init];
         newSurface.equation = @"x^2";
         newSurface.surfaceImage = surfaceImagex;
-        newSurface.realImageName = [NSString stringWithFormat:@"/surface-images/%@%@", self.surfaceNameTextfield.text, @".png"];
+        Gallery * selectedGallery = [editableGalleries objectAtIndex:galleryIndex];
+        newSurface.realImageName = [NSString stringWithFormat:@"/surface-images/%@%@%@%@", selectedGallery.galleryName, @"/", self.surfaceNameTextfield.text, @".png"];
 		[newSurface setSurfaceName:self.surfaceNameTextfield.text];
 		[newSurface setBriefDescription:self.surfaceDescriptionTextView.text];
         [newSurface setEquation:delegate.equationTextField.text];
-        Gallery * selectedGallery = [editableGalleries objectAtIndex:galleryIndex];        
 		[appcontroller addAlgebraicSurface:newSurface atGallery:selectedGallery];
 		[newSurface release];
         
