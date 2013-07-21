@@ -259,8 +259,12 @@ enum {
     
     
 
+<<<<<<< .mine
+  
+=======
             //NSString *formula = @"x^2+y^2+z*x+y"; //Bien
     
+>>>>>>> .r170
 
     
     //Grado 3

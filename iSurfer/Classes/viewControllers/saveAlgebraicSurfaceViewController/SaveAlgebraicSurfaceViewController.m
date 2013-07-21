@@ -98,6 +98,7 @@
         newSurface.surfaceImage = surfaceImagex;
         Gallery * selectedGallery = [editableGalleries objectAtIndex:galleryIndex];
         newSurface.realImageName = [NSString stringWithFormat:@"/surface-images/%@%@%@%@", selectedGallery.galleryName, @"/", self.surfaceNameTextfield.text, @".png"];
+        testimg.image = newSurface.surfaceImage;
 		[newSurface setSurfaceName:self.surfaceNameTextfield.text];
 		[newSurface setBriefDescription:self.surfaceDescriptionTextView.text];
         [newSurface setEquation:delegate.equationTextField.text];
@@ -124,7 +125,7 @@
         
 
 		
-		[self dismissModalViewControllerAnimated:YES];
+	//	[self dismissModalViewControllerAnimated:YES];
 	}
 }
 //--------------------------------------------------------------------------------------------------------

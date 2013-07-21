@@ -40,6 +40,8 @@
     GoiSurferViewController* delegate;
     
     NSMutableArray* editableGalleries;
+    
+    IBOutlet UIImageView* testimg;
 	
 }
 @property(nonatomic, retain)IBOutlet UINavigationItem* navBar;
