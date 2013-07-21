@@ -551,7 +551,7 @@
 										<string key="NSFrame">{{36, 190}, {342, 23}}</string>
 										<reference key="NSSuperview" ref="102034767"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView"/>
+										<reference key="NSNextKeyView" ref="1007023619"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -870,10 +870,10 @@
 							<object class="IBUIButton" id="99356777">
 								<reference key="NSNextResponder" ref="953853906"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{364, 8}, {44, 44}}</string>
+								<string key="NSFrame">{{436, 115}, {44, 44}}</string>
 								<reference key="NSSuperview" ref="953853906"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="247466826"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -899,9 +899,10 @@
 							<object class="IBUIButton" id="564932172">
 								<reference key="NSNextResponder" ref="953853906"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{430, 115}, {44, 43}}</string>
+								<string key="NSFrame">{{390, 115}, {44, 43}}</string>
 								<reference key="NSSuperview" ref="953853906"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="99356777"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<int key="IBUITag">21</int>
@@ -925,7 +926,7 @@
 							<object class="IBUIButton" id="344312269">
 								<reference key="NSNextResponder" ref="953853906"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{378, 115}, {44, 43}}</string>
+								<string key="NSFrame">{{343, 115}, {44, 43}}</string>
 								<reference key="NSSuperview" ref="953853906"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="564932172"/>
@@ -952,7 +953,7 @@
 							<object class="IBUIButton" id="828405780">
 								<reference key="NSNextResponder" ref="953853906"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{324, 115}, {44, 43}}</string>
+								<string key="NSFrame">{{295, 115}, {44, 43}}</string>
 								<reference key="NSSuperview" ref="953853906"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="344312269"/>
@@ -979,7 +980,7 @@
 							<object class="IBUIButton" id="84226268">
 								<reference key="NSNextResponder" ref="953853906"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{272, 115}, {44, 43}}</string>
+								<string key="NSFrame">{{247, 115}, {44, 43}}</string>
 								<reference key="NSSuperview" ref="953853906"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="828405780"/>
@@ -1006,7 +1007,7 @@
 							<object class="IBUIButton" id="815675994">
 								<reference key="NSNextResponder" ref="953853906"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{220, 115}, {44, 43}}</string>
+								<string key="NSFrame">{{198, 115}, {44, 43}}</string>
 								<reference key="NSSuperview" ref="953853906"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="84226268"/>
@@ -1033,7 +1034,7 @@
 							<object class="IBUIButton" id="429470291">
 								<reference key="NSNextResponder" ref="953853906"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{167, 115}, {44, 43}}</string>
+								<string key="NSFrame">{{150, 115}, {44, 43}}</string>
 								<reference key="NSSuperview" ref="953853906"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="815675994"/>
@@ -1090,6 +1091,7 @@
 								<string key="NSFrame">{{5, 8}, {44, 44}}</string>
 								<reference key="NSSuperview" ref="953853906"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="316462659"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
@@ -1141,7 +1143,7 @@
 								<string key="NSFrame">{{128, 8}, {46, 44}}</string>
 								<reference key="NSSuperview" ref="953853906"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="99356777"/>
+								<reference key="NSNextKeyView" ref="247466826"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<int key="IBUITag">2</int>
@@ -1435,7 +1437,7 @@
 							<object class="IBUIButton" id="363592134">
 								<reference key="NSNextResponder" ref="953853906"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{114, 115}, {44, 43}}</string>
+								<string key="NSFrame">{{103, 115}, {44, 43}}</string>
 								<reference key="NSSuperview" ref="953853906"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="429470291"/>
@@ -1462,7 +1464,7 @@
 							<object class="IBUIButton" id="187747906">
 								<reference key="NSNextResponder" ref="953853906"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{61, 115}, {44, 43}}</string>
+								<string key="NSFrame">{{53, 115}, {44, 43}}</string>
 								<reference key="NSSuperview" ref="953853906"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="363592134"/>
@@ -1489,7 +1491,7 @@
 							<object class="IBUIButton" id="64133230">
 								<reference key="NSNextResponder" ref="953853906"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{7, 115}, {44, 43}}</string>
+								<string key="NSFrame">{{5, 115}, {44, 43}}</string>
 								<reference key="NSSuperview" ref="953853906"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="187747906"/>
@@ -2055,15 +2057,8 @@
 							<reference ref="816421414"/>
 							<reference ref="669750618"/>
 							<reference ref="316462659"/>
-							<reference ref="564932172"/>
-							<reference ref="344312269"/>
-							<reference ref="828405780"/>
-							<reference ref="84226268"/>
-							<reference ref="815675994"/>
-							<reference ref="429470291"/>
 							<reference ref="363592134"/>
 							<reference ref="187747906"/>
-							<reference ref="64133230"/>
 							<reference ref="93114545"/>
 							<reference ref="269986295"/>
 							<reference ref="837187958"/>
@@ -2076,6 +2071,13 @@
 							<reference ref="713121461"/>
 							<reference ref="538002898"/>
 							<reference ref="247466826"/>
+							<reference ref="64133230"/>
+							<reference ref="429470291"/>
+							<reference ref="815675994"/>
+							<reference ref="84226268"/>
+							<reference ref="828405780"/>
+							<reference ref="344312269"/>
+							<reference ref="564932172"/>
 							<reference ref="99356777"/>
 						</object>
 						<reference key="parent" ref="219194249"/>
@@ -2650,34 +2652,18 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>CameraChanged:</string>
-							<string>Texture:</string>
-							<string>ToonShader:</string>
-							<string>WireChanged:</string>
-							<string>cancelKeyboard:</string>
 							<string>flipToGalleries:</string>
-							<string>helpButtonPressed:</string>
 							<string>hideOptions:</string>
 							<string>keyboardBarButtonPressed:</string>
 							<string>keyboardBarHyppenMinusButtonPressed:</string>
 							<string>keyboardBarMinusButtonPressed:</string>
-							<string>keyboardKeyTapped:</string>
 							<string>optionsButtonPressed:</string>
 							<string>saveImage</string>
 							<string>setSurfaceColors</string>
-							<string>settingsSliderChanged:</string>
 							<string>sliderChanged:</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -2693,52 +2679,20 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>CameraChanged:</string>
-							<string>Texture:</string>
-							<string>ToonShader:</string>
-							<string>WireChanged:</string>
-							<string>cancelKeyboard:</string>
 							<string>flipToGalleries:</string>
-							<string>helpButtonPressed:</string>
 							<string>hideOptions:</string>
 							<string>keyboardBarButtonPressed:</string>
 							<string>keyboardBarHyppenMinusButtonPressed:</string>
 							<string>keyboardBarMinusButtonPressed:</string>
-							<string>keyboardKeyTapped:</string>
 							<string>optionsButtonPressed:</string>
 							<string>saveImage</string>
 							<string>setSurfaceColors</string>
-							<string>settingsSliderChanged:</string>
 							<string>sliderChanged:</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
-								<string key="name">CameraChanged:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">Texture:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">ToonShader:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">WireChanged:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">cancelKeyboard:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
 								<string key="name">flipToGalleries:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">helpButtonPressed:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -2758,10 +2712,6 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">keyboardKeyTapped:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
 								<string key="name">optionsButtonPressed:</string>
 								<string key="candidateClassName">id</string>
 							</object>
@@ -2771,10 +2721,6 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">setSurfaceColors</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">settingsSliderChanged:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
