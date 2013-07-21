@@ -74,8 +74,11 @@
 //---------------------------------------------------------------------------------------------
 
 -(void)viewDidLoad{
-	self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
-	[super viewDidLoad];
+    [super viewDidLoad];
+
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundColor:[UIColor blackColor]];
 }
 //---------------------------------------------------------------------------------------------
 

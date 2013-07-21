@@ -26,6 +26,7 @@
 -(void)viewDidLoad{
 	[super viewDidLoad];
 	navigationBar.tintColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+    navigationBar.barStyle = UIBarStyleBlackOpaque;
 	[self.navigationController.navigationBar setHidden:NO];
 }
 //--------------------------------------------------------------------------------------------------------

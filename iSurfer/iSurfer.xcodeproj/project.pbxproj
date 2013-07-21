@@ -103,6 +103,8 @@
 		5E0A338916C9870B00F32E77 /* standard-controls@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E0A333216C9870B00F32E77 /* standard-controls@2x.png */; };
 		5E0A338A16C9870B00F32E77 /* startscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E0A333316C9870B00F32E77 /* startscreen.png */; };
 		5E0A338B16C9870B00F32E77 /* startscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E0A333416C9870B00F32E77 /* startscreen@2x.png */; };
+		5E73E855179C211600A7BE58 /* textfieldback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E73E854179C211600A7BE58 /* textfieldback@2x.png */; };
+		5E73E857179C227300A7BE58 /* textfieldback.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E73E856179C227300A7BE58 /* textfieldback.png */; };
 		5EC1898E16C9ACB6006AA0AA /* UINavigationController+rotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC1898D16C9ACB6006AA0AA /* UINavigationController+rotate.m */; };
 		5ECCABD1176D106A00A62334 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ECCABCF176D106A00A62334 /* Default.png */; };
 		5ECCABD2176D106A00A62334 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ECCABD0176D106A00A62334 /* Default@2x.png */; };
@@ -349,6 +351,8 @@
 		5E0A333216C9870B00F32E77 /* standard-controls@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "standard-controls@2x.png"; sourceTree = "<group>"; };
 		5E0A333316C9870B00F32E77 /* startscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startscreen.png; sourceTree = "<group>"; };
 		5E0A333416C9870B00F32E77 /* startscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "startscreen@2x.png"; sourceTree = "<group>"; };
+		5E73E854179C211600A7BE58 /* textfieldback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfieldback@2x.png"; sourceTree = "<group>"; };
+		5E73E856179C227300A7BE58 /* textfieldback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textfieldback.png; sourceTree = "<group>"; };
 		5EC1898C16C9ACB6006AA0AA /* UINavigationController+rotate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+rotate.h"; sourceTree = "<group>"; };
 		5EC1898D16C9ACB6006AA0AA /* UINavigationController+rotate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+rotate.m"; sourceTree = "<group>"; };
 		5ECCABCF176D106A00A62334 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -955,6 +959,8 @@
 				B5F3BD7B176CD9DC00D492E9 /* Galleries */,
 				5EDA315115E2FD2600F7BC06 /* mainScreen */,
 				8B29FD0713D6685600EDB516 /* Black Line.png */,
+				5E73E856179C227300A7BE58 /* textfieldback.png */,
+				5E73E854179C211600A7BE58 /* textfieldback@2x.png */,
 				8B43078313C903B3004812EE /* goSurfer_background.png */,
 				8B43078413C903B3004812EE /* green wallpaper.JPG */,
 				8B43078513C903B3004812EE /* iPhone-Wallpapers-4-parquet (1).jpg */,
@@ -1445,6 +1451,8 @@
 				B55677AF177F70110081D652 /* nb-surf2.png in Resources */,
 				B55677B0177F70110081D652 /* nb-surf3.png in Resources */,
 				B55677B3177F77590081D652 /* nb-surf1.png in Resources */,
+				5E73E855179C211600A7BE58 /* textfieldback@2x.png in Resources */,
+				5E73E857179C227300A7BE58 /* textfieldback.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

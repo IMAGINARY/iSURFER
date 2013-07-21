@@ -19,6 +19,8 @@
 //--------------------------------------------------------------------------------------------------------
 @interface GoiSurferViewController(PrivateMethods)
 -(void)showOptionsViewWrapper:(BOOL)yes view:(UIView*)showingView;
+
+
 @end
 //--------------------------------------------------------------------------------------------------------
 @implementation GoiSurferViewController
@@ -56,7 +58,7 @@
     
     colorpalette.color =     [UIColor colorWithRed:programData::colorR green:programData::colorG blue:programData::colorB alpha:0.5];
     //[UIColor greenColor];
-    colorpalette.view.frame = CGRectMake(100, 0, 320, 320 );
+    colorpalette.view.frame = CGRectMake(0, 0, 430, 320 );
     
 	[optionsViews addObject:self.shareView];
 	[optionsViews addObject:colorpalette.view];
@@ -415,25 +417,6 @@
 
 #pragma mark buttons actions
 //--------------------------------------------------------------------------------------------------------
-- (IBAction)sliderChanged:(id)sender {
-	UISlider *slider = (UISlider *)sender;
-	switch (slider.tag) {
-		case 1:
-			self.redColorSlider.value +=1;
-			break;
-		case 2:
-			self.greenColorSlider.value +=1;
-			break;
-		case 3:
-			self.blueColorSlider.value +=1;
-			break;
-		default:
-			break;
-	}
-	UIColor* color = [UIColor colorWithRed:(int)self.redColorSlider.value/255.0 green:(int)self.greenColorSlider.value /255.0 blue:(int)self.blueColorSlider.value/255.0 alpha:1.0];
-	[self.colorTestView setBackgroundColor:color];
-}
-//--------------------------------------------------------------------------------------------------------
 
 - (IBAction)settingsSliderChanged:(id)sender {
     UISlider *slider = (UISlider *)sender;
@@ -527,6 +510,7 @@
             [self.view addSubview:colorpalette.view];
             
 			[self showOptionsViewWrapper:YES view:colorpalette.view];
+            [colorpalette setColor:_color1 andColor:self.color2];
 			break;
         case 3:
             [self showOptionsViewWrapper:YES view:settingsView];
@@ -543,19 +527,26 @@
 - (void)colorPickerViewController:(FCColorPickerViewController *)colorPicker didSelectColor:(UIColor *)color{
     const float* colors = CGColorGetComponents( color.CGColor );
     [openglController setSurfaceColorRed:colors[0] Green:colors[1] Blue:colors[2]];
-	[self showOptionsViewWrapper:NO view:colorPicker.view];
-    [colorpalette.view removeFromSuperview];
+//	[self showOptionsViewWrapper:NO view:colorPicker.view];
     [openglController drawFrame];
+    self.color1 = color;
     
 }
+
+-(void)removeColorPalette{
+    [self showOptionsViewWrapper:NO view:colorPaletteView];
+    [colorpalette.view removeFromSuperview];
+    colorpalette.view.hidden = YES;
+}
+
 
 - (void)colorPickerViewController:(FCColorPickerViewController *)colorPicker didSelectColor2:(UIColor *)color{
     const float* colors = CGColorGetComponents( color.CGColor );
     [openglController setSurfaceColor2Red:colors[0] Green:colors[1] Blue:colors[2]];
-	[self showOptionsViewWrapper:NO view:colorPicker.view];
-    [colorpalette.view removeFromSuperview];
+	//[self showOptionsViewWrapper:NO view:colorPicker.view];
     [openglController drawFrame];
-    
+    self.color2 = color;
+
 }
 //--------------------------------------------------------------------------------------------------------
 -(IBAction)hideOptions:(id)sender{
@@ -611,11 +602,6 @@
     //  [openglController performSelectorInBackground:@selector(generateSurface:) withObject: self.equationTextField.text];
    	//aca habria que hacer todo el validamiento de la ecuacion
 }
-//--------------------------------------------------------------------------------------------------------
-
--(IBAction)setSurfaceColors{
-	[openglController setSurfaceColorRed:redColorSlider.value/255 Green:greenColorSlider.value/255 Blue:blueColorSlider.value/255];
-}
 
 #pragma mark Keyboard methods
 //--------------------------------------------------------------------------------------------------------
@@ -628,12 +614,16 @@
 		[self.algebraicSurfaceView setAlpha:0.0];
 		self.saveButton.alpha = 0.0;
         eqtxtfldFrame.origin.y = EQUATION_TEXTFIELD_EDITING_HEIGHT;
+        eqtxtfldFrame.size.width = 480;
+     //   equationTextField.frame.size.width = 440;
 		r.origin.y=  KEYBOARD_VIEW_SHOW_HEIGHT;
 	}else{
 		self.saveButton.alpha = 1.0;
 		[self.algebraicSurfaceView setAlpha:1.0];
 		eqtxtfldFrame.origin.y = EQUATION_TEXTFIELD_IDLE_HEIGHT;
 		r.origin.y= KEYBOARD_VIEW_HIDE_HEIGHT;
+        eqtxtfldFrame.size.width = 430;
+
 	}
 	[self.equationTextfieldView setFrame:eqtxtfldFrame];
 	[self.keyboardExtensionBar setFrame:r];

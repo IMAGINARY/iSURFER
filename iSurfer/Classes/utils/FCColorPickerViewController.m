@@ -11,6 +11,7 @@
 #import "FCBrightDarkGradView.h"
 #import "FCColorSwatchView.h"
 #import "UIColor-HSVAdditions.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface FCColorPickerViewController () {
 	CGFloat currentBrightness;
@@ -38,7 +39,11 @@
   [self updateBrightnessPosition];
   [self updateGradientColor];
   [self updateCrosshairPosition];
-  _swatch.color = _color;
+    _swatchbutton.selected = YES;
+    _swatchbutton.layer.borderWidth = 4.0f;
+    _swatchbutton2.selected = NO;
+    _swatchbutton2.layer.borderWidth = 0.0f;
+
 }
 
 - (void)viewWillLayoutSubviews {
@@ -49,6 +54,13 @@
 #pragma mark -
 #pragma mark Color Manipulation
 
+-(void)setColor:(UIColor*)color1 andColor:(UIColor*)color2{
+    
+    self.swatch.backgroundColor = color1;
+    self.swatch2.backgroundColor = color2;
+
+}
+
 - (UIColor *)color {
   return _color;
 }
@@ -58,7 +70,10 @@
     [newColor retain];
     [_color release];
     _color = newColor;
-    _swatch.color = _color;
+      if( _swatchbutton.selected)
+          _swatch.color = _color;
+      else
+          _swatch2.color = _color;
     [self updateGradientColor];
   }
 }
@@ -109,7 +124,10 @@
                                      alpha:1.0];
   [self _setColor:_tcolor];
 	
-  _swatch.color = _color;
+    if( _swatchbutton.selected)
+        _swatch.color = _color;
+    else
+        _swatch2.color = _color;
 }
 
 - (void)updateBrightnessWithMovement : (CGPoint) position {
@@ -121,8 +139,10 @@
                                 brightness:currentBrightness
                                      alpha:1.0];
   [self _setColor:_tcolor];
-	
-  _swatch.color = _color;
+	if( _swatchbutton.selected)
+        _swatch.color = _color;
+    else
+        _swatch2.color = _color;
 }
 
 #pragma mark -
@@ -158,13 +178,22 @@
 #pragma mark -
 #pragma mark IBActions
 
-- (IBAction)chooseSelectedColor {
-    
-  [_delegate colorPickerViewController:self didSelectColor:self.color];
+- (IBAction)chooseSelectedColor:(id)sender {
+    UIButton* button = (UIButton*)sender;
+    _swatchbutton.selected = NO;
+    _swatchbutton2.selected = NO;
+    button.selected = YES;
+    _swatchbutton.layer.borderWidth = 0.0f;
+    _swatchbutton2.layer.borderWidth = 0.0f;
+      button.layer.borderColor = [UIColor blackColor].CGColor;
+    button.layer.borderWidth = 4.0f;
 }
 
-- (IBAction)chooseSelectedColor2 {
-    [_delegate colorPickerViewController:self didSelectColor2:self.color];
+- (IBAction)removeColorPalette:(id)sender {
+    [_delegate colorPickerViewController:self didSelectColor:self.swatch2.backgroundColor];
+    [_delegate colorPickerViewController:self didSelectColor2:self.swatch.backgroundColor];
+
+    [_delegate removeColorPalette];
 }
 
 @end

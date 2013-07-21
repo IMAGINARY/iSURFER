@@ -102,6 +102,8 @@
 @property(nonatomic, retain)	IBOutlet UIView* keyboardExtensionBar;
 @property(nonatomic, retain)	IBOutlet UIImageView* temporalimgView;
 
+@property(nonatomic, retain) UIColor* color1;
+@property(nonatomic, retain) UIColor* color2;
 
 -(id) initWithAppController:(AppController*)anappCtrl andAlgebraicSurface:(AlgebraicSurface*)surface;
 
@@ -118,5 +120,6 @@
 -(UIImage*)getSurfaceImage;
 -(IBAction)flipToGalleries:(id)sender;
 -(void)setSurfaceImg;
+-(void)removeColorPalette;
 
 @end

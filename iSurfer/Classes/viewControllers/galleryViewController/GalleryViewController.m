@@ -31,7 +31,7 @@
 //--------------------------------------------------------------------------------------------------------
 
 -(void)viewDidLoad{
-    
+    [super viewDidLoad];
     surfaceEquation.clipsToBounds = YES;
     surfaceEquation.layer.cornerRadius = 10.0f;
 	

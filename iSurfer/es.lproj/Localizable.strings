@@ -26,9 +26,9 @@
 "BLUE" = "Azul";
 
 /*Menu save*/
-"SURFACE_NAME" = "Nombre de superficie:";
-"SURFACE_DESCRIPTION" = "Descripción de superficie:";
-"GALLERY" = "Galería:";
+"SURFACE_NAME" = "Nombre de superficie";
+"SURFACE_DESCRIPTION" = "Descripción de superficie";
+"GALLERY" = "Agregar a galeria";
 
 /*Menu settings*/
 

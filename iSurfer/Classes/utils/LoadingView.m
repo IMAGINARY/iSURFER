@@ -37,7 +37,7 @@
         redView.alpha=0.85;
       //  redView.center=CGPointMake(480, 300) ;
         redView.center = self.center;
-        [self addSubview:redView];
+   //     [self addSubview:redView];
         
         UILabel *title_=[[UILabel alloc] initWithFrame:CGRectMake(redView.frame.origin.x,redView.frame.origin.y + 10,frame.size.width,34)];
         title_.text=text;
