@@ -281,9 +281,7 @@
 	}
 }
 
-<<<<<<< .mine
 //--------------------------------------------------------------------------------------------------------
-=======
 -(void)hidetempimage{
     //    temporalimgView.image = [algebraicSurfaceView snapshot];
     
@@ -292,7 +290,6 @@
     
 }
 //-------------------------------------------------------------------------------------------------------
->>>>>>> .r170
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
     if(([gestureRecognizer isKindOfClass:[UIPinchGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]] )||
@@ -657,13 +654,9 @@
 - (void) keyboardWillHide: (NSNotification *) notification {
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
-<<<<<<< .mine
 	CGRect thisViewFrame = [baseView frame];	
 	thisViewFrame.origin.y = 0;
-=======
-	CGRect thisViewFrame = [baseView frame];
-	thisViewFrame.origin.y = 0;
->>>>>>> .r170
+
 	[baseView setFrame:thisViewFrame];
 	[UIView commitAnimations];
 	[self showExtKeyboard:NO];
