@@ -124,7 +124,7 @@
     int serial = [rs intForColumn:@"serial"];
     
     surface.surfaceID = serial;
-    [db commit];
+    //[db commit];
 
     [db executeUpdate:@"insert into surfacestexts (surfaceid, name, briefdescription, completedescription) values (?, ?, ?, ?)",
      [NSNumber numberWithInt:surface.surfaceID],
