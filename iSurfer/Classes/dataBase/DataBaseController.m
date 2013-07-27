@@ -113,18 +113,23 @@
     if(gal.surfacesNumber == 0)
         gal.thumbNail = surface.surfaceImage;
     
+    [db executeUpdate:@"update galleries set thumbnail = ? where id = ?",
+     imgdata,
+     [NSNumber numberWithInt:gal.galID]];
+    
 	[db executeUpdate:@"insert into surfaces(equation, image, galleryid) values(?, ?, ?)",	
 	 surface.equation,
 	 imgdata,
 	 [NSNumber numberWithInt:gal.galID]];
     //TODO
     
+    [db executeUpdate:@"insert into galleries(thumbnail) values(?, ?)", imgdata];
+    
     FMResultSet * rs = [db executeQuery:@"select max(id) as serial from surfaces"];
     [rs next];
     int serial = [rs intForColumn:@"serial"];
     
     surface.surfaceID = serial;
-    //[db commit];
 
     [db executeUpdate:@"insert into surfacestexts (surfaceid, name, briefdescription, completedescription) values (?, ?, ?, ?)",
      [NSNumber numberWithInt:surface.surfaceID],
@@ -165,8 +170,6 @@
     if ([db hadError]) {
         NSLog(@"Err %d: %@", [db lastErrorCode], [db lastErrorMessage]);
     }
-    
-//    [db commit];
     
     FMResultSet *rs =[db executeQuery:@"select max(id) as serial from galleries"];
     [rs next];
