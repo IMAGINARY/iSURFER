@@ -147,9 +147,12 @@
 //--------------------------------------------------------------------------------------------------------
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
-	if( viewController == mainMenuViewController || viewController == goiSurferViewController || [viewController isKindOfClass:[SplashScreenViewController class]]  ){
+	if( viewController == mainMenuViewController || viewController == goiSurferViewController  ){
 		[navigationController setNavigationBarHidden:YES animated:YES];
-        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    }
+    else if([viewController isKindOfClass:[SplashScreenViewController class]] ){
+        [navigationController setNavigationBarHidden:YES animated:YES];
 	}else {
 		[navigationController setNavigationBarHidden:NO animated:YES];
 	}	

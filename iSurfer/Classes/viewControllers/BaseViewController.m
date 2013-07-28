@@ -79,6 +79,8 @@
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBackgroundColor:[UIColor blackColor]];
+    [[UISwitch appearance] setThumbTintColor:[UIColor darkGrayColor]];
+    [[UISwitch appearance] setOnTintColor:[UIColor darkGrayColor]];
 }
 //---------------------------------------------------------------------------------------------
 
