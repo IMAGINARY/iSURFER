@@ -53,6 +53,10 @@
 								<reference key="NSSuperview" ref="614812518"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="204055690"/>
+								<object class="NSColor" key="IBUIBackgroundColor" id="807333017">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MCAwAA</bytes>
+								</object>
 								<bool key="IBUIOpaque">NO</bool>
 								<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
 									<string key="IBUIAccessibilityHint">Front Color</string>
@@ -110,6 +114,7 @@
 								<reference key="NSSuperview" ref="204055690"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="669369799"/>
+								<reference key="IBUIBackgroundColor" ref="807333017"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<int key="IBUITag">1</int>
 								<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
@@ -164,7 +169,6 @@
 						<string key="NSFrame">{{153, 263}, {14, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<int key="IBUIContentMode">4</int>
@@ -534,6 +538,7 @@
 					<string>90.CustomClassName</string>
 					<string>90.IBPluginDependency</string>
 					<string>91.IBPluginDependency</string>
+					<string>91.IBUIButtonInspectorSelectedStateConfigurationMetadataKey</string>
 					<string>91.object.labelIdentifier</string>
 					<string>97.IBPluginDependency</string>
 				</object>
@@ -558,6 +563,7 @@
 					<string>FCColorSwatchView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<real value="0.0"/>
 					<string>IBBuiltInLabel-Red</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
@@ -591,14 +597,35 @@
 					<string key="className">FCColorPickerViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">chooseSelectedColor:</string>
-						<string key="NS.object.0">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>chooseSelectedColor:</string>
+							<string>removeColorPalette:</string>
+						</object>
+						<object class="NSArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+						</object>
 					</object>
 					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">chooseSelectedColor:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">chooseSelectedColor:</string>
-							<string key="candidateClassName">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>chooseSelectedColor:</string>
+							<string>removeColorPalette:</string>
+						</object>
+						<object class="NSArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">chooseSelectedColor:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">removeColorPalette:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">

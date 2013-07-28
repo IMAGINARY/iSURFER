@@ -689,7 +689,7 @@ ivec2 oldLocation;
     [self.trackBall finalizeTrackBallForLocation:location];
 
     
-	NSLog(@"rotation start at x: %.2f    y:%.2f", x , y );
+//	NSLog(@"rotation start at x: %.2f    y:%.2f", x , y );
     
 	[self drawFrame];
 }

@@ -48,7 +48,7 @@
         [self addSubview:title_];
         
         UIActivityIndicatorView *ac=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge] ;
-        ac.center=CGPointMake(self.center.x, title_.frame.origin.y+title_.frame.size.height+ac.frame.size.width/2);
+        ac.center=CGPointMake(self.center.x, title_.frame.origin.y+ac.frame.size.width/2);
         [self addSubview:ac];
         [ac startAnimating];
         

@@ -31,11 +31,12 @@
   [super viewDidLoad];
   [self.view bringSubviewToFront:_crossHairs];
   [self.view bringSubviewToFront:_brightnessBar];
+    [self _setColor:[UIColor colorWithRed:0.5f green:0.4f blue:0.8f alpha:1]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  [self setColor:_color];
+//  [self setColor:_color];
   [self updateBrightnessPosition];
   [self updateGradientColor];
   [self updateCrosshairPosition];
@@ -49,6 +50,9 @@
 - (void)viewWillLayoutSubviews {
   [self updateBrightnessPosition];
   [self updateCrosshairPosition];
+    self.swatch2.color=[UIColor colorWithRed:0.5f green:0.4f blue:0.8f alpha:1];
+    self.swatch.color=[UIColor colorWithRed:0.9f green:0.5f blue:0.6f alpha:1];
+
 }
 
 #pragma mark -
