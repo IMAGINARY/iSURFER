@@ -108,7 +108,7 @@
 								<string key="IBUINormalTitle">Description</string>
 								<reference key="IBUIHighlightedTitleColor" ref="1049636075"/>
 								<reference key="IBUINormalTitleColor" ref="508350416"/>
-								<object class="NSColor" key="IBUINormalTitleShadowColor" id="135745940">
+								<object class="NSColor" key="IBUINormalTitleShadowColor" id="532693547">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MC41AA</bytes>
 								</object>
@@ -162,7 +162,7 @@
 								<string key="IBUINormalTitle">More</string>
 								<reference key="IBUIHighlightedTitleColor" ref="1049636075"/>
 								<reference key="IBUINormalTitleColor" ref="508350416"/>
-								<reference key="IBUINormalTitleShadowColor" ref="135745940"/>
+								<reference key="IBUINormalTitleShadowColor" ref="532693547"/>
 								<reference key="IBUIFontDescription" ref="202773501"/>
 								<reference key="IBUIFont" ref="734184489"/>
 							</object>
