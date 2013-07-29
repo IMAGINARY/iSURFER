@@ -57,14 +57,13 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 206}, {147, 21}}</string>
 								<reference key="NSSuperview" ref="419192587"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="442918704"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Gallery: </string>
+								<string key="IBUIText">Add to Gallery: </string>
 								<object class="NSColor" key="IBUITextColor" id="181079795">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAwIDAAA</bytes>
@@ -90,16 +89,15 @@
 							<object class="IBUILabel" id="374499761">
 								<reference key="NSNextResponder" ref="419192587"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 112}, {147, 21}}</string>
+								<string key="NSFrame">{{20, 112}, {151, 21}}</string>
 								<reference key="NSSuperview" ref="419192587"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="535432165"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Surface description</string>
+								<string key="IBUIText">Surface description:</string>
 								<reference key="IBUITextColor" ref="181079795"/>
 								<reference key="IBUIHighlightedColor" ref="588606068"/>
 								<int key="IBUIBaselineAdjustment">1</int>
@@ -112,7 +110,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{189, 57}, {271, 31}}</string>
 								<reference key="NSSuperview" ref="419192587"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="374499761"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -151,7 +148,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{50, 62}, {117, 21}}</string>
 								<reference key="NSSuperview" ref="419192587"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="572914389"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -169,9 +165,8 @@
 							<object class="IBUITextView" id="535432165">
 								<reference key="NSNextResponder" ref="419192587"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{189, 96}, {271, 89}}</string>
+								<string key="NSFrame">{{194, 105}, {271, 89}}</string>
 								<reference key="NSSuperview" ref="419192587"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1000097931"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
@@ -194,7 +189,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{194, 205}, {240, 30}}</string>
 								<reference key="NSSuperview" ref="419192587"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="557905394"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -208,7 +202,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{205, 204}, {219, 21}}</string>
 								<reference key="NSSuperview" ref="419192587"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="619613278"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -226,15 +219,14 @@
 							<object class="IBUIButton" id="442918704">
 								<reference key="NSNextResponder" ref="419192587"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{179, 202}, {271, 29}}</string>
+								<string key="NSFrame">{{179, 206}, {271, 29}}</string>
 								<reference key="NSSuperview" ref="419192587"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="17652725"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
-								<string key="IBUINormalTitle">Choose gallery</string>
+								<string key="IBUINormalTitle">Choose existing gallery</string>
 								<reference key="IBUIHighlightedTitleColor" ref="588606068"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">3</int>
@@ -260,9 +252,8 @@
 							<object class="IBUIButton" id="619613278">
 								<reference key="NSNextResponder" ref="419192587"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{336, 247}, {124, 44}}</string>
+								<string key="NSFrame">{{194, 243}, {157, 44}}</string>
 								<reference key="NSSuperview" ref="419192587"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="32513780"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -270,7 +261,7 @@
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<int key="IBUIButtonType">1</int>
-								<string key="IBUINormalTitle">Create gallery</string>
+								<string key="IBUINormalTitle">Create new gallery</string>
 								<reference key="IBUIHighlightedTitleColor" ref="588606068"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">3</int>
@@ -287,7 +278,6 @@
 						</object>
 						<string key="NSFrameSize">{480, 320}</string>
 						<reference key="NSSuperview" ref="57961216"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="21115855"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -306,14 +296,13 @@
 								<int key="NSvFlags">290</int>
 								<string key="NSFrameSize">{480, 216}</string>
 								<reference key="NSSuperview" ref="477934155"/>
-								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<bool key="IBUIShowsSelectionIndicator">YES</bool>
 							</object>
 						</object>
 						<string key="NSFrame">{{0, 320}, {480, 216}}</string>
 						<reference key="NSSuperview" ref="57961216"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="830267760"/>
 						<reference key="IBUIBackgroundColor" ref="588606068"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -328,7 +317,6 @@
 								<int key="NSvFlags">290</int>
 								<string key="NSFrameSize">{480, 44}</string>
 								<reference key="NSSuperview" ref="32513780"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="477934155"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -356,7 +344,6 @@
 						</object>
 						<string key="NSFrameSize">{480, 44}</string>
 						<reference key="NSSuperview" ref="57961216"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1039249117"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -368,7 +355,6 @@
 				</object>
 				<string key="NSFrame">{{0, 20}, {480, 300}}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="419192587"/>
 				<reference key="IBUIBackgroundColor" ref="588606068"/>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
@@ -622,12 +608,12 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="572914389"/>
 							<reference ref="374499761"/>
-							<reference ref="535432165"/>
 							<reference ref="17652725"/>
 							<reference ref="557905394"/>
-							<reference ref="442918704"/>
 							<reference ref="1000097931"/>
 							<reference ref="21115855"/>
+							<reference ref="535432165"/>
+							<reference ref="442918704"/>
 							<reference ref="619613278"/>
 						</object>
 						<reference key="parent" ref="57961216"/>
@@ -784,553 +770,7 @@
 			<nil key="sourceID"/>
 			<int key="maxID">58</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<object class="IBPartialClassDescription">
-					<string key="className">BaseViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">goBack</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">goBack</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">goBack</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/BaseViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">EAGLView</string>
-					<string key="superclassName">UIView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/EAGLView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">GoiSurferViewController</string>
-					<string key="superclassName">BaseViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>CameraChanged:</string>
-							<string>Texture:</string>
-							<string>ToonShader:</string>
-							<string>WireChanged:</string>
-							<string>cancelKeyboard:</string>
-							<string>flipToGalleries:</string>
-							<string>helpButtonPressed:</string>
-							<string>hideOptions:</string>
-							<string>keyboardBarButtonPressed:</string>
-							<string>keyboardBarHyppenMinusButtonPressed:</string>
-							<string>keyboardBarMinusButtonPressed:</string>
-							<string>keyboardKeyTapped:</string>
-							<string>optionsButtonPressed:</string>
-							<string>saveImage</string>
-							<string>setSurfaceColors</string>
-							<string>settingsSliderChanged:</string>
-							<string>sliderChanged:</string>
-						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>CameraChanged:</string>
-							<string>Texture:</string>
-							<string>ToonShader:</string>
-							<string>WireChanged:</string>
-							<string>cancelKeyboard:</string>
-							<string>flipToGalleries:</string>
-							<string>helpButtonPressed:</string>
-							<string>hideOptions:</string>
-							<string>keyboardBarButtonPressed:</string>
-							<string>keyboardBarHyppenMinusButtonPressed:</string>
-							<string>keyboardBarMinusButtonPressed:</string>
-							<string>keyboardKeyTapped:</string>
-							<string>optionsButtonPressed:</string>
-							<string>saveImage</string>
-							<string>setSurfaceColors</string>
-							<string>settingsSliderChanged:</string>
-							<string>sliderChanged:</string>
-						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">CameraChanged:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">Texture:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">ToonShader:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">WireChanged:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">cancelKeyboard:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">flipToGalleries:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">helpButtonPressed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">hideOptions:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">keyboardBarButtonPressed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">keyboardBarHyppenMinusButtonPressed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">keyboardBarMinusButtonPressed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">keyboardKeyTapped:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">optionsButtonPressed:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">saveImage</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">setSurfaceColors</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">settingsSliderChanged:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">sliderChanged:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="outlets">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>algebraicSurfaceView</string>
-							<string>baseView</string>
-							<string>blueColorSlider</string>
-							<string>colorButton</string>
-							<string>colorPaletteView</string>
-							<string>colorTestView</string>
-							<string>equationTextField</string>
-							<string>equationTextfieldView</string>
-							<string>galleriesButton</string>
-							<string>greenColorSlider</string>
-							<string>helpButton</string>
-							<string>keyboardExtensionBar</string>
-							<string>redColorSlider</string>
-							<string>rotateimage</string>
-							<string>saveButton</string>
-							<string>settingsButton</string>
-							<string>settingsView</string>
-							<string>shareButton</string>
-							<string>shareView</string>
-							<string>temporalimgView</string>
-							<string>zoomView</string>
-						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>EAGLView</string>
-							<string>UIView</string>
-							<string>UISlider</string>
-							<string>UIButton</string>
-							<string>UIView</string>
-							<string>UIView</string>
-							<string>UITextField</string>
-							<string>UIView</string>
-							<string>UIButton</string>
-							<string>UISlider</string>
-							<string>UIButton</string>
-							<string>UIView</string>
-							<string>UISlider</string>
-							<string>UIImageView</string>
-							<string>UIButton</string>
-							<string>UIButton</string>
-							<string>UIView</string>
-							<string>UIButton</string>
-							<string>UIView</string>
-							<string>UIImageView</string>
-							<string>UIView</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>algebraicSurfaceView</string>
-							<string>baseView</string>
-							<string>blueColorSlider</string>
-							<string>colorButton</string>
-							<string>colorPaletteView</string>
-							<string>colorTestView</string>
-							<string>equationTextField</string>
-							<string>equationTextfieldView</string>
-							<string>galleriesButton</string>
-							<string>greenColorSlider</string>
-							<string>helpButton</string>
-							<string>keyboardExtensionBar</string>
-							<string>redColorSlider</string>
-							<string>rotateimage</string>
-							<string>saveButton</string>
-							<string>settingsButton</string>
-							<string>settingsView</string>
-							<string>shareButton</string>
-							<string>shareView</string>
-							<string>temporalimgView</string>
-							<string>zoomView</string>
-						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">algebraicSurfaceView</string>
-								<string key="candidateClassName">EAGLView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">baseView</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">blueColorSlider</string>
-								<string key="candidateClassName">UISlider</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">colorButton</string>
-								<string key="candidateClassName">UIButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">colorPaletteView</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">colorTestView</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">equationTextField</string>
-								<string key="candidateClassName">UITextField</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">equationTextfieldView</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">galleriesButton</string>
-								<string key="candidateClassName">UIButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">greenColorSlider</string>
-								<string key="candidateClassName">UISlider</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">helpButton</string>
-								<string key="candidateClassName">UIButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">keyboardExtensionBar</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">redColorSlider</string>
-								<string key="candidateClassName">UISlider</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">rotateimage</string>
-								<string key="candidateClassName">UIImageView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">saveButton</string>
-								<string key="candidateClassName">UIButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">settingsButton</string>
-								<string key="candidateClassName">UIButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">settingsView</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">shareButton</string>
-								<string key="candidateClassName">UIButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">shareView</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">temporalimgView</string>
-								<string key="candidateClassName">UIImageView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">zoomView</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/GoiSurferViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SaveAlgebraicSurfaceViewController</string>
-					<string key="superclassName">BaseViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>cancel</string>
-							<string>done</string>
-							<string>saveSurface</string>
-							<string>showGalleriiesPicker:</string>
-						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>cancel</string>
-							<string>done</string>
-							<string>saveSurface</string>
-							<string>showGalleriiesPicker:</string>
-						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">cancel</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">done</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">saveSurface</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">showGalleriiesPicker:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="outlets">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>blackLine</string>
-							<string>cancelButton</string>
-							<string>dataWrapperView</string>
-							<string>delegate</string>
-							<string>galleriesPickerButton</string>
-							<string>galleryCreateButton</string>
-							<string>galleryLabel</string>
-							<string>galleryNameLabel</string>
-							<string>galleryPicker</string>
-							<string>image</string>
-							<string>navBar</string>
-							<string>navigationBar</string>
-							<string>pickerWrapperView</string>
-							<string>saveButton</string>
-							<string>surfaceDescriptionLabel</string>
-							<string>surfaceDescriptionTextView</string>
-							<string>surfaceNameLabel</string>
-							<string>surfaceNameTextfield</string>
-							<string>testimg</string>
-						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>UIImageView</string>
-							<string>UIBarButtonItem</string>
-							<string>UIView</string>
-							<string>GoiSurferViewController</string>
-							<string>UIButton</string>
-							<string>UIButton</string>
-							<string>UILabel</string>
-							<string>UILabel</string>
-							<string>UIPickerView</string>
-							<string>UIImageView</string>
-							<string>UINavigationItem</string>
-							<string>UINavigationBar</string>
-							<string>UIView</string>
-							<string>UIBarButtonItem</string>
-							<string>UILabel</string>
-							<string>UITextView</string>
-							<string>UILabel</string>
-							<string>UITextField</string>
-							<string>UIImageView</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>blackLine</string>
-							<string>cancelButton</string>
-							<string>dataWrapperView</string>
-							<string>delegate</string>
-							<string>galleriesPickerButton</string>
-							<string>galleryCreateButton</string>
-							<string>galleryLabel</string>
-							<string>galleryNameLabel</string>
-							<string>galleryPicker</string>
-							<string>image</string>
-							<string>navBar</string>
-							<string>navigationBar</string>
-							<string>pickerWrapperView</string>
-							<string>saveButton</string>
-							<string>surfaceDescriptionLabel</string>
-							<string>surfaceDescriptionTextView</string>
-							<string>surfaceNameLabel</string>
-							<string>surfaceNameTextfield</string>
-							<string>testimg</string>
-						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">blackLine</string>
-								<string key="candidateClassName">UIImageView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">cancelButton</string>
-								<string key="candidateClassName">UIBarButtonItem</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">dataWrapperView</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">delegate</string>
-								<string key="candidateClassName">GoiSurferViewController</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">galleriesPickerButton</string>
-								<string key="candidateClassName">UIButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">galleryCreateButton</string>
-								<string key="candidateClassName">UIButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">galleryLabel</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">galleryNameLabel</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">galleryPicker</string>
-								<string key="candidateClassName">UIPickerView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">image</string>
-								<string key="candidateClassName">UIImageView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">navBar</string>
-								<string key="candidateClassName">UINavigationItem</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">navigationBar</string>
-								<string key="candidateClassName">UINavigationBar</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">pickerWrapperView</string>
-								<string key="candidateClassName">UIView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">saveButton</string>
-								<string key="candidateClassName">UIBarButtonItem</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">surfaceDescriptionLabel</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">surfaceDescriptionTextView</string>
-								<string key="candidateClassName">UITextView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">surfaceNameLabel</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">surfaceNameTextfield</string>
-								<string key="candidateClassName">UITextField</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">testimg</string>
-								<string key="candidateClassName">UIImageView</string>
-							</object>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SaveAlgebraicSurfaceViewController.h</string>
-					</object>
-				</object>
-			</object>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">

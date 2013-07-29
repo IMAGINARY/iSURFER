@@ -158,9 +158,9 @@
         detailedDescription.hidden = true;
     surfaceEquation.hidden = !briefDescription.hidden;
     if(briefDescription.hidden)
-        [descriptionButton setTitle:@"+" forState:UIControlStateNormal];
+        [descriptionButton setTitle:@"Description" forState:UIControlStateNormal];
     else
-        [descriptionButton setTitle:@"-" forState:UIControlStateNormal];
+        [descriptionButton setTitle:@"Formula" forState:UIControlStateNormal];
     NSLog(@"Brief description %@", briefDescription.text);
 //    [self.navigationController pushViewController:self.appcontroller.imageDescriptionViewController animated:false];
 }

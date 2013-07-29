@@ -110,8 +110,7 @@
     
     [self saveImage: surface.surfaceImage withName:surface.realImageName];
     
-    if(gal.surfacesNumber == 0)
-        gal.thumbNail = surface.surfaceImage;
+    gal.thumbNail = surface.surfaceImage;
     
     [db executeUpdate:@"update galleries set thumbnail = ? where id = ?",
      imgdata,

@@ -197,6 +197,7 @@
 		8BDD0B41142431D50043741C /* vs1.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD0B3D142431D50043741C /* vs1.glsl */; };
 		8BDD0B42142431D50043741C /* vs2.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD0B3E142431D50043741C /* vs2.glsl */; };
 		8BF0D11115604E8E006E4085 /* ImageDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF0D10F15604E8E006E4085 /* ImageDescriptionViewController.m */; };
+		B5108C7717A5E10A000A7852 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5108C7617A5E10A000A7852 /* Default-568h@2x.png */; };
 		B556777B17772CC00081D652 /* Croissant.png in Resources */ = {isa = PBXBuildFile; fileRef = B556777617772CC00081D652 /* Croissant.png */; };
 		B556777C17772CC00081D652 /* Geisha.png in Resources */ = {isa = PBXBuildFile; fileRef = B556777717772CC00081D652 /* Geisha.png */; };
 		B556777D17772CC00081D652 /* Miau.png in Resources */ = {isa = PBXBuildFile; fileRef = B556777817772CC00081D652 /* Miau.png */; };
@@ -489,6 +490,7 @@
 		8BF0D10E15604E8E006E4085 /* ImageDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDescriptionViewController.h; sourceTree = "<group>"; };
 		8BF0D10F15604E8E006E4085 /* ImageDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDescriptionViewController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* iSurfer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iSurfer-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		B5108C7617A5E10A000A7852 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B556777617772CC00081D652 /* Croissant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Croissant.png; sourceTree = "<group>"; };
 		B556777717772CC00081D652 /* Geisha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Geisha.png; sourceTree = "<group>"; };
 		B556777817772CC00081D652 /* Miau.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Miau.png; sourceTree = "<group>"; };
@@ -579,6 +581,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				B5108C7617A5E10A000A7852 /* Default-568h@2x.png */,
 				5ECCABD6176E2F1C00A62334 /* Social.framework */,
 				3395689B168FEA4A002F5CCC /* yuidoc.json */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -1453,6 +1456,7 @@
 				B55677B3177F77590081D652 /* nb-surf1.png in Resources */,
 				5E73E855179C211600A7BE58 /* textfieldback@2x.png in Resources */,
 				5E73E857179C227300A7BE58 /* textfieldback.png in Resources */,
+				B5108C7717A5E10A000A7852 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
