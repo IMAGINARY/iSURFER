@@ -63,8 +63,8 @@ static booleano IsThisANegation(char * token) {
         return FALSE;
     switch(token[0])
     {
-        //case '+': case '-':
-        case '*': case '^': case '=': case '(': case ')': case '!':
+        //case '+': case '-': case ')':
+        case '*': case '^': case '=': case '(':  case '!':
             return TRUE;
         default:
             return FALSE;
@@ -155,12 +155,12 @@ void SetScannerString(scannerADT scanner, char * str)
     
     if (scanner->str != NULL) FreeBlock(scanner->str);
     scanner->str = CopyString(str);
-    //printf("%s\n", str);
+    printf("%s\n", str);
     processMinus( scanner->str);
-    //printf("%s\n", scanner->str);
+    printf("original %s\n", scanner->str);
     reduceEquation( scanner->str);
-    //printf("%s\n", scanner->str);
-
+    printf("sin menos %s\n", scanner->str);
+    //flush(stdout);
     scanner->len = StringLength(str);
     scanner->cp = 0;
     scanner->savedToken = NULL;

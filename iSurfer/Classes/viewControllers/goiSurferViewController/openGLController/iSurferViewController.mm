@@ -211,6 +211,21 @@ enum {
 	NSString *vs2 = [[NSBundle mainBundle] pathForResource:@"vs2" ofType:@"glsl"];
 	NSString *fs2 = [[NSBundle mainBundle] pathForResource:@"fs2" ofType:@"glsl"];
 	
+        //Dullo
+    //Expandida
+        //NSString *formula = @"x^4+2*x^2*y^2+y^4+2*x^2*z^2+2*y^2*z^2+z^4-x^2-y^2";
+    
+    //Reducida
+        //NSString *formula = @"(x^2+y^2+z^2)^2-(x^2+y^2)";
+
+        //Distel
+    //Expandida
+        //NSString *formula = @"1000*x^4*y^2+1000*x^2*y^4+1000*x^4*z^2+2000*x^2*y^2*z^2+1000*y^4*z^2+1000*x^2*z^4+1000*y^2*z^4+x^2+y^2+z^2-1";
+
+    //Reducida
+        //NSString *formula = @"x^2+y^2+z^2+1000*(x^2+y^2)*(x^2+z^2)*(z^2+y^2)-1";
+    
+    
     
     //NSString *formula =@"(z^3-2)^2+(x^2+y^2-3)^3";
     //NSString *formula =@"(z^3-2)^2";
@@ -233,12 +248,16 @@ enum {
     //NSString *formula = @"--x^2+-------y*x*x";  //Bien
    // NSString *formula = @"x^2-y*x*x";  //Bien
     
-    NSString *formula = @"x^2+y^2+z^2+2*x*y*z-1"; //Bien
+    
+
+    //(x^2+y^2+z^2)^2-(x^2+y) BEAN
+    
+    //NSString *formula = @"x^2+y^2+z^2+2*x*y*z-1"; //Bien
     //NSString *formula = @"x^2+y^2+z^2-1";  //Bien
     
     
         //Cylinder
-            //NSString *formula = @"x^2+y^2-5";  //Bien
+            NSString *formula = @"x^2+y^2-5";  //Bien
         //Dattel (Esfera)
             //NSString *formula = @"x^2+y^2+z^2-1";  //Bien
         //Pipe

@@ -59,7 +59,7 @@ void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const cha
 	printf("%s", getCode());
     printf("\nformula\n");
 	printf("%s",formula);
-
+    
     printf("\nderivate\n");
     printf("%s", getCodeDerivate());
     printf("\nderivate\n");
