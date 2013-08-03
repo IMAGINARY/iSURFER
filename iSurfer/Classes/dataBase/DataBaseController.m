@@ -338,6 +338,12 @@
 //------------------------------------------------------------------------
 
 -(void) deleteGallery: (Gallery*) gallery{
+    FMResultSet *rs = [db executeQuery:@"SELECT * FROM surfaces WHERE galleryid = ?", [NSNumber numberWithInt:gallery.galID]];
+    while ([rs next]) {
+        int surfaceId = [rs intForColumn:@"id"];
+        [db executeUpdate:@"delete from surfacestexts where surfaceid = ?", [NSNumber numberWithInt:surfaceId]];
+        [db executeUpdate:@"delete from surfaces where id = ?", [NSNumber numberWithInt:surfaceId]];
+    }
     [db executeUpdate:@"delete from galleries where id = ?",
      [NSNumber numberWithInt: gallery.galID]];
     [db executeUpdate:@"delete from galleriestexts where galleryid=?",
