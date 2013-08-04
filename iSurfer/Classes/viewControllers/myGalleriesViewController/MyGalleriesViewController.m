@@ -145,7 +145,7 @@
 			}
 		}
 	}
-	Gallery* gallery = [[appcontroller getGalleries] objectAtIndex:[indexPath row]];
+	Gallery* gallery = [[appcontroller getUpdatedGalleries] objectAtIndex:[indexPath row]];
 	[cell.galleryTitleLabel setText:gallery.galleryName];
 	[cell.galleryDetailLabel setText:gallery.galleryDescription];
 	if( !gallery.thumbNail  ){

@@ -23,7 +23,7 @@
 -(NSMutableArray*)getGalleries;
 -(void)saveSurface:(AlgebraicSurface*)surface toGallery:(Gallery*)gal;
 -(void)populateGallery:(Gallery*)gallery;
--(void) deleteSurface: (AlgebraicSurface*) surface;
+-(void) deleteSurface: (AlgebraicSurface*) surface fromGallery:(Gallery *) gallery;
 -(void) deleteGallery: (Gallery*) gallery;
 
 @end

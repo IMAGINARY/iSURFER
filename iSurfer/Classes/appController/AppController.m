@@ -201,8 +201,8 @@
 
 //--------------------------------------------------------------------------------------------------------
 
--(void)removeSurface:(AlgebraicSurface*)surface {
-	[dataBase deleteSurface:surface];
+-(void)removeSurface:(AlgebraicSurface*)surface fromGallery: (Gallery*) gallery {
+	[dataBase deleteSurface:surface fromGallery: gallery];
 }
 
 //--------------------------------------------------------------------------------------------------------

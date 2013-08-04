@@ -78,7 +78,7 @@
 
 -(void)addAlgebraicSurface:(AlgebraicSurface*)surface atGallery:(Gallery*)gallery;
 
--(void)removeSurface:(AlgebraicSurface*)surface;
+-(void)removeSurface:(AlgebraicSurface*)surface fromGallery:(Gallery*) gallery;
 
 -(void) removeGallery:(Gallery*)gallery;
 

@@ -112,10 +112,6 @@
     
     gal.thumbNail = surface.surfaceImage;
     
-    [db executeUpdate:@"update galleries set thumbnail = ? where id = ?",
-     imgdata,
-     [NSNumber numberWithInt:gal.galID]];
-    
 	[db executeUpdate:@"insert into surfaces(equation, image, galleryid) values(?, ?, ?)",	
 	 surface.equation,
 	 imgdata,
@@ -135,6 +131,11 @@
      surface.surfaceName,
      surface.briefDescription,
      surface.completeDescription];
+    
+    [db executeUpdate:@"update galleries set thumbnail = ? where id = ?",
+     [NSNumber numberWithInt:surface.surfaceID],
+     [NSNumber numberWithInt:gal.galID]];
+    
 //	FMDBQuickCheck([db hadError]);
     
     if ([db hadError]) {
@@ -229,14 +230,17 @@
         NSLog(@"galleryId %i", g.galID);
         NSLog(@"galleryName %@", g.galleryName);
         NSLog(@"galleryDescription %@", g.galleryDescription);
+        NSLog(@"galleryThumb %i", [rs intForColumn:@"thumbnail"]);
         
 		g.editable = [rs intForColumn:@"editable"];
         g.saved = YES;
-		
-		if( ![rs dataForColumn:@"thumbnail"] ){
+        
+		if( ![rs intForColumn:@"thumbnail"] ){
 			g.thumbNail = [UIImage imageNamed:@"Imaginary_lemon.jpg"];
 		}else {
-			UIImage* img = [UIImage imageWithData:[rs dataForColumn:@"thumbnail"]];
+            FMResultSet *surface_rs = [db executeQuery:@"SELECT * FROM surfaces WHERE id = ?", [NSNumber numberWithInt:[rs intForColumn:@"thumbnail"]]];
+            [surface_rs next];
+			UIImage* img = [UIImage imageWithData:[surface_rs dataForColumn:@"image"]];
 			g.thumbNail = img;
 		}
 
@@ -325,12 +329,17 @@
 
 //------------------------------------------------------------------------
 
--(void) deleteSurface: (AlgebraicSurface*) surface{
+-(void) deleteSurface: (AlgebraicSurface*) surface fromGallery: (Gallery *) gallery {
+    [db beginTransaction];
+    
     //TODO delete image
     [db executeUpdate:@"delete from surfaces where id = ?",
      [NSNumber numberWithInt: surface.surfaceID]];
     [db executeUpdate:@"delete from surfacestexts where surfaceid=?",
      [NSNumber numberWithInt: surface.surfaceID]];
+    [db executeUpdate:@"update galleries set thumbnail = (select max(id) from surfaces where galleryid = ?) where id = ? ",
+     [NSNumber numberWithInt: gallery.galID],
+     [NSNumber numberWithInt: gallery.galID]];
     
     [db commit];
 }
@@ -338,6 +347,8 @@
 //------------------------------------------------------------------------
 
 -(void) deleteGallery: (Gallery*) gallery{
+    [db beginTransaction];
+    
     FMResultSet *rs = [db executeQuery:@"SELECT * FROM surfaces WHERE galleryid = ?", [NSNumber numberWithInt:gallery.galID]];
     while ([rs next]) {
         int surfaceId = [rs intForColumn:@"id"];

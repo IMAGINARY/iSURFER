@@ -32,8 +32,6 @@
 -(void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
 	self.galleryNameLabel.text = @"";
-//	self.surfaceDescriptionTextView.text = @"";
-	self.galleryNameLabel.text = @"";
     editableGalleries = [[appcontroller getEditableGalleries]retain];
     if ([editableGalleries count] == 0) {
         galleriesPickerButton.hidden = true;
