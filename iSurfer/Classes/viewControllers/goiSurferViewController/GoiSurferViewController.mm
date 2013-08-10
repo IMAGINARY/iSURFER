@@ -687,7 +687,6 @@
 #pragma mark dealloc
 
 -(IBAction)saveImage{
-    UIImage* image = temporalimgView.image;
 	SaveAlgebraicSurfaceViewController* saveimg = [[SaveAlgebraicSurfaceViewController alloc]initWithAppController:self.appcontroller andImage: temporalimgView.image];
     saveimg.delegate = self;
 	[self presentModalViewController:saveimg animated:YES];

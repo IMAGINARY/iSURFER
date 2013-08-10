@@ -60,8 +60,8 @@
 
 -(void)setColor:(UIColor*)color1 andColor:(UIColor*)color2{
     
-    self.swatch.backgroundColor = color1;
-    self.swatch2.backgroundColor = color2;
+    self.swatch2.backgroundColor = color1;
+    self.swatch.backgroundColor = color2;
 
 }
 
