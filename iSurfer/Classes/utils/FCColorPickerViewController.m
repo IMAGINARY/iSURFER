@@ -25,10 +25,13 @@
 
 @implementation FCColorPickerViewController
 
-@synthesize color = _color;
+@synthesize color = _color, applyColorButton;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+    
+  [self localize];
+    
   [self.view bringSubviewToFront:_crossHairs];
   [self.view bringSubviewToFront:_brightnessBar];
     [self _setColor:[UIColor colorWithRed:0.5f green:0.4f blue:0.8f alpha:1]];
@@ -45,6 +48,10 @@
     _swatchbutton2.selected = NO;
     _swatchbutton2.layer.borderWidth = 0.0f;
 
+}
+
+- (void) localize{
+    [applyColorButton setTitle: NSLocalizedString(@"APPLY", nil) forState:UIControlStateNormal];
 }
 
 - (void)viewWillLayoutSubviews {

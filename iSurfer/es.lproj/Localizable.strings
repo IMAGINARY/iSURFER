@@ -10,15 +10,17 @@
 "MENU_COLOR" = "Color";
 "MENU_SHARE" = "Compartir";
 "MENU_SAVE" = "Grabar";
-"MENU_SETTINGS" = "Preferencias";
-"MENU_GALLERIES" = "Gallerías";
-"MENU_RENDER" = "Render";
+"MENU_SETTINGS" = "Opciones";
+"MENU_GALLERIES" = "Galerías";
+"MENU_HELP" = "Ayuda";
 
 /*Common*/
 "BACK" = "Atrás";
 "GO" = "Ya";
 "CANCEL" = "Cancelar";
-"SAVE" = "Grabar";
+"SAVE" = "Guardar";
+"APPLY" = "Aplicar";
+"NEXT" = "Siguiente";
 
 /*Menu color*/
 "RED" = "Rojo";
@@ -26,13 +28,31 @@
 "BLUE" = "Azul";
 
 /*Menu save*/
+"SAVE"="Guardar";
+"SAVE_SURFACE" = "Guardar superficie";
 "SURFACE_NAME" = "Nombre de superficie";
 "SURFACE_DESCRIPTION" = "Descripción de superficie";
-"GALLERY" = "Agregar a galeria";
+"GALLERY" = "Agregar a galería";
+"CHOOSE_GALLERY" = "Elegir galería";
+"CREATE_GALLERY" = "Crear galería";
+
+"ERROR_SURFACE_NAME" = "Debes ingresar un nombre para la superficie";
+"ERROR_SURFACE_DESCRIPTION" = "Debes ingresar una descripción para la superficie";
+"ERROR_CHOOSE_GALLERY" = "Debes elegir una galería";
 
 /*Menu settings*/
 
 /*Menu galleries*/
+"GALLERIES" = "Galerías";
+"CREATE_GALLERY" = "Crear galería";
+"GALLERY_NAME" = "Nombre de la galería";
+"GALLERY_DESCRIPTION" = "Descripción de la galería";
 
-/*Menu render*/
+"EMPTY" = "Vacía";
+"ERROR_EMPTY_GALLERY" = "La galería está vacía";
+"ERROR_GALLERY_NAME" = "Debes ingresar un nombre para la galería";
+"ERROR_GALLERY_DESCRIPTION" = "Debes ingresar una descripción para la galería";
 
+/*Menu help*/
+"TUTORIAL" = "Tutorial";
+"CREDITS" = "Créditos";

@@ -51,7 +51,6 @@
 								<int key="NSvFlags">294</int>
 								<string key="NSFrameSize">{140, 87}</string>
 								<reference key="NSSuperview" ref="614812518"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="204055690"/>
 								<object class="NSColor" key="IBUIBackgroundColor" id="807333017">
 									<int key="NSColorSpace">3</int>
@@ -93,7 +92,6 @@
 						</object>
 						<string key="NSFrame">{{11, 26}, {140, 86}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="513734693"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -112,7 +110,6 @@
 								<int key="NSvFlags">294</int>
 								<string key="NSFrameSize">{140, 87}</string>
 								<reference key="NSSuperview" ref="204055690"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="669369799"/>
 								<reference key="IBUIBackgroundColor" ref="807333017"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -137,7 +134,6 @@
 						</object>
 						<string key="NSFrame">{{176, 26}, {140, 86}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="861591739"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -151,7 +147,6 @@
 						<int key="NSvFlags">266</int>
 						<string key="NSFrame">{{11, 262}, {406, 40}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="957179927"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -168,7 +163,7 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{153, 263}, {14, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
-						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<int key="IBUIContentMode">4</int>
@@ -184,7 +179,6 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{11, 120}, {406, 132}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="447506659"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -199,7 +193,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{196, 151}, {37, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="905849044"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -216,7 +209,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{337, 41}, {73, 44}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1004040601"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -242,7 +234,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{48, 3}, {67, 21}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="582092016"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -271,7 +262,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{212, 3}, {69, 21}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="614812518"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -291,7 +281,6 @@
 				</object>
 				<string key="NSFrameSize">{430, 320}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="918398609"/>
 				<reference key="IBUIBackgroundColor" ref="1052845180"/>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -377,6 +366,14 @@
 						<reference key="destination" ref="861591739"/>
 					</object>
 					<int key="connectionID">102</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">applyColorButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="669369799"/>
+					</object>
+					<int key="connectionID">106</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -580,143 +577,9 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">104</int>
+			<int key="maxID">106</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<object class="IBPartialClassDescription">
-					<string key="className">FCBrightDarkGradView</string>
-					<string key="superclassName">UIView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/FCBrightDarkGradView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">FCColorPickerViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>chooseSelectedColor:</string>
-							<string>removeColorPalette:</string>
-						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>chooseSelectedColor:</string>
-							<string>removeColorPalette:</string>
-						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">chooseSelectedColor:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">removeColorPalette:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="outlets">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>brightnessBar</string>
-							<string>crossHairs</string>
-							<string>gradientView</string>
-							<string>hueSatImage</string>
-							<string>swatch</string>
-							<string>swatch2</string>
-							<string>swatchbutton</string>
-							<string>swatchbutton2</string>
-						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>UIImageView</string>
-							<string>UIImageView</string>
-							<string>FCBrightDarkGradView</string>
-							<string>UIImageView</string>
-							<string>FCColorSwatchView</string>
-							<string>FCColorSwatchView</string>
-							<string>UIButton</string>
-							<string>UIButton</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>brightnessBar</string>
-							<string>crossHairs</string>
-							<string>gradientView</string>
-							<string>hueSatImage</string>
-							<string>swatch</string>
-							<string>swatch2</string>
-							<string>swatchbutton</string>
-							<string>swatchbutton2</string>
-						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBToOneOutletInfo">
-								<string key="name">brightnessBar</string>
-								<string key="candidateClassName">UIImageView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">crossHairs</string>
-								<string key="candidateClassName">UIImageView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">gradientView</string>
-								<string key="candidateClassName">FCBrightDarkGradView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">hueSatImage</string>
-								<string key="candidateClassName">UIImageView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">swatch</string>
-								<string key="candidateClassName">FCColorSwatchView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">swatch2</string>
-								<string key="candidateClassName">FCColorSwatchView</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">swatchbutton</string>
-								<string key="candidateClassName">UIButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">swatchbutton2</string>
-								<string key="candidateClassName">UIButton</string>
-							</object>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/FCColorPickerViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">FCColorSwatchView</string>
-					<string key="superclassName">UIView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/FCColorSwatchView.h</string>
-					</object>
-				</object>
-			</object>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">

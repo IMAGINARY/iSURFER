@@ -11,7 +11,7 @@
 
 @implementation AddNewGalleryViewController
 //--------------------------------------------------------------------------------------------------------
-@synthesize textfieldsView, galleryName, galleryDescription, navBar, saveButton;
+@synthesize textfieldsView, galleryNameLabel, galleryDescriptionLabel, galleryName, galleryDescription, navBar, saveButton;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) initWithAppController:(AppController*)anappCtrl{
@@ -25,14 +25,23 @@
 
 -(void)viewDidLoad{
 	[super viewDidLoad];
+    [self localize];
 	navigationBar.tintColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
     navigationBar.barStyle = UIBarStyleBlackOpaque;
 	[self.navigationController.navigationBar setHidden:NO];
 }
 //--------------------------------------------------------------------------------------------------------
 
+-(void)localize{
+    [navBar setTitle: NSLocalizedString(@"CREATE_GALLERY", nil)];
+    [galleryNameLabel setText: NSLocalizedString(@"GALLERY_NAME", nil)];
+    [galleryDescriptionLabel setText: NSLocalizedString(@"GALLERY_DESCRIPTION", nil)];
+}
+
+//-----------------------------------------------------------------------------
+
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-	UIBarButtonItem *donePickerButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered  target:self action:@selector(nextAction)];
+	UIBarButtonItem *donePickerButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"NEXT", nil) style:UIBarButtonItemStyleBordered  target:self action:@selector(nextAction)];
 	self.navBar.rightBarButtonItem = donePickerButton;
 	[donePickerButton release];
 	[self scrollViewTo:textField movePixels:88 baseView:textfieldsView];
@@ -62,9 +71,9 @@
 -(NSString*)fieldsAreValid{
 	NSString* msg = NULL;
 	if( [galleryName.text isEqualToString:@""] ){
-		msg =  @"You must enter a Gallery name!";
+		msg =  NSLocalizedString(@"ERROR_GALLERY_NAME", nil);
 	}else if ([galleryDescription.text isEqualToString:@""]){
-		msg = @"You must enter a Gallery description";	
+		msg = NSLocalizedString(@"ERROR_GALLERY_DESCRIPTION", nil);
 	}
 	return msg;
 }
@@ -73,7 +82,7 @@
 -(IBAction)addGallery{
 	NSString* error = [self fieldsAreValid];
 	if( error ){
-		UIAlertView* validationAlert = [[UIAlertView alloc] initWithTitle:@"Save" message:error delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		UIAlertView* validationAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SAVE", nil) message:error delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[validationAlert show];
 		[validationAlert release];
 	}else{

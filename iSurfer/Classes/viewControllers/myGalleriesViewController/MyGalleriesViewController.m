@@ -59,7 +59,7 @@
 
 -(void)viewDidLoad{
 	[super viewDidLoad];
-	self.title = @"Galleries";
+	self.title = NSLocalizedString(@"GALLERIES", nil);
 	[appcontroller getGalleries];
 		
 //	UIBarButtonItem *moveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(moveGalleries)];
@@ -226,7 +226,7 @@
 //    if( [[[appcontroller getGalleries] objectAtIndex:indexPath.row] isEmpty] ){
 //    [[[appcontroller getGalleries] objectAtIndex:indexPath.row] surfacesNumber];
     if([[[appcontroller getUpdatedGalleries] objectAtIndex:indexPath.row] surfacesNumber] == 0){
-        UIAlertView* emptygal =[[UIAlertView alloc]initWithTitle:@"Empty" message:@"The Gallery is Empty" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        UIAlertView* emptygal =[[UIAlertView alloc]initWithTitle: NSLocalizedString(@"EMPTY", nil) message: NSLocalizedString(@"ERROR_EMPTY_GALLERY", nil) delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
         [emptygal show];
         [emptygal release];
     }

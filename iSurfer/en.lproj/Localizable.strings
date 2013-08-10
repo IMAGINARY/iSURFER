@@ -19,6 +19,8 @@
 "GO" = "Go";
 "CANCEL" = "Cancel";
 "SAVE" = "Save";
+"APPLY" = "Aplicar";
+"NEXT" = "Next";
 
 /*Menu color*/
 "RED" = "Red";
@@ -26,12 +28,31 @@
 "BLUE" = "Blue";
 
 /*Menu save*/
+"SAVE"="Save";
+"SAVE_SURFACE" = "Save surface";
 "SURFACE_NAME" = "Surface name";
 "SURFACE_DESCRIPTION" = "Surface description";
 "GALLERY" = "Add to gallery";
+"CHOOSE_GALLERY" = "Choose gallery";
+"CREATE_GALLERY" = "Create gallery";
+
+"ERROR_SURFACE_NAME" = "You must enter a surface name";
+"ERROR_SURFACE_DESCRIPTION" = "You must enter a surface description";
+"ERROR_CHOOSE_GALLERY" = "You must choose a gallery";
 
 /*Menu settings*/
 
 /*Menu galleries*/
+"GALLERIES" = "Galleries";
+"CREATE_GALLERY" = "Create gallery";
+"GALLERY_NAME" = "Gallery name";
+"GALLERY_DESCRIPTION" = "Gallery description";
 
-/*Menu render*/
+"EMPTY" = "Empty";
+"ERROR_EMPTY_GALLERY" = "The Gallery is empty";
+"ERROR_GALLERY_NAME" = "You must enter a gallery name";
+"ERROR_GALLERY_DESCRIPTION" = "You must enter a gallery description";
+
+/*Menu help*/
+"TUTORIAL" = "Tutorial";
+"CREDITS" = "Crédits";

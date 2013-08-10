@@ -61,9 +61,12 @@
 }
 
 -(void)localize{
+    [navBar setTitle:NSLocalizedString(@"SAVE_SURFACE", nil)];
     [surfaceNameLabel setText:NSLocalizedString(@"SURFACE_NAME", nil)];
     [surfaceDescriptionLabel setText:NSLocalizedString(@"SURFACE_DESCRIPTION", nil)];
     [galleryLabel setText:NSLocalizedString(@"GALLERY", nil)];
+    [galleryCreateButton setTitle: NSLocalizedString(@"CREATE_GALLERY", nil) forState:UIControlStateNormal];
+    [galleriesPickerButton setTitle: NSLocalizedString(@"CHOOSE_GALLERY", nil) forState:UIControlStateNormal];
     [saveButton setTitle:NSLocalizedString(@"SAVE", nil)];
     [cancelButton setTitle:NSLocalizedString(@"CANCEL", nil)];
 }
@@ -73,11 +76,11 @@
 	
 	NSString* msg = NULL;
 	if( [surfaceNameTextfield.text isEqualToString:@""] ){
-		msg =  @"You must enter a surface name!";
+		msg =  NSLocalizedString(@"ERROR_SURFACE_NAME", nil);
 	}else if ([surfaceDescriptionTextView.text isEqualToString:@""]){
-		msg = @"You must enter a surface description";	
+		msg = NSLocalizedString(@"ERROR_SURFACE_DESCRIPTION", nil);
 	}else if ([galleryNameLabel.text isEqualToString:@""]){
-		msg = @"You must choose a gallery";	
+		msg = NSLocalizedString(@"ERROR_CHOOSE_GALLERY", nil);;	
 	}
 	return msg;
 }
@@ -86,7 +89,7 @@
 -(IBAction)saveSurface{
 	NSString* error = [self fieldsAreValid];
 	if( error ){
-		UIAlertView* validationAlert = [[UIAlertView alloc] initWithTitle:@"Save" message:error delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		UIAlertView* validationAlert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"SAVE", nil) message:error delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[validationAlert show];
 		[validationAlert release];
 	}
@@ -222,7 +225,7 @@
 
 //--------------------------------------------------------------------------------------------------------
 - (void) keyboardWillShow: (NSNotification *) notification {	
-	UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(nextEdittingField)];
+	UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle: NSLocalizedString(@"NEXT", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(nextEdittingField)];
 	self.navBar.rightBarButtonItem = nextButton;
 	[nextButton release];
 }

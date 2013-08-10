@@ -11,6 +11,8 @@
 
 @interface AddNewGalleryViewController : BaseViewController {
 	IBOutlet UIView* textfieldsView;
+    IBOutlet UILabel* galleryNameLabel;
+    IBOutlet UILabel* galleryDescriptionLabel;
 	IBOutlet UITextField* galleryName;
 	IBOutlet UITextField* galleryDescription;
 	IBOutlet UINavigationItem* navBar;
@@ -21,6 +23,8 @@
 @property(nonatomic, retain)	IBOutlet UINavigationItem* navBar;
 @property(nonatomic, retain)	IBOutlet UIBarButtonItem* saveButton;
 @property(nonatomic, retain)	IBOutlet UIView* textfieldsView;
+@property(nonatomic, retain)    IBOutlet UILabel* galleryNameLabel;
+@property(nonatomic, retain)    IBOutlet UILabel* galleryDescriptionLabel;
 @property(nonatomic, retain)	IBOutlet UITextField* galleryName;
 @property(nonatomic, retain)	IBOutlet UITextField* galleryDescription;
 

@@ -19,8 +19,11 @@
 
 @end
 
-@interface FCColorPickerViewController : UIViewController
+@interface FCColorPickerViewController : UIViewController {
+    IBOutlet UIButton* applyColorButton;
+}
 
+@property(nonatomic, retain)IBOutlet UIButton* applyColorButton;
 @property (readwrite, nonatomic, retain) UIColor *color;
 @property (nonatomic,assign)	id<ColorPickerViewControllerDelegate> delegate;
 
