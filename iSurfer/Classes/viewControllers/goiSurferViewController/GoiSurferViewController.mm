@@ -26,7 +26,7 @@
 @implementation GoiSurferViewController
 //--------------------------------------------------------------------------------------------------------
 @synthesize equationTextField, keyboardExtensionBar, baseView, colorPaletteView, shareView, optionsViews, colorTestView, greenColorSlider, redColorSlider, blueColorSlider;
-@synthesize algebraicSurfaceView, equationTextfieldView,rotateimage, colorButton, shareButton, saveButton, galleriesButton, settingsButton, helpButton, zoomSlider, zoomView, algebraicSurface, temporalimgView;
+@synthesize algebraicSurfaceView, equationTextfieldView,rotateimage, colorButton, shareButton, saveButton, galleriesButton, settingsButton, helpButton, zoomSlider, zoomView, algebraicSurface, temporalimgView, showBondingLabel, coneLabel, sphereLabel, torusLabel, knotLabel, bottleLabel, mobiusLabel;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) initWithAppController:(AppController*)anappCtrl andAlgebraicSurface:(AlgebraicSurface*)surface{
@@ -153,6 +153,13 @@
     [galleriesButton setTitle:NSLocalizedString(@"MENU_GALLERIES", nil) forState:UIControlStateNormal];
     [settingsButton setTitle:NSLocalizedString(@"MENU_SETTINGS", nil) forState:UIControlStateNormal];
     [helpButton setTitle:NSLocalizedString(@"MENU_HELP", nil) forState:UIControlStateNormal];
+    [showBondingLabel setText: NSLocalizedString(@"SHOW_BONDING", nil)];
+    [coneLabel setText: NSLocalizedString(@"CONE", nil)];
+    [torusLabel setText: NSLocalizedString(@"TORUS", nil)];
+    [sphereLabel setText: NSLocalizedString(@"SPHERE", nil)];
+    [knotLabel setText: NSLocalizedString(@"KNOT", nil)];
+    [mobiusLabel setText: NSLocalizedString(@"MOBIUS", nil)];
+    [bottleLabel setText: NSLocalizedString(@"BOTTLE", nil)];
 }
 
 

@@ -25,10 +25,17 @@
 //------------------------------------------------------------------------------
 
 -(void)viewDidLoad{
+    [self localize];
     [credits addTarget:self action:@selector(showCredits) forControlEvents:UIControlEventTouchUpInside];
     [tutorial addTarget:self action:@selector(showTutorial) forControlEvents: UIControlEventTouchUpInside];
 }
 
+//------------------------------------------------------------------------------
+
+-(void)localize{
+    [credits setTitle:NSLocalizedString(@"CREDITS", nil) forState:UIControlStateNormal];
+    [tutorial setTitle:NSLocalizedString(@"TUTORIAL", nil) forState:UIControlStateNormal];
+}
 
 //------------------------------------------------------------------------------
 -(void)showCredits{

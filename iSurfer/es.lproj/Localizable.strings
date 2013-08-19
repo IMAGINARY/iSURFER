@@ -41,12 +41,23 @@
 "ERROR_CHOOSE_GALLERY" = "Debes elegir una galería";
 
 /*Menu settings*/
+"SHOW_BONDING" = "Mostrar borde";
+"CONE" = "Cono";
+"SPHERE" = "Esfera";
+"TORUS" = "Rosca";
+"KNOT" = "Nudo";
+"BOTTLE" = "Botella";
+"MOBIUS" = "Mobius";
 
 /*Menu galleries*/
 "GALLERIES" = "Galerías";
 "CREATE_GALLERY" = "Crear galería";
 "GALLERY_NAME" = "Nombre de la galería";
 "GALLERY_DESCRIPTION" = "Descripción de la galería";
+
+"DESCRIPTION_BUTTON" = "Descripción";
+"FORMULA_BUTTON" = "Fórmula";
+"MORE_BUTTON" = "Más";
 
 "EMPTY" = "Vacía";
 "ERROR_EMPTY_GALLERY" = "La galería está vacía";

@@ -41,12 +41,23 @@
 "ERROR_CHOOSE_GALLERY" = "You must choose a gallery";
 
 /*Menu settings*/
+"SHOW_BONDING" = "Show bonding";
+"CONE" = "Cone";
+"SPHERE" = "Sphere";
+"TORUS" = "Torus";
+"KNOT" = "Knot";
+"BOTTLE" = "Bottle";
+"MOBIUS" = "Mobius";
 
 /*Menu galleries*/
 "GALLERIES" = "Galleries";
 "CREATE_GALLERY" = "Create gallery";
 "GALLERY_NAME" = "Gallery name";
 "GALLERY_DESCRIPTION" = "Gallery description";
+
+"DESCRIPTION_BUTTON" = "Description";
+"FORMULA_BUTTON" = "Formula";
+"MORE_BUTTON" = "More";
 
 "EMPTY" = "Empty";
 "ERROR_EMPTY_GALLERY" = "The Gallery is empty";

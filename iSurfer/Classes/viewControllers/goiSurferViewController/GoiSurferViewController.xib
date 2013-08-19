@@ -834,6 +834,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{436, 115}, {44, 44}}</string>
 								<reference key="NSSuperview" ref="953853906"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -1603,6 +1604,62 @@
 						<reference key="destination" ref="78787999"/>
 					</object>
 					<int key="connectionID">200</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">bottleLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="637784517"/>
+					</object>
+					<int key="connectionID">209</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">coneLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="989670653"/>
+					</object>
+					<int key="connectionID">210</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">knotLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="871292036"/>
+					</object>
+					<int key="connectionID">211</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">mobiusLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="900747058"/>
+					</object>
+					<int key="connectionID">212</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">showBondingLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="3917321"/>
+					</object>
+					<int key="connectionID">213</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">sphereLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="983854648"/>
+					</object>
+					<int key="connectionID">214</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">torusLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="937622087"/>
+					</object>
+					<int key="connectionID">215</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -2548,7 +2605,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">201</int>
+			<int key="maxID">215</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

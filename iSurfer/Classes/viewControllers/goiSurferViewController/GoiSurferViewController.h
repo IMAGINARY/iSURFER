@@ -49,6 +49,14 @@
     IBOutlet UIButton* settingsButton;
     IBOutlet UIButton* galleriesButton;
     IBOutlet UIButton* helpButton;
+
+    IBOutlet UILabel* showBondingLabel;
+    IBOutlet UILabel* coneLabel;
+    IBOutlet UILabel* sphereLabel;
+    IBOutlet UILabel* torusLabel;
+    IBOutlet UILabel* knotLabel;
+    IBOutlet UILabel* bottleLabel;
+    IBOutlet UILabel* mobiusLabel;
 	
 	//Zoom view
 	IBOutlet UIView* zoomView;
@@ -101,6 +109,14 @@
 @property(nonatomic, retain)	IBOutlet UITextField* equationTextField;
 @property(nonatomic, retain)	IBOutlet UIView* keyboardExtensionBar;
 @property(nonatomic, retain)	IBOutlet UIImageView* temporalimgView;
+
+@property(nonatomic, retain)    IBOutlet UILabel* showBondingLabel;
+@property(nonatomic, retain)    IBOutlet UILabel* coneLabel;
+@property(nonatomic, retain)    IBOutlet UILabel* sphereLabel;
+@property(nonatomic, retain)    IBOutlet UILabel* torusLabel;
+@property(nonatomic, retain)    IBOutlet UILabel* knotLabel;
+@property(nonatomic, retain)    IBOutlet UILabel* bottleLabel;
+@property(nonatomic, retain)    IBOutlet UILabel* mobiusLabel;
 
 @property(nonatomic, retain) UIColor* color1;
 @property(nonatomic, retain) UIColor* color2;

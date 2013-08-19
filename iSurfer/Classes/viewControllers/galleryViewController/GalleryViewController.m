@@ -17,7 +17,7 @@
 
 @implementation GalleryViewController
 //--------------------------------------------------------------------------------------------------------
-@synthesize gallery, selectedSurface, surfacesScrollView, surfaceImage, surfacesTable, toolbar, surfaceEquation, briefDescription, descriptionButton, detailedDescription;
+@synthesize gallery, selectedSurface, surfacesScrollView, surfaceImage, surfacesTable, toolbar, surfaceEquation, briefDescription, descriptionButton, detailedDescription, surfaceName;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) initWithAppController:(AppController*)anappCtrl andGallery:(Gallery*)aGallery{
@@ -32,6 +32,7 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    [self localize];
     surfaceEquation.clipsToBounds = YES;
     surfaceEquation.layer.cornerRadius = 10.0f;
 	
@@ -83,6 +84,13 @@
 
 //--------------------------------------------------------------------------------------------------------
 
+-(void)localize{
+    [descriptionButton setTitle:NSLocalizedString(@"DESCRIPTION_BUTTON", nil) forState:UIControlStateNormal];
+    [detailedDescription setTitle:NSLocalizedString(@"MORE_BUTTON", nil) forState:UIControlStateNormal];
+}
+
+//--------------------------------------------------------------------------------------------------------
+
 - (void)tabGesture: (id)sender{
     NSLog(@"tabGesture");
     
@@ -115,7 +123,7 @@
 	if( ![gallery isEmpty]){
 		AlgebraicSurface* surface = [gallery getSurfaceAtIndex:0];
         self.selectedSurface = surface;
-
+        [self.surfaceName setText:[surface surfaceName]];
 		[self.surfaceImage setImage:surface.surfaceImage];
         
         UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
@@ -158,9 +166,9 @@
         detailedDescription.hidden = true;
     surfaceEquation.hidden = !briefDescription.hidden;
     if(briefDescription.hidden)
-        [descriptionButton setTitle:@"Description" forState:UIControlStateNormal];
+        [descriptionButton setTitle:NSLocalizedString(@"DESCRIPTION_BUTTON", nil) forState:UIControlStateNormal];
     else
-        [descriptionButton setTitle:@"Formula" forState:UIControlStateNormal];
+        [descriptionButton setTitle:NSLocalizedString(@"FORMULA_BUTTON", nil) forState:UIControlStateNormal];
     NSLog(@"Brief description %@", briefDescription.text);
 //    [self.navigationController pushViewController:self.appcontroller.imageDescriptionViewController animated:false];
 }
@@ -229,7 +237,7 @@
 		}
 	}
 	AlgebraicSurface* surface = [gallery getSurfaceAtIndex:[indexPath row]];
-	[cell.surfaceImageView setImage:surface.surfaceImage];	
+	[cell.surfaceImageView setImage:surface.surfaceImage];
 	return cell;
 }
 //--------------------------------------------------------------------------------------------------------
@@ -298,6 +306,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	AlgebraicSurface* surface = [gallery getSurfaceAtIndex:[indexPath row]];
     self.selectedSurface = surface;
+    [self.surfaceName setText:[surface surfaceName]];
 	[self.surfaceImage setImage:[surface surfaceImage]];
 	[self.surfaceEquation setText:[surface equation]];
     NSLog(@"surfacesNumber %@", surface.briefDescription);
