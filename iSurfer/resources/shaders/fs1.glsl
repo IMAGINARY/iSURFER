@@ -779,13 +779,13 @@ if (CELLSHADE ==1.0)
 {
     if(dot(N, E) >= DELTA)
     {
-        highp vec3 H = normalize(L + E);
+        highp vec3 H = normalize(L);
         highp float df = max(0.0, dot(N, L)); highp float sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
         if (df < 0.1) df = 0.0; else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
         if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
         color = AmbientMaterial + df * DiffuseMaterial + sf * SpecularMaterial;
         L = normalize(LightPosition2);
-        H = normalize(L + E);
+        H = normalize(L);
         df = max(0.0, dot(N, L));
         sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
         if (df < 0.1) df = 0.0;
@@ -797,14 +797,14 @@ if (CELLSHADE ==1.0)
     }else
     {
         E = -E;
-        highp vec3 H = normalize(L + E);
+        highp vec3 H = normalize(L);
         highp float df = max(0.0, dot(N, L)); highp float sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
         if (df < 0.1) df = 0.0;
         else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
         if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
         color = AmbientMaterial2 + df * DiffuseMaterial2 + sf * SpecularMaterial2;
         L = normalize(LightPosition2);
-        H = normalize(L + E);
+        H = normalize(L);
         df = max(0.0, dot(N, L));
         sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
         if (df < 0.1) df = 0.0;
@@ -820,7 +820,7 @@ else
 {
     if(dot(N, E) >= DELTA)
         {
-            highp vec3 H = normalize(L + E);
+            highp vec3 H = normalize(L);
 
             highp float sf = max(0.0, dot(N, H));
             sf = pow(sf, Shininess);
@@ -830,7 +830,7 @@ else
             color +=   sf * SpecularMaterial;
          
             L = normalize(LightPosition2);
-            H = normalize(L + E);
+            H = normalize(L);
             df = max(0.0, dot(N, L));
             sf = max(0.0, dot(N, H));
             sf = pow(sf, Shininess);
