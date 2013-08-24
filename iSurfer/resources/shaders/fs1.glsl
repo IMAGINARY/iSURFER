@@ -21,7 +21,8 @@
 #define DELTA 0.0000001
 #define SIZE DEGREE+1 
 
-uniform lowp vec3 Diffuse;
+uniform highp vec3 DiffuseMaterial;
+uniform highp vec3 DiffuseMaterial2;
 
 uniform highp float CELLSHADE;
 uniform highp float TEXTURE;
@@ -722,6 +723,44 @@ void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float 
 }
 
 
+
+
+
+void calc_lights10( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point)
+{
+    // We use the hitPoint and numbers, and not the Poly Structure because of speed.
+    highp float x = hit_point.x;
+    highp float y = hit_point.y;
+    highp float z = hit_point.z;
+    highp vec3 N;
+
+    
+    N = normalize(N);
+    
+    highp vec3 L = normalize(LightPosition);
+    highp vec3 E = vec3(0, 0, 1);
+    lowp vec3 color;
+
+            highp vec3 H = normalize(L + E);
+            
+            highp float sf = max(0.0, dot(N, H));
+            sf = pow(sf, Shininess);
+            highp float df = max(0.0,dot(N, L));
+            color = SpecularMaterial;
+            color = DiffuseMaterial;
+    
+            //color +=   sf * SpecularMaterial;
+    
+    
+        gl_FragColor = vec4(color, 1);
+    
+}
+
+
+
+
+
+
 void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point)
 {
         // We use the hitPoint and numbers, and not the Poly Structure because of speed.
@@ -729,12 +768,12 @@ void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point
         highp float y = hit_point.y;
         highp float z = hit_point.z;
  
-        highp vec3 N 
+    highp vec3 N 
     
         N = normalize(N);
 
         highp vec3 L = normalize(LightPosition);
-        highp vec3 E = -dir;
+        highp vec3 E = dir;
         lowp vec3 color;
 if (CELLSHADE ==1.0)
 {
@@ -744,7 +783,7 @@ if (CELLSHADE ==1.0)
         highp float df = max(0.0, dot(N, L)); highp float sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
         if (df < 0.1) df = 0.0; else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
         if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
-        color = AmbientMaterial + df * Diffuse + sf * SpecularMaterial;
+        color = AmbientMaterial + df * DiffuseMaterial + sf * SpecularMaterial;
         L = normalize(LightPosition2);
         H = normalize(L + E);
         df = max(0.0, dot(N, L));
@@ -752,7 +791,7 @@ if (CELLSHADE ==1.0)
         if (df < 0.1) df = 0.0;
         else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
         if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
-        color +=   sf * SpecularMaterial +  df * Diffuse;
+        color +=   sf * SpecularMaterial +  df * DiffuseMaterial;
         
         
     }else
@@ -763,7 +802,7 @@ if (CELLSHADE ==1.0)
         if (df < 0.1) df = 0.0;
         else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
         if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
-        color = AmbientMaterial2 + df * Diffuse + sf * SpecularMaterial2;
+        color = AmbientMaterial2 + df * DiffuseMaterial2 + sf * SpecularMaterial2;
         L = normalize(LightPosition2);
         H = normalize(L + E);
         df = max(0.0, dot(N, L));
@@ -771,7 +810,7 @@ if (CELLSHADE ==1.0)
         if (df < 0.1) df = 0.0;
         else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
         if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
-        color +=   sf * SpecularMaterial2 +  df * Diffuse;
+        color +=   sf * SpecularMaterial2 +  df * DiffuseMaterial2;
         
         
 
@@ -785,35 +824,35 @@ else
 
             highp float sf = max(0.0, dot(N, H));
             sf = pow(sf, Shininess);
-            highp float df = max(0.0, dot(N, L));
-            color = AmbientMaterial +  df * Diffuse;
+            highp float df = max(0.0,dot(N, L));
+            color = AmbientMaterial +df * DiffuseMaterial;
 
             color +=   sf * SpecularMaterial;
-            L = normalize(LightPosition2);
-            H = normalize(L + E);
+            //L = normalize(LightPosition2);
+            //H = normalize(L + E);
 
-            df = max(0.0, dot(N, L));
-            sf = max(0.0, dot(N, H));
-            sf = pow(sf, Shininess);
-            color +=   sf * SpecularMaterial +  df * Diffuse;
-
-        }else
+            //df = max(0.0, dot(N, L));
+            //sf = max(0.0, dot(N, H));
+            //sf = pow(sf, Shininess);
+            //color +=   sf * SpecularMaterial +  df * DiffuseMaterial;
+    }else
         {
             E = - E;
-            highp vec3 H = normalize(L - E);
+            highp vec3 H = normalize(L + E);
 
-            highp float df = max(0.0, dot(N, L));
+            highp float df = dot(N, L);
             highp float sf = max(0.0, dot(N, H));
             sf = pow(sf, Shininess);
-            color = AmbientMaterial2 +  df * Diffuse;
+            color = AmbientMaterial2 + df * DiffuseMaterial2;
             color +=   sf * SpecularMaterial2;
-            L = normalize(LightPosition2);
-            H = normalize(L + E);
+            //L = normalize(LightPosition2);
+            //H = normalize(L + E);
 
-            df = max(0.0, dot(N, L));
-            sf = max(0.0, dot(N, H));
-            sf = pow(sf, Shininess);
-            color +=   sf * SpecularMaterial2 +  df * Diffuse;
+            //df = max(0.0, dot(N, L));
+            //sf = max(0.0, dot(N, H));
+            //sf = pow(sf, Shininess);
+            //color +=   sf * SpecularMaterial2;
+            //color += df * DiffuseMaterial2;
         }
 }
     if (TEXTURE== 1.0) {
