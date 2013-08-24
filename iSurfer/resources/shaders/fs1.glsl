@@ -828,13 +828,15 @@ else
             color = AmbientMaterial +df * DiffuseMaterial;
 
             color +=   sf * SpecularMaterial;
-            //L = normalize(LightPosition2);
-            //H = normalize(L + E);
+            L = normalize(LightPosition2);
+            H = normalize(L + E);
 
-            //df = max(0.0, dot(N, L));
-            //sf = max(0.0, dot(N, H));
-            //sf = pow(sf, Shininess);
-            //color +=   sf * SpecularMaterial +  df * DiffuseMaterial;
+            df = max(0.0, dot(N, L));
+            sf = max(0.0, dot(N, H));
+            sf = pow(sf, Shininess);
+            color +=  df * DiffuseMaterial;
+            color +=   sf * SpecularMaterial;
+            
     }else
         {
             E = - E;
@@ -843,16 +845,16 @@ else
             highp float df = dot(N, L);
             highp float sf = max(0.0, dot(N, H));
             sf = pow(sf, Shininess);
-            color = AmbientMaterial2 + df * DiffuseMaterial2;
+            color = AmbientMaterial2; + df * DiffuseMaterial2;
             color +=   sf * SpecularMaterial2;
-            //L = normalize(LightPosition2);
-            //H = normalize(L + E);
+            L = normalize(LightPosition2);
+            H = normalize(L + E);
 
-            //df = max(0.0, dot(N, L));
-            //sf = max(0.0, dot(N, H));
-            //sf = pow(sf, Shininess);
-            //color +=   sf * SpecularMaterial2;
-            //color += df * DiffuseMaterial2;
+            df = max(0.0, dot(N, L));
+            sf = max(0.0, dot(N, H));
+            sf = pow(sf, Shininess);
+            color +=   sf * SpecularMaterial2;
+            color += df * DiffuseMaterial2;
         }
 }
     if (TEXTURE== 1.0) {

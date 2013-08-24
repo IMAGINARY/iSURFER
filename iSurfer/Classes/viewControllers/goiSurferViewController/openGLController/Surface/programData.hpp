@@ -151,20 +151,33 @@ class programData
     void static SetEye();
 
     /**
+     * Usage:  UpdateColor();
+     * ----------------------------------
+     * Updates color of the algebraic surface render.
+     * @method UpdateColor
+     */
+        void static UpdateColor();
+
+    
+    /**
      * Usage:  UpdateColor(r,g,b);
      * ----------------------------------
      * Updates the primary color rgb of the algebraic surface render. 
      * @method UpdateColor
      * @param red {float} red value [0,1]
+     * @param green {float} red value [0,1]
+     * @param blue {float} red value [0,1]
      */
         void static UpdateColor(float red, float green, float blue);
-
+    
     /**
      * Usage:  UpdateColor2(r,g,b);
      * ----------------------------------
      * Updates the secondary color rgb of the algebraic surface render. 
      * @method UpdateColor2
      * @param red {float} red value [0,1]
+     * @param green {float} red value [0,1]
+     * @param blue {float} red value [0,1]
      */
     
         void static UpdateColor2(float red, float green, float blue);

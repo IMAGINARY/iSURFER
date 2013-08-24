@@ -7,7 +7,7 @@ float programData::rotationX = 0.0f;
 float programData::rotationY = 0.0f;
 float programData::rotationZ = M_PI_2;
 //float programData::Shininess = 0.20f;
-float programData::Shininess = 50;
+float programData::Shininess = 25;
 float programData::colorR = 0.5f;
 float programData::colorG = 0.4f;
 float programData::colorB = 0.8f;
@@ -135,7 +135,7 @@ void programData::initializeTexture(char * filename)
 void programData::setConstant()
 {
     //Color ambient, sin luz
-    UpdateColor(colorR, colorG, colorB);
+    UpdateColor();
     UpdateRadius(programData::radius);
     //Power de la luz
     glUniform1f(programData::shaderHandle.Shininess, programData::Shininess);
@@ -178,17 +178,14 @@ void programData::UpdateRadius(float Radius)
         
 }
 
-void programData::UpdateColor(float red, float green, float blue)
+void programData::UpdateColor()
 {
-    programData::colorR =red;
-    programData::colorG =green;
-    programData::colorB =blue;
     
     float diffuseDiv = 0.75f;
     glUniform3f(programData::shaderHandle.DiffuseMaterial, programData::colorR*diffuseDiv , programData::colorG*diffuseDiv, programData::colorB*diffuseDiv );
     glUniform3f(programData::shaderHandle.DiffuseMaterial2, programData::colorR2 *diffuseDiv, programData::colorG2 *diffuseDiv, programData::colorB2 *diffuseDiv);
     float ambientDiv = 0.25f;
-
+    
     glUniform3f(programData::shaderHandle.AmbientMaterial, programData::colorR *ambientDiv, programData::colorG *ambientDiv, programData::colorB *ambientDiv);
     glUniform3f(programData::shaderHandle.AmbientMaterial2,programData::colorR2 *ambientDiv, programData::colorG2 *ambientDiv, programData::colorB2 *ambientDiv);
     //R,G,B, alpha con luz
@@ -198,22 +195,26 @@ void programData::UpdateColor(float red, float green, float blue)
     
 }
 
+
+
+void programData::UpdateColor(float red, float green, float blue)
+{
+    programData::colorR =red;
+    programData::colorG =green;
+    programData::colorB =blue;
+    
+    
+    UpdateColor();
+    
+}
+
 void programData::UpdateColor2(float red, float green, float blue)
 {
     programData::colorR2 =red;
     programData::colorG2 =green;
     programData::colorB2 =blue;
     
-    float diffuseDiv = 1;
-    glUniform3f(programData::shaderHandle.DiffuseMaterial, programData::colorR , programData::colorG , programData::colorB);
-    glUniform3f(programData::shaderHandle.DiffuseMaterial2, programData::colorR2 *diffuseDiv, programData::colorG2 *diffuseDiv, programData::colorB2 *diffuseDiv);
-    
-    glUniform3f(programData::shaderHandle.AmbientMaterial, 0.04f, 0.04f, 0.04f);
-    glUniform3f(programData::shaderHandle.AmbientMaterial2,0.04f, 0.04f, 0.04f);
-    //R,G,B, alpha con luz
-    glUniform3f(programData::shaderHandle.SpecularMaterial,  programData::colorR, programData::colorG, programData::colorB);
-    glUniform3f(programData::shaderHandle.SpecularMaterial2, programData::colorR2, programData::colorG2, programData::colorB2);
-    
+    UpdateColor();
     
 }
 
