@@ -7,7 +7,7 @@ float programData::rotationX = 0.0f;
 float programData::rotationY = 0.0f;
 float programData::rotationZ = M_PI_2;
 //float programData::Shininess = 0.20f;
-float programData::Shininess = 25;
+float programData::Shininess = 50;
 float programData::colorR = 0.5f;
 float programData::colorG = 0.4f;
 float programData::colorB = 0.8f;
@@ -144,7 +144,7 @@ void programData::setConstant()
 
     glUniform3fv(programData::shaderHandle.LightPosition, 1, lightPosition.Pointer());
     
-    vec4 lightPosition2(-1, 0.5, -1, 0);
+    vec4 lightPosition2(-0.25, -0.25, -1, 0);
 
     glUniform3fv(programData::shaderHandle.LightPosition2, 1, lightPosition2.Pointer());
 
@@ -181,16 +181,18 @@ void programData::UpdateRadius(float Radius)
 void programData::UpdateColor()
 {
     
-    float diffuseDiv = 0.75f;
+    float diffuseDiv = 0.8f;
     glUniform3f(programData::shaderHandle.DiffuseMaterial, programData::colorR*diffuseDiv , programData::colorG*diffuseDiv, programData::colorB*diffuseDiv );
     glUniform3f(programData::shaderHandle.DiffuseMaterial2, programData::colorR2 *diffuseDiv, programData::colorG2 *diffuseDiv, programData::colorB2 *diffuseDiv);
-    float ambientDiv = 0.25f;
+    float ambientDiv = 0.4f;
     
     glUniform3f(programData::shaderHandle.AmbientMaterial, programData::colorR *ambientDiv, programData::colorG *ambientDiv, programData::colorB *ambientDiv);
     glUniform3f(programData::shaderHandle.AmbientMaterial2,programData::colorR2 *ambientDiv, programData::colorG2 *ambientDiv, programData::colorB2 *ambientDiv);
     //R,G,B, alpha con luz
-    glUniform3f(programData::shaderHandle.SpecularMaterial,  programData::colorR, programData::colorG, programData::colorB);
-    glUniform3f(programData::shaderHandle.SpecularMaterial2, programData::colorR2, programData::colorG2, programData::colorB2);
+
+    float specularDiv = 0.8f;
+    glUniform3f(programData::shaderHandle.SpecularMaterial ,  programData::colorR * specularDiv, programData::colorG * specularDiv, programData::colorB * specularDiv);
+    glUniform3f(programData::shaderHandle.SpecularMaterial2, programData::colorR2 * specularDiv, programData::colorG2 * specularDiv, programData::colorB2 * specularDiv);
     
     
 }
