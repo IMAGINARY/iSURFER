@@ -12,6 +12,7 @@
 #import "ImageDescriptionViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
+#import "GoiSurferViewController+Share.h"
 
 #define BUTTON_SPACE 25.0
 
@@ -104,7 +105,9 @@
 			//Edit description
 			break;
 		case 1:
-			//go to isurfer with this surface
+			printf("\nEstoy en editar\n");//go to isurfer with this surface
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            [self.appcontroller.goiSurferViewController doGenerateSurface:self.surfaceEquation.text];
 			break;
 		default:
 			break;

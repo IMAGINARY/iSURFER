@@ -120,6 +120,7 @@
 
 @property(nonatomic, retain) UIColor* color1;
 @property(nonatomic, retain) UIColor* color2;
+@property(nonatomic, assign)BOOL firstTimeInApp;
 
 -(id) initWithAppController:(AppController*)anappCtrl andAlgebraicSurface:(AlgebraicSurface*)surface;
 
@@ -137,5 +138,7 @@
 -(IBAction)flipToGalleries:(id)sender;
 -(void)setSurfaceImg;
 -(void)removeColorPalette;
+
+-(void)doGenerateSurface:(NSString*)eqText;
 
 @end

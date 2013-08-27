@@ -20,7 +20,6 @@
 @interface GoiSurferViewController(PrivateMethods)
 -(void)showOptionsViewWrapper:(BOOL)yes view:(UIView*)showingView;
 
-
 @end
 //--------------------------------------------------------------------------------------------------------
 @implementation GoiSurferViewController
@@ -45,7 +44,7 @@
 -(void)viewDidLoad{
     
 	[super viewDidLoad];
-    
+    self.firstTimeInApp = YES;
     keyboardButtons = [[NSArray alloc]initWithObjects:@"x", @"y",@"z",@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7", @"8",@"9",@"+",@"-",@"*",@"^2",@"^3",@"^",@"(",@")",@",",@"",nil];
 	//Color sliders conf
     
@@ -229,7 +228,6 @@
 	p = [gestureRecognizer locationInView:baseView]; //:gestureRecognizer.view];
     //p = [gestureRecognizer translationInView:gestureRecognizer.view];
     
-    
 	CGRect f;
 	switch (gestureRecognizer.state) {
 		case UIGestureRecognizerStateBegan:
@@ -395,6 +393,12 @@
 	//  [self 	doOpenGLMagic];
 	self.zoomSlider.value = 101.0 - [openglController zoom];
     
+    if( self.firstTimeInApp){
+        self.firstTimeInApp = NO;
+    }else{
+        [self doneButtonPressed];
+    }
+
 	[super viewDidAppear:animated];
 	
 }
@@ -471,7 +475,14 @@
     @synchronized(openglController)
     {
         
-        programData::panoramic = !programData::panoramic;
+        programData::backgroundBlack = !programData::backgroundBlack;
+        
+        if(programData::backgroundBlack)
+            baseView.backgroundColor = [UIColor blackColor];
+        else
+            baseView.backgroundColor = [UIColor whiteColor];
+        
+
         [openglController drawFrame];
     }
 }
@@ -577,6 +588,17 @@
         [lv removeFromSuperview];
         lv = nil;
     }
+}
+
+-(void)doGenerateSurface:(NSString*)eqText{
+    @synchronized(openglController)
+    {
+
+    NSString* eqstr = [eqText substringToIndex:eqText.length - 2];
+    equationTextField.text = eqstr;
+    NSLog(@"eq text  %@", equationTextField.text);
+    }
+    
 }
 
 -(void)doSurfaceGeneration{

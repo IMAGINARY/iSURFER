@@ -28,6 +28,7 @@ bool programData::wireFrame = false;
 bool programData::panoramic = false;
 bool programData::toonShader = false;
 bool programData::textureEnable = false;
+bool programData::backgroundBlack = false;
 
 GLuint m_gridTexture;
 IResourceManager *m_resourceManager;

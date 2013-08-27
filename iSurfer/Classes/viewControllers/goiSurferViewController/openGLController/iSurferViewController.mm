@@ -78,6 +78,7 @@ enum {
 	//if ([context API] == kEAGLRenderingAPIOpenGLES2)
 	//	[self loadShaders];
 	glClearColor( 1.0, 1.0, 1.0, 1.0 );
+    //glClearColor( 0.0, 0.0, 0.0, 1.0 );
 
 	animating = FALSE;
 	displayLinkSupported = FALSE;
@@ -259,7 +260,7 @@ enum {
         //Cylinder
             //NSString *formula = @"x^2+y^2-5";  //Bien
         //Dattel (Esfera)
-            //NSString *formula = @"x^2+y^2+z^2-1";  //Bien
+            NSString *formula = @"x^2+y^2+z^2-1";  //Bien
         //Pipe
             //NSString *formula = @"x^2-z";  //Bien
         //Gupf
@@ -291,7 +292,7 @@ enum {
            // NSString *formula = @"x^2+y^2*z-z^2"; // Mal
         //Cayley Cubic
             //NSString *formula = @"x^2+y^2+z^2+2*x*y*z-1"; //Bien
-    NSString *formula = @"x"; //Bien
+    //NSString *formula = @"x"; //Bien
         //Este se ve raro
             //NSString *formula = @"x^2-x-x^2*y-y*z^2-z^2"; //Bien
 
@@ -410,7 +411,11 @@ enum {
 
     @synchronized(self)
     {
+        if (programData::backgroundBlack) {
+            glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        } else {
             glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+        }
             m_applicationEngine->Render();
         NSLog(@"finished drawing");
         [(EAGLView *)self.view presentFramebuffer];
@@ -747,7 +752,7 @@ ivec2 oldLocation;
         printf("\nError en C# %s\n", Compiler::getErrorMessage());
     else{
         Compiler::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String]);
-        
+            
         programData::InitializeProgramData();
         
         [self drawFrame];

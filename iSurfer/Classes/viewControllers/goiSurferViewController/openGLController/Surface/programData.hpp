@@ -117,6 +117,15 @@ class programData
      */
         static bool panoramic;
     /**
+     * if true we use a black background, else a white one.
+     * @property debug
+     * @type {bool}
+     * @default false
+     */
+    static bool backgroundBlack
+;
+
+    /**
      * it is the parametric surface to use as BB.  
      * @property currentSurface
      * @type {int}

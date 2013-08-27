@@ -78,38 +78,6 @@
 		[self setGalleriesArray:tmparray];
 		[tmparray release];
         
-		/*
-		Gallery* gal1 = [[Gallery alloc]init];
-		gal1.galleryName =[Language get:@"gal1Name" alter:nil];
-		gal1.galleryDescription = @"description1";
-		gal1.editable = NO;
-        [gal1 setThumbNail:[UIImage imageNamed:@"lemon.png"]];
-
-        Gallery* gal2 = [[Gallery alloc]init];
-		gal2.galleryName = [Language get:@"gal2Name" alter:nil];
-		gal2.galleryDescription = @"description2";
-		gal2.editable = NO;
-		[gal2 setThumbNail:[UIImage imageNamed:@"nepali.png"]];
-
-		AlgebraicSurface* surface = [[AlgebraicSurface alloc]init];
-		[surface setSurfaceImage:[UIImage imageNamed:@"lemon.png"]];
-		[surface setEquation:@"x^2+z^2 = y^3(1-y)^3"];
-		[surface setSurfaceDescription:[Language get:@"surf1Desc" alter:nil]];
-		[surface setSurfaceName:[Language get:@"surf1Name" alter:nil]];
-		
-		AlgebraicSurface* surface2 = [[AlgebraicSurface alloc]init];
-		[surface2 setSurfaceImage:[UIImage imageNamed:@"nepali.png"]];
-		[surface2 setEquation:@"(xy-z^3-1)^2 =(1-x^2-y^2)^3"];
-		[surface2 setSurfaceDescription:[Language get:@"surf2Desc" alter:nil]];
-		[surface2 setSurfaceName:[Language get:@"surf2Name" alter:nil]];
-	
-		[gal1 addAlgebraicSurface:surface];
-		[gal2 addAlgebraicSurface:surface2];
-	*/
-        
-        /*[dataBase saveGallery:gal1];
-        [dataBase saveGallery:gal2];*/
-        
         [galleriesArray addObjectsFromArray:[dataBase getGalleries]];
 
         for( Gallery* g in galleriesArray ){
@@ -135,7 +103,7 @@
 }
 
 -(void)goToMainScreen{
-	[self.navcontroller pushViewController:goiSurferViewController animated:NO];
+	[self.navcontroller setViewControllers:[NSArray arrayWithObject:goiSurferViewController]];
 }
 //--------------------------------------------------------------------------------------------------------
 
