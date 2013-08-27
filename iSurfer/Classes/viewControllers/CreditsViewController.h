@@ -6,18 +6,21 @@
 //
 //
 
-#import "BaseViewController.h"
+#import "HelpViewController.h"
 #import <Foundation/Foundation.h>
 
-@interface CreditsViewController : BaseViewController<UIActionSheetDelegate, UITableViewDelegate, UITableViewDataSource> {
+@interface CreditsViewController : HelpViewController {
 
 	IBOutlet UILabel* creditsLabel;
-    IBOutlet UIWebView* creditsTable;
-    IBOutlet UIScrollView* scrollView;
+    IBOutlet UIButton* imageCreditsButton;
+    IBOutlet UILabel* directedByLabel;
+    IBOutlet UILabel* developedByLabel;
+
 }
 
-@property(nonatomic, retain)	IBOutlet UILabel* creditsLabel;
 @property(nonatomic, retain)    IBOutlet UIWebView* creditsTable;
-@property(nonatomic, retain)    IBOutlet UIScrollView* scrollView;
+@property(nonatomic, retain)    IBOutlet UIButton* imageCreditsButton;
+@property(nonatomic, retain)    IBOutlet UILabel* directedByLabel;
+@property(nonatomic, retain)    IBOutlet UILabel* developedByLabel;
 
 @end

@@ -6,10 +6,10 @@
 //
 //
 
-#import "BaseViewController.h"
+#import "HelpViewController.h"
 #import <Foundation/Foundation.h>
 
-@interface TutorialViewController : BaseViewController{
+@interface TutorialViewController : HelpViewController{
 
     IBOutlet UILabel* tutorialLabel;
 }

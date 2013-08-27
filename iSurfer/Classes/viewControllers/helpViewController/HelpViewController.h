@@ -18,6 +18,4 @@
 @property(nonatomic, retain)	IBOutlet UIButton* credits;
 @property(nonatomic, retain)	IBOutlet UIButton* tutorial;
 
--(void)showCredits;
-
 @end

@@ -13,6 +13,7 @@
 #import "MyGalleriesViewController.h"
 #import "HelpViewController.h"
 #import "CreditsViewController.h"
+#import "ImageCreditsViewController.h"
 #import "TutorialViewController.h"
 #import "SplashScreenViewController.h"
 #import "GalleryViewController.h"
@@ -24,7 +25,7 @@
 //--------------------------------------------------------------------------------------------------------
 @implementation AppController
 //--------------------------------------------------------------------------------------------------------
-@synthesize mainMenuViewController, navcontroller, goiSurferViewController, myGalleriesViewController, helpViewController, creditsViewController, tutorialViewController, imageDescriptionViewController, galleriesArray, dataBase;
+@synthesize mainMenuViewController, navcontroller, goiSurferViewController, myGalleriesViewController, helpViewController, creditsViewController, imageCreditsViewController, tutorialViewController, imageDescriptionViewController, galleriesArray, dataBase;
 //--------------------------------------------------------------------------------------------------------
 
 -(id)initWithNavController:(UINavigationController*)aNavController{
@@ -60,6 +61,10 @@
         CreditsViewController* tmpcredits = [[CreditsViewController alloc]initWithAppController:self];
 		[self setCreditsViewController:tmpcredits];
 		[tmpcredits release];
+        
+        ImageCreditsViewController* tmpimagecredits = [[ImageCreditsViewController alloc]initWithAppController:self];
+		[self setImageCreditsViewController:tmpimagecredits];
+		[tmpimagecredits release];
         
         TutorialViewController* tmptutorial = [[TutorialViewController alloc]initWithAppController:self];
 		[self setTutorialViewController:tmptutorial];
@@ -183,6 +188,7 @@
 	[myGalleriesViewController release];
 	[helpViewController release];
     [creditsViewController release];
+    [imageCreditsViewController release];
     [tutorialViewController release];
     [imageDescriptionViewController release];
 	[galleriesArray release];

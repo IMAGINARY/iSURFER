@@ -69,4 +69,7 @@
 "CREDITS" = "Crédits";
 
 /*Menu credits*/
+"DIRECTED_BY" = "Directed by:";
+"DEVELOPED_BY" = "Developed by:";
+"CREDITS_IMAGES" = "Image credits";
 

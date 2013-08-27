@@ -13,6 +13,7 @@
 @class MyGalleriesViewController;
 @class HelpViewController;
 @class CreditsViewController;
+@class ImageCreditsViewController;
 @class TutorialViewController;
 @class DataBaseController;
 @class ImageDescriptionViewController;
@@ -34,6 +35,7 @@
 	MyGalleriesViewController* myGalleriesViewController;
 	HelpViewController* helpViewController;
     CreditsViewController * creditsViewController;
+    ImageCreditsViewController * imageCreditsViewController;
     TutorialViewController * tutorialViewController;
     ImageDescriptionViewController * imageDescriptionViewController;
 	
@@ -50,6 +52,7 @@
 @property(nonatomic, retain)	GoiSurferViewController* goiSurferViewController;
 @property(nonatomic, retain)	HelpViewController* helpViewController;
 @property(nonatomic, retain)	CreditsViewController* creditsViewController;
+@property(nonatomic, retain)	ImageCreditsViewController* imageCreditsViewController;
 @property(nonatomic, retain)	TutorialViewController* tutorialViewController;
 @property(nonatomic, retain)    ImageDescriptionViewController * imageDescriptionViewController;
 

@@ -67,3 +67,8 @@
 /*Menu help*/
 "TUTORIAL" = "Tutorial";
 "CREDITS" = "Créditos";
+
+/*Menu credits*/
+"DIRECTED_BY" = "Dirigido por:";
+"DEVELOPED_BY" = "Desarrollado por:";
+"CREDITS_IMAGES" = "Créditos de imágenes";
