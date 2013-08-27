@@ -58,6 +58,7 @@
 
 -(void)endRotationX:(float)x Y:(float)y;
 
+- (int)ParseEqu:(NSString*)eq;
 
 -(void)drawFrame;
 -(void)setZoom:(double)zoomvalue;

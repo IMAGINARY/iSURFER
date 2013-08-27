@@ -290,7 +290,8 @@ enum {
         //Calypso 
            // NSString *formula = @"x^2+y^2*z-z^2"; // Mal
         //Cayley Cubic
-            NSString *formula = @"x^2+y^2+z^2+2*x*y*z-1"; //Bien
+            //NSString *formula = @"x^2+y^2+z^2+2*x*y*z-1"; //Bien
+    NSString *formula = @"x"; //Bien
         //Este se ve raro
             //NSString *formula = @"x^2-x-x^2*y-y*z^2-z^2"; //Bien
 
@@ -367,14 +368,22 @@ enum {
     //m_applicationEngine->ChangeSurface(1);
     
     
-	Compiler::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[formula UTF8String]);
-    
-    programData::InitializeProgramData();
-    
-    
-	[self drawFrame];
-
+    if(Compiler::ParseEqu([formula UTF8String]))
+        printf("\nError en C# %s\n", Compiler::getErrorMessage());
+    else{
+        Compiler::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String]);
+        
+        programData::InitializeProgramData();
+        
+        [self drawFrame];
+    }
 }
+
+- (int)ParseEqu:(NSString*)eq
+{
+    return Compiler::ParseEqu([eq UTF8String]);
+}
+
 
 - (void)stopAnimation
 {
@@ -734,11 +743,17 @@ ivec2 oldLocation;
     //NSString * str = [eq stringByReplacingOccurrencesOfString: @"-" withString:@"!"];
     //str = [str stringByReplacingOccurrencesOfString: @"\u2212" withString:@"-"];
 
-    Compiler::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[eq UTF8String]);
+    if(Compiler::ParseEqu([eq UTF8String]))
+        printf("\nError en C# %s\n", Compiler::getErrorMessage());
+    else{
+        Compiler::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String]);
+        
+        programData::InitializeProgramData();
+        
+        [self drawFrame];
 
-    programData::InitializeProgramData();
+    }
 
-	[self drawFrame];
 	
 }
 

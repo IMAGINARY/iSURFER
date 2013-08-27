@@ -42,7 +42,11 @@ class Compiler
      * @param vs2 {char *} vertex shader file name for wiresphere.
      * @param formula {char *} surface formula.
      */
-		static void init(const char *vs1, const char *fs1, const char *vs2, const char *fs2, const char * formula);
+		static int ErrorExists();
+    static void init(const char *vs1, const char *fs1, const char *vs2, const char *fs2);
+    static int ParseEqu(const char * formula);
+    
+        static char * getErrorMessage();
 
 
     

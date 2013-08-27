@@ -6,7 +6,6 @@
 #include <sstream>
 #include <fstream>
 #include <string>
-
 extern "C" {
 #include <stdio.h>
 #include "genlib.h"
@@ -31,34 +30,36 @@ bool Compiler::compileWireframe=true;
 bool Compiler::compileVertex=true;
 GLuint vertex_shader;
 
-
-void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const char *fs2, const char *formula)
-{    
+int Compiler::ParseEqu(const char *formula)
+{
     checkGLError( AT );
 	scannerADT scanner;
     scanner= NewScanner();
     SetScannerSpaceOption(scanner, IgnoreSpaces);
 	
 	SetScannerString(scanner, (char *)formula);
+	clearExp();
     
 	expt= ParseExp(scanner);
-	clearExp();
 	EvalExp(expt, 0);
     EvalDerivateNoCode(expt);
     EvalDegree(expt);
-
+    
     FreeScanner(scanner);
-    if(ErrorExist()){
-      printf("%s", getErrorMsg());  
-        return ;
-        
-    }
+    
+    FreeTree(expt);
+    printf("\nformula\n");
+	printf("%s",formula);
+    return ErrorExist();
+}
+
+void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const char *fs2)
+{    
     FreeTree(expt);
     glDeleteShader(programData::programs.alg_surface_glsl_program);
     printf("code\n");
 	printf("%s", getCode());
-    printf("\nformula\n");
-	printf("%s",formula);
+
     
     printf("\nderivate\n");
     printf("%s", getCodeDerivate());
@@ -89,6 +90,17 @@ void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const cha
     
     
 }
+
+char * Compiler::getErrorMessage(){
+    
+    return getErrorMsg();
+}
+
+int Compiler::ErrorExists(){
+    
+    return ErrorExist();
+}
+
 
 GLuint Compiler::init( const char* vertex_shader_name, const char* fragment_shader_name )
 {

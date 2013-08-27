@@ -728,6 +728,10 @@
             equationTextField.text = [equationTextField.text stringByAppendingString:[keyboardButtons objectAtIndex:keyboardButton.tag]];
             break;
     }
+    if(    [openglController ParseEqu:self.equationTextField.text])
+        self.equationTextField.backgroundColor = [UIColor redColor];
+    else
+        self.equationTextField.backgroundColor = [UIColor whiteColor];
 }
 //--------------------------------------------------------------------------------------------------------
 
