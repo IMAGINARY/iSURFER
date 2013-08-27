@@ -55,7 +55,6 @@ int Compiler::ParseEqu(const char *formula)
 
 void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const char *fs2)
 {    
-    FreeTree(expt);
     glDeleteShader(programData::programs.alg_surface_glsl_program);
     printf("code\n");
 	printf("%s", getCode());
