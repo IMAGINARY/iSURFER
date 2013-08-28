@@ -585,21 +585,25 @@
 	[UIView setAnimationDuration:0.3];
 	CGRect r=[self.keyboardExtensionBar frame];
 	CGRect eqtxtfldFrame = self.equationTextfieldView.frame;
-    CGRect 
+    CGRect eqtxtfframe = self.equationTextField.frame;
 	if(yesOrNo){
 		[self.algebraicSurfaceView setAlpha:0.0];
 		self.saveButton.alpha = 0.0;
         eqtxtfldFrame.origin.y = EQUATION_TEXTFIELD_EDITING_HEIGHT;
         eqtxtfldFrame.size.width = 480;
+        eqtxtfframe.size.width += 50;
 		r.origin.y=  KEYBOARD_VIEW_SHOW_HEIGHT;
 	}else{
 		self.saveButton.alpha = 1.0;
 		[self.algebraicSurfaceView setAlpha:1.0];
 		eqtxtfldFrame.origin.y = EQUATION_TEXTFIELD_IDLE_HEIGHT;
 		r.origin.y= KEYBOARD_VIEW_HIDE_HEIGHT;
+        eqtxtfframe.size.width -= 50;
+
         eqtxtfldFrame.size.width = 430;
 
 	}
+    self.equationTextField.frame = eqtxtfframe;
 	[self.equationTextfieldView setFrame:eqtxtfldFrame];
 	[self.keyboardExtensionBar setFrame:r];
 	[UIView commitAnimations];
