@@ -44,7 +44,7 @@
 -(void)viewDidLoad{
     
 	[super viewDidLoad];
-    self.firstTimeInApp = YES;
+    self.shouldCompileSurface = NO;
     keyboardButtons = [[NSArray alloc]initWithObjects:@"x", @"y",@"z",@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7", @"8",@"9",@"+",@"-",@"*",@"^2",@"^3",@"^",@"(",@")",@",",@"",nil];
 	//Color sliders conf
     
@@ -393,10 +393,9 @@
 	//  [self 	doOpenGLMagic];
 	self.zoomSlider.value = 101.0 - [openglController zoom];
     
-    if( self.firstTimeInApp){
-        self.firstTimeInApp = NO;
-    }else{
+    if( self.shouldCompileSurface){
         [self doneButtonPressed];
+        self.shouldCompileSurface = NO;
     }
 
 	[super viewDidAppear:animated];
@@ -591,14 +590,9 @@
 }
 
 -(void)doGenerateSurface:(NSString*)eqText{
-    @synchronized(openglController)
-    {
-
+    self.shouldCompileSurface = YES;
     NSString* eqstr = [eqText substringToIndex:eqText.length - 2];
     equationTextField.text = eqstr;
-    NSLog(@"eq text  %@", equationTextField.text);
-    }
-    
 }
 
 -(void)doSurfaceGeneration{

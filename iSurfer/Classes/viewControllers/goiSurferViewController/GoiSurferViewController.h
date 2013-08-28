@@ -120,7 +120,7 @@
 
 @property(nonatomic, retain) UIColor* color1;
 @property(nonatomic, retain) UIColor* color2;
-@property(nonatomic, assign)BOOL firstTimeInApp;
+@property(nonatomic, assign)BOOL shouldCompileSurface;
 
 -(id) initWithAppController:(AppController*)anappCtrl andAlgebraicSurface:(AlgebraicSurface*)surface;
 

@@ -41,7 +41,7 @@
 "ERROR_CHOOSE_GALLERY" = "You must choose a gallery";
 
 /*Menu settings*/
-"SHOW_BONDING" = "Show bonding";
+"SHOW_BONDING" = "Show bounding sphere";
 "CONE" = "Cone";
 "SPHERE" = "Sphere";
 "TORUS" = "Torus";
