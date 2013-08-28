@@ -64,6 +64,10 @@
 "ERROR_GALLERY_NAME" = "You must enter a gallery name";
 "ERROR_GALLERY_DESCRIPTION" = "You must enter a gallery description";
 
+/*Edit surface*/
+"EDIT_SURFACE" = "Edit surface";
+"ISURFER_IMAGE" = "iSurf image";
+
 /*Menu help*/
 "TUTORIAL" = "Tutorial";
 "CREDITS" = "Crédits";

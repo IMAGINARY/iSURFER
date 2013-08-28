@@ -114,7 +114,7 @@
 
 //--------------------------------------------------------------------------------------------------------
 -(void)showActionSheet{
-	 UIActionSheet* edditingOptions = [[UIActionSheet alloc]initWithTitle:@"Edit Surface" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles: @"iSurf image", nil ];
+	 UIActionSheet* edditingOptions = [[UIActionSheet alloc]initWithTitle: NSLocalizedString(@"EDIT_SURFACE", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"CANCEL", nil) destructiveButtonTitle:nil otherButtonTitles: NSLocalizedString(@"ISURFER_IMAGE", nil), nil ];
 	 [edditingOptions showInView:self.view];
 	 [edditingOptions release];
 }
