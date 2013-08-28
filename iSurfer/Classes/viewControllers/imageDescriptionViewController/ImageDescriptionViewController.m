@@ -26,13 +26,6 @@
     [self setImageView];
     [self setFormula];
     [self setDescription];
-    //NSMutableArray* galleries = self.appcontroller.galleriesArray;
-    //Gallery * firstGallery = [galleries objectAtIndex:0];
-    //[self.appcontroller.dataBase populateGallery:firstGallery];
-    //NSLog(@"%@", gallery.galleryName);
-    //NSLog(@"%@", gallery.galleryDescription);
-//    NSLog(@"%@", surface.equation);
-//    NSLog(@"%@", surface.briefDescription);
 }
 
 -(void)setFormula{

@@ -162,7 +162,6 @@
 //------------------------------------------------------------------------
 
 -(NSMutableArray*)getGalleries{
-	NSLog(@"getGalleries");
 	
 	FMResultSet *rs = [db executeQuery:@"select id, editable, thumbnail from galleries"];
 	Gallery* g = nil;
@@ -202,14 +201,6 @@
 			UIImage* img = [UIImage imageWithData:[surface_rs dataForColumn:@"image"]];
 			g.thumbNail = img;
 		}
-
-
-		// just print out what we've got in a number of formats.
-		NSLog(@"id:%d name:%@ description:%@ editable:%d",
-			  [rs intForColumn:@"id"],
-			  [rstext stringForColumn:@"name"],
-			  [rstext stringForColumn:@"description"],
-			  [rs intForColumn:@"editable"]);
 	
 		[array addObject:g];
 		[g release];
@@ -236,15 +227,11 @@
 		
 		[gallery addAlgebraicSurface:s];
         
-        NSLog(@"lala: %@",[NSString stringWithFormat:@"%d", [rs intForColumnIndex:0]]);
-        
-        NSLog(@"%@", [NSString stringWithFormat:@"%d", [rs intForColumn:@"id"]]);
-        
+                
         s.surfaceID = [rs intForColumn:@"id"];
         
         NSString * query = [NSString stringWithFormat:@"%@%i%@%i", @"select name, briefdescription, completedescription from surfacestexts where (language is null or language = ", [Language getLanguageIndex], @") and surfaceid = ", [NSNumber numberWithInt:s.surfaceID].intValue];
         
-        NSLog(@"Q%@", query);
         
         FMResultSet *rstext = [db executeQuery:query];
         
@@ -254,8 +241,6 @@
             s.surfaceImage = [UIImage imageWithData:[rs dataForColumn:@"image"]];
         else
             s.surfaceImage = [UIImage imageNamed:[rs stringForColumn:@"image"]];
-        NSLog(@" %@",[rs stringForColumn:@"image"]);
-        NSLog(@" %@",[s.surfaceImage description] );
                 
 		s.briefDescription =  [rstext stringForColumn:@"briefdescription"];
         s.completeDescription = [rstext stringForColumn:@"completedescription"];

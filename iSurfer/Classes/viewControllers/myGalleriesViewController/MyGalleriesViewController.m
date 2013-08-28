@@ -28,13 +28,11 @@
 -(void)viewWillAppear:(BOOL)animated{
 	NSLog(@"viewWillAppear");
 	[galleriesTable reloadData];
-//	tableIsEdditing = NO;
 	[super viewWillAppear:animated];
 }
 //--------------------------------------------------------------------------------------------------------
 
 -(void)stopEditting{
-//	tableIsEdditing = NO;
 	eddition = NONE;
 	[self.galleriesTable setEditing:NO animated:YES];
 	self.navigationItem.rightBarButtonItem = self.toolbar;
@@ -62,8 +60,6 @@
 	self.title = NSLocalizedString(@"GALLERIES", nil);
 	[appcontroller getGalleries];
 		
-//	UIBarButtonItem *moveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(moveGalleries)];
-//	moveButton.tag = 1;
 	UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteGalleries)];
 	deleteButton.tag = 2;
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addGallery)];
@@ -88,11 +84,7 @@
 	[addButton release];
 	[tmptoolbarItems release];
 }
-////--------------------------------------------------------------------------------------------------------
-//-(void)moveGalleries{
-//	eddition = MOVE;
-//	[self startEditting];
-//}
+
 //--------------------------------------------------------------------------------------------------------
 -(void)deleteGalleries{
 	eddition = DELETE;
@@ -106,17 +98,7 @@
 	[addGallery release];
 }
 //--------------------------------------------------------------------------------------------------------
-/*																																			
-- (IBAction)toggleMove{ 
-	[self.galleriesTable setEditing:!self.galleriesTable.editing animated:YES];
-	if (self.galleriesTable.editing)
-		[self.navigationItem.rightBarButtonItem setTitle:@"Done"];
-	else {
-		[self.navigationItem.rightBarButtonItem setTitle:@"Edit"];
-	}
-}
-*/
-//--------------------------------------------------------------------------------------------------------
+
 #pragma mark tableView methods
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
 }
@@ -153,7 +135,6 @@
 	}else {
 		[cell.galleryImage setImage:gallery.thumbNail];
 	}
-	//	 cell.showsReorderControl = YES
 	return cell;
 }
 //--------------------------------------------------------------------------------------------------------
@@ -223,8 +204,7 @@
 //--------------------------------------------------------------------------------------------------------
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if( [[[appcontroller getGalleries] objectAtIndex:indexPath.row] isEmpty] ){
-//    [[[appcontroller getGalleries] objectAtIndex:indexPath.row] surfacesNumber];
+
     if([[[appcontroller getUpdatedGalleries] objectAtIndex:indexPath.row] surfacesNumber] == 0){
         UIAlertView* emptygal =[[UIAlertView alloc]initWithTitle: NSLocalizedString(@"EMPTY", nil) message: NSLocalizedString(@"ERROR_EMPTY_GALLERY", nil) delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
         [emptygal show];
@@ -242,20 +222,6 @@
 	[toolbar release];
 	[super dealloc];
 }
-/*
 //--------------------------------------------------------------------------------------------------------
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{	NSLog(@"buttonIndes: %d", buttonIndex);
-	NSLog(@"clickedButtonAtIndex:");
-	NSLog(@"buttonIndes: %d", buttonIndex);
 
-	if( buttonIndex == 3 ){
-		tableIsEdditing = NO;
-	}else {
-		eddition = (edditingOption)buttonIndex;
-	}
-
-	[self.galleriesTable setEditing:tableIsEdditing animated:YES];
-}
-//--------------------------------------------------------------------------------------------------------
-*/
 @end

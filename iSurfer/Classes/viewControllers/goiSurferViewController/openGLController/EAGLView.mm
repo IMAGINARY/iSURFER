@@ -207,9 +207,7 @@
     
     glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &height);
     
-    
-    NSLog(@"%d %d",width,height);
-    
+        
     NSInteger myDataLength = width * height * 4;
     
     // allocate array and read pixels into it.

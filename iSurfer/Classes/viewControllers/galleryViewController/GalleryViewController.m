@@ -98,8 +98,7 @@
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-	NSLog(@"clickedButtonAtIndex:");
-	NSLog(@"buttonIndes: %d", buttonIndex);
+
 	switch (buttonIndex) {
 		
 		case 0:
@@ -136,9 +135,7 @@
         [self.briefDescription setText:surface.briefDescription];
         [descriptionButton addGestureRecognizer:tapGestureRecognizer];
         [detailedDescription addGestureRecognizer:descriptionTapGestureRecognizer];
-        NSLog(@"%@", surface.briefDescription);
-        NSLog(@"En galleryviewController %@", surface.equation);
-		[super viewWillAppear:animated];
+ 		[super viewWillAppear:animated];
 	}
 }
 
@@ -146,20 +143,11 @@
     ImageDescriptionViewController* idvc = [[ImageDescriptionViewController alloc]initWithAppController: self.appcontroller andSurface: selectedSurface];
 	[self.navigationController pushViewController: idvc animated:true];
 	[idvc release];
-    //[self.navigationController pushViewController:self.appcontroller.imageDescriptionViewController animated:true];
 }
 
 //--------------------------------------------------------------------------------------------------------
 -(void)tapHandler: (UITapGestureRecognizer *)recognizer{
-/*    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Hello World!"
-                                                      message:@"This is your first UIAlertview message."
-                                                     delegate:nil
-                                            cancelButtonTitle:@"OK"
-                                            otherButtonTitles:nil];
-    
-      [message show];*/
-    //ImageDescriptionViewController* imageDescription = [[ImageDescriptionViewController alloc]initWithAppController:self.appcontroller];
-   // briefDescription.text = briefDescription.text +
+
     briefDescription.hidden = !briefDescription.hidden;
     detailedDescription.hidden = briefDescription.hidden;
     if(gallery.editable)
@@ -169,8 +157,7 @@
         [descriptionButton setTitle:NSLocalizedString(@"DESCRIPTION_BUTTON", nil) forState:UIControlStateNormal];
     else
         [descriptionButton setTitle:NSLocalizedString(@"FORMULA_BUTTON", nil) forState:UIControlStateNormal];
-    NSLog(@"Brief description %@", briefDescription.text);
-//    [self.navigationController pushViewController:self.appcontroller.imageDescriptionViewController animated:false];
+
 }
 
 //--------------------------------------------------------------------------------------------------------
@@ -309,7 +296,6 @@
     [self.surfaceName setText:[surface surfaceName]];
 	[self.surfaceImage setImage:[surface surfaceImage]];
 	[self.surfaceEquation setText:[surface equation]];
-    NSLog(@"surfacesNumber %@", surface.briefDescription);
     [self.briefDescription setText:[surface briefDescription]];
 	[tableView scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:UITableViewScrollPositionMiddle	animated:YES];
     // TODO borrar esto

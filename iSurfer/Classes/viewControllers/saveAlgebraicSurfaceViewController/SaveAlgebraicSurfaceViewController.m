@@ -20,9 +20,7 @@
 	if (self = [super initWithNibName:@"SaveAlgebraicSurfaceViewController" bundle:[NSBundle mainBundle]]) {
 		[self setAppcontroller:anappCtrl];
 	}
-    
-    NSLog(@"image %@", surfaceImage);
-    
+        
     surfaceImagex = surfaceImage;
     
 	return self;

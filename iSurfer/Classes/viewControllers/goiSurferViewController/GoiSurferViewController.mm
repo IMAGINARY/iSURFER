@@ -201,8 +201,6 @@
     algebraicSurfaceView.frame = f;
     
     temporalimgView.hidden = NO;
-    NSLog(@"changeframe");
-    
 }
 //--------------------------------------------------------------------------------------------------------
 
@@ -213,8 +211,6 @@
 	CGRect f;
 	switch (gestureRecognizer.state) {
 		case UIGestureRecognizerStateBegan:
-			NSLog(@"began");
-            
             [openglController initRotationX:p.x Y:p.y];
             [self changeframe];
             
@@ -226,9 +222,7 @@
 		case UIGestureRecognizerStateEnded:
         case UIGestureRecognizerStateCancelled:
         case UIGestureRecognizerStateFailed:
-			[openglController endRotationX:p.x Y:p.y];
-            NSLog(@"UIGestureRecognizerStateEnded");
-            
+			[openglController endRotationX:p.x Y:p.y];            
             if( fullScreen){
                 f = CGRectMake(0, 0, 440, 320	);
             }else{

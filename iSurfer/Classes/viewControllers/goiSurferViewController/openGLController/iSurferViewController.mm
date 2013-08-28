@@ -75,10 +75,7 @@ enum {
 	[(EAGLView *)self.view setContext:context];
 	[(EAGLView *)self.view setFramebuffer];
 	
-	//if ([context API] == kEAGLRenderingAPIOpenGLES2)
-	//	[self loadShaders];
 	glClearColor( 1.0, 1.0, 1.0, 1.0 );
-    //glClearColor( 0.0, 0.0, 0.0, 1.0 );
 
 	animating = FALSE;
 	displayLinkSupported = FALSE;
@@ -90,45 +87,6 @@ enum {
 	// The NSTimer object is used as fallback when it isn't available.
 	
 	
-}
-
-- (void)awakeFromNib
-{
-	/*
-    EAGLContext *aContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
-    
-    if (!aContext)
-    {
-        aContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
-    }
-    
-    if (!aContext)
-        NSLog(@"Failed to create ES context");
-    else if (![EAGLContext setCurrentContext:aContext])
-        NSLog(@"Failed to set ES context current");
-    
-	self.context = aContext;
-	[aContext release];
-	
-    [(EAGLView *)self.view setContext:context];
-    [(EAGLView *)self.view setFramebuffer];
-    
-    if ([context API] == kEAGLRenderingAPIOpenGLES2)
-        [self loadShaders];
-    
-    animating = FALSE;
-    displayLinkSupported = FALSE;
-    animationFrameInterval = 1;
-    displayLink = nil;
-    animationTimer = nil;
-    
-    // Use of CADisplayLink requires iOS version 3.1 or greater.
-	// The NSTimer object is used as fallback when it isn't available.
-    NSString *reqSysVer = @"3.1";
-    NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
-    if ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending)
-        displayLinkSupported = TRUE;
-	 */
 }
 
 - (void)dealloc
@@ -144,7 +102,6 @@ enum {
         [EAGLContext setCurrentContext:nil];
     
     [context release];
- //   [pool release];
     [super dealloc];
 }
 
@@ -648,11 +605,7 @@ ivec2 oldLocation;
         [self.trackBall setStartPointFromLocation:location];
     }
     
-    
-	NSLog(@"rotation start at x: %.2f    y:%.2f", x , y );
-    
 	[self drawFrame];
-
 }
 
 
@@ -677,12 +630,10 @@ ivec2 oldLocation;
     }
 
     
-	NSLog(@"rotation start at x: %.2f    y:%.2f", x , y );
     
 	[self drawFrame];
     
-    NSLog(@"rotation ends");
-     
+    
 }
 
 
@@ -696,9 +647,6 @@ ivec2 oldLocation;
     
     [self.trackBall finalizeTrackBallForLocation:location];
 
-    
-//	NSLog(@"rotation start at x: %.2f    y:%.2f", x , y );
-    
 	[self drawFrame];
 }
 
@@ -737,15 +685,12 @@ ivec2 oldLocation;
 	return programData::radius;
 }
 
--(void)setSurfaceColorRed:(float)red Green:(float)green Blue:(float)blue{
-	NSLog(@"red: %f green: %f  blue: %f", red, green, blue);
-    
+-(void)setSurfaceColorRed:(float)red Green:(float)green Blue:(float)blue{    
 	programData::UpdateColor(red, green, blue);
 	[self drawFrame];
 }
 
 -(void)setSurfaceColor2Red:(float)red Green:(float)green Blue:(float)blue{
-	NSLog(@"red: %f green: %f  blue: %f", red, green, blue);
     
 	programData::UpdateColor2(red, green, blue);
 	[self drawFrame];

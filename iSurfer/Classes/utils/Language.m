@@ -18,7 +18,6 @@ static NSString* lang = nil;
 	NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
 	NSArray* languages = [defs objectForKey:@"AppleLanguages"];
 	NSString *current = [[languages objectAtIndex:0] retain];
-	NSLog(@"lang    %@", current);
 	lang = current;
 	
 	[self setLanguage:current];
