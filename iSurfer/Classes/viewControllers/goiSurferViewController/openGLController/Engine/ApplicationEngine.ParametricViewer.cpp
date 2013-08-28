@@ -83,22 +83,6 @@ static const int SurfaceCount = 6;
     }
 
 
-/*    
-    void ApplicationEngine::OnFingerDown(ivec2 location)
-    {
-        m_fingerStart = location;
-        m_previousOrientation = m_orientation;
-    }
-    
-    void ApplicationEngine::OnFingerMove(ivec2 oldLocation, ivec2 location)
-    {
-        vec3 start = MapToSphere(m_fingerStart);
-        vec3 end = MapToSphere(location);
-        Quaternion delta = Quaternion::CreateFromVectors(start, end);
-        m_orientation = delta.Rotated(m_previousOrientation);
-        
-    }
-  */  
     vec3 ApplicationEngine::MapToSphere(ivec2 touchpoint) const
     {
         vec2 p = touchpoint - m_centerPoint;

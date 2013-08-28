@@ -135,14 +135,6 @@
 	[self.navcontroller popViewControllerAnimated:YES];
 }
 //--------------------------------------------------------------------------------------------------------
-/*
--(void)goToSaveImage{
-	SaveAlgebraicSurfaceViewController* saveimg = [[SaveAlgebraicSurfaceViewController alloc]initWithAppController:self];
-	[self.navcontroller pushViewController:saveimg animated:YES];
-	[saveimg release];
-}
- */
-//--------------------------------------------------------------------------------------------------------
 
 #pragma mark dealloc
 -(void)dealloc{

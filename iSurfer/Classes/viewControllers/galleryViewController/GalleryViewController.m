@@ -283,7 +283,6 @@
 //--------------------------------------------------------------------------------------------------------
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    AlgebraicSurface* surface = [gallery getSurfaceAtIndex:[indexPath row]];
     [appcontroller removeSurface: [gallery getSurfaceAtIndex:[indexPath row]] fromGallery: gallery];
 	[self.gallery removeSurfaceAtIndex:[indexPath row]];
 	[self.surfacesTable deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];

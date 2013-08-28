@@ -103,25 +103,6 @@
         [newSurface setEquation:delegate.equationTextField.text];
 		[appcontroller addAlgebraicSurface:newSurface atGallery:selectedGallery];
 		[newSurface release];
-        
-/*        -(void)saveImage:(UIImage*)image withName:(NSString*)imagename{
-            if( image != NULL ){
-                NSData *pngData = UIImagePNGRepresentation(image);
-                NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
-                NSString *filePath = [documentsPath stringByAppendingPathComponent:imagename]; //Add the file name
-                [pngData writeToFile:filePath atomically:YES]; //Write the file
-            }
-        }*/
-        
-        
-/*        -(UIImage*)loadImageFromFile:(NSString*)imagefileName{
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
-        NSString *filePath = [documentsPath stringByAppendingPathComponent:imagefileName]; //Add the file name
-        return [[UIImage alloc] initWithContentsOfFile:filePath];
-    }*/
-        
 
 		
 		[self dismissModalViewControllerAnimated:YES];

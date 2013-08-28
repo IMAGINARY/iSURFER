@@ -26,11 +26,6 @@
 }
 
 
-/*
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated{
-		
-}
-*/
 -(void)dealloc{
 	[galleryImage release];
 	[galleryDetailLabel release];

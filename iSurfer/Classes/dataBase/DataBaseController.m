@@ -170,9 +170,7 @@
 		g = [[Gallery alloc]init];
 	
 		g.galID = [rs intForColumn:@"id"];
-        
-        int lang = [Language getLanguageIndex];
-        
+                
         //Only objects are used as query arguments
         
         NSString * query = [NSString stringWithFormat:@"%@%i%@%i", @"select name, description from galleriestexts where (language is null or language = ", [Language getLanguageIndex], @") and galleryid = ", [NSNumber numberWithInt:g.galID].intValue];

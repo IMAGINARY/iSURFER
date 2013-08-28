@@ -12,7 +12,6 @@
 @interface LoadingView : UIView
 
 +(LoadingView*)loadingView:(NSString*)cartel;
--(id)initWithLoadingFrame:(CGRect)frame;
 
 -(id)initWithLoadingFrame:(CGRect)frame andText:(NSString*)text;
 

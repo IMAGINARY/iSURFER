@@ -138,6 +138,7 @@
 -(IBAction)flipToGalleries:(id)sender;
 -(void)setSurfaceImg;
 -(void)removeColorPalette;
+-(void)setSurfaceImg;
 
 -(void)doGenerateSurface:(NSString*)eqText;
 

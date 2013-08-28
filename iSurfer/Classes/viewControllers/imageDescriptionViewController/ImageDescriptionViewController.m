@@ -64,41 +64,10 @@
     // Set content size for scroll view
     scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, sizeOfContent);
 
-//    int descriptionLength = surface.completeDescription.length;
-//    int height = descriptionLength/50*13;
-//    height = height + imageView.frame.size.height;
-//    [scrollView setContentSize:CGSizeMake(380, height)];
+
     [super viewDidLoad];
     
 }
-
-/*-(void)setupTextView
-
-{
-    
-    self.textView = [[[UITextView alloc] initWithFrame:self.view.frame] autorelease];
-    
-    self.textView.textColor = [UIColor blackColor];
-    
-    self.textView.font = [UIFont fontWithName:@"Arial" size:18];
-    
-    //self.textView.delegate = self;
-    
-    self.textView.backgroundColor = [UIColor whiteColor];
-    
-    self.textView.text = @"Hello this is about the text view, the difference in text view and the text field is that you can display large data or paragraph in text view but in text field you cant.";
-    
-    self.textView.returnKeyType = UIReturnKeyDefault;
-    
-    self.textView.keyboardType = UIKeyboardTypeDefault; 
-    
-    self.textView.scrollEnabled = YES;
-    
-    self.textView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    
-    [self.view addSubview: self.textView];  // adding the text view to the view.
-    
-}*/
 
 -(void)dealloc
 {
