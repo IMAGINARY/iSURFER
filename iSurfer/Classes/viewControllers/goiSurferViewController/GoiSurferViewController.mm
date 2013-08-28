@@ -415,9 +415,9 @@
         programData::backgroundBlack = !programData::backgroundBlack;
         
         if(programData::backgroundBlack)
-            baseView.backgroundColor = [UIColor blackColor];
+            algebraicSurfaceView.backgroundColor = [UIColor blackColor];
         else
-            baseView.backgroundColor = [UIColor whiteColor];
+            algebraicSurfaceView.backgroundColor = [UIColor whiteColor];
         
 
         [openglController drawFrame];
