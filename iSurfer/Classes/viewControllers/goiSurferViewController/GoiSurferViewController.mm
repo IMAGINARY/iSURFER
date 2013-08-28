@@ -272,7 +272,7 @@
             if( fullScreen){
                 f = CGRectMake(0, 0, 440, 320	);
             }else{
-                f = CGRectMake(0, 0 , 400, 277	);
+                f = CGRectMake(0, 0 , 400, 276	);
             }
 			algebraicSurfaceView.frame = f;
             
@@ -369,7 +369,7 @@
 		[algebraicSurfaceView setFrame:algebraicsurfaceViewFrame];
         //	[self.algebraicSurfaceView setFrame:CGRectMake(109, 7, 364, 2w58)];
 		zoomframe.origin.y = 27;
-        temporalimgView.frame = CGRectMake(0, 0, 400, 277);
+        temporalimgView.frame = CGRectMake(0, 0, 400, 276);
         
 	}else{
 		fullScreen = YES;
