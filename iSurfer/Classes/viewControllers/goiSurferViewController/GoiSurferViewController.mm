@@ -720,16 +720,20 @@
     
     [appcontroller goToGalleries];
 }
+
+
 //--------------------------------------------------------------------------------------------------------
 -(IBAction)keyboardKeyTapped:(id)sender{
     UIButton* keyboardButton = (UIButton*)sender;
+    
+    UITextRange *selRange = equationTextField.selectedTextRange;
+    UITextPosition *selStartPos = selRange.start;
+    NSInteger idx = [equationTextField offsetFromPosition:equationTextField.beginningOfDocument toPosition:selStartPos];
+    
     switch (keyboardButton.tag) {
             
         case 30:{
             if(equationTextField.text.length > 0 ){                
-                UITextRange *selRange = equationTextField.selectedTextRange;
-                UITextPosition *selStartPos = selRange.start;
-                NSInteger idx = [equationTextField offsetFromPosition:equationTextField.beginningOfDocument toPosition:selStartPos];
                 if( idx > 0) {
                     NSString* str = [equationTextField.text substringToIndex:idx -1];
                     NSString* str2 = [equationTextField.text substringFromIndex:idx];                    
@@ -740,7 +744,13 @@
             break;
         }
         default:
-            equationTextField.text = [equationTextField.text stringByAppendingString:[keyboardButtons objectAtIndex:keyboardButton.tag]];
+            NSString* str = [equationTextField.text substringToIndex:idx ];
+            NSString* str2 = [equationTextField.text substringFromIndex:idx];
+            
+            str = [str stringByAppendingString:[keyboardButtons objectAtIndex:keyboardButton.tag]];
+            equationTextField.text = [NSString stringWithFormat:@"%@%@", str, str2];
+            [equationTextField selectTextForInputatRange:NSMakeRange(idx + 1 , 0)];
+
             break;
     }
     if(    [openglController ParseEqu:self.equationTextField.text])
