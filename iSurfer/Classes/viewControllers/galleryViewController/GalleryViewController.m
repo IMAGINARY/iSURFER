@@ -103,7 +103,6 @@
 	switch (buttonIndex) {
 		
 		case 0:
-			printf("\nEstoy en editar\n");//go to isurfer with this surface
             [self.navigationController popToRootViewControllerAnimated:YES];
             [self.appcontroller.goiSurferViewController doGenerateSurface:self.surfaceEquation.text];
 			break;

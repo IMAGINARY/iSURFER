@@ -62,7 +62,6 @@ public:
         float x = m_radius * sin(u) * cos(v);
         float y = m_radius * cos(u);
         float z = m_radius * -sin(u) * sin(v);
-        //printf("punto esphera radius %f,  x = %f y = %f z= %f \n", m_radius , x, y, z);
         return vec3(x, y, z);
     }
     

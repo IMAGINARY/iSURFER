@@ -554,7 +554,6 @@
 //--------------------------------------------------------------------------------------------------------
 -(IBAction)doneButtonPressed{
     [equationTextField resignFirstResponder];
-    printf("Boton done apretado\n");
     [self scrollViewTo:nil movePixels:0 baseView:self.baseView];
     [self showExtKeyboard:NO];
     if( currentEquation != NULL || ![currentEquation isEqualToString:equationTextField.text]){

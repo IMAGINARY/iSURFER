@@ -44,8 +44,6 @@ static const int SurfaceCount = 6;
     
 
     void ApplicationEngine::Zoom(float radius){
-        printf("zoom radius %f \n", radius);
-
         surfaces[currentSurface]->Zoom(radius);
         m_renderingEngine->UpdateSurface(surfaces, currentSurface);
     }

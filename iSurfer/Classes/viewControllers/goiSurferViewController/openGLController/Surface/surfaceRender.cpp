@@ -28,7 +28,6 @@ void drawWire(Drawable drawable){
 
     int stride = 2 * sizeof(vec3);
     GLint position = programData::shaderHandle.wire_attr_pos;
-    //printf("drawable index count %d\n", drawable.IndexCount);
     
     glBindBuffer(GL_ARRAY_BUFFER, drawable.VertexBuffer);
     glVertexAttribPointer(position, 3, GL_FLOAT, GL_FALSE, stride, 0);
@@ -38,16 +37,6 @@ void drawWire(Drawable drawable){
 }
 
 void drawSurface(Drawable drawable){
-    /*
-    // Draw the surface.
-    int stride = 2 * sizeof(vec3);
-    //const GLvoid* offset = (const GLvoid*) sizeof(vec3);
-    GLint position = programData::shaderHandle.wire_attr_pos;
-    glBindBuffer(GL_ARRAY_BUFFER, drawable.VertexBuffer);
-    glVertexAttribPointer(position, 3, GL_FLOAT, GL_FALSE, stride, 0);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, drawable.IndexBuffer);
-    glDrawElements(GL_TRIANGLES, drawable.IndexCount, GL_UNSIGNED_SHORT, 0);
- */
     
     // Draw the surface.
     int stride = 2 * sizeof(vec3);
@@ -173,7 +162,6 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
 	}
 	checkGLError( AT );
     
-    printf("frame drew\n");
     
 
     

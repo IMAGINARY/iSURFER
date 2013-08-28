@@ -625,33 +625,6 @@ ivec2 oldLocation;
     w = vec4(transform.m14, transform.m24, transform.m34, transform.m44);
     programData::rot = mat4::fromCATransform3D(xvec, yvec, z, w);
     
-    
-    /*
-    printf("loation %f %f" , location.x, location.y);
-
-    
-    printf("transform\n");
-    
-    printf("  %f  %f   %f  %f \n", transform.m11 , transform.m12, transform.m13, transform.m14);
-    printf("  %f  %f   %f  %f \n", transform.m21 , transform.m22, transform.m23, transform.m24);
-    printf("  %f  %f   %f  %f \n", transform.m31 , transform.m32, transform.m33, transform.m34);
-    printf("  %f  %f   %f  %f \n", transform.m41 , transform.m42, transform.m43, transform.m44);
-
-    
-    printf("rotation\n");
-    for (int i = 0; i<4; i++) {
-        for (int j=0; j<4; j++) {
-            printf("  %f", programData::rot.Pointer()[i*4+j]);
-        }
-        printf("\n");
-        
-    }
-
-    */
-	//NSLog(@"x: %.2f    y:%.2f", x , y );
-     
-    //NSLog(@"calc x: %.2f  calcy: %.2f", x * M_PI / 180, y * M_PI / 180 );
-
 	[self drawFrame];
 
 }
@@ -745,10 +718,6 @@ ivec2 oldLocation;
 	NSString *fs1 = [[NSBundle mainBundle] pathForResource:@"fs1" ofType:@"glsl"];
 	NSString *vs2 = [[NSBundle mainBundle] pathForResource:@"vs2" ofType:@"glsl"];
 	NSString *fs2 = [[NSBundle mainBundle] pathForResource:@"fs2" ofType:@"glsl"];
-	//NSString *formula = @"x^2+y^2+z*x+y";
-	//iSurferDelegate::init([vs1 UTF8String],[fs1 UTF8String],[vs2 UTF8String],[fs2 UTF8String],[eq UTF8String]);
-    //NSString * str = [eq stringByReplacingOccurrencesOfString: @"-" withString:@"!"];
-    //str = [str stringByReplacingOccurrencesOfString: @"\u2212" withString:@"-"];
 
     if(Compiler::ParseEqu([eq UTF8String]))
         printf("\nError en C# %s\n", Compiler::getErrorMessage());

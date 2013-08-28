@@ -48,30 +48,12 @@ int Compiler::ParseEqu(const char *formula)
     FreeScanner(scanner);
     
     FreeTree(expt);
-    printf("\nformula\n");
-	printf("%s",formula);
     return ErrorExist();
 }
 
 void Compiler::init(const char *vs1, const char *fs1, const char *vs2, const char *fs2)
 {    
     glDeleteShader(programData::programs.alg_surface_glsl_program);
-    printf("code\n");
-	printf("%s", getCode());
-
-    
-    printf("\nderivate\n");
-    printf("%s", getCodeDerivate());
-    printf("\nderivate\n");
-    
-    //To print degre uncomment next line
-	//printf("\nDegree %d \n", EvalDegree(exp));
-
-    //To get OpenGL range and precision uncomment next three lines
-    //int range, precision;
-    //glGetShaderPrecisionFormat(GL_FRAGMENT_SHADER, GL_HIGH_FLOAT, &range, &precision);
-    //printf("Range %d, precision %d.\n", range, precision);
-    
     
 	checkGLError( AT );
     
@@ -173,10 +155,6 @@ GLuint Compiler::init( const char* vertex_shader_name, const char* fragment_shad
     shader_code_c_str_aux += shaderLen - positionDerivate;
   
     shader_code_c_str_aux[0] = '\0';
-
-    //Uncoment next line too print complete shader code.
-	//printf("\n\n\n\n\n%s\n\n\n\n\n\n\n", shader_code_c_str);
-	//fflush(stdout);
 
     const char *Frafmentshader_code_c_str = (const char *)shader_code_c_str;
 	glShaderSource( fragment_shader, 1, &Frafmentshader_code_c_str, NULL );
