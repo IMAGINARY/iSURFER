@@ -57,6 +57,7 @@
     IBOutlet UILabel* knotLabel;
     IBOutlet UILabel* bottleLabel;
     IBOutlet UILabel* mobiusLabel;
+    IBOutlet UILabel* changeLightsLabel;
 	
 	//Zoom view
 	IBOutlet UIView* zoomView;
@@ -117,6 +118,7 @@
 @property(nonatomic, retain)    IBOutlet UILabel* knotLabel;
 @property(nonatomic, retain)    IBOutlet UILabel* bottleLabel;
 @property(nonatomic, retain)    IBOutlet UILabel* mobiusLabel;
+@property(nonatomic, retain)    IBOutlet UILabel* changeLightsLabel;
 
 @property(nonatomic, retain) UIColor* color1;
 @property(nonatomic, retain) UIColor* color2;

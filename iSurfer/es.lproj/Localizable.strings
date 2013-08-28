@@ -42,6 +42,7 @@
 
 /*Menu settings*/
 "SHOW_BONDING" = "Mostrar Contenedor";
+"CHANGE_LIGHTS" = "Cambiar luces";
 "CONE" = "Cono";
 "SPHERE" = "Esfera";
 "TORUS" = "Rosca";

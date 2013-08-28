@@ -35,6 +35,7 @@ struct ProgramHandle {
     GLint Sampler;
     GLint TextureCoord;
     GLint TEXTURE;
+    GLint FXEDLIGHT;
 
 
 };
@@ -88,7 +89,7 @@ class programData
         static mat4 rot;
     /**
      * if true we show the BB with a wireframe.  
-     * @property debug
+     * @property wireFrame
      * @type {bool}
      * @default true
      */
@@ -96,7 +97,7 @@ class programData
 
     /**
      * if true use toon Shader instead of color.
-     * @property debug
+     * @property toonShader
      * @type {bool}
      * @default true
      */
@@ -104,26 +105,33 @@ class programData
 
     /**
      * if true use Texture instead of color.
-     * @property debug
+     * @property textureEnable
      * @type {bool}
      * @default true
      */
     static bool textureEnable;
     /**
      * if true we use a panoramic camera, else a orthogonal.  
-     * @property debug
+     * @property panoramic
      * @type {bool}
      * @default false
      */
         static bool panoramic;
     /**
      * if true we use a black background, else a white one.
-     * @property debug
+     * @property backgroundBlack
      * @type {bool}
      * @default false
      */
-    static bool backgroundBlack
-;
+    static bool backgroundBlack;
+    
+    /**
+     * if true Lights are moving with the surface.
+     * @property lightState
+     * @type {bool}
+     * @default false
+     */
+    static bool lightState;
 
     /**
      * it is the parametric surface to use as BB.  
@@ -166,6 +174,15 @@ class programData
      * @method UpdateColor
      */
         void static UpdateColor();
+
+    /**
+     * Usage:  setLightFixed(lightSwitch);
+     * ----------------------------------
+     * Set the lights moving or fixed and place them in the right position in each case.
+     * @method UpdateColor
+     */
+    
+        void static setLightFixed(bool lightSwitch);
 
     
     /**

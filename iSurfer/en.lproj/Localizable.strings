@@ -42,6 +42,7 @@
 
 /*Menu settings*/
 "SHOW_BONDING" = "Show bounding sphere";
+"CHANGE_LIGHTS" = "Change lights";
 "CONE" = "Cone";
 "SPHERE" = "Sphere";
 "TORUS" = "Torus";

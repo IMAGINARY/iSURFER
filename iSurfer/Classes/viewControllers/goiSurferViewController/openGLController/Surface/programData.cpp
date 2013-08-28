@@ -29,6 +29,8 @@ bool programData::panoramic = false;
 bool programData::toonShader = false;
 bool programData::textureEnable = false;
 bool programData::backgroundBlack = false;
+bool programData::lightState = false;
+
 
 GLuint m_gridTexture;
 IResourceManager *m_resourceManager;
@@ -43,7 +45,6 @@ void programData::InitializeProgramData()
     GLuint glsl_program = programData::programs.alg_surface_glsl_program;
     glUseProgram( glsl_program ); checkGLError( AT );
 
-    //printf("%d\n", glsl_program);
     programData::shaderHandle.u_modelview = glGetUniformLocation( glsl_program, "modelviewMatrix" ); checkGLError( AT );
     programData::shaderHandle.u_modelview_inv = glGetUniformLocation( glsl_program, "modelviewMatrixInverse" ); checkGLError( AT );
     programData::shaderHandle.u_projection = glGetUniformLocation( glsl_program, "projectionMatrix" ); checkGLError( AT );
@@ -52,6 +53,8 @@ void programData::InitializeProgramData()
     programData::shaderHandle.LightPosition = glGetUniformLocation(glsl_program, "LightPosition");
     programData::shaderHandle.LightPosition2 = glGetUniformLocation(glsl_program, "LightPosition2");
     programData::shaderHandle.LightPosition3 = glGetUniformLocation(glsl_program, "LightPosition3");
+    programData::shaderHandle.FXEDLIGHT = glGetUniformLocation(glsl_program, "FIXEDLIGHT");
+    
     programData::shaderHandle.AmbientMaterial = glGetUniformLocation(glsl_program, "AmbientMaterial");
     programData::shaderHandle.AmbientMaterial2 = glGetUniformLocation(glsl_program, "AmbientMaterial2");
     programData::shaderHandle.SpecularMaterial = glGetUniformLocation(glsl_program, "SpecularMaterial");
@@ -141,19 +144,52 @@ void programData::setConstant()
     //Power de la luz
     glUniform1f(programData::shaderHandle.Shininess, programData::Shininess);
 
-    vec4 lightPosition(0.25, 0.25, 1, 0);
-
-    glUniform3fv(programData::shaderHandle.LightPosition, 1, lightPosition.Pointer());
-    
-    vec4 lightPosition2(-0.25, -0.25, -1, 0);
-
-    glUniform3fv(programData::shaderHandle.LightPosition2, 1, lightPosition2.Pointer());
-
-    vec4 lightPosition3(-programData::radius, -programData::radius, -programData::radius, 0);
-    glUniform3fv(programData::shaderHandle.LightPosition3, 1, lightPosition3.Pointer());
-
+    setLightFixed(lightState);
 
 }
+
+void programData::setLightFixed(bool lightSwitch)
+{
+    if(!lightSwitch)
+    {
+        //Moving lights
+        vec4 lightPosition(0.0, 0.0, 1.0, 0);
+    
+        glUniform3fv(programData::shaderHandle.LightPosition, 1, lightPosition.Pointer());
+    
+        vec4 lightPosition2(-0.0, -0.0, -1.0, 0);
+    
+        glUniform3fv(programData::shaderHandle.LightPosition2, 1, lightPosition2.Pointer());
+    }else{
+        //Fixed lights
+        vec4 lightPosition(100, 100.0, 100.0, 0);
+        
+        glUniform3fv(programData::shaderHandle.LightPosition, 1, lightPosition.Pointer());
+        
+        vec4 lightPosition2(-100.0, 100, 100, 0);
+        
+        glUniform3fv(programData::shaderHandle.LightPosition2, 1, lightPosition2.Pointer());
+        
+    }
+    printf("\n%d\n", lightSwitch);
+    
+    float value = 0.0;
+    if (lightSwitch) {
+        value = 0.0;
+    }else
+    {
+        value =1.0;
+    }
+    printf("\nvalue =    %f\n", value);
+    
+    glUniform1f(programData::shaderHandle.FXEDLIGHT, value);
+
+    //luz 3
+        //vec4 lightPosition3(-programData::radius, -programData::radius, -programData::radius, 0);
+        //glUniform3fv(programData::shaderHandle.LightPosition3, 1, lightPosition3.Pointer());
+
+}
+
 
 void programData::SetEye(/*Matrix4x4 inverse*/){
     origin[0]=0.0;
@@ -163,7 +199,6 @@ void programData::SetEye(/*Matrix4x4 inverse*/){
     origin[4]=1.0;
     checkGLError( AT );
     
-    //mult_vect(inverse, origin, origin);
     glUniform4fv(programData::shaderHandle.eye, 1, origin);
     
     checkGLError( AT );
@@ -230,7 +265,6 @@ void programData::GenerateArrays()
     glEnableVertexAttribArray(programData::shaderHandle.TextureCoord); checkGLError( AT );
 
     
-    // no se
     glEnable(GL_DEPTH_TEST);
 
 }

@@ -25,7 +25,8 @@
 @implementation GoiSurferViewController
 //--------------------------------------------------------------------------------------------------------
 @synthesize equationTextField, keyboardExtensionBar, baseView, colorPaletteView, shareView, optionsViews, colorTestView, greenColorSlider, redColorSlider, blueColorSlider;
-@synthesize algebraicSurfaceView, equationTextfieldView,rotateimage, colorButton, shareButton, saveButton, galleriesButton, settingsButton, helpButton, zoomSlider, zoomView, algebraicSurface, temporalimgView, showBondingLabel, coneLabel, sphereLabel, torusLabel, knotLabel, bottleLabel, mobiusLabel;
+@synthesize algebraicSurfaceView, equationTextfieldView,rotateimage, colorButton, shareButton, saveButton, galleriesButton, settingsButton, helpButton, zoomSlider, zoomView,
+    algebraicSurface, temporalimgView, showBondingLabel, coneLabel, sphereLabel, torusLabel, knotLabel, bottleLabel, mobiusLabel, changeLightsLabel;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) initWithAppController:(AppController*)anappCtrl andAlgebraicSurface:(AlgebraicSurface*)surface{
@@ -146,6 +147,7 @@
     [settingsButton setTitle:NSLocalizedString(@"MENU_SETTINGS", nil) forState:UIControlStateNormal];
     [helpButton setTitle:NSLocalizedString(@"MENU_HELP", nil) forState:UIControlStateNormal];
     [showBondingLabel setText: NSLocalizedString(@"SHOW_BONDING", nil)];
+    [changeLightsLabel setText: NSLocalizedString(@"CHANGE_LIGHTS", nil)];
     [coneLabel setText: NSLocalizedString(@"CONE", nil)];
     [torusLabel setText: NSLocalizedString(@"TORUS", nil)];
     [sphereLabel setText: NSLocalizedString(@"SPHERE", nil)];
@@ -422,6 +424,19 @@
     }
 }
 //--------------------------------------------------------------------------------------------------------
+
+- (IBAction)FixedLights:(id)sender {
+    @synchronized(openglController)
+    {
+        
+        programData::lightState = !programData::lightState;
+        
+        programData::setLightFixed(programData::lightState);
+        
+        [openglController drawFrame];
+    }
+}
+
 
 - (IBAction)ToonShader:(id)sender {
     @synchronized(openglController)
