@@ -23,7 +23,6 @@
 		NSString *databasePath = [documentsDir stringByAppendingPathComponent:DB_FILE_NAME];
 		
 		NSFileManager *fileManager = [NSFileManager defaultManager];
-//	[fileManager removeItemAtPath:databasePath error:nil];
 
 		BOOL success = [fileManager fileExistsAtPath:databasePath];
 		
@@ -33,12 +32,8 @@
 			NSLog(@"%@", databasePathFromApp);
 			[fileManager copyItemAtPath:databasePathFromApp toPath:databasePath error:nil];
 		}
-		NSLog(@"%@", databasePath);
 
-		//[fileManager release];
-				
-	//	db = [[FMDatabase alloc]initWithPath: [NSString stringWithFormat:@"%@%@", [[NSBundle mainBundle] pathForResource:@"iSurferDB" ofType:@"db"], DB_FILE_PATH]];
-		db = [[FMDatabase alloc]initWithPath: databasePath];
+        db = [[FMDatabase alloc]initWithPath: databasePath];
 
 	}
 	return self;
@@ -89,25 +84,10 @@
 
 -(void)saveSurface:(AlgebraicSurface*)surface toGallery:(Gallery*)gal{
 	
-	NSLog(@"saveSurface");
 	[db beginTransaction];
     
 	NSData* imgdata = UIImagePNGRepresentation(surface.surfaceImage);
-	
-    //NSLog(@"%@", surface.surfaceID);
-    NSLog(@"GalID %d", gal.galID);
-    NSLog(@"GalName %@", gal.galleryName);
-    NSLog(@"imagen:  %@", [surface.surfaceImage description]);
-    /*
-    NSString* date = [[NSDate date] description ];
-    
-    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *pngFilePath = [NSString stringWithFormat:@"%@/%@-%@-%@.png",rootPath, surface.surfaceName, gal.galleryName, date ];
-	NSData *data1 = [NSData dataWithData:UIImagePNGRepresentation(surface.surfaceImage)];
-	[data1 writeToFile:pngFilePath atomically:YES];
-    
-    */
-    
+	   
     [self saveImage: surface.surfaceImage withName:surface.realImageName];
     
     gal.thumbNail = surface.surfaceImage;
@@ -149,7 +129,6 @@
 //------------------------------------------------------------------------
 
 -(void)saveGallery:(Gallery*)gallery{
-	NSLog(@"saveGallery");
     if( gallery.saved ){
         return;
     }
@@ -157,16 +136,11 @@
 	[db beginTransaction];
 	NSData* imgdata = UIImagePNGRepresentation(gallery.thumbNail);
 
-    NSLog(@"%@", gallery);
-    NSLog(@"%@", gallery.galleryName);
-//    NSLog(@"%@", gallery.editable);
-    NSLog(@"%@", imgdata);
     gallery.editable = YES;
     
 	[db executeUpdate:@"insert into galleries(editable, thumbnail) values(?, ?)",	
      [NSNumber numberWithInt: gallery.editable],
 	 imgdata];
-//    NSLog(@"INSERT1 %@", db.logsErrors);
     if ([db hadError]) {
         NSLog(@"Err %d: %@", [db lastErrorCode], [db lastErrorMessage]);
     }
@@ -175,13 +149,7 @@
     [rs next];
     int serial = [rs intForColumn:@"serial"];
     gallery.galID = serial;
-    
-    //NSString * query = [NSString stringWithFormat:@"%@%i%@%@%@%@%@", @"insert into galleriestexts (galleryid, name, description) values(", [NSNumber numberWithInt:gallery.galID].intValue, @",", gallery.galleryName, @",", gallery.galleryDescription, @")"];
-    
-    //NSLog(@"%d@", db.lastInsertRowId);
-    //[db executeQuery:query];
     [db executeUpdate:@"insert into galleriestexts (galleryid, name, description) values (?, ?, ?)",[NSNumber numberWithInt:gallery.galID], gallery.galleryName, gallery.galleryDescription];
-//	FMDBQuickCheck([db hadError]);
     
     if ([db hadError]) {
         NSLog(@"Err %d: %@", [db lastErrorCode], [db lastErrorMessage]);
@@ -196,8 +164,6 @@
 -(NSMutableArray*)getGalleries{
 	NSLog(@"getGalleries");
 	
-	//FMResultSet *rs2 =	[db executeQuery:@"SELECT * FROM sqlite_master WHERE type='table'"];
-
 	FMResultSet *rs = [db executeQuery:@"select id, editable, thumbnail from galleries"];
 	Gallery* g = nil;
 	NSMutableArray* array = [[[NSMutableArray alloc]init] autorelease];
@@ -214,8 +180,6 @@
         
         FMResultSet *rstext = [db executeQuery:query];
 
-//        FMResultSet *rstext = [db executeQuery:@"select name, description from galleriestexts where language = ? and galleryid = ?", [Language getLanguageIndex], [NSNumber numberWithInt:g.galID]];
-        
         FMResultSet * count = [db executeQuery:@"SELECT count(*) as surfaces FROM surfaces WHERE galleryid = ? GROUP BY galleryid", [NSNumber numberWithInt:g.galID]];
         
         //This method has to be executed always
@@ -226,12 +190,7 @@
 		g.galleryName = [rstext stringForColumn:@"name"];
 		g.galleryDescription =  [rstext stringForColumn:@"description"];
         
-        //NSLog(@"surfacesNumber %i", g.surfacesNumber);
-        NSLog(@"galleryId %i", g.galID);
-        NSLog(@"galleryName %@", g.galleryName);
-        NSLog(@"galleryDescription %@", g.galleryDescription);
-        NSLog(@"galleryThumb %i", [rs intForColumn:@"thumbnail"]);
-        
+            
 		g.editable = [rs intForColumn:@"editable"];
         g.saved = YES;
         
@@ -266,11 +225,7 @@
 -(void)populateGallery:(Gallery*)gallery{
 	
 	FMResultSet *rs = [db executeQuery:@"SELECT * FROM surfaces WHERE galleryid = ?", [NSNumber numberWithInt:gallery.galID]];
-    NSString * str = [NSString stringWithFormat:@"SELECT * FROM surfaces WHERE galleryid = ?", [NSNumber numberWithInt:gallery.galID]];
-    //NSLog(@"lala: %@",[NSString stringWithFormat:@"%d", [rs columnIndexForName:@"id"]]);
-    //NSLog(@"This string should end with NO: %@", [rs hasAnotherRow]?@"YES":@"NO");
-    //NSLog(@"This string should end with YES:  %@", [rs next]?@"YES":@"NO");
-    NSLog(@"POPULATE%@", str);
+
 	AlgebraicSurface* s = nil;
 	NSMutableArray* surfacesArray = [[NSMutableArray alloc]init];
 
@@ -294,33 +249,20 @@
         FMResultSet *rstext = [db executeQuery:query];
         
         [rstext next];
-        
-        //db executeQuery:@"select description from galleriestexts where galleryid = %d and language = 0", g.galID
-        
+                
         if(gallery.editable)
             s.surfaceImage = [UIImage imageWithData:[rs dataForColumn:@"image"]];
         else
             s.surfaceImage = [UIImage imageNamed:[rs stringForColumn:@"image"]];
         NSLog(@" %@",[rs stringForColumn:@"image"]);
         NSLog(@" %@",[s.surfaceImage description] );
-        
-//        NSLog(@"BD%@", [rstext stringForColumn:@"briefdescription"]);
-//        NSLog(@"CD%@", [rstext stringForColumn:@"completedescription"]);
-//        NSLog(@"N%@", [rstext stringForColumn:@"name"]);
-//        NSLog(@"E%@", [rs stringForColumn:@"equation"]);
-//        NSLog(@"RI%@", [rs stringForColumn:@"realimage"]);
-        
+                
 		s.briefDescription =  [rstext stringForColumn:@"briefdescription"];
         s.completeDescription = [rstext stringForColumn:@"completedescription"];
 		s.surfaceName =   [rstext stringForColumn:@"name"];
 		s.equation =  [rs stringForColumn:@"equation"];
         s.realImageName = [rs stringForColumn:@"realimage"];
         
-//        NSLog(@"%@", s.equation);
-//        NSLog(@"%@", s.briefDescription);
-//        NSLog(@"%@", s.completeDescription);
-//        NSLog(@"%@", s.surfaceName);
-
 		[s release];
 	}
 	[surfacesArray release];

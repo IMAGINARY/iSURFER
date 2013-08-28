@@ -79,10 +79,6 @@
 		[tmparray release];
         
         [galleriesArray addObjectsFromArray:[dataBase getGalleries]];
-
-        for( Gallery* g in galleriesArray ){
-            NSLog(@"%@   editable : %d", g.galleryName, g.editable );
-        }
     
 			
 		[self performSelector:@selector(goToMainScreen) withObject:nil afterDelay:SPLASH_DELAY];
