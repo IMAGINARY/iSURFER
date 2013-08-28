@@ -175,7 +175,9 @@
 		[surfaceDescriptionTextView becomeFirstResponder];
 	}else if( [surfaceDescriptionTextView isFirstResponder] ){
 		[surfaceDescriptionTextView resignFirstResponder];
-		[self showGalleriiesPicker:YES];
+        if(editableGalleries.count != 0) {
+            [self showGalleriiesPicker:YES];
+        }
 	}
 }
 //--------------------------------------------------------------------------------------------------------
