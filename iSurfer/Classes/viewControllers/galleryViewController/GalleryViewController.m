@@ -101,10 +101,8 @@
 	NSLog(@"clickedButtonAtIndex:");
 	NSLog(@"buttonIndes: %d", buttonIndex);
 	switch (buttonIndex) {
+		
 		case 0:
-			//Edit description
-			break;
-		case 1:
 			printf("\nEstoy en editar\n");//go to isurfer with this surface
             [self.navigationController popToRootViewControllerAnimated:YES];
             [self.appcontroller.goiSurferViewController doGenerateSurface:self.surfaceEquation.text];
@@ -116,7 +114,7 @@
 
 //--------------------------------------------------------------------------------------------------------
 -(void)showActionSheet{
-	 UIActionSheet* edditingOptions = [[UIActionSheet alloc]initWithTitle:@"Edit Surface" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Edit description", @"iSurf image", nil ];
+	 UIActionSheet* edditingOptions = [[UIActionSheet alloc]initWithTitle:@"Edit Surface" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles: @"iSurf image", nil ];
 	 [edditingOptions showInView:self.view];
 	 [edditingOptions release];
 }
