@@ -735,6 +735,8 @@
         case 30:{
             if(equationTextField.text.length > 0 ){                
                 if( idx > 0) {
+                    
+
                     NSString* str = [equationTextField.text substringToIndex:idx -1];
                     NSString* str2 = [equationTextField.text substringFromIndex:idx];                    
                     equationTextField.text = [NSString stringWithFormat:@"%@%@", str, str2];
@@ -746,17 +748,18 @@
         default:
             NSString* str = [equationTextField.text substringToIndex:idx ];
             NSString* str2 = [equationTextField.text substringFromIndex:idx];
-            
+            int strsize = [[keyboardButtons objectAtIndex:keyboardButton.tag]length];
+
             str = [str stringByAppendingString:[keyboardButtons objectAtIndex:keyboardButton.tag]];
             equationTextField.text = [NSString stringWithFormat:@"%@%@", str, str2];
-            [equationTextField selectTextForInputatRange:NSMakeRange(idx + 1 , 0)];
-
+            [equationTextField selectTextForInputatRange:NSMakeRange(idx + [[keyboardButtons objectAtIndex:keyboardButton.tag] length] , 0)];
+            if(    [openglController ParseEqu:self.equationTextField.text])
+                self.equationTextField.backgroundColor = [UIColor redColor];
+            else
+                self.equationTextField.backgroundColor = [UIColor whiteColor];
             break;
     }
-    if(    [openglController ParseEqu:self.equationTextField.text])
-        self.equationTextField.backgroundColor = [UIColor redColor];
-    else
-        self.equationTextField.backgroundColor = [UIColor whiteColor];
+    
 }
 //--------------------------------------------------------------------------------------------------------
 
