@@ -131,9 +131,7 @@
 
 -(IBAction)optionsButtonPressed:(id)sender;
 -(IBAction)hideOptions:(id)sender;
--(IBAction)sliderChanged:(id)sender;
 -(IBAction)saveImage;
--(IBAction)setSurfaceColors;
 -(UIImage*)getSurfaceImage;
 -(IBAction)flipToGalleries:(id)sender;
 -(void)setSurfaceImg;
