@@ -585,6 +585,7 @@
 	[UIView setAnimationDuration:0.3];
 	CGRect r=[self.keyboardExtensionBar frame];
 	CGRect eqtxtfldFrame = self.equationTextfieldView.frame;
+    CGRect 
 	if(yesOrNo){
 		[self.algebraicSurfaceView setAlpha:0.0];
 		self.saveButton.alpha = 0.0;
@@ -683,17 +684,12 @@
         case 30:{
             if(equationTextField.text.length > 0 ){                
                 if( idx > 0) {
-                    
-
                     NSString* str = [equationTextField.text substringToIndex:idx -1];
                     NSString* str2 = [equationTextField.text substringFromIndex:idx];                    
                     equationTextField.text = [NSString stringWithFormat:@"%@%@", str, str2];
                     [equationTextField selectTextForInputatRange:NSMakeRange(idx - 1, 0)];
-                    self.equationTextField.backgroundColor = [UIColor whiteColor];
-
                 }
             }
-            
             break;
         }
         default:
@@ -703,13 +699,16 @@
             str = [str stringByAppendingString:[keyboardButtons objectAtIndex:keyboardButton.tag]];
             equationTextField.text = [NSString stringWithFormat:@"%@%@", str, str2];
             [equationTextField selectTextForInputatRange:NSMakeRange(idx + [[keyboardButtons objectAtIndex:keyboardButton.tag] length] , 0)];
-            if(    [openglController ParseEqu:self.equationTextField.text])
-                self.equationTextField.backgroundColor = [UIColor colorWithRed:255/255.0 green:106/255.0 blue:106/255.0 alpha:1];
-            else
-                self.equationTextField.backgroundColor = [UIColor whiteColor];
-            break;
+           
     }
-
+    if([openglController ParseEqu:self.equationTextField.text]){
+        
+    
+        self.equationTextfieldView.backgroundColor = [UIColor colorWithRed:255/255.0 green:106/255.0 blue:106/255.0 alpha:1];
+    }
+    else{
+        self.equationTextfieldView.backgroundColor = [UIColor whiteColor];
+    }
 }
 //--------------------------------------------------------------------------------------------------------
 

@@ -2,7 +2,7 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1552</int>
-		<string key="IBDocument.SystemVersion">11G63b</string>
+		<string key="IBDocument.SystemVersion">11G63</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
 		<string key="IBDocument.AppKitVersion">1138.51</string>
 		<string key="IBDocument.HIToolboxVersion">569.00</string>
@@ -157,7 +157,7 @@
 									<bool key="EncodedWithXMLCoder">YES</bool>
 									<object class="IBUIImageView" id="912682984">
 										<reference key="NSNextResponder" ref="1007023619"/>
-										<int key="NSvFlags">290</int>
+										<int key="NSvFlags">-2147483358</int>
 										<string key="NSFrameSize">{430, 44}</string>
 										<reference key="NSSuperview" ref="1007023619"/>
 										<reference key="NSWindow"/>
@@ -212,6 +212,7 @@
 												</object>
 											</object>
 										</object>
+										<int key="IBUIBorderStyle">1</int>
 										<string key="IBUIPlaceholder">Insert equation</string>
 										<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 										<float key="IBUIMinimumFontSize">14</float>
@@ -2774,38 +2775,16 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>CameraChanged:</string>
-							<string>FixedLights:</string>
-							<string>Texture:</string>
-							<string>ToonShader:</string>
-							<string>WireChanged:</string>
-							<string>cancelKeyboard:</string>
 							<string>flipToGalleries:</string>
-							<string>helpButtonPressed:</string>
 							<string>hideOptions:</string>
 							<string>keyboardBarButtonPressed:</string>
 							<string>keyboardBarHyppenMinusButtonPressed:</string>
 							<string>keyboardBarMinusButtonPressed:</string>
-							<string>keyboardKeyTapped:</string>
 							<string>optionsButtonPressed:</string>
 							<string>saveImage</string>
-							<string>setSurfaceColors</string>
-							<string>settingsSliderChanged:</string>
-							<string>sliderChanged:</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -2819,57 +2798,18 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>CameraChanged:</string>
-							<string>FixedLights:</string>
-							<string>Texture:</string>
-							<string>ToonShader:</string>
-							<string>WireChanged:</string>
-							<string>cancelKeyboard:</string>
 							<string>flipToGalleries:</string>
-							<string>helpButtonPressed:</string>
 							<string>hideOptions:</string>
 							<string>keyboardBarButtonPressed:</string>
 							<string>keyboardBarHyppenMinusButtonPressed:</string>
 							<string>keyboardBarMinusButtonPressed:</string>
-							<string>keyboardKeyTapped:</string>
 							<string>optionsButtonPressed:</string>
 							<string>saveImage</string>
-							<string>setSurfaceColors</string>
-							<string>settingsSliderChanged:</string>
-							<string>sliderChanged:</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
-								<string key="name">CameraChanged:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">FixedLights:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">Texture:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">ToonShader:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">WireChanged:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">cancelKeyboard:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
 								<string key="name">flipToGalleries:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">helpButtonPressed:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -2889,27 +2829,11 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">keyboardKeyTapped:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
 								<string key="name">optionsButtonPressed:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">saveImage</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">setSurfaceColors</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">settingsSliderChanged:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">sliderChanged:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 						</object>
