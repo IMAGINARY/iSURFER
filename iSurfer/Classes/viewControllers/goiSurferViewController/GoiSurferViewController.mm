@@ -578,6 +578,7 @@
     currentEquation = [self.equationTextField.text copy];
 }
 
+
 #pragma mark Keyboard methods
 //--------------------------------------------------------------------------------------------------------
 -(void)showExtKeyboard:(BOOL)yesOrNo {

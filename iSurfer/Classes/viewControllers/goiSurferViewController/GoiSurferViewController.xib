@@ -177,6 +177,10 @@
 										<reference key="NSSuperview" ref="1007023619"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="361258819"/>
+										<object class="NSColor" key="IBUIBackgroundColor" id="93507567">
+											<int key="NSColorSpace">3</int>
+											<bytes key="NSWhite">MCAwAA</bytes>
+										</object>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -267,10 +271,7 @@
 								<reference key="NSSuperview" ref="935778272"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="912682984"/>
-								<object class="NSColor" key="IBUIBackgroundColor" id="93507567">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MCAwAA</bytes>
-								</object>
+								<reference key="IBUIBackgroundColor" ref="93507567"/>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 							<object class="IBUIView" id="60771713">
@@ -2775,16 +2776,34 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>CameraChanged:</string>
+							<string>FixedLights:</string>
+							<string>Texture:</string>
+							<string>ToonShader:</string>
+							<string>WireChanged:</string>
+							<string>cancelKeyboard:</string>
 							<string>flipToGalleries:</string>
+							<string>helpButtonPressed:</string>
 							<string>hideOptions:</string>
 							<string>keyboardBarButtonPressed:</string>
 							<string>keyboardBarHyppenMinusButtonPressed:</string>
 							<string>keyboardBarMinusButtonPressed:</string>
+							<string>keyboardKeyTapped:</string>
 							<string>optionsButtonPressed:</string>
 							<string>saveImage</string>
+							<string>settingsSliderChanged:</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -2798,18 +2817,55 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>CameraChanged:</string>
+							<string>FixedLights:</string>
+							<string>Texture:</string>
+							<string>ToonShader:</string>
+							<string>WireChanged:</string>
+							<string>cancelKeyboard:</string>
 							<string>flipToGalleries:</string>
+							<string>helpButtonPressed:</string>
 							<string>hideOptions:</string>
 							<string>keyboardBarButtonPressed:</string>
 							<string>keyboardBarHyppenMinusButtonPressed:</string>
 							<string>keyboardBarMinusButtonPressed:</string>
+							<string>keyboardKeyTapped:</string>
 							<string>optionsButtonPressed:</string>
 							<string>saveImage</string>
+							<string>settingsSliderChanged:</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
+								<string key="name">CameraChanged:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">FixedLights:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">Texture:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">ToonShader:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">WireChanged:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">cancelKeyboard:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">flipToGalleries:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">helpButtonPressed:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -2829,11 +2885,19 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">keyboardKeyTapped:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">optionsButtonPressed:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">saveImage</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">settingsSliderChanged:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 						</object>

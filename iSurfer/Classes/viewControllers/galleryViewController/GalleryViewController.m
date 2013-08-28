@@ -239,7 +239,7 @@
 }
 //--------------------------------------------------------------------------------------------------------
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-	return 70;
+	return 60;
 }
 //--------------------------------------------------------------------------------------------------------
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
