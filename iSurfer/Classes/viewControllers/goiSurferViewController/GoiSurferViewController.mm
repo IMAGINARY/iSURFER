@@ -84,8 +84,8 @@
 	UISlider* tmpzoomSlider = [[UISlider alloc]init];
     CGRect zoomframe = CGRectMake(-115, 25,80, 35);
     tmpzoomSlider.frame = zoomframe;
-	tmpzoomSlider.minimumValue = 1;
-	tmpzoomSlider.maximumValue = 100;
+	tmpzoomSlider.minimumValue = 0.5;
+	tmpzoomSlider.maximumValue = 50;
 	[tmpzoomSlider setUserInteractionEnabled:NO];
 	CGAffineTransform trans = CGAffineTransformMakeRotation(-M_PI * 0.5);
     tmpzoomSlider.transform = trans;
@@ -340,12 +340,12 @@
 		previousScale = pinchGesture.scale;
 	}else if( pinchGesture.state == UIGestureRecognizerStateChanged ){
 		if( previousScale > pinchGesture.scale ){
-			self.zoomSlider.value -= 1;
+			self.zoomSlider.value -= self.zoomSlider.value/ (10*self.zoomSlider.maximumValue);
 		}else {
-			self.zoomSlider.value += 1;
+			self.zoomSlider.value += self.zoomSlider.value/ (10*self.zoomSlider.maximumValue);
 		}
 	}else if (pinchGesture.state == UIGestureRecognizerStateEnded) {
-		[openglController setZoom:101.1111 - zoomSlider.value];
+		[openglController setZoom:50.6 - zoomSlider.value];
 		//[openglController drawFrame];
 	}
 	previousScale = pinchGesture.scale;
@@ -391,7 +391,7 @@
 	
     //	[self performSelectorInBackground:@selector(doOpenGLMagic) withObject:nil];
 	//  [self 	doOpenGLMagic];
-	self.zoomSlider.value = 101.0 - [openglController zoom];
+	self.zoomSlider.value = 50.7 + [openglController zoom];
     
     if( self.shouldCompileSurface){
         [self doneButtonPressed];
@@ -706,7 +706,6 @@
     
     
 }
-//--------------------------------------------------------------------------------------------------------
 #pragma mark dealloc
 
 -(IBAction)saveImage{
