@@ -56,7 +56,6 @@
     colorpalette.delegate = self;
     
     colorpalette.color =     [UIColor colorWithRed:programData::colorR green:programData::colorG blue:programData::colorB alpha:0.5];
-    //[UIColor greenColor];
     colorpalette.view.frame = CGRectMake(0, 0, 430, 320 );
     
 	[optionsViews addObject:self.shareView];
@@ -133,17 +132,11 @@
 	
 	
 	algebraicsurfaceViewFrame = algebraicSurfaceView.frame;
-    //   [self 	doOpenGLMagic];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(receivedDrewFrameNotif)
-                                                 name:@"drewnotif"
-                                               object:nil];
-    
-    
     
 	[self performSelectorInBackground:@selector(doOpenGLMagic) withObject:nil];
 }
+
+//--------------------------------------------------------------------------------------------------------
 
 - (void) localize{
     [colorButton setTitle: NSLocalizedString(@"MENU_COLOR", nil) forState:UIControlStateNormal];
@@ -162,10 +155,6 @@
 }
 
 
--(void)receivedDrewFrameNotif{
-    
-    
-}
 //--------------------------------------------------------------------------------------------------------
 
 -(void)doOpenGLMagic{
@@ -176,23 +165,16 @@
     openglController.delegate = self;
 	openglController.view = algebraicSurfaceView;
 	[openglController setupGLContxt];
-    //	[openglController performSelectorInBackground:@selector(startAnimation) withObject:nil];]
 	[openglController startAnimation];
     [self performSelectorOnMainThread:@selector(dismissRosquet) withObject:nil waitUntilDone:NO];
     [openglController drawFrame];
     
 }
+//--------------------------------------------------------------------------------------------------------
 
 -(void)dismissRosquet{
     
     [self removeLoadingView];
-    [self performSelector:@selector(setTemporalImage) withObject:nil afterDelay:0.5];
-}
-
--(void)setTemporalImage{
-    UIImage* image = [algebraicSurfaceView snapshot];
-    //   temporalimgView.image = [algebraicSurfaceView snapshot];
-    
 }
 
 //--------------------------------------------------------------------------------------------------------
@@ -222,44 +204,23 @@
     NSLog(@"changeframe");
     
 }
+//--------------------------------------------------------------------------------------------------------
 
 -(void)handlePanGesture:(UIPanGestureRecognizer*)gestureRecognizer{
 	CGPoint p;
 	p = [gestureRecognizer locationInView:baseView]; //:gestureRecognizer.view];
-    //p = [gestureRecognizer translationInView:gestureRecognizer.view];
     
 	CGRect f;
 	switch (gestureRecognizer.state) {
 		case UIGestureRecognizerStateBegan:
 			NSLog(@"began");
-			//temporalimgView.image = [self captureView:algebraicSurfaceView];
-            //      temporalimgView.image = [algebraicSurfaceView snapshot];
-            
-            //
-            // UITouch* touch = [touches anyObject];
-            // CGPoint previous  = [touch previousLocationInView: self];
-            // CGPoint current = [touch locationInView: self];
             
             [openglController initRotationX:p.x Y:p.y];
             [self changeframe];
-            //     [self performSelector:@selector(changeframe) withObject:nil afterDelay:0.1];
-            
             
 			break;
 		case UIGestureRecognizerStateChanged:
             [openglController rotateX:p.x Y:p.y];
-            
-            //	temporalimgView.image = [self captureView:algebraicSurfaceView];
-            //   temporalimgView.image =[self imageWithView:algebraicSurfaceView];
-            //	temporalimgView.image = [openglController drawableToCGImage];
-            //        temporalimgView.image = [algebraicSurfaceView snapUIImage];
-            
-            //      temporalimgView.image = [self captureView:algebraicSurfaceView];
-            //     temporalimgView.image = [algebraicSurfaceView screenShotUIImage];
-            //     temporalimgView.image = [algebraicSurfaceView drawableToCGImage];
-            
-            
-            //            temporalimgView.image = [algebraicSurfaceView snapshot];
             
 			break;
 		case UIGestureRecognizerStateEnded:
@@ -268,7 +229,6 @@
 			[openglController endRotationX:p.x Y:p.y];
             NSLog(@"UIGestureRecognizerStateEnded");
             
-            //			[openglController rotateX:p.x Y:p.y];
             if( fullScreen){
                 f = CGRectMake(0, 0, 440, 320	);
             }else{
@@ -277,22 +237,10 @@
 			algebraicSurfaceView.frame = f;
             
 			[openglController performSelector:@selector(drawFrame) withObject:nil afterDelay:0.1  ];
-            [self performSelector:@selector(hidetempimage) withObject:nil afterDelay:0.4];
-            
-            
 			break;
 		default:
 			break;
 	}
-}
-
-//--------------------------------------------------------------------------------------------------------
--(void)hidetempimage{
-    //    temporalimgView.image = [algebraicSurfaceView snapshot];
-    
-    //  temporalimgView.hidden = YES;
-    
-    
 }
 //-------------------------------------------------------------------------------------------------------
 
@@ -346,7 +294,6 @@
 		}
 	}else if (pinchGesture.state == UIGestureRecognizerStateEnded) {
 		[openglController setZoom:50.6 - zoomSlider.value];
-		//[openglController drawFrame];
 	}
 	previousScale = pinchGesture.scale;
 }
@@ -364,10 +311,8 @@
 	
 	if(fullScreen){
 		fullScreen = NO;
-        //	[[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 		layer.cornerRadius = 8;
 		[algebraicSurfaceView setFrame:algebraicsurfaceViewFrame];
-        //	[self.algebraicSurfaceView setFrame:CGRectMake(109, 7, 364, 2w58)];
 		zoomframe.origin.y = 27;
         temporalimgView.frame = CGRectMake(0, 0, 400, 276);
         
@@ -388,9 +333,7 @@
 }
 //--------------------------------------------------------------------------------------------------------
 -(void)viewDidAppear:(BOOL)animated{
-	
-    //	[self performSelectorInBackground:@selector(doOpenGLMagic) withObject:nil];
-	//  [self 	doOpenGLMagic];
+
 	self.zoomSlider.value = 50.7 + [openglController zoom];
     
     if( self.shouldCompileSurface){
@@ -455,8 +398,6 @@
             
         }
         [openglController setZoom:openglController.zoom];
-        //[openglController generateSurface:self.equationTextField.text];
-        //[openglController drawFrame];
     }
 }
 //--------------------------------------------------------------------------------------------------------
@@ -469,6 +410,7 @@
         [openglController drawFrame];
     }
 }
+//--------------------------------------------------------------------------------------------------------
 
 - (IBAction)CameraChanged:(id)sender {
     @synchronized(openglController)
@@ -485,6 +427,7 @@
         [openglController drawFrame];
     }
 }
+//--------------------------------------------------------------------------------------------------------
 
 - (IBAction)ToonShader:(id)sender {
     @synchronized(openglController)
@@ -497,6 +440,7 @@
         [openglController drawFrame];
     }
 }
+//--------------------------------------------------------------------------------------------------------
 
 - (IBAction)Texture:(id)sender {
     @synchronized(openglController)
@@ -533,19 +477,21 @@
 			break;
 	}
 }
+//--------------------------------------------------------------------------------------------------------
 
 -(IBAction)helpButtonPressed:(id)sender{
     [appcontroller goToHelp];
 }
+//--------------------------------------------------------------------------------------------------------
 
 - (void)colorPickerViewController:(FCColorPickerViewController *)colorPicker didSelectColor:(UIColor *)color{
     const float* colors = CGColorGetComponents( color.CGColor );
     [openglController setSurfaceColorRed:colors[0] Green:colors[1] Blue:colors[2]];
-//	[self showOptionsViewWrapper:NO view:colorPicker.view];
     [openglController drawFrame];
     self.color1 = color;
     
 }
+//--------------------------------------------------------------------------------------------------------
 
 -(void)removeColorPalette{
     [self showOptionsViewWrapper:NO view:colorPaletteView];
@@ -553,11 +499,11 @@
     colorpalette.view.hidden = YES;
 }
 
+//--------------------------------------------------------------------------------------------------------
 
 - (void)colorPickerViewController:(FCColorPickerViewController *)colorPicker didSelectColor2:(UIColor *)color{
     const float* colors = CGColorGetComponents( color.CGColor );
     [openglController setSurfaceColor2Red:colors[0] Green:colors[1] Blue:colors[2]];
-	//[self showOptionsViewWrapper:NO view:colorPicker.view];
     [openglController drawFrame];
     self.color2 = color;
 
@@ -573,14 +519,17 @@
 	UIButton* button = (UIButton*)sender;
 	self.equationTextField.text = [equationTextField.text stringByAppendingString:button.titleLabel.text];
 }
+//--------------------------------------------------------------------------------------------------------
 
 -(IBAction)keyboardBarMinusButtonPressed:(id)sender{
 	self.equationTextField.text = [equationTextField.text stringByAppendingString:@"\u2212"];
 }
+//--------------------------------------------------------------------------------------------------------
 
 -(IBAction)keyboardBarHyppenMinusButtonPressed:(id)sender{
 	self.equationTextField.text = [equationTextField.text stringByAppendingString:@"-"];
 }
+//--------------------------------------------------------------------------------------------------------
 
 -(void)removeLoadingView{
     if( lv != NULL){
@@ -588,12 +537,14 @@
         lv = nil;
     }
 }
+//--------------------------------------------------------------------------------------------------------
 
 -(void)doGenerateSurface:(NSString*)eqText{
     self.shouldCompileSurface = YES;
     NSString* eqstr = [eqText substringToIndex:eqText.length - 2];
     equationTextField.text = eqstr;
 }
+//--------------------------------------------------------------------------------------------------------
 
 -(void)doSurfaceGeneration{
     
@@ -617,10 +568,6 @@
         }
     }
     currentEquation = [self.equationTextField.text copy];
-    
-    
-    //  [openglController performSelectorInBackground:@selector(generateSurface:) withObject: self.equationTextField.text];
-   	//aca habria que hacer todo el validamiento de la ecuacion
 }
 
 #pragma mark Keyboard methods
@@ -635,7 +582,6 @@
 		self.saveButton.alpha = 0.0;
         eqtxtfldFrame.origin.y = EQUATION_TEXTFIELD_EDITING_HEIGHT;
         eqtxtfldFrame.size.width = 480;
-     //   equationTextField.frame.size.width = 440;
 		r.origin.y=  KEYBOARD_VIEW_SHOW_HEIGHT;
 	}else{
 		self.saveButton.alpha = 1.0;
@@ -695,16 +641,10 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
 	[self scrollViewTo:equationTextfieldView movePixels:VIEW_SCROLL baseView:self.baseView];
     [self showExtKeyboard:YES];
-    
-    //    [textField setEditing:YES];
-    // [textField becomeFirstResponder];
   	return YES;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
-    // [textField becomeFirstResponder];
-    
-    
 }
 #pragma mark dealloc
 
@@ -741,25 +681,27 @@
                     NSString* str2 = [equationTextField.text substringFromIndex:idx];                    
                     equationTextField.text = [NSString stringWithFormat:@"%@%@", str, str2];
                     [equationTextField selectTextForInputatRange:NSMakeRange(idx - 1, 0)];
+                    self.equationTextField.backgroundColor = [UIColor whiteColor];
+
                 }
             }
+            
             break;
         }
         default:
             NSString* str = [equationTextField.text substringToIndex:idx ];
             NSString* str2 = [equationTextField.text substringFromIndex:idx];
-            int strsize = [[keyboardButtons objectAtIndex:keyboardButton.tag]length];
 
             str = [str stringByAppendingString:[keyboardButtons objectAtIndex:keyboardButton.tag]];
             equationTextField.text = [NSString stringWithFormat:@"%@%@", str, str2];
             [equationTextField selectTextForInputatRange:NSMakeRange(idx + [[keyboardButtons objectAtIndex:keyboardButton.tag] length] , 0)];
             if(    [openglController ParseEqu:self.equationTextField.text])
-                self.equationTextField.backgroundColor = [UIColor redColor];
+                self.equationTextField.backgroundColor = [UIColor colorWithRed:255/255.0 green:106/255.0 blue:106/255.0 alpha:1];
             else
                 self.equationTextField.backgroundColor = [UIColor whiteColor];
             break;
     }
-    
+
 }
 //--------------------------------------------------------------------------------------------------------
 
