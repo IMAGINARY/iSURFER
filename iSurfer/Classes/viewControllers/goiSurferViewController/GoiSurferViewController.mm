@@ -45,7 +45,7 @@
     
 	[super viewDidLoad];
     self.shouldCompileSurface = NO;
-    keyboardButtons = [[NSArray alloc]initWithObjects:@"x", @"y",@"z",@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7", @"8",@"9",@"+",@"-",@"*",@"^2",@"^3",@"^",@"(",@")",@",",@"",nil];
+    keyboardButtons = [[NSArray alloc]initWithObjects:@"x", @"y",@"z",@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7", @"8",@"9",@"+",@"-",@"*",@"^2",@"^3",@"^",@"(",@")",@".",@"",nil];
 	//Color sliders conf
     
     [self localize];

@@ -20,6 +20,8 @@
 		3308B17C1533EC87001E853F /* error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B1721533EC87001E853F /* error.cpp */; };
 		3308B17D1533EC87001E853F /* programData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B1741533EC87001E853F /* programData.cpp */; };
 		3308B17E1533EC87001E853F /* surfaceRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3308B1761533EC87001E853F /* surfaceRender.cpp */; };
+		337C009617CE541300B10F45 /* button-point.png in Resources */ = {isa = PBXBuildFile; fileRef = 337C009517CE541300B10F45 /* button-point.png */; };
+		337C009817CE549800B10F45 /* button-point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 337C009717CE549800B10F45 /* button-point@2x.png */; };
 		338CE34015FABA6C00E8AA18 /* vs3.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 338CE33F15FABA6C00E8AA18 /* vs3.glsl */; };
 		3395689C168FEA4B002F5CCC /* yuidoc.json in Resources */ = {isa = PBXBuildFile; fileRef = 3395689B168FEA4A002F5CCC /* yuidoc.json */; };
 		33FA6549176990CC0074C59A /* ResourceManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33FA6548176990CC0074C59A /* ResourceManager.mm */; };
@@ -283,6 +285,8 @@
 		3308B1751533EC87001E853F /* programData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = programData.hpp; sourceTree = "<group>"; };
 		3308B1761533EC87001E853F /* surfaceRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surfaceRender.cpp; sourceTree = "<group>"; };
 		3308B1771533EC87001E853F /* surfaceRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = surfaceRender.h; sourceTree = "<group>"; };
+		337C009517CE541300B10F45 /* button-point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-point.png"; sourceTree = "<group>"; };
+		337C009717CE549800B10F45 /* button-point@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-point@2x.png"; sourceTree = "<group>"; };
 		338CE33F15FABA6C00E8AA18 /* vs3.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vs3.glsl; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		3395689B168FEA4A002F5CCC /* yuidoc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = yuidoc.json; sourceTree = "<group>"; };
 		33FA6548176990CC0074C59A /* ResourceManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourceManager.mm; sourceTree = "<group>"; };
@@ -714,6 +718,8 @@
 		5E0A32DD16C9870B00F32E77 /* keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				337C009717CE549800B10F45 /* button-point@2x.png */,
+				337C009517CE541300B10F45 /* button-point.png */,
 				5E0A32DE16C9870B00F32E77 /* button-0.png */,
 				5E0A32DF16C9870B00F32E77 /* button-0@2x.png */,
 				5E0A32E016C9870B00F32E77 /* button-1.png */,
@@ -1514,6 +1520,8 @@
 				B58EFEC217B6EAB600EBD260 /* nb-surf13.png in Resources */,
 				B58EFEC317B6EAB600EBD260 /* nb-surf14.png in Resources */,
 				B588455B17CC2BBC00379C92 /* ImageCreditsViewController.xib in Resources */,
+				337C009617CE541300B10F45 /* button-point.png in Resources */,
+				337C009817CE549800B10F45 /* button-point@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
