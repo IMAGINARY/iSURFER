@@ -336,6 +336,12 @@
         [self doneButtonPressed];
         self.shouldCompileSurface = NO;
     }
+    if([openglController ParseEqu:self.equationTextField.text]){
+        self.equationTextfieldView.backgroundColor = [UIColor colorWithRed:255/255.0 green:106/255.0 blue:106/255.0 alpha:1];
+    }
+    else{
+        self.equationTextfieldView.backgroundColor = [UIColor whiteColor];
+    }
 
 	[super viewDidAppear:animated];
 	
@@ -592,14 +598,14 @@
 		self.saveButton.alpha = 0.0;
         eqtxtfldFrame.origin.y = EQUATION_TEXTFIELD_EDITING_HEIGHT;
         eqtxtfldFrame.size.width = 480;
-        eqtxtfframe.size.width += 50;
+        eqtxtfframe.size.width = 430 ;
 		r.origin.y=  KEYBOARD_VIEW_SHOW_HEIGHT;
 	}else{
 		self.saveButton.alpha = 1.0;
 		[self.algebraicSurfaceView setAlpha:1.0];
 		eqtxtfldFrame.origin.y = EQUATION_TEXTFIELD_IDLE_HEIGHT;
 		r.origin.y= KEYBOARD_VIEW_HIDE_HEIGHT;
-        eqtxtfframe.size.width -= 50;
+        eqtxtfframe.size.width = 380;
 
         eqtxtfldFrame.size.width = 430;
 
@@ -707,8 +713,6 @@
            
     }
     if([openglController ParseEqu:self.equationTextField.text]){
-        
-    
         self.equationTextfieldView.backgroundColor = [UIColor colorWithRed:255/255.0 green:106/255.0 blue:106/255.0 alpha:1];
     }
     else{
