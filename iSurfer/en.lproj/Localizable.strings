@@ -43,6 +43,8 @@
 /*Menu settings*/
 "SHOW_BONDING" = "Show bounding sphere";
 "CHANGE_LIGHTS" = "Change lights";
+"TOON_SHADER" = "Toon shader";
+"BLACK_BACKGROUND" = "Black background";
 "CONE" = "Cone";
 "SPHERE" = "Sphere";
 "TORUS" = "Torus";

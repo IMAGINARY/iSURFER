@@ -26,7 +26,7 @@
 //--------------------------------------------------------------------------------------------------------
 @synthesize equationTextField, keyboardExtensionBar, baseView, colorPaletteView, shareView, optionsViews, colorTestView, greenColorSlider, redColorSlider, blueColorSlider;
 @synthesize algebraicSurfaceView, equationTextfieldView,rotateimage, colorButton, shareButton, saveButton, galleriesButton, settingsButton, helpButton, zoomSlider, zoomView,
-    algebraicSurface, temporalimgView, showBondingLabel, coneLabel, sphereLabel, torusLabel, knotLabel, bottleLabel, mobiusLabel, changeLightsLabel;
+    algebraicSurface, temporalimgView, showBondingLabel, coneLabel, sphereLabel, torusLabel, knotLabel, bottleLabel, mobiusLabel, changeLightsLabel, toonShaderLabel, blackBackgroundLabel;
 //--------------------------------------------------------------------------------------------------------
 
 -(id) initWithAppController:(AppController*)anappCtrl andAlgebraicSurface:(AlgebraicSurface*)surface{
@@ -148,6 +148,8 @@
     [helpButton setTitle:NSLocalizedString(@"MENU_HELP", nil) forState:UIControlStateNormal];
     [showBondingLabel setText: NSLocalizedString(@"SHOW_BONDING", nil)];
     [changeLightsLabel setText: NSLocalizedString(@"CHANGE_LIGHTS", nil)];
+    [toonShaderLabel setText: NSLocalizedString(@"TOON_SHADER", nil)];
+    [blackBackgroundLabel setText: NSLocalizedString(@"BLACK_BACKGROUND", nil)];
     [coneLabel setText: NSLocalizedString(@"CONE", nil)];
     [torusLabel setText: NSLocalizedString(@"TORUS", nil)];
     [sphereLabel setText: NSLocalizedString(@"SPHERE", nil)];

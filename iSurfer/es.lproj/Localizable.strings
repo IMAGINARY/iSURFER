@@ -41,8 +41,10 @@
 "ERROR_CHOOSE_GALLERY" = "Debes elegir una galería";
 
 /*Menu settings*/
-"SHOW_BONDING" = "Mostrar Contenedor";
+"SHOW_BONDING" = "Mostrar contenedor";
 "CHANGE_LIGHTS" = "Cambiar luces";
+"TOON_SHADER" = "Shader animado";
+"BLACK_BACKGROUND" = "Fondo negro";
 "CONE" = "Cono";
 "SPHERE" = "Esfera";
 "TORUS" = "Rosca";

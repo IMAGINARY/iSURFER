@@ -58,6 +58,8 @@
     IBOutlet UILabel* bottleLabel;
     IBOutlet UILabel* mobiusLabel;
     IBOutlet UILabel* changeLightsLabel;
+    IBOutlet UILabel* toonShaderLabel;
+    IBOutlet UILabel* blackBackgroundLabel;
 	
 	//Zoom view
 	IBOutlet UIView* zoomView;
@@ -119,6 +121,8 @@
 @property(nonatomic, retain)    IBOutlet UILabel* bottleLabel;
 @property(nonatomic, retain)    IBOutlet UILabel* mobiusLabel;
 @property(nonatomic, retain)    IBOutlet UILabel* changeLightsLabel;
+@property(nonatomic, retain)    IBOutlet UILabel* toonShaderLabel;
+@property(nonatomic, retain)    IBOutlet UILabel* blackBackgroundLabel;
 
 @property(nonatomic, retain) UIColor* color1;
 @property(nonatomic, retain) UIColor* color2;

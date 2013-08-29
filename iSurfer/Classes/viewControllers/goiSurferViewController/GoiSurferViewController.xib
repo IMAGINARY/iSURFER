@@ -909,6 +909,7 @@
 								<string key="NSFrame">{{436, 115}, {44, 44}}</string>
 								<reference key="NSSuperview" ref="953853906"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -1767,6 +1768,22 @@
 						<reference key="destination" ref="821837601"/>
 					</object>
 					<int key="connectionID">221</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">blackBackgroundLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="94601587"/>
+					</object>
+					<int key="connectionID">222</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">toonShaderLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="251853288"/>
+					</object>
+					<int key="connectionID">223</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -2737,7 +2754,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">221</int>
+			<int key="maxID">223</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2908,6 +2925,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>algebraicSurfaceView</string>
 							<string>baseView</string>
+							<string>blackBackgroundLabel</string>
 							<string>blueColorSlider</string>
 							<string>bottleLabel</string>
 							<string>changeLightsLabel</string>
@@ -2933,6 +2951,7 @@
 							<string>showBondingLabel</string>
 							<string>sphereLabel</string>
 							<string>temporalimgView</string>
+							<string>toonShaderLabel</string>
 							<string>torusLabel</string>
 							<string>zoomView</string>
 						</object>
@@ -2940,6 +2959,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>EAGLView</string>
 							<string>UIView</string>
+							<string>UILabel</string>
 							<string>UISlider</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
@@ -2966,6 +2986,7 @@
 							<string>UILabel</string>
 							<string>UIImageView</string>
 							<string>UILabel</string>
+							<string>UILabel</string>
 							<string>UIView</string>
 						</object>
 					</object>
@@ -2975,6 +2996,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>algebraicSurfaceView</string>
 							<string>baseView</string>
+							<string>blackBackgroundLabel</string>
 							<string>blueColorSlider</string>
 							<string>bottleLabel</string>
 							<string>changeLightsLabel</string>
@@ -3000,6 +3022,7 @@
 							<string>showBondingLabel</string>
 							<string>sphereLabel</string>
 							<string>temporalimgView</string>
+							<string>toonShaderLabel</string>
 							<string>torusLabel</string>
 							<string>zoomView</string>
 						</object>
@@ -3012,6 +3035,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">baseView</string>
 								<string key="candidateClassName">UIView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">blackBackgroundLabel</string>
+								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">blueColorSlider</string>
@@ -3112,6 +3139,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">temporalimgView</string>
 								<string key="candidateClassName">UIImageView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">toonShaderLabel</string>
+								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">torusLabel</string>
