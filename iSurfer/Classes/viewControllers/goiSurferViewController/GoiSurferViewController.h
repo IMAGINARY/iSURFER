@@ -19,7 +19,6 @@
 @class FCColorPickerViewController;
 @interface GoiSurferViewController : BaseViewController <UITextFieldDelegate, UIGestureRecognizerDelegate, ColorPickerViewControllerDelegate>{
 	NSMutableArray* optionsViews;
-	
 	//main view
 	IBOutlet UIView* baseView;
 	//equation Textfield

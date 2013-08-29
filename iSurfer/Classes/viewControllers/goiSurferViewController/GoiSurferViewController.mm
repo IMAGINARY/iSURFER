@@ -573,7 +573,7 @@
     [equationTextField resignFirstResponder];
     [self scrollViewTo:nil movePixels:0 baseView:self.baseView];
     [self showExtKeyboard:NO];
-    if( currentEquation != NULL || ![currentEquation isEqualToString:equationTextField.text]){
+    if( currentEquation == NULL || ![currentEquation isEqualToString:equationTextField.text]){
         lv = [LoadingView loadingView:@""];
         [self.view addSubview:lv];
         [self performSelector:@selector(doSurfaceGeneration) withObject:nil afterDelay:0.5];
@@ -662,6 +662,7 @@
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
 	[self scrollViewTo:equationTextfieldView movePixels:VIEW_SCROLL baseView:self.baseView];
+    currentEquation = [self.equationTextField.text copy];
     [self showExtKeyboard:YES];
   	return YES;
 }
