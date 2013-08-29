@@ -133,7 +133,7 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
 	glCullFace( GL_BACK );
     
      
-    printf("drawing frame\n");
+    //printf("drawing frame\n");
     if(programData::wireFrame)
         // draw wireframe sphere
 	{

@@ -33,7 +33,7 @@
 
 - (void)setFramebuffer;
 - (BOOL)presentFramebuffer;
--(UIImage *) saveImageFromGLView;
+//-(UIImage *) saveImageFromGLView;
 -(UIImage *)getImage;
 - (UIImage*) screenShotUIImage;
 -(UIImage*)snapUIImage;

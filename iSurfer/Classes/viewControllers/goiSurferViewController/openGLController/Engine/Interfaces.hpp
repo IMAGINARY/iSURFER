@@ -130,6 +130,7 @@ struct IRenderingEngine {
     virtual void Initialize(vector<ISurface*>& surfaces) = 0;
     virtual void UpdateSurface(vector<ISurface*>& surfaces, int currentSurface) = 0;
     virtual void Render(int currentSurface, Quaternion orientation) = 0;
+    virtual ~IRenderingEngine() {}
 };
 
 struct IResourceManager {

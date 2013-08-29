@@ -19,7 +19,7 @@ float programData::lposY = 0.25f;
 float programData::lposZ = 1.0f;
 float programData::radius = 5;
 float origin[5];
-char * programData::textureFileName = "bricks";
+char * programData::textureFileName = (char *)"bricks";
 
 mat4 programData::rot;
 
@@ -171,7 +171,6 @@ void programData::setLightFixed(bool lightSwitch)
         glUniform3fv(programData::shaderHandle.LightPosition2, 1, lightPosition2.Pointer());
         
     }
-    printf("\n%d\n", lightSwitch);
     
     float value = 0.0;
     if (lightSwitch) {
@@ -180,7 +179,6 @@ void programData::setLightFixed(bool lightSwitch)
     {
         value =1.0;
     }
-    printf("\nvalue =    %f\n", value);
     
     glUniform1f(programData::shaderHandle.FXEDLIGHT, value);
 

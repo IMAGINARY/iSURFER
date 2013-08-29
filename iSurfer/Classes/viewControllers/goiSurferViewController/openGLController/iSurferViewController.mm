@@ -376,7 +376,7 @@ enum {
             glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         }
             m_applicationEngine->Render();
-        NSLog(@"finished drawing");
+        //NSLog(@"finished drawing");
         [(EAGLView *)self.view presentFramebuffer];
         [delegate setSurfaceImg];
 
