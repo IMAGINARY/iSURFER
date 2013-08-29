@@ -23,6 +23,7 @@
 		337C009617CE541300B10F45 /* button-point.png in Resources */ = {isa = PBXBuildFile; fileRef = 337C009517CE541300B10F45 /* button-point.png */; };
 		337C009817CE549800B10F45 /* button-point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 337C009717CE549800B10F45 /* button-point@2x.png */; };
 		338CE34015FABA6C00E8AA18 /* vs3.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 338CE33F15FABA6C00E8AA18 /* vs3.glsl */; };
+		338ECA3517CEECFC0086FF5B /* CreditsImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 338ECA3417CEECFC0086FF5B /* CreditsImage.png */; };
 		3395689C168FEA4B002F5CCC /* yuidoc.json in Resources */ = {isa = PBXBuildFile; fileRef = 3395689B168FEA4A002F5CCC /* yuidoc.json */; };
 		33FA6549176990CC0074C59A /* ResourceManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33FA6548176990CC0074C59A /* ResourceManager.mm */; };
 		33FA654C1769958A0074C59A /* Grid16.png in Resources */ = {isa = PBXBuildFile; fileRef = 33FA654B1769958A0074C59A /* Grid16.png */; };
@@ -296,6 +297,7 @@
 		337C009517CE541300B10F45 /* button-point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-point.png"; sourceTree = "<group>"; };
 		337C009717CE549800B10F45 /* button-point@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-point@2x.png"; sourceTree = "<group>"; };
 		338CE33F15FABA6C00E8AA18 /* vs3.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vs3.glsl; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		338ECA3417CEECFC0086FF5B /* CreditsImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CreditsImage.png; sourceTree = "<group>"; };
 		3395689B168FEA4A002F5CCC /* yuidoc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = yuidoc.json; sourceTree = "<group>"; };
 		33FA6548176990CC0074C59A /* ResourceManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourceManager.mm; sourceTree = "<group>"; };
 		33FA654B1769958A0074C59A /* Grid16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Grid16.png; sourceTree = "<group>"; };
@@ -1019,6 +1021,7 @@
 				8B43078613C903B3004812EE /* iPhone-Wallpapers-4-parquet.jpg */,
 				8B43078713C903B3004812EE /* lit_12203IS153043143.jpg */,
 				8B43061113C7BFEC004812EE /* facebook_icon.png */,
+				338ECA3417CEECFC0086FF5B /* CreditsImage.png */,
 				8B43061213C7BFEC004812EE /* Logo-twitter.png */,
 				8B7F64C813C55C840098948F /* black_bar2.png */,
 				8B891CB213BA992B00EE4BC7 /* Imaginary lemon.jpg */,
@@ -1548,6 +1551,7 @@
 				B58EC5AB17CED20C00B46774 /* adv-surf17.png in Resources */,
 				B58EC5AC17CED20C00B46774 /* mst-surf21.png in Resources */,
 				B58EC5AD17CED20C00B46774 /* mst-surf24.png in Resources */,
+				338ECA3517CEECFC0086FF5B /* CreditsImage.png in Resources */,
 				B58EC5AF17CEE13E00B46774 /* adv-surf18.png in Resources */,
 				B58EC5B117CEE51300B46774 /* mst-surf25.png in Resources */,
 				B58EC5B317CEE5E500B46774 /* nb-surf10.png in Resources */,
