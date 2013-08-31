@@ -16,4 +16,6 @@
 
 @property(nonatomic, retain)	IBOutlet UILabel* tutorialLabel;
 
+- (IBAction)openTutorialLink:(id)sender;
+
 @end
