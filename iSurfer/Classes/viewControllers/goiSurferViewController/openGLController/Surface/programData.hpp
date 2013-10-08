@@ -79,6 +79,13 @@ class programData
      */
         static float radius;
     /**
+     * the zoom radius change speed.
+     * @property zoomSpeed
+     * @type {float}
+     * @default 10
+     */
+    static float zoomSpeed;
+    /**
      * The texture to load.
      * @property textureFileName
      * @type {char *}

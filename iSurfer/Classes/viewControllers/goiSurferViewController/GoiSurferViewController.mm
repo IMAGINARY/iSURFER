@@ -286,9 +286,9 @@
 		previousScale = pinchGesture.scale;
 	}else if( pinchGesture.state == UIGestureRecognizerStateChanged ){
 		if( previousScale > pinchGesture.scale ){
-			self.zoomSlider.value -= self.zoomSlider.value/ (10*self.zoomSlider.maximumValue);
+			self.zoomSlider.value -= self.zoomSlider.value/ (10*self.zoomSlider.maximumValue) * programData::zoomSpeed;
 		}else {
-			self.zoomSlider.value += self.zoomSlider.value/ (10*self.zoomSlider.maximumValue);
+			self.zoomSlider.value += self.zoomSlider.value/ (10*self.zoomSlider.maximumValue) * programData::zoomSpeed;
 		}
 	}else if (pinchGesture.state == UIGestureRecognizerStateEnded) {
 		[openglController setZoom:50.6 - zoomSlider.value];
@@ -405,6 +405,14 @@
     }
 }
 //--------------------------------------------------------------------------------------------------------
+
+- (IBAction)zoomSliderChanged:(id)sender {
+    UISlider *slider = (UISlider *)sender;
+    programData::zoomSpeed = slider.value;
+}
+//--------------------------------------------------------------------------------------------------------
+
+
 
 - (IBAction)WireChanged:(id)sender {
     @synchronized(openglController)
