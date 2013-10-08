@@ -164,11 +164,11 @@ void programData::setLightFixed(bool lightSwitch)
         glUniform3fv(programData::shaderHandle.LightPosition2, 1, lightPosition2.Pointer());
     }else{
         //Fixed lights
-        vec4 lightPosition(0.2, 0.2, 1.0, 0);
+        vec4 lightPosition(100.0, 100.0, 1.0, 0);
         
         glUniform3fv(programData::shaderHandle.LightPosition, 1, lightPosition.Pointer());
         
-        vec4 lightPosition2(-0.2, 0.2, 1, 0);
+        vec4 lightPosition2(-100, 100, 1, 0);
         
         glUniform3fv(programData::shaderHandle.LightPosition2, 1, lightPosition2.Pointer());
         
