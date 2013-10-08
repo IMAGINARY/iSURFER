@@ -18,7 +18,7 @@ float programData::lposX = 0.25f;
 float programData::lposY = 0.25f;
 float programData::lposZ = 1.0f;
 float programData::radius = 5;
-float programData::zoomSpeed = 10;
+float programData::zoomSpeed = 5;
 
 float origin[5];
 char * programData::textureFileName = (char *)"bricks";
