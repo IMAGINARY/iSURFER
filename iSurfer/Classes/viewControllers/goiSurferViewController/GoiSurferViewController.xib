@@ -541,12 +541,12 @@
 										<float key="IBUIValue">9.5</float>
 										<float key="IBUIMaxValue">50</float>
 									</object>
-									<object class="IBUISlider" id="234096430">
+									<object class="IBUISlider" id="142234940">
 										<reference key="NSNextResponder" ref="102034767"/>
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{36, 244}, {342, 23}}</string>
 										<reference key="NSSuperview" ref="102034767"/>
-										<reference key="NSNextKeyView" ref="479498169"/>
+										<reference key="NSNextKeyView" ref="675882575"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -636,7 +636,7 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{193, 185}, {94, 27}}</string>
 										<reference key="NSSuperview" ref="102034767"/>
-										<reference key="NSNextKeyView" ref="367900960"/>
+										<reference key="NSNextKeyView" ref="618853031"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -663,12 +663,12 @@
 										<reference key="IBUIFontDescription" ref="1021135740"/>
 										<reference key="IBUIFont" ref="797518283"/>
 									</object>
-									<object class="IBUILabel" id="367900960">
+									<object class="IBUILabel" id="618853031">
 										<reference key="NSNextResponder" ref="102034767"/>
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{21, 215}, {98, 21}}</string>
 										<reference key="NSSuperview" ref="102034767"/>
-										<reference key="NSNextKeyView" ref="312029285"/>
+										<reference key="NSNextKeyView" ref="24983372"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -683,12 +683,12 @@
 										<reference key="IBUIFontDescription" ref="1021135740"/>
 										<reference key="IBUIFont" ref="797518283"/>
 									</object>
-									<object class="IBUILabel" id="312029285">
+									<object class="IBUILabel" id="24983372">
 										<reference key="NSNextResponder" ref="102034767"/>
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{21, 245}, {14, 21}}</string>
 										<reference key="NSSuperview" ref="102034767"/>
-										<reference key="NSNextKeyView" ref="234096430"/>
+										<reference key="NSNextKeyView" ref="142234940"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -883,7 +883,7 @@
 										<reference key="IBUIFontDescription" ref="1021135740"/>
 										<reference key="IBUIFont" ref="797518283"/>
 									</object>
-									<object class="IBUILabel" id="479498169">
+									<object class="IBUILabel" id="675882575">
 										<reference key="NSNextResponder" ref="102034767"/>
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{380, 245}, {14, 21}}</string>
@@ -2137,7 +2137,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">zoomSliderChanged:</string>
-						<reference key="source" ref="234096430"/>
+						<reference key="source" ref="142234940"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">13</int>
 					</object>
@@ -2452,10 +2452,10 @@
 							<reference ref="1033851418"/>
 							<reference ref="697266209"/>
 							<reference ref="821837601"/>
-							<reference ref="234096430"/>
-							<reference ref="367900960"/>
-							<reference ref="312029285"/>
-							<reference ref="479498169"/>
+							<reference ref="142234940"/>
+							<reference ref="618853031"/>
+							<reference ref="24983372"/>
+							<reference ref="675882575"/>
 						</object>
 						<reference key="parent" ref="935778272"/>
 					</object>
@@ -2604,22 +2604,22 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">224</int>
-						<reference key="object" ref="234096430"/>
+						<reference key="object" ref="142234940"/>
 						<reference key="parent" ref="102034767"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">226</int>
-						<reference key="object" ref="367900960"/>
+						<reference key="object" ref="618853031"/>
 						<reference key="parent" ref="102034767"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">227</int>
-						<reference key="object" ref="312029285"/>
+						<reference key="object" ref="24983372"/>
 						<reference key="parent" ref="102034767"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">228</int>
-						<reference key="object" ref="479498169"/>
+						<reference key="object" ref="675882575"/>
 						<reference key="parent" ref="102034767"/>
 					</object>
 				</object>
