@@ -4,7 +4,7 @@
  * @module OpenGL
  */
 
-/** 
+/**
  *Last modified on January 13 2013 by dazar
  * -----------------------------------------------------
  * This is the fragment Shader. It is in charge of all the calculations to render an algebraic surface.
@@ -16,7 +16,7 @@
  */
 
 
-#define DEGREE 
+#define DEGREE
 #define EPSILON 0.00001
 #define DELTA 0.0000001
 #define SIZE DEGREE+1
@@ -27,6 +27,8 @@ uniform highp vec3 DiffuseMaterial2;
 
 uniform highp float CELLSHADE;
 uniform highp float TEXTURE;
+uniform highp mat4 modelviewMatrix;
+uniform highp mat4 modelviewMatrixInverse;
 
 uniform highp vec3 LightPosition;
 uniform highp vec3 LightPosition2;
@@ -68,7 +70,7 @@ polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir)
 }
 
 /**
- * Usage: polynomial p; p = create_poly_0(3.0); 
+ * Usage: polynomial p; p = create_poly_0(3.0);
  * --------------------------------------
  * This function creates a new polynomial of degree DEGREE with an unique constant value.
  * @method create_poly_0
@@ -76,20 +78,20 @@ polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir)
  * @return {polynomial} a new polynomial.
  */
 /**
- * Usage: polynomial p; p = create_poly_1(3.0,2.0); 
+ * Usage: polynomial p; p = create_poly_1(3.0,2.0);
  * --------------------------------------
  * This function creates a new polynomial of degree DEGREE with two values linear and independant.
- * Use this method to generate the axis from the eye and dir of the ray. 
+ * Use this method to generate the axis from the eye and dir of the ray.
  * @method create_poly_1
  * @param a0 {highp float} float value of independant coeficient.
  * @param a1 {highp float} float value of linear coeficient.
  * @return {polynomial} a new polynomial.
  */
 /**
- * Usage: polynomial p; p = add(p1,p2,5); 
+ * Usage: polynomial p; p = add(p1,p2,5);
  * --------------------------------------
  * This function creates a new polynomial of degree res_degree with the addition of p1 and p2.
- * It needs the degree of the result to optimize the function. 
+ * It needs the degree of the result to optimize the function.
  * @method add
  * @param p1 {polynomial} First poly.
  * @param p2 {polynomial} Second polly.
@@ -97,10 +99,10 @@ polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir)
  * @return {polynomial} a new polynomial.
  */
 /**
- * Usage: polynomial p; p = sub(p1,p2,5); 
+ * Usage: polynomial p; p = sub(p1,p2,5);
  * --------------------------------------
  * This function creates a new polynomial of degree res_degree with the Substraction of p2 to p1.
- * It needs the degree of the result to optimize the function. 
+ * It needs the degree of the result to optimize the function.
  * @method sub
  * @param p1 {polynomial} First poly.
  * @param p2 {polynomial} Second polly.
@@ -108,10 +110,10 @@ polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir)
  * @return {polynomial} a new polynomial.
  */
 /**
- * Usage: polynomial p; p = mult(p1,p2,5); 
+ * Usage: polynomial p; p = mult(p1,p2,5);
  * --------------------------------------
  * This function creates a new polynomial of degree res_degree with the multiplication of p1 and p2.
- * It needs the degree of the result to optimize the function. 
+ * It needs the degree of the result to optimize the function.
  * @method mult
  * @param p1 {polynomial} First poly.
  * @param p2 {polynomial} Second polly.
@@ -119,20 +121,20 @@ polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir)
  * @return {polynomial} a new polynomial.
  */
 /**
- * Usage: polynomial p; p = neg(p1,5); 
+ * Usage: polynomial p; p = neg(p1,5);
  * --------------------------------------
  * This function creates a new polynomial of degree res_degree with the negation of p.
- * It needs the degree of the result to optimize the function. 
+ * It needs the degree of the result to optimize the function.
  * @method neg
  * @param p1 {polynomial} First poly.
  * @param res_degree {int} degree of the resultant polynomial.
  * @return {polynomial} a new polynomial.
  */
 /**
- * Usage: polynomial p; p = power(p1,7,5); 
+ * Usage: polynomial p; p = power(p1,7,5);
  * --------------------------------------
  * This function creates a new polynomial of degree res_degree with p elevated to exp.
- * It needs the degree of the result to optimize the function. 
+ * It needs the degree of the result to optimize the function.
  * @method power
  * @param p {polynomial} First poly.
  * @param exp {int} Exponent.
@@ -140,11 +142,11 @@ polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir)
  * @return {polynomial} a new polynomial.
  */
 /**
- * Usage: polynomial p; p = calc_coefficients(eye,dir); 
+ * Usage: polynomial p; p = calc_coefficients(eye,dir);
  * --------------------------------------
  * This function creates a new polynomial of of the algebraic surface.
  * It needs eye and dir to generate the x,y,z axis.
- * This method should be filled with the algebraic surface equation in shader code. 
+ * This method should be filled with the algebraic surface equation in shader code.
  * @method calc_coefficients
  * @param eye {highp float} eye of the Ray. Camera coord.
  * @param dir {highp float} direction of the Ray.
@@ -152,7 +154,7 @@ polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir)
  */
 polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir);
 /**
- * Usage: Gl_fragColor = mygradient(point); 
+ * Usage: Gl_fragColor = mygradient(point);
  * --------------------------------------
  * Returns a color vector with gradient for the point specified.
  * @method mygradient
@@ -161,7 +163,7 @@ polynomial calc_coefficients( in highp vec3 eye, in highp vec3 dir);
  */
 highp vec3 mygradient( in highp vec3 point );
 /**
- * Usage: s = eval_p(p,3.2); 
+ * Usage: s = eval_p(p,3.2);
  * --------------------------------------
  * This function evaluates the polynomial at the point x.
  * @method eval_p
@@ -171,7 +173,7 @@ highp vec3 mygradient( in highp vec3 point );
  */
 highp float eval_p( const in polynomial p, highp float x );
 /**
- * Usage: s = bisect(p,lower,upper); 
+ * Usage: s = bisect(p,lower,upper);
  * --------------------------------------
  * This function uses the bisection method to select the next path for the roots.
  * It uses a while instead of recursion for performance.
@@ -183,7 +185,7 @@ highp float eval_p( const in polynomial p, highp float x );
  */
 highp float bisect( const in polynomial p, highp float lowerBound, highp float upperBound );
 /**
- * Usage: s = has_sign_changes(p); 
+ * Usage: s = has_sign_changes(p);
  * --------------------------------------
  * This function checks for sign changes in the coefficient array of p. It is used in Descartes algorithm
  * Returns -1 (root at x=0), 0 (no sign change), 1 (one sign change) or 2 (two OR MORE sign changes).
@@ -193,7 +195,7 @@ highp float bisect( const in polynomial p, highp float lowerBound, highp float u
  */
 int has_sign_changes( const in polynomial p );
 /**
- * Usage: s = reverseShift1(p,result); 
+ * Usage: s = reverseShift1(p,result);
  * --------------------------------------
  * This function reverts the changes from shiftStrech.
  * @method reverseShift1
@@ -203,10 +205,10 @@ int has_sign_changes( const in polynomial p );
  */
 void reverseShift1( const in polynomial p, out polynomial result );
 /**
- * Usage: s = shiftStretch(p,shift, scale, poly); 
+ * Usage: s = shiftStretch(p,shift, scale, poly);
  * --------------------------------------
  * This function shifts and strech the polynomial. The idea is to focus the roots in the interval (0;1) for precision.
- * Shift is like using p(x-shift) instead of p(x). Strech is like using p(x/scale) instead of p(x). 
+ * Shift is like using p(x-shift) instead of p(x). Strech is like using p(x/scale) instead of p(x).
  * @method shiftStretch
  * @param p {polynomial} polynomial to modify.
  * @param shift {highp float}
@@ -217,10 +219,10 @@ void reverseShift1( const in polynomial p, out polynomial result );
 polynomial shiftStretch( const in polynomial p, highp float shift, highp float scale, out polynomial result );
 
 /**
- * Usage: s = first_root_Descartes(p,epsilon, tmpCoeffs); 
+ * Usage: s = first_root_Descartes(p,epsilon, tmpCoeffs);
  * --------------------------------------
  * This function shifts and strech the polynomial. The idea is to focus the roots in the interval (0;1) for precision.
- * Shift is like using p(x-shift) instead of p(x). Strech is like using p(x/scale) instead of p(x). 
+ * Shift is like using p(x-shift) instead of p(x). Strech is like using p(x/scale) instead of p(x).
  * @method first_root_Descartes
  * @param p {polynomial} polynomial to find the roots.
  * @param epsilon {highp float} this should be related to the interval length.
@@ -230,7 +232,7 @@ polynomial shiftStretch( const in polynomial p, highp float shift, highp float s
 highp float first_root_Descartes( const in polynomial p, highp float epsilon, inout polynomial tmpCoeffs );
 
 /**
- * Usage: 	first_root_in( p,min,max ); 
+ * Usage: 	first_root_in( p,min,max );
  * --------------------------------------
  * This method is changed on compilation time to the right algorithm for the degree.
  * @param p {polynomial} Polinomial of th surface parametrized on t for the Ray.
@@ -242,37 +244,37 @@ highp float first_root_Descartes( const in polynomial p, highp float epsilon, in
  */
 highp float first_root_in( inout polynomial p, highp float min, highp float max );
 /**
- * Usage: 	clip_to_unit_sphere( varying_eye, dir, tmin, tmax ); 
+ * Usage: 	clip_to_unit_sphere( varying_eye, dir, tmin, tmax );
  * --------------------------------------
  * This method is needed to generate the minimum and maximum value of t in the sphere.
- * We use the Ray Tracer principle of a a ray equation. a ray is a line so Y= m * t+b. 
+ * We use the Ray Tracer principle of a a ray equation. a ray is a line so Y= m * t+b.
  * We know b and m, and with this function we get the tmin and tmax for the ray inside the sphere.
  * @param eye {highp float} eye of the Ray. Camera coord.
  * @param dir {highp float} direction of the Ray.
  * @method clip_to_unit_sphere
- * @return tmin and tmax {highp floats} 
+ * @return tmin and tmax {highp floats}
  */
 void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float tmin, out highp float tmax );
 /**
- * Usage: 	  calc_lights( eye, dir, hit_point); 
+ * Usage: 	  calc_lights( eye, dir, hit_point);
  * --------------------------------------
  * This method is needed to get the color of the surface at the hitpoint.
- * The result is written directly to gl_FragColor. 
+ * The result is written directly to gl_FragColor.
  * It needs the partial derivatives to be filled, to calculate the Normal of the surface at the hit point.
  * So we can select which color is ok, if it is facing the camera or not.
  * @param eye {highp float} eye of the Ray. Camera coord.
  * @param dir {highp float} direction of the Ray.
  
  * @method clip_to_unit_sphere
- * @return tmin and tmax {highp floats} 
+ * @return tmin and tmax {highp floats}
  */
 
 void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point);
 /**
- * Usage: main(); 
+ * Usage: main();
  * --------------------------------------
- * This method guides the overall process. It is called automatically by OpenGL for each pixel. 
- * When a pixel is valid the vertex shader call this method as the entry point to the fragment shader. 
+ * This method guides the overall process. It is called automatically by OpenGL for each pixel.
+ * When a pixel is valid the vertex shader call this method as the entry point to the fragment shader.
  * @method main
  * @return {void}
  */
@@ -286,12 +288,12 @@ highp vec3 mygradient( in highp vec3 point )
 	highp float x = point.x;
 	highp float y = point.y;
 	highp float z = point.z;
-
+    
 	highp vec3 res;
 	res.x = 2.0*x;
 	res.y = -2.0*y;
 	res.z = 2.0*z;
-
+    
 	return res;
 }
 polynomial create_poly_0( highp float a0 )
@@ -382,7 +384,7 @@ highp float bisect( const in polynomial p, highp float lowerBound, highp float u
         old_center = center;
         center = delta + lowerBound;
         fc = eval_p( p, center );
-
+        
         if( fc * fl < 0.0 )
         {
             upperBound = center;
@@ -399,8 +401,8 @@ highp float bisect( const in polynomial p, highp float lowerBound, highp float u
             fl = fc;
         }
         
-        delta = abs( upperBound - lowerBound ) /2.0; 
-
+        delta = abs( upperBound - lowerBound ) /2.0;
+        
     }
     return center;
 }
@@ -411,7 +413,7 @@ int has_sign_changes( const in polynomial p )
 {
     if( p.a[ 0 ] == 0.0 )
         return -1;
-
+    
     int signChanges = 0;
     highp float lastNonZeroCoeff = p.a[ 0 ];
     for( int i = 1; i < SIZE && signChanges < 2; i++ )
@@ -434,8 +436,8 @@ void reverseShift1( const in polynomial p, out polynomial result )
         result.a[ i ] = p.a[ ( SIZE - 1 ) - i ];
         result.a[ ( SIZE - 1 ) - i ] = tmp;
     }
-        result.a[ SIZE / 2 ] = p.a[ ( SIZE - 1 ) - SIZE / 2 ];
-
+    result.a[ SIZE / 2 ] = p.a[ ( SIZE - 1 ) - SIZE / 2 ];
+    
     for( int j = 0; j < SIZE; j++ )
         for( int i = SIZE - 2; i >= j; i-- )
             result.a[ i ] = result.a[ i ] + result.a[ i + 1 ];
@@ -445,11 +447,11 @@ polynomial shiftStretch( const in polynomial p, highp float shift, highp float s
 {
     for( int i = 0; i < SIZE; i++ )
         result.a[ i ] = p.a[ i ];
-
+    
     for( int i = 1; i <= SIZE; i++ )
         for( int j = SIZE - 2; j >= i - 1; j-- )
-            result.a[ j ] = result.a[ j ] + shift * result.a[ j + 1 ];    
-
+            result.a[ j ] = result.a[ j ] + shift * result.a[ j + 1 ];
+    
     highp float multiplier = scale;
     for( int i = 1; i < SIZE; i++ )
     {
@@ -477,12 +479,12 @@ highp float first_root_Descartes( const in polynomial p, highp float epsilon, in
 		else if( sign_changes == 0 )
 		{
             gl_FragColor = vec4( 0.0, 1.0, 0.0 , 0.5 );
-
+            
 			// go right
 			while( ( id / 2 ) * 2 != id )
 			{
                 gl_FragColor = vec4( 1.0, 0.0, 0.0 , 0.5 );
-
+                
 				id /= 2;
 				size *= 2.0;
 			}
@@ -492,7 +494,7 @@ highp float first_root_Descartes( const in polynomial p, highp float epsilon, in
 		{
 			// root isolated -> refine
 			result = bisect( p, size * float( id ), size * float( id + 1 ) );
-
+            
             break;
 		}
 		else if( sign_changes == -1 )
@@ -516,7 +518,7 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
 {
     
 #if DEGREE >= 3
-
+    
     // find smallest root in [0,1], if any
     polynomial p01 = p;
     
@@ -532,7 +534,7 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
 #endif
     
 #if DEGREE ==1
-
+    
     highp float x0 = -p.a[ 0 ] / p.a[ 1 ];
     if( x0 >= min && x0 < max )
         return x0;
@@ -541,15 +543,15 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
 #endif
     
 #if DEGREE ==2
-
+    
     highp float a = p.a[ DEGREE ];
     highp float b = p.a[ 1 ];
     highp float c = p.a[ 0 ];
-
+    
     //Find discriminant
     highp float disc = b * b - 4.0 * a * c;
-
-    // if discriminant is negative there are no real roots, so return 
+    
+    // if discriminant is negative there are no real roots, so return
     // false as ray misses sphere
     if (disc < 0.0)
     {
@@ -562,11 +564,11 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
         q = (-b - distSqrt)/2.0;
     else
         q = (-b + distSqrt)/2.0;
-
+    
     // compute tmin and tmax
     highp float x0 = q / a;
     highp float x1 = c / q;
-
+    
     // make sure tmin is smaller than tmax
     if (x0 > x1)
     {
@@ -574,16 +576,16 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
         x0 = x1;
         x1 = temp;
     }
-
+    
     if( x0 >= min  && x0 < max )
         return x0;
     else if( x1 >= min && x1 < max )
-            return x1;
-        else
-        	discard;
-
+        return x1;
+    else
+        discard;
+    
 #endif
-        //este es el grado 3 Cardano pero tiene Ruido.
+    //este es el grado 3 Cardano pero tiene Ruido.
 #if DEGREE == -10
     highp float PI = 3.14159265358979323846264;
     // Based on JMonkey Engine https://projectsforge.org/projects/bundles/browser/trunk/jogl-2.0-rc3/jogl/src/main/java/jogamp/graph/math/plane/Crossing.java
@@ -591,7 +593,7 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
     res[0] =100000.0;
     res[1] =100000.0;
     res[2] =100000.0;
-
+    
     highp float a = p.a[ 2 ] / p.a[ 3 ];
     highp float b = p.a[ 1 ] / p.a[ 3 ];
     highp float c = p.a[ 0 ] / p.a[ 3 ];
@@ -602,7 +604,7 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
     highp float Q3 = Q * Q * Q;
     highp float R2 = R * R;
     highp float n = - a / 3.0;
-    	
+    
     if (R2 < Q3) {
         highp float t = acos(R / sqrt(Q3)) / 3.0;
         highp float p = 2.0 * PI / 3.0;
@@ -625,7 +627,7 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
                 res[rc++] = - (A + B) / 2.0 + n;
             }
         }
-            	
+        
     }
     highp float aux = res[0];
     if(res[2] < res[1])
@@ -662,13 +664,13 @@ highp float first_root_in( inout polynomial p, highp float min, highp float max 
         return result;
     else
         discard;
-
+    
 #endif
-  
+    
 #if DEGREE <=0
-discard;
+    discard;
 #endif
-
+    
 }
 
 
@@ -677,8 +679,8 @@ varying highp vec3 varying_dir;
 
 void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float tmin, out highp float tmax )
 {
-
-// http://wiki.cgsociety.org/index.php/Ray_Sphere_Intersection
+    
+    // http://wiki.cgsociety.org/index.php/Ray_Sphere_Intersection
 	//Compute A, B and C coefficients
 	highp float a = dot(dir, dir);
 	highp float b = 2.0 * dot(dir, eye);
@@ -686,22 +688,22 @@ void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float 
     highp float D = b * b - c;
     if(D <0.0)
         discard;
-   // tmin = -b -sqrt(D);
-   // tmax = b + sqrt(D);
-   // return;
+    // tmin = -b -sqrt(D);
+    // tmax = b + sqrt(D);
+    // return;
 	//Find discriminant
 	highp float disc = b * b - 4.0 * a * c;
     gl_FragColor = vec4( 0.0, 1.0, 1.0 , 0.5 );
-
+    
     if(disc < 1.0)
         return;
     gl_FragColor = vec4( 0.0, 1.0, 1.0 , 0.5 );
     
-	// if discriminant is negative there are no real roots, so return 
+	// if discriminant is negative there are no real roots, so return
 	// false as ray misses sphere
 	if (disc < DELTA)
 		discard;
-
+    
 	// compute q as described above
 	highp float distSqrt = sqrt(disc);
 	highp float q;
@@ -709,11 +711,11 @@ void clip_to_unit_sphere( in highp vec3 eye, in highp vec3 dir, out highp float 
 		q = (-b - distSqrt)/2.0;
 	else
 		q = (-b + distSqrt)/2.0;
-
+    
 	// compute tmin and tmax
 	tmin = q / a;
 	tmax = c / q;
-
+    
 	// make sure tmin is smaller than tmax
 	if (tmin > tmax)
 	{
@@ -734,26 +736,26 @@ void calc_lights10( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_poi
     highp float y = hit_point.y;
     highp float z = hit_point.z;
     highp vec3 N;
-
+    
     
     N = normalize(N);
     
     highp vec3 L = normalize(LightPosition);
     highp vec3 E = vec3(0, 0, 1);
     lowp vec3 color;
-
-            highp vec3 H = normalize(L + E);
-            
-            highp float sf = max(0.0, dot(N, H));
-            sf = pow(sf, Shininess);
-            highp float df = max(0.0,dot(N, L));
-            color = SpecularMaterial;
-            color = DiffuseMaterial;
     
-            //color +=   sf * SpecularMaterial;
+    highp vec3 H = normalize(L + E);
+    
+    highp float sf = max(0.0, dot(N, H));
+    sf = pow(sf, Shininess);
+    highp float df = max(0.0,dot(N, L));
+    color = SpecularMaterial;
+    color = DiffuseMaterial;
+    
+    //color +=   sf * SpecularMaterial;
     
     
-        gl_FragColor = vec4(color, 1);
+    gl_FragColor = vec4(color, 1);
     
 }
 
@@ -764,83 +766,83 @@ void calc_lights10( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_poi
 
 void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point)
 {
-        // We use the hitPoint and numbers, and not the Poly Structure because of speed.
-        highp float x = hit_point.x;
-        highp float y = hit_point.y;
-        highp float z = hit_point.z;
- 
-    highp vec3 N 
+    // We use the hitPoint and numbers, and not the Poly Structure because of speed.
+    highp float x = hit_point.x;
+    highp float y = hit_point.y;
+    highp float z = hit_point.z;
     
-        N = normalize(N);
-
-        highp vec3 L = normalize(LightPosition);
-        highp vec3 E = dir;
-        lowp vec3 color;
-if(FIXEDLIGHT == 1.0)
-{
-    if (CELLSHADE ==1.0)
+    highp vec3 N
+    
+    N = normalize(N);
+    
+    highp vec3 L = normalize(LightPosition);
+    highp vec3 E = dir;
+    lowp vec3 color;
+    if(FIXEDLIGHT == 1.0)
     {
-        if(dot(N, E) >= DELTA)
+        if (CELLSHADE ==1.0)
         {
-            highp vec3 H = normalize(L);
-            highp float df = max(0.0, dot(N, L)); highp float sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
-            if (df < 0.1) df = 0.0; else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
-            if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
-            color = AmbientMaterial + df * DiffuseMaterial + sf * SpecularMaterial;
-            L = normalize(LightPosition2);
-            H = normalize(L);
-            df = max(0.0, dot(N, L));
-            sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
-            if (df < 0.1) df = 0.0;
-            else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
-            if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
-            color +=   sf * SpecularMaterial +  df * DiffuseMaterial;
-        
-        
-        }else
-        {
-            E = -E;
-            highp vec3 H = normalize(L);
-            highp float df = max(0.0, dot(N, L)); highp float sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
-            if (df < 0.1) df = 0.0;
-            else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
-            if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
-            color = AmbientMaterial2 + df * DiffuseMaterial2 + sf * SpecularMaterial2;
-            L = normalize(LightPosition2);
-            H = normalize(L);
-            df = max(0.0, dot(N, L));
-            sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
-            if (df < 0.1) df = 0.0;
-            else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
-            if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
-            color +=   sf * SpecularMaterial2 +  df * DiffuseMaterial2;
-        }
-    }
-    else
-    {
-        if(dot(N, E) >= DELTA)
+            if(dot(N, E) >= DELTA)
             {
                 highp vec3 H = normalize(L);
-
+                highp float df = max(0.0, dot(N, L)); highp float sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
+                if (df < 0.1) df = 0.0; else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
+                if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
+                color = AmbientMaterial + df * DiffuseMaterial + sf * SpecularMaterial;
+                L = normalize(LightPosition2);
+                H = normalize(L);
+                df = max(0.0, dot(N, L));
+                sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
+                if (df < 0.1) df = 0.0;
+                else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
+                if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
+                color +=   sf * SpecularMaterial +  df * DiffuseMaterial;
+                
+                
+            }else
+            {
+                E = -E;
+                highp vec3 H = normalize(L);
+                highp float df = max(0.0, dot(N, L)); highp float sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
+                if (df < 0.1) df = 0.0;
+                else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
+                if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
+                color = AmbientMaterial2 + df * DiffuseMaterial2 + sf * SpecularMaterial2;
+                L = normalize(LightPosition2);
+                H = normalize(L);
+                df = max(0.0, dot(N, L));
+                sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
+                if (df < 0.1) df = 0.0;
+                else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
+                if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
+                color +=   sf * SpecularMaterial2 +  df * DiffuseMaterial2;
+            }
+        }
+        else
+        {
+            if(dot(N, E) >= DELTA)
+            {
+                highp vec3 H = normalize(L);
+                
                 highp float sf = max(0.0, dot(N, H));
                 sf = pow(sf, Shininess);
                 highp float df = max(0.0,dot(N, L));
                 color = AmbientMaterial +df * DiffuseMaterial;
                 color +=   sf * SpecularMaterial;
-         
+                
                 L = normalize(LightPosition2);
                 H = normalize(L);
                 df = max(0.0, dot(N, L));
                 sf = max(0.0, dot(N, H));
                 sf = pow(sf, Shininess);
                 color +=   sf * SpecularMaterial +  df * DiffuseMaterial;
-
-            
+                
+                
             }else
             {
                 E = - E;
                 highp vec3 H = normalize(L);
-
+                
                 highp float df = max(0.0, dot(N, L));
                 highp float sf = max(0.0, dot(N, L));
                 highp float aux = Shininess;
@@ -852,90 +854,93 @@ if(FIXEDLIGHT == 1.0)
                 sf = max(0.0, dot(N, L));
                 sf = pow(sf, Shininess);
                 color +=  sf * SpecularMaterial2 + df * DiffuseMaterial2;
-
+                
             }
-    }
-}
-else
-{
-    if (CELLSHADE ==1.0)
-    {
-        if(dot(N, E) >= DELTA)
-        {
-            highp vec3 H = normalize(L + E);
-            highp float df = max(0.0, dot(N, H)); highp float sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
-            if (df < 0.1) df = 0.0; else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
-            if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
-            color = AmbientMaterial + df * DiffuseMaterial + sf * SpecularMaterial;
-            //L = normalize(LightPosition2);
-            //H = normalize(L);
-            //df = max(0.0, dot(N, L));
-            //sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
-            //if (df < 0.1) df = 0.0;
-            //else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
-            //if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
-            //color +=   sf * SpecularMaterial +  df * DiffuseMaterial;
-            
-            
-        }else
-        {
-            E = -E;
-            highp vec3 H = normalize(L+E);
-            highp float df = max(0.0, dot(N, H)); highp float sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
-            if (df < 0.1) df = 0.0;
-            else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
-            if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
-            color = AmbientMaterial2 + df * DiffuseMaterial2 + sf * SpecularMaterial2;
-            //L = normalize(LightPosition2);
-            //H = normalize(L);
-            //df = max(0.0, dot(N, L));
-            //sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
-            //if (df < 0.1) df = 0.0;
-            //else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
-            //if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
-            //color +=   sf * SpecularMaterial2 +  df * DiffuseMaterial2;
         }
     }
     else
     {
-        if(dot(N, E) >= DELTA)
+        //FIXED
+        L = normalize((modelviewMatrixInverse * vec4(LightPosition.x,LightPosition.y,LightPosition.z,0)).xyz);
+        
+        if (CELLSHADE ==1.0)
         {
-            highp vec3 H = normalize(L + E);
-            
-            highp float sf = max(0.0, dot(N, H));
-            sf = pow(sf, Shininess);
-            highp float df = max(0.0,dot(N, H));
-            color = AmbientMaterial +df * DiffuseMaterial;
-            color +=   sf * SpecularMaterial;
-            
-            //L = normalize(LightPosition2);
-            //H = normalize(L + E);
-            //df = max(0.0, dot(N, H));
-            //sf = max(0.0, dot(N, H));
-            //sf = pow(sf, Shininess);
-            //color +=   sf * SpecularMaterial +  df * DiffuseMaterial;
-
-        }else
+            if(dot(N, E) >= DELTA)
+            {
+                highp vec3 H = normalize(L + E);
+                highp float df = max(0.0, dot(N, H)); highp float sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
+                if (df < 0.1) df = 0.0; else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
+                if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
+                color = AmbientMaterial + df * DiffuseMaterial + sf * SpecularMaterial;
+                L = normalize((modelviewMatrixInverse * vec4(LightPosition2.x,LightPosition2.y,LightPosition2.z,0)).xyz);
+                H = normalize(L);
+                df = max(0.0, dot(N, L));
+                sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
+                if (df < 0.1) df = 0.0;
+                else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
+                if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
+                color +=   sf * SpecularMaterial +  df * DiffuseMaterial;
+                
+                
+            }else
+            {
+                E = -E;
+                highp vec3 H = normalize(L+E);
+                highp float df = max(0.0, dot(N, H)); highp float sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
+                if (df < 0.1) df = 0.0;
+                else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
+                if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
+                color = AmbientMaterial2 + df * DiffuseMaterial2 + sf * SpecularMaterial2;
+                L = normalize(LightPosition2);
+                H = normalize(L);
+                df = max(0.0, dot(N, L));
+                sf = max(0.0, dot(N, H)); sf = pow(sf, Shininess);
+                if (df < 0.1) df = 0.0;
+                else if (df < 0.3) df = 0.3; else if (df < 0.6) df = 0.6; else df = 1.0;
+                if (sf < 0.1) sf = 0.0; else if (sf < 0.3) sf = 0.3; else if (sf < 0.6) sf = 0.6; else sf = 1.0;
+                color +=   sf * SpecularMaterial2 +  df * DiffuseMaterial2;
+            }
+        }
+        else
         {
-            E = - E;
-            highp vec3 H = normalize(L + E);
-            
-            highp float df = max(0.0, dot(N, H));
-            highp float sf = max(0.0, dot(N, H));
-            highp float aux = Shininess;
-            sf = pow(sf, aux);
-            color = AmbientMaterial2 + df * DiffuseMaterial2;
-            color+= sf * SpecularMaterial2;
-            //L = normalize(LightPosition2);
-            //H = normalize(L + E);
-            //df = max(0.0, dot(N, L));
-            //sf = max(0.0, dot(N, H));
-            //sf = pow(sf, Shininess);
-            //color +=  sf * SpecularMaterial2+ df * DiffuseMaterial2;
-            //color = vec3(0.0,0.0,1.0);
+            if(dot(N, E) >= DELTA)
+            {
+                highp vec3 H = normalize(L);
+                
+                highp float sf = max(0.0, dot(N, H));
+                sf = pow(sf, Shininess);
+                highp float df = max(0.0,dot(N, H));
+                color = AmbientMaterial +df * DiffuseMaterial;
+                color +=   sf * SpecularMaterial;
+                L = normalize((modelviewMatrixInverse * vec4(LightPosition2.x,LightPosition2.y,LightPosition2.z,0)).xyz);
+                
+                H = normalize(L);
+                df = max(0.0, dot(N, H));
+                sf = max(0.0, dot(N, H));
+                sf = pow(sf, Shininess);
+                color +=   sf * SpecularMaterial +  df * DiffuseMaterial;
+                
+            }else
+            {
+                E = - E;
+                highp vec3 H = normalize(L);
+                
+                highp float df = max(0.0, dot(N, H));
+                highp float sf = max(0.0, dot(N, H));
+                highp float aux = Shininess;
+                sf = pow(sf, aux);
+                color = AmbientMaterial2 + df * DiffuseMaterial2;
+                color+= sf * SpecularMaterial2;
+                L = normalize((modelviewMatrixInverse * vec4(LightPosition2.x,LightPosition2.y,LightPosition2.z,0)).xyz);
+                H = normalize(L);
+                df = max(0.0, dot(N, L));
+                sf = max(0.0, dot(N, H));
+                sf = pow(sf, Shininess);
+                color +=  sf * SpecularMaterial2+ df * DiffuseMaterial2;
+                //color = vec3(0.0,0.0,1.0);
+            }
         }
     }
-}
     
     if (TEXTURE== 1.0) {
         gl_FragColor = texture2D(Sampler, TextureCoordOut) * vec4(color,1);
@@ -943,7 +948,7 @@ else
     else{
         gl_FragColor = vec4(color, 1);
     }
-
+    
 }
 
 
@@ -955,31 +960,31 @@ void main( void )
 {
 	highp float l = length( varying_dir );
     highp vec3 dir = varying_dir;// / l;
-
+    
 	// setup ray(s)
 	highp float tmin, tmax, min, max;
 	clip_to_unit_sphere( varying_eye, dir, tmin, tmax );
     
 	highp float tcenter = ( tmin + tmax ) * 0.5;
-
+    
     //Con esto ponemos el 0 en el medio del grafico.
 	highp vec3 eye = varying_eye + tcenter * dir;
 	tmin = tmin - tcenter;
 	tmax = tmax - tcenter;
-
+    
     // setup polynomial
 	polynomial p_ray = calc_coefficients( eye, dir);
     highp float scale = tmax-tmin;
-
+    
 	// find intersection of ray and surface
 	highp float root = first_root_in( p_ray, tmin, tmax );
-
+    
     if( root <= tmin || root >= tmax )
         discard;
-
+    
 	highp vec3 hit_point = eye + root * dir;
-
-
-  calc_lights( eye, dir, hit_point);
-
+    
+    
+    calc_lights( eye, dir, hit_point);
+    
 }
