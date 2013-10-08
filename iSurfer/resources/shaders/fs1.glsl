@@ -16,7 +16,7 @@
  */
 
 
-#define DEGREE
+#define DEGREE 
 #define EPSILON 0.00001
 #define DELTA 0.0000001
 #define SIZE DEGREE+1
@@ -771,7 +771,7 @@ void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point
     highp float y = hit_point.y;
     highp float z = hit_point.z;
     
-    highp vec3 N
+    highp vec3 N 
     
     N = normalize(N);
     
