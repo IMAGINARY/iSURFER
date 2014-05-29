@@ -42,7 +42,7 @@ void RenderingEngine::Initialize(vector<ISurface*>& surfaces)
         
         // Create the VBO for the vertices.
         vector<float> vertices;
-        (*surface)->GenerateVertices(vertices, VertexFlagsNormals);
+        (*surface)->GenerateVertices(vertices);
         GLuint vertexBuffer;
         glGenBuffers(1, &vertexBuffer);
         glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
@@ -75,25 +75,27 @@ void RenderingEngine::Initialize(vector<ISurface*>& surfaces)
     
 void RenderingEngine::UpdateSurface(vector<ISurface*>& surfaces, int currentSurface)
 {
+    
     ISurface * surface = surfaces[currentSurface];
     //vector<ISurface*>::const_iterator surface;
-    // Create the VBO for the vertices. 
+    // Create the VBO for the vertices.
     vector<float> vertices;
-    (surface)->GenerateVertices(vertices, VertexFlagsNormals);
-    GLuint vertexBuffer = m_drawables[currentSurface].VertexBuffer;
+    
+        (surface)->GenerateVertices(vertices);
+        GLuint vertexBuffer = (m_drawables[currentSurface]).VertexBuffer;
+
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
     glBufferData(GL_ARRAY_BUFFER,
                  vertices.size() * sizeof(vertices[0]),
                  &vertices[0],
                  GL_STATIC_DRAW);
-}
 
     
-    void RenderingEngine::Render(int currentSurface, Quaternion orientation) 
+}
+    void RenderingEngine::Render(int currentSurface, Quaternion orientation)
     {
         Drawable drawable = m_drawables[currentSurface];
         surfaceRender::display(drawable, orientation);
-
     }
     
     

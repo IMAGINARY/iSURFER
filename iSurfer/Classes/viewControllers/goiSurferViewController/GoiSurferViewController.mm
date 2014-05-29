@@ -584,12 +584,12 @@
     if( currentEquation == NULL || ![currentEquation isEqualToString:equationTextField.text]){
         lv = [LoadingView loadingView:@""];
         [self.view addSubview:lv];
-        [self performSelector:@selector(doSurfaceGeneration) withObject:nil afterDelay:0.5];
-        if(COUNTER == 0)
-        {
-            COUNTER++;
-            [self performSelector:@selector(doSurfaceGeneration) withObject:nil afterDelay:0.5];
-        }
+        [self performSelector:@selector(doSurfaceGeneration) withObject:nil afterDelay:0.4];
+        //if(COUNTER == 0)
+        //{
+        //    COUNTER++;
+           // [self performSelector:@selector(doSurfaceGeneration) withObject:nil afterDelay:0.5];
+        //}
     }
     currentEquation = [self.equationTextField.text copy];
 }

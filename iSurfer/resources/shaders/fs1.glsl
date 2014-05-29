@@ -26,7 +26,7 @@ uniform highp vec3 DiffuseMaterial;
 uniform highp vec3 DiffuseMaterial2;
 
 uniform highp float CELLSHADE;
-uniform highp float TEXTURE;
+//uniform highp float TEXTURE;
 uniform highp mat4 modelviewMatrix;
 uniform highp mat4 modelviewMatrixInverse;
 
@@ -41,9 +41,9 @@ uniform highp float Shininess;
 uniform highp float radius2;
 uniform highp vec4 eye;
 
-varying mediump vec2 TextureCoordOut;
+//varying mediump vec2 TextureCoordOut;
 
-uniform sampler2D Sampler;
+//uniform sampler2D Sampler;
 
 
 struct polynomial { highp float a[ DEGREE + 1 ]; };
@@ -942,12 +942,12 @@ void calc_lights( in highp vec3 eye, in highp vec3 dir , in highp vec3 hit_point
         }
     }
     
-    if (TEXTURE== 1.0) {
-        gl_FragColor = texture2D(Sampler, TextureCoordOut) * vec4(color,1);
-    }
-    else{
+    //if (TEXTURE== 1.0) {
+    //    gl_FragColor = texture2D(Sampler, TextureCoordOut) * vec4(color,1);
+    //}
+    //else{
         gl_FragColor = vec4(color, 1);
-    }
+    //}
     
 }
 

@@ -21,7 +21,6 @@
  */
 
 
-
 class Cone : public ParametricSurface {
 public:
     Cone(float height, float radius) : m_height(height), m_radius(radius)
@@ -77,8 +76,8 @@ private:
 class Torus : public ParametricSurface {
 public:
     Torus(float majorRadius, float minorRadius) :
-        m_majorRadius(majorRadius),
-        m_minorRadius(minorRadius)
+    m_majorRadius(majorRadius),
+    m_minorRadius(minorRadius)
     {
         ParametricInterval interval = { ivec2(20, 20), vec2(TwoPi, TwoPi), vec2(40, 10) };
         SetInterval(interval);
@@ -128,9 +127,9 @@ public:
         
         vec3 dv;
         dv.x = -1.5f * b * sin(1.5f * u) * cos(u) -
-               (a + b * cos(1.5f * u)) * sin(u);
+        (a + b * cos(1.5f * u)) * sin(u);
         dv.y = -1.5f * b * sin(1.5f * u) * sin(u) +
-               (a + b * cos(1.5f * u)) * cos(u);
+        (a + b * cos(1.5f * u)) * cos(u);
         dv.z = 1.5f * c * cos(1.5f * u);
         
         vec3 q = dv.Normalized();
@@ -148,7 +147,6 @@ public:
     {
         m_scale = newRadius; 
     }
-
 private:
     float m_scale;
 };
@@ -173,7 +171,7 @@ public:
         // between the major axis and the X axis.
         float x = a * cos(t) * cos(phi) - b * sin(t) * sin(phi);
         float y = a * cos(t) * sin(phi) + b * sin(t) * cos(phi);
-
+        
         // Sweep the ellipse along a circle, like a torus.
         vec3 range;
         range.x = (major + x) * cos(u);
@@ -195,7 +193,7 @@ class KleinBottle : public ParametricSurface {
 public:
     KleinBottle(float scale) : m_scale(scale)
     {
-        ParametricInterval interval = { ivec2(20, 20), vec2(TwoPi, TwoPi), vec2(15, 50) };
+        ParametricInterval interval = { ivec2(10, 10), vec2(TwoPi, TwoPi), vec2(15, 50) };
         SetInterval(interval);
     }
     vec3 Evaluate(const vec2& domain) const
@@ -204,12 +202,12 @@ public:
         float u = domain.y;
         
         float x0 = 3 * cos(u) * (1 + sin(u)) +
-                   (2 * (1 - cos(u) / 2)) * cos(u) * cos(v);
+        (2 * (1 - cos(u) / 2)) * cos(u) * cos(v);
         
         float y0  = 8 * sin(u) + (2 * (1 - cos(u) / 2)) * sin(u) * cos(v);
         
         float x1 = 3 * cos(u) * (1 + sin(u)) +
-                   (2 * (1 - cos(u) / 2)) * cos(v + Pi);
+        (2 * (1 - cos(u) / 2)) * cos(v + Pi);
         
         float y1 = 8 * sin(u);
         

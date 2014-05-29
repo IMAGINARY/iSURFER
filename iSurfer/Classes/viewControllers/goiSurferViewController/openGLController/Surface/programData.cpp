@@ -66,20 +66,23 @@ void programData::InitializeProgramData()
 
     programData::shaderHandle.Shininess = glGetUniformLocation(glsl_program, "Shininess");
     programData::shaderHandle.CELLSHADE = glGetUniformLocation(glsl_program, "CELLSHADE");
-    programData::shaderHandle.Sampler = glGetUniformLocation(glsl_program, "Sampler");
-    programData::shaderHandle.TEXTURE = glGetUniformLocation(glsl_program, "TEXTURE");
+    //programData::shaderHandle.Sampler = glGetUniformLocation(glsl_program, "Sampler");
+    //programData::shaderHandle.TEXTURE = glGetUniformLocation(glsl_program, "TEXTURE");
 
-    programData::shaderHandle.TextureCoord = glGetAttribLocation(glsl_program, "TextureCoord");
+//    programData::shaderHandle.TextureCoord = glGetAttribLocation(glsl_program, "TextureCoord");
     programData::shaderHandle.attr_pos = glGetAttribLocation( glsl_program, "pos" ); checkGLError( AT );
     glsl_program = programData::programs.wireframe_glsl_program;
     programData::shaderHandle.wire_attr_pos = glGetAttribLocation( glsl_program, "pos" ); checkGLError( AT );
     programData::shaderHandle.wire_modelview = glGetUniformLocation( glsl_program, "modelviewMatrix" ); checkGLError( AT );
     programData::shaderHandle.wire_projection = glGetUniformLocation( glsl_program, "projectionMatrix" ); checkGLError( AT );
-    setTexture(textureEnable);
-    initializeTexture(textureFileName);
+    //setTexture(textureEnable);
+    //initializeTexture(textureFileName);
     programData::setConstant();
     programData::GenerateArrays();
     programData::setCellShade(toonShader);
+    printf("\nAttrpos %d y wire %d\n", programData::shaderHandle.attr_pos, shaderHandle.wire_attr_pos);
+    //printf("TextureCord %d\n", programData::shaderHandle.TextureCoord);
+
     SetEye();
 }
 
@@ -262,7 +265,7 @@ void programData::GenerateArrays()
     // Initialize various state.
     glEnableVertexAttribArray(programData::shaderHandle.wire_attr_pos);	checkGLError( AT );
     glEnableVertexAttribArray(programData::shaderHandle.attr_pos);	checkGLError( AT );
-    glEnableVertexAttribArray(programData::shaderHandle.TextureCoord); checkGLError( AT );
+   // glEnableVertexAttribArray(programData::shaderHandle.TextureCoord); checkGLError( AT );
 
     
     glEnable(GL_DEPTH_TEST);

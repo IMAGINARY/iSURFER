@@ -252,6 +252,16 @@ class programData
 
     
     static ProgramIdentifiers programs;
+    
+    /**
+     * Usage:  GenerateArrays();
+     * ----------------------------------
+     * Generates vertices array space in OpenGL.
+     * @method GenerateArrays
+     * @private
+     */
+    
+    void static GenerateArrays();
 
 	private:
     /**
@@ -264,16 +274,6 @@ class programData
     
         void static setConstant();
     
-    
-    /**
-     * Usage:  GenerateArrays();
-     * ----------------------------------
-     * Generates vertices array space in OpenGL. 
-     * @method GenerateArrays
-     * @private
-     */
-
-        void static GenerateArrays();
 };
 
 

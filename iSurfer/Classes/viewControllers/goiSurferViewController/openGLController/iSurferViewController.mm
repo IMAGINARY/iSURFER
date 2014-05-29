@@ -57,11 +57,11 @@ enum {
 }
 
 -(void)setupGLContxt{
-	EAGLContext *aContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+	EAGLContext *aContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3];
 	
 	if (!aContext)
 	{
-		aContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
+		aContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
 	}
 	
 	if (!aContext)
@@ -655,6 +655,7 @@ ivec2 oldLocation;
     {
 	//iSurferDelegate::radius = zoomvalue;
     programData::UpdateRadius(zoomvalue);
+    programData::GenerateArrays();
     m_applicationEngine->Zoom(zoomvalue);
     
     [self drawFrame];
@@ -694,26 +695,6 @@ ivec2 oldLocation;
     
 	programData::UpdateColor2(red, green, blue);
 	[self drawFrame];
-}
-
-
--(UIImage *) drawableToCGImage {
-	CGRect myRect = CGRectMake(0, 0, 300, 200	);
-	NSInteger myDataLength = myRect.size.width * myRect.size.height * 4;
-	void *buffer = (GLubyte *) malloc(myDataLength);
-	
-	glFinish();
-	glPixelStorei(GL_PACK_ALIGNMENT, 4);
-	
-	glReadPixels(myRect.origin.x, myRect.origin.y, myRect.size.width, myRect.size.height, GL_RGB, GL_UNSIGNED_INT, buffer);
-	
-	NSData* myImageData = [NSData dataWithBytesNoCopy:(unsigned char const **)&buffer length:myDataLength freeWhenDone:NO];
-	
-	UIImage *myImage = [UIImage imageWithData:myImageData];
-	if( myImage != nil) { NSLog(@"Save EAGLImage failed to bind data to a IUImage"); }
-	//	free(myGLData); not needed - NSData:dataWithBytesNoCopy: The returned object takes ownership of the bytes pointer and frees it on deallocation. Therefore, bytes must point to a memory block allocated with malloc.
-	
-	return myImage;
 }
 
 @end

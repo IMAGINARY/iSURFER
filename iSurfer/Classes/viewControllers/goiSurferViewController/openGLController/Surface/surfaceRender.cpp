@@ -26,29 +26,37 @@ using namespace std;
 
 void drawWire(Drawable drawable){
 
-    int stride = 2 * sizeof(vec3);
+    int stride = sizeof(vec3);//2 * sizeof(vec3);
     GLint position = programData::shaderHandle.wire_attr_pos;
-    
+    //const GLvoid* offset = (const GLvoid*) sizeof(stride));
+
     glBindBuffer(GL_ARRAY_BUFFER, drawable.VertexBuffer);
     glVertexAttribPointer(position, 3, GL_FLOAT, GL_FALSE, stride, 0);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, drawable.IndexBuffer);
 
-    glDrawElements(GL_LINES, drawable.IndexCount-1, GL_UNSIGNED_SHORT, 0);
+    glDrawElements(GL_LINES, drawable.IndexCount, GL_UNSIGNED_SHORT, 0);
+    
+    
+    
+    
+    
+    
     
 }
 
 void drawSurface(Drawable drawable){
     
     // Draw the surface.
-    int stride = 2 * sizeof(vec3);
+    int stride = sizeof(vec3);//2 * sizeof(vec3);
     //const GLvoid* offset = (const GLvoid*) sizeof(vec3);
 
-    const GLvoid* texCoordOffset = (const GLvoid*) (2 * sizeof(vec3));
+    //const GLvoid* texCoordOffset = (const GLvoid*) (2 * sizeof(vec3));
     GLint position = programData::shaderHandle.wire_attr_pos;
 
-    GLint texCoord = programData::shaderHandle.TextureCoord;
+    //GLint texCoord = programData::shaderHandle.TextureCoord;
     glBindBuffer(GL_ARRAY_BUFFER, drawable.VertexBuffer);
-    glVertexAttribPointer(position, 3, GL_FLOAT, GL_FALSE, stride, 0);
-    glVertexAttribPointer(texCoord, 2, GL_FLOAT, GL_FALSE, stride, texCoordOffset);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, 0);
+    //glVertexAttribPointer(texCoord, 2, GL_FLOAT, GL_FALSE, stride, texCoordOffset);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, drawable.IndexBuffer);
     glDrawElements(GL_TRIANGLES, drawable.IndexCount, GL_UNSIGNED_SHORT, 0);
 
@@ -68,9 +76,26 @@ void surfaceRender::resize( int w, int h )
 void surfaceRender::display(Drawable drawable, Quaternion orientation)
 {
     
+    
+    
     mat4 project; 
     mat4 s, cameraT, model, modelView, projectionModelView, trans, modelViewInv;
     
+    /*//TEST
+    glClearColor(0.5f, 0.5f, 0.5f, 1);
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    // Set the model-view transform.
+    mat4 rotation = orientation.ToMatrix();
+    mat4 m_translation =  mat4::Translate(0.0, 0.0, -programData::radius * tan(30.0 * M_PI / 360.0));
+
+    mat4 modelview = rotation * m_translation;
+    
+    // Set the projection transform.
+    float h = 4.0f ;
+    mat4 projectionMatrix = mat4::Frustum(-2, 2, -h / 2, h / 2, 5, 10);
+     projectionModelView = projectionMatrix * modelview;
+    */
     if( ! programData::panoramic)
     {
         s = mat4::Scale(0.75, 1, 1);
@@ -147,7 +172,6 @@ void surfaceRender::display(Drawable drawable, Quaternion orientation)
  	}
 	// draw solid sphere, which is used for raycasting
 	{
-
 		glEnable( GL_CULL_FACE );
         checkGLError( AT );
         

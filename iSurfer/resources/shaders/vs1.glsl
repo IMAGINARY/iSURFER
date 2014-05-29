@@ -3,11 +3,11 @@ uniform highp mat4 modelviewMatrixInverse;
 uniform highp vec4 origin;
 uniform highp vec4 surface_transform_inverse;
 attribute vec4 pos;
-attribute vec2 TextureCoord;
+//attribute vec2 TextureCoord;
 
 varying highp vec3 varying_eye;
 varying highp vec3 varying_dir;
-varying vec2 TextureCoordOut;
+//varying vec2 TextureCoordOut;
 
 /**
  * File: vs1.glsl
@@ -37,6 +37,6 @@ void main( void )
 
     varying_eye = ( modelviewMatrixInverse * origin ).xyz;
 	varying_dir = pos.xyz - varying_eye;
-    TextureCoordOut = TextureCoord;
+    //TextureCoordOut = TextureCoord;
     
     } 

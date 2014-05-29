@@ -66,6 +66,5 @@
 -(float)zoom;
 -(void)setSurfaceColorRed:(float)red Green:(float)green Blue:(float)blue;
 -(void)setSurfaceColor2Red:(float)red Green:(float)green Blue:(float)blue;
--(UIImage *) drawableToCGImage ;
 
 @end

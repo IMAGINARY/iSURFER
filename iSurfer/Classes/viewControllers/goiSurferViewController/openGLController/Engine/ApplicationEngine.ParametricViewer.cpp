@@ -3,7 +3,7 @@
 #include "ParametricSurface.hpp"
 namespace ParametricViewer {   
     
-static const int SurfaceCount = 6;
+static const int SurfaceCount = 1;
     vector<ISurface*> surfaces(SurfaceCount);
     
     IApplicationEngine* CreateApplicationEngine(IRenderingEngine* renderingEngine)
@@ -12,7 +12,7 @@ static const int SurfaceCount = 6;
     }
 
     ApplicationEngine::ApplicationEngine(IRenderingEngine* renderingEngine) :
-    currentSurface(1),
+    currentSurface(0),
     m_renderingEngine(renderingEngine)
     {
     }
@@ -31,12 +31,12 @@ static const int SurfaceCount = 6;
         m_screenSize = ivec2(width, height);
         m_centerPoint = m_screenSize / 2;
         vector<ISurface*> surfaces2(SurfaceCount);
-        surfaces2[0] = new Cone(5, 5);
-        surfaces2[1] = new Sphere(5);
-        surfaces2[2] = new Torus(1.4f, 0.3f);
-        surfaces2[3] = new TrefoilKnot(1.8f);
-        surfaces2[4] = new KleinBottle(0.2f);
-        surfaces2[5] = new MobiusStrip(1);
+//        surfaces2[0] = new Cone(5, 5);
+        surfaces2[0] = new Sphere(5);
+//        surfaces2[2] = new Torus(1.4f, 0.3f);
+//        surfaces2[3] = new TrefoilKnot(1.8f);
+//        surfaces2[4] = new KleinBottle(0.2f);
+//        surfaces2[5] = new MobiusStrip(1);
         surfaces = surfaces2;
         m_renderingEngine->Initialize(surfaces);
         
@@ -44,7 +44,7 @@ static const int SurfaceCount = 6;
     
 
     void ApplicationEngine::Zoom(float radius){
-        surfaces[currentSurface]->Zoom(radius);
+        surfaces[0]->Zoom(radius);
         m_renderingEngine->UpdateSurface(surfaces, currentSurface);
     }
 
