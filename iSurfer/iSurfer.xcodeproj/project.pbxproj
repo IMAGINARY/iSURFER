@@ -1649,7 +1649,7 @@
 				GCC_PREFIX_HEADER = iSurfer_Prefix.pch;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "iSurfer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = iSurfer;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E3DE1026-3E5E-4F77-A49D-CAFE2752E4D7";
 			};
@@ -1664,7 +1664,7 @@
 				GCC_PREFIX_HEADER = iSurfer_Prefix.pch;
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "iSurfer-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = iSurfer;
 				VALIDATE_PRODUCT = YES;
 			};
